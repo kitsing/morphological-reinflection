@@ -1,4 +1,25 @@
-import sys
+"""Trains and evaluates a factored-model for inflection generation, using the sigmorphon 2016 shared task data files and
+evaluation script.
+
+Usage:
+  pycnn_faruqui_inflection.py [--input=INPUT] [--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+
+Arguments:
+  TRAIN_PATH    destination path
+  TEST_PATH     test path
+  RESULTS_PATH  results file to be written
+  SIGMORPHON_PATH   sigmorphon root containing data, src dirs
+
+Options:
+  -h --help                     show this help message and exit
+  --input=INPUT                 input vector dimensions
+  --hidden=HIDDEN               hidden layer dimensions
+  --epochs=EPOCHS               amount of training epochs
+  --layers=LAYERS               amount of layers in lstm network
+  --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM
+"""
+
+
 import numpy as np
 import random
 import prepare_sigmorphon_data
@@ -7,9 +28,10 @@ import datetime
 import time
 import codecs
 import os
-
+from docopt import docopt
 from pycnn import *
 
+# default values
 INPUT_DIM = 100
 HIDDEN_DIM = 100
 EPOCHS = 1
@@ -24,7 +46,6 @@ EPSILON = '*'
 BEGIN_WORD = '<'
 END_WORD = '>'
 
-# TODO: move to github
 # TODO: try naive substring approach - LCS (Ahlberg 2015)?
 # TODO: try running on GPU
 # TODO: write evaluation code with sigmorphon script
@@ -39,24 +60,14 @@ END_WORD = '>'
 # TODO: think how to give more emphasis on suffix generalization/learning
 # TODO: handle unk chars better
 
-def main(args):
-
+def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
+         optimization):
     ts = time.time()
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d_%H:%M:%S')
 
-    hyper_params = {'INPUT_DIM': INPUT_DIM, 'HIDDEN_DIM': HIDDEN_DIM, 'EPOCHS': EPOCHS, 'LAYERS': LAYERS,
+    hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'EPOCHS': epochs, 'LAYERS': layers,
                     'CHAR_DROPOUT_PROB': CHAR_DROPOUT_PROB, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
-                    'OPTIMIZATION': OPTIMIZATION}
-
-    # train_path = args[1]
-    # test_path = args[2]
-    train_path = '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/turkish-task1-train'
-    test_path = '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/turkish-task1-dev'
-    results_file_path = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/results_' + \
-                        st + '.txt'
-    sigmorphon_root_dir = '/Users/roeeaharoni/research_data/sigmorphon2016-master/'
-    # train_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_train.txt.sigmorphon_format.txt'
-    # test_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_test.txt.sigmorphon_format.txt'
+                    'OPTIMIZATION': optimization}
 
     print 'train path = ' + str(train_path)
     print 'test path =' + str(test_path)
@@ -94,12 +105,11 @@ def main(args):
 
     # factored model: new model per inflection type
     for morph_index, morph_type in enumerate(train_morph_to_data_indices):
-        # TODO: write results by original indices for later output
 
         # get the inflection-specific data
         train_morph_words = [train_words[i] for i in train_morph_to_data_indices[morph_type]]
         train_morph_lemmas = [train_lemmas[i] for i in train_morph_to_data_indices[morph_type]]
-        if len(train_morph_words) < 0:
+        if len(train_morph_words) < 1:
             print 'only ' + str(len(train_morph_words)) + ' samples for this inflection type. skipping'
             continue
         else:
@@ -107,11 +117,13 @@ def main(args):
                   ': ' + morph_type + ' with ' + str(len(train_morph_words)) + ' examples'
 
         # build model
-        initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet)
+        initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers)
 
         # train model
         trained_model = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_words,
-                                    train_morph_lemmas, alphabet_index)
+                                    train_morph_lemmas, alphabet_index, epochs, optimization)
+
+        # save model
         models[morph_type] = (trained_model, encoder_frnn, encoder_rrnn, decoder_rnn)
 
         # test model
@@ -164,25 +176,25 @@ def get_distinct_morph_types(feat_dicts, feats):
     return morphs_to_indices
 
 
-def build_model(alphabet):
+def build_model(alphabet, input_dim, hidden_dim, layers):
 
     print 'creating model...'
 
     model = Model()
 
     # character embeddings
-    model.add_lookup_parameters("lookup", (len(alphabet), INPUT_DIM))
+    model.add_lookup_parameters("lookup", (len(alphabet), input_dim))
 
     # used in softmax output
-    model.add_parameters("R", (len(alphabet), HIDDEN_DIM))
+    model.add_parameters("R", (len(alphabet), hidden_dim))
     model.add_parameters("bias", len(alphabet))
 
     # rnn's
-    encoder_frnn = LSTMBuilder(LAYERS, INPUT_DIM, HIDDEN_DIM, model)
-    encoder_rrnn = LSTMBuilder(LAYERS, INPUT_DIM, HIDDEN_DIM, model)
+    encoder_frnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
+    encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
 
     # 3 * HIDDEN_DIM + INPUT_DIM, as it gets a concatenation of frnn, rrnn, previous output char, current lemma char
-    decoder_rnn = LSTMBuilder(LAYERS, 2 * HIDDEN_DIM + 2 * INPUT_DIM, HIDDEN_DIM, model)
+    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 2 * input_dim, hidden_dim, model)
 
     print 'finished creating model'
 
@@ -268,18 +280,19 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, word, a
     return loss
 
 
-def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, morph_words, morph_lemmas, alphabet_index):
+def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, morph_words, morph_lemmas, alphabet_index, epochs,
+                optimization):
     print 'training...'
     np.random.seed(17)
     random.seed(17)
 
-    if OPTIMIZATION == 'ADAM':
+    if optimization == 'ADAM':
         trainer = AdamTrainer(model)
-    elif OPTIMIZATION == 'MOMENTUM':
+    elif optimization == 'MOMENTUM':
         trainer = MomentumSGDTrainer(model)
-    elif OPTIMIZATION == 'SGD':
+    elif optimization == 'SGD':
         trainer = SimpleSGDTrainer(model)
-    elif OPTIMIZATION == 'ADAGRAD':
+    elif optimization == 'ADAGRAD':
         trainer = AdagradTrainer(model)
     else:
         trainer = SimpleSGDTrainer(model)
@@ -289,9 +302,9 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, morph_words, mor
 
     # progress bar init
     widgets = [progressbar.Bar('>'), ' ', progressbar.ETA()]
-    train_progress_bar = progressbar.ProgressBar(widgets=widgets, max_value=EPOCHS).start()
+    train_progress_bar = progressbar.ProgressBar(widgets=widgets, max_value=epochs).start()
     avg_loss = -1
-    for e in xrange(EPOCHS):
+    for e in xrange(epochs):
 
         # randomize the training set
         indices = range(train_len)
@@ -465,7 +478,9 @@ def write_results_file(hyper_params, macro_avg_accuracy, micro_average_accuracy,
     os.chdir(sigmorphon_root_dir)
     os.system('python ' + sigmorphon_root_dir + '/src/evalm.py --gold ' + test_path + ' --guesses ' + predictions_path +
               ' > ' + evaluation_path)
+    os.system('python ' + sigmorphon_root_dir + '/src/evalm.py --gold ' + test_path + ' --guesses ' + predictions_path)
 
+    print 'wrote results to: ' + output_file_path + '\n' + evaluation_path + '\n' + predictions_path
     return
 
 
@@ -487,4 +502,46 @@ def argmax(iterable):
     return max(enumerate(iterable), key=lambda x: x[1])[0]
 
 if __name__ == '__main__':
-    main(sys.argv)
+    arguments = docopt(__doc__)
+    if arguments['TRAIN_PATH']:
+        train_path = arguments['TRAIN_PATH']
+    else:
+        train_path = '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/turkish-task1-train'
+    if arguments['TEST_PATH']:
+        test_path = arguments['TEST_PATH']
+    else:
+        test_path = '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/turkish-task1-dev'
+    if arguments['RESULTS_PATH']:
+        results_file_path = arguments['RESULTS_PATH']
+    else:
+        results_file_path = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/results_' \
+                            + st + '.txt'
+    if arguments['SIGMORPHON_PATH']:
+        sigmorphon_root_dir = arguments['SIGMORPHON_PATH'][0]
+    else:
+        sigmorphon_root_dir = '/Users/roeeaharoni/research_data/sigmorphon2016-master/'
+    if arguments['--input']:
+        input_dim = int(arguments['--input'])
+    else:
+        input_dim = INPUT_DIM
+    if arguments['--hidden']:
+        hidden_dim = int(arguments['--hidden'])
+    else:
+        hidden_dim = HIDDEN_DIM
+    if arguments['--epochs']:
+        epochs = int(arguments['--epochs'])
+    else:
+        epochs = EPOCHS
+    if arguments['--layers']:
+        layers = int(arguments['--layers'])
+    else:
+        layers = LAYERS
+    if arguments['--optimization']:
+        optimization = arguments['--optimization']
+    else:
+        optimization = OPTIMIZATION
+
+    print arguments
+
+    main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
+         optimization)
