@@ -2,7 +2,7 @@
 evaluation script.
 
 Usage:
-  pycnn_faruqui_inflection.py [--input=INPUT] [--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+  pycnn_faruqui_inflection.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
   TRAIN_PATH    destination path
@@ -12,6 +12,7 @@ Arguments:
 
 Options:
   -h --help                     show this help message and exit
+  --cnn-mem MEM                 allocates MEM bytes for (py)cnn
   --input=INPUT                 input vector dimensions
   --hidden=HIDDEN               hidden layer dimensions
   --epochs=EPOCHS               amount of training epochs
@@ -46,13 +47,13 @@ EPSILON = '*'
 BEGIN_WORD = '<'
 END_WORD = '>'
 
+# TODO: print comparision with gold standard
 # TODO: try naive substring approach - LCS (Ahlberg 2015)?
 # TODO: try running on GPU
-# TODO: write evaluation code with sigmorphon script
 # TODO: consider different begin, end chars for lemma and word
 # TODO: consider different lookup table for lemma and word
 # TODO: implement (character?) dropout
-# TODO: make different input and hidden dims work
+# TODO: make different input and hidden dims work (problem with first input in decoder)
 # TODO: plot learning curve
 # TODO: implement smart stopping
 # TODO: try different learning algorithms (ADAGRAD, ADAM...)

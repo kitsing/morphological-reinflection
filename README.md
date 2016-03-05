@@ -2,7 +2,7 @@
 
 Usage:
 
-    pycnn_faruqui_inflection.py [--input=INPUT] [--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+    pycnn_faruqui_inflection.py [--input=INPUT] [--cnn-mem MEM] [--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
 *  TRAIN_PATH    train file path (sigmorphon format)
@@ -12,6 +12,7 @@ Arguments:
 
 Options:
 *  -h --help                     show this help message and exit
+*  --cnn-mem MEM                 allocates MEM bytes for (py)cnn
 *  --input=INPUT                 input vector dimensions
 *  --hidden=HIDDEN               hidden layer dimensions
 *  --epochs=EPOCHS               amount of training epochs
