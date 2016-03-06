@@ -6,8 +6,10 @@ import datetime
 def main():
 
     sig_root = '/Users/roeeaharoni/research_data/sigmorphon2016-master'
-    results_dir = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation'
-    langs = ['german', 'turkish', 'spanish', 'navajo', 'arabic', 'finnish', 'georgian', 'russian']
+    results_dir = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results'
+    #langs = ['german', 'turkish', 'spanish', 'navajo']#,
+    langs = ['arabic', 'finnish', 'georgian', 'russian']
+    print 'now training langs: ' + str(langs)
     for lang in langs:
         start = time.time()
         st = datetime.datetime.fromtimestamp(start).strftime('%Y-%m-%d_%H:%M:%S')
@@ -16,7 +18,7 @@ def main():
                   --optimization ADAM \
                   {0}/data/{1}-task1-train \
                   {0}/data/{1}-task1-dev \
-                  {3}/{2}_{0}_results.txt \
+                  {3}/{1}_{2}_results.txt \
                   {0}'.format(sig_root, lang, st, results_dir))
         end = time.time()
         print 'finished ' + lang + ' in ' + str(end - start)
