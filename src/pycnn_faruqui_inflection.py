@@ -47,8 +47,10 @@ EPSILON = '*'
 BEGIN_WORD = '<'
 END_WORD = '>'
 
+# TODO: maybe an approach similar to Shmidman et al?
+# TODO: run this (and baseline) on all available languages
 # TODO: print comparision with gold standard
-# TODO: try naive substring approach - LCS (Ahlberg 2015)?
+# TODO: try naive substring approach - maybe some variation of LCS (Ahlberg 2015)?
 # TODO: try running on GPU
 # TODO: consider different begin, end chars for lemma and word
 # TODO: consider different lookup table for lemma and word

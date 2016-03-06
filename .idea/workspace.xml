@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f5ca294-6fe9-41a4-9acc-0466484c02bf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pycnn_faruqui_inflection.py" afterPath="$PROJECT_DIR$/src/pycnn_faruqui_inflection.py" />
     </list>
     <ignored path="morphological-reinflection.iws" />
@@ -27,8 +26,8 @@
       <file leaf-file-name="pycnn_faruqui_inflection.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pycnn_faruqui_inflection.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45454547">
-              <caret line="14" column="60" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
+            <state vertical-scroll-proportion="0.58441556">
+              <caret line="49" column="51" selection-start-line="49" selection-start-column="51" selection-end-line="49" selection-end-column="51" />
               <folding>
                 <element signature="e#986#1004#0" expanded="true" />
               </folding>
@@ -401,8 +400,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pycnn_faruqui_inflection.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45454547">
-          <caret line="14" column="60" selection-start-line="14" selection-start-column="60" selection-end-line="14" selection-end-column="60" />
+        <state vertical-scroll-proportion="0.58441556">
+          <caret line="49" column="51" selection-start-line="49" selection-start-column="51" selection-end-line="49" selection-end-column="51" />
           <folding>
             <element signature="e#986#1004#0" expanded="true" />
           </folding>
