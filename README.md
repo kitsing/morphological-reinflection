@@ -2,7 +2,7 @@
 
 Usage:
 
-    pycnn_faruqui_inflection.py [--input=INPUT] [--cnn-mem MEM] [--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+    pycnn_factored_inflection.py [--cnn-mem MEM] [--input=INPUT] [--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
 *  TRAIN_PATH    train file path (sigmorphon format)
@@ -21,4 +21,4 @@ Options:
 
 For example:
 
-    python pycnn_faruqui_inflection.py --input=120 --hidden=120 --epochs=100 --layers=2 --optimization=ADAM /Users/roeeaharoni/research_data/sigmorphon2016-master/data/navajo-task1-train /Users/roeeaharoni/research_data/sigmorphon2016-master/data/navajo-task1-dev /Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/navajo_results.txt /Users/roeeaharoni/research_data/sigmorphon2016-master/
+    python pycnn_factored_inflection.py --input=120 --hidden=120 --epochs=100 --layers=2 --optimization=ADAM /Users/roeeaharoni/research_data/sigmorphon2016-master/data/navajo-task1-train /Users/roeeaharoni/research_data/sigmorphon2016-master/data/navajo-task1-dev /Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/navajo_results.txt /Users/roeeaharoni/research_data/sigmorphon2016-master/
