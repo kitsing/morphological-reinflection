@@ -1,5 +1,5 @@
 import prepare_sigmorphon_data
-import pycnn_faruqui_inflection
+import pycnn_factored_inflection
 import codecs
 
 BEGIN_WORD = '<s>'
@@ -30,7 +30,7 @@ def convert_sigmorphon_to_morphtrans(sig_file, morphtrans_file, create_alphabet 
             alphabet_file.write(' '.join([c for c in list(alphabet) if len(c) < 2]) + ' ' + END_WORD + ' '
                                 + BEGIN_WORD)
 
-        morph2feats = pycnn_faruqui_inflection.get_distinct_morph_types(feat_dicts, feats)
+        morph2feats = pycnn_factored_inflection.get_distinct_morph_types(feat_dicts, feats)
         with codecs.open(morphtrans_file + '.morph_alphabet', "w", encoding='utf8') as alphabet_file:
             alphabet_file.write(' '.join([key for key in morph2feats.keys()]))
 

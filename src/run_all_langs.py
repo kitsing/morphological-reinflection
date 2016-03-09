@@ -7,14 +7,16 @@ def main():
 
     sig_root = '/Users/roeeaharoni/research_data/sigmorphon2016-master'
     results_dir = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results'
-    #langs = ['german', 'turkish', 'spanish', 'navajo']#,
-    langs = ['arabic', 'finnish', 'georgian', 'russian']
+    langs = ['german', 'turkish']
+    #langs = ['spanish', 'navajo']
+    #langs = ['arabic', 'finnish']
+    #langs = ['georgian', 'russian']
     print 'now training langs: ' + str(langs)
     for lang in langs:
         start = time.time()
         st = datetime.datetime.fromtimestamp(start).strftime('%Y-%m-%d_%H:%M:%S')
         os.chdir('/Users/roeeaharoni/Github/morphological-reinflection/src')
-        os.system('python pycnn_faruqui_inflection.py --cnn-mem 4096 --input=100 --hidden=100 --epochs=100 --layers=2 \
+        os.system('python pycnn_factored_inflection.py --cnn-mem 4096 --input=100 --hidden=100 --epochs=150 --layers=2 \
                   --optimization ADAM \
                   {0}/data/{1}-task1-train \
                   {0}/data/{1}-task1-dev \

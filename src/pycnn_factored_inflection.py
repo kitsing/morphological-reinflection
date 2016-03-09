@@ -1,8 +1,9 @@
-"""Trains and evaluates a factored-model for inflection generation, using the sigmorphon 2016 shared task data files and
-evaluation script.
+"""Trains and evaluates a factored-model for inflection generation, using the sigmorphon 2016 shared task data files
+and evaluation script.
 
 Usage:
-  pycnn_faruqui_inflection.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+  pycnn_factored_inflection.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS]
+  [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
   TRAIN_PATH    destination path
@@ -20,7 +21,7 @@ Options:
   --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM
 """
 
-
+from matplotlib import pyplot as plt
 import numpy as np
 import random
 import prepare_sigmorphon_data
@@ -29,6 +30,7 @@ import datetime
 import time
 import codecs
 import os
+import copy
 from docopt import docopt
 from pycnn import *
 
@@ -40,6 +42,10 @@ LAYERS = 2
 CHAR_DROPOUT_PROB = 0
 MAX_PREDICTION_LEN = 50
 OPTIMIZATION = 'ADAM'
+EARLY_STOPPING = True
+MAX_PATIENCE = 100
+REGULARIZATION = 0.0001
+LEARNING_RATE = 0.001  # 0.1
 
 NULL = '%'
 UNK = '#'
@@ -49,7 +55,7 @@ END_WORD = '>'
 
 # TODO: maybe an approach similar to Shmidman et al?
 # TODO: run this (and baseline) on all available languages
-# TODO: print comparision with gold standard
+# TODO: print comparison with gold standard
 # TODO: try naive substring approach - maybe some variation of LCS (Ahlberg 2015)?
 # TODO: try running on GPU
 # TODO: consider different begin, end chars for lemma and word
@@ -63,14 +69,14 @@ END_WORD = '>'
 # TODO: think how to give more emphasis on suffix generalization/learning
 # TODO: handle unk chars better
 
+
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
          optimization):
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d_%H:%M:%S')
 
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'EPOCHS': epochs, 'LAYERS': layers,
                     'CHAR_DROPOUT_PROB': CHAR_DROPOUT_PROB, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
-                    'OPTIMIZATION': optimization}
+                    'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': REGULARIZATION,
+                    'LEARNING_RATE': LEARNING_RATE}
 
     print 'train path = ' + str(train_path)
     print 'test path =' + str(test_path)
@@ -122,9 +128,20 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         # build model
         initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers)
 
+        # TODO: now dev and test are the same - change later when test sets are available
+        # get dev lemmas for early stopping
+        try:
+            dev_morph_lemmas = [test_lemmas[i] for i in test_morph_to_data_indices[morph_type]]
+            dev_morph_words = [test_words[i] for i in test_morph_to_data_indices[morph_type]]
+        except KeyError:
+            dev_morph_lemmas = []
+            dev_morph_words = []
+            print 'could not find relevant examples in dev data for morph: ' + morph_type
+
         # train model
         trained_model = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_words,
-                                    train_morph_lemmas, alphabet_index, epochs, optimization)
+                                    train_morph_lemmas, dev_morph_words, dev_morph_lemmas, alphabet_index,
+                                    inverse_alphabet_index, epochs, optimization, results_file_path, str(morph_index))
 
         # save model
         models[morph_type] = (trained_model, encoder_frnn, encoder_rrnn, decoder_rnn)
@@ -135,7 +152,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             test_morph_words = [test_words[i] for i in test_morph_to_data_indices[morph_type]]
 
             predictions = predict(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
-                                             inverse_alphabet_index, test_morph_lemmas, test_morph_words)
+                                  inverse_alphabet_index, test_morph_lemmas, test_morph_words)
 
             test_data = zip(test_morph_lemmas, test_morph_words)
             accuracy = evaluate_model(predictions, test_data)
@@ -278,19 +295,33 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, word, a
         prev_output_vec = s.output()
 
     # TODO: maybe here a "special" loss function is appropriate?
-    loss = esum(loss)
+    # loss = esum(loss)
+    loss = average(loss)
+    # loss_mul = scalarInput(1)
+    # for l in loss:
+    #     loss_mul = loss_mul * l
+    # loss = loss_mul
 
     return loss
 
 
-def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, morph_words, morph_lemmas, alphabet_index, epochs,
-                optimization):
+def save_pycnn_model(model, results_file_path, morph_index):
+    tmp_model_path = results_file_path + '_' + morph_index + '_bestmodel.txt'
+    print 'saving to ' + tmp_model_path
+    model.save(tmp_model_path)
+    print 'saved to {0}'.format(tmp_model_path)
+
+
+def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, morph_words, morph_lemmas, dev_morph_words,
+                dev_morph_lemmas, alphabet_index, inverse_alphabet_index, epochs, optimization, results_file_path,
+                morph_index):
     print 'training...'
+
     np.random.seed(17)
     random.seed(17)
 
     if optimization == 'ADAM':
-        trainer = AdamTrainer(model)
+        trainer = AdamTrainer(model, lam=REGULARIZATION, alpha=LEARNING_RATE, beta_1=0.9, beta_2=0.999, eps=1e-8)
     elif optimization == 'MOMENTUM':
         trainer = MomentumSGDTrainer(model)
     elif optimization == 'SGD':
@@ -301,12 +332,21 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, morph_words, mor
         trainer = SimpleSGDTrainer(model)
 
     total_loss = 0
+    best_avg_dev_loss = 999
+    best_dev_accuracy = -1
+    patience = 0
     train_len = len(morph_words)
+    epochs_x = []
+    train_loss_y = []
+    dev_loss_y = []
+    train_accuracy_y = []
+    dev_accuracy_y = []
 
     # progress bar init
     widgets = [progressbar.Bar('>'), ' ', progressbar.ETA()]
     train_progress_bar = progressbar.ProgressBar(widgets=widgets, max_value=epochs).start()
     avg_loss = -1
+
     for e in xrange(epochs):
 
         # randomize the training set
@@ -323,14 +363,85 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, morph_words, mor
             loss.backward()
             trainer.update()
             if i > 0:
-            # print 'avg. loss at ' + str(i) + ': ' + str(total_loss / float(i + e*train_len)) + '\n'
+                # print 'avg. loss at ' + str(i) + ': ' + str(total_loss / float(i + e*train_len)) + '\n'
                 avg_loss = total_loss / float(i + e*train_len)
             else:
                 avg_loss = total_loss
 
-        train_progress_bar.update(e)
+        # TODO: try early stopping with evaluation score and not with avg. loss
+        if EARLY_STOPPING:
 
+            if len(dev_morph_lemmas) > 0:
+
+                # get train accuracy
+                train_predictions = predict(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+                                            inverse_alphabet_index, morph_lemmas, morph_words)
+                train_accuracy = evaluate_model(train_predictions, train_set, False)[1]
+
+                # get dev accuracy
+                dev_predictions = predict(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+                                          inverse_alphabet_index, dev_morph_lemmas, dev_morph_words)
+
+                # get dev accuracy
+                dev_data = zip(dev_morph_lemmas, dev_morph_words)
+                dev_accuracy = evaluate_model(dev_predictions, dev_data, False)[1]
+
+                if dev_accuracy == 1:
+                    return model
+
+                if dev_accuracy > best_dev_accuracy:
+                    best_dev_accuracy = dev_accuracy
+
+                    # save best model to disk
+                    save_pycnn_model(model, results_file_path, morph_index)
+                    print 'saved new best model'
+                    patience = 0
+                else:
+                    patience += 1
+
+                # get dev loss
+                total_dev_loss = 0
+                for word, lemma in dev_data:
+                    total_dev_loss += one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, word,
+                                                    alphabet_index).value()
+
+                avg_dev_loss = total_dev_loss / float(len(dev_morph_lemmas))
+                if avg_dev_loss < best_avg_dev_loss:
+                    best_avg_dev_loss = avg_dev_loss
+
+                print 'epoch: {0} train loss: {1:.2f} dev loss: {2:.2f} accuracy: {3:.2f} best accuracy {4:.2f} \
+patience = {5} train accuracy = {6:.2f}'.format(e, avg_loss, avg_dev_loss, dev_accuracy, best_dev_accuracy, patience,
+                                                train_accuracy)
+
+                if patience == MAX_PATIENCE:
+                    print 'out of patience after {0} epochs'.format(str(e))
+                    # TODO: would like to return best model but pycnn has a bug with save and load. Maybe copy via code?
+                    # return best_model[0]
+                    train_progress_bar.finish()
+                    plt.cla()
+                    return model
+
+                # update lists for plotting
+                train_accuracy_y.append(train_accuracy)
+                epochs_x.append(e)
+                train_loss_y.append(avg_loss)
+                dev_loss_y.append(avg_dev_loss)
+                dev_accuracy_y.append(dev_accuracy)
+            else:
+                print 'no dev set for early stopping, running all epochs'
+
+
+        # finished epoch
+        train_progress_bar.update(e)
+        with plt.style.context('fivethirtyeight'):
+            p1, = plt.plot(epochs_x, dev_loss_y, label='dev loss')
+            p2, = plt.plot(epochs_x, train_loss_y, label='train loss')
+            p3, = plt.plot(epochs_x, dev_accuracy_y, label='dev acc.')
+            p4, = plt.plot(epochs_x, train_accuracy_y, label='train acc.')
+            plt.legend(loc='upper left', handles=[p1, p2, p3, p4])
+        plt.savefig(results_file_path + '_' + morph_index + '.png')
     train_progress_bar.finish()
+    plt.cla()
     print 'finished training. average loss: ' + str(avg_loss)
     return model
 
@@ -427,9 +538,10 @@ def predict_inflection(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, al
     return predicted[1:-1]
 
 
-def evaluate_model(predictions, test_data):
+def evaluate_model(predictions, test_data, print_res=True):
 
-    print 'evaluating model...'
+    if print_res:
+        print 'evaluating model...'
 
     c = 0
     for i, lemma in enumerate(predictions.keys()):
@@ -440,10 +552,13 @@ def evaluate_model(predictions, test_data):
             sign = 'V'
         else:
             sign = 'X'
-        print 'lemma: ' + lemma + ' gold: ' + word + ' prediction: ' + predicted_word + ' ' + sign
+        if print_res:
+            print 'lemma: ' + lemma + ' gold: ' + word + ' prediction: ' + predicted_word + ' ' + sign
     accuracy = float(c) / len(predictions)
 
-    print 'finished evaluating model. accuracy: ' + str(c) + '/' + str(len(predictions)) + '=' + str(accuracy) + '\n\n'
+    if print_res:
+        print 'finished evaluating model. accuracy: ' + str(c) + '/' + str(len(predictions)) + '=' + str(accuracy) + \
+              '\n\n'
 
     return len(predictions), accuracy
 
@@ -506,6 +621,10 @@ def argmax(iterable):
 
 if __name__ == '__main__':
     arguments = docopt(__doc__)
+    ts = time.time()
+    st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d_%H:%M:%S')
+
+    # default values
     if arguments['TRAIN_PATH']:
         train_path = arguments['TRAIN_PATH']
     else:
@@ -517,7 +636,7 @@ if __name__ == '__main__':
     if arguments['RESULTS_PATH']:
         results_file_path = arguments['RESULTS_PATH']
     else:
-        results_file_path = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/results_' \
+        results_file_path = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/results_'\
                             + st + '.txt'
     if arguments['SIGMORPHON_PATH']:
         sigmorphon_root_dir = arguments['SIGMORPHON_PATH'][0]
