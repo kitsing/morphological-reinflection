@@ -312,7 +312,7 @@ def save_pycnn_model(model, results_file_path, morph_index):
     print 'saved to {0}'.format(tmp_model_path)
 
 
-def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, morph_words, morph_lemmas, dev_morph_words,
+def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_words, train_morph_lemmas, dev_morph_words,
                 dev_morph_lemmas, alphabet_index, inverse_alphabet_index, epochs, optimization, results_file_path,
                 morph_index):
     print 'training...'
@@ -335,7 +335,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, morph_words, mor
     best_avg_dev_loss = 999
     best_dev_accuracy = -1
     patience = 0
-    train_len = len(morph_words)
+    train_len = len(train_morph_words)
     epochs_x = []
     train_loss_y = []
     dev_loss_y = []
@@ -352,7 +352,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, morph_words, mor
         # randomize the training set
         indices = range(train_len)
         random.shuffle(indices)
-        train_set = zip(morph_lemmas, morph_words)
+        train_set = zip(train_morph_lemmas, train_morph_words)
         train_set = [train_set[i] for i in indices]
 
         # compute loss for each example and update
@@ -368,14 +368,14 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, morph_words, mor
             else:
                 avg_loss = total_loss
 
-        # TODO: try early stopping with evaluation score and not with avg. loss
+        # TODO: handle when no dev set is available - do best on train set...
         if EARLY_STOPPING:
 
             if len(dev_morph_lemmas) > 0:
 
                 # get train accuracy
                 train_predictions = predict(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
-                                            inverse_alphabet_index, morph_lemmas, morph_words)
+                                            inverse_alphabet_index, train_morph_lemmas, train_morph_words)
                 train_accuracy = evaluate_model(train_predictions, train_set, False)[1]
 
                 # get dev accuracy
@@ -386,9 +386,6 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, morph_words, mor
                 dev_data = zip(dev_morph_lemmas, dev_morph_words)
                 dev_accuracy = evaluate_model(dev_predictions, dev_data, False)[1]
 
-                if dev_accuracy == 1:
-                    return model
-
                 if dev_accuracy > best_dev_accuracy:
                     best_dev_accuracy = dev_accuracy
 
@@ -398,6 +395,12 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, morph_words, mor
                     patience = 0
                 else:
                     patience += 1
+
+                # found "perfect" model
+                if dev_accuracy == 1:
+                    train_progress_bar.finish()
+                    plt.cla()
+                    return model
 
                 # get dev loss
                 total_dev_loss = 0
@@ -446,9 +449,9 @@ patience = {5} train accuracy = {6:.2f}'.format(e, avg_loss, avg_dev_loss, dev_a
     return model
 
 
-def predict(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index, inverse_alphabet_index, test_lemmas,
-            test_words):
-    test_data = zip(test_lemmas, test_words)
+def predict(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index, inverse_alphabet_index, lemmas,
+            words):
+    test_data = zip(lemmas, words)
     predictions = {}
     for lemma, word in test_data:
         predicted_word = predict_inflection(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, alphabet_index,

@@ -1,0 +1,11 @@
+train path = /Users/roeeaharoni/research_data/sigmorphon2016-master/data/navajo-task1-train
+test path = /Users/roeeaharoni/research_data/sigmorphon2016-master/data/navajo-task1-dev
+LAYERS = 2
+MAX_PREDICTION_LEN = 50
+EPOCHS = 100
+OPTIMIZATION = ADAM
+HIDDEN_DIM = 100
+INPUT_DIM = 100
+CHAR_DROPOUT_PROB = 0
+Prediction Accuracy = 0.834710743802
+Macro-Average Accuracy = 0.717666002422
