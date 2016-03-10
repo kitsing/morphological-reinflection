@@ -109,7 +109,6 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     # print_data_stats(alphabet, feats, morph_to_data_indices, test_morph_to_data_indices, train_feat_dicts,
     # train_lemmas, train_words)
     accuracies = []
-    models = {}
     final_results = {}
 
     # factored model: new model per inflection type
@@ -142,9 +141,6 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         trained_model = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_words,
                                     train_morph_lemmas, dev_morph_words, dev_morph_lemmas, alphabet_index,
                                     inverse_alphabet_index, epochs, optimization, results_file_path, str(morph_index))
-
-        # save model
-        models[morph_type] = (trained_model, encoder_frnn, encoder_rrnn, decoder_rnn)
 
         # test model
         try:
@@ -334,6 +330,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_word
     total_loss = 0
     best_avg_dev_loss = 999
     best_dev_accuracy = -1
+    best_train_accuracy = -1
     patience = 0
     train_len = len(train_morph_words)
     epochs_x = []
@@ -378,6 +375,9 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_word
                                             inverse_alphabet_index, train_morph_lemmas, train_morph_words)
                 train_accuracy = evaluate_model(train_predictions, train_set, False)[1]
 
+                if train_accuracy > best_train_accuracy:
+                    best_train_accuracy = train_accuracy
+
                 # get dev accuracy
                 dev_predictions = predict(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
                                           inverse_alphabet_index, dev_morph_lemmas, dev_morph_words)
@@ -412,9 +412,10 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_word
                 if avg_dev_loss < best_avg_dev_loss:
                     best_avg_dev_loss = avg_dev_loss
 
-                print 'epoch: {0} train loss: {1:.2f} dev loss: {2:.2f} accuracy: {3:.2f} best accuracy {4:.2f} \
-patience = {5} train accuracy = {6:.2f}'.format(e, avg_loss, avg_dev_loss, dev_accuracy, best_dev_accuracy, patience,
-                                                train_accuracy)
+                print 'epoch: {0} train loss: {1:.2f} dev loss: {2:.2f} dev accuracy: {3:.2f} train accuracy = {4:.2f} \
+ best dev accuracy {5:.2f} best train accuracy: {6:.2f} patience = {7}'.format(e, avg_loss, avg_dev_loss, dev_accuracy,
+                                                                          train_accuracy, best_dev_accuracy,
+                                                                          best_train_accuracy, patience)
 
                 if patience == MAX_PATIENCE:
                     print 'out of patience after {0} epochs'.format(str(e))
