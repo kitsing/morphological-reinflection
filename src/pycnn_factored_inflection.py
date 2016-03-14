@@ -21,9 +21,11 @@ Options:
   --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM
 """
 
-from matplotlib import pyplot as plt
 import numpy as np
 import random
+
+from pip.utils.ui import hidden_cursor
+
 import prepare_sigmorphon_data
 import progressbar
 import datetime
@@ -31,6 +33,8 @@ import time
 import codecs
 import os
 import copy
+from multiprocessing import Pool
+from matplotlib import pyplot as plt
 from docopt import docopt
 from pycnn import *
 
@@ -54,7 +58,7 @@ BEGIN_WORD = '<'
 END_WORD = '>'
 
 # TODO: maybe an approach similar to Shmidman et al?
-# TODO: run this (and baseline) on all available languages
+# TODO: run this (and baseline) on all available languages - in progress
 # TODO: print comparison with gold standard
 # TODO: try naive substring approach - maybe some variation of LCS (Ahlberg 2015)?
 # TODO: try running on GPU
@@ -72,7 +76,7 @@ END_WORD = '>'
 
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
          optimization):
-
+    parallelize_training = False
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'EPOCHS': epochs, 'LAYERS': layers,
                     'CHAR_DROPOUT_PROB': CHAR_DROPOUT_PROB, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
                     'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': REGULARIZATION,
@@ -105,21 +109,35 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     train_morph_to_data_indices = get_distinct_morph_types(train_feat_dicts, feats)
     test_morph_to_data_indices = get_distinct_morph_types(test_feat_dicts, feats)
 
-    # debug prints
-    # print_data_stats(alphabet, feats, morph_to_data_indices, test_morph_to_data_indices, train_feat_dicts,
-    # train_lemmas, train_words)
-    accuracies = []
-    final_results = {}
-
     # factored model: new model per inflection type
+    params = []
     for morph_index, morph_type in enumerate(train_morph_to_data_indices):
+        params.append([morph_index, morph_type, train_lemmas, train_words, test_lemmas, train_morph_to_data_indices,
+                      test_words, test_morph_to_data_indices, alphabet, alphabet_index, inverse_alphabet_index])
 
+    if parallelize_training:
+        p = Pool(4)
+        p.map(train_morph_model, params)
+        print 'finished training all models'
+    else:
+        for p in params:
+            train_morph_model(*p)
+
+    # evaluate best models
+    os.system('python evaluate_best_models.py --cnn-mem 4096 --input={0} --hidden={1} --epochs={2} --layers={3}\
+  --optimization={4} {5} {6} {7} {8}'.format(input_dim, hidden_dim, epochs, layers, optimization, train_path, test_path,
+                                             results_file_path, sigmorphon_root_dir))
+    return
+
+
+def train_morph_model(morph_index, morph_type, train_lemmas, train_words, test_lemmas, train_morph_to_data_indices,
+                      test_words, test_morph_to_data_indices, alphabet, alphabet_index, inverse_alphabet_index):
         # get the inflection-specific data
         train_morph_words = [train_words[i] for i in train_morph_to_data_indices[morph_type]]
         train_morph_lemmas = [train_lemmas[i] for i in train_morph_to_data_indices[morph_type]]
         if len(train_morph_words) < 1:
             print 'only ' + str(len(train_morph_words)) + ' samples for this inflection type. skipping'
-            continue
+            # continue
         else:
             print 'now training model for morph ' + str(morph_index) + '/' + str(len(train_morph_to_data_indices)) + \
                   ': ' + morph_type + ' with ' + str(len(train_morph_words)) + ' examples'
@@ -142,37 +160,12 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                     train_morph_lemmas, dev_morph_words, dev_morph_lemmas, alphabet_index,
                                     inverse_alphabet_index, epochs, optimization, results_file_path, str(morph_index))
 
-        # test model
-        try:
-            test_morph_lemmas = [test_lemmas[i] for i in test_morph_to_data_indices[morph_type]]
-            test_morph_words = [test_words[i] for i in test_morph_to_data_indices[morph_type]]
+        # evaluate last model on dev
+        predicted = predict(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+                            inverse_alphabet_index, dev_morph_lemmas, dev_morph_words)
+        evaluate_model(predicted, zip(dev_morph_lemmas, dev_morph_words))
 
-            predictions = predict(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
-                                  inverse_alphabet_index, test_morph_lemmas, test_morph_words)
-
-            test_data = zip(test_morph_lemmas, test_morph_words)
-            accuracy = evaluate_model(predictions, test_data)
-            accuracies.append(accuracy)
-
-            # get predictions in the same order they appeared in the original file
-            # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
-            for i in test_morph_to_data_indices[morph_type]:
-                final_results[i] = (test_lemmas[i], predictions[test_lemmas[i]], morph_type)
-
-        except KeyError:
-            print 'could not find relevant examples in test data for morph: ' + morph_type
-
-    accuracy_vals = [accuracies[i][1] for i in xrange(len(accuracies))]
-    macro_avg_accuracy = sum(accuracy_vals)/len(accuracies)
-    print 'macro avg accuracy: ' + str(macro_avg_accuracy)
-
-    mic_nom = sum([accuracies[i][0]*accuracies[i][1] for i in xrange(len(accuracies))])
-    mic_denom = sum([accuracies[i][0] for i in xrange(len(accuracies))])
-    micro_average_accuracy = mic_nom/mic_denom
-    print 'micro avg accuracy: ' + str(micro_average_accuracy)
-
-    write_results_file(hyper_params, macro_avg_accuracy, micro_average_accuracy, train_path, test_path,
-                       results_file_path, sigmorphon_root_dir, final_results)
+        return trained_model
 
 
 def get_distinct_morph_types(feat_dicts, feats):
@@ -209,7 +202,7 @@ def build_model(alphabet, input_dim, hidden_dim, layers):
     encoder_frnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
     encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
 
-    # 3 * HIDDEN_DIM + INPUT_DIM, as it gets a concatenation of frnn, rrnn, previous output char, current lemma char
+    # 2 * HIDDEN_DIM + 2 * INPUT_DIM, as it gets a concatenation of frnn, rrnn, previous output char, current lemma char
     decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 2 * input_dim, hidden_dim, model)
 
     print 'finished creating model'
@@ -284,19 +277,16 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, word, a
 
         decoder_input = concatenate([encoded, prev_output_vec, lemma_input_char_vec])
         s = s.add_input(decoder_input)
-        probs = softmax(R * s.output() + bias)
+        decoder_rnn_output = s.output()
+        probs = softmax(R * decoder_rnn_output + bias)
         loss.append(-log(pick(probs, alphabet_index[word_char])))
 
         # prepare for the next iteration
-        prev_output_vec = s.output()
+        prev_output_vec = decoder_rnn_output
 
     # TODO: maybe here a "special" loss function is appropriate?
     # loss = esum(loss)
     loss = average(loss)
-    # loss_mul = scalarInput(1)
-    # for l in loss:
-    #     loss_mul = loss_mul * l
-    # loss = loss_mul
 
     return loss
 
@@ -324,6 +314,8 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_word
         trainer = SimpleSGDTrainer(model)
     elif optimization == 'ADAGRAD':
         trainer = AdagradTrainer(model)
+    elif optimization == 'ADADELTA':
+        trainer = AdadeltaTrainer(model)
     else:
         trainer = SimpleSGDTrainer(model)
 
@@ -365,18 +357,20 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_word
             else:
                 avg_loss = total_loss
 
-        # TODO: handle when no dev set is available - do best on train set...
         if EARLY_STOPPING:
 
+            # get train accuracy
+            train_predictions = predict(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+                                        inverse_alphabet_index, train_morph_lemmas, train_morph_words)
+            train_accuracy = evaluate_model(train_predictions, train_set, False)[1]
+
+            if train_accuracy > best_train_accuracy:
+                best_train_accuracy = train_accuracy
+
+            dev_accuracy = 0
+            avg_dev_loss = 0
+
             if len(dev_morph_lemmas) > 0:
-
-                # get train accuracy
-                train_predictions = predict(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
-                                            inverse_alphabet_index, train_morph_lemmas, train_morph_words)
-                train_accuracy = evaluate_model(train_predictions, train_set, False)[1]
-
-                if train_accuracy > best_train_accuracy:
-                    best_train_accuracy = train_accuracy
 
                 # get dev accuracy
                 dev_predictions = predict(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
@@ -414,8 +408,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_word
 
                 print 'epoch: {0} train loss: {1:.2f} dev loss: {2:.2f} dev accuracy: {3:.2f} train accuracy = {4:.2f} \
  best dev accuracy {5:.2f} best train accuracy: {6:.2f} patience = {7}'.format(e, avg_loss, avg_dev_loss, dev_accuracy,
-                                                                          train_accuracy, best_dev_accuracy,
-                                                                          best_train_accuracy, patience)
+                                                    train_accuracy, best_dev_accuracy, best_train_accuracy, patience)
 
                 if patience == MAX_PATIENCE:
                     print 'out of patience after {0} epochs'.format(str(e))
@@ -424,16 +417,37 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_word
                     train_progress_bar.finish()
                     plt.cla()
                     return model
-
-                # update lists for plotting
-                train_accuracy_y.append(train_accuracy)
-                epochs_x.append(e)
-                train_loss_y.append(avg_loss)
-                dev_loss_y.append(avg_dev_loss)
-                dev_accuracy_y.append(dev_accuracy)
             else:
-                print 'no dev set for early stopping, running all epochs'
 
+                # if no dev set is present, optimize on train set
+                print 'no dev set for early stopping, running all epochs until perfectly fitting or patience was \
+                reached on the train set'
+
+                if train_accuracy > best_train_accuracy:
+                    best_train_accuracy = train_accuracy
+
+                    # save best model to disk
+                    save_pycnn_model(model, results_file_path, morph_index)
+                    print 'saved new best model'
+                    patience = 0
+                else:
+                    patience += 1
+
+                print 'epoch: {0} train loss: {1:.2f} train accuracy = {2:.2f} best train accuracy: {3:.2f} \
+                patience = {4}'.format(e, avg_loss, train_accuracy, best_train_accuracy, patience)
+
+                # found "perfect" model on train set or patience has reached
+                if train_accuracy == 1 or patience == MAX_PATIENCE:
+                    train_progress_bar.finish()
+                    plt.cla()
+                    return model
+
+            # update lists for plotting
+            train_accuracy_y.append(train_accuracy)
+            epochs_x.append(e)
+            train_loss_y.append(avg_loss)
+            dev_loss_y.append(avg_dev_loss)
+            dev_accuracy_y.append(dev_accuracy)
 
         # finished epoch
         train_progress_bar.update(e)
@@ -525,7 +539,8 @@ def predict_inflection(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, al
         s = s.add_input(decoder_input)
 
         # compute softmax probs and predict
-        probs = softmax(R * s.output() + bias)
+        decoder_rnn_output = s.output()
+        probs = softmax(R * decoder_rnn_output + bias)
         probs = probs.vec_value()
         next_char_index = argmax(probs)
         predicted = predicted + inverse_alphabet_index[next_char_index]
@@ -535,7 +550,8 @@ def predict_inflection(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, al
             break
 
         # prepare for the next iteration
-        prev_output_vec = lookup[next_char_index]
+        # prev_output_vec = lookup[next_char_index]
+        prev_output_vec = decoder_rnn_output
         i += 1
 
     # remove the begin and end word symbols

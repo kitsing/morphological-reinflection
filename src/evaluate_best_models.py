@@ -88,9 +88,6 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     train_morph_to_data_indices = get_distinct_morph_types(train_feat_dicts, feats)
     test_morph_to_data_indices = get_distinct_morph_types(test_feat_dicts, feats)
 
-    # debug prints
-    # print_data_stats(alphabet, feats, morph_to_data_indices, test_morph_to_data_indices, train_feat_dicts,
-    # train_lemmas, train_words)
     accuracies = []
     final_results = {}
 
@@ -159,7 +156,7 @@ def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_
     encoder_frnn = LSTMBuilder(layers, input_dim, hidden_dim, new_model)
     encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, new_model)
 
-    # 3 * HIDDEN_DIM + INPUT_DIM, as it gets a concatenation of frnn, rrnn, previous output char, current lemma char
+    # 2 * HIDDEN_DIM + 2 * INPUT_DIM, as it gets a concatenation of frnn, rrnn, previous output char, current lemma char
     decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 2 * input_dim, hidden_dim, new_model)
 
     new_model.load(tmp_model_path)
