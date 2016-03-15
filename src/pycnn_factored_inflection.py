@@ -18,21 +18,19 @@ Options:
   --hidden=HIDDEN               hidden layer dimensions
   --epochs=EPOCHS               amount of training epochs
   --layers=LAYERS               amount of layers in lstm network
-  --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM
+  --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM/ADADELTA
 """
+
 
 import numpy as np
 import random
-
-from pip.utils.ui import hidden_cursor
-
 import prepare_sigmorphon_data
 import progressbar
 import datetime
 import time
 import codecs
 import os
-import copy
+import common
 from multiprocessing import Pool
 from matplotlib import pyplot as plt
 from docopt import docopt
@@ -43,7 +41,6 @@ INPUT_DIM = 100
 HIDDEN_DIM = 100
 EPOCHS = 1
 LAYERS = 2
-CHAR_DROPOUT_PROB = 0
 MAX_PREDICTION_LEN = 50
 OPTIMIZATION = 'ADAM'
 EARLY_STOPPING = True
@@ -57,30 +54,23 @@ EPSILON = '*'
 BEGIN_WORD = '<'
 END_WORD = '>'
 
-# TODO: maybe an approach similar to Shmidman et al?
-# TODO: run this (and baseline) on all available languages - in progress
-# TODO: print comparison with gold standard
-# TODO: try naive substring approach - maybe some variation of LCS (Ahlberg 2015)?
+# TODO: run this (and baseline - done) on all available languages - in progress
+# TODO: print comparison with gold standard in the end of every iteration
 # TODO: try running on GPU
 # TODO: consider different begin, end chars for lemma and word
 # TODO: consider different lookup table for lemma and word
 # TODO: implement (character?) dropout
 # TODO: make different input and hidden dims work (problem with first input in decoder)
-# TODO: plot learning curve
-# TODO: implement smart stopping
 # TODO: try different learning algorithms (ADAGRAD, ADAM...)
-# TODO: refactor so less code repetition in train, predict (both have blstm etc.)
+# TODO: refactor so less code repetition in train, predict (both have bilstm etc.)
 # TODO: think how to give more emphasis on suffix generalization/learning
 # TODO: handle unk chars better
-
-
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
          optimization):
     parallelize_training = False
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'EPOCHS': epochs, 'LAYERS': layers,
-                    'CHAR_DROPOUT_PROB': CHAR_DROPOUT_PROB, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
-                    'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': REGULARIZATION,
-                    'LEARNING_RATE': LEARNING_RATE}
+                    'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN, 'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE,
+                    'REGULARIZATION': REGULARIZATION, 'LEARNING_RATE': LEARNING_RATE}
 
     print 'train path = ' + str(train_path)
     print 'test path =' + str(test_path)
@@ -106,14 +96,15 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     inverse_alphabet_index = {index: char for char, index in alphabet_index.items()}
 
     # cluster the data by inflection type (features)
-    train_morph_to_data_indices = get_distinct_morph_types(train_feat_dicts, feats)
-    test_morph_to_data_indices = get_distinct_morph_types(test_feat_dicts, feats)
+    train_morph_to_data_indices = common.cluster_data_by_morph_type(train_feat_dicts, feats)
+    test_morph_to_data_indices = common.cluster_data_by_morph_type(test_feat_dicts, feats)
 
     # factored model: new model per inflection type
     params = []
     for morph_index, morph_type in enumerate(train_morph_to_data_indices):
-        params.append([morph_index, morph_type, train_lemmas, train_words, test_lemmas, train_morph_to_data_indices,
-                      test_words, test_morph_to_data_indices, alphabet, alphabet_index, inverse_alphabet_index])
+        params.append([input_dim, hidden_dim, layers, morph_index, morph_type, train_lemmas, train_words, test_lemmas,
+                       train_morph_to_data_indices, test_words, test_morph_to_data_indices, alphabet, alphabet_index,
+                       inverse_alphabet_index, epochs, optimization, results_file_path])
 
     if parallelize_training:
         p = Pool(4)
@@ -124,14 +115,15 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             train_morph_model(*p)
 
     # evaluate best models
-    os.system('python evaluate_best_models.py --cnn-mem 4096 --input={0} --hidden={1} --epochs={2} --layers={3}\
+    os.system('python evaluate_best_factored_models.py --cnn-mem 4096 --input={0} --hidden={1} --epochs={2} --layers={3}\
   --optimization={4} {5} {6} {7} {8}'.format(input_dim, hidden_dim, epochs, layers, optimization, train_path, test_path,
                                              results_file_path, sigmorphon_root_dir))
     return
 
 
-def train_morph_model(morph_index, morph_type, train_lemmas, train_words, test_lemmas, train_morph_to_data_indices,
-                      test_words, test_morph_to_data_indices, alphabet, alphabet_index, inverse_alphabet_index):
+def train_morph_model(input_dim, hidden_dim, layers, morph_index, morph_type, train_lemmas, train_words, test_lemmas,
+                      train_morph_to_data_indices, test_words, test_morph_to_data_indices, alphabet, alphabet_index,
+                      inverse_alphabet_index, epochs, optimization, results_file_path):
         # get the inflection-specific data
         train_morph_words = [train_words[i] for i in train_morph_to_data_indices[morph_type]]
         train_morph_lemmas = [train_lemmas[i] for i in train_morph_to_data_indices[morph_type]]
@@ -168,23 +160,6 @@ def train_morph_model(morph_index, morph_type, train_lemmas, train_words, test_l
         return trained_model
 
 
-def get_distinct_morph_types(feat_dicts, feats):
-    morphs_to_indices = {}
-    for i, d in enumerate(feat_dicts):
-        s = ''
-        for f in sorted(feats):
-            if f in d:
-                s += f + '=' + d[f] + ':'
-            else:
-                s += f + '=' + NULL + ':'
-        s = s[:-1]
-        if s in morphs_to_indices:
-            morphs_to_indices[s].append(i)
-        else:
-            morphs_to_indices[s] = [i]
-    return morphs_to_indices
-
-
 def build_model(alphabet, input_dim, hidden_dim, layers):
 
     print 'creating model...'
@@ -219,20 +194,14 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, word, a
     R = parameter(model["R"])
     bias = parameter(model["bias"])
 
-    # convert characters to matching embeddings (or dropout), if UNK handle properly
+    # convert characters to matching embeddings, if UNK handle properly
     lemma = BEGIN_WORD + lemma + END_WORD
     lemma_char_vecs = []
     for char in lemma:
         try:
-            # char dropout
-            drop_char = np.random.choice([True, False], 1, p=[CHAR_DROPOUT_PROB, 1 - CHAR_DROPOUT_PROB])[0]
-            if drop_char:
-                # TODO: get rid of the exceptions here
-                raise KeyError()
-            else:
-                lemma_char_vecs.append(lookup[alphabet_index[char]])
+            lemma_char_vecs.append(lookup[alphabet_index[char]])
         except KeyError:
-            # handle UNK or dropout
+            # handle UNK
             lemma_char_vecs.append(lookup[alphabet_index[UNK]])
 
     # bilstm forward pass

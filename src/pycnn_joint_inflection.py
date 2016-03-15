@@ -19,7 +19,7 @@ Options:
   --hidden=HIDDEN               hidden layer dimensions
   --epochs=EPOCHS               amount of training epochs
   --layers=LAYERS               amount of layers in lstm network
-  --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM
+  --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM/ADADELTA
 """
 
 import numpy as np
@@ -30,19 +30,17 @@ import datetime
 import time
 import codecs
 import os
-import copy
-import pycnn_factored_inflection
+import common
 from matplotlib import pyplot as plt
 from docopt import docopt
 from pycnn import *
 
 # default values
-INPUT_DIM = 100
+INPUT_DIM = 150
 FEAT_INPUT_DIM = 20
-HIDDEN_DIM = 100
+HIDDEN_DIM = 150
 EPOCHS = 1
 LAYERS = 2
-CHAR_DROPOUT_PROB = 0
 MAX_PREDICTION_LEN = 50
 OPTIMIZATION = 'ADAM'
 EARLY_STOPPING = True
@@ -61,9 +59,9 @@ END_WORD = '>'
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, feat_input_dim, epochs,
          layers, optimization):
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'FEAT_INPUT_DIM': feat_input_dim,
-                    'EPOCHS': epochs, 'LAYERS': layers, 'CHAR_DROPOUT_PROB': CHAR_DROPOUT_PROB,
-                    'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN, 'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE,
-                    'REGULARIZATION': REGULARIZATION, 'LEARNING_RATE': LEARNING_RATE}
+                    'EPOCHS': epochs, 'LAYERS': layers, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
+                    'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': REGULARIZATION,
+                    'LEARNING_RATE': LEARNING_RATE}
 
     print 'train path = ' + str(train_path)
     print 'test path =' + str(test_path)
@@ -96,35 +94,43 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 
     final_results = {}
 
-    # cluster the data by inflection type (features)
-    train_morph_to_data_indices = pycnn_factored_inflection.get_distinct_morph_types(train_feat_dicts, feature_types)
-    test_morph_to_data_indices = pycnn_factored_inflection.get_distinct_morph_types(test_feat_dicts, feature_types)
+    # cluster the data by POS type (features)
+    train_pos_to_data_indices = common.cluster_data_by_pos(train_feat_dicts)
+    test_pos_to_data_indices = common.cluster_data_by_pos(test_feat_dicts)
+    train_cluster_to_data_indices = train_pos_to_data_indices
+    test_cluster_to_data_indices = test_pos_to_data_indices
 
-    for morph_index, morph_type in enumerate(train_morph_to_data_indices):
+    # cluster the data by inflection type (features)
+    # train_morph_to_data_indices = common.cluster_data_by_morph_type(train_feat_dicts, feature_types)
+    # test_morph_to_data_indices = common.cluster_data_by_morph_type(test_feat_dicts, feature_types)
+    # train_cluster_to_data_indices = train_morph_to_data_indices
+    # test_cluster_to_data_indices = test_morph_to_data_indices
+
+    for cluster_index, cluster_type in enumerate(train_cluster_to_data_indices):
 
         # get the inflection-specific train data
-        train_morph_words = [train_words[i] for i in train_morph_to_data_indices[morph_type]]
-        train_morph_lemmas = [train_lemmas[i] for i in train_morph_to_data_indices[morph_type]]
-        train_morph_feat_dicts = [train_feat_dicts[i] for i in train_morph_to_data_indices[morph_type]]
-        if len(train_morph_words) < 1:
-            print 'only ' + str(len(train_morph_words)) + ' samples for this inflection type. skipping'
+        train_cluster_words = [train_words[i] for i in train_cluster_to_data_indices[cluster_type]]
+        train_cluster_lemmas = [train_lemmas[i] for i in train_cluster_to_data_indices[cluster_type]]
+        train_cluster_feat_dicts = [train_feat_dicts[i] for i in train_cluster_to_data_indices[cluster_type]]
+        if len(train_cluster_words) < 1:
+            print 'only ' + str(len(train_cluster_words)) + ' samples for this inflection type. skipping'
             continue
         else:
-            print 'now training model for morph ' + str(morph_index) + '/' + str(len(train_morph_to_data_indices)) + \
-                  ': ' + morph_type + ' with ' + str(len(train_morph_words)) + ' examples'
+            print 'now training model for cluster ' + str(cluster_index) + '/' + str(len(train_cluster_to_data_indices)) + \
+                  ': ' + cluster_type + ' with ' + str(len(train_cluster_words)) + ' examples'
 
         # get the inflection-specific dev data
         # TODO: now dev and test are the same - change later when test sets are available
-        # get dev lemmas for early stopping
         try:
-            dev_morph_lemmas = [test_lemmas[i] for i in test_morph_to_data_indices[morph_type]]
-            dev_morph_words = [test_words[i] for i in test_morph_to_data_indices[morph_type]]
-            dev_morph_feat_dicts = [test_feat_dicts[i] for i in test_morph_to_data_indices[morph_type]]
+            # get dev lemmas for early stopping
+            dev_cluster_lemmas = [test_lemmas[i] for i in test_cluster_to_data_indices[cluster_type]]
+            dev_cluster_words = [test_words[i] for i in test_cluster_to_data_indices[cluster_type]]
+            dev_cluster_feat_dicts = [test_feat_dicts[i] for i in test_cluster_to_data_indices[cluster_type]]
         except KeyError:
-            dev_morph_lemmas = []
-            dev_morph_words = []
-            dev_morph_feat_dicts = []
-            print 'could not find relevant examples in dev data for morph: ' + morph_type
+            dev_cluster_lemmas = []
+            dev_cluster_words = []
+            dev_cluster_feat_dicts = []
+            print 'could not find relevant examples in dev data for cluster: ' + cluster_type
 
         ##################################
         # build model
@@ -133,30 +139,30 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                              layers)
 
         # TODO: change so dev will be dev and not test when getting the actual data
-        dev_lemmas = dev_morph_lemmas
-        dev_feat_dicts = dev_morph_feat_dicts
-        dev_words = dev_morph_words
+        dev_lemmas = dev_cluster_lemmas
+        dev_feat_dicts = dev_cluster_feat_dicts
+        dev_words = dev_cluster_words
         # dev_lemmas = test_lemmas
         # dev_feat_dicts = test_feat_dicts
         # dev_words = test_words
 
         # train model
-        trained_model = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_words,
-                                    train_morph_lemmas, train_morph_feat_dicts, dev_words, dev_lemmas, dev_feat_dicts,
+        trained_model = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn, train_cluster_words,
+                                    train_cluster_lemmas, train_cluster_feat_dicts, dev_words, dev_lemmas, dev_feat_dicts,
                                     alphabet_index,
                                     inverse_alphabet_index, feat_index, feature_types, epochs, optimization,
-                                    results_file_path + '_morph_{0}'.format(morph_index))
+                                    results_file_path + '_morph_{0}'.format(cluster_index))
 
         # test model
-        test_morph_lemmas = [test_lemmas[i] for i in test_morph_to_data_indices[morph_type]]
-        test_morph_words = [test_words[i] for i in test_morph_to_data_indices[morph_type]]
-        test_morph_feat_dicts = [test_feat_dicts[i] for i in test_morph_to_data_indices[morph_type]]
+        test_cluster_lemmas = [test_lemmas[i] for i in test_cluster_to_data_indices[cluster_type]]
+        test_cluster_words = [test_words[i] for i in test_cluster_to_data_indices[cluster_type]]
+        test_cluster_feat_dicts = [test_feat_dicts[i] for i in test_cluster_to_data_indices[cluster_type]]
 
         predictions = predict(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
-                              inverse_alphabet_index, feat_index, feature_types, test_morph_lemmas,
-                              test_morph_feat_dicts)
+                              inverse_alphabet_index, feat_index, feature_types, test_cluster_lemmas,
+                              test_cluster_feat_dicts)
 
-        accuracy = evaluate_model(predictions, test_morph_lemmas, test_morph_feat_dicts, test_morph_words)
+        accuracy = evaluate_model(predictions, test_cluster_lemmas, test_cluster_feat_dicts, test_cluster_words)
 
         #####################################
         # get predictions in the same order they appeared in the original file
@@ -165,6 +171,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             final_results[i] = (test_lemmas[i], test_feat_dicts[i], prediction)
 
         print 'accuracy: ' + str(accuracy[1])
+
+        # TODO: write evaluate_best_model script for joint
 
     write_results_file(hyper_params, accuracy[1], train_path, test_path, results_file_path, sigmorphon_root_dir,
                        final_results)

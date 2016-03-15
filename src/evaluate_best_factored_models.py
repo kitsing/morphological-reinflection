@@ -21,18 +21,12 @@ Options:
   --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM
 """
 
-from matplotlib import pyplot as plt
-import numpy as np
-import random
-import prepare_sigmorphon_data
-import progressbar
-import datetime
 import time
-import codecs
-import os
-import copy
-from docopt import docopt
-from pycnn_factored_inflection import *
+import docopt
+import pycnn_factored_inflection
+import prepare_sigmorphon_data
+import datetime
+import common
 from pycnn import *
 
 # default values
@@ -40,7 +34,6 @@ INPUT_DIM = 100
 HIDDEN_DIM = 100
 EPOCHS = 1
 LAYERS = 2
-CHAR_DROPOUT_PROB = 0
 MAX_PREDICTION_LEN = 50
 OPTIMIZATION = 'ADAM'
 EARLY_STOPPING = True
@@ -58,8 +51,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
          optimization):
 
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'EPOCHS': epochs, 'LAYERS': layers,
-                    'CHAR_DROPOUT_PROB': CHAR_DROPOUT_PROB, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
-                    'OPTIMIZATION': optimization}
+                     'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN, 'OPTIMIZATION': optimization}
 
     print 'train path = ' + str(train_path)
     print 'test path =' + str(test_path)
@@ -67,9 +59,12 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         print param + '=' + str(hyper_params[param])
 
     # load data
-    (train_words, train_lemmas, train_feat_dicts) = prepare_sigmorphon_data.load_data(train_path)
-    (test_words, test_lemmas, test_feat_dicts) = prepare_sigmorphon_data.load_data(test_path)
-    alphabet, feats = prepare_sigmorphon_data.get_alphabet(train_words, train_lemmas, train_feat_dicts)
+    (train_words, train_lemmas, train_feat_dicts) = prepare_sigmorphon_data.load_data(
+        train_path)
+    (test_words, test_lemmas, test_feat_dicts) = prepare_sigmorphon_data.load_data(
+        test_path)
+    alphabet, feats = prepare_sigmorphon_data.get_alphabet(train_words, train_lemmas,
+                                                                                     train_feat_dicts)
 
     # used for character dropout
     alphabet.append(NULL)
@@ -85,8 +80,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     inverse_alphabet_index = {index: char for char, index in alphabet_index.items()}
 
     # cluster the data by inflection type (features)
-    train_morph_to_data_indices = get_distinct_morph_types(train_feat_dicts, feats)
-    test_morph_to_data_indices = get_distinct_morph_types(test_feat_dicts, feats)
+    train_morph_to_data_indices = common.cluster_data_by_morph_type(train_feat_dicts, feats)
+    test_morph_to_data_indices = common.cluster_data_by_morph_type(test_feat_dicts, feats)
 
     accuracies = []
     final_results = {}
@@ -112,11 +107,12 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(morph_index), alphabet,
                                                                     results_file_path, input_dim, hidden_dim, layers)
 
-            predictions = predict(best_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
-                                  inverse_alphabet_index, test_morph_lemmas, test_morph_words)
+            predictions = pycnn_factored_inflection.predict(best_model, decoder_rnn, encoder_frnn, encoder_rrnn,
+                                                            alphabet_index, inverse_alphabet_index, test_morph_lemmas,
+                                                            test_morph_words)
 
             test_data = zip(test_morph_lemmas, test_morph_words)
-            accuracy = evaluate_model(predictions, test_data)
+            accuracy = pycnn_factored_inflection.evaluate_model(predictions, test_data)
             accuracies.append(accuracy)
 
             # get predictions in the same order they appeared in the original file
@@ -136,7 +132,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     micro_average_accuracy = mic_nom/mic_denom
     print 'micro avg accuracy: ' + str(micro_average_accuracy)
 
-    write_results_file(hyper_params, macro_avg_accuracy, micro_average_accuracy, train_path, test_path,
+    pycnn_factored_inflection.write_results_file(hyper_params, macro_avg_accuracy, micro_average_accuracy, train_path,
+                                                 test_path,
                        results_file_path + '.best', sigmorphon_root_dir, final_results)
 
 
@@ -164,7 +161,7 @@ def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_
 
 
 if __name__ == '__main__':
-    arguments = docopt(__doc__)
+    arguments = docopt.docopt(__doc__)
 
     ts = time.time()
     st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d_%H:%M:%S')
