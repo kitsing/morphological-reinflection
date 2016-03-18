@@ -1,20 +1,25 @@
 NULL = '%'
 
-def cluster_data_by_morph_type(feat_dicts, feats):
+def cluster_data_by_morph_type(feat_dicts, feature_types):
     morphs_to_indices = {}
-    for i, d in enumerate(feat_dicts):
-        s = ''
-        for f in sorted(feats):
-            if f in d:
-                s += f + '=' + d[f] + ':'
-            else:
-                s += f + '=' + NULL + ':'
-        s = s[:-1]
+    for i, feat_dict in enumerate(feat_dicts):
+        s = get_morph_string(feat_dict, feature_types)
         if s in morphs_to_indices:
             morphs_to_indices[s].append(i)
         else:
             morphs_to_indices[s] = [i]
     return morphs_to_indices
+
+
+def get_morph_string(feat_dict, feature_types):
+    s = ''
+    for f in sorted(feature_types):
+        if f in feat_dict:
+            s += f + '=' + feat_dict[f] + ':'
+        else:
+            s += f + '=' + NULL + ':'
+    s = s[:-1]
+    return s
 
 
 def cluster_data_by_pos(feat_dicts):
@@ -30,3 +35,7 @@ def cluster_data_by_pos(feat_dicts):
         else:
             pos_to_indices[s] = [i]
     return pos_to_indices
+
+
+def argmax(iterable):
+    return max(enumerate(iterable), key=lambda x: x[1])[0]

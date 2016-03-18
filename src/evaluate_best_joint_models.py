@@ -2,7 +2,7 @@
 files and evaluation script.
 
 Usage:
-  evaluate_best_models.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS]
+  evaluate_best_joint_models.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS]
   [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
@@ -15,6 +15,7 @@ Options:
   -h --help                     show this help message and exit
   --cnn-mem MEM                 allocates MEM bytes for (py)cnn
   --input=INPUT                 input vector dimensions
+  --feat-input=FEAT             feature input vector dimension
   --hidden=HIDDEN               hidden layer dimensions
   --epochs=EPOCHS               amount of training epochs
   --layers=LAYERS               amount of layers in lstm network
@@ -125,20 +126,22 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 
             predictions = pycnn_joint_inflection.predict(best_model, decoder_rnn, encoder_frnn, encoder_rrnn,
                                                          alphabet_index, inverse_alphabet_index, feat_index,
-                                                         feature_types, test_cluster_lemmas, test_cluster_words)
+                                                         feature_types, test_cluster_lemmas, test_cluster_feat_dicts)
 
 
-            accuracy = pycnn_joint_inflection.evaluate_model(predictions, test_cluster_lemmas, test_cluster_feat_dicts,
-                test_cluster_words)
+            accuracy = pycnn_joint_inflection.evaluate_predictions(predictions, test_cluster_lemmas,
+                                                                   test_cluster_feat_dicts, test_cluster_words,
+                                                                   feature_types, True)
             accuracies.append(accuracy)
 
             # get predictions in the same order they appeared in the original file
             # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
             for i in test_cluster_to_data_indices[cluster_type]:
-                final_results[i] = (test_lemmas[i], predictions[test_lemmas[i]], cluster_type)
+                joint_index = test_lemmas[i] + ':' + common.get_morph_string(test_feat_dicts[i], feature_types)
+                final_results[i] = (test_lemmas[i], test_feat_dicts[i], predictions[joint_index])
 
         except KeyError:
-            print 'could not find relevant examples in test data for morph: ' + cluster_type
+            print 'could not find relevant examples in test data for cluster: ' + cluster_type
 
     accuracy_vals = [accuracies[i][1] for i in xrange(len(accuracies))]
     macro_avg_accuracy = sum(accuracy_vals)/len(accuracies)
@@ -156,7 +159,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 
 def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_dim, layers, feature_alphabet,
                     feat_input_dim, feature_types):
-    tmp_model_path = results_file_path + '_' + morph_index + '_bestmodel.txt'
+    tmp_model_path = results_file_path + '_morph_' + morph_index + '_bestmodel.txt'
+    print 'trying to open ' + tmp_model_path
 
     model = Model()
 
