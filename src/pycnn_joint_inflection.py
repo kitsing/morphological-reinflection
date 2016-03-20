@@ -404,7 +404,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_words, tra
                 # found "perfect" model
                 if dev_accuracy == 1:
                     train_progress_bar.finish()
-                    plt.cla()
+                    #plt.cla()
                     return model
 
                 # get dev loss
@@ -418,17 +418,17 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_words, tra
                 if avg_dev_loss < best_avg_dev_loss:
                     best_avg_dev_loss = avg_dev_loss
 
-                print '{8} epoch: {0} train loss: {1:.2f} dev loss: {2:.2f} dev accuracy: {3:.2f} train accuracy = {4:.2f} \
+                print 'epoch: {0} train loss: {1:.2f} dev loss: {2:.2f} dev accuracy: {3:.2f} train accuracy = {4:.2f} \
  best dev accuracy {5:.2f} best train accuracy: {6:.2f} patience = {7}'.format(e, avg_loss, avg_dev_loss, dev_accuracy,
                                                                                train_accuracy, best_dev_accuracy,
-                                                                               best_train_accuracy, patience, clus)
+                                                                               best_train_accuracy, patience)
 
                 if patience == MAX_PATIENCE:
                     print 'out of patience after {0} epochs'.format(str(e))
                     # TODO: would like to return best model but pycnn has a bug with save and load. Maybe copy via code?
                     # return best_model[0]
                     train_progress_bar.finish()
-                    plt.cla()
+                    #plt.cla()
                     return model
 
                 # update lists for plotting
@@ -442,15 +442,15 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_words, tra
 
         # finished epoch
         train_progress_bar.update(e)
-        with plt.style.context('fivethirtyeight'):
-            p1, = plt.plot(epochs_x, dev_loss_y, label='dev loss')
-            p2, = plt.plot(epochs_x, train_loss_y, label='train loss')
-            p3, = plt.plot(epochs_x, dev_accuracy_y, label='dev acc.')
-            p4, = plt.plot(epochs_x, train_accuracy_y, label='train acc.')
-            plt.legend(loc='upper left', handles=[p1, p2, p3, p4])
-            plt.savefig(results_file_path + '_learning_curves.png')
+        # with plt.style.context('fivethirtyeight'):
+        #     p1, = plt.plot(epochs_x, dev_loss_y, label='dev loss')
+        #     p2, = plt.plot(epochs_x, train_loss_y, label='train loss')
+        #     p3, = plt.plot(epochs_x, dev_accuracy_y, label='dev acc.')
+        #     p4, = plt.plot(epochs_x, train_accuracy_y, label='train acc.')
+        #     plt.legend(loc='upper left', handles=[p1, p2, p3, p4])
+        #     plt.savefig(results_file_path + '_learning_curves.png')
     train_progress_bar.finish()
-    plt.cla()
+    # plt.cla()
     print 'finished training. average loss: ' + str(avg_loss)
     return model
 

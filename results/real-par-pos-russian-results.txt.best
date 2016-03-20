@@ -1,0 +1,9 @@
+train path = /Users/roeeaharoni/research_data/sigmorphon2016-master/data/russian-task1-train
+test path = /Users/roeeaharoni/research_data/sigmorphon2016-master/data/russian-task1-dev
+LAYERS = 2
+MAX_PREDICTION_LEN = 50
+EPOCHS = 300
+OPTIMIZATION = ADAM
+HIDDEN_DIM = 150
+INPUT_DIM = 150
+Prediction Accuracy = 0.904462602137
