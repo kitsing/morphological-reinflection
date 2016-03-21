@@ -1,0 +1,9 @@
+train path = /Users/roeeaharoni/research_data/sigmorphon2016-master/data/spanish-task1-train
+test path = /Users/roeeaharoni/research_data/sigmorphon2016-master/data/spanish-task1-dev
+LAYERS = 2
+MAX_PREDICTION_LEN = 50
+EPOCHS = 300
+OPTIMIZATION = ADAM
+HIDDEN_DIM = 200
+INPUT_DIM = 200
+Prediction Accuracy = 0.962406015038
