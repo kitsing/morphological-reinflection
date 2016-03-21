@@ -133,9 +133,11 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                                    sigmorphon_root_dir))
     return
 
+
 def train_cluster_model_wrapper(params):
     from matplotlib import pyplot as plt
     return train_cluster_model(*params)
+
 
 def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_type, train_lemmas, train_feat_dicts,
                         train_words, test_lemmas, test_feat_dicts, train_cluster_to_data_indices, test_words,
@@ -341,7 +343,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_words, tra
 
     # progress bar init
     widgets = [progressbar.Bar('>'), ' ', progressbar.ETA()]
-    train_progress_bar = progressbar.ProgressBar(widgets=widgets, max_value=epochs).start()
+    train_progress_bar = progressbar.ProgressBar(widgets=widgets, maxval=epochs).start()
     avg_loss = -1
 
     for e in xrange(epochs):
@@ -404,7 +406,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_words, tra
                 # found "perfect" model
                 if dev_accuracy == 1:
                     train_progress_bar.finish()
-                    #plt.cla()
+                    # plt.cla()
                     return model
 
                 # get dev loss
@@ -428,7 +430,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_words, tra
                     # TODO: would like to return best model but pycnn has a bug with save and load. Maybe copy via code?
                     # return best_model[0]
                     train_progress_bar.finish()
-                    #plt.cla()
+                    # plt.cla()
                     return model
 
                 # update lists for plotting
