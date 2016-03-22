@@ -107,7 +107,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             print 'only ' + str(len(train_cluster_words)) + ' samples for this inflection type. skipping'
             continue
         else:
-            print 'now evaluating model for cluster ' + str(cluster_index) + '/' + \
+            print 'now evaluating model for cluster ' + str(cluster_index + 1) + '/' + \
                   str(len(train_cluster_to_data_indices)) + ': ' + cluster_type + ' with ' + \
                   str(len(train_cluster_words)) + ' examples'
 
