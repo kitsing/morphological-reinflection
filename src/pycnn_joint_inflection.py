@@ -69,7 +69,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     for param in hyper_params:
         print param + '=' + str(hyper_params[param])
 
-    # add feature parsing, add features lookup, add features into the decoder
+    # load train and test data
     (train_words, train_lemmas, train_feat_dicts) = prepare_sigmorphon_data.load_data(train_path)
     (test_words, test_lemmas, test_feat_dicts) = prepare_sigmorphon_data.load_data(test_path)
     alphabet, feature_types = prepare_sigmorphon_data.get_alphabet(train_words, train_lemmas, train_feat_dicts)
@@ -87,10 +87,9 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     alphabet_index = dict(zip(alphabet, range(0, len(alphabet))))
     inverse_alphabet_index = {index: char for char, index in alphabet_index.items()}
 
-    feature_alphabet = get_feature_alphabet(train_feat_dicts)
-    feature_alphabet.append(UNK_FEAT)
-
     # feat 2 int
+    feature_alphabet = common.get_feature_alphabet(train_feat_dicts)
+    feature_alphabet.append(UNK_FEAT)
     feat_index = dict(zip(feature_alphabet, range(0, len(feature_alphabet))))
 
     # cluster the data by POS type (features)
@@ -268,15 +267,6 @@ def build_model(alphabet, feature_alphabet, feature_types, input_dim, hidden_dim
     print 'finished creating model'
 
     return model, encoder_frnn, encoder_rrnn, decoder_rnn
-
-
-def get_feature_alphabet(feat_dicts):
-    feature_alphabet = []
-    for f_dict in feat_dicts:
-        for f in f_dict:
-            feature_alphabet.append(f + ':' + f_dict[f])
-    feature_alphabet = list(set(feature_alphabet))
-    return feature_alphabet
 
 
 def save_pycnn_model(model, results_file_path):

@@ -1,8 +1,8 @@
-"""Trains and evaluates a factored-model for inflection generation, using the sigmorphon 2016 shared task data files
+"""Trains and evaluates a factored-structured model for inflection generation, using the sigmorphon 2016 shared task data files
 and evaluation script.
 
 Usage:
-  pycnn_structured_inflection.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS]
+  pycnn_factored_structured_inflection.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS]
   [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
@@ -176,7 +176,7 @@ def train_morph_model(input_dim, hidden_dim, layers, morph_index, morph_type, tr
         # evaluate last model on dev
         predicted = predict_templates(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
                                       inverse_alphabet_index, dev_morph_lemmas)
-        if len(predicted > 0):
+        if len(predicted) > 0:
             evaluate_model(predicted, dev_morph_lemmas, dev_morph_words)
         else:
             print 'no examples in dev set to evaluate'
@@ -391,7 +391,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_word
 
     # progress bar init
     widgets = [progressbar.Bar('>'), ' ', progressbar.ETA()]
-    train_progress_bar = progressbar.ProgressBar(widgets=widgets, max_value=epochs).start()
+    train_progress_bar = progressbar.ProgressBar(widgets=widgets, maxval=epochs).start()
     avg_loss = -1
 
     for e in xrange(epochs):

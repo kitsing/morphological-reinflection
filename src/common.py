@@ -39,3 +39,12 @@ def cluster_data_by_pos(feat_dicts):
 
 def argmax(iterable):
     return max(enumerate(iterable), key=lambda x: x[1])[0]
+
+
+def get_feature_alphabet(feat_dicts):
+    feature_alphabet = []
+    for f_dict in feat_dicts:
+        for f in f_dict:
+            feature_alphabet.append(f + ':' + f_dict[f])
+    feature_alphabet = list(set(feature_alphabet))
+    return feature_alphabet

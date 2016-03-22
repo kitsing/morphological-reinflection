@@ -124,6 +124,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 def train_morph_model(input_dim, hidden_dim, layers, morph_index, morph_type, train_lemmas, train_words, test_lemmas,
                       train_morph_to_data_indices, test_words, test_morph_to_data_indices, alphabet, alphabet_index,
                       inverse_alphabet_index, epochs, optimization, results_file_path):
+
         # get the inflection-specific data
         train_morph_words = [train_words[i] for i in train_morph_to_data_indices[morph_type]]
         train_morph_lemmas = [train_lemmas[i] for i in train_morph_to_data_indices[morph_type]]
