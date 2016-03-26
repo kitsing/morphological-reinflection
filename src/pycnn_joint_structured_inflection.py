@@ -49,6 +49,7 @@ EARLY_STOPPING = True
 MAX_PATIENCE = 100
 REGULARIZATION = 0.0
 LEARNING_RATE = 0.0001  # 0.1
+PARALLELIZE = True
 
 NULL = '%'
 UNK = '#'
@@ -63,7 +64,7 @@ UNK_FEAT = '@'
 # TODO: try sutskever trick - predict inverse
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, feat_input_dim, epochs,
          layers, optimization):
-    parallelize_training = False
+    parallelize_training = PARALLELIZE
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'FEAT_INPUT_DIM': feat_input_dim,
                     'EPOCHS': epochs, 'LAYERS': layers, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
                     'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': REGULARIZATION,
@@ -179,7 +180,7 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
         print 'only ' + str(len(train_cluster_words)) + ' samples for this inflection type. skipping'
         # continue
     else:
-        print 'now training model for cluster ' + str(cluster_index) + '/' + \
+        print 'now training model for cluster ' + str(cluster_index + 1) + '/' + \
               str(len(train_cluster_to_data_indices)) + ': ' + cluster_type + ' with ' + \
               str(len(train_cluster_words)) + ' examples'
 
@@ -211,11 +212,13 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
                                 train_cluster_alignments, dev_cluster_alignments, feat_index, feature_types)
 
     # evaluate last model on dev
-    predicted = predict_templates(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
-                                  inverse_alphabet_index, dev_cluster_lemmas, dev_cluster_feat_dicts, feat_index,
-                                  feature_types)
-    if len(predicted) > 0:
-        evaluate_model(predicted, dev_cluster_lemmas, dev_cluster_words)
+    predicted_templates = predict_templates(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+                                            inverse_alphabet_index, dev_cluster_lemmas, dev_cluster_feat_dicts,
+                                            feat_index,
+                                            feature_types)
+    if len(predicted_templates) > 0:
+        evaluate_model(predicted_templates, dev_cluster_lemmas, dev_cluster_feat_dicts, dev_cluster_words,
+                       feature_types, print_results=True)
     else:
         print 'no examples in dev set to evaluate'
 
@@ -318,7 +321,8 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                                                   inverse_alphabet_index, train_lemmas, train_feat_dicts, feat_index,
                                                   feature_types)
             print 'train:'
-            train_accuracy = evaluate_model(train_predictions, train_lemmas, train_words, True)[1]
+            train_accuracy = evaluate_model(train_predictions, train_lemmas, train_feat_dicts, train_words,
+                                            feature_types, False)[1]
 
             if train_accuracy > best_train_accuracy:
                 best_train_accuracy = train_accuracy
@@ -334,7 +338,8 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                                                     feature_types)
                 print 'dev:'
                 # get dev accuracy
-                dev_accuracy = evaluate_model(dev_predictions, dev_lemmas, dev_words, True)[1]
+                dev_accuracy = evaluate_model(dev_predictions, dev_lemmas, dev_feat_dicts, dev_words, feature_types,
+                                              False)[1]
 
                 if dev_accuracy > best_dev_accuracy:
                     best_dev_accuracy = dev_accuracy
@@ -349,7 +354,8 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 # found "perfect" model
                 if dev_accuracy == 1:
                     train_progress_bar.finish()
-                    plt.cla()
+                    if not PARALLELIZE:
+                        plt.cla()
                     return model
 
                 # get dev loss
@@ -373,7 +379,8 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                     # TODO: would like to return best model but pycnn has a bug with save and load. Maybe copy via code?
                     # return best_model[0]
                     train_progress_bar.finish()
-                    plt.cla()
+                    if not PARALLELIZE:
+                        plt.cla()
                     return model
             else:
 
@@ -397,7 +404,8 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 # found "perfect" model on train set or patience has reached
                 if train_accuracy == 1 or patience == MAX_PATIENCE:
                     train_progress_bar.finish()
-                    plt.cla()
+                    if not PARALLELIZE:
+                        plt.cla()
                     return model
 
             # update lists for plotting
@@ -409,15 +417,17 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
 
         # finished epoch
         train_progress_bar.update(e)
-        with plt.style.context('fivethirtyeight'):
-            p1, = plt.plot(epochs_x, dev_loss_y, label='dev loss')
-            p2, = plt.plot(epochs_x, train_loss_y, label='train loss')
-            p3, = plt.plot(epochs_x, dev_accuracy_y, label='dev acc.')
-            p4, = plt.plot(epochs_x, train_accuracy_y, label='train acc.')
-            plt.legend(loc='upper left', handles=[p1, p2, p3, p4])
-        plt.savefig(results_file_path + '_' + morph_index + '.png')
+        if not PARALLELIZE:
+            with plt.style.context('fivethirtyeight'):
+                p1, = plt.plot(epochs_x, dev_loss_y, label='dev loss')
+                p2, = plt.plot(epochs_x, train_loss_y, label='train loss')
+                p3, = plt.plot(epochs_x, dev_accuracy_y, label='dev acc.')
+                p4, = plt.plot(epochs_x, train_accuracy_y, label='train acc.')
+                plt.legend(loc='upper left', handles=[p1, p2, p3, p4])
+            plt.savefig(results_file_path + '_' + morph_index + '.png')
     train_progress_bar.finish()
-    plt.cla()
+    if not PARALLELIZE:
+        plt.cla()
     print 'finished training. average loss: ' + str(avg_loss)
     return model
 
@@ -534,12 +544,14 @@ def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, 
 
 def predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index, inverse_alphabet_index, lemmas,
                       feats, feat_index, feature_types):
-    predictions = []
+    predictions = {}
     for i, (lemma, feat_dict) in enumerate(zip(lemmas, feats)):
         predicted_template = predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma,
                                                          feat_dict, alphabet_index, inverse_alphabet_index, feat_index,
                                                          feature_types)
-        predictions.append(predicted_template)
+
+        joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
+        predictions[joint_index] = predicted_template
 
     return predictions
 
@@ -566,26 +578,28 @@ def represents_int(s):
         return False
 
 
-def evaluate_model(predicted_templates, lemmas, words, print_results=True):
+def evaluate_model(predicted_templates, lemmas, feature_dicts, words, feature_types, print_results=True):
     if print_results:
         print 'evaluating model...'
 
     # TODO: 2 possible approaches: one - predict template, instantiate, check if equal to word
     # TODO: two - predict template, generate template using the correct word, check if templates are equal
     # TODO: for now, go with one, maybe try two later
-    c = 0
-    for i, lemma in enumerate(lemmas):
 
-        predicted_template = predicted_templates[i]
-        predicted_word = instantiate_template(predicted_template, lemma)
-        if predicted_word == words[i]:
+    test_data = zip(lemmas, feature_dicts, words)
+    c = 0
+    for i, (lemma, feat_dict, word) in enumerate(test_data):
+        joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
+        predicted_word = instantiate_template(predicted_templates[joint_index], lemma)
+        if predicted_word == word:
             c += 1
             sign = 'V'
         else:
             sign = 'X'
         if print_results:
-            print 'lemma: ' + lemma + ' gold: ' + words[i] + ' template:' + ''.join(predicted_template) \
+            print 'lemma: ' + lemma + ' gold: ' + words[i] + ' template:' + ''.join(predicted_templates[joint_index]) \
                   + ' prediction: ' + predicted_word + ' ' + sign
+
     accuracy = float(c) / len(predicted_templates)
 
     if print_results:

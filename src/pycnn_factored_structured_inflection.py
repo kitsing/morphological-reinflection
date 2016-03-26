@@ -1,9 +1,9 @@
-"""Trains and evaluates a factored-structured model for inflection generation, using the sigmorphon 2016 shared task data files
-and evaluation script.
+"""Trains and evaluates a factored-structured model for inflection generation, using the sigmorphon 2016 shared task
+data files and evaluation script.
 
 Usage:
-  pycnn_factored_structured_inflection.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS]
-  [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+  pycnn_factored_structured_inflection.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--epochs=EPOCHS]
+  [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
   TRAIN_PATH    destination path
@@ -27,7 +27,6 @@ import prepare_sigmorphon_data
 import progressbar
 import datetime
 import time
-import codecs
 import os
 import align
 import common
@@ -54,6 +53,7 @@ UNK = '#'
 EPSILON = '*'
 BEGIN_WORD = '<'
 END_WORD = '>'
+
 
 # TODO: add numbered epsilons to vocabulary?
 # TODO: try to add attention mechanism?
@@ -108,8 +108,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 
     # TODO: align together?
     test_aligned_pairs = mcmc_align(test_word_pairs, align_symbol)
-    #random.shuffle(train_aligned_pairs)
-    #for p in train_aligned_pairs[:100]:
+    # random.shuffle(train_aligned_pairs)
+    # for p in train_aligned_pairs[:100]:
     #    generate_template(p)
     print 'finished aligning'
 
@@ -127,65 +127,73 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         print 'finished training all models'
     else:
         for p in params:
-            train_morph_model(*p)
+            if not check_if_exists(p[-3], p[3]):
+                train_morph_model(*p)
+            else:
+                print 'model ' + str(p[3]) + ' exists, skipping...'
 
     # evaluate best models
-    os.system('python evaluate_best_factored_models.py --cnn-mem 4096 --input={0} --hidden={1} --epochs={2} --layers={3}\
-  --optimization={4} {5} {6} {7} {8}'.format(input_dim, hidden_dim, epochs, layers, optimization, train_path, test_path,
-                                             results_file_path, sigmorphon_root_dir))
+    os.system('python evaluate_best_factored_structured_models.py --cnn-mem 8192 --input={0} --hidden={1} --epochs={2} \
+              --layers={3} --optimization={4} {5} {6} {7} {8}'.format(input_dim, hidden_dim, epochs, layers,
+                                                                      optimization, train_path, test_path,
+                                                                      results_file_path,
+                                                                      sigmorphon_root_dir))
     return
+
+
+def check_if_exists(results_file_path, morph_index):
+    path = results_file_path + '_' + str(morph_index) + '_bestmodel.txt'
+    return os.path.isfile(path)
 
 
 def train_morph_model(input_dim, hidden_dim, layers, morph_index, morph_type, train_lemmas, train_words, test_lemmas,
                       train_morph_to_data_indices, test_words, test_morph_to_data_indices, alphabet, alphabet_index,
                       inverse_alphabet_index, epochs, optimization, results_file_path, train_aligned_pairs,
                       test_aligned_pairs):
+    # get the inflection-specific data
+    train_morph_words = [train_words[i] for i in train_morph_to_data_indices[morph_type]]
+    train_morph_lemmas = [train_lemmas[i] for i in train_morph_to_data_indices[morph_type]]
+    train_morph_alignments = [train_aligned_pairs[i] for i in train_morph_to_data_indices[morph_type]]
+    if len(train_morph_words) < 1:
+        print 'only ' + str(len(train_morph_words)) + ' samples for this inflection type. skipping'
+        # continue
+    else:
+        print 'now training model for morph ' + str(morph_index) + '/' + str(len(train_morph_to_data_indices)) + \
+              ': ' + morph_type + ' with ' + str(len(train_morph_words)) + ' examples'
 
-        # get the inflection-specific data
-        train_morph_words = [train_words[i] for i in train_morph_to_data_indices[morph_type]]
-        train_morph_lemmas = [train_lemmas[i] for i in train_morph_to_data_indices[morph_type]]
-        train_morph_alignments = [train_aligned_pairs[i] for i in train_morph_to_data_indices[morph_type]]
-        if len(train_morph_words) < 1:
-            print 'only ' + str(len(train_morph_words)) + ' samples for this inflection type. skipping'
-            # continue
-        else:
-            print 'now training model for morph ' + str(morph_index) + '/' + str(len(train_morph_to_data_indices)) + \
-                  ': ' + morph_type + ' with ' + str(len(train_morph_words)) + ' examples'
+    # build model
+    initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers)
 
-        # build model
-        initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers)
+    # TODO: now dev and test are the same - change later when test sets are available
+    # get dev lemmas for early stopping
+    try:
+        dev_morph_lemmas = [test_lemmas[i] for i in test_morph_to_data_indices[morph_type]]
+        dev_morph_words = [test_words[i] for i in test_morph_to_data_indices[morph_type]]
+        dev_morph_alignments = [test_aligned_pairs[i] for i in test_morph_to_data_indices[morph_type]]
+    except KeyError:
+        dev_morph_lemmas = []
+        dev_morph_words = []
+        dev_morph_alignments = []
+        print 'could not find relevant examples in dev data for morph: ' + morph_type
 
-        # TODO: now dev and test are the same - change later when test sets are available
-        # get dev lemmas for early stopping
-        try:
-            dev_morph_lemmas = [test_lemmas[i] for i in test_morph_to_data_indices[morph_type]]
-            dev_morph_words = [test_words[i] for i in test_morph_to_data_indices[morph_type]]
-            dev_morph_alignments = [test_aligned_pairs[i] for i in test_morph_to_data_indices[morph_type]]
-        except KeyError:
-            dev_morph_lemmas = []
-            dev_morph_words = []
-            dev_morph_alignments = []
-            print 'could not find relevant examples in dev data for morph: ' + morph_type
+    # train model
+    trained_model = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_words,
+                                train_morph_lemmas, dev_morph_words, dev_morph_lemmas, alphabet_index,
+                                inverse_alphabet_index, epochs, optimization, results_file_path, str(morph_index),
+                                train_morph_alignments, dev_morph_alignments)
 
-        # train model
-        trained_model = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_words,
-                                    train_morph_lemmas, dev_morph_words, dev_morph_lemmas, alphabet_index,
-                                    inverse_alphabet_index, epochs, optimization, results_file_path, str(morph_index),
-                                    train_morph_alignments, dev_morph_alignments)
+    # evaluate last model on dev
+    predicted = predict_templates(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+                                  inverse_alphabet_index, dev_morph_lemmas)
+    if len(predicted) > 0:
+        evaluate_model(predicted, dev_morph_lemmas, dev_morph_words)
+    else:
+        print 'no examples in dev set to evaluate'
 
-        # evaluate last model on dev
-        predicted = predict_templates(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
-                                      inverse_alphabet_index, dev_morph_lemmas)
-        if len(predicted) > 0:
-            evaluate_model(predicted, dev_morph_lemmas, dev_morph_words)
-        else:
-            print 'no examples in dev set to evaluate'
-
-        return trained_model
+    return trained_model
 
 
 def build_model(alphabet, input_dim, hidden_dim, layers):
-
     print 'creating model...'
 
     model = Model()
@@ -201,19 +209,21 @@ def build_model(alphabet, input_dim, hidden_dim, layers):
     encoder_frnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
     encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
 
-    # 2 * HIDDEN_DIM + INPUT_DIM, as it gets a concatenation of frnn, rrnn, previous output char
-    # decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 2 * input_dim, hidden_dim, model)
+    # 2 * HIDDEN_DIM + 3 * INPUT_DIM, as it gets a concatenation of frnn, rrnn, previous output char,
+    # current lemma char, current index
     decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim, hidden_dim, model)
     print 'finished creating model'
 
     return model, encoder_frnn, encoder_rrnn, decoder_rnn
 
 
-def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, alphabet_index, inverse_alphabet_index):
+def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, alphabet_index,
+                                inverse_alphabet_index):
     renew_cg()
 
     # read the parameters
     lookup = model["lookup"]
+    # noinspection PyPep8Naming
     R = parameter(model["R"])
     bias = parameter(model["bias"])
 
@@ -293,11 +303,11 @@ def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, 
 
 
 def predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index, inverse_alphabet_index, lemmas):
-    predictions = []
+    predictions = {}
     for i, lemma in enumerate(lemmas):
         predicted_template = predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma,
                                                          alphabet_index, inverse_alphabet_index)
-        predictions.append(predicted_template)
+        predictions[lemma] = predicted_template
 
     return predictions
 
@@ -306,6 +316,7 @@ def instantiate_template(template, lemma):
     word = ''
     for t in template:
         if represents_int(t):
+            # noinspection PyBroadException
             try:
                 word = word + lemma[int(t)]
             except:
@@ -318,6 +329,7 @@ def instantiate_template(template, lemma):
     # print lemma
     # print word
     return word
+
 
 def represents_int(s):
     try:
@@ -337,7 +349,8 @@ def evaluate_model(predicted_templates, lemmas, words, print_results=True):
     c = 0
     for i, lemma in enumerate(lemmas):
 
-        predicted_template = predicted_templates[i]
+        # will not work for joint! assumes every lemma is distinct in the model/cluster
+        predicted_template = predicted_templates[lemma]
         predicted_word = instantiate_template(predicted_template, lemma)
         if predicted_word == words[i]:
             c += 1
@@ -350,7 +363,8 @@ def evaluate_model(predicted_templates, lemmas, words, print_results=True):
     accuracy = float(c) / len(predicted_templates)
 
     if print_results:
-        print 'finished evaluating model. accuracy: ' + str(c) + '/' + str(len(predicted_templates)) + '=' + str(accuracy) + \
+        print 'finished evaluating model. accuracy: ' + str(c) + '/' + str(len(predicted_templates)) + '=' + str(
+            accuracy) + \
               '\n\n'
 
     return len(predicted_templates), accuracy
@@ -414,7 +428,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_word
             trainer.update()
             if i > 0:
                 # print 'avg. loss at ' + str(i) + ': ' + str(total_loss / float(i + e*train_len)) + '\n'
-                avg_loss = total_loss / float(i + e*train_len)
+                avg_loss = total_loss / float(i + e * train_len)
             else:
                 avg_loss = total_loss
 
@@ -469,7 +483,8 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_word
 
                 print 'epoch: {0} train loss: {1:.2f} dev loss: {2:.2f} dev accuracy: {3:.2f} train accuracy = {4:.2f} \
  best dev accuracy {5:.2f} best train accuracy: {6:.2f} patience = {7}'.format(e, avg_loss, avg_dev_loss, dev_accuracy,
-                                                    train_accuracy, best_dev_accuracy, best_train_accuracy, patience)
+                                                                               train_accuracy, best_dev_accuracy,
+                                                                               best_train_accuracy, patience)
 
                 if patience == MAX_PATIENCE:
                     print 'out of patience after {0} epochs'.format(str(e))
@@ -534,7 +549,6 @@ def save_pycnn_model(model, results_file_path, morph_index):
 
 # noinspection PyPep8Naming
 def generate_template(aligned_pair):
-
     # go through alignment
     # if lemma and inflection are equal, output copy index of lemma
     # if they are not equal - output the inflection char
@@ -570,6 +584,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, word, a
 
     # read the parameters
     lookup = model["lookup"]
+
+    # noinspection PyPep8Naming
     R = parameter(model["R"])
     bias = parameter(model["bias"])
 
@@ -631,7 +647,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, word, a
     # TODO: attention on the lemma chars could help here?
     # TODO: think about the best heuristic to create a template from the aligned pair with respect to the network loss
 
-    #template.insert(0, BEGIN_WORD)
+    # template.insert(0, BEGIN_WORD)
     template.append(END_WORD)
 
     # run the decoder through the sequence and aggregate loss
@@ -644,7 +660,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, word, a
             lemma_input_char_vec = lookup[alphabet_index[EPSILON]]
 
         decoder_input = concatenate([encoded, prev_output_vec, lemma_input_char_vec, lookup[alphabet_index[str(i)]]])
-        #decoder_input = concatenate([encoded, prev_output_vec])
+        # decoder_input = concatenate([encoded, prev_output_vec])
         s = s.add_input(decoder_input)
         decoder_rnn_output = s.output()
         probs = softmax(R * decoder_rnn_output + bias)
@@ -666,18 +682,20 @@ def dumb_align(wordpairs, align_symbol):
         ins = pair[0]
         outs = pair[1]
         if len(ins) > len(outs):
-            outs = outs + align_symbol * (len(ins)-len(outs))
+            outs += align_symbol * (len(ins) - len(outs))
         elif len(outs) > len(ins):
-            ins = ins + align_symbol * (len(outs)-len(ins))
+            ins += + align_symbol * (len(outs) - len(ins))
             alignedpairs.append((ins, outs))
     return alignedpairs
 
+
 def mcmc_align(wordpairs, align_symbol):
-    a = align.Aligner(wordpairs, align_symbol = align_symbol)
+    a = align.Aligner(wordpairs, align_symbol=align_symbol)
     return a.alignedpairs
 
+
 def med_align(wordpairs, align_symbol):
-    a = align.Aligner(wordpairs, align_symbol = align_symbol, mode = 'med')
+    a = align.Aligner(wordpairs, align_symbol=align_symbol, mode='med')
     return a.alignedpairs
 
 

@@ -21,7 +21,6 @@ Options:
   --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM/ADADELTA
 """
 
-
 import numpy as np
 import random
 import prepare_sigmorphon_data
@@ -54,6 +53,7 @@ EPSILON = '*'
 BEGIN_WORD = '<'
 END_WORD = '>'
 
+
 # TODO: run this (and baseline - done) on all available languages - in progress
 # TODO: print comparison with gold standard in the end of every iteration
 # TODO: try running on GPU
@@ -65,6 +65,8 @@ END_WORD = '>'
 # TODO: refactor so less code repetition in train, predict (both have bilstm etc.)
 # TODO: think how to give more emphasis on suffix generalization/learning
 # TODO: handle unk chars better
+
+
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
          optimization):
     parallelize_training = False
@@ -124,45 +126,43 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 def train_morph_model(input_dim, hidden_dim, layers, morph_index, morph_type, train_lemmas, train_words, test_lemmas,
                       train_morph_to_data_indices, test_words, test_morph_to_data_indices, alphabet, alphabet_index,
                       inverse_alphabet_index, epochs, optimization, results_file_path):
+    # get the inflection-specific data
+    train_morph_words = [train_words[i] for i in train_morph_to_data_indices[morph_type]]
+    train_morph_lemmas = [train_lemmas[i] for i in train_morph_to_data_indices[morph_type]]
+    if len(train_morph_words) < 1:
+        print 'only ' + str(len(train_morph_words)) + ' samples for this inflection type. skipping'
+        # continue
+    else:
+        print 'now training model for morph ' + str(morph_index) + '/' + str(len(train_morph_to_data_indices)) + \
+              ': ' + morph_type + ' with ' + str(len(train_morph_words)) + ' examples'
 
-        # get the inflection-specific data
-        train_morph_words = [train_words[i] for i in train_morph_to_data_indices[morph_type]]
-        train_morph_lemmas = [train_lemmas[i] for i in train_morph_to_data_indices[morph_type]]
-        if len(train_morph_words) < 1:
-            print 'only ' + str(len(train_morph_words)) + ' samples for this inflection type. skipping'
-            # continue
-        else:
-            print 'now training model for morph ' + str(morph_index) + '/' + str(len(train_morph_to_data_indices)) + \
-                  ': ' + morph_type + ' with ' + str(len(train_morph_words)) + ' examples'
+    # build model
+    initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers)
 
-        # build model
-        initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers)
+    # TODO: now dev and test are the same - change later when test sets are available
+    # get dev lemmas for early stopping
+    try:
+        dev_morph_lemmas = [test_lemmas[i] for i in test_morph_to_data_indices[morph_type]]
+        dev_morph_words = [test_words[i] for i in test_morph_to_data_indices[morph_type]]
+    except KeyError:
+        dev_morph_lemmas = []
+        dev_morph_words = []
+        print 'could not find relevant examples in dev data for morph: ' + morph_type
 
-        # TODO: now dev and test are the same - change later when test sets are available
-        # get dev lemmas for early stopping
-        try:
-            dev_morph_lemmas = [test_lemmas[i] for i in test_morph_to_data_indices[morph_type]]
-            dev_morph_words = [test_words[i] for i in test_morph_to_data_indices[morph_type]]
-        except KeyError:
-            dev_morph_lemmas = []
-            dev_morph_words = []
-            print 'could not find relevant examples in dev data for morph: ' + morph_type
+    # train model
+    trained_model = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_words,
+                                train_morph_lemmas, dev_morph_words, dev_morph_lemmas, alphabet_index,
+                                inverse_alphabet_index, epochs, optimization, results_file_path, str(morph_index))
 
-        # train model
-        trained_model = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_words,
-                                    train_morph_lemmas, dev_morph_words, dev_morph_lemmas, alphabet_index,
-                                    inverse_alphabet_index, epochs, optimization, results_file_path, str(morph_index))
+    # evaluate last model on dev
+    predicted = predict(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+                        inverse_alphabet_index, dev_morph_lemmas, dev_morph_words)
+    evaluate_model(predicted, zip(dev_morph_lemmas, dev_morph_words))
 
-        # evaluate last model on dev
-        predicted = predict(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
-                            inverse_alphabet_index, dev_morph_lemmas, dev_morph_words)
-        evaluate_model(predicted, zip(dev_morph_lemmas, dev_morph_words))
-
-        return trained_model
+    return trained_model
 
 
 def build_model(alphabet, input_dim, hidden_dim, layers):
-
     print 'creating model...'
 
     model = Model()
@@ -303,7 +303,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_word
 
     # progress bar init
     widgets = [progressbar.Bar('>'), ' ', progressbar.ETA()]
-    train_progress_bar = progressbar.ProgressBar(widgets=widgets, max_value=epochs).start()
+    train_progress_bar = progressbar.ProgressBar(widgets=widgets, maxval=epochs).start()
     avg_loss = -1
 
     for e in xrange(epochs):
@@ -323,7 +323,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_word
             trainer.update()
             if i > 0:
                 # print 'avg. loss at ' + str(i) + ': ' + str(total_loss / float(i + e*train_len)) + '\n'
-                avg_loss = total_loss / float(i + e*train_len)
+                avg_loss = total_loss / float(i + e * train_len)
             else:
                 avg_loss = total_loss
 
@@ -378,7 +378,8 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_word
 
                 print 'epoch: {0} train loss: {1:.2f} dev loss: {2:.2f} dev accuracy: {3:.2f} train accuracy = {4:.2f} \
  best dev accuracy {5:.2f} best train accuracy: {6:.2f} patience = {7}'.format(e, avg_loss, avg_dev_loss, dev_accuracy,
-                                                    train_accuracy, best_dev_accuracy, best_train_accuracy, patience)
+                                                                               train_accuracy, best_dev_accuracy,
+                                                                               best_train_accuracy, patience)
 
                 if patience == MAX_PATIENCE:
                     print 'out of patience after {0} epochs'.format(str(e))
@@ -500,7 +501,7 @@ def predict_inflection(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, al
 
         # if the lemma is finished or unknown character, pad with epsilon chars
         if i < len(lemma) and lemma[i] in alphabet_index:
-                lemma_input_char_vec = lookup[alphabet_index[lemma[i]]]
+            lemma_input_char_vec = lookup[alphabet_index[lemma[i]]]
         else:
             lemma_input_char_vec = lookup[alphabet_index[EPSILON]]
 
@@ -512,7 +513,7 @@ def predict_inflection(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, al
         decoder_rnn_output = s.output()
         probs = softmax(R * decoder_rnn_output + bias)
         probs = probs.vec_value()
-        next_char_index = argmax(probs)
+        next_char_index = common.argmax(probs)
         predicted = predicted + inverse_alphabet_index[next_char_index]
 
         # check if reached end of word
@@ -529,7 +530,6 @@ def predict_inflection(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, al
 
 
 def evaluate_model(predictions, test_data, print_res=True):
-
     if print_res:
         print 'evaluating model...'
 
@@ -555,7 +555,6 @@ def evaluate_model(predictions, test_data, print_res=True):
 
 def write_results_file(hyper_params, macro_avg_accuracy, micro_average_accuracy, train_path, test_path,
                        output_file_path, sigmorphon_root_dir, final_results):
-
     # write hyperparams, micro + macro avg. accuracy
     with codecs.open(output_file_path, 'w', encoding='utf8') as f:
         f.write('train path = ' + str(train_path) + '\n')
@@ -605,9 +604,6 @@ def print_data_stats(alphabet, feats, morph_types, test_morph_types, train_feat_
     # for morph in morph_types:
     #    print morph
 
-
-def argmax(iterable):
-    return max(enumerate(iterable), key=lambda x: x[1])[0]
 
 if __name__ == '__main__':
     arguments = docopt(__doc__)
