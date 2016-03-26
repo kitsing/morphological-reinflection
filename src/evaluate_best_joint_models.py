@@ -159,7 +159,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 
 def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_dim, layers, feature_alphabet,
                     feat_input_dim, feature_types):
-    tmp_model_path = results_file_path + '_morph_' + morph_index + '_bestmodel.txt'
+    tmp_model_path = results_file_path + '_' + morph_index + '_bestmodel.txt'
     print 'trying to open ' + tmp_model_path
 
     model = Model()
