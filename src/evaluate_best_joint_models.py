@@ -77,7 +77,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     alphabet.append(BEGIN_WORD)
     alphabet.append(END_WORD)
 
-    feature_alphabet = pycnn_joint_inflection.get_feature_alphabet(train_feat_dicts)
+    feature_alphabet = common.get_feature_alphabet(train_feat_dicts)
     feature_alphabet.append(UNK_FEAT)
 
     # feat 2 int
