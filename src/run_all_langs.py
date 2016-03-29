@@ -48,7 +48,7 @@ def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epoch
     # langs = ['russian', 'turkish', 'spanish', 'arabic', 'georgian', 'german', 'navajo', 'finnish']
     cnn_mem = 4096
     parallelize_training = True
-    langs = ['russian', 'turkish', 'georgian', 'german', 'navajo', 'finnish']
+    langs = ['navajo', 'finnish']
 
     params = []
     print 'now training langs: ' + str(langs)
