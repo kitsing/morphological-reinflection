@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 train path = /home/aharonr6/git/sigmorphon2016//data/navajo-task1-train
 test path = /home/aharonr6/git/sigmorphon2016//data/navajo-task1-dev
+=======
+train path = /Users/roeeaharoni/GitHub/sigmorphon2016/data/navajo-task1-train
+test path = /Users/roeeaharoni/GitHub/sigmorphon2016/data/navajo-task1-dev
+>>>>>>> 296cc531b2aa881f073bcd836b6091dcd3ace9ce
 LAYERS = 2
 MAX_PREDICTION_LEN = 50
 EPOCHS = 300
 OPTIMIZATION = ADAM
 HIDDEN_DIM = 200
 INPUT_DIM = 200
+<<<<<<< HEAD
 Prediction Accuracy = 0.984159779614
+=======
+Prediction Accuracy = 0.968319559229
+>>>>>>> 296cc531b2aa881f073bcd836b6091dcd3ace9ce
