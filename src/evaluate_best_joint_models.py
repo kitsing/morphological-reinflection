@@ -1,4 +1,4 @@
-"""Trains and evaluates a factored-model for inflection generation, using the sigmorphon 2016 shared task data
+"""Evaluates a joint-model for inflection generation, using the sigmorphon 2016 shared task data
 files and evaluation script.
 
 Usage:
