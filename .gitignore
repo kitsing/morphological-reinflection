@@ -17,3 +17,7 @@
 .idea/inspectionProfiles/Project_Default.xml
 
 .idea/inspectionProfiles/profiles_settings.xml
+
+*.pyc
+
+src/prepare_sigmorphon_data.pyc
