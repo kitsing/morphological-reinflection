@@ -1,4 +1,3 @@
-@@ -1,1600 +0,0 @@
 pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG	ereignisgesteuertere	pos=ADJ,case=GEN,gen=FEM,num=SG	ereignisgesteuerter
 pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG	fleißigere	pos=ADJ,case=GEN,comp=SPRL,num=PL	fleißigster
 pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG	krebserregendere	pos=ADJ,case=NOM,gen=NEUT,num=SG	krebserregendes

@@ -8,7 +8,7 @@ Usage:
 Arguments:
   TRAIN_PATH    destination path
   TEST_PATH     test path
-  RESULTS_PATH  results file to be written
+  RESULTS_PATH  results file to load the models from
   SIGMORPHON_PATH   sigmorphon root containing data, src dirs
 
 Options:

@@ -1,14 +1,14 @@
-"""Trains and evaluates a factored-model for inflection generation, using the sigmorphon 2016 shared task data
+"""Trains and evaluates a joint-structured-model for inflection generation, using the sigmorphon 2016 shared task data
 files and evaluation script.
 
 Usage:
-  evaluate_best_joint_models.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN] [--epochs=EPOCHS]
-  [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+  evaluate_best_joint_structured_models.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN]
+  [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
-  TRAIN_PATH    destination path
-  TEST_PATH     test path
-  RESULTS_PATH  results file to be written
+  TRAIN_PATH    train data path
+  TEST_PATH     test data path
+  RESULTS_PATH  results file to load the models from
   SIGMORPHON_PATH   sigmorphon root containing data, src dirs
 
 Options:
@@ -163,8 +163,12 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     micro_average_accuracy = mic_nom / mic_denom
     print 'micro avg accuracy: ' + str(micro_average_accuracy)
 
+    if 'test' in test_path:
+        suffix = '.best.test'
+    else:
+        suffix = '.best'
     task1_joint_inflection.write_results_file(hyper_params, micro_average_accuracy, train_path,
-                                              test_path, results_file_path + '.best', sigmorphon_root_dir,
+                                              test_path, results_file_path + suffix, sigmorphon_root_dir,
                                               final_results)
 
 
