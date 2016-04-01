@@ -1,18 +1,9 @@
-<<<<<<< HEAD
 train path = /home/aharonr6/git/sigmorphon2016/data/finnish-task1-train
 test path = /home/aharonr6/git/sigmorphon2016/data/finnish-task1-dev
-=======
-train path = /Users/roeeaharoni/GitHub/sigmorphon2016/data/finnish-task1-train
-test path = /Users/roeeaharoni/GitHub/sigmorphon2016/data/finnish-task1-dev
->>>>>>> 296cc531b2aa881f073bcd836b6091dcd3ace9ce
 LAYERS = 2
 MAX_PREDICTION_LEN = 50
 EPOCHS = 300
 OPTIMIZATION = ADAM
 HIDDEN_DIM = 200
 INPUT_DIM = 200
-<<<<<<< HEAD
-Prediction Accuracy = 0.931789737171
-=======
-Prediction Accuracy = 0.916770963705
->>>>>>> 296cc531b2aa881f073bcd836b6091dcd3ace9ce
+Prediction Accuracy = 0.936795994994
