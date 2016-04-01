@@ -1,56 +1,74 @@
-# Date created: November 30 2015
-# Author: Yonatan Belinkov
-
-# Prepare sigmorphon reinflection seq2seq data for Torch
-
 import sys
 import codecs
 
 NULL = 'NULL'
 
 
-def load_data(filename):
+def load_data(filename, task=1):
     """ Load data from file
 
-    filename (str): file containing morphology reinflection data, each line has
+    filename (str): file containing morphology reinflection data, 
+                    whose structure depends on the task. 
+                    for task 1, each line has
                     lemma feat1=value1,feat2=value2,feat3=value3... word
-    return tuple of (words, lemmas, feat dicts), where each element is a list
+                    for task 2, each line has
+                    source_feat1=value1,source_feat2=value2... source_word target_feat1=value1,target_feat2=value2... target_word
+                    for task 3, each line has
+                    source_word, feat1=value1,feat2=value2... target_word
+    return tuple depending on the task. for task 1:
+                    (words, lemmas, feat_dicts), where each element is a list
                     where each element in the list is one example
-                    feat dicts is a list of dictionaries, where each dictionary
+                    feat_dicts is a list of dictionaries, where each dictionary
                     is from feature name to value
+                    similarly, for task 2:
+                    (target_words, source_words, target_feat_dicts, source_feat_dicts)
+                    and for task 3:
+                    (target_words, source_words, target_feat_dicts)
     """
 
-    words, lemmas, feat_dicts = [], [], []
+    print 'loading data from file:', filename
+    print 'for task:', task
+    #words, lemmas, feat_dicts = [], [], []
+    sources, targets, target_feat_dicts = [], [], []
+    if task == 2:
+        sources_feat_dicts = []
     with codecs.open(filename, encoding='utf8') as f:
         for line in f:
             if line.strip() == '':
                 # empty line marks end of lemma; ignore this for now
                 continue
             splt = line.strip().split()
-            if len(splt) != 3:
-                sys.stderr.write('Warning: bad line: ' + line + '\n')
-                continue
-            lemma, feats, word = splt
-            words.append(word)
-            lemmas.append(lemma)
-            feat_dict = {}
-            # print feats
-            for feat_key_val in feats.split(','):
-                feat_key, feat_val = feat_key_val.split('=')
-                feat_dict[feat_key] = feat_val
-            feat_dicts.append(feat_dict)
-    print 'found', len(words), 'examples'
-    return (words, lemmas, feat_dicts)
+            if task in [1,3]:
+                assert len(splt) == 3, 'bad line: ' + line + '\n'
+                source, feats, target = splt
+                sources.append(source)
+                targets.append(target)
+                target_feat_dicts.append(make_feat_dict(feats))
+            else: # task = 2
+                assert len(splt) == 4, 'bad line: ' + line + '\n'
+                source_feats, source, target_feats, target = splt
+                sources.append(source)
+                targets.append(target)
+                source_feat_dicts.append(make_feat_dict(source_feats))
+                target_feat_dicts.append(make_feat_dict(target_feats))
+
+    print 'found', len(sources), 'examples'
+    if task in [1,3]:
+        tup = (targets, sources, target_feat_dicts)
+    else:
+        tup = (targets, sources, target_feat_dicts, sources_feat_dicts)
+    return tup
 
 
-def get_alphabet(words, lemmas, feat_dicts):
+def get_alphabet(words, lemmas, feat_dicts, feat_dicts2=None):
     """
     Get alphabet from data
 
     words (list): list of words as strings
     lemmas (list): list of lemmas as strings
-    feat_dicts (list): list of feature dictionary, each dictionary
+    feat_dicts (list): list of feature dictionaries, each dictionary
                        is from feature name to value
+    feat_dicts2 (list): a possible second list of feature dictionaries
     return (alphabet, possible_feats): a tuple of
         alphabet (list): list of unique letters or features used
         possible_feats (list): list of possible feature names
@@ -64,17 +82,30 @@ def get_alphabet(words, lemmas, feat_dicts):
         for letter in lemma:
             alphabet.add(letter)
     possible_feats = set()
-    for feat_dict in feat_dicts:
-        for feat_key in feat_dict:
-            possible_feats.add(feat_key)
-            # string representing feature key+val
-            feat = feat_key + '=' + feat_dict[feat_key]
-            alphabet.add(feat)
-            # also add null value in case we don't have it
-            alphabet.add(feat_key + '=' + NULL)
+    feat_dicts_list = [feat_dicts]
+    if feat_dicts2:
+        feat_dicts_list.append(feat_dicts2)
+    for feat_dicts in feat_dicts_list:
+        for feat_dict in feat_dicts:
+            for feat_key in feat_dict:
+                possible_feats.add(feat_key)
+                # string representing feature key+val
+                feat = feat_key + '=' + feat_dict[feat_key]
+                alphabet.add(feat)
+                # also add null value in case we don't have it
+                alphabet.add(feat_key + '=' + NULL)
     print 'alphabet size:', len(alphabet)
     print 'possible features:', possible_feats
     return list(alphabet), list(possible_feats)
+
+
+def make_feat_dict(feats_str):
+            
+    feat_dict = {}
+    for feat_key_val in feats_str.split(','):
+        feat_key, feat_val = feat_key_val.split('=')
+        feat_dict[feat_key] = feat_val                  
+    return feat_dict
 
 
 def convert_data_to_indices(words, lemmas, feat_dicts, alphabet_index, possible_feats, output_prefix):
