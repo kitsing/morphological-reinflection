@@ -23,8 +23,8 @@ Options:
 
 import time
 import docopt
-import pycnn_factored_structured_inflection
-import pycnn_factored_inflection
+import task1_factored_structured_inflection
+import task1_factored_inflection
 import prepare_sigmorphon_data
 import datetime
 import common
@@ -110,20 +110,20 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                                   results_file_path, input_dim,
                                                                                   hidden_dim, layers)
 
-            predicted_templates = pycnn_factored_structured_inflection.predict_templates(best_model, decoder_rnn,
+            predicted_templates = task1_factored_structured_inflection.predict_templates(best_model, decoder_rnn,
                                                                                          encoder_frnn, encoder_rrnn,
                                                                                          alphabet_index,
                                                                                          inverse_alphabet_index,
                                                                                          test_morph_lemmas)
 
-            accuracy = pycnn_factored_structured_inflection.evaluate_model(predicted_templates, test_morph_lemmas,
+            accuracy = task1_factored_structured_inflection.evaluate_model(predicted_templates, test_morph_lemmas,
                                                                            test_morph_words)
             accuracies.append(accuracy)
 
             # get predicted_templates in the same order they appeared in the original file
             # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
             for i in test_morph_to_data_indices[morph_type]:
-                inflection = pycnn_factored_structured_inflection.instantiate_template(
+                inflection = task1_factored_structured_inflection.instantiate_template(
                     predicted_templates[test_lemmas[i]], test_lemmas[i])
                 final_results[i] = (test_lemmas[i], inflection, morph_type)
 
@@ -139,7 +139,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     micro_average_accuracy = mic_nom / mic_denom
     print 'micro avg accuracy: ' + str(micro_average_accuracy)
 
-    pycnn_factored_inflection.write_results_file(hyper_params, macro_avg_accuracy, micro_average_accuracy,
+    task1_factored_inflection.write_results_file(hyper_params, macro_avg_accuracy, micro_average_accuracy,
                                                  train_path, test_path, results_file_path + '.best',
                                                  sigmorphon_root_dir, final_results)
 

@@ -1,13 +1,13 @@
 # show V's and X's on predicted output file according to gold file
 
 def main():
-    predicted_file_format = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/baseline/\
-baseline_{0}_task1_predictions.txt'
+    predicted_file_format = '/Users/roeeaharoni/GitHub/morphological-reinflection/results/\
+joint_structured_{0}_results.txt.best.predictions'
 
     gold_file_format = '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/{0}-task1-dev'
 
-    output_file_format = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/baseline/\
-baseline_{0}_task1_error_analysis.txt'
+    output_file_format = '/Users/roeeaharoni/GitHub/morphological-reinflection/results/\
+joint_structured_{0}_results.txt.best.predictions_error_analysis.txt'
 
     langs = ['arabic', 'finnish', 'georgian', 'russian', 'german', 'turkish', 'spanish', 'navajo']
 

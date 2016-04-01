@@ -24,7 +24,7 @@ Options:
 
 import time
 import docopt
-import pycnn_joint_inflection
+import task1_joint_inflection
 import prepare_sigmorphon_data
 import datetime
 import common
@@ -124,12 +124,12 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                                   feature_alphabet, feat_input_dim,
                                                                                   feature_types)
 
-            predictions = pycnn_joint_inflection.predict(best_model, decoder_rnn, encoder_frnn, encoder_rrnn,
+            predictions = task1_joint_inflection.predict(best_model, decoder_rnn, encoder_frnn, encoder_rrnn,
                                                          alphabet_index, inverse_alphabet_index, feat_index,
                                                          feature_types, test_cluster_lemmas, test_cluster_feat_dicts)
 
 
-            accuracy = pycnn_joint_inflection.evaluate_predictions(predictions, test_cluster_lemmas,
+            accuracy = task1_joint_inflection.evaluate_predictions(predictions, test_cluster_lemmas,
                                                                    test_cluster_feat_dicts, test_cluster_words,
                                                                    feature_types, True)
             accuracies.append(accuracy)
@@ -152,8 +152,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     micro_average_accuracy = mic_nom/mic_denom
     print 'micro avg accuracy: ' + str(micro_average_accuracy)
 
-    pycnn_joint_inflection.write_results_file(hyper_params, micro_average_accuracy, train_path,
-                                                 test_path, results_file_path + '.best', sigmorphon_root_dir,
+    task1_joint_inflection.write_results_file(hyper_params, micro_average_accuracy, train_path,
+                                              test_path, results_file_path + '.best', sigmorphon_root_dir,
                                               final_results)
 
 

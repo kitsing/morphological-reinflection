@@ -23,7 +23,7 @@ Options:
 
 import time
 import docopt
-import pycnn_factored_inflection
+import task1_factored_inflection
 import prepare_sigmorphon_data
 import datetime
 import common
@@ -107,12 +107,12 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(morph_index), alphabet,
                                                                     results_file_path, input_dim, hidden_dim, layers)
 
-            predictions = pycnn_factored_inflection.predict(best_model, decoder_rnn, encoder_frnn, encoder_rrnn,
+            predictions = task1_factored_inflection.predict(best_model, decoder_rnn, encoder_frnn, encoder_rrnn,
                                                             alphabet_index, inverse_alphabet_index, test_morph_lemmas,
                                                             test_morph_words)
 
             test_data = zip(test_morph_lemmas, test_morph_words)
-            accuracy = pycnn_factored_inflection.evaluate_model(predictions, test_data)
+            accuracy = task1_factored_inflection.evaluate_model(predictions, test_data)
             accuracies.append(accuracy)
 
             # get predictions in the same order they appeared in the original file
@@ -132,9 +132,9 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     micro_average_accuracy = mic_nom/mic_denom
     print 'micro avg accuracy: ' + str(micro_average_accuracy)
 
-    pycnn_factored_inflection.write_results_file(hyper_params, macro_avg_accuracy, micro_average_accuracy, train_path,
+    task1_factored_inflection.write_results_file(hyper_params, macro_avg_accuracy, micro_average_accuracy, train_path,
                                                  test_path,
-                       results_file_path + '.best', sigmorphon_root_dir, final_results)
+                                                 results_file_path + '.best', sigmorphon_root_dir, final_results)
 
 
 def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_dim, layers):

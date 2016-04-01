@@ -79,14 +79,14 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
                 sigmorphon_root_dir, src_dir):
     start = time.time()
     os.chdir(src_dir)
-    # os.system('python pycnn_factored_inflection.py --cnn-mem 4096 --input=150 --hidden=150 --epochs=300
+    # os.system('python task1_factored_inflection.py --cnn-mem 4096 --input=150 --hidden=150 --epochs=300
     # --layers=2 \
     #           --optimization ADAM \
     #           {0}/data/{1}-task1-train \
     #           {0}/data/{1}-task1-dev \
     #           {3}/{1}_{2}_results.txt \
     #           {0}'.format(sig_root, lang, st, results_dir))
-    os.system('python pycnn_joint_structured_inflection.py --cnn-mem 9096 --input={1} --hidden={2} \
+    os.system('python task1_joint_structured_inflection.py --cnn-mem 9096 --input={1} --hidden={2} \
                   --feat-input={3} --epochs={4} --layers={5} --optimization {6} \
                   {7}/data/{8}-task1-train \
                   {7}/data/{8}-task1-dev \
