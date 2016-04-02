@@ -740,7 +740,11 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
 
         # if the lemma is finished, pad with epsilon chars
         if i < len(lemma):
-            lemma_input_char_vec = char_lookup[alphabet_index[lemma[i]]]
+            try:
+                lemma_input_char_vec = char_lookup[lemma[i]]
+            except KeyError:
+                # handle UNK
+                lemma_input_char_vec = char_lookup[alphabet_index[UNK]]
         else:
             lemma_input_char_vec = char_lookup[alphabet_index[EPSILON]]
 
