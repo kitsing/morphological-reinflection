@@ -357,8 +357,8 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 # found "perfect" model
                 if dev_accuracy == 1:
                     train_progress_bar.finish()
-                    if not PARALLELIZE:
-                        plt.cla()
+                    # if not PARALLELIZE:
+                    #     plt.cla()
                     return model
 
                 # get dev loss
@@ -382,8 +382,8 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                     # TODO: would like to return best model but pycnn has a bug with save and load. Maybe copy via code?
                     # return best_model[0]
                     train_progress_bar.finish()
-                    if not PARALLELIZE:
-                        plt.cla()
+                    # if not PARALLELIZE:
+                    #     plt.cla()
                     return model
             else:
 
@@ -407,8 +407,8 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 # found "perfect" model on train set or patience has reached
                 if train_accuracy == 1 or patience == MAX_PATIENCE:
                     train_progress_bar.finish()
-                    if not PARALLELIZE:
-                        plt.cla()
+                    # if not PARALLELIZE:
+                    #     plt.cla()
                     return model
 
             # update lists for plotting
@@ -420,17 +420,17 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
 
         # finished epoch
         train_progress_bar.update(e)
-        if not PARALLELIZE:
-            with plt.style.context('fivethirtyeight'):
-                p1, = plt.plot(epochs_x, dev_loss_y, label='dev loss')
-                p2, = plt.plot(epochs_x, train_loss_y, label='train loss')
-                p3, = plt.plot(epochs_x, dev_accuracy_y, label='dev acc.')
-                p4, = plt.plot(epochs_x, train_accuracy_y, label='train acc.')
-                plt.legend(loc='upper left', handles=[p1, p2, p3, p4])
-            plt.savefig(results_file_path + '_' + morph_index + '.png')
+        # if not PARALLELIZE:
+            # with plt.style.context('fivethirtyeight'):
+            #     p1, = plt.plot(epochs_x, dev_loss_y, label='dev loss')
+            #     p2, = plt.plot(epochs_x, train_loss_y, label='train loss')
+            #     p3, = plt.plot(epochs_x, dev_accuracy_y, label='dev acc.')
+            #     p4, = plt.plot(epochs_x, train_accuracy_y, label='train acc.')
+            #     plt.legend(loc='upper left', handles=[p1, p2, p3, p4])
+            # plt.savefig(results_file_path + '_' + morph_index + '.png')
     train_progress_bar.finish()
-    if not PARALLELIZE:
-        plt.cla()
+    # if not PARALLELIZE:
+        # plt.cla()
     print 'finished training. average loss: ' + str(avg_loss)
     return model
 
