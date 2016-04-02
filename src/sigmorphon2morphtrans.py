@@ -10,9 +10,9 @@ def main():
     #train_path = '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/german-task1-train'
     #test_path = '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/german-task1-dev'
 
-    train_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_train.txt.sigmorphon_format.txt'
-    test_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_test.txt.sigmorphon_format.txt'
-    dev_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_dev.txt.sigmorphon_format.txt'
+    train_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_train.txt.sigmorphon_format'
+    test_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_test.txt.sigmorphon_format'
+    dev_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_dev.txt.sigmorphon_format'
 
     convert_sigmorphon_to_morphtrans(train_path, '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_train.txt.morphtrans_format.txt')
     convert_sigmorphon_to_morphtrans(test_path, '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_test.txt.morphtrans_format.txt', False)
