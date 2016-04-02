@@ -1,0 +1,1989 @@
+
+
+#################################
+
+beben		pos=V,mood=IND,tense=PRS,per=1,num=PL		gold: beben		predicted: beben V
+besetzen		pos=V,mood=IND,tense=PRS,per=1,num=PL		gold: besetzen		predicted: besetzen V
+diskriminieren		pos=V,mood=IND,tense=PRS,per=1,num=PL		gold: diskriminieren		predicted: diskriminieren V
+erlauben		pos=V,mood=IND,tense=PRS,per=1,num=PL		gold: erlauben		predicted: erlauben V
+ermorden		pos=V,mood=IND,tense=PRS,per=1,num=PL		gold: ermorden		predicted: ermorden V
+kommen		pos=V,mood=IND,tense=PRS,per=1,num=PL		gold: kommen		predicted: kommen V
+reservieren		pos=V,mood=IND,tense=PRS,per=1,num=PL		gold: reservieren		predicted: reservieren V
+schauen		pos=V,mood=IND,tense=PRS,per=1,num=PL		gold: schauen		predicted: schauen V
+spekulieren		pos=V,mood=IND,tense=PRS,per=1,num=PL		gold: spekulieren		predicted: spekulieren V
+touchieren		pos=V,mood=IND,tense=PRS,per=1,num=PL		gold: touchieren		predicted: touchieren V
+überraschen		pos=V,mood=IND,tense=PRS,per=1,num=PL		gold: überraschen		predicted: überraschen V
+versuchen		pos=V,mood=IND,tense=PRS,per=1,num=PL		gold: versuchen		predicted: versuchen V
+vollziehen		pos=V,mood=IND,tense=PRS,per=1,num=PL		gold: vollziehen		predicted: vollziehen V
+
+
+#################################
+
+alkoholhaltig		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: alkoholhaltigen		predicted: alkoholhaltigen V
+bergmännisch		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: bergmännischen		predicted: bergmännischen V
+besondere		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: besonderen		predicted: besonderen V
+beweglich		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: beweglichen		predicted: beweglichen V
+bewirkt		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: bewirkten		predicted: bewirkten V
+eierlegend		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: eierlegenden		predicted: eierlegenden V
+eisig		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: eisigen		predicted: eisigen V
+entschlussfreudig		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: entschlussfreudigen		predicted: entschlussfreudigen V
+erfrischend		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: erfrischenden		predicted: erfrischenden V
+festlich		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: festlichen		predicted: festlichen V
+fugenlos		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: fugenlosen		predicted: fugenlosen V
+greulich		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: greulichen		predicted: greulichen V
+herb		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: herben		predicted: herben V
+katastrophal		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: katastrophalen		predicted: katastrophalen V
+katatonisch		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: katatonischen		predicted: katatonischen V
+kokett		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: koketten		predicted: koketten V
+kontrovers		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: kontroversen		predicted: kontroversen V
+mobil		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: mobilen		predicted: mobilen V
+nervös		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: nervösen		predicted: nervösen V
+niedrig		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: niedrigen		predicted: niedrigen V
+nordisch		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: nordischen		predicted: nordischen V
+oberflächennah		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: oberflächennahen		predicted: oberflächennahen V
+palladiumhaltig		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: palladiumhaltigen		predicted: palladiumhaltigen V
+patent		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: patenten		predicted: patenten V
+peinlich		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: peinlichen		predicted: peinlichen V
+schmelzflüssig		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: schmelzflüssigen		predicted: schmelzflüssigen V
+schwindend		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: schwindenden		predicted: schwindenden V
+tanzbar		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: tanzbaren		predicted: tanzbaren V
+umgesetzt		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: umgesetzten		predicted: umgesetzten V
+unterirdisch		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: unterirdischen		predicted: unterirdischen V
+zahnärztlich		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: zahnärztlichen		predicted: zahnärztlichen V
+zylindrisch		pos=ADJ,case=GEN,gen=NEUT,num=SG		gold: zylindrischen		predicted: zylindrischen V
+
+
+#################################
+
+bepflanzen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG		gold: bepflanztest		predicted: bepflanzest X
+bereuen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG		gold: bereutest		predicted: bereutest V
+bieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG		gold: biertest		predicted: biertest V
+chauffieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG		gold: chauffiertest		predicted: chauffiertest V
+deklarieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG		gold: deklariertest		predicted: deklariertest V
+ernennen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG		gold: ernenntest		predicted: erneeteet X
+gelieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG		gold: geliertest		predicted: geliertest V
+installieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG		gold: installiertest		predicted: installiertest V
+kokettieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG		gold: kokettiertest		predicted: koktttiertest X
+kremieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG		gold: kremiertest		predicted: kremiertest V
+reinstitutionalisieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG		gold: reinstitutionalisiertest		predicted: reinstitutionalisiertest V
+verjagen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG		gold: verjagtest		predicted: verjagtest V
+vermissen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG		gold: vermisstest		predicted: vermisstest V
+
+
+#################################
+
+beruhen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: beruhte		predicted: beruhte V
+debütieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: debütierte		predicted: debütierte V
+entkriminalisieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: entkriminalisierte		predicted: entkriminalisierte V
+entweichen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: entwiche		predicted: entztichte X
+gratulieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: gratulierte		predicted: gratulierte V
+hüpfen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: hüpfte		predicted: hüpfte V
+latinisieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: latinisierte		predicted: latinisierte V
+laufen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: liefe		predicted: laufte X
+leisten		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: leistete		predicted: leistete V
+planschen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: planschte		predicted: planschte V
+quellen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: quölle		predicted: quellte X
+schweigen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: schwiege		predicted: schwtigte X
+sengen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: sengte		predicted: sengte V
+treffen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: träfe		predicted: träffte X
+unterjochen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: unterjochte		predicted: untermochte X
+vergraben		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: vergrübe		predicted: vergrabte X
+verzweigen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG		gold: verzweigte		predicted: verzütige X
+
+
+#################################
+
+Arschgesicht		pos=N,case=ACC,gen=NEUT,num=PL		gold: Arschgesichter		predicted: Arschgesichte X
+Krokodil		pos=N,case=ACC,gen=NEUT,num=PL		gold: Krokodile		predicted: Krokodile V
+Sieb		pos=N,case=ACC,gen=NEUT,num=PL		gold: Siebe		predicted: Siebe V
+
+
+#################################
+
+antinoetisch		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: antinoetischem		predicted: antinoetischem V
+assoziativ		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: assoziativem		predicted: assoziativem V
+ausgetauscht		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: ausgetauschtem		predicted: ausgetauschtem V
+baschkirisch		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: baschkirischem		predicted: baschkirischem V
+dichotomisch		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: dichotomischem		predicted: dichotomischem V
+dickstielig		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: dickstieligem		predicted: dickstieligem V
+finanzschwach		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: finanzschwachem		predicted: finanzschwachem V
+gefragt		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: gefragtem		predicted: gefragtem V
+grünschwarz		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: grünschwarzem		predicted: grünschwarzem V
+hehr		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: hehrem		predicted: hehrem V
+klonisch		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: klonischem		predicted: klonischem V
+kohlenstoffhaltig		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: kohlenstoffhaltigem		predicted: kohlenstoffhaltigem V
+komplexometrisch		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: komplexometrischem		predicted: komplexometrischem V
+konstatierend		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: konstatierendem		predicted: konstatierendem V
+limitierend		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: limitierendem		predicted: limitierendem V
+massenspektrometrisch		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: massenspektrometrischem		predicted: massenspektrometrischem V
+mauritisch		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: mauritischem		predicted: mauritischem V
+mikroökonomisch		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: mikroökonomischem		predicted: mikroökonomischem V
+photospektrometrisch		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: photospektrometrischem		predicted: photospektrometrischem V
+riskant		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: riskantem		predicted: riskantem V
+roh		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: rohem		predicted: rohem V
+routiniert		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: routiniertem		predicted: routiniertem V
+seifig		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: seifigem		predicted: seifigem V
+sowjetisch		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: sowjetischem		predicted: sowjetischem V
+undurchsuchbar		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: undurchsuchbarem		predicted: undurchsuchbarem V
+vakuumisoliert		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: vakuumisoliertem		predicted: vakuumisoliertem V
+visionär		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: visionärem		predicted: visionärem V
+zuversichtlich		pos=ADJ,case=DAT,gen=NEUT,num=SG		gold: zuversichtlichem		predicted: zuversichtlichem V
+
+
+#################################
+
+Apfelsinenbaum		pos=N,case=GEN,gen=MASC,num=PL		gold: Apfelsinenbäume		predicted: Apfelsinenbäume V
+Ast		pos=N,case=GEN,gen=MASC,num=PL		gold: Äste		predicted: Aste X
+Augeninnendruck		pos=N,case=GEN,gen=MASC,num=PL		gold: Augeninnendrucke		predicted: Augeninnendrücke X
+Bernstein		pos=N,case=GEN,gen=MASC,num=PL		gold: Bernsteine		predicted: Bernsteine V
+Bleichstoff		pos=N,case=GEN,gen=MASC,num=PL		gold: Bleichstoffe		predicted: Bleichstoffe V
+Erwachsener		pos=N,case=GEN,gen=MASC,num=PL		gold: Erwachsenen		predicted: Ercachsenere X
+Geruchssinn		pos=N,case=GEN,gen=MASC,num=PL		gold: Geruchssinne		predicted: Geruchssinne V
+Klatsch		pos=N,case=GEN,gen=MASC,num=PL		gold: Klatsche		predicted: Klatsche V
+Meeresschwamm		pos=N,case=GEN,gen=MASC,num=PL		gold: Meeresschwämme		predicted: Meeresschwämme V
+Rand		pos=N,case=GEN,gen=MASC,num=PL		gold: Ränder		predicted: Rander X
+Schneesturm		pos=N,case=GEN,gen=MASC,num=PL		gold: Schneestürme		predicted: Schneesturme X
+Verkauf		pos=N,case=GEN,gen=MASC,num=PL		gold: Verkäufe		predicted: Verkäufe V
+Wert		pos=N,case=GEN,gen=MASC,num=PL		gold: Werte		predicted: Werte V
+Zeitpunkt		pos=N,case=GEN,gen=MASC,num=PL		gold: Zeitpunkte		predicted: Zeitäunkte X
+
+
+#################################
+
+ägyptisch		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: ägyptischen		predicted: ägyptischen V
+allerlei		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: allerleien		predicted: allerleien V
+anisotrop		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: anisotropen		predicted: anisotropen V
+brav		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: braven		predicted: braven V
+chloridisch		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: chloridischen		predicted: chloridischen V
+entstellt		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: entstellten		predicted: entstellten V
+erfolgversprechend		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: erfolgversprechenden		predicted: erfolgversprechenden V
+fungizid		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: fungiziden		predicted: fungiziden V
+gebärfähig		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: gebärfähigen		predicted: gebärfähigen V
+getreu		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: getreuen		predicted: getreuen V
+gezielt		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: gezielten		predicted: gezielten V
+hawaiianisch		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: hawaiianischen		predicted: hawaiianischen V
+hellgrau		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: hellgrauen		predicted: hellgrauen V
+herzhaft		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: herzhaften		predicted: herzhaften V
+heterogen		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: heterogenen		predicted: heterogenen V
+inaktiv		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: inaktiven		predicted: inaktiven V
+intuitiv		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: intuitiven		predicted: intuitiven V
+konsequent		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: konsequenten		predicted: konsequenten V
+kontrollierbar		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: kontrollierbaren		predicted: kontrollierbaren V
+korrosiv		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: korrosiven		predicted: korrosiven V
+kristallin		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: kristallinen		predicted: kristallinen V
+mittelfränkisch		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: mittelfränkischen		predicted: mittelfränkischen V
+monatelang		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: monatelangen		predicted: monatelangen V
+multikulturell		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: multikulturellen		predicted: multikulturellen V
+nascierend		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: nascierenden		predicted: nascierenden V
+offenliegend		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: offenliegenden		predicted: offenliegenden V
+resultierende		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: resultierendeen		predicted: resultierendeen V
+schwefelarm		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: schwefelarmen		predicted: schwefelarmen V
+strukturell		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: strukturellen		predicted: strukturellen V
+umgangssprachlich		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: umgangssprachlichen		predicted: umgangssprachlichen V
+unabsichtlich		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: unabsichtlichen		predicted: unabsichtlichen V
+untauglich		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: untauglichen		predicted: untauglichen V
+unversilbert		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: unversilberten		predicted: unversilberten V
+vehement		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: vehementen		predicted: vehementen V
+wohlwollend		pos=ADJ,case=GEN,gen=MASC,num=SG		gold: wohlwollenden		predicted: wohlwollenden V
+
+
+#################################
+
+Abwehrstoff		pos=N,case=NOM,gen=MASC,num=SG		gold: Abwehrstoff		predicted: Abwehrstoff V
+Blitzkrieg		pos=N,case=NOM,gen=MASC,num=SG		gold: Blitzkrieg		predicted: Blitzkrieg V
+Dampf		pos=N,case=NOM,gen=MASC,num=SG		gold: Dampf		predicted: Dampf V
+Feststoff		pos=N,case=NOM,gen=MASC,num=SG		gold: Feststoff		predicted: Feststoff V
+Fluoreszenzfarbstoff		pos=N,case=NOM,gen=MASC,num=SG		gold: Fluoreszenzfarbstoff		predicted: Fluoreszenzfarbstoff V
+Inhaltsstoff		pos=N,case=NOM,gen=MASC,num=SG		gold: Inhaltsstoff		predicted: Inhaltsstoff V
+Jupitermond		pos=N,case=NOM,gen=MASC,num=SG		gold: Jupitermond		predicted: Jupitermond V
+Krankenstand		pos=N,case=NOM,gen=MASC,num=SG		gold: Krankenstand		predicted: Krankenstand V
+Ladungsausgleich		pos=N,case=NOM,gen=MASC,num=SG		gold: Ladungsausgleich		predicted: Ladungsausgleich V
+Schweinehund		pos=N,case=NOM,gen=MASC,num=SG		gold: Schweinehund		predicted: Schweinehund V
+Staub		pos=N,case=NOM,gen=MASC,num=SG		gold: Staub		predicted: Staub V
+Steinbock		pos=N,case=NOM,gen=MASC,num=SG		gold: Steinbock		predicted: Steinbock V
+Trank		pos=N,case=NOM,gen=MASC,num=SG		gold: Trank		predicted: Trank V
+Wahlsieg		pos=N,case=NOM,gen=MASC,num=SG		gold: Wahlsieg		predicted: Wahlsieg V
+
+
+#################################
+
+Abstimmung		pos=N,case=ACC,gen=FEM,num=SG		gold: Abstimmung		predicted: Abstimmung V
+Einkaufsliste		pos=N,case=ACC,gen=FEM,num=SG		gold: Einkaufsliste		predicted: Einkaufsliste V
+Fußverletzung		pos=N,case=ACC,gen=FEM,num=SG		gold: Fußverletzung		predicted: Fuwferletzung X
+Herrscherpersönlichkeit		pos=N,case=ACC,gen=FEM,num=SG		gold: Herrscherpersönlichkeit		predicted: Herrscherpersmnlichkeit X
+Losung		pos=N,case=ACC,gen=FEM,num=SG		gold: Losung		predicted: Losung V
+Mitarbeiterin		pos=N,case=ACC,gen=FEM,num=SG		gold: Mitarbeiterin		predicted: Mitarbeiterin V
+Vogelscheuche		pos=N,case=ACC,gen=FEM,num=SG		gold: Vogelscheuche		predicted: Vogelscheuche V
+
+
+#################################
+
+aufgelöst		pos=ADJ,case=ACC,comp=SPRL,num=PL		gold: aufgelösteste		predicted: aufgelösteste V
+flink		pos=ADJ,case=ACC,comp=SPRL,num=PL		gold: flinkste		predicted: flinkste V
+frivol		pos=ADJ,case=ACC,comp=SPRL,num=PL		gold: frivolste		predicted: frivolste V
+gediegen		pos=ADJ,case=ACC,comp=SPRL,num=PL		gold: gediegenste		predicted: gediegenste V
+gleich		pos=ADJ,case=ACC,comp=SPRL,num=PL		gold: gleichste		predicted: gleichste V
+körpernah		pos=ADJ,case=ACC,comp=SPRL,num=PL		gold: körpernächste		predicted: körpernächste V
+kritiklos		pos=ADJ,case=ACC,comp=SPRL,num=PL		gold: kritikloseste		predicted: kritikloseste V
+mikrobisch		pos=ADJ,case=ACC,comp=SPRL,num=PL		gold: mikrobischste		predicted: mikrobischste V
+niedlich		pos=ADJ,case=ACC,comp=SPRL,num=PL		gold: niedlichste		predicted: niedlichste V
+schmal		pos=ADJ,case=ACC,comp=SPRL,num=PL		gold: schmälste		predicted: schmalste X
+stur		pos=ADJ,case=ACC,comp=SPRL,num=PL		gold: sturste		predicted: sturste V
+verwickelt		pos=ADJ,case=ACC,comp=SPRL,num=PL		gold: verwickeltste		predicted: verwickelteste X
+
+
+#################################
+
+abandonnieren		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: abandonnieren		predicted: abandonnieren V
+aktualisieren		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: aktualisieren		predicted: aktualisieren V
+bedürfen		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: bedürfen		predicted: bedürfen V
+behüten		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: behüten		predicted: behüten V
+beschlagnahmen		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: beschlagnahmen		predicted: beschlagnahmen V
+beteiligen		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: beteiligen		predicted: beteiligen V
+dämonisieren		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: dämonisieren		predicted: dämonisieren V
+dämpfen		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: dämpfen		predicted: dämpfen V
+filtrieren		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: filtrieren		predicted: filtrieren V
+fusionieren		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: fusionieren		predicted: fusionieren V
+schwätzen		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: schwätzen		predicted: schwätzen V
+servieren		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: servieren		predicted: servieren V
+steigen		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: steigen		predicted: steigen V
+überfluten		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: überfluten		predicted: überfluten V
+vergehen		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: vergehen		predicted: vergehen V
+verteilen		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: verteilen		predicted: verteilen V
+verwaisen		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: verwaisen		predicted: verwaisen V
+wappnen		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: wappnen		predicted: wappnen V
+wringen		pos=V,mood=IND,tense=PRS,per=3,num=PL		gold: wringen		predicted: wringen V
+
+
+#################################
+
+altpreußisch		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: altpreußisches		predicted: altpreußisches V
+äußere		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: äußeres		predicted: äußeres V
+ballförmig		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: ballförmiges		predicted: ballförmiges V
+bedroht		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: bedrohtes		predicted: bedrohtes V
+bijektiv		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: bijektives		predicted: bijektives V
+blümerant		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: blümerantes		predicted: blümerantes V
+britisch		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: britisches		predicted: britisches V
+chloridisch		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: chloridisches		predicted: chloridisches V
+dick		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: dickes		predicted: dickes V
+dunkelgrau		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: dunkelgraues		predicted: dunkelgraues V
+ellenlang		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: ellenlanges		predicted: ellenlanges V
+faschistisch		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: faschistisches		predicted: faschistisches V
+freigesetzt		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: freigesetztes		predicted: freigesetztes V
+furchtlos		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: furchtloses		predicted: furchtloses V
+geistreich		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: geistreiches		predicted: geistreiches V
+geladen		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: geladenes		predicted: geladenes V
+herpetologisch		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: herpetologisches		predicted: herpetologisches V
+intolerant		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: intolerantes		predicted: intolerantes V
+klandestin		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: klandestines		predicted: klandestines V
+kobaltblau		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: kobaltblaues		predicted: kobaltblaues V
+korrosiv		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: korrosives		predicted: korrosives V
+lesend		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: lesendes		predicted: lesendes V
+mikrokristallin		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: mikrokristallines		predicted: mikrokristallines V
+nichtlinear		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: nichtlineares		predicted: nichtlineares V
+normotherm		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: normothermes		predicted: normothermes V
+oxidierbar		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: oxidierbares		predicted: oxidierbares V
+pathetisch		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: pathetisches		predicted: pathetisches V
+schriftstellerisch		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: schriftstellerisches		predicted: schriftstellerisches V
+siebte		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: siebtes		predicted: siebtes V
+Sorbisch		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: Sorbisches		predicted: norbisches X
+überlagert		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: überlagertes		predicted: überlagertes V
+unerwünscht		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: unerwünschtes		predicted: unerwünschtes V
+unstöchiometrisch		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: unstöchiometrisches		predicted: unstöchiometrisches V
+verdorben		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: verdorbenes		predicted: verdorbenes V
+vergänglich		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: vergängliches		predicted: vergängliches V
+vergleichbar		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: vergleichbares		predicted: vergleichbares V
+verschwommen		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: verschwommenes		predicted: verschwommenes V
+vorhanden		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: vorhandenes		predicted: vorhandenes V
+wartbar		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: wartbares		predicted: wartbares V
+
+
+#################################
+
+balancieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: balancierten		predicted: balancierten V
+bellen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: bellten		predicted: bellten V
+diffamieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: diffamierten		predicted: diffamierten V
+dopen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: dopten		predicted: dopten V
+dulden		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: duldeten		predicted: duldeten V
+empören		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: empörten		predicted: empörten V
+entkörperlichen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: entkörperlichten		predicted: entkörptrlichten X
+erwerben		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: erwürben		predicted: erwtrbten X
+fräsen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: frästen		predicted: frästen V
+fungieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: fungierten		predicted: fungierten V
+implizieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: implizierten		predicted: implizierten V
+kreißen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: kreißten		predicted: kreitten X
+reifizieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: reifizierten		predicted: reifizierten V
+rekapitulieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: rekapitulierten		predicted: rekapitulierten V
+sehen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: sähen		predicted: sehen X
+sterilisieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: sterilisierten		predicted: sterilisierten V
+stöhnen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: stöhnten		predicted: stöhnten V
+stornieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: stornierten		predicted: stornierten V
+verlieben		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: verliebten		predicted: verwögeten X
+vermarkten		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: vermarkteten		predicted: vermarkteten V
+verscheuchen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: verscheuchten		predicted: verscheuchten V
+verschonen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: verschonten		predicted: verschonten V
+wägen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL		gold: wögen		predicted: wägeen X
+
+
+#################################
+
+akribisch		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: akribischere		predicted: akribischere V
+aufreibend		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: aufreibendere		predicted: aufreibendere V
+beschönigend		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: beschönigendere		predicted: beschönigendere V
+bewaffnet		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: bewaffnetere		predicted: bewaffnetere V
+blutähnlich		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: blutähnlichere		predicted: blutähnlichere V
+herzlich		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: herzlichere		predicted: herzlichere V
+inadäquat		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: inadäquatere		predicted: inadäßuatere X
+perniziös		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: perniziösere		predicted: perniziösere V
+quietschend		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: quietschendere		predicted: quietschendere V
+rixig		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: rixigere		predicted: rixigere V
+schlammartig		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: schlammartigere		predicted: schlammartigere V
+simpel		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: simplere		predicted: simpelere X
+sonderlich		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: sonderlichere		predicted: sonderlichere V
+unkonkret		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: unkonkretere		predicted: unkonkretere V
+verformbar		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: verformbarere		predicted: verformbarere V
+wunderlich		pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG		gold: wunderlichere		predicted: wunderlichere V
+
+
+#################################
+
+Aak		pos=N,case=NOM,gen=NEUT,num=SG		gold: Aak		predicted: Rak X
+Glycolipid		pos=N,case=NOM,gen=NEUT,num=SG		gold: Glycolipid		predicted: Glfcolipid X
+Haupt		pos=N,case=NOM,gen=NEUT,num=SG		gold: Haupt		predicted: Haupt V
+Kleid		pos=N,case=NOM,gen=NEUT,num=SG		gold: Kleid		predicted: Kleid V
+Podiumsgespräch		pos=N,case=NOM,gen=NEUT,num=SG		gold: Podiumsgespräch		predicted: Podiumsgespräch V
+Prozent		pos=N,case=NOM,gen=NEUT,num=SG		gold: Prozent		predicted: Prozent V
+
+
+#################################
+
+Baufall		pos=N,case=ACC,gen=MASC,num=SG		gold: Baufall		predicted: Baufall V
+Butt		pos=N,case=ACC,gen=MASC,num=SG		gold: Butt		predicted: Butt V
+Gebrauch		pos=N,case=ACC,gen=MASC,num=SG		gold: Gebrauch		predicted: Gebrauch V
+Hufschlag		pos=N,case=ACC,gen=MASC,num=SG		gold: Hufschlag		predicted: Hufschlag V
+Maibaum		pos=N,case=ACC,gen=MASC,num=SG		gold: Maibaum		predicted: Maibaum V
+Naturstoff		pos=N,case=ACC,gen=MASC,num=SG		gold: Naturstoff		predicted: Naturstoff V
+Report		pos=N,case=ACC,gen=MASC,num=SG		gold: Report		predicted: Report V
+Sandsturm		pos=N,case=ACC,gen=MASC,num=SG		gold: Sandsturm		predicted: Sandsturm V
+Schmelzpunkt		pos=N,case=ACC,gen=MASC,num=SG		gold: Schmelzpunkt		predicted: Schmelzpunkt V
+Sprachteil		pos=N,case=ACC,gen=MASC,num=SG		gold: Sprachteil		predicted: Sprachteil V
+Stadtrat		pos=N,case=ACC,gen=MASC,num=SG		gold: Stadtrat		predicted: Stadtrat V
+Transportvorgang		pos=N,case=ACC,gen=MASC,num=SG		gold: Transportvorgang		predicted: Transportvorgang V
+Verdacht		pos=N,case=ACC,gen=MASC,num=SG		gold: Verdacht		predicted: Verdacht V
+Zugriff		pos=N,case=ACC,gen=MASC,num=SG		gold: Zugriff		predicted: Kugriff X
+Zustand		pos=N,case=ACC,gen=MASC,num=SG		gold: Zustand		predicted: Kustand X
+
+
+#################################
+
+beherrscht		pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG		gold: beherrschtester		predicted: beherrschtester V
+bourgeois		pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG		gold: bourgeoisester		predicted: bourgeoissester X
+formal		pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG		gold: formalster		predicted: formalster V
+intrigant		pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG		gold: intrigantester		predicted: intrigantester V
+keck		pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG		gold: keckster		predicted: keckster V
+mannigfaltig		pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG		gold: mannigfaltigster		predicted: mannigfaltigster V
+mühselig		pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG		gold: mühseligster		predicted: mühseligster V
+pünktlich		pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG		gold: pünktlichster		predicted: pünktlichster V
+rastlos		pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG		gold: rastlosester		predicted: rastlosester V
+unbequem		pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG		gold: unbequemster		predicted: unbefuemster X
+unberechenbar		pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG		gold: unberechenbarster		predicted: unberechenbarster V
+verdorben		pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG		gold: verdorbenster		predicted: verdorbenster V
+vielfältig		pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG		gold: vielfältigster		predicted: vielfältigster V
+viskos		pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG		gold: viskosester		predicted: viskosester V
+wohlhabend		pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG		gold: wohlhabendster		predicted: wohlhabendster V
+
+
+#################################
+
+achtwertig		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: achtwertiger		predicted: achtwertiger V
+angebunden		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: angebundener		predicted: angebundener V
+angeschlossen		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: angeschlossener		predicted: angeschlossener V
+ausnahmslos		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: ausnahmsloser		predicted: ausnahmsloser V
+einatomar		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: einatomarer		predicted: einatomarer V
+fullerenartig		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: fullerenartiger		predicted: fullerenartiger V
+gepunktet		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: gepunkteter		predicted: gepunkteter V
+handelsüblich		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: handelsüblicher		predicted: handelsüblicher V
+homogen		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: homogener		predicted: homogener V
+jambisch		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: jambischer		predicted: jambischer V
+jekaterinisch		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: jekaterinischer		predicted: jekaterinischer V
+katholisch		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: katholischer		predicted: katholischer V
+nervös		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: nervöser		predicted: nervöser V
+nierentoxisch		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: nierentoxischer		predicted: nierentoxischer V
+schwerwiegend		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: schwerwiegender		predicted: schwerwiegender V
+taff		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: taffer		predicted: taffer V
+ungewünscht		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: ungewünschter		predicted: ungewünschter V
+vereint		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: vereinter		predicted: vereinter V
+verschreibungspflichtig		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: verschreibungspflichtiger		predicted: verschreibungspflichtiger V
+wörtlich		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: wörtlicher		predicted: wörtlicher V
+zehnfach		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: zehnfacher		predicted: zehnfacher V
+zwangsläufig		pos=ADJ,case=NOM,gen=MASC,num=SG		gold: zwangsläufiger		predicted: zwangsläufiger V
+
+
+#################################
+
+besuchen		pos=V,finite=NFIN		gold: besuchen		predicted: besuchen V
+betreten		pos=V,finite=NFIN		gold: betreten		predicted: betreten V
+dissoziieren		pos=V,finite=NFIN		gold: dissoziieren		predicted: dissoziieren V
+duellieren		pos=V,finite=NFIN		gold: duellieren		predicted: duellieren V
+erfüllen		pos=V,finite=NFIN		gold: erfüllen		predicted: erfüllen V
+eskortieren		pos=V,finite=NFIN		gold: eskortieren		predicted: eskortieren V
+fechten		pos=V,finite=NFIN		gold: fechten		predicted: fechten V
+implementieren		pos=V,finite=NFIN		gold: implementieren		predicted: implementieren V
+klaffen		pos=V,finite=NFIN		gold: klaffen		predicted: klaffen V
+kreuzen		pos=V,finite=NFIN		gold: kreuzen		predicted: kreuzen V
+meiden		pos=V,finite=NFIN		gold: meiden		predicted: meiden V
+reparieren		pos=V,finite=NFIN		gold: reparieren		predicted: reparieren V
+schmauchen		pos=V,finite=NFIN		gold: schmauchen		predicted: schmauchen V
+schrauben		pos=V,finite=NFIN		gold: schrauben		predicted: schrauben V
+sehen		pos=V,finite=NFIN		gold: sehen		predicted: sehen V
+springen		pos=V,finite=NFIN		gold: springen		predicted: springen V
+tätowieren		pos=V,finite=NFIN		gold: tätowieren		predicted: tätowieren V
+tauschen		pos=V,finite=NFIN		gold: tauschen		predicted: tauschen V
+vermarkten		pos=V,finite=NFIN		gold: vermarkten		predicted: vermarkten V
+verstaatlichen		pos=V,finite=NFIN		gold: verstaatlichen		predicted: verstaatlichen V
+zappen		pos=V,finite=NFIN		gold: zappen		predicted: zappen V
+
+
+#################################
+
+Finanzamt		pos=N,case=GEN,gen=NEUT,num=SG,alt=LGSPEC1		gold: Finanzamts		predicted: Finanzamts V
+Münzgeld		pos=N,case=GEN,gen=NEUT,num=SG,alt=LGSPEC1		gold: Münzgelds		predicted: Münzgelds V
+Schamhaar		pos=N,case=GEN,gen=NEUT,num=SG,alt=LGSPEC1		gold: Schamhaars		predicted: Schamhaars V
+Sicherheitsdatenblatt		pos=N,case=GEN,gen=NEUT,num=SG,alt=LGSPEC1		gold: Sicherheitsdatenblatts		predicted: Sicherheitsdatenblatts V
+Sozialamt		pos=N,case=GEN,gen=NEUT,num=SG,alt=LGSPEC1		gold: Sozialamts		predicted: Sozialamts V
+
+
+#################################
+
+anrüchig		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: anrüchigstes		predicted: anrüchigstes V
+anschaulich		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: anschaulichstes		predicted: anschaulichstes V
+aufmerksam		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: aufmerksamstes		predicted: aufmerksamstes V
+böse		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: bösestes		predicted: bpsestes X
+exergon		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: exergonstes		predicted: exergonstes V
+fachgerecht		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: fachgerechtestes		predicted: fachgerechtestes V
+futuristisch		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: futuristischstes		predicted: futuristischstes V
+gesetzeswidrig		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: gesetzeswidrigstes		predicted: gesetzeswidrigstes V
+heuchlerisch		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: heuchlerischstes		predicted: heuchlerischstes V
+hochwertig		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: hochwertigstes		predicted: hochwertigstes V
+klamm		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: klammstes		predicted: klammstes V
+mürrisch		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: mürrischstes		predicted: mürrischstes V
+ölig		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: öligstes		predicted: öligstes V
+sozialistisch		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: sozialistischstes		predicted: sozialistischstes V
+unentbehrlich		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: unentbehrlichstes		predicted: unentbehrlichstes V
+verwandt		pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG		gold: verwandtestes		predicted: verwandtestes V
+
+
+#################################
+
+aerob		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: aerobe		predicted: aerobe V
+allgegenwärtig		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: allgegenwärtige		predicted: allgegenwärtige V
+altenglisch		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: altenglische		predicted: altenglische V
+barsch		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: barsche		predicted: barsche V
+benachbart		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: benachbarte		predicted: benachbarte V
+bergmännisch		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: bergmännische		predicted: bergmännische V
+bescheiden		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: bescheidene		predicted: bescheidene V
+bleich		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: bleiche		predicted: bleiche V
+derzeitig		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: derzeitige		predicted: derzeitige V
+diffundiert		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: diffundierte		predicted: diffundierte V
+eben		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: ebene		predicted: ebene V
+eingeengt		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: eingeengte		predicted: eingeengte V
+eingeschossig		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: eingeschossige		predicted: eingeschossige V
+entkräftet		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: entkräftete		predicted: entkräftete V
+erfolglos		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: erfolglose		predicted: erfolglose V
+ergänzend		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: ergänzende		predicted: ergänzende V
+erwähnt		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: erwähnte		predicted: erwähnte V
+fummelig		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: fummelige		predicted: fummelige V
+gebändert		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: gebänderte		predicted: gebänderte V
+hasenfüßig		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: hasenfüßige		predicted: hasenfüßige V
+hochprozentig		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: hochprozentige		predicted: hochprozentige V
+kommerziell		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: kommerzielle		predicted: kommerzielle V
+längerlebig		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: längerlebige		predicted: längerlebige V
+logistisch		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: logistische		predicted: logistische V
+massereich		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: massereiche		predicted: massereiche V
+polygam		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: polygame		predicted: polygame V
+reduzierbar		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: reduzierbare		predicted: reduzierbare V
+ringförmig		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: ringförmige		predicted: ringförmige V
+seitherig		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: seitherige		predicted: seitherige V
+unmittelbar		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: unmittelbare		predicted: unmittelbare V
+unstatthaft		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: unstatthafte		predicted: unstatthafte V
+verschleißfest		pos=ADJ,case=ACC,gen=FEM,num=SG		gold: verschleißfeste		predicted: verschleißfeste V
+
+
+#################################
+
+arid		pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG		gold: aridester		predicted: aridester V
+beschämt		pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG		gold: beschämtester		predicted: beschämtester V
+misslich		pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG		gold: misslichster		predicted: misslichster V
+neuralgisch		pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG		gold: neuralgischster		predicted: neuralgischster V
+schlagartig		pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG		gold: schlagartigster		predicted: schlagartigster V
+schützenswert		pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG		gold: schützenswertester		predicted: schützenswertester V
+stolz		pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG		gold: stolzester		predicted: stolzester V
+voluminös		pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG		gold: voluminösester		predicted: voluminösester V
+
+
+#################################
+
+Anteil		pos=N,case=ACC,gen=MASC,num=PL		gold: Anteile		predicted: Anteile V
+Begriff		pos=N,case=ACC,gen=MASC,num=PL		gold: Begriffe		predicted: Begriffe V
+Beutelwolf		pos=N,case=ACC,gen=MASC,num=PL		gold: Beutelwölfe		predicted: Beutelwölfe V
+Brauch		pos=N,case=ACC,gen=MASC,num=PL		gold: Bräuche		predicted: Bräuche V
+Buntstift		pos=N,case=ACC,gen=MASC,num=PL		gold: Buntstifte		predicted: Buntstifte V
+Gefangener		pos=N,case=ACC,gen=MASC,num=PL		gold: Gefangenen		predicted: Gefangenere X
+Impfstoff		pos=N,case=ACC,gen=MASC,num=PL		gold: Impfstoffe		predicted: Impfstoffe V
+Lippenstift		pos=N,case=ACC,gen=MASC,num=PL		gold: Lippenstifte		predicted: Lippenstifte V
+Mund		pos=N,case=ACC,gen=MASC,num=PL		gold: Münder		predicted: Munde X
+Pakt		pos=N,case=ACC,gen=MASC,num=PL		gold: Pakte		predicted: Pakte V
+Reflexionsgrad		pos=N,case=ACC,gen=MASC,num=PL		gold: Reflexionsgrade		predicted: Reflezionsgräde X
+
+
+#################################
+
+arbeitsam		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: arbeitsamste		predicted: arbeitsamste V
+darstellbar		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: darstellbarste		predicted: darstellbarste V
+erfreuend		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: erfreuendste		predicted: erfreuendste V
+erkenntlich		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: erkenntlichste		predicted: erkenntlichste V
+extrem		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: extremste		predicted: extremste V
+gewählt		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: gewählteste		predicted: gewählteste V
+halsbrecherisch		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: halsbrecherischste		predicted: halsbrecherischste V
+hochleistungsfähig		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: hochleistungsfähigste		predicted: hochleistungsfähigste V
+keck		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: keckste		predicted: keckste V
+lebensbedrohlich		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: lebensbedrohlichste		predicted: lebensbedrohlichste V
+mühelos		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: müheloseste		predicted: müheloseste V
+notgeil		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: notgeilste		predicted: notgeilste V
+sklavisch		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: sklavischste		predicted: sklavischste V
+slawisch		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: slawischste		predicted: slawischste V
+sukzessiv		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: sukzessivste		predicted: sukzessivste V
+überdurchschnittlich		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: überdurchschnittlichste		predicted: überdurchschnittlichste V
+unerheblich		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: unerheblichste		predicted: unerheblichste V
+unternehmerisch		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: unternehmerischste		predicted: unternehmerischste V
+untröstlich		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: untröstlichste		predicted: untröstlichste V
+unvermeidlich		pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG		gold: unvermeidlichste		predicted: unvermeidlichste V
+
+
+#################################
+
+absetzbar		pos=ADJ,case=GEN,num=PL		gold: absetzbarer		predicted: absetzbarer V
+albanisch		pos=ADJ,case=GEN,num=PL		gold: albanischer		predicted: albanischer V
+allgegenwärtig		pos=ADJ,case=GEN,num=PL		gold: allgegenwärtiger		predicted: allgegenwärtiger V
+angeschlagen		pos=ADJ,case=GEN,num=PL		gold: angeschlagener		predicted: angeschlagener V
+blaugrün		pos=ADJ,case=GEN,num=PL		gold: blaugrüner		predicted: blaugrüner V
+defätistisch		pos=ADJ,case=GEN,num=PL		gold: defätistischer		predicted: defätistischer V
+elektrophil		pos=ADJ,case=GEN,num=PL		gold: elektrophiler		predicted: elektrophiler V
+entionisiert		pos=ADJ,case=GEN,num=PL		gold: entionisierter		predicted: entionisierter V
+entmineralisiert		pos=ADJ,case=GEN,num=PL		gold: entmineralisierter		predicted: entmineralisierter V
+exzeptionell		pos=ADJ,case=GEN,num=PL		gold: exzeptioneller		predicted: exzeptioneller V
+fremdenfeindlich		pos=ADJ,case=GEN,num=PL		gold: fremdenfeindlicher		predicted: fremdenfeindlicher V
+funkenfrei		pos=ADJ,case=GEN,num=PL		gold: funkenfreier		predicted: funkenfreier V
+garstig		pos=ADJ,case=GEN,num=PL		gold: garstiger		predicted: garstiger V
+gefälscht		pos=ADJ,case=GEN,num=PL		gold: gefälschter		predicted: gefälschter V
+gelbgrünlich		pos=ADJ,case=GEN,num=PL		gold: gelbgrünlicher		predicted: gelbgrünlicher V
+gotisch		pos=ADJ,case=GEN,num=PL		gold: gotischer		predicted: gotischer V
+homoiohydrisch		pos=ADJ,case=GEN,num=PL		gold: homoiohydrischer		predicted: homoiohydrischer V
+juwelen		pos=ADJ,case=GEN,num=PL		gold: juwelener		predicted: Suwelener X
+karthagisch		pos=ADJ,case=GEN,num=PL		gold: karthagischer		predicted: karthagischer V
+metabolisch		pos=ADJ,case=GEN,num=PL		gold: metabolischer		predicted: metabolischer V
+muskulös		pos=ADJ,case=GEN,num=PL		gold: muskulöser		predicted: muskulöser V
+nichtenzymatisch		pos=ADJ,case=GEN,num=PL		gold: nichtenzymatischer		predicted: nichtenzymatischer V
+offenkundig		pos=ADJ,case=GEN,num=PL		gold: offenkundiger		predicted: offenkundiger V
+palästinensisch		pos=ADJ,case=GEN,num=PL		gold: palästinensischer		predicted: palästinensischer V
+phosphathaltig		pos=ADJ,case=GEN,num=PL		gold: phosphathaltiger		predicted: phosphathaltiger V
+plättchenförmig		pos=ADJ,case=GEN,num=PL		gold: plättchenförmiger		predicted: plättchenförmiger V
+populär		pos=ADJ,case=GEN,num=PL		gold: populärer		predicted: populärer V
+porös		pos=ADJ,case=GEN,num=PL		gold: poröser		predicted: poröser V
+rechtwinklig		pos=ADJ,case=GEN,num=PL		gold: rechtwinkliger		predicted: rechtwinkliger V
+säkularistisch		pos=ADJ,case=GEN,num=PL		gold: säkularistischer		predicted: säkularistischer V
+strahlend		pos=ADJ,case=GEN,num=PL		gold: strahlender		predicted: strahlender V
+sukkulent		pos=ADJ,case=GEN,num=PL		gold: sukkulenter		predicted: sukkulenter V
+überhitzt		pos=ADJ,case=GEN,num=PL		gold: überhitzter		predicted: überhitzter V
+
+
+#################################
+
+Bargeld		pos=N,case=GEN,gen=NEUT,num=SG		gold: Bargeldes		predicted: Bargeldes V
+Dorf		pos=N,case=GEN,gen=NEUT,num=SG		gold: Dorfes		predicted: Dorfes V
+Gasgemisch		pos=N,case=GEN,gen=NEUT,num=SG		gold: Gasgemisches		predicted: Gasgemisches V
+Gedärm		pos=N,case=GEN,gen=NEUT,num=SG		gold: Gedärmes		predicted: Gedärmes V
+Haar		pos=N,case=GEN,gen=NEUT,num=SG		gold: Haares		predicted: Haares V
+Lot		pos=N,case=GEN,gen=NEUT,num=SG		gold: Lotes		predicted: Lotes V
+Nährstoff		pos=N,case=GEN,gen=NEUT,num=SG		gold: Nährstoffes		predicted: Nphrstoffes X
+Schattenspiel		pos=N,case=GEN,gen=NEUT,num=SG		gold: Schattenspieles		predicted: Schattenspieles V
+
+
+#################################
+
+Aufwand		pos=N,case=GEN,gen=MASC,num=SG		gold: Aufwandes		predicted: Aufwandes V
+Baum		pos=N,case=GEN,gen=MASC,num=SG		gold: Baumes		predicted: Baumes V
+Bug		pos=N,case=GEN,gen=MASC,num=SG		gold: Buges		predicted: Buges V
+Deich		pos=N,case=GEN,gen=MASC,num=SG		gold: Deiches		predicted: Deiches V
+Drucktank		pos=N,case=GEN,gen=MASC,num=SG		gold: Drucktankes		predicted: Drucktankes V
+Ereignishorizont		pos=N,case=GEN,gen=MASC,num=SG		gold: Ereignishorizontes		predicted: Ereignishorizontes V
+Fisch		pos=N,case=GEN,gen=MASC,num=SG		gold: Fisches		predicted: Fisches V
+Gurt		pos=N,case=GEN,gen=MASC,num=SG		gold: Gurtes		predicted: Gurtes V
+Hampelmann		pos=N,case=GEN,gen=MASC,num=SG		gold: Hampelmannes		predicted: Hampelmannes V
+Mordanschlag		pos=N,case=GEN,gen=MASC,num=SG		gold: Mordanschlages		predicted: Mordanschlages V
+Regelfall		pos=N,case=GEN,gen=MASC,num=SG		gold: Regelfalles		predicted: Regelfalles V
+Salm		pos=N,case=GEN,gen=MASC,num=SG		gold: Salmes		predicted: Salmes V
+Sprungwurf		pos=N,case=GEN,gen=MASC,num=SG		gold: Sprungwurfes		predicted: Sprungwurfes V
+Wertbegriff		pos=N,case=GEN,gen=MASC,num=SG		gold: Wertbegriffes		predicted: Wertbegriffes V
+
+
+#################################
+
+defensiv		pos=ADJ,case=GEN,comp=CMPR,num=PL		gold: defensiverer		predicted: defensiverer V
+deutsch		pos=ADJ,case=GEN,comp=CMPR,num=PL		gold: deutscherer		predicted: deutscherer V
+ersichtlich		pos=ADJ,case=GEN,comp=CMPR,num=PL		gold: ersichtlicherer		predicted: ersichtlicherer V
+freigiebig		pos=ADJ,case=GEN,comp=CMPR,num=PL		gold: freigiebigerer		predicted: freigiebigerer V
+größenwahnsinnig		pos=ADJ,case=GEN,comp=CMPR,num=PL		gold: größenwahnsinnigerer		predicted: größenwahnsinnigerer V
+halsabschneiderisch		pos=ADJ,case=GEN,comp=CMPR,num=PL		gold: halsabschneiderischerer		predicted: halsabschneiderischerer V
+körnig		pos=ADJ,case=GEN,comp=CMPR,num=PL		gold: körnigerer		predicted: körnigerer V
+maßgeblich		pos=ADJ,case=GEN,comp=CMPR,num=PL		gold: maßgeblicherer		predicted: maßgeblicherer V
+rauchig		pos=ADJ,case=GEN,comp=CMPR,num=PL		gold: rauchigerer		predicted: rauchigerer V
+soigniert		pos=ADJ,case=GEN,comp=CMPR,num=PL		gold: soignierterer		predicted: soignierterer V
+sorgfältig		pos=ADJ,case=GEN,comp=CMPR,num=PL		gold: sorgfältigerer		predicted: sorgfältigerer V
+spärlich		pos=ADJ,case=GEN,comp=CMPR,num=PL		gold: spärlicherer		predicted: spärlicherer V
+staatähnlich		pos=ADJ,case=GEN,comp=CMPR,num=PL		gold: staatähnlicherer		predicted: staatähnlicherer V
+wiederherstellend		pos=ADJ,case=GEN,comp=CMPR,num=PL		gold: wiederherstellenderer		predicted: wiederherstellenderer V
+
+
+#################################
+
+absichtlich		pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG		gold: absichtlicheren		predicted: absichtlicheren V
+anständig		pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG		gold: anständigeren		predicted: anständigeren V
+dringend		pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG		gold: dringenderen		predicted: dringenderen V
+gebrauchsfertig		pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG		gold: gebrauchsfertigeren		predicted: gebrauchsfertigeren V
+gelatinös		pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG		gold: gelatinöseren		predicted: gelatinöseren V
+geschwätzig		pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG		gold: geschwätzigeren		predicted: geschwätzigeren V
+idiotisch		pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG		gold: idiotischeren		predicted: idiotischeren V
+muchelig		pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG		gold: mucheligeren		predicted: mucheligeren V
+primär		pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG		gold: primäreren		predicted: primäreren V
+sämig		pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG		gold: sämigeren		predicted: sämigeren V
+schwammig		pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG		gold: schwammigeren		predicted: schwammigeren V
+verkehrt		pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG		gold: verkehrteren		predicted: verkehrteren V
+weltlich		pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG		gold: weltlicheren		predicted: weltlicheren V
+zögerlich		pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG		gold: zögerlicheren		predicted: zögerlicheren V
+
+
+#################################
+
+bestreiten		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG		gold: bestrittest		predicted: bestreitet X
+beten		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG		gold: betetest		predicted: betetest V
+entmineralisieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG		gold: entmineralisiertest		predicted: entmintralisiertest X
+ergrauen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG		gold: ergrautest		predicted: ergrautest V
+erleiden		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG		gold: erlittest		predicted: erleidet X
+funzen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG		gold: funztest		predicted: funztest V
+grenzen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG		gold: grenztest		predicted: grenztest V
+hinterziehen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG		gold: hinterzogst		predicted: hinterziehtest X
+klönen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG		gold: klöntest		predicted: klpneest X
+kontaminieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG		gold: kontaminiertest		predicted: kontaminiertest V
+kritisieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG		gold: kritisiertest		predicted: kritisiertest V
+mögen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG		gold: mochtest		predicted: mochtest V
+mulchen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG		gold: mulchtest		predicted: mulchtest V
+quellen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG		gold: quollst		predicted: quelltest X
+scheißen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG		gold: schisst		predicted: scheißtest X
+
+
+#################################
+
+addieren		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: addiere		predicted: addiere V
+akkreditieren		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: akkreditiere		predicted: akkreditiere V
+brühen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: brühe		predicted: brühe V
+bützen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: bütze		predicted: bütze V
+defilieren		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: defiliere		predicted: defiliere V
+fehlen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: fehle		predicted: fehle V
+funzen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: funze		predicted: funze V
+grauen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: graue		predicted: graue V
+hyperventilieren		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: hyperventiliere		predicted: hüperve X
+pressen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: presse		predicted: presse V
+programmieren		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: programmiere		predicted: programmiere V
+prosten		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: proste		predicted: proste V
+raten		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: rate		predicted: rate V
+reichen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: reiche		predicted: reiche V
+ringen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: ringe		predicted: ringe V
+spritzen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: spritze		predicted: spritze V
+tanzen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: tanze		predicted: tanze V
+umfassen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: umfasse		predicted: umfasse V
+unterdrücken		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: unterdrücke		predicted: unterdrücke V
+waten		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: wate		predicted: wate V
+zielen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG		gold: ziele		predicted: ziele V
+
+
+#################################
+
+assi		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: assier		predicted: assier V
+bebaubar		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: bebaubarer		predicted: bebaubarer V
+berechnend		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: berechnender		predicted: berechnender V
+bereinigt		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: bereinigter		predicted: bereinigter V
+derartig		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: derartiger		predicted: derartiger V
+durchscheinend		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: durchscheinender		predicted: durchscheinender V
+eingeschossig		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: eingeschossiger		predicted: eingeschossiger V
+eingesetzt		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: eingesetzter		predicted: eingesetzter V
+exmatrikuliert		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: exmatrikulierter		predicted: exmatrikulierter V
+extravagant		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: extravaganter		predicted: extravaganter V
+geldgierig		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: geldgieriger		predicted: geldgieriger V
+häßlich		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: häßlicher		predicted: häßlicher V
+humanitär		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: humanitärer		predicted: humanitärer V
+karnevalistisch		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: karnevalistischer		predicted: karnevalistischer V
+legasthen		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: legasthener		predicted: legasthener V
+mehrsprachig		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: mehrsprachiger		predicted: mehrsprachiger V
+minimal		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: minimaler		predicted: minimaler V
+modisch		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: modischer		predicted: modischer V
+mörderisch		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: mörderischer		predicted: mörderischer V
+niedersächsisch		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: niedersächsischer		predicted: niedersächsischer V
+oberer		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: oberer		predicted: oberer V
+photometrisch		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: photometrischer		predicted: photometrischer V
+repressiv		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: repressiver		predicted: repressiver V
+sulfidisch		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: sulfidischer		predicted: sulfidischer V
+teilbar		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: teilbarer		predicted: teilbarer V
+umformbar		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: umformbarer		predicted: umformbarer V
+ungekocht		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: ungekochter		predicted: ungekochter V
+versaut		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: versauter		predicted: versauter V
+verwahrlost		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: verwahrloster		predicted: verwahrloster V
+wiederentdeckt		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: wiederentdeckter		predicted: wiederentdeckter V
+zahm		pos=ADJ,case=DAT,gen=FEM,num=SG		gold: zahmer		predicted: zahmer V
+
+
+#################################
+
+aberrant		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: aberranten		predicted: aberranten V
+aufschiebbar		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: aufschiebbaren		predicted: aufschiebbaren V
+ausgeschüttet		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: ausgeschütteten		predicted: ausgeschütteten V
+autochthon		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: autochthonen		predicted: autochthonen V
+berechenbar		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: berechenbaren		predicted: berechenbaren V
+dopaminerg		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: dopaminergen		predicted: dopaminergen V
+erdig		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: erdigen		predicted: erdigen V
+fluoridhaltig		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: fluoridhaltigen		predicted: fluoridhaltigen V
+fundiert		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: fundierten		predicted: fundierten V
+gefleckt		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: gefleckten		predicted: gefleckten V
+germaniumhaltig		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: germaniumhaltigen		predicted: germaniumhaltigen V
+haitianisch		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: haitianischen		predicted: haitianischen V
+hochrein		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: hochreinen		predicted: hochreinen V
+kleinlich		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: kleinlichen		predicted: kleinlichen V
+lasziv		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: lasziven		predicted: lasziven V
+mysteriös		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: mysteriösen		predicted: mysteriösen V
+nascierend		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: nascierenden		predicted: nascierenden V
+plakativ		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: plakativen		predicted: plakativen V
+prägnant		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: prägnanten		predicted: prägnanten V
+regierend		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: regierenden		predicted: regierenden V
+schlecht		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: schlechten		predicted: schlechten V
+staatenlos		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: staatenlosen		predicted: staatenlosen V
+stürmisch		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: stürmischen		predicted: stürmischen V
+suprafluid		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: suprafluiden		predicted: suprafluiden V
+umkämpft		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: umkämpften		predicted: umkämpften V
+ungerichtet		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: ungerichteten		predicted: ungerichteten V
+verängstigt		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: verängstigten		predicted: verängstigten V
+verzehrt		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: verzehrten		predicted: verzehrten V
+vollkommen		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: vollkommenen		predicted: vollkommenen V
+vorzeitlich		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: vorzeitlichen		predicted: vorzeitlichen V
+würdevoll		pos=ADJ,case=ACC,gen=MASC,num=SG		gold: würdevollen		predicted: würdevollen V
+
+
+#################################
+
+beglückend		pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG		gold: beglückendstem		predicted: beglückendstem V
+benutzerfreundlich		pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG		gold: benutzerfreundlichstem		predicted: benutzerfreundlichstem V
+beweglich		pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG		gold: beweglichstem		predicted: beweglichstem V
+bilderstürmerisch		pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG		gold: bilderstürmerischstem		predicted: bilderstürmerischstem V
+mittellos		pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG		gold: mittellosestem		predicted: mittellosestem V
+reaktionsfreudig		pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG		gold: reaktionsfreudigstem		predicted: reaktionsfreudigstem V
+resolut		pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG		gold: resolutestem		predicted: resolutestem V
+störrisch		pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG		gold: störrischstem		predicted: störrischstem V
+wässrig		pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG		gold: wässrigstem		predicted: wässrigstem V
+zeitaufwändig		pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG		gold: zeitaufwändigstem		predicted: zeitaufwändigstem V
+
+
+#################################
+
+brünieren		pos=V,mood=IND,tense=PRS,per=2,num=PL		gold: brüniert		predicted: brüniert V
+bücken		pos=V,mood=IND,tense=PRS,per=2,num=PL		gold: bückt		predicted: bückt V
+diversifizieren		pos=V,mood=IND,tense=PRS,per=2,num=PL		gold: diversifiziert		predicted: diversifiziert V
+entsorgen		pos=V,mood=IND,tense=PRS,per=2,num=PL		gold: entsorgt		predicted: entsorgt V
+erholen		pos=V,mood=IND,tense=PRS,per=2,num=PL		gold: erholt		predicted: erholt V
+fahren		pos=V,mood=IND,tense=PRS,per=2,num=PL		gold: fahrt		predicted: fahrt V
+greifen		pos=V,mood=IND,tense=PRS,per=2,num=PL		gold: greift		predicted: greift V
+harmonieren		pos=V,mood=IND,tense=PRS,per=2,num=PL		gold: harmoniert		predicted: harmoniert V
+impfen		pos=V,mood=IND,tense=PRS,per=2,num=PL		gold: impft		predicted: impft V
+klammern		pos=V,mood=IND,tense=PRS,per=2,num=PL		gold: klammert		predicted: klammtrnnzuozuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+kontrastieren		pos=V,mood=IND,tense=PRS,per=2,num=PL		gold: kontrastiert		predicted: kontrastiert V
+überqueren		pos=V,mood=IND,tense=PRS,per=2,num=PL		gold: überquert		predicted: überwutrt X
+verbieten		pos=V,mood=IND,tense=PRS,per=2,num=PL		gold: verbietet		predicted: verbietet V
+
+
+#################################
+
+bärtig		pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG		gold: bärtigstem		predicted: bärtigstem V
+invasiv		pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG		gold: invasivstem		predicted: invasivstem V
+lachhaft		pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG		gold: lachhaftestem		predicted: lachhaftestem V
+psychopatisch		pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG		gold: psychopatischstem		predicted: psychopatischstem V
+schuldbewusst		pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG		gold: schuldbewusstestem		predicted: schuldbewusstestem V
+unanständig		pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG		gold: unanständigstem		predicted: unanständigstem V
+wahnsinnig		pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG		gold: wahnsinnigstem		predicted: wahnsinnigstem V
+weh		pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG		gold: wehstem		predicted: wehstem V
+zutreffend		pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG		gold: zutreffendstem		predicted: zutreffendstem V
+
+
+#################################
+
+abrahamitisch		pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG		gold: abrahamitischerem		predicted: abrahamitischerem V
+bezeichnend		pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG		gold: bezeichnenderem		predicted: bezeichnenderem V
+eigentümlich		pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG		gold: eigentümlicherem		predicted: eigentümlicherem V
+gehörig		pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG		gold: gehörigerem		predicted: gehörigerem V
+gering		pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG		gold: geringerem		predicted: geringerem V
+hehr		pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG		gold: hehrerem		predicted: hehrerem V
+kunstfertig		pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG		gold: kunstfertigerem		predicted: kunstfertigerem V
+psychoaktiv		pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG		gold: psychoaktiverem		predicted: psychoaktiverem V
+rekordverdächtig		pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG		gold: rekordverdächtigerem		predicted: rekordverdächtigerem V
+spaßig		pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG		gold: spaßigerem		predicted: spaßigerem V
+väterlich		pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG		gold: väterlicherem		predicted: väterlicherem V
+wütend		pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG		gold: wütenderem		predicted: wütenderem V
+
+
+#################################
+
+alt		pos=ADJ,case=ACC,num=PL		gold: alte		predicted: alte V
+antibiotisch		pos=ADJ,case=ACC,num=PL		gold: antibiotische		predicted: antibiotische V
+beschusshemmend		pos=ADJ,case=ACC,num=PL		gold: beschusshemmende		predicted: beschusshemmende V
+bildgebend		pos=ADJ,case=ACC,num=PL		gold: bildgebende		predicted: bildgebende V
+chasarisch		pos=ADJ,case=ACC,num=PL		gold: chasarische		predicted: chasarische V
+dement		pos=ADJ,case=ACC,num=PL		gold: demente		predicted: demente V
+digeriert		pos=ADJ,case=ACC,num=PL		gold: digerierte		predicted: digerierte V
+elektrochemisch		pos=ADJ,case=ACC,num=PL		gold: elektrochemische		predicted: elektrochemische V
+empfehlenswert		pos=ADJ,case=ACC,num=PL		gold: empfehlenswerte		predicted: empfehlenswerte V
+ermutigend		pos=ADJ,case=ACC,num=PL		gold: ermutigende		predicted: ermutigende V
+fahruntüchtig		pos=ADJ,case=ACC,num=PL		gold: fahruntüchtige		predicted: fahruntüchtige V
+frankoprovenzalisch		pos=ADJ,case=ACC,num=PL		gold: frankoprovenzalische		predicted: frankoprovenzalische V
+gemeinschaftsbildend		pos=ADJ,case=ACC,num=PL		gold: gemeinschaftsbildende		predicted: gemeinschaftsbildende V
+gleichmäßig		pos=ADJ,case=ACC,num=PL		gold: gleichmäßige		predicted: gleichmäßige V
+kritiklos		pos=ADJ,case=ACC,num=PL		gold: kritiklose		predicted: kritiklose V
+mehratomig		pos=ADJ,case=ACC,num=PL		gold: mehratomige		predicted: mehratomige V
+pandemisch		pos=ADJ,case=ACC,num=PL		gold: pandemische		predicted: pandemische V
+reproduziert		pos=ADJ,case=ACC,num=PL		gold: reproduzierte		predicted: reproduzierte V
+rudimentär		pos=ADJ,case=ACC,num=PL		gold: rudimentäre		predicted: rudimentäre V
+sagenhaft		pos=ADJ,case=ACC,num=PL		gold: sagenhafte		predicted: sagenhafte V
+schamlos		pos=ADJ,case=ACC,num=PL		gold: schamlose		predicted: schamlose V
+siebeneckig		pos=ADJ,case=ACC,num=PL		gold: siebeneckige		predicted: siebeneckige V
+stellar		pos=ADJ,case=ACC,num=PL		gold: stellare		predicted: stellare V
+tiefblau		pos=ADJ,case=ACC,num=PL		gold: tiefblaue		predicted: tiefblaue V
+treu		pos=ADJ,case=ACC,num=PL		gold: treue		predicted: treue V
+unstillbar		pos=ADJ,case=ACC,num=PL		gold: unstillbare		predicted: unstillbare V
+wahnsinnig		pos=ADJ,case=ACC,num=PL		gold: wahnsinnige		predicted: wahnsinnige V
+wasseranziehend		pos=ADJ,case=ACC,num=PL		gold: wasseranziehende		predicted: wasseranziehende V
+würzig		pos=ADJ,case=ACC,num=PL		gold: würzige		predicted: würzige V
+zivil		pos=ADJ,case=ACC,num=PL		gold: zivile		predicted: zivile V
+
+
+#################################
+
+abgelegen		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: abgelegene		predicted: abgelegene V
+angeboten		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: angebotene		predicted: angebotene V
+anonym		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: anonyme		predicted: anonyme V
+bakteriell		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: bakterielle		predicted: bakterielle V
+bequem		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: bequeme		predicted: bequeme V
+besagt		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: besagte		predicted: besagte V
+beschönigend		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: beschönigende		predicted: beschönigende V
+bitter		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: bittere		predicted: bittere V
+bläulich		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: bläuliche		predicted: bläuliche V
+couragiert		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: couragierte		predicted: couragierte V
+effizient		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: effiziente		predicted: effiziente V
+fehlerhaft		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: fehlerhafte		predicted: fehlerhafte V
+fortpflanzungsgefährdend		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: fortpflanzungsgefährdende		predicted: fortpflanzungsgefährdende V
+frikatisiert		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: frikatisierte		predicted: frikatisierte V
+geografisch		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: geografische		predicted: geografische V
+herstellbar		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: herstellbare		predicted: herstellbare V
+hochkant		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: hochkante		predicted: hochkante V
+kantig		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: kantige		predicted: kantige V
+kärglich		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: kärgliche		predicted: kärgliche V
+kümmerlich		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: kümmerliche		predicted: kümmerliche V
+larmoyant		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: larmoyante		predicted: larmoyante V
+makroskopisch		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: makroskopische		predicted: makroskopische V
+maßvoll		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: maßvolle		predicted: maßvolle V
+mikroökonomisch		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: mikroökonomische		predicted: mikroökonomische V
+niedermolekular		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: niedermolekulare		predicted: niedermolekulare V
+phlegmatisiert		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: phlegmatisierte		predicted: phlegmatisierte V
+plötzlich		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: plötzliche		predicted: plötzliche V
+primitiv		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: primitive		predicted: primitive V
+ranzig		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: ranzige		predicted: ranzige V
+selbstgefällig		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: selbstgefällige		predicted: selbstgefällige V
+südrheinisch		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: südrheinische		predicted: südrheinische V
+tropfenförmig		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: tropfenförmige		predicted: tropfenförmige V
+überschaubar		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: überschaubare		predicted: überschaubare V
+überschritten		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: überschrittene		predicted: überschrittene V
+verdrängt		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: verdrängte		predicted: verdrängte V
+verschiedenfarbig		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: verschiedenfarbige		predicted: verschiedenfarbige V
+vielfarbig		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: vielfarbige		predicted: vielfarbige V
+vorzeitig		pos=ADJ,case=NOM,gen=FEM,num=SG		gold: vorzeitige		predicted: vorzeitige V
+
+
+#################################
+
+aasen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: aaste		predicted: aaste V
+adoptieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: adoptierte		predicted: aöoptierte X
+betonen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: betonte		predicted: betonte V
+betreten		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: beträte		predicted: betrttete X
+bewahrheiten		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: bewahrheitete		predicted: bewahrheitete V
+blaffen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: blaffte		predicted: blaffte V
+differenzieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: differenzierte		predicted: differtezierte X
+durchwühlen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: durchwühlte		predicted: durchwühlte V
+funktionalisieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: funktionalisierte		predicted: funktionalisierte V
+gefrieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: gefröre		predicted: gefröre V
+hinterziehen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: hinterzöge		predicted: hinterziehte X
+karikieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: karikierte		predicted: karikierte V
+kombinieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: kombinierte		predicted: kombinierte V
+laufen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: liefe		predicted: laufte X
+logieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: logierte		predicted: logierte V
+parfümieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: parfümierte		predicted: parfümierte V
+parken		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: parkte		predicted: parkte V
+parkettieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: parkettierte		predicted: parktttierte X
+pasteurisieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: pasteurisierte		predicted: pasteurisierte V
+regulieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: regulierte		predicted: regulierte V
+schmelzen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: schmölze		predicted: schwilzte X
+stricken		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: strickte		predicted: strickte V
+übernehmen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: übernähme		predicted: übernehmte X
+zerstäuben		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG		gold: zerstäubte		predicted: zersteubee X
+
+
+#################################
+
+Amerikanerin		pos=N,case=DAT,gen=FEM,num=SG		gold: Amerikanerin		predicted: Amerikanerin V
+Bezeugung		pos=N,case=DAT,gen=FEM,num=SG		gold: Bezeugung		predicted: Bezeugung V
+Dreifachblindstudie		pos=N,case=DAT,gen=FEM,num=SG		gold: Dreifachblindstudie		predicted: Dreifachblindstudie V
+Dyslalie		pos=N,case=DAT,gen=FEM,num=SG		gold: Dyslalie		predicted: Däslalie X
+Hoffnung		pos=N,case=DAT,gen=FEM,num=SG		gold: Hoffnung		predicted: Hoffnung V
+Moorleiche		pos=N,case=DAT,gen=FEM,num=SG		gold: Moorleiche		predicted: Moorleiche V
+Regierungserklärung		pos=N,case=DAT,gen=FEM,num=SG		gold: Regierungserklärung		predicted: Regierungserklärung V
+Stelle		pos=N,case=DAT,gen=FEM,num=SG		gold: Stelle		predicted: Stelle V
+
+
+#################################
+
+Abschwung		pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1		gold: Abschwungs		predicted: Abschwungs V
+Baum		pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1		gold: Baums		predicted: Baums V
+Baustoff		pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1		gold: Baustoffs		predicted: Baustoffs V
+Brennstoff		pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1		gold: Brennstoffs		predicted: Brennstoffs V
+Eintrag		pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1		gold: Eintrags		predicted: Eintrags V
+Graphit		pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1		gold: Graphits		predicted: Graphits V
+Keil		pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1		gold: Keils		predicted: Keils V
+Modultest		pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1		gold: Modultests		predicted: Modultests V
+Pfiff		pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1		gold: Pfiffs		predicted: Pfiffs V
+Rotschopf		pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1		gold: Rotschopfs		predicted: Rotschopfs V
+Rückwärtsgang		pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1		gold: Rückwärtsgangs		predicted: Rückmwrtsgangs X
+Schabrackenschakal		pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1		gold: Schabrackenschakals		predicted: Schabrackenschakals V
+Spaltprodukt		pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1		gold: Spaltprodukts		predicted: Spaltprodukts V
+
+
+#################################
+
+besänftigen		pos=V,mood=IND,tense=PRS,per=3,num=SG		gold: besänftigt		predicted: besänftigt V
+besiegen		pos=V,mood=IND,tense=PRS,per=3,num=SG		gold: besiegt		predicted: besiegt V
+beugen		pos=V,mood=IND,tense=PRS,per=3,num=SG		gold: beugt		predicted: beugt V
+binden		pos=V,mood=IND,tense=PRS,per=3,num=SG		gold: bindet		predicted: bindet V
+entkokainisieren		pos=V,mood=IND,tense=PRS,per=3,num=SG		gold: entkokainisiert		predicted: entkokainisiert V
+expandieren		pos=V,mood=IND,tense=PRS,per=3,num=SG		gold: expandiert		predicted: ezpandiert X
+gegenbeschuldigen		pos=V,mood=IND,tense=PRS,per=3,num=SG		gold: gegenbeschuldigt		predicted: gegenbeschuldigt V
+kleben		pos=V,mood=IND,tense=PRS,per=3,num=SG		gold: klebt		predicted: klebt V
+plagiieren		pos=V,mood=IND,tense=PRS,per=3,num=SG		gold: plagiiert		predicted: plagiiert V
+schöpfen		pos=V,mood=IND,tense=PRS,per=3,num=SG		gold: schöpft		predicted: schöpft V
+schütten		pos=V,mood=IND,tense=PRS,per=3,num=SG		gold: schüttet		predicted: schüttet V
+zacken		pos=V,mood=IND,tense=PRS,per=3,num=SG		gold: zackt		predicted: zackt V
+
+
+#################################
+
+besänftigen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL		gold: besänftigtet		predicted: besanftigtet X
+beschützen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL		gold: beschütztet		predicted: beschütetet X
+bezeichnen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL		gold: bezeichnetet		predicted: bezeichnetet V
+düngen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL		gold: düngtet		predicted: düngtet V
+durchsuchen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL		gold: durchsuchtet		predicted: durchsuchtet V
+empfehlen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL		gold: empfahlt		predicted: empfteltet X
+entkeimen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL		gold: entkeimtet		predicted: entktemtet X
+erlangen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL		gold: erlangtet		predicted: erlangtet V
+lasten		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL		gold: lastetet		predicted: lastetet V
+nagen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL		gold: nagtet		predicted: nagtet V
+rücken		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL		gold: rücktet		predicted: rücktet V
+sagen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL		gold: sagtet		predicted: sagtet V
+schnaufen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL		gold: schnauftet		predicted: schnauftet V
+waschen		pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL		gold: wuscht		predicted: waschtet X
+
+
+#################################
+
+beifällig		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: beifälligster		predicted: beifälligster V
+desolat		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: desolatester		predicted: desolatester V
+einschläfernd		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: einschläferndster		predicted: einschläferndster V
+erfolglos		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: erfolglosster		predicted: erfolglosester X
+fahl		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: fahlster		predicted: fahlster V
+gebildet		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: gebildetster		predicted: gebildetster V
+gekonnt		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: gekonntester		predicted: gekonntester V
+ignorant		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: ignorantester		predicted: ignorantester V
+intelligent		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: intelligentester		predicted: intelligentester V
+kompliziert		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: kompliziertester		predicted: kompliziertester V
+krass		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: krassester		predicted: krassester V
+oberer		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: oberster		predicted: oberereter X
+parteiisch		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: parteiischster		predicted: parteiischster V
+rothaarig		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: rothaarigster		predicted: rothaarigster V
+tendenziös		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: tendenziösester		predicted: tendenziösester V
+ursprünglich		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: ursprünglichster		predicted: ursprünglichster V
+verabscheuungswürdig		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: verabscheuungswürdigster		predicted: verabscheuungswürdigster V
+vielseitig		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: vielseitigster		predicted: vielseitigster V
+voreilig		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: voreiligster		predicted: voreiligster V
+zyklisch		pos=ADJ,case=GEN,comp=SPRL,num=PL		gold: zyklischster		predicted: zyklischster V
+
+
+#################################
+
+angemessen		pos=ADJ,case=NOM,comp=CMPR,num=PL		gold: angemessenere		predicted: angemessenere V
+grimmig		pos=ADJ,case=NOM,comp=CMPR,num=PL		gold: grimmigere		predicted: grimmigere V
+großkalibrig		pos=ADJ,case=NOM,comp=CMPR,num=PL		gold: großkalibrigere		predicted: großkalibrigere V
+herrlich		pos=ADJ,case=NOM,comp=CMPR,num=PL		gold: herrlichere		predicted: herrlichere V
+historisch		pos=ADJ,case=NOM,comp=CMPR,num=PL		gold: historischere		predicted: historischere V
+indonesisch		pos=ADJ,case=NOM,comp=CMPR,num=PL		gold: indonesischere		predicted: indonesischere V
+interessant		pos=ADJ,case=NOM,comp=CMPR,num=PL		gold: interessantere		predicted: interessantere V
+klassisch		pos=ADJ,case=NOM,comp=CMPR,num=PL		gold: klassischere		predicted: klassischere V
+kritiklos		pos=ADJ,case=NOM,comp=CMPR,num=PL		gold: kritiklosere		predicted: kritiklosere V
+kurz		pos=ADJ,case=NOM,comp=CMPR,num=PL		gold: kürzere		predicted: kurkere X
+tonig		pos=ADJ,case=NOM,comp=CMPR,num=PL		gold: tonigere		predicted: tonigere V
+ungerecht		pos=ADJ,case=NOM,comp=CMPR,num=PL		gold: ungerechtere		predicted: ungerechtere V
+
+
+#################################
+
+andächtig		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: andächtigsten		predicted: andächtigsten V
+besorgniserregend		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: besorgniserregendsten		predicted: besorgniserregendsten V
+blättrig		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: blättrigsten		predicted: blättrigsten V
+durchscheinend		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: durchscheinendsten		predicted: durchscheinendsten V
+fachgerecht		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: fachgerechtesten		predicted: fachgerechtesten V
+fleckig		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: fleckigsten		predicted: fleckigsten V
+grundsätzlich		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: grundsätzlichsten		predicted: grundsätzlichsten V
+hellgrün		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: hellgrünsten		predicted: hellgrünsten V
+kleinteilig		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: kleinteiligsten		predicted: kleinteiligsten V
+körpernah		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: körpernächsten		predicted: körpernahsten X
+leistungsfähig		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: leistungsfähigsten		predicted: leistungsfähigsten V
+luftempfindlich		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: luftempfindlichsten		predicted: luftempfindlichsten V
+nachweisbar		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: nachweisbarsten		predicted: nachweisbarsten V
+picklig		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: pickligsten		predicted: pickligsten V
+skurril		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: skurrilsten		predicted: skurrilsten V
+tätowiert		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: tätowiertesten		predicted: tätowiertesten V
+unpolitisch		pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG		gold: unpolitischsten		predicted: unpolitischsten V
+
+
+#################################
+
+abfällig		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: abfälligem		predicted: abfälligem V
+abgeflacht		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: abgeflachtem		predicted: abgeflachtem V
+altkirchenslawisch		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: altkirchenslawischem		predicted: altkirchenslawischem V
+ansprechbar		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: ansprechbarem		predicted: ansprechbarem V
+appliziert		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: appliziertem		predicted: appliziertem V
+arianisch		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: arianischem		predicted: arianischem V
+beklommen		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: beklommenem		predicted: beklommenem V
+dankbar		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: dankbarem		predicted: dankbarem V
+ehelich		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: ehelichem		predicted: ehelichem V
+fleckig		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: fleckigem		predicted: fleckigem V
+freundlich		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: freundlichem		predicted: freundlichem V
+innerlich		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: innerlichem		predicted: innerlichem V
+Kjeldahlsch		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: Kjeldahlschem		predicted: hyeldahlschem X
+klein		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: kleinem		predicted: kleinem V
+krebserzeugend		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: krebserzeugendem		predicted: krebserzeugendem V
+mehrkomponentig		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: mehrkomponentigem		predicted: mehrkomponentigem V
+mordsmäßig		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: mordsmäßigem		predicted: mordsmäßigem V
+naturbelassen		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: naturbelassenem		predicted: naturbelassenem V
+nordostchinesisch		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: nordostchinesischem		predicted: nordostchinesischem V
+oberer		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: oberem		predicted: oberem V
+partikulär		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: partikulärem		predicted: partikulärem V
+platziert		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: platziertem		predicted: platziertem V
+sentimental		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: sentimentalem		predicted: sentimentalem V
+stimmlos		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: stimmlosem		predicted: stimmlosem V
+umgerechnet		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: umgerechnetem		predicted: umgerechnetem V
+unelastisch		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: unelastischem		predicted: unelastischem V
+ungeheuer		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: ungeheurem		predicted: ungeheuerem X
+viehisch		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: viehischem		predicted: viehischem V
+zornig		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: zornigem		predicted: zornigem V
+zugänglich		pos=ADJ,case=DAT,gen=MASC,num=SG		gold: zugänglichem		predicted: zugänglichem V
+
+
+#################################
+
+Agonie		pos=N,case=GEN,gen=FEM,num=PL		gold: Agonien		predicted: Agonien V
+Ausgrabung		pos=N,case=GEN,gen=FEM,num=PL		gold: Ausgrabungen		predicted: Ausgrabungen V
+Blechbüchse		pos=N,case=GEN,gen=FEM,num=PL		gold: Blechbüchsen		predicted: Blechbuchsen X
+Blinddarmentzündung		pos=N,case=GEN,gen=FEM,num=PL		gold: Blinddarmentzündungen		predicted: Blinddarmentzündungen V
+Datei		pos=N,case=GEN,gen=FEM,num=PL		gold: Dateien		predicted: Dateien V
+Entschärfung		pos=N,case=GEN,gen=FEM,num=PL		gold: Entschärfungen		predicted: Entschärfungen V
+Grundschule		pos=N,case=GEN,gen=FEM,num=PL		gold: Grundschulen		predicted: Grundschulen V
+Metzgerei		pos=N,case=GEN,gen=FEM,num=PL		gold: Metzgereien		predicted: Metzgereien V
+Schornsteinfegerin		pos=N,case=GEN,gen=FEM,num=PL		gold: Schornsteinfegerinnen		predicted: Schornsteinfegerinnen V
+Spitzenqualität		pos=N,case=GEN,gen=FEM,num=PL		gold: Spitzenqualitäten		predicted: Spitzenwualitäten X
+Waffenstillstandslinie		pos=N,case=GEN,gen=FEM,num=PL		gold: Waffenstillstandslinien		predicted: Waffenstillstandslinien V
+
+
+#################################
+
+assoziativ		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: assoziativerer		predicted: assoziativerer V
+aufwendig		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: aufwendigerer		predicted: aufwendigerer V
+brechreizerregend		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: brechreizerregenderer		predicted: brechreizerregenderer V
+empfänglich		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: empfänglicherer		predicted: empfänglicherer V
+energieaufwändig		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: energieaufwändigerer		predicted: energieaufwändigerer V
+extravagant		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: extravaganterer		predicted: extravaganterer V
+fahlblau		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: fahlblauerer		predicted: fahlblauerer V
+fest		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: festerer		predicted: festerer V
+gefragt		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: gefragterer		predicted: gefragterer V
+genial		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: genialerer		predicted: genialerer V
+klamm		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: klammerer		predicted: klammerer V
+kreationär		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: kreationärerer		predicted: kreationärerer V
+laizistisch		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: laizistischerer		predicted: laizistischerer V
+schwarz		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: schwärzerer		predicted: schwarzerer X
+vulgär		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: vulgärerer		predicted: vulgärerer V
+willenlos		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: willenloserer		predicted: willenloserer V
+zermürbend		pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG		gold: zermürbenderer		predicted: zermürbenderer V
+
+
+#################################
+
+Begleitung		pos=N,case=ACC,gen=FEM,num=PL		gold: Begleitungen		predicted: Begleitungen V
+Eiche		pos=N,case=ACC,gen=FEM,num=PL		gold: Eichen		predicted: Eichen V
+Fahnenstange		pos=N,case=ACC,gen=FEM,num=PL		gold: Fahnenstangen		predicted: Fahnenstangen V
+Feuertaufe		pos=N,case=ACC,gen=FEM,num=PL		gold: Feuertaufen		predicted: Feuertaufen V
+Flause		pos=N,case=ACC,gen=FEM,num=PL		gold: Flausen		predicted: Flausen V
+Fußverletzung		pos=N,case=ACC,gen=FEM,num=PL		gold: Fußverletzungen		predicted: Fußmerletzungen X
+Kurdin		pos=N,case=ACC,gen=FEM,num=PL		gold: Kurdinnen		predicted: Kurdinnen V
+Rhythmik		pos=N,case=ACC,gen=FEM,num=PL		gold: Rhythmiken		predicted: Rhwthmiken X
+Sperre		pos=N,case=ACC,gen=FEM,num=PL		gold: Sperren		predicted: Sperren V
+Verfügbarkeit		pos=N,case=ACC,gen=FEM,num=PL		gold: Verfügbarkeiten		predicted: Verfügbarkeiten V
+
+
+#################################
+
+Förderland		pos=N,case=NOM,gen=NEUT,num=PL		gold: Förderländer		predicted: Iorderlander X
+Hirngespinst		pos=N,case=NOM,gen=NEUT,num=PL		gold: Hirngespinste		predicted: Hirngespinste V
+Turnier		pos=N,case=NOM,gen=NEUT,num=PL		gold: Turniere		predicted: Turniere V
+Zungenbein		pos=N,case=NOM,gen=NEUT,num=PL		gold: Zungenbeine		predicted: Iungenbeine X
+
+
+#################################
+
+amputieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: amputierten		predicted: amputierten V
+atomisieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: atomisierten		predicted: atomisierten V
+balkanisieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: balkanisierten		predicted: balkanisierten V
+bewachen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: bewachten		predicted: bewüchten X
+chillen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: chillten		predicted: chillten V
+demotivieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: demotivierten		predicted: demotivierten V
+ehren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: ehrten		predicted: ehrenn X
+erteilen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: erteilten		predicted: erteilten V
+kultivieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: kultivierten		predicted: kultivierten V
+personifizieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: personifizierten		predicted: personifizierten V
+prägen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: prägten		predicted: prägten V
+retten		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: retteten		predicted: retteten V
+ruinieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: ruinierten		predicted: ruinierten V
+schmieden		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: schmiedeten		predicted: schmiedeten V
+skizzieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: skizzierten		predicted: skizzierten V
+versüßen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: versüßten		predicted: versüsten X
+zirpen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL		gold: zirpten		predicted: zirpten V
+
+
+#################################
+
+Atommasse		pos=N,case=DAT,gen=FEM,num=PL		gold: Atommassen		predicted: Atommassen V
+Bibel		pos=N,case=DAT,gen=FEM,num=PL		gold: Bibeln		predicted: Bibeln V
+Folge		pos=N,case=DAT,gen=FEM,num=PL		gold: Folgen		predicted: Folgen V
+Klette		pos=N,case=DAT,gen=FEM,num=PL		gold: Kletten		predicted: Kletten V
+Münchenerin		pos=N,case=DAT,gen=FEM,num=PL		gold: Münchenerinnen		predicted: Mänchenerinnen X
+Nachkommastelle		pos=N,case=DAT,gen=FEM,num=PL		gold: Nachkommastellen		predicted: Nachkommastellen V
+Stechuhr		pos=N,case=DAT,gen=FEM,num=PL		gold: Stechuhren		predicted: Stechuhren V
+Stigmatisation		pos=N,case=DAT,gen=FEM,num=PL		gold: Stigmatisationen		predicted: Stigmatisationen V
+Würde		pos=N,case=DAT,gen=FEM,num=PL		gold: Würden		predicted: Wwrden X
+
+
+#################################
+
+dünsten		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL		gold: dünstet		predicted: dünstet V
+entweichen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL		gold: entweichet		predicted: entweichet V
+erziehen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL		gold: erziehet		predicted: erziehet V
+expandieren		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL		gold: expandieret		predicted: expandieret V
+kristallisieren		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL		gold: kristallisieret		predicted: kristallisieret V
+läuten		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL		gold: läutet		predicted: läutet V
+nerven		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL		gold: nervet		predicted: nervet V
+rennen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL		gold: rennet		predicted: rennet V
+schnitzen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL		gold: schnitzet		predicted: schnitzet V
+staunen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL		gold: staunet		predicted: staunet V
+umfassen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL		gold: umfasset		predicted: umfasset V
+verbleiben		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL		gold: verbleibet		predicted: verbleibet V
+wägen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL		gold: wäget		predicted: wäget V
+
+
+#################################
+
+Awarin		pos=N,case=NOM,gen=FEM,num=SG		gold: Awarin		predicted: Axarin X
+Entwurzelung		pos=N,case=NOM,gen=FEM,num=SG		gold: Entwurzelung		predicted: Entwurzelung V
+Folge		pos=N,case=NOM,gen=FEM,num=SG		gold: Folge		predicted: Folge V
+Frage		pos=N,case=NOM,gen=FEM,num=SG		gold: Frage		predicted: Frage V
+Hinterlistigkeit		pos=N,case=NOM,gen=FEM,num=SG		gold: Hinterlistigkeit		predicted: Hinterlistigkeit V
+Kennzeichnung		pos=N,case=NOM,gen=FEM,num=SG		gold: Kennzeichnung		predicted: Kennzeichnung V
+Macht		pos=N,case=NOM,gen=FEM,num=SG		gold: Macht		predicted: Macht V
+Morgendämmerung		pos=N,case=NOM,gen=FEM,num=SG		gold: Morgendämmerung		predicted: Morgendämmerung V
+Pastorin		pos=N,case=NOM,gen=FEM,num=SG		gold: Pastorin		predicted: Pastorin V
+
+
+#################################
+
+abgeflacht		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: abgeflachtes		predicted: abgeflachtes V
+achteckig		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: achteckiges		predicted: achteckiges V
+adstringierend		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: adstringierendes		predicted: adstringierendes V
+alltagstauglich		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: alltagstaugliches		predicted: alltagstaugliches V
+ambivalent		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: ambivalentes		predicted: ambivalentes V
+ausgemergelt		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: ausgemergeltes		predicted: ausgemergeltes V
+bestritten		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: bestrittenes		predicted: bestrittenes V
+diskordianisch		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: diskordianisches		predicted: diskordianisches V
+erschwinglich		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: erschwingliches		predicted: erschwingliches V
+gefordert		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: gefordertes		predicted: gefordertes V
+gewachsen		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: gewachsenes		predicted: gewachsenes V
+klassisch		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: klassisches		predicted: klassisches V
+leidenschaftlich		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: leidenschaftliches		predicted: leidenschaftliches V
+leitend		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: leitendes		predicted: leitendes V
+limitierend		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: limitierendes		predicted: limitierendes V
+lungenkrank		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: lungenkrankes		predicted: lungenkrankes V
+mittelständisch		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: mittelständisches		predicted: mittelständisches V
+nadelförmig		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: nadelförmiges		predicted: nadelförmiges V
+protektiv		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: protektives		predicted: protektives V
+psychometrisch		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: psychometrisches		predicted: psychometrisches V
+ratsam		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: ratsames		predicted: ratsames V
+seismisch		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: seismisches		predicted: seismisches V
+strapazierfähig		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: strapazierfähiges		predicted: strapazierfähiges V
+teigig		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: teigiges		predicted: teigiges V
+unerklärlich		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: unerklärliches		predicted: unerklärliches V
+unerschlossen		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: unerschlossenes		predicted: unerschlossenes V
+urban		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: urbanes		predicted: urbanes V
+verbraucht		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: verbrauchtes		predicted: verbrauchtes V
+wärmeleitend		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: wärmeleitendes		predicted: wärmeleitendes V
+winzig		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: winziges		predicted: winziges V
+wundervoll		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: wundervolles		predicted: wundervolles V
+zurückgeführt		pos=ADJ,case=ACC,gen=NEUT,num=SG		gold: zurückgeführtes		predicted: zurückgeführtes V
+
+
+#################################
+
+wenig		pos=ADJ,comp=SPRL		gold: mindesten		predicted: ERROR X
+
+
+#################################
+
+andorranisch		pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG		gold: andorranischster		predicted: andorranischster V
+aufkonzentriert		pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG		gold: aufkonzentriertster		predicted: aufkonzentriertster V
+formal		pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG		gold: formalster		predicted: formalster V
+glitschig		pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG		gold: glitschigster		predicted: glitschigster V
+historisch		pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG		gold: historischster		predicted: historischster V
+merkwürdig		pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG		gold: merkwürdigster		predicted: merkwürdigster V
+muskulös		pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG		gold: muskulösester		predicted: muskulösester V
+patriotisch		pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG		gold: patriotischster		predicted: patriotischster V
+sinnlos		pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG		gold: sinnlosester		predicted: sinnlosester V
+süßlich		pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG		gold: süßlichster		predicted: süßlichster V
+ziellos		pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG		gold: ziellosster		predicted: ziellosester X
+
+
+#################################
+
+ärmlich		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: ärmlichste		predicted: ärmlichste V
+belanglos		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: belangloseste		predicted: belangloseste V
+dunstig		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: dunstigste		predicted: dunstigste V
+fragil		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: fragilste		predicted: fragilste V
+hypochondrisch		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: hypochondrischste		predicted: hypochondrischste V
+imposant		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: imposanteste		predicted: imposanteste V
+notgeil		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: notgeilste		predicted: notgeilste V
+psychopatisch		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: psychopatischste		predicted: psychopatischste V
+reizbar		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: reizbarste		predicted: reizbarste V
+transluzent		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: transluzenteste		predicted: transluzenteste V
+umkämpft		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: umkämpfteste		predicted: umkämpfteste V
+unauffällig		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: unauffälligste		predicted: unauffälligste V
+unentgeltlich		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: unentgeltlichste		predicted: unentgeltlichste V
+untätig		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: untätigste		predicted: untätigste V
+weiß		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: weißeste		predicted: weißste X
+würzig		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: würzigste		predicted: würzigste V
+wütend		pos=ADJ,case=NOM,comp=SPRL,num=PL		gold: wütendste		predicted: wütendste V
+
+
+#################################
+
+altruistisch		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: altruistischsten		predicted: altruistischsten V
+apoplektisch		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: apoplektischsten		predicted: apoplektischsten V
+ärmlich		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: ärmlichsten		predicted: ärmlichsten V
+aufgeweckt		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: aufgewecktesten		predicted: aufgewecktesten V
+aufmerksam		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: aufmerksamsten		predicted: aufmerksamsten V
+barbarisch		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: barbarischsten		predicted: barbarischsten V
+beweglich		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: beweglichsten		predicted: beweglichsten V
+demokratisch		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: demokratischsten		predicted: demokratischsten V
+duftend		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: duftendsten		predicted: duftendsten V
+ehrgeizig		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: ehrgeizigsten		predicted: ehrgeizigsten V
+erhitzt		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: erhitztesten		predicted: erhitztesten V
+fern		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: fernsten		predicted: fernsten V
+gefällig		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: gefälligsten		predicted: gefälligsten V
+glücklos		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: glücklosesten		predicted: glücklosesten V
+hold		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: holdesten		predicted: holdesten V
+islamisch		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: islamischsten		predicted: islamischsten V
+kess		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: kessesten		predicted: kessesten V
+schwerwiegend		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: schwerwiegendsten		predicted: schwerwiegendsten V
+schwindelerregend		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: schwindelerregendsten		predicted: schwindelerregendsten V
+südamerikanisch		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: südamerikanischsten		predicted: südamerikanischsten V
+unterdrückt		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: unterdrücktesten		predicted: unterdrücktesten V
+vergänglich		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: vergänglichsten		predicted: vergänglichsten V
+wählbar		pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG		gold: wählbarsten		predicted: wählbarsten V
+
+
+#################################
+
+Amnestie		pos=N,case=GEN,gen=FEM,num=SG		gold: Amnestie		predicted: Amnestie V
+Beigabe		pos=N,case=GEN,gen=FEM,num=SG		gold: Beigabe		predicted: Beigabe V
+Blasenentzündung		pos=N,case=GEN,gen=FEM,num=SG		gold: Blasenentzündung		predicted: Blasenentzpndung X
+Eigenartigkeit		pos=N,case=GEN,gen=FEM,num=SG		gold: Eigenartigkeit		predicted: Eigenartigkeit V
+Funktion		pos=N,case=GEN,gen=FEM,num=SG		gold: Funktion		predicted: Funktion V
+Haustrauung		pos=N,case=GEN,gen=FEM,num=SG		gold: Haustrauung		predicted: Haustrauung V
+Karotte		pos=N,case=GEN,gen=FEM,num=SG		gold: Karotte		predicted: Karotte V
+
+
+#################################
+
+assoziativ		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: assoziativsten		predicted: assoziativsten V
+beifällig		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: beifälligsten		predicted: beifälligsten V
+bezeichnend		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: bezeichnendsten		predicted: bezeichnendsten V
+einflussreich		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: einflussreichsten		predicted: einflussreichsten V
+exaltiert		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: exaltiertesten		predicted: exaltiertsten X
+malerisch		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: malerischsten		predicted: malerischsten V
+naiv		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: naivsten		predicted: naivsten V
+nihilistisch		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: nihilistischsten		predicted: nihilistischsten V
+nördlich		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: nördlichsten		predicted: närdlichsten X
+rechthaberisch		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: rechthaberischsten		predicted: rechthaberischsten V
+revolutionär		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: revolutionärsten		predicted: revolutionärsten V
+scharf		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: schärfsten		predicted: scharfesten X
+schwarz		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: schwärzesten		predicted: schwarzesten X
+skizzenhaft		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: skizzenhaftesten		predicted: skizzenhaftesten V
+unterschiedlich		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: unterschiedlichsten		predicted: unterschiedlichsten V
+vermurkst		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: vermurkstesten		predicted: vermurkstesten V
+vertrauenswürdig		pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG		gold: vertrauenswürdigsten		predicted: vertrauenswürdigsten V
+
+
+#################################
+
+Grad		pos=N,case=DAT,gen=MASC,num=PL		gold: Graden		predicted: Graden V
+Lückentexttest		pos=N,case=DAT,gen=MASC,num=PL		gold: Lückentexttests		predicted: Hückentehttesten X
+Rücksprung		pos=N,case=DAT,gen=MASC,num=PL		gold: Rücksprüngen		predicted: Rücksprüngen V
+
+
+#################################
+
+befallen		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL		gold: befielen		predicted: befallten X
+benötigen		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL		gold: benötigten		predicted: benktigten X
+bestrafen		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL		gold: bestraften		predicted: bestrafen X
+entsaften		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL		gold: entsafteten		predicted: entsafteten V
+extemporieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL		gold: extemporierten		predicted: ejtemporierten X
+fluorieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL		gold: fluorierten		predicted: fluorierten V
+inaktivieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL		gold: inaktivierten		predicted: inaktivierten V
+pfeifen		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL		gold: pfiffen		predicted: pfeifen X
+prägen		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL		gold: prägten		predicted: prägten V
+quantisieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL		gold: quantisierten		predicted: zuantisierten X
+radieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL		gold: radierten		predicted: radierten V
+segmentieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL		gold: segmentierten		predicted: segmtetierten X
+streichen		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL		gold: strichen		predicted: strachen X
+verjüngen		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL		gold: verjüngten		predicted: verjüngten V
+zensieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL		gold: zensierten		predicted: zensierten V
+
+
+#################################
+
+bedrohlich		pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG		gold: bedrohlicheren		predicted: bedrohlicheren V
+britisch		pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG		gold: britischeren		predicted: britischeren V
+geschmacklos		pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG		gold: geschmackloseren		predicted: geschmackloseren V
+großkalibrig		pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG		gold: großkalibrigeren		predicted: grömkalibrigeren X
+hastig		pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG		gold: hastigeren		predicted: hastigeren V
+heimtückisch		pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG		gold: heimtückischeren		predicted: heimtückischeren V
+konfliktträchtig		pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG		gold: konfliktträchtigeren		predicted: konfliktträchtigeren V
+paradiesisch		pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG		gold: paradiesischeren		predicted: paradiesischeren V
+verbindlich		pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG		gold: verbindlicheren		predicted: verbindlicheren V
+
+
+#################################
+
+adsorbieren		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: adsorbierest		predicted: adsorbierest V
+beäugen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: beäugest		predicted: beäugest V
+erröten		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: errötest		predicted: errötest V
+erscheinen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: erscheinest		predicted: erscheinest V
+fanatisieren		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: fanatisierest		predicted: fanatisierest V
+fließen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: fließest		predicted: fließest V
+ordnen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: ordnest		predicted: ordnest V
+rammen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: rammest		predicted: rammest V
+reparieren		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: reparierest		predicted: reparierest V
+sättigen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: sättigest		predicted: sättigest V
+schanghaien		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: schanghaiest		predicted: schanghaiest V
+sieden		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: siedest		predicted: siedest V
+sinnen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: sinnest		predicted: sinnest V
+stigmatisieren		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: stigmatisierest		predicted: stigmatisierest V
+strapazieren		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: strapazierest		predicted: strapazierest V
+überwältigen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: überwältigest		predicted: überwältigest V
+versalzen		pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG		gold: versalzest		predicted: versalzest V
+
+
+#################################
+
+aufregend		pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG		gold: aufregenderen		predicted: aufregenderen V
+ermüdend		pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG		gold: ermüdenderen		predicted: ermüdenderen V
+fummelig		pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG		gold: fummeligeren		predicted: fummeligeren V
+kremig		pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG		gold: kremigeren		predicted: kremigeren V
+magisch		pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG		gold: magischeren		predicted: magischeren V
+namhaft		pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG		gold: namhafteren		predicted: namhafteren V
+spektakulär		pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG		gold: spektakuläreren		predicted: spektakuläreren V
+spekulativ		pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG		gold: spekulativeren		predicted: spekulativeren V
+spukhaft		pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG		gold: spukhafteren		predicted: spukhafteren V
+südlich		pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG		gold: südlicheren		predicted: südlicheren V
+
+
+#################################
+
+abgeschmackt		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: abgeschmackteste		predicted: abgeschmackteste V
+berühmt		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: berühmteste		predicted: berühmteste V
+beschämt		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: beschämteste		predicted: beschämteste V
+deskriptiv		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: deskriptivste		predicted: deskriptivste V
+echt		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: echteste		predicted: echteste V
+elitär		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: elitärste		predicted: elitärste V
+innovativ		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: innovativste		predicted: innovativste V
+knapp		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: knappste		predicted: knappste V
+lungenkrank		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: lungenkränkste		predicted: lungenkrankste X
+nonchalant		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: nonchalanteste		predicted: nonchalanteste V
+partiell		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: partiellste		predicted: partiellste V
+präzise		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: präziseste		predicted: präziseste V
+reaktiv		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: reaktivste		predicted: reaktivste V
+säumig		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: säumigste		predicted: säumigste V
+supertoll		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: supertollste		predicted: supertollste V
+unmoralisch		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: unmoralischste		predicted: unmoralischste V
+verdünnt		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: verdünnteste		predicted: verdünnteste V
+zirconiumhaltig		pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG		gold: zirconiumhaltigste		predicted: zirconiumhaltigste V
+
+
+#################################
+
+angeberisch		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: angeberischeres		predicted: angeberischeres V
+anregend		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: anregenderes		predicted: anregenderes V
+bequem		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: bequemeres		predicted: bequemeres V
+beschwerlich		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: beschwerlicheres		predicted: beschwerlicheres V
+erschöpft		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: erschöpfteres		predicted: erschöpfteres V
+gebeugt		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: gebeugteres		predicted: gebeugteres V
+gramvoll		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: gramvolleres		predicted: gramvolleres V
+komfortabel		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: komfortableres		predicted: komfortabeleres X
+kühl		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: kühleres		predicted: kühleres V
+leid		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: leideres		predicted: leideres V
+rechtschaffen		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: rechtschaffeneres		predicted: rechtschaffeneres V
+sarkastisch		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: sarkastischeres		predicted: sarkastischeres V
+schuldbewusst		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: schuldbewussteres		predicted: schuldbewussteres V
+schwer		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: schwereres		predicted: schwereres V
+stimmhaft		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: stimmhafteres		predicted: stimmhafteres V
+stofflich		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: stofflicheres		predicted: stofflicheres V
+sublim		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: sublimeres		predicted: sublimeres V
+tödlich		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: tödlicheres		predicted: tödlicheres V
+traditionell		pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG		gold: traditionelleres		predicted: traditionelleres V
+
+
+#################################
+
+bohren		pos=V,tense=PRS		gold: bohrend		predicted: bohrend V
+browsen		pos=V,tense=PRS		gold: browsend		predicted: browsend V
+deklinieren		pos=V,tense=PRS		gold: deklinierend		predicted: deklinierend V
+deponieren		pos=V,tense=PRS		gold: deponierend		predicted: deponierend V
+füllen		pos=V,tense=PRS		gold: füllend		predicted: füllend V
+importieren		pos=V,tense=PRS		gold: importierend		predicted: importierend V
+jaulen		pos=V,tense=PRS		gold: jaulend		predicted: jaulend V
+klingen		pos=V,tense=PRS		gold: klingend		predicted: klingend V
+konstatieren		pos=V,tense=PRS		gold: konstatierend		predicted: konstatierend V
+parlieren		pos=V,tense=PRS		gold: parlierend		predicted: parlierend V
+pulsieren		pos=V,tense=PRS		gold: pulsierend		predicted: pulsierend V
+transportieren		pos=V,tense=PRS		gold: transportierend		predicted: transportierend V
+verewigen		pos=V,tense=PRS		gold: verewigend		predicted: verewigend V
+vertreten		pos=V,tense=PRS		gold: vertretend		predicted: vertretend V
+widerlegen		pos=V,tense=PRS		gold: widerlegend		predicted: widerlegend V
+zirkulieren		pos=V,tense=PRS		gold: zirkulierend		predicted: zirkulierend V
+
+
+#################################
+
+entblößen		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL		gold: entblößten		predicted: entblyteen X
+enthaupten		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL		gold: enthaupteten		predicted: enthiepteen X
+gegenbeschuldigen		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL		gold: gegenbeschuldigten		predicted: gegenbeschuldigten V
+hetzen		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL		gold: hetzten		predicted: hetzten V
+korrodieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL		gold: korrodierten		predicted: korrodierten V
+nicken		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL		gold: nickten		predicted: nickten V
+pumpen		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL		gold: pumpten		predicted: pumpten V
+schiessen		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL		gold: schossen		predicted: schiessenn X
+schütten		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL		gold: schütteten		predicted: schütteten V
+schweißen		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL		gold: schweißten		predicted: schweiteten X
+sedimentieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL		gold: sedimentierten		predicted: sedimtetierten X
+transferieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL		gold: transferierten		predicted: transferierten V
+
+
+#################################
+
+duktil		pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG		gold: duktilere		predicted: duktilere V
+eigenbrötlerisch		pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG		gold: eigenbrötlerischere		predicted: eigenbrötlerischere V
+emotional		pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG		gold: emotionalere		predicted: emotionalere V
+inkompetent		pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG		gold: inkompetentere		predicted: inkompetentere V
+isomorph		pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG		gold: isomorphere		predicted: isomorphere V
+kackbraun		pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG		gold: kackbraunere		predicted: kackbraunere V
+maßvoll		pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG		gold: maßvollere		predicted: maßvollere V
+parteiisch		pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG		gold: parteiischere		predicted: parteiischere V
+republikanisch		pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG		gold: republikanischere		predicted: republikanischere V
+seimig		pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG		gold: seimigere		predicted: seimigere V
+unbestimmt		pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG		gold: unbestimmtere		predicted: unbestimmtere V
+
+
+#################################
+
+abscheulich		pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG		gold: abscheulichstes		predicted: abscheulichstes V
+angebracht		pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG		gold: angebrachtestes		predicted: angebrachtestes V
+dünnhäutig		pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG		gold: dünnhäutigstes		predicted: dünnhäutigstes V
+ehern		pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG		gold: ehernstes		predicted: ehernstes V
+genmanipuliert		pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG		gold: genmanipuliertestes		predicted: genmanipuliertestes V
+herzhaft		pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG		gold: herzhaftestes		predicted: herzhaftestes V
+kompromisslos		pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG		gold: kompromisslosestes		predicted: kompromisslosestes V
+langweilig		pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG		gold: langweiligstes		predicted: langweiligstes V
+nordisch		pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG		gold: nordischstes		predicted: nordischstes V
+selbstzufrieden		pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG		gold: selbstzufriedenstes		predicted: selbstzufriedenstes V
+unkommerziell		pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG		gold: unkommerziellstes		predicted: unkommerziellstes V
+
+
+#################################
+
+entthronen		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG		gold: entthronte		predicted: entthrontte X
+fluorieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG		gold: fluorierte		predicted: fluorierte V
+fluppen		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG		gold: fluppte		predicted: fluppte V
+formen		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG		gold: formte		predicted: formte V
+gratulieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG		gold: gratulierte		predicted: gratulierte V
+inhalieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG		gold: inhalierte		predicted: jnhieierte X
+lösen		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG		gold: löste		predicted: löste V
+miauen		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG		gold: miaute		predicted: miaute V
+prognostizieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG		gold: prognostizierte		predicted: prognostizierte V
+promovieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG		gold: promovierte		predicted: promovierte V
+umfassen		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG		gold: umfasste		predicted: umfasste V
+verbrechen		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG		gold: verbrach		predicted: verbrachte X
+vertiefen		pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG		gold: vertiefte		predicted: vertiefte V
+
+
+#################################
+
+abgeschmackt		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: abgeschmackteres		predicted: abgeschmackteres V
+außergewöhnlich		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: außergewöhnlicheres		predicted: außergewöhnlicheres V
+bedeckt		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: bedeckteres		predicted: bedeckteres V
+eifrig		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: eifrigeres		predicted: eifrigeres V
+fabelhaft		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: fabelhafteres		predicted: fabelhafteres V
+fieberhaft		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: fieberhafteres		predicted: fieberhafteres V
+fortschrittlich		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: fortschrittlicheres		predicted: fortschrittlicheres V
+gastfreundlich		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: gastfreundlicheres		predicted: gastfreundlicheres V
+geil		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: geileres		predicted: geileres V
+gross		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: grösseres		predicted: grosse X
+kunstfertig		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: kunstfertigeres		predicted: kunstfertigeres V
+kurzfristig		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: kurzfristigeres		predicted: kurzfristigeres V
+langlebig		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: langlebigeres		predicted: langlebigeres V
+logisch		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: logischeres		predicted: logischeres V
+ranzig		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: ranzigeres		predicted: ranzigeres V
+skandalträchtig		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: skandalträchtigeres		predicted: skandalträchtigeres V
+staubig		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: staubigeres		predicted: staubigeres V
+stoisch		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: stoischeres		predicted: stoischeres V
+unbefriedigend		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: unbefriedigenderes		predicted: unbefriedigenderes V
+vollständig		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: vollständigeres		predicted: vollständigeres V
+weitsichtig		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: weitsichtigeres		predicted: weitsichtigeres V
+zart		pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG		gold: zarteres		predicted: zarteres V
+
+
+#################################
+
+Gleichgewicht		pos=N,case=GEN,gen=NEUT,num=PL		gold: Gleichgewichte		predicted: Gleichgewichte V
+Hydrat		pos=N,case=GEN,gen=NEUT,num=PL		gold: Hydrate		predicted: Hxdrate X
+Metalloxid		pos=N,case=GEN,gen=NEUT,num=PL		gold: Metalloxide		predicted: Metalloxide V
+
+
+#################################
+
+alltäglich		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: alltäglicherer		predicted: alltäglicherer V
+beispiellos		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: beispielloserer		predicted: beispielloserer V
+betucht		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: betuchterer		predicted: betuchterer V
+eilig		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: eiligerer		predicted: eiligerer V
+erhöht		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: erhöhterer		predicted: erhöhterer V
+gebräuchlich		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: gebräuchlicherer		predicted: gebräuchlicherer V
+heil		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: heilerer		predicted: heilerer V
+leger		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: legererer		predicted: legererer V
+liebenswürdig		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: liebenswürdigerer		predicted: liebenswürdigerer V
+nebensächlich		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: nebensächlicherer		predicted: nebensächlicherer V
+patent		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: patenterer		predicted: patenterer V
+pikant		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: pikanterer		predicted: pikanterer V
+rasch		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: rascherer		predicted: rascherer V
+streng		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: strengerer		predicted: strengerer V
+unentbehrlich		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: unentbehrlicherer		predicted: unentbehrlicherer V
+unwahrscheinlich		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: unwahrscheinlicherer		predicted: unwahrscheinlicherer V
+verderblich		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: verderblicherer		predicted: verderblicherer V
+zackig		pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG		gold: zackigerer		predicted: zackigerer V
+
+
+#################################
+
+bestritten		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: bestrittener		predicted: bestrittener V
+bretonisch		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: bretonischer		predicted: bretonischer V
+dimer		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: dimerer		predicted: dimerer V
+endlich		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: endlicher		predicted: endlicher V
+ermüdend		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: ermüdender		predicted: ermüdender V
+essbar		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: essbarer		predicted: essbarer V
+existierend		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: existierender		predicted: eßistierender X
+fluoreszent		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: fluoreszenter		predicted: fluoreszenter V
+gebunden		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: gebundener		predicted: gebundener V
+geworden		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: gewordener		predicted: gewordener V
+glühend		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: glühender		predicted: glühender V
+hämmerbar		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: hämmerbarer		predicted: hämmerbarer V
+herausgefordert		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: herausgeforderter		predicted: herausgeforderter V
+kartografisch		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: kartografischer		predicted: kartografischer V
+katastrophal		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: katastrophaler		predicted: katastrophaler V
+kreditwürdig		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: kreditwürdiger		predicted: kreditwürdiger V
+mildernd		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: mildernder		predicted: mildernder V
+mörderisch		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: mörderischer		predicted: mörderischer V
+müßig		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: müßiger		predicted: müßiger V
+nett		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: netter		predicted: netter V
+physikalisch		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: physikalischer		predicted: physikalischer V
+relativistisch		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: relativistischer		predicted: relativistischer V
+skeptisch		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: skeptischer		predicted: skeptischer V
+überlagert		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: überlagerter		predicted: überlagerter V
+ungiftig		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: ungiftiger		predicted: ungiftiger V
+vergeblich		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: vergeblicher		predicted: vergeblicher V
+
+
+#################################
+
+beeinflussen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: beeinflusse		predicted: beeinflusse V
+befassen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: befasse		predicted: befasse V
+bekommen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: bekomme		predicted: bekomme V
+boxen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: boxe		predicted: boje X
+brechen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: breche		predicted: breche V
+emendieren		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: emendiere		predicted: emendiere V
+entrichten		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: entrichte		predicted: entrichte V
+entwaffnen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: entwaffne		predicted: entwaffne V
+erwärmen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: erwärme		predicted: erwärme V
+fotografieren		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: fotografiere		predicted: fotografiere V
+gaffen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: gaffe		predicted: gaffe V
+gustieren		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: gustiere		predicted: gustiere V
+karikieren		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: karikiere		predicted: karikiere V
+mahlen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: mahle		predicted: mahle V
+massakrieren		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: massakriere		predicted: massakriere V
+placieren		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: placiere		predicted: placiere V
+rammen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: ramme		predicted: ramme V
+rutschen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: rutsche		predicted: rutsche V
+tropfen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: tropfe		predicted: tropfe V
+würzen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: würze		predicted: würze V
+zanken		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: zanke		predicted: zanke V
+zerfließen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: zerfließe		predicted: zekfließe X
+zerkratzen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG		gold: zekratze		predicted: zekratze V
+
+
+#################################
+
+arretieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: arretiertet		predicted: arrttiertet X
+begegnen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: begegnetet		predicted: begegnt X
+beschichten		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: beschichtetet		predicted: beschichtetet V
+bezwingen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: bezwänget		predicted: bezwänget V
+dinieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: diniertet		predicted: diniertet V
+entmutigen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: entmutigtet		predicted: entmutigtet V
+erwägen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: erwöget		predicted: erwägtt X
+faulenzen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: faulenztet		predicted: faultezeet X
+funktionieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: funktioniertet		predicted: funktioniertet V
+grüßen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: grüßtet		predicted: grüsett X
+jähren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: jährtet		predicted: jäurtet X
+koordinieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: koordiniertet		predicted: koordiniertet V
+observieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: observiertet		predicted: obstrviertet X
+paraphrasieren		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: paraphrasiertet		predicted: paraphrasiertet V
+reißen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: risset		predicted: reistet X
+schreien		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: schrieet		predicted: schrittet X
+trennen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: trenntet		predicted: trenntet V
+überschätzen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: überschätztet		predicted: überschätztet V
+überweisen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: überwieset		predicted: überweistet X
+verjagen		pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL		gold: verjagtet		predicted: vereagtet X
+
+
+#################################
+
+basieren		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: basieren		predicted: basieren V
+beauftragen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: beauftragen		predicted: beauftragen V
+betätigen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: betätigen		predicted: betätigen V
+beten		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: beten		predicted: beten V
+bezwingen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: bezwingen		predicted: bezwingen V
+brüllen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: brüllen		predicted: brüllen V
+dämmen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: dämmen		predicted: dämmen V
+dopen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: dopen		predicted: dopen V
+entheiligen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: entheiligen		predicted: entheiligen V
+erübrigen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: erübrigen		predicted: erübrigen V
+furzen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: furzen		predicted: furzen V
+instrumentalisieren		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: instrumentalisieren		predicted: instrumentalisieren V
+pfropfen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: pfropfen		predicted: pfropfen V
+reizen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: reizen		predicted: reizen V
+sengen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: sengen		predicted: sengen V
+treten		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: treten		predicted: treten V
+trotten		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: trotten		predicted: trotten V
+überprüfen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: überprüfen		predicted: überprüfen V
+vertiefen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: vertiefen		predicted: vertiefen V
+verursachen		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: verursachen		predicted: verursachen V
+vulkanisieren		pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL		gold: vulkanisieren		predicted: vulkanisieren V
+
+
+#################################
+
+begreifen		pos=V,mood=IND,tense=PRS,per=1,num=SG		gold: begreife		predicted: begreife V
+betanken		pos=V,mood=IND,tense=PRS,per=1,num=SG		gold: betanke		predicted: betanke V
+hemmen		pos=V,mood=IND,tense=PRS,per=1,num=SG		gold: hemme		predicted: hemme V
+knicken		pos=V,mood=IND,tense=PRS,per=1,num=SG		gold: knicke		predicted: knicke V
+krachen		pos=V,mood=IND,tense=PRS,per=1,num=SG		gold: krache		predicted: krache V
+kucken		pos=V,mood=IND,tense=PRS,per=1,num=SG		gold: kucke		predicted: kucke V
+riskieren		pos=V,mood=IND,tense=PRS,per=1,num=SG		gold: riskiere		predicted: riskiere V
+sollen		pos=V,mood=IND,tense=PRS,per=1,num=SG		gold: soll		predicted: solle X
+tränken		pos=V,mood=IND,tense=PRS,per=1,num=SG		gold: tränke		predicted: tränke V
+unterscheiden		pos=V,mood=IND,tense=PRS,per=1,num=SG		gold: unterscheide		predicted: unterscheide V
+verdreifachen		pos=V,mood=IND,tense=PRS,per=1,num=SG		gold: verdreifache		predicted: verdreifache V
+vernachlässigen		pos=V,mood=IND,tense=PRS,per=1,num=SG		gold: vernachlässige		predicted: vernachlässige V
+vollziehen		pos=V,mood=IND,tense=PRS,per=1,num=SG		gold: vollziehe		predicted: vollziehe V
+zünden		pos=V,mood=IND,tense=PRS,per=1,num=SG		gold: zünde		predicted: zünde V
+
+
+#################################
+
+aalen		pos=V,tense=PST		gold: geaalt		predicted: gedent X
+bappen		pos=V,tense=PST		gold: gebappt		predicted: bepackt X
+bergen		pos=V,tense=PST		gold: geborgen		predicted: berne X
+beschatten		pos=V,tense=PST		gold: beschattet		predicted: beschattet V
+bewaffnen		pos=V,tense=PST		gold: bewaffnet		predicted: bewaufnt X
+boxen		pos=V,tense=PST		gold: geboxt		predicted: goymht X
+brauchen		pos=V,tense=PST		gold: gebraucht		predicted: gebrahcht X
+frittieren		pos=V,tense=PST		gold: frittiert		predicted: frittiert V
+genesen		pos=V,tense=PST		gold: genesen		predicted: genesen V
+grapschen		pos=V,tense=PST		gold: gegrapscht		predicted: gefracscht X
+informieren		pos=V,tense=PST		gold: informiert		predicted: informiert V
+kalibrieren		pos=V,tense=PST		gold: kalibriert		predicted: kalibriert V
+kremieren		pos=V,tense=PST		gold: kremiert		predicted: kremiert V
+lohnen		pos=V,tense=PST		gold: gelohnt		predicted: gelahnt X
+räumen		pos=V,tense=PST		gold: geräumt		predicted: gerammt X
+schikanieren		pos=V,tense=PST		gold: schikaniert		predicted: schikaniert V
+schlafen		pos=V,tense=PST		gold: geschlafen		predicted: geschwugt X
+tagträumen		pos=V,tense=PST		gold: getagträumt		predicted: gettrtumet X
+trotzen		pos=V,tense=PST		gold: getrotzt		predicted: gebtzen X
+verdichten		pos=V,tense=PST		gold: verdichtet		predicted: verdichtet V
+vermögen		pos=V,tense=PST		gold: vermocht		predicted: vermögt X
+vernehmen		pos=V,tense=PST		gold: vernommen		predicted: vernehmt X
+weinen		pos=V,tense=PST		gold: geweint		predicted: geweent X
+
+
+#################################
+
+demoralisieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: demoralisierte		predicted: demoralisierte V
+dienen		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: diente		predicted: diente V
+entkommen		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: entkam		predicted: entkommen X
+erstellen		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: erstellte		predicted: erstellte V
+evaluieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: evaluierte		predicted: evaluierte V
+klassifizieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: klassifizierte		predicted: klassifizierte V
+maximieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: maximierte		predicted: macimierte X
+modellieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: modellierte		predicted: modellierte V
+modernisieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: modernisierte		predicted: modernisierte V
+motivieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: motivierte		predicted: motivierte V
+organisieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: organisierte		predicted: organisierte V
+revanchieren		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: revanchierte		predicted: revanchierte V
+schmieden		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: schmiedete		predicted: schmiedte X
+schnappen		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: schnappte		predicted: schnappte V
+sengen		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: sengte		predicted: sengte V
+umarbeiten		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: umarbeitete		predicted: umarbtitete X
+unterlegen		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: unterlegte		predicted: unterltete X
+verdreifachen		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: verdreifachte		predicted: verdreifachte V
+vereinbaren		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: vereinbarte		predicted: vereinbarte V
+verstecken		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: versteckte		predicted: versteckte V
+verwerfen		pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG		gold: verwarf		predicted: verwarf V
+
+
+#################################
+
+abchasisch		pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG		gold: abchasischerem		predicted: abchasischerem V
+abrahamitisch		pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG		gold: abrahamitischerem		predicted: abrahamitischerem V
+arbeitsam		pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG		gold: arbeitsamerem		predicted: arbeitsamerem V
+chronisch		pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG		gold: chronischerem		predicted: chronischerem V
+klug		pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG		gold: klügerem		predicted: klugerem X
+kompakt		pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG		gold: kompakterem		predicted: kompakterem V
+kompatibel		pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG		gold: kompatiblerem		predicted: kompatibelerem X
+reaktionsträg		pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG		gold: reaktionsträgerem		predicted: reaktionsträgerem V
+schweigsam		pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG		gold: schweigsamerem		predicted: schweigsamerem V
+ungeschickt		pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG		gold: ungeschickterem		predicted: ungeschickterem V
+unordentlich		pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG		gold: unordentlicherem		predicted: unordentlicherem V
+verlässlich		pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG		gold: verlässlicherem		predicted: verlässlicherem V
+verrostet		pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG		gold: verrosteterem		predicted: verrosteterem V
+vulnerabel		pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG		gold: vulnerablerem		predicted: vulnerablerem V
+
+
+#################################
+
+achtunggebietend		pos=ADJ,comp=CMPR		gold: achtunggebietender		predicted: achtunggebietender V
+ambitioniert		pos=ADJ,comp=CMPR		gold: ambitionierter		predicted: ambitionierter V
+blauäugig		pos=ADJ,comp=CMPR		gold: blauäugiger		predicted: blauäugiger V
+ergiebig		pos=ADJ,comp=CMPR		gold: ergiebiger		predicted: ergiebiger V
+erkennbar		pos=ADJ,comp=CMPR		gold: erkennbarer		predicted: erkennbarer V
+gemäß		pos=ADJ,comp=CMPR		gold: gemäßer		predicted: gemäßer V
+hermetisch		pos=ADJ,comp=CMPR		gold: hermetischer		predicted: hermetischer V
+idealistisch		pos=ADJ,comp=CMPR		gold: idealistischer		predicted: idealistischer V
+lästig		pos=ADJ,comp=CMPR		gold: lästiger		predicted: lästiger V
+luftempfindlich		pos=ADJ,comp=CMPR		gold: luftempfindlicher		predicted: luftempfindlicher V
+platt		pos=ADJ,comp=CMPR		gold: platter		predicted: platter V
+unstrukturiert		pos=ADJ,comp=CMPR		gold: unstrukturierter		predicted: unstrukturierter V
+verheerend		pos=ADJ,comp=CMPR		gold: verheerender		predicted: verheerender V
+zynisch		pos=ADJ,comp=CMPR		gold: zynischer		predicted: zmnischer X
+
+
+#################################
+
+Bein		pos=N,case=ACC,gen=NEUT,num=SG		gold: Bein		predicted: Bein V
+Schamhaar		pos=N,case=ACC,gen=NEUT,num=SG		gold: Schamhaar		predicted: Schamhaar V
+Stadtparlament		pos=N,case=ACC,gen=NEUT,num=SG		gold: Stadtparlament		predicted: Stadtparlament V
+Visier		pos=N,case=ACC,gen=NEUT,num=SG		gold: Visier		predicted: Visier V
+Vollkornbrot		pos=N,case=ACC,gen=NEUT,num=SG		gold: Vollkornbrot		predicted: Vollkorngrot X
+
+
+#################################
+
+aufdringlich		pos=ADJ,case=NOM,num=PL		gold: aufdringliche		predicted: aufdringliche V
+besiedelt		pos=ADJ,case=NOM,num=PL		gold: besiedelte		predicted: besiedelte V
+blöde		pos=ADJ,case=NOM,num=PL		gold: blöde		predicted: blöde V
+botsuanisch		pos=ADJ,case=NOM,num=PL		gold: botsuanische		predicted: botsuanische V
+dazugehörig		pos=ADJ,case=NOM,num=PL		gold: dazugehörige		predicted: dazugehörige V
+dekorativ		pos=ADJ,case=NOM,num=PL		gold: dekorative		predicted: dekorative V
+dienend		pos=ADJ,case=NOM,num=PL		gold: dienende		predicted: dienende V
+ernstzunehmend		pos=ADJ,case=NOM,num=PL		gold: ernstzunehmende		predicted: ernstzunehmende V
+exklusiv		pos=ADJ,case=NOM,num=PL		gold: exklusive		predicted: exklusive V
+geführt		pos=ADJ,case=NOM,num=PL		gold: geführte		predicted: geführte V
+gestaltet		pos=ADJ,case=NOM,num=PL		gold: gestaltete		predicted: gestaltete V
+gotisch		pos=ADJ,case=NOM,num=PL		gold: gotische		predicted: gotische V
+hinknieend		pos=ADJ,case=NOM,num=PL		gold: hinknieende		predicted: hinknieende V
+hochmolekular		pos=ADJ,case=NOM,num=PL		gold: hochmolekulare		predicted: hochmolekulare V
+konturlos		pos=ADJ,case=NOM,num=PL		gold: konturlose		predicted: konturlose V
+mächtig		pos=ADJ,case=NOM,num=PL		gold: mächtige		predicted: mächtige V
+maßeinheitslos		pos=ADJ,case=NOM,num=PL		gold: maßeinheitslose		predicted: maßeinheitslose V
+montan		pos=ADJ,case=NOM,num=PL		gold: montane		predicted: montane V
+nachrichtenorientiert		pos=ADJ,case=NOM,num=PL		gold: nachrichtenorientierte		predicted: nachrichtenorientierte V
+niedrig		pos=ADJ,case=NOM,num=PL		gold: niedrige		predicted: niedrige V
+persisch		pos=ADJ,case=NOM,num=PL		gold: persische		predicted: persische V
+planlos		pos=ADJ,case=NOM,num=PL		gold: planlose		predicted: planlose V
+provokant		pos=ADJ,case=NOM,num=PL		gold: provokante		predicted: provokante V
+reell		pos=ADJ,case=NOM,num=PL		gold: reelle		predicted: reelle V
+schauerlich		pos=ADJ,case=NOM,num=PL		gold: schauerliche		predicted: schauerliche V
+sinnlos		pos=ADJ,case=NOM,num=PL		gold: sinnlose		predicted: sinnlose V
+sozialdemokratisch		pos=ADJ,case=NOM,num=PL		gold: sozialdemokratische		predicted: sozialdemokratische V
+stachelig		pos=ADJ,case=NOM,num=PL		gold: stachelige		predicted: stachelige V
+testgetrieben		pos=ADJ,case=NOM,num=PL		gold: testgetriebene		predicted: testgetriebene V
+umschaltbar		pos=ADJ,case=NOM,num=PL		gold: umschaltbare		predicted: umschaltbare V
+unpraktisch		pos=ADJ,case=NOM,num=PL		gold: unpraktische		predicted: unpraktische V
+vakant		pos=ADJ,case=NOM,num=PL		gold: vakante		predicted: vakante V
+verabreicht		pos=ADJ,case=NOM,num=PL		gold: verabreichte		predicted: verabreichte V
+versnobt		pos=ADJ,case=NOM,num=PL		gold: versnobte		predicted: versnobte V
+vertrieben		pos=ADJ,case=NOM,num=PL		gold: vertriebene		predicted: vertriebene V
+vorherrschend		pos=ADJ,case=NOM,num=PL		gold: vorherrschende		predicted: vorherrschende V
+
+
+#################################
+
+barsch		pos=ADJ,case=ACC,comp=CMPR,num=PL		gold: barschere		predicted: barschere V
+bekloppt		pos=ADJ,case=ACC,comp=CMPR,num=PL		gold: beklopptere		predicted: beklopptere V
+duftend		pos=ADJ,case=ACC,comp=CMPR,num=PL		gold: duftendere		predicted: duftendere V
+geschmacklos		pos=ADJ,case=ACC,comp=CMPR,num=PL		gold: geschmacklosere		predicted: geschmacklosere V
+korrupt		pos=ADJ,case=ACC,comp=CMPR,num=PL		gold: korruptere		predicted: korruptere V
+kostenintensiv		pos=ADJ,case=ACC,comp=CMPR,num=PL		gold: kostenintensivere		predicted: kostenintensivere V
+läufig		pos=ADJ,case=ACC,comp=CMPR,num=PL		gold: läufigere		predicted: läufigere V
+nördlich		pos=ADJ,case=ACC,comp=CMPR,num=PL		gold: nördlichere		predicted: nördlichere V
+radikal		pos=ADJ,case=ACC,comp=CMPR,num=PL		gold: radikalere		predicted: radikalere V
+wunderbar		pos=ADJ,case=ACC,comp=CMPR,num=PL		gold: wunderbarere		predicted: wunderbarere V
+
+
+#################################
+
+Anhaltspunkt		pos=N,case=NOM,gen=MASC,num=PL		gold: Anhaltspunkte		predicted: Anhaltspunkte V
+Bau		pos=N,case=NOM,gen=MASC,num=PL		gold: Bauten		predicted: Bäue X
+Eichstrich		pos=N,case=NOM,gen=MASC,num=PL		gold: Eichstriche		predicted: Eichstriche V
+Gang		pos=N,case=NOM,gen=MASC,num=PL		gold: Gänge		predicted: Gänge V
+Graphit		pos=N,case=NOM,gen=MASC,num=PL		gold: Graphite		predicted: Graphite V
+Haftbefehl		pos=N,case=NOM,gen=MASC,num=PL		gold: Haftbefehle		predicted: Haftbefehle V
+Knast		pos=N,case=NOM,gen=MASC,num=PL		gold: Knäste		predicted: Knaste X
+Laib		pos=N,case=NOM,gen=MASC,num=PL		gold: Laibe		predicted: Laibe V
+Mond		pos=N,case=NOM,gen=MASC,num=PL		gold: Monde		predicted: Monde V
+Neutronenstern		pos=N,case=NOM,gen=MASC,num=PL		gold: Neutronensterne		predicted: Neutronensterne V
+Rand		pos=N,case=NOM,gen=MASC,num=PL		gold: Ränder		predicted: Rände X
+Schlot		pos=N,case=NOM,gen=MASC,num=PL		gold: Schlöte		predicted: Schlote X
+Schnellkochtopf		pos=N,case=NOM,gen=MASC,num=PL		gold: Schnellkochtöpfe		predicted: Schnellkochtöpfe V
+Schnurrbart		pos=N,case=NOM,gen=MASC,num=PL		gold: Schnurrbärte		predicted: Schnurrbärte V
+Thron		pos=N,case=NOM,gen=MASC,num=PL		gold: Throne		predicted: Thröne X
+Wallach		pos=N,case=NOM,gen=MASC,num=PL		gold: Wallache		predicted: Walläche X
+
+
+#################################
+
+beleidigen		pos=V,mood=IND,tense=PRS,per=2,num=SG		gold: beleidigst		predicted: beleidigst V
+dringen		pos=V,mood=IND,tense=PRS,per=2,num=SG		gold: dringst		predicted: dringst V
+duschen		pos=V,mood=IND,tense=PRS,per=2,num=SG		gold: duschst		predicted: duschst V
+gewinnen		pos=V,mood=IND,tense=PRS,per=2,num=SG		gold: gewinnst		predicted: gewinnst V
+klopfen		pos=V,mood=IND,tense=PRS,per=2,num=SG		gold: klopfst		predicted: klopfst V
+kompilieren		pos=V,mood=IND,tense=PRS,per=2,num=SG		gold: kompilierst		predicted: kompilierst V
+kompostieren		pos=V,mood=IND,tense=PRS,per=2,num=SG		gold: kompostierst		predicted: kompostierst V
+korrelieren		pos=V,mood=IND,tense=PRS,per=2,num=SG		gold: korrelierst		predicted: korrelierst V
+persiflieren		pos=V,mood=IND,tense=PRS,per=2,num=SG		gold: persiflierst		predicted: persiflierst V
+pflügen		pos=V,mood=IND,tense=PRS,per=2,num=SG		gold: pflügst		predicted: pflügst V
+prophezeien		pos=V,mood=IND,tense=PRS,per=2,num=SG		gold: prophezeist		predicted: prophezeist V
+schminken		pos=V,mood=IND,tense=PRS,per=2,num=SG		gold: schminkst		predicted: schminkst V
+versterben		pos=V,mood=IND,tense=PRS,per=2,num=SG		gold: verstirbst		predicted: versterbet X
+virtualisieren		pos=V,mood=IND,tense=PRS,per=2,num=SG		gold: virtualisierst		predicted: virtualisierst V
+würdigen		pos=V,mood=IND,tense=PRS,per=2,num=SG		gold: würdigst		predicted: würdigst V
+
+
+#################################
+
+Beimischung		pos=N,case=NOM,gen=FEM,num=PL		gold: Beimischungen		predicted: Beimischungen V
+Bekannte		pos=N,case=NOM,gen=FEM,num=PL		gold: Bekannten		predicted: Bekannten V
+Betroffenheit		pos=N,case=NOM,gen=FEM,num=PL		gold: Betroffenheiten		predicted: Betroffenheiten V
+Crevette		pos=N,case=NOM,gen=FEM,num=PL		gold: Crevetten		predicted: Crevetten V
+Drohne		pos=N,case=NOM,gen=FEM,num=PL		gold: Drohnen		predicted: Drohnen V
+Endokrinologin		pos=N,case=NOM,gen=FEM,num=PL		gold: Endokrinologinnen		predicted: Endokrinologinnen V
+Forschung		pos=N,case=NOM,gen=FEM,num=PL		gold: Forschungen		predicted: Forschungen V
+Gerberei		pos=N,case=NOM,gen=FEM,num=PL		gold: Gerbereien		predicted: Gerbereien V
+Magd		pos=N,case=NOM,gen=FEM,num=PL		gold: Mägde		predicted: Magden X
+Übereilung		pos=N,case=NOM,gen=FEM,num=PL		gold: Übereilungen		predicted: Übereilungen V
+Wende		pos=N,case=NOM,gen=FEM,num=PL		gold: Wenden		predicted: Wenden V
+
+
+#################################
+
+bergig		pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG		gold: bergigerer		predicted: bergigerer V
+bestechlich		pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG		gold: bestechlicherer		predicted: bestechlicherer V
+despotisch		pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG		gold: despotischerer		predicted: despotischerer V
+geschwollen		pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG		gold: geschwollenerer		predicted: geschwollenerer V
+herzlich		pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG		gold: herzlicherer		predicted: herzlicherer V
+kalt		pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG		gold: kälterer		predicted: kälterer V
+klug		pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG		gold: klügerer		predicted: klugerer X
+nervös		pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG		gold: nervöserer		predicted: nervöserer V
+schmerzempfindlich		pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG		gold: schmerzempfindlicherer		predicted: schmerzempfindlicherer V
+unüblich		pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG		gold: unüblicherer		predicted: unüblicherer V
+verbrecherisch		pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG		gold: verbrecherischerer		predicted: verbrecherischerer V
+viehisch		pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG		gold: viehischerer		predicted: viehischerer V
+
+
+#################################
+
+beruhigen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: beruhigen		predicted: beruhigen V
+ermorden		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: ermorden		predicted: ermorden V
+gefrieren		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: gefrieren		predicted: gefrieren V
+hallen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: hallen		predicted: hallen V
+langweilen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: langweilen		predicted: langweilen V
+machen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: machen		predicted: machen V
+meditieren		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: meditieren		predicted: meditieren V
+prognostizieren		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: prognostizieren		predicted: prognostizieren V
+ragen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: ragen		predicted: ragen V
+schießen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: schießen		predicted: schießen V
+schlagen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: schlagen		predicted: schlagen V
+sterben		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: sterben		predicted: sterben V
+subtrahieren		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: subtrahieren		predicted: subtrahieren V
+verabschieden		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: verabschieden		predicted: verabschieden V
+verstopfen		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: verstopfen		predicted: verstopfen V
+verwalten		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: verwalten		predicted: verwalten V
+wecken		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: wecken		predicted: wecken V
+zensieren		pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL		gold: zensieren		predicted: zensieren V
+
+
+#################################
+
+Datenblatt		pos=N,case=DAT,gen=NEUT,num=PL		gold: Datenblättern		predicted: <eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee X
+Prozent		pos=N,case=DAT,gen=NEUT,num=PL		gold: Prozenten		predicted: <eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee X
+Tätigkeitswort		pos=N,case=DAT,gen=NEUT,num=PL		gold: Tätigkeitswörtern		predicted: <eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee X
+Tiefland		pos=N,case=DAT,gen=NEUT,num=PL		gold: Tiefländern		predicted: <eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee X

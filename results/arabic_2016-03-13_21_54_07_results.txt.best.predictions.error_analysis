@@ -1,0 +1,2469 @@
+
+
+#################################
+
+ʾamṭara		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾumṭirtu		predicted: ʾumḵirtu X
+basaṭa		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: busiṭtu		predicted: busiṭtu V
+iʿtāda		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: uʿtidtu		predicted: uʿtūditu X
+tawaqqā		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: tuwuqqītu		predicted: ʾuqiftu X
+
+
+#################################
+
+kaḏaba		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: takḏibu		predicted: tuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+ḵaraqa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: taḵruqu		predicted: tuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+maḍaḡa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tamḍuḡu		predicted: tuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+naqaṣa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tanquṣu		predicted: tuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+ṣāḥa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: taṣīḥu		predicted: tuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+
+
+#################################
+
+ʾarmīniyyun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=SG		gold: ʾarmīniyyan		predicted: ʾarmīniyyan V
+ḍaʿīfun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=SG		gold: ḍaʿīfan		predicted: ḍaʿīfan V
+ḵallāqun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=SG		gold: ḵallāqan		predicted: ḵallāqan V
+munawwimun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=SG		gold: munawwiman		predicted: munawwiman V
+muzʿijun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=SG		gold: muzʿijan		predicted: muzīijan X
+ṭarīfun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=SG		gold: ṭarīfan		predicted: ṭarīfan V
+
+
+#################################
+
+ʾammama		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuʾammamu		predicted: tuuaaaaaaaaaaaaaaaaaaaaaaa X
+ḥafara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuḥfaru		predicted: tuuaaaaaaaaaaaaaaaaaaaaaaa X
+waṭiʾa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tūṭaʾu		predicted: tuuaaaaaaaaaaaaaaaaaaaaaaa X
+
+
+#################################
+
+iḵrawwaṭa		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=DU		gold: iḵrawwiṭā		predicted: iḵrawwiṭā V
+istakṯara		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=DU		gold: istakṯirā		predicted: istakjirā X
+istamaʿa		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=DU		gold: istamiʿā		predicted: istamiʿā V
+jaddada		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=DU		gold: jaddidā		predicted: jaddidā V
+ẓāhara		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=DU		gold: ẓāhirā		predicted: iāhārā X
+
+
+#################################
+
+ʾašraka		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tušrakā		predicted: tuaaaaaaa X
+ʾāṯara		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tuʾṯarā		predicted: tuaaaaaaa X
+istafāda		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tustafādā		predicted: tuḥaaaaaa X
+
+
+#################################
+
+ʾammana		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=DU		gold: yuʾammanā		predicted: yusmaʿā X
+ʾawlada		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=DU		gold: yūladā		predicted: yurladā X
+ḥāwala		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=DU		gold: yuḥāwalā		predicted: yuḥāwalā V
+istaḥaqqa		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=DU		gold: yustaḥaqqā		predicted: yustaqadlā X
+saʾala		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=DU		gold: yusʾalā		predicted: yudbaāā X
+sakkana		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=DU		gold: yusakkanā		predicted: yuḥaaāā X
+waqqata		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=DU		gold: yuwaqqatā		predicted: yunaalā X
+
+
+#################################
+
+al-ḥiḍnu		pos=N,poss=PSSD,case=GEN,num=DU		gold: ḥiḍnay		predicted: jilray X
+al-ḥikāyatu		pos=N,poss=PSSD,case=GEN,num=DU		gold: ḥikāyatay		predicted: mirīfatay X
+al-kamratu		pos=N,poss=PSSD,case=GEN,num=DU		gold: kamratay		predicted: ḥalqatay X
+al-maḏbaḥatu		pos=N,poss=PSSD,case=GEN,num=DU		gold: maḏbaḥatay		predicted: ḡartūṯay X
+al-māʿizatu		pos=N,poss=PSSD,case=GEN,num=DU		gold: māʿizatay		predicted: dāʾānatay X
+an-naḥwu		pos=N,poss=PSSD,case=GEN,num=DU		gold: naḥway		predicted: ḵaslay X
+aṣ-ṣadīqu		pos=N,poss=PSSD,case=GEN,num=DU		gold: ṣadīqay		predicted: ṣadīqay V
+at-taqdīmu		pos=N,poss=PSSD,case=GEN,num=DU		gold: taqdīmay		predicted: taqlīday X
+at-tārīḵu		pos=N,poss=PSSD,case=GEN,num=DU		gold: tārīḵay		predicted: diqsray X
+at-tilifūnu		pos=N,poss=PSSD,case=GEN,num=DU		gold: tilifūnay		predicted: diqsāfqay X
+
+
+#################################
+
+ʿāda		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾaʿūdu		predicted: ʾaaiii X
+ʾajhada		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾujhidu		predicted: ʾaaiii X
+ʾaḵbara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾuḵbiru		predicted: ʾaaiii X
+ʾaṣḡara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾuṣḡiru		predicted: ʾaaiii X
+ẓalama		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾaẓlimu		predicted: ʾaaiii X
+
+
+#################################
+
+al-ʿarabiyyu		pos=N,poss=PSSD,case=GEN,num=SG		gold: ʿarabiyyi		predicted: ʾaaiiiiiiiiiiiii X
+al-fuʾādu		pos=N,poss=PSSD,case=GEN,num=SG		gold: fuʾādi		predicted: ʾaaiiiiiiiiiiiii X
+al-mubtadiʾu		pos=N,poss=PSSD,case=GEN,num=SG		gold: mubtadiʾi		predicted: ʾaaiiiiiiiiiiiii X
+al-muqāṭaʿatu		pos=N,poss=PSSD,case=GEN,num=SG		gold: muqāṭaʿati		predicted: ʾaaiiiiiiiiiiiii X
+al-qāṭiratu		pos=N,poss=PSSD,case=GEN,num=SG		gold: qāṭirati		predicted: ʾaaiiiiiiiiiiiii X
+an-najjāmu		pos=N,poss=PSSD,case=GEN,num=SG		gold: najjāmi		predicted: ʾaaiiiiiiiiiiiii X
+aṣ-ṣadru		pos=N,poss=PSSD,case=GEN,num=SG		gold: ṣadri		predicted: ʾaaiiiiiiiiiiiii X
+at-taʾrīḵu		pos=N,poss=PSSD,case=GEN,num=SG		gold: taʾrīḵi		predicted: ʾaaiiiiiiiiiiiii X
+aṯ-ṯawbu		pos=N,poss=PSSD,case=GEN,num=SG		gold: ṯawbi		predicted: ʾaaiiiiiiiiiiiii X
+az-ziyāratu		pos=N,poss=PSSD,case=GEN,num=SG		gold: ziyārati		predicted: ʾaaiiiiiiiiiiiii X
+
+
+#################################
+
+ʾanbaʾa		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=DU		gold: ʾanbiʾā		predicted: ʾanbiʾā V
+ʾaršada		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=DU		gold: ʾaršidā		predicted: ʾariidā X
+banā		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=DU		gold: ibniyā		predicted: kanuwā X
+istahzaʾa		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=DU		gold: istahziʾā		predicted: istaḡṭiʾā X
+jabara		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=DU		gold: ujburā		predicted: jabārā X
+
+
+#################################
+
+ʾaqāma		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾuqam		predicted: ʾuḥaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+ʿazara		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾuʿzar		predicted: ʾuḥaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+ḏāqa		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾuḏaq		predicted: ʾuḥaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+naṣara		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾunṣar		predicted: ʾuḥaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+
+
+#################################
+
+ʿabbāsun		pos=ADJ,def=INDF,case=GEN,gen=FEM,num=DU		gold: ʿabbāsatayni		predicted: ʿabbāsatayni V
+bāṭilun		pos=ADJ,def=INDF,case=GEN,gen=FEM,num=DU		gold: bāṭilatayni		predicted: šābilatayni X
+fāriʿun		pos=ADJ,def=INDF,case=GEN,gen=FEM,num=DU		gold: fāriʿatayni		predicted: fāriʿatayni V
+maksūrun		pos=ADJ,def=INDF,case=GEN,gen=FEM,num=DU		gold: maksūratayni		predicted: maksūratayni V
+ṯānawiyyun		pos=ADJ,def=INDF,case=GEN,gen=FEM,num=DU		gold: ṯānawiyyatayni		predicted: ṯānawiyyatayni V
+ʾurduniyyun		pos=ADJ,def=INDF,case=GEN,gen=FEM,num=DU		gold: ʾurduniyyatayni		predicted: ʾurdatiyyatayni X
+wāfirun		pos=ADJ,def=INDF,case=GEN,gen=FEM,num=DU		gold: wāfiratayni		predicted: ṯāfiratayni X
+
+
+#################################
+
+basaṭa		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tabsuṭ		predicted: taaaaa X
+ḥarraqa		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tuḥarriq		predicted: taaaaa X
+nāfasa		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tunāfis		predicted: taaaaa X
+salaḵa		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: taslaḵ		predicted: taaaaa X
+tazalzala		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tatazalzal		predicted: taaaaa X
+
+
+#################################
+
+ḥašara		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nuḥšar		predicted: nuaaaaaaaaa X
+ibtasara		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nubtasar		predicted: nuaaaaaaaaa X
+qāsa		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nuqas		predicted: nuaaaaaaaaa X
+ṣafā		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nuṣfa		predicted: nuaaaaaaaaa X
+sajana		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nusjan		predicted: nuaaaaaaaaa X
+
+
+#################################
+
+al-bīʾatu		pos=N,def=INDF,case=GEN,num=PL		gold: bīʾātin		predicted: ʾaaāāān X
+al-ʾiblīsu		pos=N,def=INDF,case=GEN,num=PL		gold: ʾabālisatin		predicted: ʾaaāāān X
+al-ʾiʿṣāru		pos=N,def=INDF,case=GEN,num=PL		gold: ʾaʿāṣīra		predicted: ʾaaāāān X
+al-jannatu		pos=N,def=INDF,case=GEN,num=PL		gold: jinānin		predicted: ʾaaāāān X
+al-ḵallu		pos=N,def=INDF,case=GEN,num=PL		gold: ḵilālin		predicted: ʾaaāāān X
+al-lawlabu		pos=N,def=INDF,case=GEN,num=PL		gold: lawāliba		predicted: ʾaaāāān X
+al-mufattišu		pos=N,def=INDF,case=GEN,num=PL		gold: mufattišīna		predicted: ʾaaāāān X
+al-muwaẓẓafu		pos=N,def=INDF,case=GEN,num=PL		gold: muwaẓẓafīna		predicted: ʾaaāāān X
+al-qābilatu		pos=N,def=INDF,case=GEN,num=PL		gold: qawābila		predicted: ʾaaāāān X
+aš-šāribu		pos=N,def=INDF,case=GEN,num=PL		gold: šawāriba		predicted: ʾaaāāān X
+
+
+#################################
+
+al-ʿāṭifatu		pos=N,def=DEF,case=GEN,num=SG		gold: al-ʿāṭifati		predicted: al-ʿāṭifati V
+al-ʾawizatu		pos=N,def=DEF,case=GEN,num=SG		gold: al-ʾawizati		predicted: al-ʾawizati V
+al-ḡurābu		pos=N,def=DEF,case=GEN,num=SG		gold: al-ḡurābi		predicted: al-rurābi X
+al-ḥarakatu		pos=N,def=DEF,case=GEN,num=SG		gold: al-ḥarakati		predicted: al-ḥarakati V
+al-hilālu		pos=N,def=DEF,case=GEN,num=SG		gold: al-hilāli		predicted: al-hilāli V
+al-maktūbu		pos=N,def=DEF,case=GEN,num=SG		gold: al-maktūbi		predicted: al-maktūbi V
+al-miṯālu		pos=N,def=DEF,case=GEN,num=SG		gold: al-miṯāli		predicted: al-miḍāli X
+al-qarīnu		pos=N,def=DEF,case=GEN,num=SG		gold: al-qarīni		predicted: al-qarīni V
+al-yawmu		pos=N,def=DEF,case=GEN,num=SG		gold: al-yawmi		predicted: al-yawmi V
+an-niẓāmu		pos=N,def=DEF,case=GEN,num=SG		gold: an-niẓāmi		predicted: an-niḏāmi X
+aš-šāribu		pos=N,def=DEF,case=GEN,num=SG		gold: aš-šāribi		predicted: aš-šāribi V
+aṣ-ṣayfu		pos=N,def=DEF,case=GEN,num=SG		gold: aṣ-ṣayfi		predicted: aṣ-ṣayfi V
+
+
+#################################
+
+ʿilmiyyun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=MASC,num=PL		gold: ʿilmiyyīn		predicted: wilmiyyīn X
+ʾindūnīsiyyun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=MASC,num=PL		gold: ʾindūnīsiyyīn		predicted: ʾindūnīsiyyīn V
+
+
+#################################
+
+ʾaḥwaja		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yuḥwajūna		predicted: yuʿaaaaaa X
+ʾayqaẓa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yūqaẓūna		predicted: yuʿaaaaaa X
+ballaʿa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yuballaʿūna		predicted: yuʿaaaaaa X
+intaẓama		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yuntaẓamūna		predicted: yuʿaaaaaaa X
+kālama		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yukālamūna		predicted: yuʿaaaaaa X
+maḍaḡa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yumḍaḡūna		predicted: yuʿaaaaaa X
+mawwata		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yumawwatūna		predicted: yuʿaaaaaa X
+
+
+#################################
+
+ʾaḥyā		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾuḥyīta		predicted: ʾuḥīit X
+ʾajāra		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾujirta		predicted: ʾujlrta X
+ʾalḥaqa		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾulḥiqta		predicted: ʾulḥiqta V
+istaẓhara		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ustuẓhirta		predicted: ustuqhirta X
+naffaqa		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: nuffiqta		predicted: nuffiqta V
+naqaṣa		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: nuqiṣta		predicted: nuqiṣta V
+qatala		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: qutilta		predicted: ʾutulit X
+
+
+#################################
+
+ad-dustūru		pos=N,def=DEF,case=NOM,num=PL		gold: ad-dasātīru		predicted: ad-dudu X
+al-ʿarīfu		pos=N,def=DEF,case=NOM,num=PL		gold: al-ʿurafāʾu		predicted: al-ʿarāʾīatu X
+al-fustānu		pos=N,def=DEF,case=NOM,num=PL		gold: al-fasātīnu		predicted: al-ʾasuāu X
+al-jumhūru		pos=N,def=DEF,case=NOM,num=PL		gold: al-jamāhīru		predicted: al-juṣāḍīʿu X
+al-kalaku		pos=N,def=DEF,case=NOM,num=PL		gold: al-kalakātu		predicted: al-jaliḥūtu X
+al-ḵuršūfu		pos=N,def=DEF,case=NOM,num=PL		gold: al-ḵarāšīfu		predicted: al-ʾafāāibu X
+al-majlisu		pos=N,def=DEF,case=NOM,num=PL		gold: al-majālisu		predicted: al-majadāāu X
+al-mufattišu		pos=N,def=DEF,case=NOM,num=PL		gold: al-mufattišūna		predicted: al-muḥatu X
+al-qiṭṭatu		pos=N,def=DEF,case=NOM,num=PL		gold: al-qiṭāṭu		predicted: al-qiṭāṭu V
+ar-riyālu		pos=N,def=DEF,case=NOM,num=PL		gold: ar-riyālātu		predicted: ar-riyālātu V
+
+
+#################################
+
+ad-daftaru		pos=N,def=INDF,case=ACC,num=PL		gold: dafātira		predicted: ʾaaaan X
+aḍ-ḍirsu		pos=N,def=INDF,case=ACC,num=PL		gold: ḍurūsan		predicted: ʾaaaan X
+al-ḥādiṯatu		pos=N,def=INDF,case=ACC,num=PL		gold: ḥawādiṯa		predicted: ʾaaaan X
+al-ḥāfiru		pos=N,def=INDF,case=ACC,num=PL		gold: ḥawāfira		predicted: ʾaaaan X
+al-kāmēratu		pos=N,def=INDF,case=ACC,num=PL		gold: kāmērātin		predicted: ʾaaaan X
+al-mubtadiʾu		pos=N,def=INDF,case=ACC,num=PL		gold: mubtadiʾīna		predicted: ʾaaaan X
+an-nabīḏu		pos=N,def=INDF,case=ACC,num=PL		gold: ʾanbiḏatan		predicted: ʾaaaan X
+ar-riwāyatu		pos=N,def=INDF,case=ACC,num=PL		gold: riwāyātin		predicted: ʾaaaan X
+as-saqfu		pos=N,def=INDF,case=ACC,num=PL		gold: suqūfan		predicted: ʾaaaan X
+aš-šaršafu		pos=N,def=INDF,case=ACC,num=PL		gold: šarāšifa		predicted: ʾaaaan X
+aṯ-ṯadiyiyyu		pos=N,def=INDF,case=ACC,num=PL		gold: ṯadīyyātin		predicted: ʾaaaan X
+az-zamanu		pos=N,def=INDF,case=ACC,num=PL		gold: ʾazmānan		predicted: ʾaaaan X
+
+
+#################################
+
+ʾabbada		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ʾubbidtumā		predicted: ʾubbidtumā V
+ʾakkada		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ʾukkidtumā		predicted: ʾukkidtumā V
+ḥaraqa		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ḥuriqtumā		predicted: ḥuriqtumā V
+istaʿmara		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ustuʿmirtumā		predicted: ustuʿmirtumā V
+kafā		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: kufītumā		predicted: kufītumā V
+ṭabbala		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ṭubbiltumā		predicted: ṭubbiltumā V
+ṭāla		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ṭiltumā		predicted: ṭūlitmā X
+
+
+#################################
+
+bārā		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=PL		gold: yubārū		predicted: yuiiiiiiiiiiiiiiii X
+ibtasama		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=PL		gold: yabtasimū		predicted: yuiiiiiiiiiiiiiiiii X
+intafaḵa		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=PL		gold: yantafiḵū		predicted: yuiiiiiiiiiiiiiiiii X
+istaqarra		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=PL		gold: yastaqirrū		predicted: yuiiiiiiiiiiiiiiiii X
+raʾasa		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=PL		gold: yarʾasū		predicted: yuiiiiiiiiiiiiiiiii X
+rajjaʿa		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=PL		gold: yurajjiʿū		predicted: yuiiiiiiiiiiiiiiiii X
+wātara		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=PL		gold: yuwātirū		predicted: yuiiiiiiiiiiiiiiiii X
+
+
+#################################
+
+ʾajhada		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: yujhidu		predicted: yaaau X
+hājama		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: yuhājimu		predicted: yaaau X
+ḥāṭa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: yaḥūṭu		predicted: yaaau X
+intaḥala		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: yantaḥilu		predicted: yaaau X
+raḍiya		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: yarḍā		predicted: yaaau X
+ṣaḥiba		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: yaṣḥabu		predicted: yaaau X
+saqaṭa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: yasquṭu		predicted: yaaau X
+
+
+#################################
+
+ḡāliyyun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=PL		gold: ḡāliyyīna		predicted: māriyyīna X
+ʿimlāqiyyun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=PL		gold: ʿimlāqiyyīna		predicted: ʿimāāāiyyīna X
+qawmiyyun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=PL		gold: qawmiyyīna		predicted: ʾarmiyyīna X
+ṯānawiyyun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=PL		gold: ṯānawiyyīna		predicted: mānmḥiyyīna X
+tartībiyyun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=PL		gold: tartībiyyīna		predicted: marāḥīiyyīna X
+ʿumūmiyyun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=PL		gold: ʿumūmiyyīna		predicted: ʿumūmiyyīna V
+
+
+#################################
+
+ʾajmala		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tujmilī		predicted: tuaīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīī X
+ʾaqfala		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tuqfilī		predicted: tuaīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīī X
+ʾaṣāba		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tuṣībī		predicted: tuaīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīī X
+ḥašada		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: taḥšudī		predicted: tuaīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīī X
+istalqā		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tastalqī		predicted: tuaīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīī X
+istaʿmala		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tastaʿmilī		predicted: tuaīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīī X
+nāma		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tanāmī		predicted: tuaīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīī X
+rabbaba		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: turabbibī		predicted: tuaīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīīī X
+
+
+#################################
+
+ʾawwala		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=SG		gold: yuʾawwila		predicted: yusaaaaaaaaaaaaaaaa X
+ḥadaṯa		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=SG		gold: yaḥduṯa		predicted: yusaaaaaaaaaaaaaaaa X
+iḥqawqafa		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=SG		gold: yaḥqawqifa		predicted: yusaaaaaaaaaaaaaaaa X
+ištarā		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=SG		gold: yaštariya		predicted: yusaaaaaaaaaaaaaaaa X
+istaṭāʿa		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=SG		gold: yastaṭīʿa		predicted: yusaaaaaaaaaaaaaaaa X
+jarā		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=SG		gold: yajriya		predicted: yusaaaaaaaaaaaaaaaa X
+raʾā		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=SG		gold: yarā		predicted: yusaaaaaaaaaaaaaaaa X
+zāda		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=SG		gold: yazīda		predicted: yusaaaaaaaaaaaaaaaa X
+
+
+#################################
+
+ʾaʿāda		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuʿādīna		predicted: tuaaaaaan X
+ʾanbaʾa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tunbaʾīna		predicted: tuaaaaaann X
+istaʾmana		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tustaʾmanīna		predicted: tuaaaaaaaan X
+iʿtarafa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuʿtarafīna		predicted: tuaaaaaaan X
+maṣṣa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tumaṣṣīna		predicted: tuaaaaan X
+šāraka		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tušārakīna		predicted: tuaaaaaan X
+
+
+#################################
+
+ʾaqbara		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nuqbaru		predicted: nufaaʿu X
+iqtaṭṭa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nuqtaṭṭu		predicted: nustannu X
+nāwā		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nunāwā		predicted: nukḍn X
+qallada		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nuqalladu		predicted: nuqalladu V
+tabādala		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nutabādalu		predicted: nuḥḍanu X
+
+
+#################################
+
+ḥamā		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: taḥmi		predicted: tasaa X
+ittakaʾa		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tattakiʾ		predicted: tasaa X
+jahara		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tajhar		predicted: tasaa X
+ḵālafa		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tuḵālif		predicted: tasaa X
+ḵatana		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: taḵtin		predicted: tasaa X
+malaʾa		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tamlaʾ		predicted: tasaa X
+qāla		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: taqul		predicted: tasaa X
+qarrara		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tuqarrir		predicted: tasaa X
+saʿala		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tasʿul		predicted: tasaa X
+tabāʾasa		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tatabāʾas		predicted: tasaa X
+taṭawwala		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tataṭawwal		predicted: tasaa X
+tawallā		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tatawalla		predicted: tasaa X
+
+
+#################################
+
+ʾabbada		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾubbidnā		predicted: ʾuḥmibnā X
+ʾalḡā		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾulḡīnā		predicted: ʾurmīnā X
+ʾasmā		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾusmīnā		predicted: ʾusmīnā V
+dāwara		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: dūwirnā		predicted: niqirnā X
+istaẓhara		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ustuẓhirnā		predicted: ustuwmilnā X
+jāba		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: jibnā		predicted: nibiā X
+
+
+#################################
+
+ʾaʿjama		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾuʿjimtunna		predicted: ʾuʿfimtunna X
+ʾaʿmala		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾuʿmiltunna		predicted: ʾuʿmiltunna V
+ḥaqqaqa		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ḥuqqiqtunna		predicted: ḥuwwiqtunna X
+ḥaraṯa		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ḥuriṯtunna		predicted: ḥuridtunna X
+jaḏḏara		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: juḏḏirtunna		predicted: juydirtunna X
+raʾasa		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ruʾistunna		predicted: ruʾistunna V
+ṭaʿana		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ṭuʿintunna		predicted: ṭuʿintunna V
+
+
+#################################
+
+ʾanbaʾa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nunbiʾu		predicted: nunbiʾu V
+ʾaqarra		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nuqirru		predicted: nuqirru V
+ḥafara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: naḥfiru		predicted: nanjuru X
+istaʿbada		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nastaʿbidu		predicted: nastabidu X
+lāqā		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nulāqī		predicted: naqīū X
+salaḵa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: naslaḵu		predicted: naslaḵu V
+ṭabbala		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nuṭabbilu		predicted: naṭbaʿu X
+taḥammala		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nataḥammalu		predicted: nasjaaṣiʿu X
+taqayyaʾa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nataqayyaʾu		predicted: nasṣaaṣṣulu X
+
+
+#################################
+
+al-ḥuzmatu		pos=N,def=DEF,case=ACC,num=PL		gold: al-ḥuzama		predicted: al-ʾaaaa X
+al-mabdaʾu		pos=N,def=DEF,case=ACC,num=PL		gold: al-mabādiʾa		predicted: al-ʾaraaā X
+al-miṯqālu		pos=N,def=DEF,case=ACC,num=PL		gold: al-maṯāqīla		predicted: al-ʾaaaaa X
+
+
+#################################
+
+ʾahāna		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: yuhin		predicted: yuhin V
+ḡalā		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: yaḡli		predicted: yaḡli V
+istafhama		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: yastafhim		predicted: yattaḡim X
+istalhama		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: yastalhim		predicted: yattalihll X
+istawā		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: yastawi		predicted: yattaf X
+ṣāra		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: yaṣir		predicted: yujrʾ X
+tafāʿala		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: yatafāʿal		predicted: yatafāʿal V
+tasānada		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: yatasānad		predicted: yatawāwim X
+
+
+#################################
+
+ʾadāra		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tudar		predicted: tudaa X
+ʾakrama		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tukram		predicted: tudaa X
+ittabaʿa		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuttabaʿ		predicted: tudaa X
+
+
+#################################
+
+ad-dahšatu		pos=N,def=INDF,case=GEN,num=SG		gold: dahšatin		predicted: lanbin X
+aḍ-ḍarbatu		pos=N,def=INDF,case=GEN,num=SG		gold: ḍarbatin		predicted: larīratn X
+al-faʾsu		pos=N,def=INDF,case=GEN,num=SG		gold: faʾsin		predicted: firāsin X
+al-firāšu		pos=N,def=INDF,case=GEN,num=SG		gold: firāšin		predicted: firāšin V
+al-ihtimāmu		pos=N,def=INDF,case=GEN,num=SG		gold: ihtimāmin		predicted: latiaāʿin X
+al-kafāʾatu		pos=N,def=INDF,case=GEN,num=SG		gold: kafāʾatin		predicted: latāaatin X
+al-maḵzanu		pos=N,def=INDF,case=GEN,num=SG		gold: maḵzanin		predicted: firaisin X
+al-muʾaḏḏinu		pos=N,def=INDF,case=GEN,num=SG		gold: muʾaḏḏinin		predicted: miraẓẓan X
+al-qīṯāratu		pos=N,def=INDF,case=GEN,num=SG		gold: qīṯāratin		predicted: latitin X
+at-tabrīru		pos=N,def=INDF,case=GEN,num=SG		gold: tabrīrin		predicted: lābūiiinin X
+at-tājiru		pos=N,def=INDF,case=GEN,num=SG		gold: tājirin		predicted: lābūtin X
+aṭ-ṭarīqu		pos=N,def=INDF,case=GEN,num=SG		gold: ṭarīqin		predicted: faqīiin X
+at-tiryāqu		pos=N,def=INDF,case=GEN,num=SG		gold: tiryāqin		predicted: lābūbiniitin X
+
+
+#################################
+
+ʿarabiyyun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=DU		gold: ʿarabiyyayni		predicted: ʿarabiyyayni V
+hayūliyyun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=DU		gold: hayūliyyayni		predicted: hayfīiyyayni X
+mamnūʿun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=DU		gold: mamnūʿayni		predicted: mamnūʿayni V
+masfūḥun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=DU		gold: masfūḥayni		predicted: masfūḥayni V
+mustaqīmun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=DU		gold: mustaqīmayni		predicted: mustaqīmayni V
+ṣāriḵun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=DU		gold: ṣāriḵayni		predicted: šāribayni X
+sarīʿun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=DU		gold: sarīʿayni		predicted: sarīʿayni V
+
+
+#################################
+
+aḏ-ḏanabu		pos=N,def=DEF,case={NOM/ACC/GEN},num=PL		gold: al-ʾaḏnāb		predicted: al-aaaaaaāā X
+al-hātifu		pos=N,def=DEF,case={NOM/ACC/GEN},num=PL		gold: al-hawātif		predicted: al-aaaaaāā X
+aš-šaqqatu		pos=N,def=DEF,case={NOM/ACC/GEN},num=PL		gold: aš-šiqaq		predicted: al-aaaaaaā X
+az-zamanu		pos=N,def=DEF,case={NOM/ACC/GEN},num=PL		gold: al-ʾazmān		predicted: al-aaaaaaā X
+
+
+#################################
+
+mārūniyyun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=MASC,num=SG		gold: al-mārūnī		predicted: al-aaa X
+munāsibun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=MASC,num=SG		gold: al-munāsib		predicted: al-aaa X
+qārrun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=MASC,num=SG		gold: al-qārr		predicted: al-aaa X
+ʿumāniyyun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=MASC,num=SG		gold: al-ʿumānī		predicted: al-aaa X
+
+
+#################################
+
+badā		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=SG		gold: tabduwa		predicted: tuuuaaaaaaaaaaaaaaaa X
+iḵtaraqa		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=SG		gold: taḵtariqa		predicted: tuuuaaaaaaaaaaaaaaaa X
+ištaḡala		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=SG		gold: taštaḡila		predicted: tuuuaaaaaaaaaaaaaaaa X
+istanfara		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=SG		gold: tastanfira		predicted: tuuuaaaaaaaaaaaaaaaaa X
+nāqaša		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=SG		gold: tunāqiša		predicted: tuuuaaaaaaaaaaaaaaaa X
+razzaza		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=SG		gold: turazziza		predicted: tuuuaaaaaaaaaaaaaaaaa X
+ṭaraḥa		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=SG		gold: taṭraḥa		predicted: tuuuaaaaaaaaaaaaaaaa X
+
+
+#################################
+
+ʾaḥfaẓa		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾaḥfaẓtu		predicted: ʾaḥradtu X
+iḥtāṭa		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: iḥtaṭtu		predicted: iḥtaṭtu V
+iqtaraḍa		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: iqtaraḍtu		predicted: iḵtaradtu X
+našaʾa		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: našaʾtu		predicted: najaʾtu X
+nazala		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: nazaltu		predicted: nazaltu V
+ṣāḥa		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ṣiḥtu		predicted: dijaytu X
+tabaddala		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: tabaddaltu		predicted: tabaadtttu X
+tawakkada		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: tawakkadtu		predicted: takaddtdtu X
+
+
+#################################
+
+aḍ-ḍayfu		pos=N,def=INDF,case={NOM/ACC/GEN},num=SG		gold: ḍayf		predicted: ʾabb X
+al-ʿawratu		pos=N,def=INDF,case={NOM/ACC/GEN},num=SG		gold: ʿawra		predicted: ʿadasa X
+al-ḥašdu		pos=N,def=INDF,case={NOM/ACC/GEN},num=SG		gold: ḥašd		predicted: ḥafla X
+al-ḥuzmatu		pos=N,def=INDF,case={NOM/ACC/GEN},num=SG		gold: ḥuzma		predicted: ḥalqa X
+al-jasadu		pos=N,def=INDF,case={NOM/ACC/GEN},num=SG		gold: jasad		predicted: ḥadlm X
+al-juḥru		pos=N,def=INDF,case={NOM/ACC/GEN},num=SG		gold: juḥr		predicted: ḵalq X
+al-jumlatu		pos=N,def=INDF,case={NOM/ACC/GEN},num=SG		gold: jumla		predicted: ʿadam X
+al-maktabu		pos=N,def=INDF,case={NOM/ACC/GEN},num=SG		gold: maktab		predicted: maktab V
+al-mumarriḍu		pos=N,def=INDF,case={NOM/ACC/GEN},num=SG		gold: mumarriḍ		predicted: ʾitẓṭka X
+al-waḥšu		pos=N,def=INDF,case={NOM/ACC/GEN},num=SG		gold: waḥš		predicted: wakīl X
+an-nasru		pos=N,def=INDF,case={NOM/ACC/GEN},num=SG		gold: nasr		predicted: nasr V
+an-nāyu		pos=N,def=INDF,case={NOM/ACC/GEN},num=SG		gold: nāy		predicted: tāfāḏa X
+aṣ-ṣaffu		pos=N,def=INDF,case={NOM/ACC/GEN},num=SG		gold: ṣaff		predicted: tāʾāʾ X
+at-tašrīʿu		pos=N,def=INDF,case={NOM/ACC/GEN},num=SG		gold: tašrīʿ		predicted: tašrīʿ V
+
+
+#################################
+
+ʾanḥala		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾunḥilū		predicted: uuriūūū X
+ʾasḵaṭa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾusḵiṭū		predicted: uuriūūū X
+ḥaddaṯa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ḥuddiṯū		predicted: uuriūūū X
+intaẓama		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: untuẓimū		predicted: uuriūūū X
+ṭahhara		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ṭuhhirū		predicted: uuriūūū X
+
+
+#################################
+
+ʾaqraḍa		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yuqriḍna		predicted: yuaaaaaaaaaaaaaaaaaaaaa X
+ḏarā		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yaḏrūna		predicted: yuaaaaaaaaaaaaaaaaaaaaa X
+habara		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yahburna		predicted: yuaaaaaaaaaaaaaaaaaaaaa X
+hajama		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yahjumna		predicted: yuaaaaaaaaaaaaaaaaaaaaa X
+ḥarrara		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yuḥarrirna		predicted: yuaaaaaaaaaaaaaaaaaaaaa X
+ḥaṣala		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yaḥṣulna		predicted: yuaaaaaaaaaaaaaaaaaaaaa X
+ibtasama		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yabtasimna		predicted: yuaaaaaaaaaaaaaaaaaaaaaa X
+iqtaṣada		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yaqtaṣidna		predicted: yuaaaaaaaaaaaaaaaaaaaaaa X
+istaʿraḍa		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yastaʿriḍna		predicted: yuaaaaaaaaaaaaaaaaaaaaaa X
+mawwata		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yumawwitna		predicted: yuaaaaaaaaaaaaaaaaaaaaa X
+
+
+#################################
+
+kāmilun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: kāmilatayn		predicted: fāmilatayn X
+madaniyyun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: madaniyyatayn		predicted: madaniyyatayn V
+majhūlun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: majhūlatayn		predicted: majhūlatayn V
+maḵtūnun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: maḵtūnatayn		predicted: maqtūnatayn X
+mutawassiṭun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: mutawassiṭatayn		predicted: mutawassikatayn X
+qadīmun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: qadīmatayn		predicted: qawīmatayn X
+qawmiyyun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: qawmiyyatayn		predicted: qawmiyyatayn V
+ṭarīfun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: ṭarīfatayn		predicted: farīfatayn X
+
+
+#################################
+
+ʾadḵala		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yudḵal		predicted: yudḵal V
+ʾawdaʿa		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yūdaʿ		predicted: yumhaḥ X
+baṣaqa		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yubṣaq		predicted: yuṭʿab X
+basaṭa		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yubsaṭ		predicted: yuṭnaṯ X
+ḥadaṯa		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yuḥdaṯ		predicted: yuʿanfa X
+ḥawā		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yuḥwa		predicted: yuḥwa V
+imtalaka		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yumtalak		predicted: yuqtaḥaf X
+iqtabala		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yuqtabal		predicted: yuqtabal V
+ṣawwaba		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yuṣawwab		predicted: yuḥawwal X
+ṭāʿa		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yuṭaʿ		predicted: yuṭar X
+ṭabaʿa		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yuṭbaʿ		predicted: yuṯbab X
+
+
+#################################
+
+ad-dayru		pos=N,def=DEF,case={NOM/ACC/GEN},num=DU		gold: ad-dayrayn		predicted: ad-dayrayn V
+al-ḥawšu		pos=N,def=DEF,case={NOM/ACC/GEN},num=DU		gold: al-ḥawšayn		predicted: al-ḥawšayn V
+al-ittiḥādu		pos=N,def=DEF,case={NOM/ACC/GEN},num=DU		gold: al-ittiḥādayn		predicted: al-ittiḥādayn V
+al-kammiyyatu		pos=N,def=DEF,case={NOM/ACC/GEN},num=DU		gold: al-kammiyyatayn		predicted: al-kammiyyatayn V
+al-muḏannabu		pos=N,def=DEF,case={NOM/ACC/GEN},num=DU		gold: al-muḏannabayn		predicted: al-muḏannabayn V
+al-muḥāribu		pos=N,def=DEF,case={NOM/ACC/GEN},num=DU		gold: al-muḥāribayn		predicted: al-muḥāribayn V
+al-qafaṣu		pos=N,def=DEF,case={NOM/ACC/GEN},num=DU		gold: al-qafaṣayn		predicted: al-qafaṣayn V
+al-qāfilatu		pos=N,def=DEF,case={NOM/ACC/GEN},num=DU		gold: al-qāfilatayn		predicted: al-qāfilatayn V
+al-qunfuḏu		pos=N,def=DEF,case={NOM/ACC/GEN},num=DU		gold: al-qunfuḏayn		predicted: al-qunfaḏayn X
+as-sutratu		pos=N,def=DEF,case={NOM/ACC/GEN},num=DU		gold: as-sutratayn		predicted: as-sutratayn V
+
+
+#################################
+
+hannaʾa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yuhannaʾna		predicted: yuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+sabbaba		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yusabbabna		predicted: yuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+
+
+#################################
+
+ʾašḡala		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yušḡalū		predicted: yunaaaaa X
+kahraba		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yukahrabū		predicted: yunaaaaa X
+ṭāraḥa		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yuṭāraḥū		predicted: yunaaaaa X
+
+
+#################################
+
+fāraqa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾufāriqu		predicted: ʾaauuu X
+istaʿjala		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾastaʿjilu		predicted: ʾaauuu X
+kahraba		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾukahribu		predicted: ʾaauuu X
+taqāraḍa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾataqāraḍu		predicted: ʾaauuu X
+
+
+#################################
+
+ʾīṭāliyyun		pos=ADJ,def=INDF,case=GEN,gen=FEM,num=SG		gold: ʾīṭāliyyatin		predicted: ʾiṭāliyyatin X
+munfaṣilun		pos=ADJ,def=INDF,case=GEN,gen=FEM,num=SG		gold: munfaṣilatin		predicted: munaaḥilatin X
+qādirun		pos=ADJ,def=INDF,case=GEN,gen=FEM,num=SG		gold: qādiratin		predicted: qādiratin V
+
+
+#################################
+
+ʾaflaḥa		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tuflaḥā		predicted: tutaaaaaaaaaaaa X
+ḥannaʾa		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tuḥannaʾā		predicted: tutaaaaaaaaaaaa X
+nāsaba		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tunāsabā		predicted: tutaaaaaaaaaaaa X
+zāra		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tuzārā		predicted: tutaaaaaaaaaaaa X
+
+
+#################################
+
+aḍ-ḍarbatu		pos=N,poss=PSSD,case=ACC,num=SG		gold: ḍarbata		predicted: ʾaaaaaaaaaaaaaa X
+aḏ-ḏirāʿu		pos=N,poss=PSSD,case=ACC,num=SG		gold: ḏirāʿa		predicted: ʾaaaaaaaaaaaaaa X
+al-ʾarḍiyyatu		pos=N,poss=PSSD,case=ACC,num=SG		gold: ʾarḍiyyata		predicted: ʾaaaaaaaaaaaaaa X
+al-hayʾatu		pos=N,poss=PSSD,case=ACC,num=SG		gold: hayʾata		predicted: ʾaaaaaaaaaaaaaa X
+al-liqāʾu		pos=N,poss=PSSD,case=ACC,num=SG		gold: liqāʾa		predicted: ʾaaaaaaaaaaaaaa X
+al-mablaḡu		pos=N,poss=PSSD,case=ACC,num=SG		gold: mablaḡa		predicted: ʾaaaaaaaaaaaaaa X
+al-wālidu		pos=N,poss=PSSD,case=ACC,num=SG		gold: wālida		predicted: ʾaaaaaaaaaaaaaa X
+al-waswasatu		pos=N,poss=PSSD,case=ACC,num=SG		gold: waswasata		predicted: ʾaaaaaaaaaaaaaa X
+an-nakbatu		pos=N,poss=PSSD,case=ACC,num=SG		gold: nakbata		predicted: ʾaaaaaaaaaaaaaa X
+an-natījatu		pos=N,poss=PSSD,case=ACC,num=SG		gold: natījata		predicted: ʾaaaaaaaaaaaaaa X
+an-nayzaku		pos=N,poss=PSSD,case=ACC,num=SG		gold: nayzaka		predicted: ʾaaaaaaaaaaaaaa X
+aṣ-ṣadīqu		pos=N,poss=PSSD,case=ACC,num=SG		gold: ṣadīqa		predicted: ʾaaaaaaaaaaaaaa X
+
+
+#################################
+
+iḥtawā		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yaḥtawīna		predicted: yuunnnna X
+qaḍaba		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yaqḍibna		predicted: yuunnnna X
+zayyada		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yuzayyidna		predicted: yuunnnnn X
+
+
+#################################
+
+ḏakiyyun		pos=ADJ,def=INDF,case=NOM,gen=MASC,num=PL		gold: ḏakiyyūna		predicted: hariyyūna X
+mutawassiṭun		pos=ADJ,def=INDF,case=NOM,gen=MASC,num=PL		gold: mutawassiṭūna		predicted: muhadassi X
+qārriyyun		pos=ADJ,def=INDF,case=NOM,gen=MASC,num=PL		gold: qārriyyūna		predicted: qārriyyūna V
+
+
+#################################
+
+ʾaṭrašu		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=SG		gold: ṭaršāʾ		predicted: ʾawra X
+baḥrayniyyun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=SG		gold: baḥrayniyya		predicted: ʾaḥray X
+ḡāʾimun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=SG		gold: ḡāʾima		predicted: ḡāʾima V
+jāhilun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=SG		gold: jāhila		predicted: jāhila V
+qurʾāniyyun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=SG		gold: qurʾāniyya		predicted: šurīā X
+ṭabīʿiyyun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=SG		gold: ṭabīʿiyya		predicted: ʾakīʿiyya X
+
+
+#################################
+
+ʿaqliyyun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=FEM,num=PL		gold: al-ʿaqliyyāt		predicted: al-nawsiyyāt X
+baʿīdun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=FEM,num=PL		gold: al-baʿīdāt		predicted: al-karūdāt X
+falakiyyun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=FEM,num=PL		gold: al-falakiyyāt		predicted: al-falakiyyāt V
+
+
+#################################
+
+ʿajamiyyun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=MASC,num=DU		gold: al-ʿajamiyyayn		predicted: al-samakiyyayn X
+bāridun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=MASC,num=DU		gold: al-bāridayn		predicted: al-bādiʿayn X
+fariḥun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=MASC,num=DU		gold: al-fariḥayn		predicted: al-qādiʿayn X
+ḡāliyyun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=MASC,num=DU		gold: al-ḡāliyyayn		predicted: al-māriyyayn X
+ijtimāʿiyyun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=MASC,num=DU		gold: al-ijtimāʿiyyayn		predicted: at-aasāmāniyyayn X
+manawiyyun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=MASC,num=DU		gold: al-manawiyyayn		predicted: al-sajūliyyayn X
+mašḡūlun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=MASC,num=DU		gold: al-mašḡūlayn		predicted: al-malʾūrayn X
+naẓīfun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=MASC,num=DU		gold: an-naẓīfayn		predicted: an-nawīrayn X
+samakiyyun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=MASC,num=DU		gold: as-samakiyyayn		predicted: as-samakiyyayn V
+
+
+#################################
+
+ʾarʿada		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾurʿidna		predicted: ʾūliidna X
+ʾassasa		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾussisna		predicted: ʾussisna V
+ḥāwala		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ḥūwilna		predicted: ḥūwilna V
+iḵtabara		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: uḵtubirna		predicted: uqtujirna X
+saḥara		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: suḥirna		predicted: suḥurij X
+ṭāla		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ṭilna		predicted: ṭilna V
+
+
+#################################
+
+ʾaḥmada		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=DU		gold: yuḥmidā		predicted: yaaaāāāā X
+ʾalḥaqa		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=DU		gold: yulḥiqā		predicted: yaaaāāāā X
+iḵtaraqa		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=DU		gold: yaḵtariqā		predicted: yaaaāāāā X
+istafāda		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=DU		gold: yastafīdā		predicted: yaaaāāāā X
+istaqbala		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=DU		gold: yastaqbilā		predicted: yaaaāāāāā X
+taʿālā		pos=V,mood=SBJV,gen=MASC,per=3,voice=ACT,num=DU		gold: yataʿālayā		predicted: yaaaāāā X
+
+
+#################################
+
+ʾakala		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=SG		gold: ʾākula		predicted: ʾunīia X
+ʾanāma		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=SG		gold: ʾunīma		predicted: ʾunīma V
+ʾasqaṭa		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=SG		gold: ʾusqiṭa		predicted: ʾunqira X
+ʾatā		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=SG		gold: ʾātiya		predicted: ʾuttla X
+banā		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=SG		gold: ʾabniya		predicted: ʾunala X
+dammama		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=SG		gold: ʾudammima		predicted: ʾatallila X
+istaqbaḥa		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=SG		gold: ʾastaqbiḥa		predicted: ʾastaaiaa X
+ḵaraja		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=SG		gold: ʾaḵruja		predicted: ʾunaaba X
+qāwama		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=SG		gold: ʾuqāwima		predicted: ʾafīula X
+saʿala		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=SG		gold: ʾasʿula		predicted: ʾutaala X
+tanabbaʾa		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=SG		gold: ʾatanabbaʾa		predicted: ʾatalaimila X
+taṣallā		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=SG		gold: ʾataṣallā		predicted: ʾataalila X
+
+
+#################################
+
+ʾaršada		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾuršid		predicted: ʾuḵanqir X
+kālama		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾukālim		predicted: ʾuṭānir X
+qāla		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾaqul		predicted: ʾuṭāʾ X
+rajā		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾarju		predicted: ʾarju V
+šarraḥa		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾušarriḥ		predicted: ʾuṭaubib X
+ṭalaba		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾaṭlub		predicted: ʾaṭlub V
+tamannā		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾatamanna		predicted: ʾadranni X
+wakkada		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾuwakkid		predicted: ʾuṭaʿʿir X
+
+
+#################################
+
+ḥallala		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ḥullilat		predicted: ḥullilat V
+istaẓhara		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ustuẓhirat		predicted: ustumrirat X
+ḵāfa		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ḵīfat		predicted: ḥūmit X
+rāqaba		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: rūqibat		predicted: qūmibat X
+sawwā		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: suwwiyat		predicted: suwwiyat V
+tawaqqā		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: tuwuqqiyat		predicted: tuqiddit X
+
+
+#################################
+
+ʾaḥsana		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tuḥsinu		predicted: tuḥmibu X
+ʿašiqa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: taʿšaqu		predicted: turẓa X
+dāma		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tadūmu		predicted: tukāā X
+ibtaʿada		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tabtaʿidu		predicted: tabtaʿidu V
+iḍraḡaṭṭa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: taḍraḡiṭṭu		predicted: taḥrabiddu X
+inkataba		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tankatibu		predicted: tanšatibu X
+istaʾmana		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tastaʾminu		predicted: tastaḥmilu X
+izdahara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tazdahiru		predicted: tanrudiru X
+kālama		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tukālimu		predicted: tukāmisu X
+rāḥa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tarūḥu		predicted: turhu X
+tāba		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tatūbu		predicted: tunāā X
+ṭāra		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: taṭīru		predicted: tufru X
+wakkada		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tuwakkidu		predicted: tujaddidu X
+
+
+#################################
+
+ḥayyā		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: yuḥayyiyā		predicted: yaʿayāā X
+inṣarafa		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: yanṣarifā		predicted: yatrariṭā X
+istaṣdara		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: yastaṣdirā		predicted: yastaṣdirā V
+lamasa		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: yalmisā		predicted: yalmisā V
+
+
+#################################
+
+dustūriyyun		pos=ADJ,def=INDF,case=NOM,gen=MASC,num=DU		gold: dustūriyyāni		predicted: qāsttriyyāni X
+ḡaniyyun		pos=ADJ,def=INDF,case=NOM,gen=MASC,num=DU		gold: ḡaniyyāni		predicted: ḡaniyyāni V
+mafqūdun		pos=ADJ,def=INDF,case=NOM,gen=MASC,num=DU		gold: mafqūdāni		predicted: mafqūdāni V
+nabīḏun		pos=ADJ,def=INDF,case=NOM,gen=MASC,num=DU		gold: nabīḏāni		predicted: nabīyāni X
+qurʾāniyyun		pos=ADJ,def=INDF,case=NOM,gen=MASC,num=DU		gold: qurʾāniyyāni		predicted: qārʾāniyyāni X
+
+
+#################################
+
+ḥaddaṯa		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ḥaddaṯtum		predicted: ḥaṭwadtum X
+intaẓama		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: intaẓamtum		predicted: intaṣamtum X
+istamṭara		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: istamṭartum		predicted: istamaartum X
+jāmala		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: jāmaltum		predicted: jāmaltum V
+jawwafa		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: jawwaftum		predicted: jawwattum X
+nafaḏa		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: nafaḏtum		predicted: nafaḏtum V
+ṣadara		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ṣadartum		predicted: ṣadartum V
+
+
+#################################
+
+sākitun		pos=ADJ,def=DEF,case=NOM,gen=MASC,num=PL		gold: as-sukūtu		predicted: aaauunnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn X
+
+
+#################################
+
+ʾaḥḍara		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾuḥḍirti		predicted: ʾuḥṭirti X
+iftaʿala		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: uftuʿilti		predicted: uḵtuʿtiti X
+imtaṯala		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: umtuṯilti		predicted: umtubiiti X
+iʿtaqada		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: uʿtuqidti		predicted: uʿtuqidti V
+sammana		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: summinti		predicted: kumminti X
+ṭaʿana		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ṭuʿinti		predicted: duʿiqti X
+tarjama		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: turjimti		predicted: turjimti V
+
+
+#################################
+
+al-ʿaẓmu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=SG		gold: ʿaẓm		predicted: maaa X
+al-bahāru		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=SG		gold: bahār		predicted: maaa X
+al-filfilu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=SG		gold: filfil		predicted: maaa X
+al-ḥadaṯu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=SG		gold: ḥadaṯ		predicted: maaa X
+al-ḥallūfu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=SG		gold: ḥallūf		predicted: maaa X
+al-ʾimāmu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=SG		gold: ʾimām		predicted: maaa X
+al-lawlabu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=SG		gold: lawlab		predicted: maaa X
+al-majallatu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=SG		gold: majallat		predicted: maaa X
+al-maḵnūṯu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=SG		gold: maḵnūṯ		predicted: maaa X
+al-miqdāru		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=SG		gold: miqdār		predicted: maaa X
+al-qubbatu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=SG		gold: qubbat		predicted: maaa X
+al-qumāšu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=SG		gold: qumāš		predicted: maaa X
+aš-šiʿāru		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=SG		gold: šiʿār		predicted: maaa X
+as-sīratu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=SG		gold: sīrat		predicted: maaa X
+aš-širyānu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=SG		gold: širyān		predicted: maaa X
+
+
+#################################
+
+ʾakrama		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=DU		gold: tukrimā		predicted: tuaaaāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+infaṣala		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=DU		gold: tanfaṣilā		predicted: tuaaaāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+istašhada		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=DU		gold: tastašhidā		predicted: tuaaaāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+istaṯnā		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=DU		gold: tastaṯniyā		predicted: tuaaaāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+jazā		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=DU		gold: tajziyā		predicted: tuaaaāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+nawā		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=DU		gold: tanwiyā		predicted: tuaaaāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+ṭaʿana		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=DU		gold: taṭʿanā		predicted: tuaaaāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+ṭayyaba		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=DU		gold: tuṭayyibā		predicted: tuaaaāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+wahaba		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=DU		gold: tahabā		predicted: tuaaaāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+
+
+#################################
+
+ad-dāʾiratu		pos=N,def=INDF,case={NOM/ACC/GEN},num=PL		gold: dawāʾir		predicted: ʾaāāā X
+al-burhānu		pos=N,def=INDF,case={NOM/ACC/GEN},num=PL		gold: barāhīn		predicted: ʾaāāā X
+al-ʾijāzatu		pos=N,def=INDF,case={NOM/ACC/GEN},num=PL		gold: ʾijāzāt		predicted: ʾaāāā X
+al-ḵuṣlatu		pos=N,def=INDF,case={NOM/ACC/GEN},num=PL		gold: ḵuṣal		predicted: ʾaāāā X
+al-maktūbu		pos=N,def=INDF,case={NOM/ACC/GEN},num=PL		gold: makātīb		predicted: ʾaāāā X
+al-muqaddamu		pos=N,def=INDF,case={NOM/ACC/GEN},num=PL		gold: muqaddamīn		predicted: ʾaāāā X
+al-muwāṭinu		pos=N,def=INDF,case={NOM/ACC/GEN},num=PL		gold: muwāṭinīn		predicted: ʾaāāā X
+an-nīšānu		pos=N,def=INDF,case={NOM/ACC/GEN},num=PL		gold: nayāšīn		predicted: ʾaāāā X
+aṣ-ṣafanu		pos=N,def=INDF,case={NOM/ACC/GEN},num=PL		gold: ʾaṣfān		predicted: ʾaāāā X
+aṣ-ṣafḥatu		pos=N,def=INDF,case={NOM/ACC/GEN},num=PL		gold: ṣafḥāt		predicted: ʾaāāā X
+aš-šayʾu		pos=N,def=INDF,case={NOM/ACC/GEN},num=PL		gold: ʾašyāʾ		predicted: ʾaāāā X
+as-silāḥu		pos=N,def=INDF,case={NOM/ACC/GEN},num=PL		gold: ʾasliḥa		predicted: ʾaāāā X
+at-taʾšīratu		pos=N,def=INDF,case={NOM/ACC/GEN},num=PL		gold: taʾšīrāt		predicted: ʾaāāā X
+
+
+#################################
+
+daḥraja		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=PL		gold: tudaḥrijū		predicted: turrrriū X
+iḡtaṣaba		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=PL		gold: taḡtaṣibū		predicted: tuurrriiū X
+imtalaka		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=PL		gold: tamtalikū		predicted: tuurrriiū X
+intafaḍa		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=PL		gold: tantafiḍū		predicted: tuurrriiū X
+islanṭaʿa		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=PL		gold: taslanṭiʿū		predicted: turrrriiūū X
+istakšafa		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=PL		gold: tastakšifū		predicted: tuurrriiūū X
+
+
+#################################
+
+ʿajībun		pos=ADJ,def=DEF,case=GEN,gen=FEM,num=SG		gold: al-ʿajībati		predicted: al-aaaaai X
+ḥazīnun		pos=ADJ,def=DEF,case=GEN,gen=FEM,num=SG		gold: al-ḥazīnati		predicted: al-aaaaai X
+qibliyyun		pos=ADJ,def=DEF,case=GEN,gen=FEM,num=SG		gold: al-qibliyyati		predicted: al-aaaaaaii X
+ṣaḥīḥun		pos=ADJ,def=DEF,case=GEN,gen=FEM,num=SG		gold: aṣ-ṣaḥīḥati		predicted: al-aaaaai X
+
+
+#################################
+
+ʿabara		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuʿbarī		predicted: tuḥaaaaa X
+ʾabṣara		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tubṣarī		predicted: tuḥaaaaa X
+ʾammama		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuʾammamī		predicted: tuḥaaaaa X
+iqtaḍā		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuqtaḍay		predicted: tuḥaaaaa X
+ittabaʿa		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuttabaʿī		predicted: tuḥaaaaa X
+nāfara		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tunāfarī		predicted: tuḥaaaaa X
+
+
+#################################
+
+ʾakkala		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾakkaltunna		predicted: ʾakkaltunna V
+ʿarraba		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ʿarrabtunna		predicted: ʿarrabtunna V
+istaʿadda		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: istaʿdadtunna		predicted: istaʿaddaytunna X
+istašʿara		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: istašʿartunna		predicted: istašʿartunna V
+ḵābara		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ḵābartunna		predicted: ḵābartunna V
+ṭabaʿa		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ṭabaʿtunna		predicted: ṭabaʿtunna V
+ṭāraḥa		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ṭāraḥtunna		predicted: ṭāraḥtunna V
+tarjama		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: tarjamtunna		predicted: tarjamtunna V
+wakkada		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: wakkadtunna		predicted: wakkadtunna V
+
+
+#################################
+
+dafīʾun		pos=ADJ,def=DEF,case=GEN,gen=MASC,num=SG		gold: ad-dafīʾi		predicted: al--iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+ʾīṭāliyyun		pos=ADJ,def=DEF,case=GEN,gen=MASC,num=SG		gold: al-ʾīṭāliyyi		predicted: al--iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+šafawiyyun		pos=ADJ,def=DEF,case=GEN,gen=MASC,num=SG		gold: aš-šafawiyyi		predicted: al--iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+yūnāniyyun		pos=ADJ,def=DEF,case=GEN,gen=MASC,num=SG		gold: al-yūnāniyyi		predicted: al--iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+
+
+#################################
+
+ʿammā		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ʿummīnā		predicted: ʿummīnā V
+ʿammaqa		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ʿummiqnā		predicted: ʿummilnā X
+fājaʾa		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: fūjiʾnā		predicted: sūninnā X
+tamannā		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: tumunnīnā		predicted: ʾuminnrnā X
+zāda		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: zidnā		predicted: mūwiā X
+
+
+#################################
+
+ʾaflaḥa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾufliḥa		predicted: ʾufliḥa V
+ʾarā		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾuriya		predicted: ʾuriya V
+ʾaslama		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾuslima		predicted: ʾuslima V
+ʾawā		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾuwiya		predicted: ʾuwiya V
+handasa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: hundisa		predicted: šuniisa X
+iʿtanā		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: uʿtuniya		predicted: uʿtuniya V
+ḵālaṭa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ḵūliṭa		predicted: ḵūliṭa V
+ḵaraja		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ḵurija		predicted: ḵurija V
+laʿiqa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: luʿiqa		predicted: luʿiqa V
+ṭāʿa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ṭīʿa		predicted: ṭīʿa V
+tabāʾasa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: tubūʾisa		predicted: tubūhisa X
+ṯarṯara		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ṯurṯira		predicted: uuriṯra X
+
+
+#################################
+
+ʾabdala		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=SG		gold: tubdila		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+ʾaslaka		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=SG		gold: tuslika		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+ḥāwala		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=SG		gold: tuḥāwila		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+iḥtawā		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=SG		gold: taḥtawiya		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+iḵtamara		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=SG		gold: taḵtamira		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+maḍā		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=SG		gold: tamḍiya		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+naffara		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=SG		gold: tunaffira		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+taʾakkada		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=SG		gold: tataʾakkada		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+waṭiʾa		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=SG		gold: taṭaʾa		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+
+
+#################################
+
+istaʿbada		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ustuʿbidatā		predicted: ustuʿbidatā V
+istaʿrafa		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ustuʿrifatā		predicted: ustuʿrifatā V
+sakkana		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: sukkinatā		predicted: sukkinatā V
+
+
+#################################
+
+ʿajūlun		pos=ADJ,def=DEF,case=GEN,gen=FEM,num=DU		gold: al-ʿajūlatayni		predicted: a---ayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy X
+ḵafīfun		pos=ADJ,def=DEF,case=GEN,gen=FEM,num=DU		gold: al-ḵafīfatayni		predicted: a---ayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy X
+mušmisun		pos=ADJ,def=DEF,case=GEN,gen=FEM,num=DU		gold: al-mušmisatayni		predicted: a---ayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy X
+yahūdiyyun		pos=ADJ,def=DEF,case=GEN,gen=FEM,num=DU		gold: al-yahūdiyyatayni		predicted: a---ayyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy X
+
+
+#################################
+
+ʾafnā		pos=V,mood=SBJV,gen=FEM,per=2,voice=PASS,num=DU		gold: tufnayā		predicted: tuāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+ʾaṣḡara		pos=V,mood=SBJV,gen=FEM,per=2,voice=PASS,num=DU		gold: tuṣḡarā		predicted: tuāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+ʾawjaba		pos=V,mood=SBJV,gen=FEM,per=2,voice=PASS,num=DU		gold: tūjabā		predicted: tuāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+tajannaba		pos=V,mood=SBJV,gen=FEM,per=2,voice=PASS,num=DU		gold: tutajannabā		predicted: tuāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+
+
+#################################
+
+ad-darakiyyu		pos=N,def=INDF,case=NOM,num=DU		gold: darakiyyāni		predicted: maaāāā X
+al-ḥājju		pos=N,def=INDF,case=NOM,num=DU		gold: ḥājjāni		predicted: maaāāā X
+al-ḥašaratu		pos=N,def=INDF,case=NOM,num=DU		gold: ḥašaratāni		predicted: maaāāā X
+al-ʾiliktrūnu		pos=N,def=INDF,case=NOM,num=DU		gold: ʾiliktrūnāni		predicted: maaāāā X
+al-jadwalu		pos=N,def=INDF,case=NOM,num=DU		gold: jadwalāni		predicted: maaāāā X
+al-ḵuṣlatu		pos=N,def=INDF,case=NOM,num=DU		gold: ḵuṣlatāni		predicted: maaāāā X
+al-ḵuṭwatu		pos=N,def=INDF,case=NOM,num=DU		gold: ḵuṭwatāni		predicted: maaāāā X
+al-madḵalu		pos=N,def=INDF,case=NOM,num=DU		gold: madḵalāni		predicted: maaāāā X
+al-mubtadiʾu		pos=N,def=INDF,case=NOM,num=DU		gold: mubtadiʾāni		predicted: maaāāā X
+al-qāʾimatu		pos=N,def=INDF,case=NOM,num=DU		gold: qāʾimatāni		predicted: maaāāā X
+al-wahmu		pos=N,def=INDF,case=NOM,num=DU		gold: wahmāni		predicted: maaāāā X
+as-simatu		pos=N,def=INDF,case=NOM,num=DU		gold: simatāni		predicted: maaāāā X
+
+
+#################################
+
+al-ʾāfatu		pos=N,def=DEF,case=NOM,num=SG		gold: al-ʾāfatu		predicted: al-ʾāfatu V
+al-ʾanfu		pos=N,def=DEF,case=NOM,num=SG		gold: al-ʾanfu		predicted: al-ʾanfu V
+al-ʿaqrabu		pos=N,def=DEF,case=NOM,num=SG		gold: al-ʿaqrabu		predicted: al-ʿaqrabu V
+al-bāḏinjānu		pos=N,def=DEF,case=NOM,num=SG		gold: al-bāḏinjānu		predicted: al-bāžinīānu X
+al-māridu		pos=N,def=DEF,case=NOM,num=SG		gold: al-māridu		predicted: al-māridu V
+al-milʿaqatu		pos=N,def=DEF,case=NOM,num=SG		gold: al-milʿaqatu		predicted: al-milʿaqatu V
+al-miqdāru		pos=N,def=DEF,case=NOM,num=SG		gold: al-miqdāru		predicted: al-miqdāru V
+al-muʾtamaru		pos=N,def=DEF,case=NOM,num=SG		gold: al-muʾtamaru		predicted: al-muʾtamaru V
+al-qināʿu		pos=N,def=DEF,case=NOM,num=SG		gold: al-qināʿu		predicted: al-qināʿu V
+al-ʿuššu		pos=N,def=DEF,case=NOM,num=SG		gold: al-ʿuššu		predicted: al-ʿuššu V
+as-sabīlu		pos=N,def=DEF,case=NOM,num=SG		gold: as-sabīlu		predicted: as-sabīlu V
+aṣ-ṣāḥibu		pos=N,def=DEF,case=NOM,num=SG		gold: aṣ-ṣāḥibu		predicted: aṣ-ṣāḥibu V
+aš-šarīṭu		pos=N,def=DEF,case=NOM,num=SG		gold: aš-šarīṭu		predicted: aš-šarīṭu V
+az-zubdatu		pos=N,def=DEF,case=NOM,num=SG		gold: az-zubdatu		predicted: az-zubdatu V
+
+
+#################################
+
+ʾaḏkara		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tuḏkirna		predicted: tunawwirna X
+ʾaṣāba		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tuṣibna		predicted: tutarbbna X
+ḥakā		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: taḥkūna		predicted: tanaūna X
+intafaḵa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tantafiḵna		predicted: taftanīḥna X
+irtajala		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tartajilna		predicted: taktaʿirna X
+istafhama		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tastafhimna		predicted: tastafhimna V
+istaqraʾa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tastaqriʾna		predicted: tastalbiʾna X
+istaʿrafa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tastaʿrifna		predicted: tastaṭbidna X
+qāla		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: taqulna		predicted: tunāunaa X
+
+
+#################################
+
+ʾaḥmala		pos=V,voice=PASS		gold: muḥmal		predicted: muaaaa X
+ʾallaha		pos=V,voice=PASS		gold: muʾallah		predicted: muaaaa X
+ʾanjaza		pos=V,voice=PASS		gold: munjaz		predicted: muaaaa X
+ʾasʾama		pos=V,voice=PASS		gold: musʾam		predicted: muaaaa X
+ʾawqafa		pos=V,voice=PASS		gold: mūqaf		predicted: muaaaa X
+iḍmaḥalla		pos=V,voice=PASS		gold: muḍmaḥall		predicted: muaaaa X
+imtaḥana		pos=V,voice=PASS		gold: mumtaḥan		predicted: muaaaa X
+inqaraḍa		pos=V,voice=PASS		gold: munqaraḍ		predicted: muaaaa X
+intawā		pos=V,voice=PASS		gold: muntawan		predicted: muaaaa X
+istaḵdama		pos=V,voice=PASS		gold: mustaḵdam		predicted: muaaaa X
+istanada		pos=V,voice=PASS		gold: mustanad		predicted: muaaaa X
+nāfasa		pos=V,voice=PASS		gold: munāfas		predicted: muaaaa X
+qātala		pos=V,voice=PASS		gold: muqātal		predicted: muaaaa X
+razzaza		pos=V,voice=PASS		gold: murazzaz		predicted: muaaaa X
+
+
+#################################
+
+ʿaššaqa		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yuʿaššiqū		predicted: yaʿarriqū X
+dāma		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yadūmū		predicted: yuwāfū X
+ibtalaʿa		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yabtaliʿū		predicted: yabūaiilū X
+istanna		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yastannū		predicted: yastannū V
+ṣāraʿa		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yuṣāriʿū		predicted: yuṣāriʿū V
+
+
+#################################
+
+ʿaqliyyun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=PL		gold: al-ʿaqliyyātu		predicted: al--auuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+lībiyyun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=PL		gold: al-lībiyyātu		predicted: al--auuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+nayyirun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=PL		gold: an-nayyirātu		predicted: al--auuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+sābiʿun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=PL		gold: as-sābiʿātu		predicted: al--auuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+sūriyyun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=PL		gold: as-sūriyyātu		predicted: al--auuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+
+
+#################################
+
+ʿabbada		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tuʿabbidīna		predicted: taʿarṣijīna X
+ʾaḥmada		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tuḥmidīna		predicted: tuḥmidīna V
+ʾaqfala		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tuqfilīna		predicted: tuṭiiṭīna X
+istafāda		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tastafīdīna		predicted: tastaqlīīna X
+istanāra		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tastanīrīna		predicted: tastaḥmmīna X
+qaʿada		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: taqʿudīna		predicted: tasbidīna X
+qariba		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: taqrabīna		predicted: tašḍabīna X
+šāraka		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tušārikīna		predicted: tušārikīna V
+taḥammala		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: tataḥammalīna		predicted: tatammyilīna X
+
+
+#################################
+
+ʾašhada		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yušhidūna		predicted: yunlidūna X
+ḥajja		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yaḥujjūna		predicted: yatahrūna X
+inṯanā		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yanṯanūna		predicted: yansanūna X
+istanfara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yastanfirūna		predicted: yastanfirūna V
+jāʿa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yajūʿūna		predicted: yaqtrūna X
+najā		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yanjūna		predicted: yasaaūna X
+qaʿada		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yaqʿudūna		predicted: yaqtarūna X
+saʾala		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yasʾalūna		predicted: yasaarūna X
+ẓāhara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: yuẓāhirūna		predicted: yataarūna X
+
+
+#################################
+
+ʾaḥbaṭa		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾaḥbaṭtu		predicted: ʾaḥaattu X
+ḡamara		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ḡamartu		predicted: ḡamartu V
+intaẓama		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: intaẓamtu		predicted: intahamtu X
+malaʾa		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: malaʾtu		predicted: malaʾtu V
+našara		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: našartu		predicted: našartu V
+qattala		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: qattaltu		predicted: qattaltu V
+tābaʿa		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: tābaʿtu		predicted: tābaʿtu V
+taḍawwaʾa		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: taḍawwaʾtu		predicted: tašawaaʾtu X
+tasānada		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: tasānadtu		predicted: tasānadtu V
+yaʾisa		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: yaʾistu		predicted: aaʾisau X
+
+
+#################################
+
+munḵafiḍun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=DU		gold: munḵafiḍatāni		predicted: munaafidatāni X
+ṣaḥīḥun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=DU		gold: ṣaḥīḥatāni		predicted: ṣaḥīḥatāni V
+šahriyyun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=DU		gold: šahriyyatāni		predicted: šawriyyatāni X
+
+
+#################################
+
+al-ʾamīru		pos=N,def=DEF,case=GEN,num=PL		gold: al-ʾumarāʾi		predicted: al-ʾāāāāiiii X
+al-faḵiḏu		pos=N,def=DEF,case=GEN,num=PL		gold: al-ʾafḵāḏi		predicted: al-ʾāāāāiiii X
+al-maḵnūṯu		pos=N,def=DEF,case=GEN,num=PL		gold: al-maḵānīṯi		predicted: al-ʾāāāāiiii X
+al-malʿabu		pos=N,def=DEF,case=GEN,num=PL		gold: al-malāʿibi		predicted: al-ʾāāāāiiii X
+al-qāmūsu		pos=N,def=DEF,case=GEN,num=PL		gold: al-qawāmīsi		predicted: al-ʾāāāāiiii X
+al-qināʿu		pos=N,def=DEF,case=GEN,num=PL		gold: al-ʾaqniʿati		predicted: al-ʾāāāāiiii X
+al-wašmu		pos=N,def=DEF,case=GEN,num=PL		gold: al-wušūmi		predicted: al-ʾāāāāiiii X
+al-yammu		pos=N,def=DEF,case=GEN,num=PL		gold: al-yumūmi		predicted: al-ʾāāāāiiii X
+an-naslu		pos=N,def=DEF,case=GEN,num=PL		gold: al-ʾansāli		predicted: al-ʾāāāāiiii X
+an-naẓariyyatu		pos=N,def=DEF,case=GEN,num=PL		gold: an-naẓariyyāti		predicted: al-ʾāāāāiiii X
+aṭ-ṭarīqu		pos=N,def=DEF,case=GEN,num=PL		gold: aṭ-ṭuruqāti		predicted: al-ʾāāāāiiii X
+
+
+#################################
+
+ʿamīqun		pos=ADJ,def=DEF,case=NOM,gen=MASC,num=SG		gold: al-ʿamīqu		predicted: a---uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+mustaqillun		pos=ADJ,def=DEF,case=NOM,gen=MASC,num=SG		gold: al-mustaqillu		predicted: a---uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+samakiyyun		pos=ADJ,def=DEF,case=NOM,gen=MASC,num=SG		gold: as-samakiyyu		predicted: a---uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+šujāʿun		pos=ADJ,def=DEF,case=NOM,gen=MASC,num=SG		gold: aš-šujāʿu		predicted: a---uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+
+
+#################################
+
+ʾaḥfaẓa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuḥfaẓu		predicted: tuuaaaaaaaaa X
+ʾašraka		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tušraku		predicted: tuuaaaaaaaaa X
+istakšafa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tustakšafu		predicted: tuuaaaaaaaaa X
+ittaḵaḏa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuttaḵaḏu		predicted: tuuaaaaaaaaa X
+jazā		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tujzā		predicted: tuuaaaaaaaaa X
+zaʿama		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuzʿamu		predicted: tuuaaaaaaaaa X
+
+
+#################################
+
+ʿaqqama		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=DU		gold: tuʿaqqamā		predicted: tujaḏwa X
+ʾaṭʿama		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=DU		gold: tuṭʿamā		predicted: tuṭʿamā V
+bāsa		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=DU		gold: tubāsā		predicted: tuḵāwyā X
+ḥallala		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=DU		gold: tuḥallalā		predicted: tuṭalla X
+qāla		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=DU		gold: tuqālā		predicted: tuṭālā X
+qāyasa		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=DU		gold: tuqāyasā		predicted: tušāfasā X
+šaraḥa		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=DU		gold: tušraḥā		predicted: tuṭlaḏā X
+šayyaṭa		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=DU		gold: tušayyaṭā		predicted: tuṭayyaṭā X
+
+
+#################################
+
+ʾablahu		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=SG		gold: balhāʾa		predicted: ʾaylaʾa X
+ʿāmmun		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=SG		gold: ʿāmmatan		predicted: ʿāmmatan V
+ʿašawāʾiyyun		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=SG		gold: ʿašawāʾiyyatan		predicted: ʿašawāʾiyyatan V
+nāʿimun		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=SG		gold: nāʿimatan		predicted: nāʿimatan V
+
+
+#################################
+
+ʾadbara		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾadbarat		predicted: ʾadbarat V
+ʾaqfala		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾaqfalat		predicted: ʾaqfalat V
+ʾaṣḡā		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾaṣḡat		predicted: ʾaḡḡat X
+ʾaslaka		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾaslakat		predicted: ʾaslakat V
+haddada		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: haddadat		predicted: ḏaddadat X
+istaʿmala		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: istaʿmalat		predicted: istaḡmalat X
+ištarā		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ištarat		predicted: ištarat V
+qassa		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: qassat		predicted: qassat V
+
+
+#################################
+
+ʾaṣfara		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=PL		gold: yuṣfarū		predicted: yusāarū X
+ʿašiqa		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=PL		gold: yuʿšaqū		predicted: yuʿakū X
+farada		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=PL		gold: yufradū		predicted: yufradū V
+ḡannā		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=PL		gold: yuḡannaw		predicted: yuʿāʿū X
+
+
+#################################
+
+aḍ-ḍarūratu		pos=N,poss=PSSD,case=NOM,num=PL		gold: ḍarūrātu		predicted: ʾaaāāāu X
+al-ʾabāžūru		pos=N,poss=PSSD,case=NOM,num=PL		gold: ʾabāžūrātu		predicted: ʾaaāāāu X
+al-ʾamīratu		pos=N,poss=PSSD,case=NOM,num=PL		gold: ʾamīrātu		predicted: ʾaaāāāu X
+al-haykalu		pos=N,poss=PSSD,case=NOM,num=PL		gold: hayākilu		predicted: ʾaaāāāu X
+al-kalimatu		pos=N,poss=PSSD,case=NOM,num=PL		gold: kalimātu		predicted: ʾaaāāāu X
+al-lāʿibu		pos=N,poss=PSSD,case=NOM,num=PL		gold: lāʿibū		predicted: ʾaaāāāu X
+al-maḵbazu		pos=N,poss=PSSD,case=NOM,num=PL		gold: maḵābizu		predicted: ʾaaāāāu X
+al-markabatu		pos=N,poss=PSSD,case=NOM,num=PL		gold: markabātu		predicted: ʾaaāāāu X
+an-nisbatu		pos=N,poss=PSSD,case=NOM,num=PL		gold: nisabu		predicted: ʾaaāāāu X
+
+
+#################################
+
+masīḥun		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=DU		gold: masīḥatayni		predicted: masīḥatayni V
+qalīlun		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=DU		gold: qalīlatayni		predicted: qaḵībatayni X
+rujūliyyun		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=DU		gold: rujūliyyatayni		predicted: rujūliyyatayni V
+sākitun		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=DU		gold: sākitatayni		predicted: sākitatayni V
+sarīʿun		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=DU		gold: sarīʿatayni		predicted: sarīʿatayni V
+ʾurubbiyyun		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=DU		gold: ʾurubbiyyatayni		predicted: ʾurubbiyyatayni V
+
+
+#################################
+
+ʾalḡā		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾulḡītum		predicted: ʾudritum X
+banā		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: bunītum		predicted: bunītum V
+istaʾjara		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ustuʾjirtum		predicted: ustuʾjirtum V
+istaṣdara		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: ustuṣdirtum		predicted: ustuldirtum X
+nassā		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: nussītum		predicted: nuddītum X
+šahara		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV/PRF}		gold: šuhirtum		predicted: quširtum X
+
+
+#################################
+
+istaḥfaẓa		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nastaḥfiẓ		predicted: nastaajib X
+istawlā		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nastawli		predicted: nastawli V
+
+
+#################################
+
+ʾaʿjaba		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nuʿjib		predicted: nulhib X
+ʾarsala		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nursil		predicted: nurhib X
+ʾašraka		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nušrik		predicted: nulidl X
+ḡannā		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nuḡanni		predicted: najhad X
+ḡaṭṭā		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nuḡaṭṭi		predicted: naṭay X
+iḏḏakara		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: naḏḏakir		predicted: nastamir X
+islanṭaḥa		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: naslanṭiḥ		predicted: nantanbil X
+iṣṭabaḥa		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: naṣṭabiḥ		predicted: nastaḡil X
+istaḏnaba		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nastaḏnib		predicted: nastaḏnib V
+istafāda		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nastafid		predicted: nastadid X
+qaṣada		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: naqṣid		predicted: naqṣid V
+wāfā		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nuwāfi		predicted: nubfi X
+
+
+#################################
+
+hajama		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: hajama		predicted: hajama V
+ḥarrara		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ḥarrara		predicted: ḥarrara V
+ibtasama		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ibtasama		predicted: ibtasama V
+ibtasara		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ibtasara		predicted: ibtasara V
+iḵranṭama		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: iḵranṭama		predicted: iḵranṭama V
+iqtaṭṭa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: iqtaṭṭa		predicted: iqtaṭṭa V
+sawwafa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: sawwafa		predicted: sawwafa V
+
+
+#################################
+
+ʾafnā		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tufniyā		predicted: tuʾaiyā X
+ʾasāʾa		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tusīʾā		predicted: tuʾbiāā X
+ḏākara		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tuḏākirā		predicted: tuḏākirā V
+manna		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tamunnā		predicted: tuṭaqqiyā X
+sawwā		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tusawwiyā		predicted: tatasqiyā X
+
+
+#################################
+
+ʾiblīsiyyun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=PL		gold: ʾiblīsiyyāt		predicted: ʿiblrdiyyāt X
+mašrūʿun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=PL		gold: mašrūʿāt		predicted: majrūʿāt X
+mumtaliʾun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=PL		gold: mumtaliʾāt		predicted: mumtakiʿāt X
+nāqiṣun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=PL		gold: nāqiṣāt		predicted: nāqiṣāt V
+qaḍībiyyun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=PL		gold: qaḍībiyyāt		predicted: qasībiyyāt X
+qādirun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=PL		gold: qādirāt		predicted: qādirāt V
+suryāniyyun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=FEM,num=PL		gold: suryāniyyāt		predicted: furrātiyyāt X
+
+
+#################################
+
+ʾabbada		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=SG		gold: ʾuʾabbada		predicted: ʾubaarada X
+ʾaḵlada		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=SG		gold: ʾuḵlada		predicted: ʾuṣamrada X
+ʾanjaza		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=SG		gold: ʾunjaza		predicted: ʾuʾakkara X
+ʾasmaʿa		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=SG		gold: ʾusmaʿa		predicted: ʾuslama X
+intaẓama		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=SG		gold: ʾuntaẓama		predicted: ʾuqtasala X
+istanna		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=SG		gold: ʾustanna		predicted: ʾustanna V
+ḵābara		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=SG		gold: ʾuḵābara		predicted: ʾuḵākara X
+lāʿaba		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=SG		gold: ʾulāʿaba		predicted: ʾuʿālara X
+naṣara		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=SG		gold: ʾunṣara		predicted: ʾunhaaaa X
+
+
+#################################
+
+ʾaḥḍara		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾaḥḍarnā		predicted: ʾaḥḍarnā V
+istafhama		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: istafhamnā		predicted: istafhamnā V
+istakšafa		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: istakšafnā		predicted: istakšafnā V
+qāyasa		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: qāyasnā		predicted: qāyasnā V
+
+
+#################################
+
+ḥāwala		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tuḥāwilāni		predicted: tuṣābiāāni X
+izdarada		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tazdaridāni		predicted: taqrabilāni X
+qaraʾa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: taqraʾāni		predicted: taqraʾāni V
+
+
+#################################
+
+ʾamsaka		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾamsakna		predicted: ʾamjaḏna X
+ʾaqbala		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾaqbalna		predicted: ʾaqbalna V
+imtadda		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: imtadadna		predicted: imtadadna V
+inqaraḍa		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: inqaraḍna		predicted: inqaraḍna V
+istaslama		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: istaslamna		predicted: istaslamna V
+ṣāna		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ṣunna		predicted: ṣidna X
+tawaffā		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: tawaffayna		predicted: tawaffayna V
+wahaba		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: wahabna		predicted: kawabna X
+
+
+#################################
+
+inḥarafa		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: inḥarafta		predicted: inḥarafta V
+nazzala		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: nazzalta		predicted: nazzalta V
+saḥḥara		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: saḥḥarta		predicted: saḥḥarta V
+šāraka		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: šārakta		predicted: šārakta V
+taʿammala		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: taʿammalta		predicted: taʿammalta V
+ṭarraḥa		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ṭarraḥta		predicted: tarraḥta X
+ṯarṯara		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ṯarṯarta		predicted: nartarta X
+wajjaha		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: wajjahta		predicted: wajjazta X
+
+
+#################################
+
+ʿāmmiyyun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=SG		gold: al-ʿāmmiyya		predicted: al-ʿāmmiyya V
+ḡāʾibun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=SG		gold: al-ḡāʾiba		predicted: al-ḡāʾiba V
+ḵuṣūṣiyyun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=SG		gold: al-ḵuṣūṣiyya		predicted: al-ḵadṣḥiyya X
+lubnāniyyun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=SG		gold: al-lubnāniyya		predicted: al-ʾaṭrabiyya X
+mawḍūʿiyyun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=SG		gold: al-mawḍūʿiyya		predicted: al-madṣnāiyya X
+miskīnun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=SG		gold: al-miskīna		predicted: al-maqtūḥa X
+ṣāmitun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=SG		gold: aṣ-ṣāmita		predicted: aṣ-šafila X
+
+
+#################################
+
+diblūmāsiyyun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=DU		gold: ad-diblūmāsiyyatayni		predicted: a----aaaaaaaaaaaaaaaaaaaaaaaa X
+masīḥiyyun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=DU		gold: al-masīḥiyyatayni		predicted: a----aaaaaaaaaaaaaaaaaaaaaa X
+mustaqillun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=DU		gold: al-mustaqillatayni		predicted: a----aaaaaaaaaaaaaaaaaaaaaaa X
+
+
+#################################
+
+ʾamyalu		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=SG		gold: al-maylāʾu		predicted: al--aaaaauuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+ʾašqaru		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=SG		gold: aš-šaqrāʾu		predicted: al--aaaaauuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+ʾaʿwaru		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=SG		gold: al-ʿawrāʾu		predicted: al--aaaaauuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+jinsiyyun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=SG		gold: al-jinsiyyatu		predicted: al--aaaaaaauuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+kawniyyun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=SG		gold: al-kawniyyatu		predicted: al--aaaaaaauuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+mamnūʿun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=SG		gold: al-mamnūʿatu		predicted: al--aaaaaauuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+muḥtalimun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=SG		gold: al-muḥtalimatu		predicted: a---aaaaaaaauuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+mustaqīmun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=SG		gold: al-mustaqīmatu		predicted: a---aaaaaaaauuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+ṣalībun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=SG		gold: aṣ-ṣalībatu		predicted: al--aaaaauuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+šāmisun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=SG		gold: aš-šāmisatu		predicted: al--aaaaauuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu X
+
+
+#################################
+
+ʾafāda		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=SG		gold: ʾufīda		predicted: ʾuljiaa X
+ʾašḵaṣa		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=SG		gold: ʾušḵiṣa		predicted: ʾuʿmima X
+ḥafara		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=SG		gold: ʾaḥfira		predicted: ʾaḡlira X
+iḥtasaba		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=SG		gold: ʾaḥtasiba		predicted: ʾaḥtasiba V
+maṯala		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=SG		gold: ʾamṯula		predicted: ʾamtila X
+nāfasa		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=SG		gold: ʾunāfisa		predicted: ʾaqūlisa X
+sawwala		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=SG		gold: ʾusawwila		predicted: ʾusawwila V
+taḍaḵḵama		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=SG		gold: ʾataḍaḵḵama		predicted: ʾataaaitma X
+taḥādaṯa		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=SG		gold: ʾataḥādaṯa		predicted: ʾataḥdida X
+
+
+#################################
+
+ʿafā		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yuʿfayā		predicted: yufnayā X
+ʾaḵraja		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yuḵrajā		predicted: yuḵaaraḵā X
+ʿāqaba		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yuʿāqabā		predicted: yukātalā X
+farada		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yufradā		predicted: yufradā V
+istabdala		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yustabdalā		predicted: yustaṭdralā X
+istaʿmala		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yustaʿmalā		predicted: yustakaralā X
+qāla		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yuqālā		predicted: yuṣānā X
+qaraʾa		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yuqraʾā		predicted: yuqʿaḥā X
+saḵḵara		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yusaḵḵarā		predicted: yusaḵḵarā V
+ṣannafa		pos=V,mood={IND/COND/IMP},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yuṣannafā		predicted: yuʾjarā X
+
+
+#################################
+
+ʾayqaẓa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tūqaẓna		predicted: tuuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+istaqraʾa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tustaqraʾna		predicted: tuuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+wahaba		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tūhabna		predicted: tuuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+
+
+#################################
+
+al-ʾamru		pos=N,def=INDF,case=ACC,num=DU		gold: ʾamrayni		predicted: maaaaaaann X
+al-falaku		pos=N,def=INDF,case=ACC,num=DU		gold: falakayni		predicted: maaaaaaann X
+al-ḥanaku		pos=N,def=INDF,case=ACC,num=DU		gold: ḥanakayni		predicted: maaaaaaann X
+al-ḥuzmatu		pos=N,def=INDF,case=ACC,num=DU		gold: ḥuzmatayni		predicted: maaaaaaann X
+al-mufājaʾatu		pos=N,def=INDF,case=ACC,num=DU		gold: mufājaʾatayni		predicted: maaaaaaann X
+al-mulāḥaẓatu		pos=N,def=INDF,case=ACC,num=DU		gold: mulāḥaẓatayni		predicted: maaaaaaann X
+al-muwāṭinu		pos=N,def=INDF,case=ACC,num=DU		gold: muwāṭinayni		predicted: maaaaaaann X
+al-qafzatu		pos=N,def=INDF,case=ACC,num=DU		gold: qafzatayni		predicted: maaaaaaann X
+al-ʾustāḏu		pos=N,def=INDF,case=ACC,num=DU		gold: ʾustāḏayni		predicted: maaaaaaann X
+ar-riwāyatu		pos=N,def=INDF,case=ACC,num=DU		gold: riwāyatayni		predicted: maaaaaaann X
+aṣ-ṣīḡatu		pos=N,def=INDF,case=ACC,num=DU		gold: ṣīḡatayni		predicted: maaaaaaann X
+at-timsāḥu		pos=N,def=INDF,case=ACC,num=DU		gold: timsāḥayni		predicted: maaaaaaann X
+az-zubratu		pos=N,def=INDF,case=ACC,num=DU		gold: zubratayni		predicted: maaaaaaann X
+
+
+#################################
+
+baṭīʾun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=DU		gold: baṭīʾayni		predicted: baṭīʾayni V
+fāʾizun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=DU		gold: fāʾizayni		predicted: fāʾimayni X
+hindiyyun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=DU		gold: hindiyyayni		predicted: hindiyyayni V
+majhūlun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=DU		gold: majhūlayni		predicted: majāūlayni X
+mundaṯirun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=DU		gold: mundaṯirayni		predicted: mundaṯirayni V
+mustaʿmirun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=DU		gold: mustaʿmirayni		predicted: mustaʿmirayni V
+mustaqillun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=DU		gold: mustaqillayni		predicted: mustaqillayni V
+mutadayyinun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=DU		gold: mutadayyinayni		predicted: mutadayyinayni V
+nabīḏun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=DU		gold: nabīḏayni		predicted: nabīḏayni V
+tawʾamun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=DU		gold: tawʾamayni		predicted: tazʾamayni X
+
+
+#################################
+
+ḏākara		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuḏākar		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+ḥaššada		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuḥaššad		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+iḵtaraʿa		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuḵtaraʿ		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+ḵawwala		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuḵawwal		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+qaḍaba		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuqḍab		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+qariba		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: tuqrab		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+rāna		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: turan		predicted: tuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+
+
+#################################
+
+ad-dawlatu		pos=N,def=DEF,case=ACC,num=SG		gold: ad-dawlata		predicted: ad-dawlata V
+al-ḥallāqu		pos=N,def=DEF,case=ACC,num=SG		gold: al-ḥallāqa		predicted: al-ḥallāqa V
+al-ḥašdu		pos=N,def=DEF,case=ACC,num=SG		gold: al-ḥašda		predicted: al-ḥašda V
+al-ḵuṭwatu		pos=N,def=DEF,case=ACC,num=SG		gold: al-ḵuṭwata		predicted: al-muḵwata X
+al-qimmatu		pos=N,def=DEF,case=ACC,num=SG		gold: al-qimmata		predicted: al-qimmata V
+al-qiṭāru		pos=N,def=DEF,case=ACC,num=SG		gold: al-qiṭāra		predicted: al-qiṭāra V
+al-ʿuljūmu		pos=N,def=DEF,case=ACC,num=SG		gold: al-ʿuljūma		predicted: al-ʿuljūma V
+al-ʿuqūbatu		pos=N,def=DEF,case=ACC,num=SG		gold: al-ʿuqūbata		predicted: al-ʿuqūbata V
+aš-šahīdu		pos=N,def=DEF,case=ACC,num=SG		gold: aš-šahīda		predicted: aš-šahīda V
+at-taqwīmu		pos=N,def=DEF,case=ACC,num=SG		gold: at-taqwīma		predicted: at-taqwīma V
+
+
+#################################
+
+al-ʿaqrabu		pos=N,poss=PSSD,case=NOM,num=DU		gold: ʿaqrabā		predicted: maaa X
+al-bāḏinjānu		pos=N,poss=PSSD,case=NOM,num=DU		gold: bāḏinjānā		predicted: maaa X
+al-baẓru		pos=N,poss=PSSD,case=NOM,num=DU		gold: baẓrā		predicted: maaa X
+al-bidāyatu		pos=N,poss=PSSD,case=NOM,num=DU		gold: bidāyatā		predicted: maaa X
+al-fīlu		pos=N,poss=PSSD,case=NOM,num=DU		gold: fīlā		predicted: maaa X
+al-hilālu		pos=N,poss=PSSD,case=NOM,num=DU		gold: hilālā		predicted: maaa X
+al-ištirākiyyu		pos=N,poss=PSSD,case=NOM,num=DU		gold: ištirākiyyā		predicted: maaa X
+al-kalimatu		pos=N,poss=PSSD,case=NOM,num=DU		gold: kalimatā		predicted: maaa X
+as-sāḥiru		pos=N,poss=PSSD,case=NOM,num=DU		gold: sāḥirā		predicted: maaa X
+aš-šitāʾu		pos=N,poss=PSSD,case=NOM,num=DU		gold: šitāʾā		predicted: maaa X
+at-taḏkiratu		pos=N,poss=PSSD,case=NOM,num=DU		gold: taḏkiratā		predicted: maaa X
+
+
+#################################
+
+ʾašqaru		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=PL		gold: šuqrun		predicted: ʾaḍīun X
+dustūriyyun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=PL		gold: dustūriyyātun		predicted: dāsturiyyātun X
+jinsiyyun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=PL		gold: jinsiyyātun		predicted: jinsiyyātun V
+ḵafiyyun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=PL		gold: ḵafiyyātun		predicted: ṣafiyyātun X
+ṣāriḵun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=PL		gold: ṣāriḵātun		predicted: ṣāriṭātun X
+
+
+#################################
+
+jahada		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=SG		gold: tujhada		predicted: tusaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+laʿiqa		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=SG		gold: tulʿaqa		predicted: tusaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+ṣammata		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=SG		gold: tuṣammata		predicted: tusaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+
+
+#################################
+
+ʿarīqun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=SG		gold: ʿarīqin		predicted: ʿarīqin V
+ḏahabiyyun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=SG		gold: ḏahabiyyin		predicted: jaḏabiyyin X
+jāḏibun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=SG		gold: jāḏibin		predicted: jāḏibin V
+juzayʾiyyun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=SG		gold: juzayʾiyyin		predicted: jufayʾiyyin X
+mūsīqiyyun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=SG		gold: mūsīqiyyin		predicted: mūsīqiyyin V
+nabīhun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=SG		gold: nabīhin		predicted: nabīqin X
+nayyirun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=SG		gold: nayyirin		predicted: nayyirin V
+qarīrun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=SG		gold: qarīrin		predicted: qarīrin V
+rujūliyyun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=SG		gold: rujūliyyin		predicted: rujūliyyin V
+waṭaniyyun		pos=ADJ,def=INDF,case=GEN,gen=MASC,num=SG		gold: waṭaniyyin		predicted: waṭaniyyin V
+
+
+#################################
+
+ʿasabiyyun		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=PL		gold: ʿasabiyyātin		predicted: ʿasabiyyātin V
+ʿirāqiyyun		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=PL		gold: ʿirāqiyyātin		predicted: ʿirāqiyyātin V
+māddiyyun		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=PL		gold: māddiyyātin		predicted: māddiyyātin V
+raḵīṣun		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=PL		gold: raḵīṣātin		predicted: ṭanīiātin X
+ṭāʾirun		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=PL		gold: ṭāʾirātin		predicted: ṭāʾirātin V
+ṯānawiyyun		pos=ADJ,def=INDF,case=ACC,gen=FEM,num=PL		gold: ṯānawiyyātin		predicted: ṯānawiyyātin V
+
+
+#################################
+
+ibtadaʾa		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: ibtadaʾtumā		predicted: ibtadaʾtumā V
+iḥtāja		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: iḥtajtumā		predicted: iḥtajaumā X
+ittakaʾa		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: ittakaʾtumā		predicted: ittakaʾtumā V
+izdāda		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: izdadtumā		predicted: isqādtumā X
+tabādala		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: tabādaltumā		predicted: tabādaltumā V
+ṭalaba		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: ṭalabtumā		predicted: ṭalabtumā V
+
+
+#################################
+
+daḥā		pos=V,mood=SBJV,gen=FEM,per=2,voice=PASS,num=SG		gold: tudḥay		predicted: tutaaaaa X
+wāfā		pos=V,mood=SBJV,gen=FEM,per=2,voice=PASS,num=SG		gold: tuwāfay		predicted: tutaaaaa X
+
+
+#################################
+
+ad-dābbatu		pos=N,def=DEF,case={NOM/ACC/GEN},num=SG		gold: ad-dābba		predicted: ad-dābba V
+al-ʿaqlu		pos=N,def=DEF,case={NOM/ACC/GEN},num=SG		gold: al-ʿaql		predicted: al-ʿaql V
+al-kaʾsu		pos=N,def=DEF,case={NOM/ACC/GEN},num=SG		gold: al-kaʾs		predicted: al-kaʾs V
+al-kīloġrāmu		pos=N,def=DEF,case={NOM/ACC/GEN},num=SG		gold: al-kīloġrām		predicted: al-kīlobrām X
+al-lifāfatu		pos=N,def=DEF,case={NOM/ACC/GEN},num=SG		gold: al-lifāfa		predicted: al-lifāfa V
+al-maʿdinu		pos=N,def=DEF,case={NOM/ACC/GEN},num=SG		gold: al-maʿdin		predicted: al-maʿdin V
+al-maḵzanu		pos=N,def=DEF,case={NOM/ACC/GEN},num=SG		gold: al-maḵzan		predicted: al-maḵzan V
+al-marḥalatu		pos=N,def=DEF,case={NOM/ACC/GEN},num=SG		gold: al-marḥala		predicted: al-marḥala V
+al-yamīnu		pos=N,def=DEF,case={NOM/ACC/GEN},num=SG		gold: al-yamīn		predicted: al-yamīn V
+an-natījatu		pos=N,def=DEF,case={NOM/ACC/GEN},num=SG		gold: an-natīja		predicted: an-natīja V
+aṣ-ṣabiyyu		pos=N,def=DEF,case={NOM/ACC/GEN},num=SG		gold: aṣ-ṣabī		predicted: aṣ-ṣabiy X
+as-sikkatu		pos=N,def=DEF,case={NOM/ACC/GEN},num=SG		gold: as-sikka		predicted: as-sikka V
+at-tadrību		pos=N,def=DEF,case={NOM/ACC/GEN},num=SG		gold: at-tadrīb		predicted: at-tadrīb V
+
+
+#################################
+
+ḥafala		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ḥufiltumā		predicted: ḥufiltumā V
+šayyaṭa		pos=V,mood=IND,tense=PST,gen=MASC,per=2,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: šuyyiṭtumā		predicted: šubiiṭtumā X
+
+
+#################################
+
+ad-daftaru		pos=N,def=DEF,case=ACC,num=DU		gold: ad-daftarayni		predicted: ad-daftarayni V
+al-firāšu		pos=N,def=DEF,case=ACC,num=DU		gold: al-firāšayni		predicted: al-firāšayni V
+al-ḵaṭwatu		pos=N,def=DEF,case=ACC,num=DU		gold: al-ḵaṭwatayni		predicted: al-ḵaṭwatayni V
+al-qāʿu		pos=N,def=DEF,case=ACC,num=DU		gold: al-qāʿayni		predicted: al-qāʿayni V
+al-yammu		pos=N,def=DEF,case=ACC,num=DU		gold: al-yammayni		predicted: al-yammayni V
+an-naẓariyyatu		pos=N,def=DEF,case=ACC,num=DU		gold: an-naẓariyyatayni		predicted: an-naẓariyyatayni V
+as-sabīlu		pos=N,def=DEF,case=ACC,num=DU		gold: as-sabīlayni		predicted: as-sabīlayni V
+at-taʿrīfu		pos=N,def=DEF,case=ACC,num=DU		gold: at-taʿrīfayni		predicted: at-taʿrīfayni V
+at-tasmiyatu		pos=N,def=DEF,case=ACC,num=DU		gold: at-tasmiyatayni		predicted: at-tasmiyatayni V
+
+
+#################################
+
+bāsa		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=PL		gold: yubasna		predicted: yuaaaaa X
+nawā		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=PL		gold: yunwayna		predicted: yuaaaaa X
+zayyata		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=PL		gold: yuzayyatna		predicted: yuaaaaaa X
+
+
+#################################
+
+ʿazara		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=SG		gold: iʿzir		predicted: iʿbur X
+iḥtašada		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=SG		gold: iḥtašid		predicted: iḥtašid V
+iḥtāṭa		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=SG		gold: iḥtaṭ		predicted: iḥtak X
+laʿiqa		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=SG		gold: ilʿaq		predicted: lqnaq X
+našaʾa		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=SG		gold: inšaʾ		predicted: inšiʾ X
+
+
+#################################
+
+ʾanjaza		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=SG		gold: tunjizī		predicted: tutabīīīīīīīīīīī X
+iddaʿā		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=SG		gold: taddaʿī		predicted: tutabīīīīīīīīīīī X
+inʿaqada		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=SG		gold: tanʿaqidī		predicted: tutabīīīīīīīīīīī X
+iqtaṣada		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=SG		gold: taqtaṣidī		predicted: tutabīīīīīīīīīīī X
+istalama		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=SG		gold: tastalimī		predicted: tutabīīīīīīīīīīī X
+ṯabata		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=SG		gold: taṯbutī		predicted: tutabīīīīīīīīīīī X
+taḍawwaʾa		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=SG		gold: tataḍawwaʾī		predicted: tutabīīīīīīīīīīī X
+
+
+#################################
+
+ʿajjaba		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=DU		gold: tuʿajjabā		predicted: tuaaaāā X
+dandana		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=DU		gold: tudandanā		predicted: tuaaaāā X
+dāwara		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=DU		gold: tudāwarā		predicted: tuaaaāā X
+hājama		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=DU		gold: tuhājamā		predicted: tuaaaāā X
+intaḥala		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=DU		gold: tuntaḥalā		predicted: tuaaaāā X
+kabbasa		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=DU		gold: tukabbasā		predicted: tuaaaāā X
+namā		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=DU		gold: tunmayā		predicted: tuaaaāā X
+saḵḵara		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=DU		gold: tusaḵḵarā		predicted: tuaaaāā X
+
+
+#################################
+
+faḥuša		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: faḥušatā		predicted: faḥḥšatā X
+iqtaḍaba		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: iqtaḍabatā		predicted: iqtaḍabatā V
+ištaḡala		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: ištaḡalatā		predicted: ištaḡalatā V
+istaqraḍa		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: istaqraḍatā		predicted: istaqraḍatā V
+našara		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: našaratā		predicted: našaratā V
+qāsa		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: qāsatā		predicted: qāsatā V
+qāyasa		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: qāyasatā		predicted: qāyasatā V
+ṣaḡā		pos=V,mood=IND,tense=PST,gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: ṣaḡatā		predicted: ṣaḡatā V
+
+
+#################################
+
+sirriyyun		pos=ADJ,def=INDF,case=GEN,gen=FEM,num=PL		gold: sirriyyātin		predicted: sirriyyātin V
+
+
+#################################
+
+ʾaḵmara		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tuḵmirū		predicted: taaaaaūū X
+baḥaṯa		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tabḥaṯū		predicted: taaaaaūū X
+ijtamaʿa		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tajtamiʿū		predicted: taaaaaūūū X
+iḵranmasa		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: taḵranmisū		predicted: taaaaaūūūū X
+istaḥamma		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tastaḥimmū		predicted: taaaaaūūūū X
+istalhama		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tastalhimū		predicted: taaaaaūūūū X
+iʿtazama		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: taʿtazimū		predicted: taaaaaūūū X
+nasala		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tansulū		predicted: taaaaaūū X
+qarrara		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tuqarrirū		predicted: taaaaaūū X
+saḵḵara		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tusaḵḵirū		predicted: taaaaaūū X
+tāha		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tatūhū		predicted: taaaaūū X
+
+
+#################################
+
+ad-dahšatu		pos=N,poss=PSSD,case=ACC,num=PL		gold: dahaša		predicted: maaaaaaa X
+al-ʿašīratu		pos=N,poss=PSSD,case=ACC,num=PL		gold: ʿašāʾira		predicted: maaaaaaa X
+al-ʾiḏnu		pos=N,poss=PSSD,case=ACC,num=PL		gold: ʾuḏūnāti		predicted: maaaaaaa X
+al-majlisu		pos=N,poss=PSSD,case=ACC,num=PL		gold: majālisa		predicted: maaaaaaa X
+al-minhaju		pos=N,poss=PSSD,case=ACC,num=PL		gold: manāhija		predicted: maaaaaaa X
+aš-šaqqatu		pos=N,poss=PSSD,case=ACC,num=PL		gold: šiqaqa		predicted: maaaaaaa X
+
+
+#################################
+
+ʿafaja		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=PL		gold: nuʿfaja		predicted: nuāaaaaa X
+ʾaḥassa		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=PL		gold: nuḥassa		predicted: nuāaaaaaa X
+ʾanbaʾa		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=PL		gold: nunbaʾa		predicted: nuāaaaaaa X
+baṣaqa		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=PL		gold: nubṣaqa		predicted: nuāaaaaa X
+dāfaʿa		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=PL		gold: nudāfaʿa		predicted: nuāaaaaaa X
+istalhama		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=PL		gold: nustalhama		predicted: nuāaaaaaaaa X
+jāwaza		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=PL		gold: nujāwaza		predicted: nuāaaaaaa X
+jayyaba		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=PL		gold: nujayyaba		predicted: nuāaaaaaa X
+šammaʿa		pos=V,mood=SBJV,gen=MASC,per=1,voice=PASS,num=PL		gold: nušammaʿa		predicted: nuāaaaaaa X
+
+
+#################################
+
+ʾaḍāʿa		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾuḍiʿtu		predicted: uuuuu X
+ʾaflaḥa		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾufliḥtu		predicted: uuuuu X
+iḥtafala		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: uḥtufiltu		predicted: uuuuu X
+istaḵbara		pos=V,mood=IND,tense=PST,gen=MASC,per=1,voice=PASS,num=SG,aspect={IPFV/PFV/PRF}		gold: ustuḵbirtu		predicted: uuuuu X
+
+
+#################################
+
+ʾaḥrama		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yuḥramna		predicted: yuḥramna V
+ʾašraka		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yušrakna		predicted: yuʿramna X
+harraba		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yuharrabna		predicted: yujarra X
+ibtāʿa		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yubtaʿna		predicted: yusaywanna X
+jāwaza		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: yujāwazna		predicted: yuʿāwasna X
+
+
+#################################
+
+ʾādamiyyun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=PL		gold: al-ʾādamiyyīna		predicted: al-ʾādamiyyīna V
+ḏarriyyun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=PL		gold: aḏ-ḏarriyyīna		predicted: aḏ-ḏarriyyīna V
+jawwiyyun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=PL		gold: al-jawwiyyīna		predicted: al-ḏarriyyīna X
+mirrīḵiyyun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=PL		gold: al-mirrīḵiyyīna		predicted: al-ḏarʾumiyyīna X
+yamaniyyun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=PL		gold: al-yamaniyyīna		predicted: al-mudāmiyyīna X
+
+
+#################################
+
+ʾakkada		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: ʾakkadā		predicted: ʾakkadā V
+ʾaktaba		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: ʾaktabā		predicted: ʾaktabā V
+ʾatʿaba		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: ʾatʿabā		predicted: ʾataabā X
+badaʾa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: badaʾā		predicted: badā X
+inḥarafa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: inḥarafā		predicted: inḥarafā V
+naffaqa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: naffaqā		predicted: naffaqā V
+sallaṭa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: sallaṭā		predicted: sallaṭā V
+tawakkaʾa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: tawakkaʾā		predicted: tawakkaʾā V
+
+
+#################################
+
+masīḥiyyun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=FEM,num=SG		gold: al-masīḥiyya		predicted: al-maḍīmiyya X
+saʿūdiyyun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=FEM,num=SG		gold: as-saʿūdiyya		predicted: aṣ-šāwūṣiyya X
+taʿibun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=FEM,num=SG		gold: at-taʿiba		predicted: at-taʿiba V
+
+
+#################################
+
+ḥaffala		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tuḥaffilā		predicted: tašahmirā X
+haraba		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tahrubā		predicted: tujiriāā X
+istarāḥa		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tastarīḥā		predicted: tastamimā X
+sabbaba		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tusabbibā		predicted: tusabbibā V
+sajjala		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tusajjilā		predicted: tasabbisā X
+ṣawwaba		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tuṣawwibā		predicted: tujahhirā X
+ṭallaqa		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tuṭalliqā		predicted: tusʿibidā X
+wakkada		pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tuwakkidā		predicted: takīiḍā X
+
+
+#################################
+
+al-ʾamīru		pos=N,poss=PSSD,case=GEN,num=PL		gold: ʾumarāʾi		predicted: mumiji X
+al-ʿaẓmu		pos=N,poss=PSSD,case=GEN,num=PL		gold: ʿiẓāmi		predicted: ḥabšāii X
+al-furnu		pos=N,poss=PSSD,case=GEN,num=PL		gold: ʾafrāni		predicted: ʾafrāni V
+al-ḡadāʾu		pos=N,poss=PSSD,case=GEN,num=PL		gold: ʾaḡdiyati		predicted: liqlāniti X
+al-jundu		pos=N,poss=PSSD,case=GEN,num=PL		gold: ʾajnādi		predicted: ḵanwāiqi X
+al-mumaṯṯilu		pos=N,poss=PSSD,case=GEN,num=PL		gold: mumaṯṯilī		predicted: quwari X
+aṣ-ṣakku		pos=N,poss=PSSD,case=GEN,num=PL		gold: ṣukūki		predicted: ʾahnāmi X
+as-siyāsatu		pos=N,poss=PSSD,case=GEN,num=PL		gold: siyāsāti		predicted: siyāsāti V
+aṭ-ṭaʿnu		pos=N,poss=PSSD,case=GEN,num=PL		gold: ṭuʿī		predicted: ḥamīʿi X
+
+
+#################################
+
+hannaʾa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tuhanniʾūna		predicted: taaannnn X
+iḏḏakara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: taḏḏakirūna		predicted: taaannnn X
+
+
+#################################
+
+ʾablaḡa		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=SG		gold: ʾublaḡa		predicted: ʾublaḡa V
+ʾanāra		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=SG		gold: ʾunāra		predicted: ʾuʿāra X
+maṯala		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=SG		gold: ʾumṯala		predicted: ʾubaha X
+nammā		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=SG		gold: ʾunammā		predicted: ʾusʾsā X
+naṣara		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=SG		gold: ʾunṣara		predicted: ʾunādala X
+qaʿʿara		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=SG		gold: ʾuqaʿʿara		predicted: ʾuqaʿʿara V
+saḵḵara		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=SG		gold: ʾusaḵḵara		predicted: ʾuḥaāha X
+tajannaba		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=SG		gold: ʾutajannaba		predicted: ʾubaaaaaa X
+zāra		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=SG		gold: ʾuzāra		predicted: ʾuṣāra X
+
+
+#################################
+
+ʾinkilīziyyun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=SG		gold: ʾinkilīziyyatun		predicted: ʾinkilyḵiyyatun X
+ḵafīfun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=SG		gold: ḵafīfatun		predicted: ḵawībatun X
+ḵallāqun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=SG		gold: ḵallāqatun		predicted: ḵallāqatun V
+maḍbūṭun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=SG		gold: maḍbūṭatun		predicted: maḍbūṭatun V
+majmūʿun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=SG		gold: majmūʿatun		predicted: maṭmūʿatun X
+māridun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=SG		gold: māridatun		predicted: māridatun V
+šaḡifun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=SG		gold: šaḡifatun		predicted: šaḡifatun V
+ṯābitun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=SG		gold: ṯābitatun		predicted: ṯābitatun V
+ṯāminun		pos=ADJ,def=INDF,case=NOM,gen=FEM,num=SG		gold: ṯāminatun		predicted: ṯāminatun V
+
+
+#################################
+
+ʾakala		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yuʾkalu		predicted: yurʾaju X
+ʾalḥaqa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yulḥaqu		predicted: yulhamu X
+ʾawraṯa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yūraṯu		predicted: yulaṯu X
+dalla		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yudallu		predicted: yuʿlalu X
+haddada		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yuhaddadu		predicted: yuḥaqqaqu X
+iḍraḡaṭṭa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yuḍraḡaṭṭu		predicted: yuḵramamuu X
+ḵaraja		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yuḵraju		predicted: yuḵraju V
+laʿana		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yulʿanu		predicted: yušʿasu X
+makara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yumkaru		predicted: yurʾaju X
+maṯala		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yumṯalu		predicted: yurḡaju X
+qattala		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yuqattalu		predicted: yufattašu X
+sānada		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yusānadu		predicted: yunsabu X
+tabādala		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yutabādalu		predicted: yuzlaaalu X
+tawakkada		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: yutawakkadu		predicted: yutawakkalu X
+
+
+#################################
+
+ʾaḵāfa		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tuḵāfā		predicted: tusāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+ʾawqafa		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tūqafā		predicted: tusāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+ʾawwala		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tuʾawwalā		predicted: tusāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+daḥraja		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tudaḥrajā		predicted: tusāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+nafaʿa		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tunfaʿā		predicted: tusāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+rajjaʿa		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: turajjaʿā		predicted: tusāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāāā X
+
+
+#################################
+
+ḥafara		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾuḥfar		predicted: ʾušāra X
+ḥarraqa		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾuḥarraq		predicted: ʾušayrar X
+iktašafa		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾuktašaf		predicted: ʾuštalak X
+mawwata		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾumawwat		predicted: ʾuṣakkal X
+nafaḏa		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾunfaḏ		predicted: ʾunzaḏ X
+nazafa		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾunzaf		predicted: ʾunzaḏ X
+qarraba		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾuqarrab		predicted: ʾuṣarrab X
+šaraḥa		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾušraḥ		predicted: ʾušāaḥ X
+šāraka		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾušārak		predicted: ʾušārak V
+ṣawwaba		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾuṣawwab		predicted: ʾuṣawwab V
+ṭabaḵa		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾuṭbaḵ		predicted: ʾuṭbaḏ X
+tajāhala		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾutajāhal		predicted: ʾušaadal X
+
+
+#################################
+
+ʿabbada		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=PL		gold: tuʿabbidna		predicted: tuʿabbidna V
+ḍājaʿa		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=PL		gold: tuḍājiʿna		predicted: tuẓādimna X
+iftaʿala		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=PL		gold: taftaʿilna		predicted: taqtasimna X
+irtafaʿa		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=PL		gold: tartafiʿna		predicted: taqtalamna X
+iʿtanā		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=PL		gold: taʿtanīna		predicted: tastanna X
+jaḏḏara		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=PL		gold: tujaḏḏirna		predicted: tanayyibna X
+jahhaza		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=PL		gold: tujahhizna		predicted: tanhimiʿna X
+tābaʿa		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=PL		gold: tutābiʿna		predicted: tabālilna X
+tasānada		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=PL		gold: tatasānadna		predicted: tatawāṣabna X
+
+
+#################################
+
+ḥarrara		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=PL		gold: tuḥarrarū		predicted: tuuaa X
+iḥtasaba		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=PL		gold: tuḥtasabū		predicted: tuuaa X
+iḵtaraqa		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=PL		gold: tuḵtaraqū		predicted: tuuaa X
+istahzaʾa		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=PL		gold: tustahzaʾū		predicted: tuuaa X
+jāza		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=PL		gold: tujāzū		predicted: tuuaa X
+qāla		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=PL		gold: tuqālū		predicted: tuuaa X
+tamtama		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=PL		gold: tutamtamū		predicted: tuuaa X
+wāfā		pos=V,mood=SBJV,gen=MASC,per=2,voice=PASS,num=PL		gold: tuwāfaw		predicted: tuuaa X
+
+
+#################################
+
+ʾatā		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: ʾataytumā		predicted: ʾatmwqumā X
+barraka		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: barraktumā		predicted: barraktumā V
+infaṣala		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: infaṣaltumā		predicted: infaṣaltumā V
+iqtaḍā		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: iqtaḍaytumā		predicted: iqtaḍaytumā V
+irtajala		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: irtajaltumā		predicted: irtajaltumā V
+istaḥfaẓa		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: istaḥfaẓtumā		predicted: istaḥfaḏtumā X
+istaʿjala		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: istaʿjaltumā		predicted: istaʿjaltumā V
+ištaṭṭa		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: ištaṭaṭtumā		predicted: ištaṭṭaytā X
+ittaṣala		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: ittaṣaltumā		predicted: ittaṣalaumā X
+jāwara		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: jāwartumā		predicted: jāwartumā V
+najaḥa		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: najaḥtumā		predicted: najaḥtumā V
+qassa		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: qasastumā		predicted: qassaymā X
+qatala		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: qataltumā		predicted: qatalaumā X
+sammaʿa		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: sammaʿtumā		predicted: samātutumā X
+ṭafiʾa		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: ṭafiʾtumā		predicted: ṭafiʾtumā V
+talāqā		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: talāqaytumā		predicted: talaqaytumā X
+ṭallaqa		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV/PRF}		gold: ṭallaqtumā		predicted: ṭallaqtumā V
+
+
+#################################
+
+al-ʾanjaru		pos=N,def=INDF,case=GEN,num=DU		gold: ʾanjarayni		predicted: ʾanjarayni V
+al-iʿtirāfu		pos=N,def=INDF,case=GEN,num=DU		gold: iʿtirāfayni		predicted: raqaraynyni X
+al-ḵunfusāʾu		pos=N,def=INDF,case=GEN,num=DU		gold: ḵunfusāʾayni		predicted: duʿīānaynyni X
+al-maḏbaḥatu		pos=N,def=INDF,case=GEN,num=DU		gold: maḏbaḥatayni		predicted: mubāabatayni X
+al-majallatu		pos=N,def=INDF,case=GEN,num=DU		gold: majallatayni		predicted: farkabatayni X
+al-qāfilatu		pos=N,def=INDF,case=GEN,num=DU		gold: qāfilatayni		predicted: fāḥiḥatayni X
+al-yammu		pos=N,def=INDF,case=GEN,num=DU		gold: yammayni		predicted: ḏanamani X
+an-nusḵatu		pos=N,def=INDF,case=GEN,num=DU		gold: nusḵatayni		predicted: fafqaṯatai X
+ar-rākibu		pos=N,def=INDF,case=GEN,num=DU		gold: rākibayni		predicted: ʾanīnūbai X
+aṣ-ṣadru		pos=N,def=INDF,case=GEN,num=DU		gold: ṣadrayni		predicted: naqdayai X
+aš-šaraju		pos=N,def=INDF,case=GEN,num=DU		gold: šarajayni		predicted: mallaynyi X
+
+
+#################################
+
+ʾadbara		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾudbaru		predicted: ʾudbaru V
+ʾaḥāla		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾuḥālu		predicted: ʾuḥwaru X
+ʾawrā		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾūrā		predicted: ʾušaḥu X
+istakraha		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾustakrahu		predicted: ʾustaqrafu X
+lāḥaẓa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾulāḥaẓu		predicted: ʾubāfu X
+qaraʾa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾuqraʾu		predicted: ʾunaradu X
+tābaʿa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾutābaʿu		predicted: ʾutakaʿu X
+wātara		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾuwātaru		predicted: ʾubtaru X
+
+
+#################################
+
+ʾaqfala		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ʾaqfalti		predicted: ʾaqʿalti X
+inqāda		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: inqadti		predicted: inqadti V
+inqaraḍa		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: inqaraḍti		predicted: inqaraḍti V
+iṯṯanā		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: iṯṯanayti		predicted: iḍhanayti X
+ḵawwala		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ḵawwalti		predicted: ḵawwalti V
+rāḥa		pos=V,mood=IND,tense=PST,gen=FEM,per=2,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}		gold: ruḥti		predicted: rāḥaw X
+
+
+#################################
+
+bādala		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tubādilna		predicted: tabiʿirna X
+infaṣala		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tanfaṣilna		predicted: tasāaṯillna X
+ištaraka		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: taštarikna		predicted: tastariʿna X
+jāwara		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tujāwirna		predicted: tujāwirna V
+taḥawwaṭa		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: tataḥawwaṭna		predicted: tataḍawzalna X
+waqā		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: taqīna		predicted: taqīna V
+
+
+#################################
+
+al-ʿašīratu		pos=N,poss=PSSD,case=NOM,num=SG		gold: ʿašīratu		predicted: maaau X
+al-hiwāyatu		pos=N,poss=PSSD,case=NOM,num=SG		gold: hiwāyatu		predicted: maaau X
+al-iktišāfu		pos=N,poss=PSSD,case=NOM,num=SG		gold: iktišāfu		predicted: maaau X
+an-nabīḏu		pos=N,poss=PSSD,case=NOM,num=SG		gold: nabīḏu		predicted: maaau X
+aṣ-ṣīḡatu		pos=N,poss=PSSD,case=NOM,num=SG		gold: ṣīḡatu		predicted: maaau X
+at-tasāʾulu		pos=N,poss=PSSD,case=NOM,num=SG		gold: tasāʾulu		predicted: maaau X
+az-zāʾiru		pos=N,poss=PSSD,case=NOM,num=SG		gold: zāʾiru		predicted: maaau X
+
+
+#################################
+
+muḥāfiẓun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=DU		gold: al-muḥāfiẓayni		predicted: al-aaaaaaaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+mutaʾakkidun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=DU		gold: al-mutaʾakkidayni		predicted: al-aaaaaaaaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+muttaḥidun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=DU		gold: al-muttaḥidayni		predicted: al-aaaaaaaaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+qārrun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=DU		gold: al-qārrayni		predicted: al-aaaaaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+ṣāniʿun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=DU		gold: aṣ-ṣāniʿayni		predicted: al-aaaaaaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+suryāniyyun		pos=ADJ,def=DEF,case=ACC,gen=MASC,num=DU		gold: as-suryāniyyayni		predicted: al-aaaaaaaaiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+
+
+#################################
+
+ʾawfā		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=PL		gold: ʾawfīna		predicted: ʾawwīna X
+iḥtaraba		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=PL		gold: iḥtaribna		predicted: iḥtaribna V
+iḵtaraqa		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=PL		gold: iḵtariqna		predicted: iḵtariqna V
+irtafaʿa		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=PL		gold: irtafiʿna		predicted: irtafiʿna V
+
+
+#################################
+
+al-faqīhu		pos=N,def=INDF,case=NOM,num=PL		gold: fuqahāʾu		predicted: ʾaāāā X
+al-faylasūfu		pos=N,def=INDF,case=NOM,num=PL		gold: falāsifatun		predicted: ʾaāāā X
+al-jāʾizatu		pos=N,def=INDF,case=NOM,num=PL		gold: jawāʾizu		predicted: ʾaāāā X
+al-kafāʾatu		pos=N,def=INDF,case=NOM,num=PL		gold: kafāʾātun		predicted: ʾaāāā X
+al-karbu		pos=N,def=INDF,case=NOM,num=PL		gold: kurūbun		predicted: ʾaāāā X
+al-ḵunfusāʾu		pos=N,def=INDF,case=NOM,num=PL		gold: ḵanāfisu		predicted: ʾaāāā X
+al-ḵurṭūmu		pos=N,def=INDF,case=NOM,num=PL		gold: ḵarāṭīmu		predicted: ʾaāāā X
+al-maḵbazu		pos=N,def=INDF,case=NOM,num=PL		gold: maḵābizu		predicted: ʾaāāā X
+al-maqālu		pos=N,def=INDF,case=NOM,num=PL		gold: maqālātun		predicted: ʾaāāā X
+al-miftāḥu		pos=N,def=INDF,case=NOM,num=PL		gold: mafātīḥu		predicted: ʾaāāā X
+al-qābilatu		pos=N,def=INDF,case=NOM,num=PL		gold: qawābilu		predicted: ʾaāāā X
+an-nāyu		pos=N,def=INDF,case=NOM,num=PL		gold: nāyātun		predicted: ʾaāāā X
+aṣ-ṣafqatu		pos=N,def=INDF,case=NOM,num=PL		gold: ṣafaqātun		predicted: ʾaāāā X
+
+
+#################################
+
+ʾadbara		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tudbarāni		predicted: tumanrāni X
+ʾaṭāla		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tuṭālāni		predicted: tumāarāni X
+ʾaṭʿama		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tuṭʿamāni		predicted: tumānāāni X
+badaʾa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tubdaʾāni		predicted: tuʿbadāni X
+ḥasada		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tuḥsadāni		predicted: tukāadāni X
+iṣṭabaḥa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tuṣṭabaḥāni		predicted: tušbadarāni X
+istaʾjara		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tustaʾjarāni		predicted: tustayaafāni X
+istawrada		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tustawradāni		predicted: tustawradāni V
+ṣannafa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tuṣannafāni		predicted: tuṣanyabāni X
+
+
+#################################
+
+ʾabaqa		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=PL		gold: yaʾbiqna		predicted: yuʿtafna X
+ʾaʿlana		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=PL		gold: yuʿlinna		predicted: yuʿlinna V
+ʾawjaba		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=PL		gold: yūjibna		predicted: yunzidna X
+ḡaṭṭā		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=PL		gold: yuḡaṭṭīna		predicted: yaḥṭiṭna X
+iqtaḍaba		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=PL		gold: yaqtaḍibna		predicted: yaʿtidiina X
+iqtaraba		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=PL		gold: yaqtaribna		predicted: yaʿtidiina X
+istakṯara		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=PL		gold: yastakṯirna		predicted: yaʿtadiirna X
+kašafa		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=PL		gold: yakšifna		predicted: yaʿtadna X
+nafaʿa		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=PL		gold: yanfaʿna		predicted: yašaidna X
+zāda		pos=V,mood=SBJV,gen=FEM,per=3,voice=ACT,num=PL		gold: yazidna		predicted: yataīna X
+
+
+#################################
+
+jadīdun		pos=ADJ,def=DEF,case=NOM,gen=MASC,num=DU		gold: al-jadīdāni		predicted: al-maḵīṣāni X
+jāhilun		pos=ADJ,def=DEF,case=NOM,gen=MASC,num=DU		gold: al-jāhilāni		predicted: al-fūrīmāni X
+ḵafīfun		pos=ADJ,def=DEF,case=NOM,gen=MASC,num=DU		gold: al-ḵafīfāni		predicted: al-maḵīṣāni X
+lubnāniyyun		pos=ADJ,def=DEF,case=NOM,gen=MASC,num=DU		gold: al-lubnāniyyāni		predicted: al-fūḥīāniyyāni X
+maqṭūʿun		pos=ADJ,def=DEF,case=NOM,gen=MASC,num=DU		gold: al-maqṭūʿāni		predicted: al-mašrūʿāni X
+masfūḥun		pos=ADJ,def=DEF,case=NOM,gen=MASC,num=DU		gold: al-masfūḥāni		predicted: al-masrūlāni X
+ṣarīḥun		pos=ADJ,def=DEF,case=NOM,gen=MASC,num=DU		gold: aṣ-ṣarīḥāni		predicted: al-raḥīmāni X
+turkiyyun		pos=ADJ,def=DEF,case=NOM,gen=MASC,num=DU		gold: at-turkiyyāni		predicted: at-turkiyyāni V
+
+
+#################################
+
+al-ʾarnabu		pos=N,poss=PSSD,case=ACC,num=DU		gold: ʾarnabay		predicted: maaaaaay X
+al-ḵaṭaru		pos=N,poss=PSSD,case=ACC,num=DU		gold: ḵaṭaray		predicted: maaaaaay X
+al-kīlomitru		pos=N,poss=PSSD,case=ACC,num=DU		gold: kīlomitray		predicted: maaaaaay X
+al-ḵuḍratu		pos=N,poss=PSSD,case=ACC,num=DU		gold: ḵuḍratay		predicted: maaaaaay X
+al-majallatu		pos=N,poss=PSSD,case=ACC,num=DU		gold: majallatay		predicted: maaaaaay X
+al-miṣʿadu		pos=N,poss=PSSD,case=ACC,num=DU		gold: miṣʿaday		predicted: maaaaaay X
+al-musāʿadatu		pos=N,poss=PSSD,case=ACC,num=DU		gold: musāʿadatay		predicted: maaaaaay X
+al-muʾtamaru		pos=N,poss=PSSD,case=ACC,num=DU		gold: muʾtamaray		predicted: maaaaaay X
+al-qiṭṭatu		pos=N,poss=PSSD,case=ACC,num=DU		gold: qiṭṭatay		predicted: maaaaaay X
+ar-rabṭatu		pos=N,poss=PSSD,case=ACC,num=DU		gold: rabṭatay		predicted: maaaaaay X
+at-tīnatu		pos=N,poss=PSSD,case=ACC,num=DU		gold: tīnatay		predicted: maaaaaay X
+
+
+#################################
+
+ʾajāra		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nujīru		predicted: nuuuuuu X
+ʾaḵfā		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nuḵfī		predicted: nuuuuuu X
+daḥraja		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nudaḥriju		predicted: nuuuuuu X
+imtaḥana		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: namtaḥinu		predicted: nuuuuuu X
+istakbara		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nastakbiru		predicted: nuuuuuu X
+mawwata		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: numawwitu		predicted: nuuuuuu X
+sāraqa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: nusāriqu		predicted: nuuuuuu X
+tabāʾasa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV}		gold: natabāʾasu		predicted: nuuuuuu X
+
+
+#################################
+
+al-ʿajalatu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=DU		gold: ʿajalatay		predicted: aaaaaaaaayy X
+al-fitnatu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=DU		gold: fitnatay		predicted: aaaaaaaaayy X
+al-ḡarīzatu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=DU		gold: ḡarīzatay		predicted: aaaaaaaaayy X
+al-ḥasanatu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=DU		gold: ḥasanatay		predicted: aaaaaaaaayy X
+al-ḥaẓẓu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=DU		gold: ḥaẓẓay		predicted: aaaaaaaaayy X
+al-ʾirādatu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=DU		gold: ʾirādatay		predicted: aaaaaaaaayy X
+al-juzʾu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=DU		gold: juzʾay		predicted: aaaaaaaaayy X
+al-lawnu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=DU		gold: lawnay		predicted: aaaaaaaaayy X
+al-malbasu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=DU		gold: malbasay		predicted: aaaaaaaaayy X
+al-mazāju		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=DU		gold: mazājay		predicted: aaaaaaaaayy X
+al-mizmāru		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=DU		gold: mizmāray		predicted: aaaaaaaaayy X
+aṭ-ṭabaqu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=DU		gold: ṭabaqay		predicted: aaaaaaaaayy X
+at-tabrīru		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=DU		gold: tabrīray		predicted: aaaaaaaaayy X
+at-taqdīmu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=DU		gold: taqdīmay		predicted: aaaaaaaaayy X
+
+
+#################################
+
+ʾamrīkiyyun		pos=ADJ,def=DEF,case=GEN,gen=MASC,num=PL		gold: al-ʾamrīkiyyīna		predicted: a----yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy X
+qaṭariyyun		pos=ADJ,def=DEF,case=GEN,gen=MASC,num=PL		gold: al-qaṭariyyīna		predicted: a----yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy X
+
+
+#################################
+
+ʿabbada		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tuʿabbidāni		predicted: tuʿabbidāni V
+ʾadḵala		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tudḵilāni		predicted: tuḥiilāni X
+ʾammara		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tuʾammirāni		predicted: tunbirāni X
+ḥāṭa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: taḥūṭāni		predicted: taḏūqāni X
+ḥawā		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: taḥwiyāni		predicted: tuṭannyiāni X
+istaṣbaḥa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tastaṣbiḥāni		predicted: tastaʿbilāni X
+iṭmaʾanna		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: taṭmaʾinnāni		predicted: tatanānānnāni X
+kašafa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: takšifāni		predicted: tukʿarāni X
+rāḥa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tarūḥāni		predicted: tubāḥāni X
+yaʾisa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tayʾasāni		predicted: tuṯisāni X
+
+
+#################################
+
+ʿāmmiyyun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: al-ʿāmmiyyatayn		predicted: al-miṯliyyatayn X
+ʾaʿwaru		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: al-ʿawrāʾayn		predicted: al-ʿazbāʾayn X
+ḍaʿīfun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: aḍ-ḍaʿīfatayn		predicted: aḍ-ḍaʿīfatayn V
+juzayʾiyyun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: al-juzayʾiyyatayn		predicted: al-muttyniyyatayn X
+majhūlun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: al-majhūlatayn		predicted: al-ʿaḵbūʿatayn X
+majmūʿun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: al-majmūʿatayn		predicted: al-ʿaḍāmmatayn X
+mašhūdun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: al-mašhūdatayn		predicted: al-maḵtūbatayn X
+mudawwarun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: al-mudawwaratayn		predicted: al-ʿalasbībatayn X
+nāfiʿun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=FEM,num=DU		gold: an-nāfiʿatayn		predicted: aṣ-rafiʾatayn X
+
+
+#################################
+
+ḥaṭṭa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tuḥaṭṭūna		predicted: tutaaaaaaaa X
+istawrada		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tustawradūna		predicted: tutaaaaaaaaa X
+ittaqā		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tuttaqawna		predicted: tutaaaaaaaa X
+jawwafa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tujawwafūna		predicted: tutaaaaaaaa X
+naṣara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tunṣarūna		predicted: tutaaaaaaaa X
+qariba		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tuqrabūna		predicted: tutaaaaaaaa X
+tabaddala		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tutabaddalūna		predicted: tutaaaaaaaaa X
+
+
+#################################
+
+ʾalifbāʾiyyun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=SG		gold: al-ʾalifbāʾiyyata		predicted: al-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+ḵuṣūṣiyyun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=SG		gold: al-ḵuṣūṣiyyata		predicted: al-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+munawwimun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=SG		gold: al-munawwimata		predicted: al-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+muzʿijun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=SG		gold: al-muzʿijata		predicted: al-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+qurʾāniyyun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=SG		gold: al-qurʾāniyyata		predicted: al-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+ṯābitun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=SG		gold: aṯ-ṯābitata		predicted: al-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+yawmiyyun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=SG		gold: al-yawmiyyata		predicted: al-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+
+
+#################################
+
+al-ʿāʾilatu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=PL		gold: ʿawāʾil		predicted: ʾawāniāt X
+al-ʿaqlu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=PL		gold: ʿuqūl		predicted: ʾaḥāāīm X
+al-ḥabsu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=PL		gold: ḥubūs		predicted: mamaʿ X
+al-jusaymu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=PL		gold: jusaymāt		predicted: mamāl X
+al-lordu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=PL		gold: lordāt		predicted: mamabāt X
+al-qahwatu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=PL		gold: qahāwī		predicted: qitābit X
+al-qubbatu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=PL		gold: qibāb		predicted: qibāb V
+al-ʿulbatu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=PL		gold: ʿilāb		predicted: mamājīy X
+an-naẓẓāratu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=PL		gold: naẓẓārāt		predicted: marsān X
+aš-šarṭu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=PL		gold: šurūṭ		predicted: mahāiāā X
+as-sayyāratu		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=PL		gold: sayyārāt		predicted: mijiʿ X
+at-taqṣīru		pos=N,poss=PSSD,case={NOM/ACC/GEN},num=PL		gold: taqṣīrāt		predicted: ʾartīrb X
+
+
+#################################
+
+ḥakā		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=DU		gold: taḥkiyā		predicted: tusaiiāāāā X
+istamarra		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=DU		gold: tastamirrā		predicted: tusaiiāāāā X
+istanna		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=DU		gold: tastannā		predicted: tusaiiiāāā X
+jawwafa		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=DU		gold: tujawwifā		predicted: tusaiiāāāā X
+jazā		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=DU		gold: tajziyā		predicted: tusiiiāāāā X
+nazafa		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=DU		gold: tanzifā		predicted: tusaiiāāāā X
+sāʿada		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=DU		gold: tusāʿidā		predicted: tusaiiāāāā X
+tanabbaʾa		pos=V,mood=SBJV,gen=FEM,per=2,voice=ACT,num=DU		gold: tatanabbaʾā		predicted: tusaiiāāāā X
+
+
+#################################
+
+ʾaʿadda		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=PL		gold: nuʿadda		predicted: nuʿadda V
+ʾanṣata		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=PL		gold: nunṣata		predicted: numnamaaa X
+dabbaba		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=PL		gold: nudabbaba		predicted: numalaba X
+ḥašada		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=PL		gold: nuḥšada		predicted: nušlara X
+istarzaqa		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=PL		gold: nustarzaqa		predicted: nusta X
+izdarada		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=PL		gold: nuzdarada		predicted: nurāamama X
+maḥā		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=PL		gold: numḥā		predicted: numḥā V
+ṭaraḥa		pos=V,mood=SBJV,gen=FEM,per=1,voice=PASS,num=PL		gold: nuṭraḥa		predicted: nuqraḥa X
+
+
+#################################
+
+ʾamṭara		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=SG		gold: yumṭara		predicted: yuḥaaaaaaa X
+fahima		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=SG		gold: yufhama		predicted: yuḥaaaaaaa X
+farada		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=SG		gold: yufrada		predicted: yuḥaaaaaaa X
+ibtāʿa		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=SG		gold: yubtāʿa		predicted: yuḥaaaaaaa X
+istaʿjala		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=SG		gold: yustaʿjala		predicted: yuḥaaaaaaaaa X
+istatāba		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=SG		gold: yustatāba		predicted: yuḥaaaaaaaa X
+lāqā		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=SG		gold: yulāqā		predicted: yuḥaaaaaa X
+qaḏafa		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=SG		gold: yuqḏafa		predicted: yuḥaaaaaaa X
+taḥādaṯa		pos=V,mood=SBJV,gen=MASC,per=3,voice=PASS,num=SG		gold: yutaḥādaṯa		predicted: yuḥaaaaaaaa X
+
+
+#################################
+
+ʾalifbāʾiyyun		pos=ADJ,def=DEF,case=GEN,gen=FEM,num=PL		gold: al-ʾalifbāʾiyyāti		predicted: al-ʾalifbāʾiyyāti V
+ʿašawāʾiyyun		pos=ADJ,def=DEF,case=GEN,gen=FEM,num=PL		gold: al-ʿašawāʾiyyāti		predicted: al-ʿafābāʾiyyāti X
+hayūliyyun		pos=ADJ,def=DEF,case=GEN,gen=FEM,num=PL		gold: al-hayūliyyāti		predicted: al-bamāniyyāti X
+
+
+#################################
+
+ʾajāba		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ʾujībā		predicted: ʾujūbi X
+ʾarsala		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ʾursilā		predicted: ʾursilā V
+ʾassasa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ʾussisā		predicted: ʾussisā V
+ʾawdaʿa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ʾūdiʿā		predicted: ʾuliiʿā X
+iltamasa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ultumisā		predicted: uutimā X
+istaḥfaẓa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ustuḥfiẓā		predicted: ustudfidā X
+karrama		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: kurrimā		predicted: kurrimā V
+šaʿala		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: šuʿilā		predicted: šuʿilā V
+sajana		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: sujinā		predicted: sujinā V
+ẓalama		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV/PRF}		gold: ẓulimā		predicted: ḥulimā X
+
+
+#################################
+
+ʾaḥsana		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tuḥsanna		predicted: tuḵsanna X
+istajanna		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tustajnanna		predicted: tustajnanna V
+nāwala		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tunāwalna		predicted: tuṭāwalna X
+
+
+#################################
+
+ʾaḏkara		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nuḏkar		predicted: nunaaaaaaaa X
+ʾafāda		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nufad		predicted: nunaaaaaaaa X
+ʾalzama		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nulzam		predicted: nunaaaaaaaa X
+ʾaṣḡā		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nuṣḡa		predicted: nunaaaaaaaa X
+jāza		pos=V,mood={IND/COND/IMP},gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nujaz		predicted: nunaaaaaaaa X
+
+
+#################################
+
+ʿašawāʾiyyun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=MASC,num=PL		gold: al-ʿašawāʾiyyīn		predicted: al-aa X
+nimsāwiyyun		pos=ADJ,def=DEF,case={NOM/ACC/GEN},gen=MASC,num=PL		gold: an-nimsāwiyyīn		predicted: al-aa X
+
+
+#################################
+
+ʾimārātiyyun		pos=ADJ,def=DEF,case=GEN,gen=MASC,num=DU		gold: al-ʾimārātiyyayni		predicted: al--aaaaaaaaaaaii X
+jawwiyyun		pos=ADJ,def=DEF,case=GEN,gen=MASC,num=DU		gold: al-jawwiyyayni		predicted: al--aaaaaaaaaii X
+mustadīrun		pos=ADJ,def=DEF,case=GEN,gen=MASC,num=DU		gold: al-mustadīrayni		predicted: al---aaaaaaaaaiii X
+nafīsun		pos=ADJ,def=DEF,case=GEN,gen=MASC,num=DU		gold: an-nafīsayni		predicted: al---aaaaaaaiii X
+
+
+#################################
+
+ʾaʿwaru		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=MASC,num=DU		gold: ʾaʿwarayn		predicted: ʾaʿāarayn X
+ʿimlāqiyyun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=MASC,num=DU		gold: ʿimlāqiyyayn		predicted: ʿimlāqiyyayn V
+ʿirāqiyyun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=MASC,num=DU		gold: ʿirāqiyyayn		predicted: ʿirāqiyyayn V
+zaytiyyun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=MASC,num=DU		gold: zaytiyyayn		predicted: qayīiyyayn X
+
+
+#################################
+
+ʾaḏāʿa		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾaḏaʿnā		predicted: ʾaquʿaā X
+ʿarraba		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ʿarrabnā		predicted: ʿarrabnā V
+ḥāwaṭa		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ḥāwaṭnā		predicted: ḥāwaṭnā V
+iḵtabara		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: iḵtabarnā		predicted: iḵtabarnā V
+istaqṭara		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: istaqṭarnā		predicted: istaqṭarnā V
+ittaḵaḏa		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ittaḵaḏnā		predicted: ittaḵaḏnā V
+karrama		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: karramnā		predicted: karramnā V
+nasala		pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: nasalnā		predicted: nasalnā V
+
+
+#################################
+
+ʾawā		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=SG		gold: tuʾwā		predicted: tuqā X
+ʾawlā		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=SG		gold: tūlā		predicted: tuqaā X
+ḥāraba		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=SG		gold: tuḥāraba		predicted: tuḥāraba V
+iktataba		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=SG		gold: tuktataba		predicted: tunsaḥaba X
+istaḥḍara		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=SG		gold: tustaḥḍara		predicted: tustaqbara X
+kasaba		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=SG		gold: tuksaba		predicted: tunsara X
+māzaḥa		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=SG		gold: tumāzaḥa		predicted: tumāṯada X
+qallada		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=SG		gold: tuqallada		predicted: tuqallada V
+ṭāʿa		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=SG		gold: tuṭāʿa		predicted: tumāʾa X
+ṭallaqa		pos=V,mood=SBJV,gen=FEM,per=3,voice=PASS,num=SG		gold: tuṭallaqa		predicted: tuṭallaqa V
+
+
+#################################
+
+ʿafā		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tuʿfayāni		predicted: tuaaaāi X
+qāmara		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tuqāmarāni		predicted: tuaaaāāāi X
+sammaʿa		pos=V,mood=IND,tense={PRS/FUT},gen=FEM,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tusammaʿāni		predicted: tuaaaāāāāi X
+
+
+#################################
+
+ʾaškala		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=SG		gold: ʾaškilī		predicted: iaaīī X
+dabbaba		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=SG		gold: dabbibī		predicted: iaaīī X
+ḏarā		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=SG		gold: uḏrī		predicted: iaaīī X
+ḥallala		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=SG		gold: ḥallilī		predicted: iaaīī X
+istaṣbaḥa		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=SG		gold: istaṣbiḥī		predicted: iaaīī X
+izdāda		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=SG		gold: izdādī		predicted: iaaīī X
+ṭawwaʿa		pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=SG		gold: ṭawwiʿī		predicted: iaaīī X
+
+
+#################################
+
+aḏ-ḏanbu		pos=N,def=INDF,case=NOM,num=SG		gold: ḏanbun		predicted: maaannnnnnnnnnnnnnn X
+ad-darwīšu		pos=N,def=INDF,case=NOM,num=SG		gold: darwīšun		predicted: maaannnnnnnnnnnnnnn X
+al-ʿalāqatu		pos=N,def=INDF,case=NOM,num=SG		gold: ʿalāqatun		predicted: maaannnnnnnnnnnnnnn X
+al-ʾayūnu		pos=N,def=INDF,case=NOM,num=SG		gold: ʾayūnun		predicted: maaannnnnnnnnnnnnnn X
+al-ḥarakatu		pos=N,def=INDF,case=NOM,num=SG		gold: ḥarakatun		predicted: maaannnnnnnnnnnnnnn X
+al-labwatu		pos=N,def=INDF,case=NOM,num=SG		gold: labwatun		predicted: maaannnnnnnnnnnnnnn X
+aš-šaʾnu		pos=N,def=INDF,case=NOM,num=SG		gold: šaʾnun		predicted: maaannnnnnnnnnnnnnn X
+aš-šitāʾu		pos=N,def=INDF,case=NOM,num=SG		gold: šitāʾun		predicted: maaannnnnnnnnnnnnnn X
+
+
+#################################
+
+ʾaṭāʿa		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=DU		gold: tuṭīʿā		predicted: tuḵḍqiʿā X
+dammama		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=DU		gold: tudammimā		predicted: turrrrirā X
+ibtaʿada		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=DU		gold: tabtaʿidā		predicted: tantanirā X
+ibtasara		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=DU		gold: tabtasirā		predicted: tantasārā X
+istanada		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=DU		gold: tastanidā		predicted: tastanirā X
+istaṯnā		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=DU		gold: tastaṯniyā		predicted: tastakbā X
+šāʾa		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=DU		gold: tašāʾā		predicted: tašāʾā V
+ṣaḡā		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=DU		gold: taṣḡuwā		predicted: taqrrā X
+taḍawwaʾa		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=DU		gold: tataḍawwaʾā		predicted: taṭfuannabā X
+ṭafaqa		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=DU		gold: taṭfiqā		predicted: taṭfiqā V
+ṭāwala		pos=V,mood=SBJV,gen=MASC,per=2,voice=ACT,num=DU		gold: tuṭāwilā		predicted: taḥnilā X
+
+
+#################################
+
+ʾašqaru		pos=ADJ,def=INDF,case=NOM,gen=MASC,num=SG		gold: ʾašqaru		predicted: aauuuu X
+ʾaṭrašu		pos=ADJ,def=INDF,case=NOM,gen=MASC,num=SG		gold: ʾaṭrašu		predicted: aauuuu X
+ḵaʾūnun		pos=ADJ,def=INDF,case=NOM,gen=MASC,num=SG		gold: ḵaʾūnun		predicted: aauuu X
+muqaddasun		pos=ADJ,def=INDF,case=NOM,gen=MASC,num=SG		gold: muqaddasun		predicted: aauuuuuu X
+
+
+#################################
+
+ʾaʿāra		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=PL		gold: nuʿīra		predicted: nuqīra X
+hājara		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=PL		gold: nuhājira		predicted: nubādira X
+iltafata		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=PL		gold: naltafita		predicted: nartafida X
+istaʿraba		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=PL		gold: nastaʿriba		predicted: nastaʿriba V
+iʿtanā		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=PL		gold: naʿtaniya		predicted: naʿtaniya V
+kabasa		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=PL		gold: nakbisa		predicted: nakbisa V
+nāwala		pos=V,mood=SBJV,gen=FEM,per=1,voice=ACT,num=PL		gold: nunāwila		predicted: nunāwila V
+
+
+#################################
+
+ʾaqāma		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ʾaqāmū		predicted: ʾaqāmū V
+ʿazala		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ʿazalū		predicted: ʿazalū V
+ḡalā		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: ḡalaw		predicted: ḡalaw V
+istaḍāʾa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: istaḍāʾū		predicted: istašāʾū X
+istakraha		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: istakrahū		predicted: istakrahū V
+kāfaʾa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: kāfaʾū		predicted: kāfaʾū V
+kasaba		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: kasabū		predicted: kasabū V
+qarrara		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: qarrarū		predicted: qarrarū V
+sajjala		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: sajjalū		predicted: sajjalū V
+tafāraqa		pos=V,mood=IND,tense=PST,gen=MASC,per=3,voice=ACT,num=PL,aspect={IPFV/PFV/PRF}		gold: tafāraqū		predicted: tafārūqū X
+
+
+#################################
+
+aḏ-ḏabīḥatu		pos=N,def=DEF,case=GEN,num=DU		gold: aḏ-ḏabīḥatayni		predicted: aḍ-ḍabīḥatayni X
+ad-dāʾiratu		pos=N,def=DEF,case=GEN,num=DU		gold: ad-dāʾiratayni		predicted: ad-dāʾiratayni V
+al-ʾālatu		pos=N,def=DEF,case=GEN,num=DU		gold: al-ʾālatayni		predicted: al-ʾālatayni V
+al-barbaḵu		pos=N,def=DEF,case=GEN,num=DU		gold: al-barbaḵayni		predicted: al-barbaḵayni V
+al-bayyāʿu		pos=N,def=DEF,case=GEN,num=DU		gold: al-bayyāʿayni		predicted: al-bayyāʿayni V
+al-farju		pos=N,def=DEF,case=GEN,num=DU		gold: al-farjayni		predicted: al-farjayni V
+al-hammu		pos=N,def=DEF,case=GEN,num=DU		gold: al-hammayni		predicted: al-iammayni X
+al-karbu		pos=N,def=DEF,case=GEN,num=DU		gold: al-karbayni		predicted: al-karbayni V
+al-maḥallatu		pos=N,def=DEF,case=GEN,num=DU		gold: al-maḥallatayni		predicted: al-maḥallatayni V
+al-miḥrābu		pos=N,def=DEF,case=GEN,num=DU		gold: al-miḥrābayni		predicted: al-miḥrābayni V
+al-muqāṭaʿatu		pos=N,def=DEF,case=GEN,num=DU		gold: al-muqāṭaʿatayni		predicted: al-muqāṭaʿatayni V
+aṣ-ṣalību		pos=N,def=DEF,case=GEN,num=DU		gold: aṣ-ṣalībayni		predicted: aṣ-ṣalībayni V
+as-sifāratu		pos=N,def=DEF,case=GEN,num=DU		gold: as-sifāratayni		predicted: as-sifāratayni V
+aṭ-ṭabīʿiyyu		pos=N,def=DEF,case=GEN,num=DU		gold: aṭ-ṭabīʿiyyayni		predicted: aṭ-ṭabīʿiyyayni V
+
+
+#################################
+
+ḡarra		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=PL		gold: naḡurra		predicted: naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+ḥašada		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=PL		gold: naḥšuda		predicted: naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+istanfara		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=PL		gold: nastanfira		predicted: naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+jarā		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=PL		gold: najriya		predicted: naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+šakā		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=PL		gold: naškuwa		predicted: naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+tamattaʿa		pos=V,mood=SBJV,gen=MASC,per=1,voice=ACT,num=PL		gold: natamattaʿa		predicted: naaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+
+
+#################################
+
+al-haykalu		pos=N,def=INDF,case={NOM/ACC/GEN},num=DU		gold: haykalayn		predicted: iaaaaaaayy X
+al-kubbāyatu		pos=N,def=INDF,case={NOM/ACC/GEN},num=DU		gold: kubbāyatayn		predicted: iaaaaaaayy X
+al-laḥẓatu		pos=N,def=INDF,case={NOM/ACC/GEN},num=DU		gold: laḥẓatayn		predicted: iaaaaaaayy X
+al-maʿrakatu		pos=N,def=INDF,case={NOM/ACC/GEN},num=DU		gold: maʿrakatayn		predicted: iaaaaaaayy X
+al-qināʿu		pos=N,def=INDF,case={NOM/ACC/GEN},num=DU		gold: qināʿayn		predicted: iaaaaaaayy X
+al-ʿulbatu		pos=N,def=INDF,case={NOM/ACC/GEN},num=DU		gold: ʿulbatayn		predicted: iaaaaaaayy X
+ar-rāyatu		pos=N,def=INDF,case={NOM/ACC/GEN},num=DU		gold: rāyatayn		predicted: iaaaaaaayy X
+
+
+#################################
+
+basaṭa		pos=V,voice=ACT		gold: bāsiṭ		predicted: bāsiṭ V
+iḡtaṣaba		pos=V,voice=ACT		gold: muḡtaṣib		predicted: muftaiib X
+iqtaṭṭa		pos=V,voice=ACT		gold: muqtaṭṭ		predicted: mubtaqṭ X
+istadarra		pos=V,voice=ACT		gold: mustadirr		predicted: mustadirr V
+ištaṭṭa		pos=V,voice=ACT		gold: muštaṭṭ		predicted: muftaqṭ X
+ittaḵaḏa		pos=V,voice=ACT		gold: muttaḵiḏ		predicted: muttaḥir X
+jaruʾa		pos=V,voice=ACT		gold: jāriʾ		predicted: jāriʾ V
+nāqaša		pos=V,voice=ACT		gold: munāqiš		predicted: nāʾir X
+nazala		pos=V,voice=ACT		gold: nāzil		predicted: nābil X
+ṣaḥḥaḥa		pos=V,voice=ACT		gold: muṣaḥḥiḥ		predicted: ṣāʾaṭṭiʾ X
+
+
+#################################
+
+ʿabbada		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yuʿabbadāni		predicted: yujaaaaaānn X
+ʿaqqama		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yuʿaqqamāni		predicted: yujaaaaaānn X
+istakšafa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yustakšafāni		predicted: yujaaaaaaaān X
+ḵarṭama		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yuḵarṭamāni		predicted: yujaaaaaānn X
+nawwama		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yunawwamāni		predicted: yujaaaaaānn X
+qarraba		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: yuqarrabāni		predicted: yujaaaaaānn X
+
+
+#################################
+
+ʾaqāma		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tuqīmā		predicted: taaiāāā X
+ʾarsala		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tursilā		predicted: taaiāāā X
+ʾašʿara		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tušʿirā		predicted: taaiāāā X
+ijtahada		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tajtahidā		predicted: taaiāāā X
+imtalaka		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tamtalikā		predicted: taaiāāā X
+qāwama		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tuqāwimā		predicted: taaiāāā X
+tabāʾasa		pos=V,mood={IND/COND/IMP},gen=FEM,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tatabāʾasā		predicted: taaiāāā X
+
+
+#################################
+
+ʾaqfala		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tuqfalāni		predicted: tussaalāni X
+ʾaršada		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: turšadāni		predicted: turšadāni V
+jāba		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=PASS,num=DU,aspect={IPFV/PFV}		gold: tujābāni		predicted: tujābāni V
+
+
+#################################
+
+ʾaʿadda		pos=V,mood=SBJV,gen=FEM,per=2,voice=PASS,num=PL		gold: tuʿdadna		predicted: tuuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+ʿaqqama		pos=V,mood=SBJV,gen=FEM,per=2,voice=PASS,num=PL		gold: tuʿaqqamna		predicted: tuuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+baṣaqa		pos=V,mood=SBJV,gen=FEM,per=2,voice=PASS,num=PL		gold: tubṣaqna		predicted: tuuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+ḵadama		pos=V,mood=SBJV,gen=FEM,per=2,voice=PASS,num=PL		gold: tuḵdamna		predicted: tuuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+naffaqa		pos=V,mood=SBJV,gen=FEM,per=2,voice=PASS,num=PL		gold: tunaffaqna		predicted: tuuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+ṣabba		pos=V,mood=SBJV,gen=FEM,per=2,voice=PASS,num=PL		gold: tuṣbabna		predicted: tuuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+taḵayyala		pos=V,mood=SBJV,gen=FEM,per=2,voice=PASS,num=PL		gold: tutaḵayyalna		predicted: tuuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+ẓalama		pos=V,mood=SBJV,gen=FEM,per=2,voice=PASS,num=PL		gold: tuẓlamna		predicted: tuuaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa X
+
+
+#################################
+
+ad-darakiyyu		pos=N,def=DEF,case=NOM,num=DU		gold: ad-darakiyyāni		predicted: ad-darakiyyāni V
+al-fustānu		pos=N,def=DEF,case=NOM,num=DU		gold: al-fustānāni		predicted: al-fustānāni V
+al-hamzatu		pos=N,def=DEF,case=NOM,num=DU		gold: al-hamzatāni		predicted: al-hamzatāni V
+al-ḥayāʾu		pos=N,def=DEF,case=NOM,num=DU		gold: al-ḥayāʾāni		predicted: al-ḥayāʾāni V
+al-ibtisāmatu		pos=N,def=DEF,case=NOM,num=DU		gold: al-ibtisāmatāni		predicted: al-ibtisāmatāni V
+al-mubayyiḍu		pos=N,def=DEF,case=NOM,num=DU		gold: al-mubayyiḍāni		predicted: al-mubayyiyāni X
+al-qarīnu		pos=N,def=DEF,case=NOM,num=DU		gold: al-qarīnāni		predicted: al-qarīnāni V
+an-niẓāmu		pos=N,def=DEF,case=NOM,num=DU		gold: an-niẓāmāni		predicted: an-nizāmāni X
+ar-rāhibu		pos=N,def=DEF,case=NOM,num=DU		gold: ar-rāhibāni		predicted: ar-rāhibāni V
+aš-šaʾnu		pos=N,def=DEF,case=NOM,num=DU		gold: aš-šaʾnāni		predicted: aš-šaʾnāni V
+as-sinjābu		pos=N,def=DEF,case=NOM,num=DU		gold: as-sinjābāni		predicted: as-sinjābāni V
+aṯ-ṯaʿlabu		pos=N,def=DEF,case=NOM,num=DU		gold: aṯ-ṯaʿlabāni		predicted: aṯ-ṯaʿlabāni V
+
+
+#################################
+
+ḥakīmun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=PL		gold: al-ḥakīmāti		predicted: al-ʿalīṭāti X
+mušmisun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=PL		gold: al-mušmisāti		predicted: al-murmirāti X
+naẓīfun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=PL		gold: an-naẓīfāti		predicted: al-ʿarīnāti X
+raḥmānun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=PL		gold: ar-raḥmānāti		predicted: al-ʿawmurāti X
+salīmun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=PL		gold: as-salīmāti		predicted: al-ṣalīṭāti X
+šamāliyyun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=PL		gold: aš-šamāliyyāti		predicted: al-ʾawāliyyāti X
+taʿibun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=PL		gold: at-taʿibāti		predicted: at-tamīlāti X
+taʿīsun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=PL		gold: at-taʿīsāti		predicted: at-qamīlāti X
+yahūdiyyun		pos=ADJ,def=DEF,case=ACC,gen=FEM,num=PL		gold: al-yahūdiyyāti		predicted: al-yahūdiyyāti V
+
+
+#################################
+
+ʾaḵfā		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tuḵfiyāni		predicted: tuuaaaāiiiiii X
+ʾarraḵa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tuʾarriḵāni		predicted: tuuaaaāāiiiiii X
+ḡarra		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: taḡurrāni		predicted: tuuaaaāiiiiii X
+ḥannaʾa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tuḥanniʾāni		predicted: tuuaaaāāiiiiii X
+iʿtamala		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: taʿtamilāni		predicted: tuuaaaāāiiiiii X
+karrama		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tukarrimāni		predicted: tuuaaaāāiiiiii X
+nāka		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=2,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: tanīkāni		predicted: tuuaaaāiiiiii X
+
+
+#################################
+
+ʾabā		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾāba		predicted: ʾaa X
+ʾabaqa		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾābiq		predicted: ʾaa X
+ʾarraḵa		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾuʾarriḵ		predicted: ʾaa X
+hannaʾa		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾuhanniʾ		predicted: ʾaa X
+ḥaṣala		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾaḥṣul		predicted: ʾaa X
+iḡtaṣaba		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾaḡtaṣib		predicted: ʾaa X
+istaqṭaba		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾastaqṭib		predicted: ʾaa X
+jāmala		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾujāmil		predicted: ʾaa X
+sālama		pos=V,mood={IND/COND/IMP},gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV}		gold: ʾusālim		predicted: ʾaa X
+
+
+#################################
+
+ʿabara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾuʿbaru		predicted: ʾuaaaaaaaaaaaaaaaaaaaaaaaaaa X
+iḥtamala		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾuḥtamalu		predicted: ʾuaaaaaaaaaaaaaaaaaaaaaaaaaa X
+intaẓama		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾuntaẓamu		predicted: ʾuaaaaaaaaaaaaaaaaaaaaaaaaaa X
+nazafa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾunzafu		predicted: ʾuaaaaaaaaaaaaaaaaaaaaaaaaaa X
+tasarrā		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=PASS,num=SG,aspect={IPFV/PFV}		gold: ʾutasarrā		predicted: ʾuaaaaaaaaaaaaaaaaaaaaaaaaaa X
+
+
+#################################
+
+ʾaddā		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=PL		gold: ʾaddū		predicted: ʾaddū V
+ʾaḥakka		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=PL		gold: ʾaḥikkū		predicted: muḥūkū X
+ʾakrama		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=PL		gold: ʾakrimū		predicted: ʾakrimū V
+ʾayqana		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=PL		gold: ʾayqinū		predicted: ʾajqinū X
+ḡarra		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=PL		gold: ḡurrū		predicted: zarri X
+ḥaraṯa		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=PL		gold: uḥruṯū		predicted: iḥraṯi X
+iḍṭarra		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=PL		gold: iḍṭarrū		predicted: iḍjarri X
+iṯṯanā		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=PL		gold: iṯṯanū		predicted: iāṯinū X
+makara		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=PL		gold: umkurū		predicted: ʿikū X
+sammama		pos=V,mood=IMP,gen=MASC,per=2,voice=ACT,num=PL		gold: sammimū		predicted: sammimū V
+
+
+#################################
+
+ʾaḍāfa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nuḍāfu		predicted: nuḍāʿu X
+ʾaʿmara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nuʿmaru		predicted: nuḥḍamu X
+ʾarā		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nurā		predicted: nuʾhā X
+ʾarraḵa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nuʾarraḵu		predicted: nuʾarraḵu V
+iʿtamara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nuʿtamaru		predicted: nuntaramu X
+raʾasa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nurʾasu		predicted: nuraabu X
+ṣādara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nuṣādaru		predicted: nuṭāamu X
+tamtama		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nutamtamu		predicted: nurabmu X
+ẓallala		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=1,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: nuẓallalu		predicted: nuẓlajahu X
+
+
+#################################
+
+ʾaṯṯara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: yuʾaṯṯirāni		predicted: yuḥāāiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+batta		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: yabittāni		predicted: yuḥāāiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+ḡaḍiba		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: yaḡḍabāni		predicted: yuḥāāiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+ḵaraja		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: yaḵrujāni		predicted: yuḥāāiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+rajaʿa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: yarjaʿāni		predicted: yuḥāāiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+ṣābara		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: yuṣābirāni		predicted: yuḥāāiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+taʾakkada		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: yataʾakkadāni		predicted: yuḥāāiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+talā		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: yatluwāni		predicted: yuḥāāiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+ṭāwaʿa		pos=V,mood=IND,tense={PRS/FUT},gen=MASC,per=3,voice=ACT,num=DU,aspect={IPFV/PFV}		gold: yuṭāwiʿāni		predicted: yuḥāāiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii X
+
+
+#################################
+
+baḥrayniyyun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=PL		gold: baḥrayniyyīna		predicted: mmmmmnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn X
+taqrīriyyun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=PL		gold: taqrīriyyīna		predicted: mmmmmnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn X
+waṭaniyyun		pos=ADJ,def=INDF,case=ACC,gen=MASC,num=PL		gold: waṭaniyyīna		predicted: mmmmmnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn X
+
+
+#################################
+
+ʾabyaḍu		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=MASC,num=SG		gold: ʾabyaḍ		predicted: rarīan X
+ʿaẓīmun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=MASC,num=SG		gold: ʿaẓīm		predicted: rajīm X
+ṣalībun		pos=ADJ,def=INDF,case={NOM/ACC/GEN},gen=MASC,num=SG		gold: ṣalīb		predicted: ṣalīb V
+
+
+#################################
+
+ad-darju		pos=N,def=INDF,case=ACC,num=SG		gold: darjan		predicted: maaaa X
+al-ḥammāru		pos=N,def=INDF,case=ACC,num=SG		gold: ḥammāran		predicted: maaaa X
+al-haykalu		pos=N,def=INDF,case=ACC,num=SG		gold: haykalan		predicted: maaaa X
+al-ʾiṣbaʿu		pos=N,def=INDF,case=ACC,num=SG		gold: ʾiṣbaʿan		predicted: maaaa X
+al-jidāru		pos=N,def=INDF,case=ACC,num=SG		gold: jidāran		predicted: maaaa X
+al-ḵandaqu		pos=N,def=INDF,case=ACC,num=SG		gold: ḵandaqan		predicted: maaaa X
+al-ḵurṭūmu		pos=N,def=INDF,case=ACC,num=SG		gold: ḵurṭūman		predicted: maaaa X
+ar-raʾīsu		pos=N,def=INDF,case=ACC,num=SG		gold: raʾīsan		predicted: maaaa X
+aṭ-ṭaribu		pos=N,def=INDF,case=ACC,num=SG		gold: ṭariban		predicted: maaaa X
+aṭ-ṭiflu		pos=N,def=INDF,case=ACC,num=SG		gold: ṭiflan		predicted: maaaa X
+
+
+#################################
+
+faḵūrun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=DU		gold: al-faḵūratāni		predicted: al-faḵūratāni V
+jāffun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=DU		gold: al-jāffatāni		predicted: al-ḏurmatāni X
+madaniyyun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=DU		gold: al-madaniyyatāni		predicted: al-mūnawiyyatāni X
+maftūḥun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=DU		gold: al-maftūḥatāni		predicted: al-marzūqatāni X
+majhūlun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=DU		gold: al-majhūlatāni		predicted: al-mašbamatāni X
+masīḥun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=DU		gold: al-masīḥatāni		predicted: al-masīmatāni X
+mumtāzun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=DU		gold: al-mumtāzatāni		predicted: al-munzūdatāni X
+šaḡifun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=DU		gold: aš-šaḡifatāni		predicted: al-sāfiratāni X
+ṣaḥīḥun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=DU		gold: aṣ-ṣaḥīḥatāni		predicted: al-jamīmatāni X
+wājibun		pos=ADJ,def=DEF,case=NOM,gen=FEM,num=DU		gold: al-wājibatāni		predicted: al-mātiratāni X
+
+
+#################################
+
+ʾabā		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tuʾbaw		predicted: tusabū X
+ʾaqbala		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tuqbalū		predicted: tuqbalū V
+iḏḏakara		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tuḏḏakarū		predicted: tutdalūr X
+istawqafa		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tustawqafū		predicted: tustalhamū X
+nadā		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tundaw		predicted: tuʿfaw X
+ṣaʿʿaba		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tuṣaʿʿabū		predicted: tuṣaʿʿabū V
+šakā		pos=V,mood={IND/COND/IMP},gen=MASC,per=2,voice=PASS,num=PL,aspect={IPFV/PFV}		gold: tuškaw		predicted: tuḵalw X

@@ -1,6 +1,12 @@
 # show V's and X's on predicted output file according to gold file
 
 def main():
+
+    evaluate('/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_arabic_results.txt.best.predictions',
+             '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/arabic-task1-dev',
+             '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_arabic_results.txt.best.predictions.error_analysis')
+    return
+
     predicted_file_format = '/Users/roeeaharoni/GitHub/morphological-reinflection/results/\
 joint_structured_{0}_results.txt.best.predictions'
 
@@ -27,18 +33,22 @@ def evaluate(predicted_file, gold_file, output_file):
             if not len(gold_lines) == len(predicted_lines):
                 print 'file lengths mismatch, {0} lines in gold and {1} lines in prediction'.format(len(gold_lines),
                                                                                                     len(predicted_lines))
-                return
+
             else:
                 with open(output_file, 'w') as output:
                     morph2results = {}
                     for i, predicted_line in enumerate(predicted_lines):
                         output_line = ''
-                        [lemma, morph, predicted_inflection] = predicted_line.split()
+                        [pred_lemma, pred_morph, predicted_inflection] = predicted_line.split()
                         [lemma, morph, gold_inflection] = gold_lines[i].split()
+
+                        if pred_lemma != lemma:
+                            print 'mismatch in index' + str(i)
+                            return
+
                         output_line = lemma + '\t\t' + morph + '\t\t' + 'gold: ' + gold_inflection + '\t\tpredicted: ' + predicted_inflection
                         if predicted_inflection == gold_inflection:
-                            #output_line += ' V\n'
-                            continue
+                            output_line += ' V\n'
                         else:
                             output_line += ' X\n'
 
@@ -52,7 +62,6 @@ def evaluate(predicted_file, gold_file, output_file):
                         output.write('\n\n#################################\n\n')
                         for line in morph2results[morph]:
                             output.write(line)
-
 
 if __name__ == '__main__':
     main()
