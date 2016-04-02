@@ -514,7 +514,11 @@ def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, 
 
         # if the lemma is finished, pad with epsilon chars
         if i < len(lemma):
-            lemma_input_char_vec = char_lookup[alphabet_index[lemma[i]]]
+            try:
+                lemma_input_char_vec = char_lookup[alphabet_index[lemma[i]]]
+            except KeyError:
+                # handle unseen characters
+                lemma_input_char_vec = char_lookup[alphabet_index[UNK]]
         else:
             lemma_input_char_vec = char_lookup[alphabet_index[EPSILON]]
 
