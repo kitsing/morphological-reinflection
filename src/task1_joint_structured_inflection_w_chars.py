@@ -552,7 +552,7 @@ def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, 
 
 
         next_char = inverse_alphabet_index[next_char_index]
-        if next_char.isdigit():
+        if next_char.isdigit() and int(next_char) < len(lemma):
             # if index, "copy" char from lemma
             prev_output_vec = char_lookup[alphabet_index[lemma[int(next_char)]]]
         else:
@@ -748,6 +748,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
 
     # template.insert(0, BEGIN_WORD)
     template.append(END_WORD)
+    word_chars = list(word)
+    word_chars.append(END_WORD)
 
     # run the decoder through the sequence and aggregate loss
     for i, template_char in enumerate(template):
@@ -765,7 +767,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
         # TODO: check if template index char helps, maybe redundant
         # encoded lemma, previous output (hidden) vector, lemma input char, template index char, features
         decoder_input = concatenate([encoded, prev_output_vec, lemma_input_char_vec,
-                                     char_lookup[alphabet_index[word[i]]], # add the predicted word char
+                                     char_lookup[alphabet_index[word_chars[i]]], # add the predicted word char
                                      char_lookup[alphabet_index[str(i)]],
                                      feats_input])
 
