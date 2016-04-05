@@ -2,9 +2,35 @@
 
 def main():
 
-    evaluate('/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_arabic_results.txt.best.predictions',
-             '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/arabic-task1-dev',
-             '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_arabic_results.txt.best.predictions.error_analysis')
+    evaluate(
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/pos-par-fi-joint-results.txt.best.predictions',
+        '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/finnish-task1-dev',
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_finnish_results.txt.best.predictions.error_analysis')
+
+    evaluate(
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_finnish_results.txt.best.predictions',
+        '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/finnish-task1-dev',
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_finnish_results.txt.best.predictions.error_analysis')
+
+    compare_error_analysis('/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_finnish_results.txt.best.predictions.error_analysis',
+                           '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_finnish_results.txt.best.predictions.error_analysis',
+                           '/Users/roeeaharoni/GitHub/morphological-reinflection/results/error_analysis_finnish_joint_vs_joint_structured.txt')
+
+    evaluate(
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/real-par-pos-russian-results.txt.best.predictions',
+        '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/russian-task1-dev',
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_russian_results.txt.best.predictions.error_analysis')
+
+    evaluate(
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_russian_results.txt.best.predictions',
+        '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/russian-task1-dev',
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_russian_results.txt.best.predictions.error_analysis')
+
+    compare_error_analysis(
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_russian_results.txt.best.predictions.error_analysis',
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_russian_results.txt.best.predictions.error_analysis',
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/error_analysis_russian_joint_vs_joint_structured.txt')
+
     return
 
     predicted_file_format = '/Users/roeeaharoni/GitHub/morphological-reinflection/results/\
@@ -38,6 +64,7 @@ def evaluate(predicted_file, gold_file, output_file):
                 with open(output_file, 'w') as output:
                     morph2results = {}
                     for i, predicted_line in enumerate(predicted_lines):
+
                         output_line = ''
                         [pred_lemma, pred_morph, predicted_inflection] = predicted_line.split()
                         [lemma, morph, gold_inflection] = gold_lines[i].split()
@@ -46,22 +73,90 @@ def evaluate(predicted_file, gold_file, output_file):
                             print 'mismatch in index' + str(i)
                             return
 
-                        output_line = lemma + '\t\t' + morph + '\t\t' + 'gold: ' + gold_inflection + '\t\tpredicted: ' + predicted_inflection
-                        if predicted_inflection == gold_inflection:
-                            output_line += ' V\n'
-                        else:
-                            output_line += ' X\n'
 
-                        if morph in morph2results:
-                            morph2results[morph].append(output_line)
+                        if predicted_inflection == gold_inflection:
+                            mark = 'V'
                         else:
-                            morph2results[morph] = [output_line]
+                            mark = 'X'
+                            line_format = "{0}\t\t{1}\t\t{2}\t\t{3}\t\t{4}\n"
+                            output_line = line_format.format(lemma, morph, 'gold: ' + gold_inflection, 'predicted: ' + predicted_inflection, mark)
+                            if morph in morph2results:
+                                morph2results[morph].append(output_line)
+                            else:
+                                morph2results[morph] = [output_line]
                         # output.write(output_line)
+
 
                     for morph in morph2results:
                         output.write('\n\n#################################\n\n')
                         for line in morph2results[morph]:
                             output.write(line)
 
+
+
+def compare_error_analysis(error_file_1, error_file_2, output_file):
+
+    only_ef1_errors = []
+    only_ef2_errors = []
+    with open(error_file_1) as ef1:
+        ef1_lines = ef1.readlines()
+        with open(error_file_2) as ef2:
+            ef2_lines = ef2.readlines()
+            intersection = set.intersection(set(ef1_lines), set(ef2_lines))
+            for line in ef1_lines:
+                if line not in intersection:
+                    only_ef1_errors.append(line)
+            for line in ef2_lines:
+                if line not in intersection:
+                    only_ef2_errors.append(line)
+
+    with open(output_file, 'w') as output:
+        lines = []
+        lines.append('\nboth ({0}):\n===============\n'.format(len(intersection)))
+        for l in intersection:
+            lines.append(l)
+
+        lines.append('\nonly in ' + error_file_1 + ' ({0}):\n===============\n'.format(len(only_ef1_errors)))
+        v_lines, adj_lines, n_lines = group_by_pos(only_ef1_errors)
+        lines.append('\nverb errors ({0})\n=======\n'.format(len(v_lines)))
+        for l in v_lines:
+            lines.append(l)
+        lines.append('\nadj errors ({0})\n=======\n'.format(len(adj_lines)))
+        for l in adj_lines:
+            lines.append(l)
+        lines.append('\nnoun errors ({0})\n=======\n'.format(len(n_lines)))
+        for l in n_lines:
+            lines.append(l)
+
+
+        lines.append('\nonly in ' + error_file_2 + '({0}):\n===============\n'.format(len(only_ef2_errors)))
+        v_lines, adj_lines, n_lines = group_by_pos(only_ef2_errors)
+        lines.append('\nverb errors ({0})\n=======\n'.format(len(v_lines)))
+        for l in v_lines:
+            lines.append(l)
+        lines.append('\nadj errors ({0})\n=======\n'.format(len(adj_lines)))
+        for l in adj_lines:
+            lines.append(l)
+        lines.append('\nnoun errors ({0})\n=======\n'.format(len(n_lines)))
+        for l in n_lines:
+            lines.append(l)
+
+        output.writelines(lines)
+        print 'wrote comparison to {0}'.format(output_file)
+    return
+
+
+def group_by_pos(lines):
+    v_lines = []
+    adj_lines = []
+    n_lines = []
+    for line in lines:
+        if 'pos=V' in line:
+            v_lines.append(line)
+        if 'pos=ADJ' in line:
+            adj_lines.append(line)
+        if 'pos=N' in line:
+            n_lines.append(line)
+    return v_lines, adj_lines, n_lines
 if __name__ == '__main__':
     main()

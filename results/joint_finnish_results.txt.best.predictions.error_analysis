@@ -1,0 +1,300 @@
+
+
+#################################
+
+hopeakettu		pos=N,case=ON+ESS,num=PL		gold: hopeaketuilla		predicted: hopeaketoilla		X
+kriminkoipi		pos=N,case=ON+ESS,num=PL		gold: kriminkoivilla		predicted: krimingoipiilla		X
+tuliluikku		pos=N,case=ON+ESS,num=PL		gold: tuliluikuilla		predicted: tuliluikoilla		X
+turvallisuuspoliisi		pos=N,case=ON+ESS,num=PL		gold: turvallisuuspoliiseilla		predicted: turvallisuukpoliiseilla		X
+
+
+#################################
+
+liipata		pos=V,polar=POS,mood=COND,tense=PRS,per=3,num=PL		gold: liippaisivat		predicted: liippaisitte		X
+sokeroitua		pos=V,polar=POS,mood=COND,tense=PRS,per=3,num=PL		gold: sokeroituisivat		predicted: sokiroituisivat		X
+
+
+#################################
+
+ylikukkinut		pos=ADJ,case=ON+ESS,num=SG		gold: ylikukkineella		predicted: ylikukkineellä		X
+
+
+#################################
+
+karkeutua		pos=V,polar=POS,mood=IND,tense=PRS,per=3,num=SG		gold: karkeutuu		predicted: karkiutuu		X
+
+
+#################################
+
+ajantasaistaa		pos=V,polar=POS,mood=IND,tense=PST,per=2,num=PL		gold: ajantasaistitte		predicted: ajansasaistitte		X
+
+
+#################################
+
+rakas		pos=ADJ,case=COM,num=PL		gold: rakkaine		predicted: rakasine		X
+
+
+#################################
+
+lätty		pos=N,case=ON+ALL,num=PL		gold: lätyille		predicted: lätöille		X
+lentoauto		pos=N,case=ON+ALL,num=PL		gold: lentoautoille		predicted: lentoaudoille		X
+naamiohuvit		pos=N,case=ON+ALL,num=PL		gold: naamiohuveille		predicted: naamiohuviille		X
+vatsakipu		pos=N,case=ON+ALL,num=PL		gold: vatsakivuille		predicted: vatsakipuille		X
+walesinspringerspanieli		pos=N,case=ON+ALL,num=PL		gold: walesinspringerspanieleille		predicted: walesinspringerspaneeleille		X
+
+
+#################################
+
+kykkiä		pos=V,polar=POS,mood=IND,tense=PST,voice=PASS		gold: kykittiin		predicted: kykuttiin		X
+nelinkertaistaa		pos=V,polar=POS,mood=IND,tense=PST,voice=PASS		gold: nelinkertaistettiin		predicted: nelinkerreistettiin		X
+
+
+#################################
+
+haaremihousut		pos=N,case=IN+ABL,num=PL		gold: haaremihousuista		predicted: haaremihoukuista		X
+suukopu		pos=N,case=IN+ABL,num=PL		gold: suukovuista		predicted: suukopuista		X
+
+
+#################################
+
+cozumelinsupi		pos=N,case=COM,num=PL		gold: cozumelinsupeineen		predicted: cozumelinsupiineen		X
+
+
+#################################
+
+ekshibitionismi		pos=N,case=ON+ABL,num=PL		gold: ekshibitionismeilta		predicted: ekshibitionesmeilta		X
+euribor		pos=N,case=ON+ABL,num=PL		gold: euriboreilta		predicted: euriboriilta		X
+rajakreivi		pos=N,case=ON+ABL,num=PL		gold: rajakreiveiltä		predicted: rajakreiviiltä		X
+
+
+#################################
+
+haavanpunikkitatti		pos=N,case=TRANS,num=PL		gold: haavanpunikkitateiksi		predicted: haavanpunikeitateiksi		X
+
+
+#################################
+
+aivosirppi		pos=N,case=IN+ABL,num=SG		gold: aivosirpistä		predicted: aivosirpista		X
+vastamäki		pos=N,case=IN+ABL,num=SG		gold: vastamäestä		predicted: vastamäkstä		X
+
+
+#################################
+
+heiketä		pos=V,polar=POS,mood=IND,tense=PST,per=3,num=PL		gold: heikkenivät		predicted: heikienivät		X
+kohdella		pos=V,polar=POS,mood=IND,tense=PST,per=3,num=PL		gold: kohtelivat		predicted: kohdelivat		X
+
+
+#################################
+
+järvilohi		pos=N,case=PRT,num=SG		gold: järvilohta		predicted: järvilohea		X
+
+
+#################################
+
+viidestoista		pos=ADJ,case=ACC,num=SG		gold: viidennentoista		predicted: viidentoista		X
+
+
+#################################
+
+korkeakoulututkinto		pos=N,case=TRANS,num=SG		gold: korkeakoulututkinnoksi		predicted: korkeakoulududkinnoksi		X
+liukujälki		pos=N,case=TRANS,num=SG		gold: liukujäljeksi		predicted: liukujälkeksi		X
+päätuki		pos=N,case=TRANS,num=SG		gold: päätueksi		predicted: päätukskii		X
+puukko		pos=N,case=TRANS,num=SG		gold: puukoksi		predicted: puukuksi		X
+thorax		pos=N,case=TRANS,num=SG		gold: thoraxiksi		predicted: thoraaksi		X
+
+
+#################################
+
+lietsuta		pos=V,polar=POS,mood=POT,tense=PRS,per=3,num=SG		gold: lietsunnee		predicted: liensunaee		X
+
+
+#################################
+
+booritribromidi		pos=N,case=IN+LAT,num=PL		gold: booritribromideihin		predicted: booritribromedeihin		X
+
+
+#################################
+
+vilkas		pos=ADJ,case=PRIV,num=PL		gold: vilkkaitta		predicted: vilkaaitta		X
+
+
+#################################
+
+adrenomedulliini		pos=N,case=IN+ESS,num=PL		gold: adrenomedulliineissä		predicted: adrenomedulliineissa		X
+avopeli		pos=N,case=IN+ESS,num=PL		gold: avopeleissä		predicted: avopeleissa		X
+squash-halli		pos=N,case=IN+ESS,num=PL		gold: squash-halleissa		predicted: souash-halleissa		X
+viinioikeudet		pos=N,case=IN+ESS,num=PL		gold: viinioikeuksissa		predicted: viinioikeudetssa		X
+
+
+#################################
+
+ympäristöystävällisyys		pos=N,case=FRML,num=PL		gold: ympäristöystävällisyyksinä		predicted: ympäristöyktävällisyyksinä		X
+
+
+#################################
+
+marinoitu		pos=ADJ,case=TRANS,num=PL		gold: marinoiduiksi		predicted: marinoiduisi		X
+
+
+#################################
+
+käsintehty		pos=ADJ,case=IN+ABL,num=SG		gold: käsintehdystä		predicted: käsintehtystä		X
+
+
+#################################
+
+juoksukäki		pos=N,case=ON+ABL,num=SG		gold: juoksukäeltä		predicted: juoksukäkltä		X
+matronyymi		pos=N,case=ON+ABL,num=SG		gold: matronyymilta		predicted: matronyymiltä		X
+rautakausi		pos=N,case=ON+ABL,num=SG		gold: rautakaudelta		predicted: rautakausilta		X
+tikutaku		pos=N,case=ON+ABL,num=SG		gold: tikutakulta		predicted: tikutakuta		X
+
+
+#################################
+
+afebriili		pos=ADJ,case=PRT,num=SG		gold: afebriiliä		predicted: asebriilia		X
+
+
+#################################
+
+hako		pos=N,case=ON+ESS,num=SG		gold: haolla		predicted: hauolla		X
+harmaahapsi		pos=N,case=ON+ESS,num=SG		gold: harmaahapsella		predicted: harmaahapsilla		X
+merenlahti		pos=N,case=ON+ESS,num=SG		gold: merenlahdella		predicted: merenlahdilla		X
+pulloveri		pos=N,case=ON+ESS,num=SG		gold: pulloverilla		predicted: pulloverillä		X
+salko		pos=N,case=ON+ESS,num=SG		gold: salolla		predicted: salkolla		X
+
+
+#################################
+
+kuudes		pos=ADJ,case=IN+LAT,num=PL		gold: kuudensiin		predicted: kuudensinee		X
+
+
+#################################
+
+hiomakivi		pos=N,case=NOM,num=PL		gold: hiomakivet		predicted: hiomaktvet		X
+raudanvarastoitumistauti		pos=N,case=NOM,num=PL		gold: raudanvarastoitumistaudit		predicted: raudanvarastoidumistaudit		X
+suitsutuspuikko		pos=N,case=NOM,num=PL		gold: suitsutuspuikot		predicted: suitsutuspuikut		X
+
+
+#################################
+
+hekumallisuus		pos=ADJ,case=GEN,num=SG		gold: hekumallisuuden		predicted: hekumallisuunen		X
+
+
+#################################
+
+safkata		pos=V,polar=POS,mood=IND,tense=PST,per=2,num=SG		gold: safkasit		predicted: safkkaitt		X
+sättiä		pos=V,polar=POS,mood=IND,tense=PST,per=2,num=SG		gold: sätit		predicted: sätyit		X
+
+
+#################################
+
+auto		pos=N,case=PRIV,num=SG		gold: autotta		predicted: audotta		X
+musamaku		pos=N,case=PRIV,num=SG		gold: musamautta		predicted: musamaktta		X
+salaovi		pos=N,case=PRIV,num=SG		gold: salaovetta		predicted: salaovitta		X
+
+
+#################################
+
+maustaa		pos=V,polar=POS,mood=IND,tense=PST,per=3,num=SG		gold: maustoi		predicted: mausti		X
+
+
+#################################
+
+formaali		pos=ADJ,case=INS,num=PL		gold: formaalein		predicted: gormaalein		X
+
+
+#################################
+
+sokeroida		pos=V,polar=POS,mood=COND,tense=PRS,per=2,num=SG		gold: sokeroisit		predicted: sokiroisit		X
+
+
+#################################
+
+fantomisärky		pos=N,case=ACC,num=PL		gold: fantomisäryt		predicted: fantomisäryyt		X
+lääkäripelko		pos=N,case=ACC,num=PL		gold: lääkäripelot		predicted: lääkäripelkot		X
+paikko		pos=N,case=ACC,num=PL		gold: paikot		predicted: paikut		X
+sepelvaltimotauti		pos=N,case=ACC,num=PL		gold: sepelvaltimotaudit		predicted: sepelvaltimodaudit		X
+
+
+#################################
+
+sokko		pos=N,case=ON+ALL,num=SG		gold: sokolle		predicted: sokkole		X
+
+
+#################################
+
+tarjeta		pos=V,polar=POS,mood=IND,tense=PST,per=1,num=SG		gold: tarkenin		predicted: tarjenin		X
+
+
+#################################
+
+digitaalistaa		pos=V,polar=POS,mood=IMP,tense=PST,per=2,num=SG		gold: digitaalista		predicted: digita		X
+kakoa		pos=V,polar=POS,mood=IMP,tense=PST,per=2,num=SG		gold: kao		predicted: kako		X
+
+
+#################################
+
+haitinalmikki		pos=N,case=PRT,num=PL		gold: haitinalmikkeja		predicted: haitinalmekkeja		X
+intensiteetti		pos=N,case=PRT,num=PL		gold: intensiteettejä		predicted: intensiteetteja		X
+kriminkoipiturkki		pos=N,case=PRT,num=PL		gold: kriminkoipiturkkeja		predicted: kriminkoipeturkkeja		X
+valkokuonodelfiini		pos=N,case=PRT,num=PL		gold: valkokuonodelfiinejä		predicted: valkokuonodelfiineja		X
+
+
+#################################
+
+debata		pos=V,polar=POS,mood=IND,tense=PRS,per=2,num=PL		gold: debaatte		predicted: telaatte		X
+nykiä		pos=V,polar=POS,mood=IND,tense=PRS,per=2,num=PL		gold: nyitte		predicted: nykite		X
+
+
+#################################
+
+etsata		pos=V,polar=POS,mood=POT,tense=PRS,per=2,num=SG		gold: etsannet		predicted: ensannet		X
+
+
+#################################
+
+helpohko		pos=ADJ,case=ACC,num=PL		gold: helpohkot		predicted: helpohkon		X
+
+
+#################################
+
+riidenlieko		pos=N,case=ACC,num=SG		gold: riidenlieon		predicted: riidenliekn		X
+siirto		pos=N,case=ACC,num=SG		gold: siirron		predicted: siirton		X
+
+
+#################################
+
+kaapeliverkko		pos=N,case=GEN,num=SG		gold: kaapeliverkon		predicted: kaapeliverkun		X
+kurko		pos=N,case=GEN,num=SG		gold: kurkon		predicted: kurkn		X
+turvaverkko		pos=N,case=GEN,num=SG		gold: turvaverkon		predicted: turvaverkun		X
+
+
+#################################
+
+jurppia		pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=SG		gold: jurpin		predicted: jurvin		X
+lampsia		pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=SG		gold: lampsin		predicted: lammsin		X
+pihdata		pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=SG		gold: pihtaan		predicted: pihdaan		X
+
+
+#################################
+
+suulaki		pos=N,case=INS,num=PL		gold: suulain		predicted: suulaiein		X
+ylätasanko		pos=N,case=INS,num=PL		gold: ylätasangoin		predicted: ylätasankoin		X
+
+
+#################################
+
+saada		pos=V,polar=POS,mood=COND,tense=PRS,voice=PASS		gold: saataisiin		predicted: saadaisiin		X
+
+
+#################################
+
+sinilause		pos=N,case=FRML,num=SG		gold: sinilauseena		predicted: sinilausena		X
+
+
+#################################
+
+kanarianhemppo		pos=N,case=IN+ESS,num=SG		gold: kanarianhempossa		predicted: kanarianhempussa		X
+leppäkerttu		pos=N,case=IN+ESS,num=SG		gold: leppäkertussa		predicted: leppäkertössa		X
+sirkkalehti		pos=N,case=IN+ESS,num=SG		gold: sirkkalehdessä		predicted: sirkkalehdissä		X
+strukturaalikielitiede		pos=N,case=IN+ESS,num=SG		gold: strukturaalikielitieteessä		predicted: strukturaalikielitiedeissä		X

@@ -1,0 +1,348 @@
+
+
+#################################
+
+выесть		pos=V,tense=FUT,per=3,num=PL,aspect=PFV		gold: выедят		predicted: выету		X
+выслать		pos=V,tense=FUT,per=3,num=PL,aspect=PFV		gold: вышлют		predicted: выслатт		X
+заломить		pos=V,tense=FUT,per=3,num=PL,aspect=PFV		gold: заломят		predicted: заломит		X
+окончиться		pos=V,tense=FUT,per=3,num=PL,aspect=PFV		gold: окончатся		predicted: окончится		X
+распечатать		pos=V,tense=FUT,per=3,num=PL,aspect=PFV		gold: распечатают		predicted: распечатать		X
+
+
+#################################
+
+воздержаться		pos=V,tense=FUT,per=1,num=SG,aspect=PFV		gold: воздержусь		predicted: воздержаьь		X
+заблудиться		pos=V,tense=FUT,per=1,num=SG,aspect=PFV		gold: заблужусь		predicted: заблудусь		X
+научиться		pos=V,tense=FUT,per=1,num=SG,aspect=PFV		gold: научусь		predicted: научюсь		X
+предположить		pos=V,tense=FUT,per=1,num=SG,aspect=PFV		gold: предположу		predicted: предполож		X
+
+
+#################################
+
+неразорвавшийся		pos=ADJ,case=ESS,num=PL		gold: неразорвавшихся		predicted: неразорвавших		X
+
+
+#################################
+
+биться		pos=V,tense=PST,voice=ACT,aspect=IPFV		gold: бившийся		predicted: битшийя		X
+нестись		pos=V,tense=PST,voice=ACT,aspect=IPFV		gold: нёсшийся		predicted: несшшвйяь		X
+
+
+#################################
+
+дрейфовать		pos=V,tense=PRS,per=3,num=PL,aspect=IPFV		gold: дрейфуют		predicted: дрейфоют		X
+крыть		pos=V,tense=PRS,per=3,num=PL,aspect=IPFV		gold: кроют		predicted: крывт		X
+тасовать		pos=V,tense=PRS,per=3,num=PL,aspect=IPFV		gold: тасуют		predicted: тасоют		X
+
+
+#################################
+
+завести		pos=V,tense=PST,gen=MASC,num=SG,aspect=PFV		gold: завёл		predicted: завел		X
+превзойти		pos=V,tense=PST,gen=MASC,num=SG,aspect=PFV		gold: превзошёл		predicted: превзойл		X
+предпочесть		pos=V,tense=PST,gen=MASC,num=SG,aspect=PFV		gold: предпочёл		predicted: предпочл		X
+
+
+#################################
+
+двигаться		pos=V,tense=PRS,aspect=IPFV		gold: движась		predicted: двигьясь		X
+касаться		pos=V,tense=PRS,aspect=IPFV		gold: касаясь		predicted: касатсь		X
+лететь		pos=V,tense=PRS,aspect=IPFV		gold: летя		predicted: леть		X
+тлеть		pos=V,tense=PRS,aspect=IPFV		gold: тлея		predicted: тлеяя		X
+
+
+#################################
+
+вече		pos=N,case=DAT,num=SG		gold: вечу		predicted: вечи		X
+зверёк		pos=N,case=DAT,num=SG		gold: зверьку		predicted: зверёку		X
+костёр		pos=N,case=DAT,num=SG		gold: костру		predicted: костёуу		X
+красноармеец		pos=N,case=DAT,num=SG		gold: красноармейцу		predicted: красноармееуу		X
+стебель		pos=N,case=DAT,num=SG		gold: стеблю		predicted: стебелю		X
+тать		pos=N,case=DAT,num=SG		gold: татю		predicted: тати		X
+уголёк		pos=N,case=DAT,num=SG		gold: угольку		predicted: уголёку		X
+
+
+#################################
+
+прервать		pos=V,tense=FUT,per=2,num=PL,aspect=PFV		gold: прервёте		predicted: преруат		X
+произнестись		pos=V,tense=FUT,per=2,num=PL,aspect=PFV		gold: произнесётесь		predicted: произнесёте		X
+проспать		pos=V,tense=FUT,per=2,num=PL,aspect=PFV		gold: проспите		predicted: проспате		X
+
+
+#################################
+
+домработница		pos=N,case=INS,num=SG		gold: домработницей		predicted: домработницам		X
+конспирация		pos=N,case=INS,num=SG		gold: конспирацией		predicted: конспирациям		X
+нейтрализация		pos=N,case=INS,num=SG		gold: нейтрализацией		predicted: нейтрализациям		X
+осень		pos=N,case=INS,num=SG		gold: осенью		predicted: осенем		X
+слой		pos=N,case=INS,num=SG		gold: слоем		predicted: слойм		X
+хранилище		pos=N,case=INS,num=SG		gold: хранилищем		predicted: хранилищом		X
+
+
+#################################
+
+начальничий		pos=ADJ,case=DAT,num=PL		gold: начальничьим		predicted: начальниммй		X
+
+
+#################################
+
+перевернуть		pos=V,mood=IMP,num=SG,aspect=PFV		gold: переверни		predicted: переверну		X
+расстаться		pos=V,mood=IMP,num=SG,aspect=PFV		gold: расстанься		predicted: расстанся		X
+
+
+#################################
+
+мусорить		pos=V,mood=IMP,num=PL,aspect=IPFV		gold: мусорьте		predicted: мусорите		X
+петь		pos=V,mood=IMP,num=PL,aspect=IPFV		gold: пойте		predicted: пейте		X
+
+
+#################################
+
+выситься		pos=V,tense=PRS,voice=ACT,aspect=IPFV		gold: высящийся		predicted: высищийся		X
+пищать		pos=V,tense=PRS,voice=ACT,aspect=IPFV		gold: пищащий		predicted: пищающий		X
+пользоваться		pos=V,tense=PRS,voice=ACT,aspect=IPFV		gold: пользующийся		predicted: пользоющийй		X
+
+
+#################################
+
+глядеть		pos=V,tense=PRS,per=1,num=SG,aspect=IPFV		gold: гляжу		predicted: глядею		X
+увлекаться		pos=V,tense=PRS,per=1,num=SG,aspect=IPFV		gold: увлекаюсь		predicted: увлеклюсь		X
+
+
+#################################
+
+воздержаться		pos=V,tense=PST,aspect=PFV		gold: воздержавшись		predicted: воздержатшись		X
+
+
+#################################
+
+материн		pos=ADJ,case=GEN,gen=FEM,num=SG		gold: материной		predicted: материно		X
+
+
+#################################
+
+рыцарь		pos=N,case=ESS,num=PL		gold: рыцарях		predicted: яхцарях		X
+
+
+#################################
+
+боснийка		pos=N,gen=MASC		gold: босниец		predicted: босний		X
+
+
+#################################
+
+закатить		pos=V,tense=PST,voice=PASS,aspect=PFV		gold: закаченный		predicted: закатиеный		X
+пожевать		pos=V,tense=PST,voice=PASS,aspect=PFV		gold: пожёванный		predicted: пожевннный		X
+соединить		pos=V,tense=PST,voice=PASS,aspect=PFV		gold: соединённый		predicted: соединенный		X
+усечь		pos=V,tense=PST,voice=PASS,aspect=PFV		gold: усечённый		predicted: усечёный		X
+
+
+#################################
+
+зять		pos=N,case=GEN,num=PL		gold: зятьёв		predicted: зятей		X
+перстень		pos=N,case=GEN,num=PL		gold: перстней		predicted: перстене		X
+телекамера		pos=N,case=GEN,num=PL		gold: телекамер		predicted: телекаморо		X
+ущелье		pos=N,case=GEN,num=PL		gold: ущелий		predicted: ущельй		X
+
+
+#################################
+
+вынуждать		pos=V,tense=PST,voice=PASS,aspect=IPFV		gold: вынужденный		predicted: вынужднный		X
+вышибать		pos=V,tense=PST,voice=PASS,aspect=IPFV		gold: вышибленный		predicted: вышбанный		X
+оскорблять		pos=V,tense=PST,voice=PASS,aspect=IPFV		gold: оскорблённый		predicted: оскорблянный		X
+
+
+#################################
+
+теологический		pos=ADJ,case=NOM,gen=NEUT,num=SG		gold: телогическое		predicted: теологическое		X
+
+
+#################################
+
+апоптоз		pos=N,case=NOM,num=PL		gold: апоптозы		predicted: апоптозо		X
+время		pos=N,case=NOM,num=PL		gold: времена		predicted: времи		X
+медвежонок		pos=N,case=NOM,num=PL		gold: медвежата		predicted: медвежонаи		X
+ступень		pos=N,case=NOM,num=PL		gold: ступени		predicted: ступни		X
+
+
+#################################
+
+деять		pos=V,tense=PRS,per=2,num=SG,aspect=IPFV		gold: деешь		predicted: деешт		X
+
+
+#################################
+
+квалифицированный		pos=ADJ,gen=FEM,num=SG		gold: квалифицировано		predicted: квалифицированн		X
+разнузданный		pos=ADJ,gen=FEM,num=SG		gold: разнузданна		predicted: разнуздана		X
+соединённый		pos=ADJ,gen=FEM,num=SG		gold: соединена		predicted: соединёна		X
+
+
+#################################
+
+бухгалтерша		pos=N,case=GEN,num=SG		gold: бухгалтерши		predicted: бухгалтереи		X
+елей		pos=N,case=GEN,num=SG		gold: елея		predicted: еляя		X
+предместье		pos=N,case=GEN,num=SG		gold: предместья		predicted: предместь		X
+
+
+#################################
+
+пенёк		pos=N,case=DAT,num=PL		gold: пенькам		predicted: пенёкам		X
+санктпетербуржец		pos=N,case=DAT,num=PL		gold: санктпетербуржцам		predicted: санктпетербуржаецм		X
+сирень		pos=N,case=DAT,num=PL		gold: сиреням		predicted: сирняя		X
+
+
+#################################
+
+разнузданный		pos=ADJ,num=PL		gold: разнузданны		predicted: разнузданы		X
+рассеянный		pos=ADJ,num=PL		gold: рассеяны		predicted: рассеянн		X
+
+
+#################################
+
+обеднеть		pos=V,tense=FUT,per=3,num=SG,aspect=PFV		gold: обеднеет		predicted: обеднит		X
+показаться		pos=V,tense=FUT,per=3,num=SG,aspect=PFV		gold: покажется		predicted: показетья		X
+пообедать		pos=V,tense=FUT,per=3,num=SG,aspect=PFV		gold: пообедает		predicted: пообедет		X
+успеть		pos=V,tense=FUT,per=3,num=SG,aspect=PFV		gold: успеет		predicted: успет		X
+уссаться		pos=V,tense=FUT,per=3,num=SG,aspect=PFV		gold: уссытся		predicted: уссатся		X
+
+
+#################################
+
+вертеть		pos=V,aspect=PFV		gold: повертеть		predicted: завертет		X
+ориентироваться		pos=V,aspect=PFV		gold: сориентироваться		predicted: ориентирувтть		X
+равняться		pos=V,aspect=PFV		gold: сравняться		predicted: равнтться		X
+раздаваться		pos=V,aspect=PFV		gold: раздаться		predicted: поззддтьсться		X
+редактировать		pos=V,aspect=PFV		gold: отредактировать		predicted: дедакровать		X
+сбивать		pos=V,aspect=PFV		gold: сбить		predicted: сбати		X
+слушать		pos=V,aspect=PFV		gold: послушать		predicted: слушить		X
+таращиться		pos=V,aspect=PFV		gold: вытаращиться		predicted: утаращитьс		X
+толстеть		pos=V,aspect=PFV		gold: потолстеть		predicted: толстьуьт		X
+штопать		pos=V,aspect=PFV		gold: заштопать		predicted: пошшопать		X
+
+
+#################################
+
+баской		pos=ADJ,case=NOM,num=PL		gold: баские		predicted: баскые		X
+
+
+#################################
+
+взяться		pos=V,tense=FUT,per=2,num=SG,aspect=PFV		gold: возьмёшься		predicted: взядшяя		X
+надоесть		pos=V,tense=FUT,per=2,num=SG,aspect=PFV		gold: надоешь		predicted: надоесшшь		X
+
+
+#################################
+
+гной		pos=N,case=ACC,num=PL		gold: гнои		predicted: гное		X
+жопорожец		pos=N,case=ACC,num=PL		gold: жопорожцев		predicted: жопорожце		X
+зной		pos=N,case=ACC,num=PL		gold: знои		predicted: зноев		X
+интернационализм		pos=N,case=ACC,num=PL		gold: интернационализмы		predicted: интернационализмов		X
+йот		pos=N,case=ACC,num=PL		gold: йоты		predicted: йото		X
+лоботряс		pos=N,case=ACC,num=PL		gold: лоботрясов		predicted: лоботрясы		X
+локатор		pos=N,case=ACC,num=PL		gold: локаторы		predicted: локаторов		X
+львица		pos=N,case=ACC,num=PL		gold: львиц		predicted: львицы		X
+паспорт		pos=N,case=ACC,num=PL		gold: паспорта		predicted: паспорты		X
+светлячок		pos=N,case=ACC,num=PL		gold: светлячков		predicted: светлячки		X
+скот		pos=N,case=ACC,num=PL		gold: скотов		predicted: скоты		X
+уй		pos=N,case=ACC,num=PL		gold: уев		predicted: уйи		X
+участок		pos=N,case=ACC,num=PL		gold: участков		predicted: участки		X
+чорт		pos=N,case=ACC,num=PL		gold: чертей		predicted: черты		X
+
+
+#################################
+
+терпеть		pos=V,tense=PRS,voice=PASS,aspect=IPFV		gold: терпимый		predicted: терпе		X
+
+
+#################################
+
+пластырь		pos=N,case=ESS,num=SG		gold: пластыре		predicted: пластыри		X
+хорёк		pos=N,case=ESS,num=SG		gold: хорьке		predicted: хоррее		X
+человеконенавистник		pos=N,case=ESS,num=SG		gold: человеконенавистнике		predicted: человеконенавистеине		X
+
+
+#################################
+
+жечь		pos=V,mood=IMP,num=SG,aspect=IPFV		gold: жги		predicted: жег		X
+лечить		pos=V,mood=IMP,num=SG,aspect=IPFV		gold: лечи		predicted: лечь		X
+произноситься		pos=V,mood=IMP,num=SG,aspect=IPFV		gold: произносись		predicted: произноситс		X
+свистать		pos=V,mood=IMP,num=SG,aspect=IPFV		gold: свищи		predicted: свистай		X
+сниться		pos=V,mood=IMP,num=SG,aspect=IPFV		gold: снись		predicted: снится		X
+
+
+#################################
+
+слать		pos=V,tense=PRS,per=1,num=PL,aspect=IPFV		gold: шлём		predicted: слым		X
+
+
+#################################
+
+распространённый		pos=ADJ,case=INS,num=PL		gold: распространёными		predicted: распространёнными		X
+
+
+#################################
+
+возрасти		pos=V,tense=PST,gen=NEUT,num=SG,aspect=PFV		gold: возросло		predicted: возросто		X
+привести		pos=V,tense=PST,gen=NEUT,num=SG,aspect=PFV		gold: привело		predicted: привегл		X
+
+
+#################################
+
+агроном		pos=N,case=ACC,num=SG		gold: агронома		predicted: агроном		X
+археоптерикс		pos=N,case=ACC,num=SG		gold: археоптерикса		predicted: археоптерикс		X
+бортник		pos=N,case=ACC,num=SG		gold: бортника		predicted: бортник		X
+дервиш		pos=N,case=ACC,num=SG		gold: дервиша		predicted: дервиш		X
+карантин		pos=N,case=ACC,num=SG		gold: карантин		predicted: карантина		X
+коррупционер		pos=N,case=ACC,num=SG		gold: коррупционера		predicted: коррупционер		X
+ладонь		pos=N,case=ACC,num=SG		gold: ладонь		predicted: ладон		X
+маркграф		pos=N,case=ACC,num=SG		gold: маркграфа		predicted: маркграф		X
+маслёнок		pos=N,case=ACC,num=SG		gold: маслёнок		predicted: маслёнка		X
+метастаз		pos=N,case=ACC,num=SG		gold: метастаза		predicted: метастаз		X
+монахиня		pos=N,case=ACC,num=SG		gold: монахиню		predicted: монахину		X
+селезень		pos=N,case=ACC,num=SG		gold: селезня		predicted: селезень		X
+стаканчик		pos=N,case=ACC,num=SG		gold: стаканчик		predicted: стаканчика		X
+сухарь		pos=N,case=ACC,num=SG		gold: сухаря		predicted: сухарь		X
+туземец		pos=N,case=ACC,num=SG		gold: туземца		predicted: туземцц		X
+шафран		pos=N,case=ACC,num=SG		gold: шафран		predicted: шафрана		X
+явь		pos=N,case=ACC,num=SG		gold: явь		predicted: явя		X
+
+
+#################################
+
+взволноваться		pos=V,mood=IMP,tense=FUT,num=PL,aspect=PFV		gold: взволнуйтесь		predicted: взволнойтесь		X
+взопреть		pos=V,mood=IMP,tense=FUT,num=PL,aspect=PFV		gold: взопрейте		predicted: взоприте		X
+доказать		pos=V,mood=IMP,tense=FUT,num=PL,aspect=PFV		gold: докажите		predicted: доказите		X
+икнуть		pos=V,mood=IMP,tense=FUT,num=PL,aspect=PFV		gold: икните		predicted: икенуе		X
+одеревенеть		pos=V,mood=IMP,tense=FUT,num=PL,aspect=PFV		gold: одеревенейте		predicted: одеревенеть		X
+погрузить		pos=V,mood=IMP,tense=FUT,num=PL,aspect=PFV		gold: погрузите		predicted: погрузьте		X
+примерить		pos=V,mood=IMP,tense=FUT,num=PL,aspect=PFV		gold: примерьте		predicted: примерите		X
+развиться		pos=V,mood=IMP,tense=FUT,num=PL,aspect=PFV		gold: развейтесь		predicted: развитесь		X
+спрятать		pos=V,mood=IMP,tense=FUT,num=PL,aspect=PFV		gold: спрячьте		predicted: спрятите		X
+увлечься		pos=V,mood=IMP,tense=FUT,num=PL,aspect=PFV		gold: увлекитесь		predicted: увлекиьеяь		X
+
+
+#################################
+
+игуменья		pos=N,case=INS,num=PL		gold: игуменьями		predicted: игуменими		X
+пострелёнок		pos=N,case=INS,num=PL		gold: пострелятами		predicted: пострелётами		X
+фонограмма		pos=N,case=INS,num=PL		gold: фонограммами		predicted: фонограммоми		X
+
+
+#################################
+
+взгнести		pos=V,aspect=IPFV		gold: взгнетать		predicted: взгнетист		X
+выключить		pos=V,aspect=IPFV		gold: выключать		predicted: выключитьт		X
+выплатить		pos=V,aspect=IPFV		gold: выплачивать		predicted: выплата		X
+вырваться		pos=V,aspect=IPFV		gold: вырываться		predicted: вырыьсться		X
+перебить		pos=V,aspect=IPFV		gold: перебивать		predicted: переатвать		X
+привезти		pos=V,aspect=IPFV		gold: привозить		predicted: привезитии		X
+продвинуть		pos=V,aspect=IPFV		gold: продвигать		predicted: продвинить		X
+
+
+#################################
+
+прочесть		pos=V,tense=PST,voice=ACT,aspect=PFV		gold: прочетший		predicted: прочесшьй		X
+
+
+#################################
+
+звать		pos=V,tense=PRS,per=3,num=SG,aspect=IPFV		gold: зовёт		predicted: зуёт		X
