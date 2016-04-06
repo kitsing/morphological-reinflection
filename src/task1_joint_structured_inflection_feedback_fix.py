@@ -540,9 +540,8 @@ def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, 
         if predicted_template[-1] == END_WORD:
             break
 
-        # prepare for the next iteration
-        # prev_output_vec = lookup[next_char_index]
-        prev_output_vec = decoder_rnn_output
+        # prepare for the next iteration - "feedback"
+        prev_output_vec = char_lookup[next_char_index]
         i += 1
 
     # remove the begin and end word symbols
@@ -758,8 +757,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
         probs = softmax(R * decoder_rnn_output + bias)
         loss.append(-log(pick(probs, alphabet_index[template_char])))
 
-        # prepare for the next iteration
-        prev_output_vec = decoder_rnn_output
+        # prepare for the next iteration - "feedback"
+        prev_output_vec = char_lookup[alphabet_index[template_char]]
 
     # TODO: maybe here a "special" loss function is appropriate?
     # loss = esum(loss)
