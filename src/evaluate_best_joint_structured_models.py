@@ -195,9 +195,10 @@ def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_
     encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
 
     # TODO: inspect carefully, as dims may be sub-optimal in some cases (many feature types?)
-    # 2 * HIDDEN_DIM + 2 * INPUT_DIM + len(feats) * FEAT_INPUT_DIM, as it gets a concatenation of frnn, rrnn
-    # (both of HIDDEN_DIM size), previous output char, current lemma char (of INPUT_DIM size) and feats * FEAT_INPUT_DIM
-    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 2 * input_dim + len(feature_types) * feat_input_dim, hidden_dim,
+    # 2 * HIDDEN_DIM + 3 * INPUT_DIM + len(feats) * FEAT_INPUT_DIM, as it gets a concatenation of frnn, rrnn
+    # (both of HIDDEN_DIM size), previous output char, current lemma char (of INPUT_DIM size) current index char
+    # and feats * FEAT_INPUT_DIM
+    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + len(feature_types) * feat_input_dim, hidden_dim,
                               model)
 
     model.load(tmp_model_path)
