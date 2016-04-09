@@ -65,7 +65,12 @@ UNK_FEAT = '@'
 # TODO: try sutskever trick - predict inverse
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, feat_input_dim, epochs,
          layers, optimization, plot):
-    parallelize_training = PARALLELIZE
+    if plot:
+        parallelize_training = False
+        print 'plotting, parallelization is disabled!!!'
+    else:
+        parallelize_training = PARALLELIZE
+
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'FEAT_INPUT_DIM': feat_input_dim,
                     'EPOCHS': epochs, 'LAYERS': layers, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
                     'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': REGULARIZATION,
@@ -373,8 +378,8 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 if avg_dev_loss < best_avg_dev_loss:
                     best_avg_dev_loss = avg_dev_loss
 
-                print 'epoch: {0} train loss: {1:.2f} dev loss: {2:.2f} dev accuracy: {3:.2f} train accuracy = {4:.2f} \
- best dev accuracy {5:.2f} best train accuracy: {6:.2f} patience = {7}'.format(e, avg_loss, avg_dev_loss, dev_accuracy,
+                print 'epoch: {0} train loss: {1:.4f} dev loss: {2:.4f} dev accuracy: {3:.4f} train accuracy = {4:.4f} \
+ best dev accuracy {5:.4f} best train accuracy: {6:.4f} patience = {7}'.format(e, avg_loss, avg_dev_loss, dev_accuracy,
                                                                                train_accuracy, best_dev_accuracy,
                                                                                best_train_accuracy, patience)
 
@@ -402,7 +407,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 else:
                     patience += 1
 
-                print 'epoch: {0} train loss: {1:.2f} train accuracy = {2:.2f} best train accuracy: {3:.2f} \
+                print 'epoch: {0} train loss: {1:.4f} train accuracy = {2:.4f} best train accuracy: {3:.4f} \
                 patience = {4}'.format(e, avg_loss, train_accuracy, best_train_accuracy, patience)
 
                 # found "perfect" model on train set or patience has reached
@@ -500,7 +505,7 @@ def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, 
     blstm_outputs = []
     lemma_char_vecs_len = len(lemma_char_vecs)
     for i in xrange(lemma_char_vecs_len):
-        blstm_outputs.append(concatenate([frnn_outputs[i], rrnn_outputs[lemma_char_vecs_len - i]]))
+        blstm_outputs.append(concatenate([frnn_outputs[i], rrnn_outputs[lemma_char_vecs_len - i - 1]]))
 
     # initialize the decoder rnn
     s_0 = decoder_rnn.initial_state()
@@ -719,7 +724,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
     blstm_outputs = []
     lemma_char_vecs_len = len(lemma_char_vecs)
     for i in xrange(lemma_char_vecs_len):
-        blstm_outputs.append(concatenate([frnn_outputs[i], rrnn_outputs[lemma_char_vecs_len - i]]))
+        blstm_outputs.append(concatenate([frnn_outputs[i], rrnn_outputs[lemma_char_vecs_len - i - 1]]))
 
     # initialize the decoder rnn
     s_0 = decoder_rnn.initial_state()
