@@ -34,12 +34,7 @@ FEAT_INPUT_DIM = 20
 HIDDEN_DIM = 200
 EPOCHS = 1
 LAYERS = 2
-MAX_PREDICTION_LEN = 50
 OPTIMIZATION = 'ADAM'
-EARLY_STOPPING = True
-MAX_PATIENCE = 100
-REGULARIZATION = 0.0001
-LEARNING_RATE = 0.001  # 0.1
 POOL = 4
 
 
@@ -48,7 +43,7 @@ def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epoch
     # langs = ['russian', 'turkish', 'spanish', 'arabic', 'georgian', 'german', 'navajo', 'finnish']
     cnn_mem = 9096
     parallelize_training = True
-    langs = ['turkish', 'spanish', 'arabic', 'georgian', 'german', 'navajo', 'finnish']
+    langs = ['german', 'navajo']
 
     params = []
     print 'now training langs: ' + str(langs)
