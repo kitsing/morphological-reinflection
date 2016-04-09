@@ -1,13 +1,13 @@
-"""Trains and evaluates a joint-structured-model for inflection generation, using the sigmorphon 2016 shared task data
+"""Evaluates a joint-model for inflection generation, using the sigmorphon 2016 shared task data
 files and evaluation script.
 
 Usage:
-  evaluate_best_joint_structured_models.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN]
-  [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+  evaluate_best_joint_models.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS]
+  [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
-  TRAIN_PATH    train data path
-  TEST_PATH     test data path
+  TRAIN_PATH    destination path
+  TEST_PATH     test path
   RESULTS_PATH  results file to load the models from
   SIGMORPHON_PATH   sigmorphon root containing data, src dirs
 
@@ -24,8 +24,7 @@ Options:
 
 import time
 import docopt
-import task1_joint_structured_inflection
-import task1_joint_inflection
+import task1_joint_inflection_feedback_fix
 import prepare_sigmorphon_data
 import datetime
 import common
@@ -47,11 +46,11 @@ EPSILON = '*'
 BEGIN_WORD = '<'
 END_WORD = '>'
 
-
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
          optimization, feat_input_dim):
+
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'EPOCHS': epochs, 'LAYERS': layers,
-                    'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN, 'OPTIMIZATION': optimization}
+                     'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN, 'OPTIMIZATION': optimization}
 
     print 'train path = ' + str(train_path)
     print 'test path =' + str(test_path)
@@ -76,10 +75,6 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 
     feature_alphabet = common.get_feature_alphabet(train_feat_dicts)
     feature_alphabet.append(UNK_FEAT)
-
-    # add indices to alphabet - used to indicate when copying from lemma to word
-    for marker in [str(i) for i in xrange(MAX_PREDICTION_LEN)]:
-        alphabet.append(marker)
 
     # feat 2 int
     feat_index = dict(zip(feature_alphabet, range(0, len(feature_alphabet))))
@@ -118,53 +113,43 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             test_cluster_words = [test_words[i] for i in test_cluster_to_data_indices[cluster_type]]
             test_cluster_feat_dicts = [test_feat_dicts[i] for i in test_cluster_to_data_indices[cluster_type]]
 
+
             # load best model
             best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(cluster_index), alphabet,
-                                                                                  results_file_path, input_dim,
-                                                                                  hidden_dim, layers,
+                                                                    results_file_path, input_dim, hidden_dim, layers,
                                                                                   feature_alphabet, feat_input_dim,
                                                                                   feature_types)
 
-            predicted_templates = task1_joint_structured_inflection.predict_templates(best_model, decoder_rnn,
-                                                                                      encoder_frnn, encoder_rrnn,
-                                                                                      alphabet_index,
-                                                                                      inverse_alphabet_index,
-                                                                                      test_cluster_lemmas,
-                                                                                      test_cluster_feat_dicts,
-                                                                                      feat_index,
-                                                                                      feature_types)
+            predictions = task1_joint_inflection_feedback_fix.predict(best_model, decoder_rnn, encoder_frnn, encoder_rrnn,
+                                                         alphabet_index, inverse_alphabet_index, feat_index,
+                                                         feature_types, test_cluster_lemmas, test_cluster_feat_dicts)
 
-            accuracy = task1_joint_structured_inflection.evaluate_model(predicted_templates, test_cluster_lemmas,
-                                                                        test_cluster_feat_dicts, test_cluster_words,
-                                                                        feature_types, True)
+
+            accuracy = task1_joint_inflection_feedback_fix.evaluate_predictions(predictions, test_cluster_lemmas,
+                                                                   test_cluster_feat_dicts, test_cluster_words,
+                                                                   feature_types, True)
             accuracies.append(accuracy)
 
-            # get predicted_templates in the same order they appeared in the original file
+            # get predictions in the same order they appeared in the original file
             # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
             for i in test_cluster_to_data_indices[cluster_type]:
                 joint_index = test_lemmas[i] + ':' + common.get_morph_string(test_feat_dicts[i], feature_types)
-                inflection = task1_joint_structured_inflection.instantiate_template(predicted_templates[joint_index],
-                                                                                    test_lemmas[i])
-                final_results[i] = (test_lemmas[i], test_feat_dicts[i], inflection)
+                final_results[i] = (test_lemmas[i], test_feat_dicts[i], predictions[joint_index])
 
         except KeyError:
             print 'could not find relevant examples in test data for cluster: ' + cluster_type
 
     accuracy_vals = [accuracies[i][1] for i in xrange(len(accuracies))]
-    macro_avg_accuracy = sum(accuracy_vals) / len(accuracies)
+    macro_avg_accuracy = sum(accuracy_vals)/len(accuracies)
     print 'macro avg accuracy: ' + str(macro_avg_accuracy)
 
-    mic_nom = sum([accuracies[i][0] * accuracies[i][1] for i in xrange(len(accuracies))])
+    mic_nom = sum([accuracies[i][0]*accuracies[i][1] for i in xrange(len(accuracies))])
     mic_denom = sum([accuracies[i][0] for i in xrange(len(accuracies))])
-    micro_average_accuracy = mic_nom / mic_denom
+    micro_average_accuracy = mic_nom/mic_denom
     print 'micro avg accuracy: ' + str(micro_average_accuracy)
 
-    if 'test' in test_path:
-        suffix = '.best.test'
-    else:
-        suffix = '.best'
-    task1_joint_inflection.write_results_file(hyper_params, micro_average_accuracy, train_path,
-                                              test_path, results_file_path + suffix, sigmorphon_root_dir,
+    task1_joint_inflection_feedback_fix.write_results_file(hyper_params, micro_average_accuracy, train_path,
+                                              test_path, results_file_path + '.best', sigmorphon_root_dir,
                                               final_results)
 
 
@@ -191,10 +176,9 @@ def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_
     encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
 
     # TODO: inspect carefully, as dims may be sub-optimal in some cases (many feature types?)
-    # 2 * HIDDEN_DIM + 3 * INPUT_DIM + len(feats) * FEAT_INPUT_DIM, as it gets a concatenation of frnn, rrnn
-    # (both of HIDDEN_DIM size), previous output char, current lemma char (of INPUT_DIM size) current index char
-    # and feats * FEAT_INPUT_DIM
-    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + len(feature_types) * feat_input_dim, hidden_dim,
+    # 2 * HIDDEN_DIM + 2 * INPUT_DIM + len(feats) * FEAT_INPUT_DIM, as it gets a concatenation of frnn, rrnn
+    # (both of HIDDEN_DIM size), previous output char, current lemma char (of INPUT_DIM size) and feats * FEAT_INPUT_DIM
+    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 2 * input_dim + len(feature_types) * feat_input_dim, hidden_dim,
                               model)
 
     model.load(tmp_model_path)
@@ -220,7 +204,7 @@ if __name__ == '__main__':
         results_file_path = arguments['RESULTS_PATH']
     else:
         results_file_path = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/results_'\
-                            + st + '.txt'
+                     + st + '.txt'
     if arguments['SIGMORPHON_PATH']:
         sigmorphon_root_dir = arguments['SIGMORPHON_PATH'][0]
     else:

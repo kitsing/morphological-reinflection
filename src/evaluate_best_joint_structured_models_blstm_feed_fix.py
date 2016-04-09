@@ -24,7 +24,7 @@ Options:
 
 import time
 import docopt
-import task1_joint_structured_inflection
+import task1_joint_structured_inflection_blstm_feedback_fix
 import task1_joint_inflection
 import prepare_sigmorphon_data
 import datetime
@@ -125,7 +125,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                                   feature_alphabet, feat_input_dim,
                                                                                   feature_types)
 
-            predicted_templates = task1_joint_structured_inflection.predict_templates(best_model, decoder_rnn,
+            predicted_templates = task1_joint_structured_inflection_blstm_feedback_fix.predict_templates(best_model,
+                                                                                                         decoder_rnn,
                                                                                       encoder_frnn, encoder_rrnn,
                                                                                       alphabet_index,
                                                                                       inverse_alphabet_index,
@@ -134,7 +135,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                                       feat_index,
                                                                                       feature_types)
 
-            accuracy = task1_joint_structured_inflection.evaluate_model(predicted_templates, test_cluster_lemmas,
+            accuracy = task1_joint_structured_inflection_blstm_feedback_fix.evaluate_model(predicted_templates,
+                                                                                           test_cluster_lemmas,
                                                                         test_cluster_feat_dicts, test_cluster_words,
                                                                         feature_types, True)
             accuracies.append(accuracy)
@@ -143,8 +145,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
             for i in test_cluster_to_data_indices[cluster_type]:
                 joint_index = test_lemmas[i] + ':' + common.get_morph_string(test_feat_dicts[i], feature_types)
-                inflection = task1_joint_structured_inflection.instantiate_template(predicted_templates[joint_index],
-                                                                                    test_lemmas[i])
+                inflection = task1_joint_structured_inflection_blstm_feedback_fix.instantiate_template(
+                    predicted_templates[joint_index], test_lemmas[i])
                 final_results[i] = (test_lemmas[i], test_feat_dicts[i], inflection)
 
         except KeyError:
