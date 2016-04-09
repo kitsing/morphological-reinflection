@@ -95,7 +95,7 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
         --feat-input={3} --epochs={4} --layers={5} --optimization {6} \
         {7}/data/{8}-task1-train \
         {7}/data/{8}-task1-dev \
-        {9}/joint_structured_feed_fix_{8}_results.txt \
+        {9}/joint_strc_feed_fix_{8}_results.txt \
         {7}'.format(cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
                     sigmorphon_root_dir, lang, results_dir))
 
