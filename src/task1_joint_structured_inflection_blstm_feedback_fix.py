@@ -3,8 +3,8 @@ files and evaluation script.
 
 Usage:
   task1_joint_structured_inflection_blstm_feedback_fix.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
-  [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--plot] TRAIN_PATH TEST_PATH
-  RESULTS_PATH SIGMORPHON_PATH...
+  [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION]
+  [--learning=LEARNING] [--plot] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
   TRAIN_PATH    destination path
@@ -21,6 +21,8 @@ Options:
   --epochs=EPOCHS               amount of training epochs
   --layers=LAYERS               amount of layers in lstm network
   --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM/ADADELTA
+  --reg=REGULARIZATION          regularization parameter for optimization
+  --learning=LEARNING           learning rate parameter for optimization
   --plot                        draw a learning curve plot while training each model
 """
 
@@ -48,7 +50,7 @@ MAX_PREDICTION_LEN = 50
 OPTIMIZATION = 'ADAM'
 EARLY_STOPPING = True
 MAX_PATIENCE = 100
-REGULARIZATION = 0.0
+REGULARIZATION = 0.0001
 LEARNING_RATE = 0.0001  # 0.1
 PARALLELIZE = True
 
@@ -64,7 +66,7 @@ UNK_FEAT = '@'
 # TODO: try to add attention mechanism?
 # TODO: try sutskever trick - predict inverse
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, feat_input_dim, epochs,
-         layers, optimization, plot):
+         layers, optimization, regularization, learning_rate, plot):
     if plot:
         parallelize_training = False
         print 'plotting, parallelization is disabled!!!'
@@ -73,8 +75,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'FEAT_INPUT_DIM': feat_input_dim,
                     'EPOCHS': epochs, 'LAYERS': layers, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
-                    'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': REGULARIZATION,
-                    'LEARNING_RATE': LEARNING_RATE}
+                    'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': regularization,
+                    'LEARNING_RATE': learning_rate}
 
     print 'train path = ' + str(train_path)
     print 'test path =' + str(test_path)
@@ -151,11 +153,11 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     if parallelize_training:
         p = Pool(4)
         print 'now training {0} models in parallel'.format(len(train_cluster_to_data_indices))
-        p.map(train_cluster_model_wrapper, params)
+        models = p.map(train_cluster_model_wrapper, params)
     else:
         print 'now training {0} models in loop'.format(len(train_cluster_to_data_indices))
         for p in params:
-            train_cluster_model(*p)
+            trained_model, last_epoch = train_cluster_model(*p)
     print 'finished training all models'
 
     # evaluate best models
@@ -214,7 +216,7 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
         print 'could not find relevant examples in dev data for cluster: ' + cluster_type
 
     # train model
-    trained_model = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn, train_cluster_lemmas,
+    trained_model, last_epoch = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn, train_cluster_lemmas,
                                 train_cluster_feat_dicts, train_cluster_words, dev_cluster_lemmas,
                                 dev_cluster_feat_dicts, dev_cluster_words, alphabet_index, inverse_alphabet_index,
                                 epochs, optimization, results_file_path, str(cluster_index),
@@ -231,7 +233,7 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
     else:
         print 'no examples in dev set to evaluate'
 
-    return trained_model
+    return trained_model, last_epoch
 
 
 def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_input_dim, feature_alphabet):
@@ -365,7 +367,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                     train_progress_bar.finish()
                     if plot:
                         plt.cla()
-                    return model
+                    return model, e
 
                 # get dev loss
                 total_dev_loss = 0
@@ -390,7 +392,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                     train_progress_bar.finish()
                     if plot:
                         plt.cla()
-                    return model
+                    return model, e
             else:
 
                 # if no dev set is present, optimize on train set
@@ -415,7 +417,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                     train_progress_bar.finish()
                     if plot:
                         plt.cla()
-                    return model
+                    return model, e
 
             # update lists for plotting
             train_accuracy_y.append(train_accuracy)
@@ -438,7 +440,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
     if plot:
         plt.cla()
     print 'finished training. average loss: ' + str(avg_loss)
-    return model
+    return model, e
 
 
 def save_pycnn_model(model, results_file_path, model_index):
@@ -848,6 +850,14 @@ if __name__ == '__main__':
         optimization_param = arguments['--optimization']
     else:
         optimization_param = OPTIMIZATION
+    if arguments['--reg']:
+        regularization_param = float(arguments['--reg'])
+    else:
+        regularization_param = REGULARIZATION
+    if arguments['--learning']:
+        learning_rate_param = float(arguments['--learning'])
+    else:
+        learning_rate_param = LEARNING_RATE
     if arguments['--plot']:
         plot_param = True
     else:
@@ -856,4 +866,5 @@ if __name__ == '__main__':
     print arguments
 
     main(train_path_param, test_path_param, results_file_path_param, sigmorphon_root_dir_param, input_dim_param,
-         hidden_dim_param, feat_input_dim_param, epochs_param, layers_param, optimization_param, plot_param)
+         hidden_dim_param, feat_input_dim_param, epochs_param, layers_param, optimization_param, regularization_param,
+         learning_rate_param, plot_param)
