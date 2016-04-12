@@ -31,7 +31,7 @@ def load_data(filename, task=1):
     #words, lemmas, feat_dicts = [], [], []
     sources, targets, target_feat_dicts = [], [], []
     if task == 2:
-        sources_feat_dicts = []
+        source_feat_dicts = []
     with codecs.open(filename, encoding='utf8') as f:
         for line in f:
             if line.strip() == '':
@@ -56,7 +56,7 @@ def load_data(filename, task=1):
     if task in [1,3]:
         tup = (targets, sources, target_feat_dicts)
     else:
-        tup = (targets, sources, target_feat_dicts, sources_feat_dicts)
+        tup = (targets, sources, target_feat_dicts, source_feat_dicts)
     return tup
 
 
