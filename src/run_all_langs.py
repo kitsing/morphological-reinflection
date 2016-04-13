@@ -183,4 +183,4 @@ if __name__ == '__main__':
     print arguments
 
     main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim, pool_size)
+         optimization, feat_input_dim, pool_size, langs_param)
