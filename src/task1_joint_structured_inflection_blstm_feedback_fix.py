@@ -50,7 +50,7 @@ MAX_PREDICTION_LEN = 50
 OPTIMIZATION = 'ADAM'
 EARLY_STOPPING = True
 MAX_PATIENCE = 100
-REGULARIZATION = 0.0001
+REGULARIZATION = 0.0
 LEARNING_RATE = 0.0001  # 0.1
 PARALLELIZE = True
 
@@ -117,10 +117,10 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     align_symbol = '~'
 
     # train_aligned_pairs = dumb_align(train_word_pairs, align_symbol)
-    train_aligned_pairs = mcmc_align(train_word_pairs, align_symbol)
+    train_aligned_pairs = common.mcmc_align(train_word_pairs, align_symbol)
 
     # TODO: align together?
-    test_aligned_pairs = mcmc_align(test_word_pairs, align_symbol)
+    test_aligned_pairs = common.mcmc_align(test_word_pairs, align_symbol)
     # random.shuffle(train_aligned_pairs)
     # for p in train_aligned_pairs[:100]:
     #    generate_template(p)
@@ -778,29 +778,6 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
     loss = average(loss)
 
     return loss
-
-
-def dumb_align(wordpairs, align_symbol):
-    alignedpairs = []
-    for idx, pair in enumerate(wordpairs):
-        ins = pair[0]
-        outs = pair[1]
-        if len(ins) > len(outs):
-            outs += align_symbol * (len(ins) - len(outs))
-        elif len(outs) > len(ins):
-            ins += align_symbol * (len(outs) - len(ins))
-            alignedpairs.append((ins, outs))
-    return alignedpairs
-
-
-def mcmc_align(wordpairs, align_symbol):
-    a = align.Aligner(wordpairs, align_symbol=align_symbol)
-    return a.alignedpairs
-
-
-def med_align(wordpairs, align_symbol):
-    a = align.Aligner(wordpairs, align_symbol=align_symbol, mode='med')
-    return a.alignedpairs
 
 
 if __name__ == '__main__':
