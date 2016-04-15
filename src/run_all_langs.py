@@ -53,7 +53,7 @@ def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epoch
 
     # train models for each lang in parallel or in loop
     if parallelize_training:
-        pool = Pool(int(pool_size))
+        pool = Pool(int(pool_size), maxtasksperchild=1)
         print 'now training {0} langs in parallel'.format(len(langs))
         pool.map(train_language_wrapper, params)
     else:

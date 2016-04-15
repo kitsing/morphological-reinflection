@@ -109,7 +109,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                        inverse_alphabet_index, epochs, optimization, results_file_path])
 
     if parallelize_training:
-        p = Pool(4)
+        p = Pool(4, maxtasksperchild=1)
         p.map(train_morph_model, params)
         print 'finished training all models'
     else:

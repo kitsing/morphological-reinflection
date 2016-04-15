@@ -33,7 +33,6 @@ import progressbar
 import datetime
 import time
 import os
-import align
 import common
 from multiprocessing import Pool
 from matplotlib import pyplot as plt
@@ -63,7 +62,7 @@ UNK_FEAT = '@'
 
 
 # TODO: add numbered epsilons to vocabulary?
-# TODO: try to add attention mechanism?
+# TODO: add attention mechanism?
 # TODO: try sutskever trick - predict inverse
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, feat_input_dim, epochs,
          layers, optimization, regularization, learning_rate, plot):
@@ -138,9 +137,6 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     # train_cluster_to_data_indices = train_morph_to_data_indices
     # test_cluster_to_data_indices = test_morph_to_data_indices
 
-    # TODO: change build_model (done), train_model (in progress), predict (done), one word loss (done) etc. to take the
-    # features in account
-
     # create input for each model and then parallelize or run in loop.
     params = []
     for cluster_index, cluster_type in enumerate(train_cluster_to_data_indices):
@@ -151,7 +147,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                        feature_types, feat_input_dim, feature_alphabet, plot])
 
     if parallelize_training:
-        p = Pool(4)
+        # set maxtasksperchild=1 to free finished processes
+        p = Pool(4, maxtasksperchild=1)
         print 'now training {0} models in parallel'.format(len(train_cluster_to_data_indices))
         models = p.map(train_cluster_model_wrapper, params)
     else:
@@ -245,7 +242,6 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
     model.add_lookup_parameters("char_lookup", (len(alphabet), input_dim))
 
     # feature embeddings
-    # TODO: add another input dim for features?
     model.add_lookup_parameters("feat_lookup", (len(feature_alphabet), feat_input_dim))
 
     # used in softmax output
@@ -599,10 +595,8 @@ def evaluate_model(predicted_templates, lemmas, feature_dicts, words, feature_ty
     if print_results:
         print 'evaluating model...'
 
-    # TODO: 2 possible approaches: one - predict template, instantiate, check if equal to word
-    # TODO: two - predict template, generate template using the correct word, check if templates are equal
-    # TODO: for now, go with one, maybe try two later
-
+    # 2 possible approaches: one - predict template, instantiate, check if equal to word
+    # TODO: other option - predict template, generate template using the correct word, check if templates are equal
     test_data = zip(lemmas, feature_dicts, words)
     c = 0
     for i, (lemma, feat_dict, word) in enumerate(test_data):
@@ -736,13 +730,10 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
     prev_output_vec = char_lookup[alphabet_index[BEGIN_WORD]]
     loss = []
 
-    # TODO: now for the fun part: using the alignments, replace characters in word with lemma indices (if copied),
-    # TODO: otherwise leave as is. Then compute loss normally (or by instantiating accordingly in prediction time)
+    # Using the alignments, replace characters in word with lemma indices (if copied), otherwise leave as is.
+    # Then compute loss normally (or by instantiating accordingly in prediction time)
     # TODO: try sutskever flip trick?
     # TODO: attention on the lemma chars could help here?
-    # TODO: think about the best heuristic to create a template from the aligned pair with respect to the network loss
-
-    # template.insert(0, BEGIN_WORD)
     template.append(END_WORD)
 
     # run the decoder through the sequence and aggregate loss

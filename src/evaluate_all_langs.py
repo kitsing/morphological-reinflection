@@ -61,10 +61,7 @@ def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epoch
         print 'now evaluating {0} langs in loop'.format(len(langs))
         for p in params:
             evaluate_language(*p)
-    print 'finished training all models'
-
-    evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                      sigmorphon_root_dir, src_dir)
+    print 'finished evaluating all models'
 
 
 def evaluate_language_wrapper(params):
