@@ -30,7 +30,6 @@ import datetime
 import time
 import codecs
 import os
-import align
 import common
 from multiprocessing import Pool
 from matplotlib import pyplot as plt
@@ -109,10 +108,10 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     align_symbol = '~'
 
     # train_aligned_pairs = dumb_align(train_word_pairs, align_symbol)
-    train_aligned_pairs = mcmc_align(train_word_pairs, align_symbol)
+    train_aligned_pairs = common.mcmc_align(train_word_pairs, align_symbol)
 
     # TODO: align together?
-    test_aligned_pairs = mcmc_align(test_word_pairs, align_symbol)
+    test_aligned_pairs = common.mcmc_align(test_word_pairs, align_symbol)
     # random.shuffle(train_aligned_pairs)
     # for p in train_aligned_pairs[:100]:
     #    generate_template(p)
@@ -143,12 +142,13 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                        feature_types, feat_input_dim, feature_alphabet])
 
     if parallelize_training:
-        p = Pool(4)
+        p = Pool(4, maxtasksperchild=1)
         print 'now training {0} models in parallel'.format(len(train_cluster_to_data_indices))
         p.map(train_cluster_model_wrapper, params)
     else:
         print 'now training {0} models in loop'.format(len(train_cluster_to_data_indices))
-        for p in params:
+        print '1:'
+        for p in params[2:]:
             train_cluster_model(*p)
     print 'finished training all models'
 
@@ -323,7 +323,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
             train_predictions = predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
                                                   inverse_alphabet_index, train_lemmas, train_feat_dicts, feat_index,
                                                   feature_types)
-            print 'train:'
+
             train_accuracy = evaluate_model(train_predictions, train_lemmas, train_feat_dicts, train_words,
                                             feature_types, False)[1]
 
@@ -339,7 +339,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 dev_predictions = predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
                                                     inverse_alphabet_index, dev_lemmas, dev_feat_dicts, feat_index,
                                                     feature_types)
-                print 'dev:'
+
                 # get dev accuracy
                 dev_accuracy = evaluate_model(dev_predictions, dev_lemmas, dev_feat_dicts, dev_words, feature_types,
                                               False)[1]
@@ -765,29 +765,6 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
     loss = average(loss)
 
     return loss
-
-
-def dumb_align(wordpairs, align_symbol):
-    alignedpairs = []
-    for idx, pair in enumerate(wordpairs):
-        ins = pair[0]
-        outs = pair[1]
-        if len(ins) > len(outs):
-            outs += align_symbol * (len(ins) - len(outs))
-        elif len(outs) > len(ins):
-            ins += align_symbol * (len(outs) - len(ins))
-            alignedpairs.append((ins, outs))
-    return alignedpairs
-
-
-def mcmc_align(wordpairs, align_symbol):
-    a = align.Aligner(wordpairs, align_symbol=align_symbol)
-    return a.alignedpairs
-
-
-def med_align(wordpairs, align_symbol):
-    a = align.Aligner(wordpairs, align_symbol=align_symbol, mode='med')
-    return a.alignedpairs
 
 
 if __name__ == '__main__':

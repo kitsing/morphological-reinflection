@@ -1,3 +1,6 @@
+import align
+
+
 NULL = '%'
 
 def cluster_data_by_morph_type(feat_dicts, feature_types):
@@ -48,3 +51,26 @@ def get_feature_alphabet(feat_dicts):
             feature_alphabet.append(f + ':' + f_dict[f])
     feature_alphabet = list(set(feature_alphabet))
     return feature_alphabet
+
+
+def dumb_align(wordpairs, align_symbol):
+    alignedpairs = []
+    for idx, pair in enumerate(wordpairs):
+        ins = pair[0]
+        outs = pair[1]
+        if len(ins) > len(outs):
+            outs += align_symbol * (len(ins) - len(outs))
+        elif len(outs) > len(ins):
+            ins += align_symbol * (len(outs) - len(ins))
+            alignedpairs.append((ins, outs))
+    return alignedpairs
+
+
+def mcmc_align(wordpairs, align_symbol):
+    a = align.Aligner(wordpairs, align_symbol=align_symbol)
+    return a.alignedpairs
+
+
+def med_align(wordpairs, align_symbol):
+    a = align.Aligner(wordpairs, align_symbol=align_symbol, mode='med')
+    return a.alignedpairs

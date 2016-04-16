@@ -114,7 +114,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 
     # train models in parallel or in loop
     if parallelize_training:
-        p = Pool(4)
+        p = Pool(4, maxtasksperchild=1)
         print 'now training {0} models in parallel'.format(len(train_cluster_to_data_indices))
         p.map(train_cluster_model_wrapper, params)
     else:
