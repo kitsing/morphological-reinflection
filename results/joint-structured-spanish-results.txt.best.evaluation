@@ -1,0 +1,23 @@
+N
+Accuracy: 0.963133640553
+Mean Levenshtein: 0.0645161290323
+Mean Normalized Levenshtein: 0.00633889919604
+Mean Reciprocal Rank: 0.963133640553
+
+ADJ
+Accuracy: 1.0
+Mean Levenshtein: 0.0
+Mean Normalized Levenshtein: 0.0
+Mean Reciprocal Rank: 1.0
+
+V
+Accuracy: 0.986518636003
+Mean Levenshtein: 0.0182394924663
+Mean Normalized Levenshtein: 0.00207885481128
+Mean Reciprocal Rank: 0.986518636003
+
+Aggregate
+Accuracy: 0.984335839599
+Mean Levenshtein: 0.0231829573935
+Mean Normalized Levenshtein: 0.00250437158055
+Mean Reciprocal Rank: 0.984335839599
