@@ -53,19 +53,20 @@ ALIGN_SYMBOL = '~'
 
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
          optimization, feat_input_dim):
-    hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'EPOCHS': epochs, 'LAYERS': layers,
-                    'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN, 'OPTIMIZATION': optimization}
+    hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'FEAT_INPUT_DIM': feat_input_dim,
+                    'EPOCHS': epochs, 'LAYERS': layers, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
+                    'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': regularization,
+                    'LEARNING_RATE': learning_rate}
+
 
     print 'train path = ' + str(train_path)
     print 'test path =' + str(test_path)
     for param in hyper_params:
         print param + '=' + str(hyper_params[param])
 
-    # load data
-    (train_words, train_lemmas, train_feat_dicts) = prepare_sigmorphon_data.load_data(
-        train_path)
-    (test_words, test_lemmas, test_feat_dicts) = prepare_sigmorphon_data.load_data(
-        test_path)
+    # load train and test data
+    (train_words, train_lemmas, train_feat_dicts) = prepare_sigmorphon_data.load_data(train_path)
+    (test_words, test_lemmas, test_feat_dicts) = prepare_sigmorphon_data.load_data(test_path)
     alphabet, feature_types = prepare_sigmorphon_data.get_alphabet(train_words, train_lemmas, train_feat_dicts)
 
     # used for character dropout
@@ -77,22 +78,21 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     alphabet.append(BEGIN_WORD)
     alphabet.append(END_WORD)
 
-    feature_alphabet = common.get_feature_alphabet(train_feat_dicts)
-    feature_alphabet.append(UNK_FEAT)
+    # add indices to alphabet - used to indicate when copying from lemma to word
+    for marker in [str(i) for i in xrange(3 * MAX_PREDICTION_LEN)]:
+        alphabet.append(marker)
 
     # indicates the FST to step forward in the input
     alphabet.append(STEP)
 
-    # add indices to alphabet - used to indicate when copying from lemma to word
-    for marker in [str(i) for i in xrange(MAX_PREDICTION_LEN)]:
-        alphabet.append(marker)
-
-    # feat 2 int
-    feat_index = dict(zip(feature_alphabet, range(0, len(feature_alphabet))))
-
     # char 2 int
     alphabet_index = dict(zip(alphabet, range(0, len(alphabet))))
     inverse_alphabet_index = {index: char for char, index in alphabet_index.items()}
+
+    # feat 2 int
+    feature_alphabet = common.get_feature_alphabet(train_feat_dicts)
+    feature_alphabet.append(UNK_FEAT)
+    feat_index = dict(zip(feature_alphabet, range(0, len(feature_alphabet))))
 
     # cluster the data by POS type (features)
     train_cluster_to_data_indices = common.cluster_data_by_pos(train_feat_dicts)
@@ -190,7 +190,6 @@ def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_
     model.add_lookup_parameters("char_lookup", (len(alphabet), input_dim))
 
     # feature embeddings
-    # TODO: add another input dim for features?
     model.add_lookup_parameters("feat_lookup", (len(feature_alphabet), feat_input_dim))
 
     # used in softmax output
@@ -201,10 +200,7 @@ def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_
     encoder_frnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
     encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
 
-    # TODO: inspect carefully, as dims may be sub-optimal in some cases (many feature types?)
-    # 2 * HIDDEN_DIM + 3 * INPUT_DIM + len(feats) * FEAT_INPUT_DIM, as it gets a concatenation of frnn, rrnn
-    # (both of HIDDEN_DIM size), previous output char, current lemma char (of INPUT_DIM size) current index char
-    # and feats * FEAT_INPUT_DIM
+    # 3 * INPUT_DIM + 2 * HIDDEN_DIM, as it gets previous output, input index, output index, BLSTM[i]
     decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + len(feature_types) * feat_input_dim, hidden_dim,
                               model)
 
