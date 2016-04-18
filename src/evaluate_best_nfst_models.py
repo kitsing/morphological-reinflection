@@ -80,6 +80,9 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     feature_alphabet = common.get_feature_alphabet(train_feat_dicts)
     feature_alphabet.append(UNK_FEAT)
 
+    # indicates the FST to step forward in the input
+    alphabet.append(STEP)
+
     # add indices to alphabet - used to indicate when copying from lemma to word
     for marker in [str(i) for i in xrange(MAX_PREDICTION_LEN)]:
         alphabet.append(marker)
