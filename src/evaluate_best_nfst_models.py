@@ -55,8 +55,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
          optimization, feat_input_dim):
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'FEAT_INPUT_DIM': feat_input_dim,
                     'EPOCHS': epochs, 'LAYERS': layers, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
-                    'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': regularization,
-                    'LEARNING_RATE': learning_rate}
+                    'OPTIMIZATION': optimization}
 
 
     print 'train path = ' + str(train_path)
