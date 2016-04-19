@@ -61,6 +61,7 @@ END_WORD = '>'
 UNK_FEAT = '@'
 STEP = '^'
 ALIGN_SYMBOL = '~'
+COPY_SYMBOL = '$'
 
 
 ########################################################################################################################
@@ -120,6 +121,9 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 
     # indicates the FST to step forward in the input
     alphabet.append(STEP)
+
+    # indicates the fst to copy the current input character
+    alphabet.append(COPY_SYMBOL)
 
     # char 2 int
     alphabet_index = dict(zip(alphabet, range(0, len(alphabet))))
@@ -609,9 +613,9 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
                                          blstm_outputs[i],
                                          feats_input])
 
-            # copy i action - maybe model as a single action?
+            # copy i action - model as a single action
             if lemma[i] == aligned_word[j]:
-                possible_outputs.append(str(i))
+                possible_outputs.append(COPY_SYMBOL)
                 possible_outputs.append(lemma[i])
             else:
                 possible_outputs.append(aligned_word[index])
@@ -800,7 +804,7 @@ def instantiate_template(template, lemma):
         if t == STEP:
             continue
 
-        if represents_int(t):
+        if t == COPY_SYMBOL:
             try:
                 word += lemma[int(t)]
             except IndexError:
