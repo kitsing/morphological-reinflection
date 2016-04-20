@@ -2,7 +2,7 @@
 files and evaluation script.
 
 Usage:
-  pycnn_joint_structured_inflection.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--feat-input=FEAT]
+  task2_joint_structured_inflection_feedback_fix.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--feat-input=FEAT]
   [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
@@ -157,7 +157,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     print 'finished training all models'
 
     # evaluate best models
-    os.system('python evaluate_best_joint_structured_models_feed_fix.py --cnn-mem 6096 --input={0} --hidden={1} --feat-input={2} \
+    os.system('python task2_evaluate_best_joint_structured_models_feed_fix.py --cnn-mem 6096 --input={0} --hidden={1} --feat-input={2} \
                  --epochs={3} --layers={4} --optimization={5} {6} {7} {8} {9}'.format(input_dim, hidden_dim,
                                                                                       feat_input_dim, epochs,
                                                                                       layers, optimization, train_path,
