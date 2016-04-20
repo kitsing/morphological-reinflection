@@ -266,7 +266,7 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
                                             feature_types)
     if len(predicted_templates) > 0:
         evaluate_model(predicted_templates, dev_cluster_lemmas, dev_cluster_feat_dicts, dev_cluster_words,
-                       feature_types, print_results=True)
+                       feature_types, print_results=False)
     else:
         print 'no examples in dev set to evaluate'
 
@@ -369,7 +369,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                                                   feature_types)
             print 'train:'
             train_accuracy = evaluate_model(train_predictions, train_lemmas, train_feat_dicts, train_words,
-                                            feature_types, False)[1]
+                                            feature_types, print_results=False)[1]
 
             if train_accuracy > best_train_accuracy:
                 best_train_accuracy = train_accuracy
@@ -386,7 +386,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 print 'dev:'
                 # get dev accuracy
                 dev_accuracy = evaluate_model(dev_predictions, dev_lemmas, dev_feat_dicts, dev_words, feature_types,
-                                              print_results=True)[1]
+                                              print_results=False)[1]
 
                 if dev_accuracy > best_dev_accuracy:
                     best_dev_accuracy = dev_accuracy
