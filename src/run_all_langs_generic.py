@@ -1,8 +1,9 @@
 """Runs the script on all langs in parallel
 
 Usage:
-  run_all_langs.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS]
-   [--optimization=OPTIMIZATION] [--pool=POOL] [--langs=LANGS] SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
+  run_all_langs.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN] [--epochs=EPOCHS]
+  [--layers=LAYERS] [--optimization=OPTIMIZATION] [--pool=POOL] [--langs=LANGS] [--script=SCRIPT] [--prefix=PREFIX]
+  SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
   SRC_PATH  source files directory path
@@ -20,6 +21,8 @@ Options:
   --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM
   --pool=POOL                   amount of processes in pool
   --langs=LANGS                 languages separated by comma
+  --script=SCRIPT               the training script to run
+  --prefix=PREFIX               the output files prefix
 """
 
 import os
@@ -42,13 +45,13 @@ CNN_MEM = 9096
 
 
 def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim, pool_size, langs):
+         optimization, feat_input_dim, pool_size, langs, script, prefix):
     parallelize_training = True
     params = []
     print 'now training langs: ' + str(langs)
     for lang in langs:
         params.append([CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                    sigmorphon_root_dir, src_dir])
+                    sigmorphon_root_dir, src_dir, script, prefix])
 
 
     # train models for each lang in parallel or in loop
@@ -66,17 +69,18 @@ def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epoch
 def train_language_wrapper(params):
     train_language(*params)
 
+
 def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                sigmorphon_root_dir, src_dir):
+                sigmorphon_root_dir, src_dir, script, prefix):
     start = time.time()
     os.chdir(src_dir)
-    os.system('python task1_joint_structured_inflection_neural_fst_single_copy.py --cnn-mem {0} --input={1} --hidden={2} \
-        --feat-input={3} --epochs={4} --layers={5} --optimization {6} \
-        {7}/data/{8}-task1-train \
-        {7}/data/{8}-task1-dev \
-        {9}/nfst_copy_{8}-results.txt \
-        {7}'.format(cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-                    sigmorphon_root_dir, lang, results_dir))
+    os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} \
+        --feat-input={4} --epochs={5} --layers={6} --optimization {7} \
+        {8}/data/{9}-task1-train \
+        {8}/data/{9}-task1-dev \
+        {10}/{11}_{9}-results.txt \
+        {8}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
+                    sigmorphon_root_dir, lang, results_dir, prefix))
 
     end = time.time()
     print 'finished ' + lang + ' in ' + str(ms_to_timestring(end - start))
@@ -150,8 +154,18 @@ if __name__ == '__main__':
         langs_param = [l.strip() for l in arguments['--langs'].split(',')]
     else:
         langs_param = LANGS
+    if arguments['--script']:
+        script_param = arguments['--script']
+    else:
+        print 'script is mandatory'
+        raise ValueError
+    if arguments['--prefix']:
+        prefix_param = arguments['--prefix']
+    else:
+        print 'prefix is mandatory'
+        raise ValueError
 
     print arguments
 
     main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim, pool_size, langs_param)
+         optimization, feat_input_dim, pool_size, langs_param, script_param, prefix_param)

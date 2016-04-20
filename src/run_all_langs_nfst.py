@@ -62,10 +62,6 @@ def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epoch
             train_language(*p)
     print 'finished training all models'
 
-    train_language(CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                    sigmorphon_root_dir, src_dir)
-
-
 
 def train_language_wrapper(params):
     train_language(*params)
@@ -81,39 +77,6 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
         {9}/nfst_{8}-results.txt \
         {7}'.format(cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
                     sigmorphon_root_dir, lang, results_dir))
-
-    # os.system('python task1_joint_structured_inflection_blstm_feedback_fix.py --cnn-mem {0} --input={1} --hidden={2} \
-    #     --feat-input={3} --epochs={4} --layers={5} --optimization {6} \
-    #     {7}/data/{8}-task1-train \
-    #     {7}/data/{8}-task1-dev \
-    #     {9}/joint_strc_blstm_feed_fix_{8}_results.txt \
-    #     {7}'.format(cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-    #                 sigmorphon_root_dir, lang, results_dir))
-
-    # os.system('python task1_factored_inflection.py --cnn-mem 4096 --input=150 --hidden=150 --epochs=300
-    # --layers=2 \
-    #           --optimization ADAM \
-    #           {0}/data/{1}-task1-train \
-    #           {0}/data/{1}-task1-dev \
-    #           {3}/{1}_{2}_results.txt \
-    #           {0}'.format(sig_root, lang, st, results_dir))
-
-
-    # os.system('python task1_joint_structured_inflection.py --cnn-mem 9096 --input={1} --hidden={2} \
-    #               --feat-input={3} --epochs={4} --layers={5} --optimization {6} \
-    #               {7}/data/{8}-task1-train \
-    #               {7}/data/{8}-task1-dev \
-    #               {9}/joint_structured_{8}_results.txt \
-    #               {7}'.format(cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-    #                           sigmorphon_root_dir, lang, results_dir))
-
-    # os.system('python task1_joint_structured_inflection_feedback_fix.py --cnn-mem {0} --input={1} --hidden={2} \
-    #     --feat-input={3} --epochs={4} --layers={5} --optimization {6} \
-    #     {7}/data/{8}-task1-train \
-    #     {7}/data/{8}-task1-dev \
-    #     {9}/joint_strc_feed_fix_{8}_results.txt \
-    #     {7}'.format(cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-    #                 sigmorphon_root_dir, lang, results_dir))
 
     end = time.time()
     print 'finished ' + lang + ' in ' + str(ms_to_timestring(end - start))
