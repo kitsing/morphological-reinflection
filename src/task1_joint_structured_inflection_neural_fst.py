@@ -181,7 +181,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             trained_model, last_epoch = train_cluster_model(*p)
 
             # print when did each model stop
-            epoch_output = 'cluster {0} - {1} stopped on epoch {@}'.format(cluster_index, cluster_name,
+            epoch_output = 'cluster {0} - {1} stopped on epoch {2}'.format(cluster_index, cluster_name,
                                                                            last_epoch)
             last_epochs.append(epoch_output)
             print epoch_output
