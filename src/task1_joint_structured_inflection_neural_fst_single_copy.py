@@ -761,6 +761,11 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
         probs = probs.vec_value()
         predicted_output_index = common.argmax(probs)
         predicted_output = inverse_alphabet_index[predicted_output_index]
+
+        # replace copy symbol with the proper input index to copy from
+        if predicted_output == COPY_SYMBOL:
+            predicted_output = str(i)
+
         predicted_output_sequence.append(predicted_output)
 
         # check if step or char output to promote i or j.
