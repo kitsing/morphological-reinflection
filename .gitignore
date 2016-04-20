@@ -8,11 +8,11 @@
 
 *.txt
 
+*.txt.evaluation
+
+*.txt.predictions
+
 *.so
-
-*.evaluation
-
-*.predictions
 
 .idea/inspectionProfiles/Project_Default.xml
 

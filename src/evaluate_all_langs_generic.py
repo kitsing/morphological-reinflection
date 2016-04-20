@@ -1,8 +1,9 @@
 """Runs the script on all langs in parallel
 
 Usage:
-  run_all_langs.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN] [--epochs=EPOCHS] [--layers=LAYERS]
-   [--optimization=OPTIMIZATION] [--pool=POOL] [--langs=LANGS] SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
+  evaluate_all_langs.py [--cnn-mem MEM] [--input=INPUT] [--feat-input=FEAT] [--hidden=HIDDEN] [--epochs=EPOCHS]
+  [--layers=LAYERS] [--optimization=OPTIMIZATION] [--pool=POOL] [--langs=LANGS] [--script=SCRIPT] [--test]
+  [--prefix=PREFIX] SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
   SRC_PATH  source files directory path
@@ -19,7 +20,11 @@ Options:
   --layers=LAYERS               amount of layers in lstm network
   --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM
   --pool=POOL                   amount of processes in pool
-  --langs=LANGS                 languages separated by comma
+  --langs=LANGS                 languages to run on, separated by commas
+  --script=SCRIPT               the chosen eval script
+  --test                        evaluate on test files
+  --prefix=PREFIX               the results files prefix
+
 """
 
 import os
@@ -38,74 +43,52 @@ LAYERS = 2
 OPTIMIZATION = 'ADAM'
 POOL = 4
 LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german']
-CNN_MEM = 9096
 
+def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers, optimization, feat_input_dim,
+         pool_size, langs, test, script, prefix):
 
-def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim, pool_size, langs):
-    parallelize_training = True
+    cnn_mem = 9096
+    parallelize_evaluation = True
+
     params = []
-    print 'now training langs: ' + str(langs)
+    print 'now evaluating langs: ' + str(langs) + ' with script: ' + script + ' into prefix: ' + prefix
     for lang in langs:
-        params.append([CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                    sigmorphon_root_dir, src_dir])
-
+        params.append([cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
+                    sigmorphon_root_dir, src_dir, test, script, prefix])
 
     # train models for each lang in parallel or in loop
-    if parallelize_training:
-        pool = Pool(int(pool_size), maxtasksperchild=1)
-        print 'now training {0} langs in parallel'.format(len(langs))
-        pool.map(train_language_wrapper, params)
+    if parallelize_evaluation:
+        pool = Pool(int(pool_size))
+        print 'now evaluating {0} langs in parallel'.format(len(langs))
+        pool.map(evaluate_language_wrapper, params)
     else:
-        print 'now training {0} langs in loop'.format(len(langs))
+        print 'now evaluating {0} langs in loop'.format(len(langs))
         for p in params:
-            train_language(*p)
-    print 'finished training all models'
-
-    train_language(CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                    sigmorphon_root_dir, src_dir)
+            evaluate_language(*p)
+    print 'finished evaluating all models'
 
 
+def evaluate_language_wrapper(params):
+    evaluate_language(*params)
 
-def train_language_wrapper(params):
-    train_language(*params)
 
-def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                sigmorphon_root_dir, src_dir):
+def evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
+                      sigmorphon_root_dir, src_dir, test, script, prefix):
     start = time.time()
     os.chdir(src_dir)
-    os.system('python task1_joint_structured_inflection_blstm_feedback_fix.py --cnn-mem {0} --input={1} --hidden={2} \
-        --feat-input={3} --epochs={4} --layers={5} --optimization {6} \
-        {7}/data/{8}-task1-train \
-        {7}/data/{8}-task1-dev \
-        {9}/joint_strc_blstm_feed_fix_{8}_results.txt \
-        {7}'.format(cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-                    sigmorphon_root_dir, lang, results_dir))
+    eval_str = 'dev'
+    if test:
+        eval_str = 'test'
 
-    # os.system('python task1_factored_inflection.py --cnn-mem 4096 --input=150 --hidden=150 --epochs=300
-    # --layers=2 \
-    #           --optimization ADAM \
-    #           {0}/data/{1}-task1-train \
-    #           {0}/data/{1}-task1-dev \
-    #           {3}/{1}_{2}_results.txt \
-    #           {0}'.format(sig_root, lang, st, results_dir))
+    command_format = 'python {0} --cnn-mem {1} --input={2} \
+        --hidden={3} --feat-input={4} --epochs={5} --layers={6} --optimization {7} \
+        {8}/data/{9}-task1-train \
+        {8}/data/{9}-task1-{11} \
+        {10}/{12}_{9}-results.txt \
+        {8}'
 
-
-    # os.system('python task1_joint_structured_inflection.py --cnn-mem 9096 --input={1} --hidden={2} \
-    #               --feat-input={3} --epochs={4} --layers={5} --optimization {6} \
-    #               {7}/data/{8}-task1-train \
-    #               {7}/data/{8}-task1-dev \
-    #               {9}/joint_structured_{8}_results.txt \
-    #               {7}'.format(cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-    #                           sigmorphon_root_dir, lang, results_dir))
-
-    # os.system('python task1_joint_structured_inflection_feedback_fix.py --cnn-mem {0} --input={1} --hidden={2} \
-    #     --feat-input={3} --epochs={4} --layers={5} --optimization {6} \
-    #     {7}/data/{8}-task1-train \
-    #     {7}/data/{8}-task1-dev \
-    #     {9}/joint_strc_feed_fix_{8}_results.txt \
-    #     {7}'.format(cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-    #                 sigmorphon_root_dir, lang, results_dir))
+    os.system(command_format.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
+                                    sigmorphon_root_dir, lang, results_dir, eval_str, prefix))
 
     end = time.time()
     print 'finished ' + lang + ' in ' + str(ms_to_timestring(end - start))
@@ -119,8 +102,8 @@ def evaluate_baseline(lang, results_dir, sig_root):
     os.chdir(sig_root + '/src/baseline')
 
     # run baseline system
-    os.system('./baseline.py --task=1 --language={0} \
-        --path={1}/data/ > {2}/baseline_{0}_task1_predictions.txt'.format(lang, sig_root, results_dir))
+    os.system('./baseline.py --task=1 --language={0} --path={1}/data/ > {2}/baseline_{0}_task1_predictions.txt'.format(
+        lang, sig_root, results_dir))
     os.chdir(sig_root + '/src')
 
     # eval baseline system
@@ -179,8 +162,22 @@ if __name__ == '__main__':
         langs_param = [l.strip() for l in arguments['--langs'].split(',')]
     else:
         langs_param = LANGS
+    if arguments['--script']:
+        script_param = arguments['--script']
+    else:
+        print 'script is mandatory'
+        raise ValueError
+    if arguments['--prefix']:
+        prefix_param = arguments['--prefix']
+    else:
+        print 'prefix is mandatory'
+        raise ValueError
+    if arguments['--test']:
+        test_param = True
+    else:
+        test_param = False
 
     print arguments
 
     main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim, pool_size, langs_param)
+         optimization, feat_input_dim, pool_size, langs_param, test_param, script_param, prefix_param)

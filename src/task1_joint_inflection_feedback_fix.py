@@ -201,43 +201,6 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
     return trained_model
 
 
-def write_results_file(hyper_params, accuracy, train_path, test_path, output_file_path, sigmorphon_root_dir,
-                       final_results):
-    # write hyperparams, micro + macro avg. accuracy
-    with codecs.open(output_file_path, 'w', encoding='utf8') as f:
-        f.write('train path = ' + str(train_path) + '\n')
-        f.write('test path = ' + str(test_path) + '\n')
-
-        for param in hyper_params:
-            f.write(param + ' = ' + str(hyper_params[param]) + '\n')
-
-        f.write('Prediction Accuracy = ' + str(accuracy) + '\n')
-
-    # write predictions in sigmorphon format
-    predictions_path = output_file_path + '.predictions'
-    with codecs.open(test_path, 'r', encoding='utf8') as test_file:
-        lines = test_file.readlines()
-        with codecs.open(predictions_path, 'w', encoding='utf8') as predictions:
-            for i, line in enumerate(lines):
-                lemma, morph, word = line.split()
-                if i in final_results:
-                    predictions.write(u'{0}\t{1}\t{2}\n'.format(lemma, morph, final_results[i][2]))
-                else:
-                    # TODO: handle unseen morphs?
-                    print u'could not find prediction for {0} {1}'.format(lemma, morph)
-                    predictions.write(u'{0}\t{1}\t{2}\n'.format(lemma, morph, 'ERROR'))
-
-    # evaluate with sigmorphon script
-    evaluation_path = output_file_path + '.evaluation'
-    os.chdir(sigmorphon_root_dir)
-    os.system('python ' + sigmorphon_root_dir + '/src/evalm.py --gold ' + test_path + ' --guesses ' + predictions_path +
-              ' > ' + evaluation_path)
-    os.system('python ' + sigmorphon_root_dir + '/src/evalm.py --gold ' + test_path + ' --guesses ' + predictions_path)
-
-    print 'wrote results to: ' + output_file_path + '\n' + evaluation_path + '\n' + predictions_path
-    return
-
-
 def build_model(alphabet, feature_alphabet, feature_types, input_dim, hidden_dim, feat_input_dim, layers):
     print 'creating model...'
 

@@ -158,7 +158,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     print 'finished training all models'
 
     # evaluate best models
-    os.system('python evaluate_best_joint_structured_models_feed_fix.py --cnn-mem 6096 --input={0} --hidden={1} --feat-input={2} \
+    os.system('python evaluate_best_joint_structured_models_blstm_feed_fix.py --cnn-mem 6096 --input={0} --hidden={1} --feat-input={2} \
                  --epochs={3} --layers={4} --optimization={5} {6} {7} {8} {9}'.format(input_dim, hidden_dim,
                                                                                       feat_input_dim, epochs,
                                                                                       layers, optimization, train_path,
@@ -529,8 +529,11 @@ def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, 
             lemma_input_char_vec = char_lookup[alphabet_index[EPSILON]]
             blstm_output = blstm_outputs[lemma_char_vecs_len - 1]
 
-        decoder_input = concatenate([blstm_output, prev_output_vec, lemma_input_char_vec,
-                                     char_lookup[alphabet_index[str(i)]], feats_input])
+        decoder_input = concatenate([blstm_output,
+                                     prev_output_vec,
+                                     lemma_input_char_vec,
+                                     char_lookup[alphabet_index[str(i)]],
+                                     feats_input])
 
         # prepare input vector and perform LSTM step
         # decoder_input = concatenate([encoded, prev_output_vec])
