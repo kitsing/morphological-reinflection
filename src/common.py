@@ -78,7 +78,12 @@ def med_align(wordpairs, align_symbol):
 
 def write_results_file(hyper_params, accuracy, train_path, test_path, output_file_path, sigmorphon_root_dir,
                            final_results):
+    if 'test' in test_path:
+        output_file_path += '.test'
 
+    if 'dev' in test_path:
+        output_file_path += '.dev'
+        
     # write hyperparams, micro + macro avg. accuracy
     with codecs.open(output_file_path, 'w', encoding='utf8') as f:
         f.write('train path = ' + str(train_path) + '\n')
