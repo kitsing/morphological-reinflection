@@ -226,7 +226,7 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
                                             feature_types)
     if len(predicted_templates) > 0:
         evaluate_model(predicted_templates, dev_cluster_lemmas, dev_cluster_feat_dicts, dev_cluster_words,
-                       feature_types, print_results=True)
+                       feature_types, print_results=False)
     else:
         print 'no examples in dev set to evaluate'
 
