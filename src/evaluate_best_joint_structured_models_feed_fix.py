@@ -25,7 +25,6 @@ Options:
 import time
 import docopt
 import task1_joint_structured_inflection_feedback_fix
-import task1_joint_inflection
 import prepare_sigmorphon_data
 import datetime
 import common

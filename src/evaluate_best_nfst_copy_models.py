@@ -26,7 +26,6 @@ Options:
 import time
 import docopt
 import task1_joint_structured_inflection_neural_fst_single_copy
-import task1_joint_inflection
 import prepare_sigmorphon_data
 import datetime
 import common
