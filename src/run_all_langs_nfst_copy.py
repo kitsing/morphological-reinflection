@@ -74,7 +74,7 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
                 sigmorphon_root_dir, src_dir):
     start = time.time()
     os.chdir(src_dir)
-    os.system('python task1_joint_structured_inflection_neural_fst.py --cnn-mem {0} --input={1} --hidden={2} \
+    os.system('python task1_joint_structured_inflection_neural_fst_single_copy.py --cnn-mem {0} --input={1} --hidden={2} \
         --feat-input={3} --epochs={4} --layers={5} --optimization {6} \
         {7}/data/{8}-task1-train \
         {7}/data/{8}-task1-dev \
