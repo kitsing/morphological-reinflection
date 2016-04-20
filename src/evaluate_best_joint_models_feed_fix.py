@@ -148,7 +148,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     micro_average_accuracy = mic_nom/mic_denom
     print 'micro avg accuracy: ' + str(micro_average_accuracy)
 
-    task1_joint_inflection_feedback_fix.write_results_file(hyper_params, micro_average_accuracy, train_path,
+    common.write_results_file(hyper_params, micro_average_accuracy, train_path,
                                               test_path, results_file_path + '.best', sigmorphon_root_dir,
                                               final_results)
 

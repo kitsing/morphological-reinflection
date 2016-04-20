@@ -84,7 +84,7 @@ def evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, la
         --hidden={3} --feat-input={4} --epochs={5} --layers={6} --optimization {7} \
         {8}/data/{9}-task1-train \
         {8}/data/{9}-task1-{11} \
-        {10}/{12}_{9}_{11}-results.txt \
+        {10}/{12}_{9}-results.txt \
         {8}'
 
     os.system(command_format.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,

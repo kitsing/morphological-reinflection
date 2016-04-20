@@ -163,7 +163,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         suffix = '.best.test'
     else:
         suffix = '.best'
-    task1_joint_inflection.write_results_file(hyper_params, micro_average_accuracy, train_path,
+    common.write_results_file(hyper_params, micro_average_accuracy, train_path,
                                               test_path, results_file_path + suffix, sigmorphon_root_dir,
                                               final_results)
 
