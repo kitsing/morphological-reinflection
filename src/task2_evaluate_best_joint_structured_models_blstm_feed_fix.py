@@ -2,7 +2,7 @@
 files and evaluation script.
 
 Usage:
-  task2_evaluate_best_joint_structured_models_feed_fix.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN]
+  task2_evaluate_best_joint_structured_models_blstm_feed_fix.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN]
   [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
@@ -20,11 +20,12 @@ Options:
   --epochs=EPOCHS               amount of training epochs
   --layers=LAYERS               amount of layers in lstm network
   --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM
+
 """
 
 import time
 import docopt
-import task2_joint_structured_inflection_feedback_fix
+import task2_joint_structured_inflection_blstm_feedback_fix
 import task2_joint_structured_inflection
 import prepare_sigmorphon_data
 import datetime
@@ -39,10 +40,6 @@ EPOCHS = 1
 LAYERS = 2
 MAX_PREDICTION_LEN = 50
 OPTIMIZATION = 'ADAM'
-EARLY_STOPPING = True
-MAX_PATIENCE = 100
-REGULARIZATION = 0.0001
-LEARNING_RATE = 0.001  # 0.1
 
 NULL = '%'
 UNK = '#'
@@ -133,7 +130,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                                   feature_alphabet, feat_input_dim,
                                                                                   feature_types)
 
-            predicted_templates = task2_joint_structured_inflection_feedback_fix.predict_templates(best_model, decoder_rnn,
+            predicted_templates = task2_joint_structured_inflection_blstm_feedback_fix.predict_templates(best_model, decoder_rnn,
                                                                                       encoder_frnn, encoder_rrnn,
                                                                                       alphabet_index,
                                                                                       inverse_alphabet_index,
@@ -143,10 +140,10 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                                       feat_index,
                                                                                       feature_types)
 
-            accuracy = task2_joint_structured_inflection_feedback_fix.evaluate_model(predicted_templates, test_cluster_source_words,
+            accuracy = task2_joint_structured_inflection_blstm_feedback_fix.evaluate_model(predicted_templates, test_cluster_source_words,
                                                                         test_cluster_source_feat_dicts, test_cluster_target_words,
                                                                         test_cluster_target_feat_dicts,
-                                                                        feature_types, True)
+                                                                        feature_types, print_results=False)
             accuracies.append(accuracy)
 
             # get predicted_templates in the same order they appeared in the original file
@@ -154,7 +151,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             for i in test_cluster_to_data_indices[cluster_type]:
                 joint_index = test_source_words[i] + ':' + common.get_morph_string(test_source_feat_dicts[i], feature_types) \
                                                     + ':' + common.get_morph_string(test_target_feat_dicts[i], feature_types)
-                inflection = task2_joint_structured_inflection_feedback_fix.instantiate_template(predicted_templates[joint_index],
+                inflection = task2_joint_structured_inflection_blstm_feedback_fix.instantiate_template(predicted_templates[joint_index],
                                                                                     test_source_words[i])
                 final_results[i] = (test_source_words[i], test_source_feat_dicts[i], inflection, test_target_feat_dicts[i])
 

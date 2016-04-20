@@ -234,6 +234,44 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
     return trained_model
 
 
+# TODO: move this to task2_joint_inflection.py once it's ready
+def write_results_file(hyper_params, accuracy, train_path, test_path, output_file_path, sigmorphon_root_dir,
+                       final_results):
+    # write hyperparams, micro + macro avg. accuracy
+    with codecs.open(output_file_path, 'w', encoding='utf8') as f:
+        f.write('train path = ' + str(train_path) + '\n')
+        f.write('test path = ' + str(test_path) + '\n')
+
+        for param in hyper_params:
+            f.write(param + ' = ' + str(hyper_params[param]) + '\n')
+
+        f.write('Prediction Accuracy = ' + str(accuracy) + '\n')
+
+    # write predictions in sigmorphon format
+    predictions_path = output_file_path + '.predictions'
+    with codecs.open(test_path, 'r', encoding='utf8') as test_file:
+        lines = test_file.readlines()
+        with codecs.open(predictions_path, 'w', encoding='utf8') as predictions:
+            for i, line in enumerate(lines):
+                source_morph, source_word, target_morph, target_word = line.split()
+                if i in final_results:
+                    predictions.write(u'{0}\t{1}\t{2}\t{3}\n'.format(source_morph, source_word, target_morph, final_results[i][2]))
+                else:
+                    # TODO: handle unseen morphs?
+                    print u'could not find prediction for {0} {1} {2}'.format(source_morph, source_word, target_morph)
+                    predictions.write(u'{0}\t{1}\t{2}\t{3}\n'.format(source_morph, source_word, target_morph, 'ERROR'))
+
+    # evaluate with sigmorphon script
+    evaluation_path = output_file_path + '.evaluation'
+    os.chdir(sigmorphon_root_dir)
+    os.system('python ' + sigmorphon_root_dir + '/src/evalm.py --gold ' + test_path + ' --guesses ' + predictions_path +
+              ' > ' + evaluation_path)
+    os.system('python ' + sigmorphon_root_dir + '/src/evalm.py --gold ' + test_path + ' --guesses ' + predictions_path)
+
+    print 'wrote results to: ' + output_file_path + '\n' + evaluation_path + '\n' + predictions_path
+    return
+
+
 def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_input_dim, feature_alphabet):
     print 'creating model...'
 
