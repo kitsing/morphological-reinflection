@@ -2,7 +2,7 @@
 files and evaluation script.
 
 Usage:
-  task1_joint_structured_inflection_blstm_feedback_fix.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
+  task1_joint_structured_inflection_neural_fst.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
   [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION]
   [--learning=LEARNING] [--plot] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
@@ -40,9 +40,9 @@ from docopt import docopt
 from pycnn import *
 
 # default values
-INPUT_DIM = 100
+INPUT_DIM = 200
 FEAT_INPUT_DIM = 20
-HIDDEN_DIM = 100
+HIDDEN_DIM = 200
 EPOCHS = 1
 LAYERS = 2
 MAX_PREDICTION_LEN = 50
@@ -59,11 +59,29 @@ EPSILON = '*'
 BEGIN_WORD = '<'
 END_WORD = '>'
 UNK_FEAT = '@'
+STEP = '^'
+ALIGN_SYMBOL = '~'
+
+
+########################################################################################################################
+# neural fst todo:
+# change network - inputs are now: i, j, blstm[i], feedback - one word loss, predict template - done
+# change vocabulary - add "step" output - one word loss, predict template - done
+# change training: go through alignment to know when to output step - done
+# one word loss - done
+# predict template - done
+
+# other independent improvements:
+
+# change training: "soft templates" - loss function - sum on possible states (chars or templates) - but which feedback?
+# change training: don't use alignment for template (optional)
+########################################################################################################################
 
 
 # TODO: add numbered epsilons to vocabulary?
 # TODO: add attention mechanism?
 # TODO: try sutskever trick - predict inverse
+# TODO: different vocabulary for input and output chars?
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, feat_input_dim, epochs,
          layers, optimization, regularization, learning_rate, plot):
     if plot:
@@ -97,8 +115,11 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     alphabet.append(END_WORD)
 
     # add indices to alphabet - used to indicate when copying from lemma to word
-    for marker in [str(i) for i in xrange(MAX_PREDICTION_LEN)]:
+    for marker in [str(i) for i in xrange(3*MAX_PREDICTION_LEN)]:
         alphabet.append(marker)
+
+    # indicates the FST to step forward in the input
+    alphabet.append(STEP)
 
     # char 2 int
     alphabet_index = dict(zip(alphabet, range(0, len(alphabet))))
@@ -113,13 +134,12 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     print 'started aligning'
     train_word_pairs = zip(train_lemmas, train_words)
     test_word_pairs = zip(test_lemmas, test_words)
-    align_symbol = '~'
 
-    # train_aligned_pairs = dumb_align(train_word_pairs, align_symbol)
-    train_aligned_pairs = common.mcmc_align(train_word_pairs, align_symbol)
+    # train_aligned_pairs = dumb_align(train_word_pairs, ALIGN_SYMBOL)
+    train_aligned_pairs = common.mcmc_align(train_word_pairs, ALIGN_SYMBOL)
 
     # TODO: align together?
-    test_aligned_pairs = common.mcmc_align(test_word_pairs, align_symbol)
+    test_aligned_pairs = common.mcmc_align(test_word_pairs, ALIGN_SYMBOL)
     # random.shuffle(train_aligned_pairs)
     # for p in train_aligned_pairs[:100]:
     #    generate_template(p)
@@ -147,29 +167,45 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                        feature_types, feat_input_dim, feature_alphabet, plot])
 
     if parallelize_training:
+
         # set maxtasksperchild=1 to free finished processes
         p = Pool(4, maxtasksperchild=1)
         print 'now training {0} models in parallel'.format(len(train_cluster_to_data_indices))
         models = p.map(train_cluster_model_wrapper, params)
     else:
         print 'now training {0} models in loop'.format(len(train_cluster_to_data_indices))
+        last_epochs = []
         for p in params:
+            cluster_index = p[3]
+            cluster_name = p[4]
             trained_model, last_epoch = train_cluster_model(*p)
+
+            # print when did each model stop
+            epoch_output = 'cluster {0} - {1} stopped on epoch {@}'.format(cluster_index, cluster_name,
+                                                                           last_epoch)
+            last_epochs.append(epoch_output)
+            print epoch_output
+
+        with open(results_file_path + '.epochs', 'w') as f:
+            f.writelines(last_epochs)
+
     print 'finished training all models'
 
     # evaluate best models
-    os.system('python evaluate_best_joint_structured_models_blstm_feed_fix.py --cnn-mem 6096 --input={0} --hidden={1} --feat-input={2} \
-                 --epochs={3} --layers={4} --optimization={5} {6} {7} {8} {9}'.format(input_dim, hidden_dim,
+    os.system('python evaluate_best_nfst_models.py --cnn-mem 6096 --input={0} --hidden={1} \
+    --feat-input={2} --epochs={3} --layers={4} --optimization={5} {6} {7} {8} {9}'.format(input_dim, hidden_dim,
                                                                                       feat_input_dim, epochs,
                                                                                       layers, optimization, train_path,
                                                                                       test_path,
                                                                                       results_file_path,
                                                                                       sigmorphon_root_dir))
+    for e in last_epochs:
+        print e
+
     return
 
 
 def train_cluster_model_wrapper(params):
-    # from matplotlib import pyplot as plt
     return train_cluster_model(*params)
 
 
@@ -178,6 +214,7 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
                         test_cluster_to_data_indices, alphabet, alphabet_index, inverse_alphabet_index, epochs,
                         optimization, results_file_path, train_aligned_pairs, test_aligned_pairs, feat_index,
                         feature_types, feat_input_dim, feature_alphabet, plot):
+
     # get the inflection-specific data
     train_cluster_words = [train_words[i] for i in train_cluster_to_data_indices[cluster_type]]
     train_cluster_lemmas = [train_lemmas[i] for i in train_cluster_to_data_indices[cluster_type]]
@@ -213,11 +250,14 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
         print 'could not find relevant examples in dev data for cluster: ' + cluster_type
 
     # train model
-    trained_model, last_epoch = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn, train_cluster_lemmas,
-                                train_cluster_feat_dicts, train_cluster_words, dev_cluster_lemmas,
-                                dev_cluster_feat_dicts, dev_cluster_words, alphabet_index, inverse_alphabet_index,
-                                epochs, optimization, results_file_path, str(cluster_index),
-                                train_cluster_alignments, dev_cluster_alignments, feat_index, feature_types, plot)
+    trained_model, last_epoch = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn,
+                                            train_cluster_lemmas,
+                                            train_cluster_feat_dicts, train_cluster_words, dev_cluster_lemmas,
+                                            dev_cluster_feat_dicts, dev_cluster_words, alphabet_index,
+                                            inverse_alphabet_index,
+                                            epochs, optimization, results_file_path, str(cluster_index),
+                                            train_cluster_alignments, dev_cluster_alignments, feat_index, feature_types,
+                                            plot)
 
     # evaluate last model on dev
     predicted_templates = predict_templates(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
@@ -252,9 +292,8 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
     encoder_frnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
     encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
 
-    # 2 * HIDDEN_DIM + 3 * INPUT_DIM, as it gets a concatenation of frnn, rrnn, previous output char,
-    # current lemma char, current index marker
-    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + len(feature_types) * feat_input_dim, hidden_dim,
+    # 4 * INPUT_DIM + 2 * HIDDEN_DIM, as it gets previous output, input index, output index, BLSTM[i], lemma[i]
+    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 4 * input_dim + len(feature_types) * feat_input_dim, hidden_dim,
                               model)
     print 'finished creating model'
 
@@ -263,7 +302,8 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
 
 def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, train_feat_dicts, train_words, dev_lemmas,
                 dev_feat_dicts, dev_words, alphabet_index, inverse_alphabet_index, epochs, optimization,
-                results_file_path, morph_index, train_aligned_pairs, dev_aligned_pairs, feat_index, feature_types, plot):
+                results_file_path, morph_index, train_aligned_pairs, dev_aligned_pairs, feat_index, feature_types,
+                plot):
     print 'training...'
 
     np.random.seed(17)
@@ -346,7 +386,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 print 'dev:'
                 # get dev accuracy
                 dev_accuracy = evaluate_model(dev_predictions, dev_lemmas, dev_feat_dicts, dev_words, feature_types,
-                                              False)[1]
+                                              print_results=True)[1]
 
                 if dev_accuracy > best_dev_accuracy:
                     best_dev_accuracy = dev_accuracy
@@ -447,212 +487,6 @@ def save_pycnn_model(model, results_file_path, model_index):
 
 
 # noinspection PyPep8Naming
-def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, alphabet_index,
-                                inverse_alphabet_index, feat_index, feature_types):
-    renew_cg()
-
-    # read the parameters
-    char_lookup = model["char_lookup"]
-    feat_lookup = model["feat_lookup"]
-    R = parameter(model["R"])
-    bias = parameter(model["bias"])
-
-    # convert characters to matching embeddings, if UNK handle properly
-    lemma = BEGIN_WORD + lemma + END_WORD
-    lemma_char_vecs = []
-    for char in lemma:
-        try:
-            lemma_char_vecs.append(char_lookup[alphabet_index[char]])
-        except KeyError:
-            # handle UNK
-            lemma_char_vecs.append(char_lookup[alphabet_index[UNK]])
-
-    # convert features to matching embeddings, if UNK handle properly
-    feat_vecs = []
-    for feat in sorted(feature_types):
-        # TODO: is it OK to use same UNK for all feature types? and for unseen feats as well?
-        # if this feature has a value, take it from the lookup. otherwise use UNK
-        if feat in feats:
-            feat_str = feat + ':' + feats[feat]
-            try:
-                feat_vecs.append(feat_lookup[feat_index[feat_str]])
-            except KeyError:
-                # handle UNK or dropout
-                feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
-        else:
-            feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
-    feats_input = concatenate(feat_vecs)
-
-    # BiLSTM forward pass
-    s_0 = encoder_frnn.initial_state()
-    s = s_0
-    frnn_outputs = []
-    for c in lemma_char_vecs:
-        s = s.add_input(c)
-        frnn_outputs.append(s.output())
-
-    # BiLSTM backward pass
-    s_0 = encoder_rrnn.initial_state()
-    s = s_0
-    rrnn_outputs = []
-    for c in reversed(lemma_char_vecs):
-        s = s.add_input(c)
-        rrnn_outputs.append(s.output())
-
-    # BiLTSM outputs
-    blstm_outputs = []
-    lemma_char_vecs_len = len(lemma_char_vecs)
-    for i in xrange(lemma_char_vecs_len):
-        blstm_outputs.append(concatenate([frnn_outputs[i], rrnn_outputs[lemma_char_vecs_len - i - 1]]))
-
-    # initialize the decoder rnn
-    s_0 = decoder_rnn.initial_state()
-    s = s_0
-
-    # set prev_output_vec for first lstm step as BEGIN_WORD
-    prev_output_vec = char_lookup[alphabet_index[BEGIN_WORD]]
-    i = 0
-    predicted_template = []
-
-    # run the decoder through the sequence and predict characters
-    while i < MAX_PREDICTION_LEN:
-
-        # if the lemma is finished, pad with epsilon chars
-        if i < len(lemma):
-            blstm_output = blstm_outputs[i]
-            try:
-                lemma_input_char_vec = char_lookup[alphabet_index[lemma[i]]]
-            except KeyError:
-                # handle unseen characters
-                lemma_input_char_vec = char_lookup[alphabet_index[UNK]]
-        else:
-            lemma_input_char_vec = char_lookup[alphabet_index[EPSILON]]
-            blstm_output = blstm_outputs[lemma_char_vecs_len - 1]
-
-        decoder_input = concatenate([blstm_output,
-                                     prev_output_vec,
-                                     lemma_input_char_vec,
-                                     char_lookup[alphabet_index[str(i)]],
-                                     feats_input])
-
-        # prepare input vector and perform LSTM step
-        # decoder_input = concatenate([encoded, prev_output_vec])
-        s = s.add_input(decoder_input)
-
-        # compute softmax probs and predict
-        decoder_rnn_output = s.output()
-        probs = softmax(R * decoder_rnn_output + bias)
-        probs = probs.vec_value()
-        next_char_index = common.argmax(probs)
-        predicted_template.append(inverse_alphabet_index[next_char_index])
-
-        # check if reached end of word
-        if predicted_template[-1] == END_WORD:
-            break
-
-        # prepare for the next iteration - "feedback"
-        prev_output_vec = char_lookup[next_char_index]
-        i += 1
-
-    # remove the end word symbol
-    return predicted_template[0:-1]
-
-
-def predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index, inverse_alphabet_index, lemmas,
-                      feats, feat_index, feature_types):
-    predictions = {}
-    for i, (lemma, feat_dict) in enumerate(zip(lemmas, feats)):
-        predicted_template = predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma,
-                                                         feat_dict, alphabet_index, inverse_alphabet_index, feat_index,
-                                                         feature_types)
-
-        joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
-        predictions[joint_index] = predicted_template
-
-    return predictions
-
-
-def instantiate_template(template, lemma):
-    word = ''
-    for t in template:
-        if represents_int(t):
-            try:
-                word = word + lemma[int(t)]
-            except IndexError:
-                continue
-        else:
-            word = word + t
-
-    return word
-
-
-def represents_int(s):
-    try:
-        int(s)
-        return True
-    except ValueError:
-        return False
-
-
-def evaluate_model(predicted_templates, lemmas, feature_dicts, words, feature_types, print_results=True):
-    if print_results:
-        print 'evaluating model...'
-
-    # 2 possible approaches: one - predict template, instantiate, check if equal to word
-    # TODO: other option - predict template, generate template using the correct word, check if templates are equal
-    test_data = zip(lemmas, feature_dicts, words)
-    c = 0
-    for i, (lemma, feat_dict, word) in enumerate(test_data):
-        joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
-        predicted_word = instantiate_template(predicted_templates[joint_index], lemma)
-        if predicted_word == word:
-            c += 1
-            sign = 'V'
-        else:
-            sign = 'X'
-        if print_results:
-            print 'lemma: ' + lemma + ' gold: ' + words[i] + ' template:' + ''.join(predicted_templates[joint_index]) \
-                  + ' prediction: ' + predicted_word + ' ' + sign
-
-    accuracy = float(c) / len(predicted_templates)
-
-    if print_results:
-        print 'finished evaluating model. accuracy: ' + str(c) + '/' + str(len(predicted_templates)) + '=' + \
-              str(accuracy) + '\n\n'
-
-    return len(predicted_templates), accuracy
-
-
-# noinspection PyPep8Naming
-def generate_template_from_alignment(aligned_pair):
-    # go through alignment
-    # if lemma and inflection are equal, output copy index of lemma
-    # if they are not equal - output the inflection char
-    template = []
-    lemma_index = 0
-    aligned_lemma, aligned_word = aligned_pair
-    for i in xrange(len(aligned_lemma)):
-        # if added prefix, add it to template
-        if aligned_lemma[i] == '~':
-            template.append(aligned_word[i])
-            continue
-        # if deleted prefix, promote lemma index and continue
-        elif aligned_word[i] == '~':
-            lemma_index += 1
-            continue
-        # if both are not ~, check if equal. if they are, add lemma index. else, add word char.
-        elif aligned_lemma[i] == aligned_word[i]:
-            template.append(str(lemma_index))
-        else:
-            template.append(aligned_word[i])
-
-        # promote lemma index
-        lemma_index += 1
-
-    return template
-
-
-# noinspection PyPep8Naming
 def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, word, alphabet_index, aligned_pair,
                   feat_index, feature_types):
     renew_cg()
@@ -662,19 +496,6 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
     feat_lookup = model["feat_lookup"]
     R = parameter(model["R"])
     bias = parameter(model["bias"])
-
-    # convert characters to matching embeddings, if UNK handle properly
-    template = generate_template_from_alignment(aligned_pair)
-
-    # sanity check
-    instantiated = instantiate_template(template, lemma)
-    if not instantiated == word:
-        print 'bad train instantiation:'
-        print lemma
-        print word
-        print template
-        print instantiated
-        raise Exception()
 
     lemma = BEGIN_WORD + lemma + END_WORD
 
@@ -733,45 +554,300 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
     prev_output_vec = char_lookup[alphabet_index[BEGIN_WORD]]
     loss = []
 
-    # Using the alignments, replace characters in word with lemma indices (if copied), otherwise leave as is.
-    # Then compute loss normally (or by instantiating accordingly in prediction time)
+    # i is input index, j is output index
+    i = 0
+    j = 0
+
+    # go through alignments, progress j when new output is introduced, progress i when new char is seen on lemma (no ~)
     # TODO: try sutskever flip trick?
-    # TODO: attention on the lemma chars could help here?
-    template.append(END_WORD)
+    # TODO: attention on the lemma chars/feats could help here?
+    aligned_lemma, aligned_word = aligned_pair
+    aligned_lemma = aligned_lemma + END_WORD
+    aligned_word = aligned_word + END_WORD
 
-    # run the decoder through the sequence and aggregate loss
-    for i, template_char in enumerate(template):
+    # run through the alignments
+    for index, (input_char, output_char) in enumerate(zip(aligned_lemma, aligned_word)):
+        possible_outputs = []
 
-        # if the lemma is finished, pad with epsilon chars and use last blstm output as encoded
-        if i < len(lemma):
-            blstm_output = blstm_outputs[i]
-            try:
-                lemma_input_char_vec = char_lookup[alphabet_index[lemma[i]]]
-            except KeyError:
-                # handle UNK
-                lemma_input_char_vec = char_lookup[alphabet_index[UNK]]
-        else:
-            lemma_input_char_vec = char_lookup[alphabet_index[EPSILON]]
-            blstm_output = blstm_outputs[lemma_char_vecs_len - 1]
+        # feedback, i, j, blstm[i], feats
+        decoder_input = concatenate([prev_output_vec,
+                                     char_lookup[alphabet_index[str(i)]],
+                                     char_lookup[alphabet_index[str(j)]],
+                                     char_lookup[alphabet_index[lemma[i]]],
+                                     blstm_outputs[i],
+                                     feats_input])
 
-        # TODO: check if template index char helps, maybe redundant
-        # encoded lemma, previous output (hidden) vector, lemma input char, template index char, features
-        decoder_input = concatenate([blstm_output, prev_output_vec, lemma_input_char_vec,
-                                     char_lookup[alphabet_index[str(i)]], feats_input])
+        # if reached the end word symbol
+        if output_char == END_WORD:
+            s = s.add_input(decoder_input)
+            decoder_rnn_output = s.output()
+            probs = softmax(R * decoder_rnn_output + bias)
 
-        s = s.add_input(decoder_input)
-        decoder_rnn_output = s.output()
-        probs = softmax(R * decoder_rnn_output + bias)
-        loss.append(-log(pick(probs, alphabet_index[template_char])))
+            # compute local loss
+            loss.append(-log(pick(probs, alphabet_index[END_WORD])))
+            continue
 
-        # prepare for the next iteration - "feedback"
-        prev_output_vec = char_lookup[alphabet_index[template_char]]
+        # if there is no prefix, step
+        if lemma[i] == '<' and aligned_lemma[index] != ALIGN_SYMBOL:
+            # perform rnn step
+            # feedback, i, j, blstm[i], feats
+            s = s.add_input(decoder_input)
+            decoder_rnn_output = s.output()
+            probs = softmax(R * decoder_rnn_output + bias)
+
+            # compute local loss
+            loss.append(-log(pick(probs, alphabet_index[STEP])))
+
+            # prepare for the next iteration - "feedback"
+            prev_output_vec = char_lookup[alphabet_index[STEP]]
+            i += 1
+
+        # if there is new output
+        if aligned_word[index] != ALIGN_SYMBOL:
+            decoder_input = concatenate([prev_output_vec,
+                                         char_lookup[alphabet_index[str(i)]],
+                                         char_lookup[alphabet_index[str(j)]],
+                                         blstm_outputs[i],
+                                         feats_input])
+
+            # copy i action - maybe model as a single action?
+            if lemma[i] == aligned_word[j]:
+                possible_outputs.append(str(i))
+                possible_outputs.append(lemma[i])
+            else:
+                possible_outputs.append(aligned_word[index])
+
+            # perform rnn step
+            s = s.add_input(decoder_input)
+            decoder_rnn_output = s.output()
+            probs = softmax(R * decoder_rnn_output + bias)
+
+            local_loss = scalarInput(0)
+            max_output_loss = -log(pick(probs, alphabet_index[possible_outputs[0]]))
+            max_likelihood_output = possible_outputs[0]
+
+            # sum over all correct output possibilities and pick feedback output to be the one with the highest
+            # probability
+            for output in possible_outputs:
+                neg_log_likelihood = -log(pick(probs, alphabet_index[output]))
+                if neg_log_likelihood < max_output_loss:
+                    max_likelihood_output = output
+                    max_output_loss = neg_log_likelihood
+
+                local_loss += neg_log_likelihood
+            loss.append(local_loss)
+
+            # prepare for the next iteration - "feedback"
+            prev_output_vec = char_lookup[alphabet_index[max_likelihood_output]]
+            j += 1
+
+        # now check if it's time to progress on input
+        if i < len(lemma) - 1 and aligned_lemma[index + 1] != '~':
+            # perform rnn step
+            # feedback, i, j, blstm[i], feats
+            decoder_input = concatenate([prev_output_vec,
+                                         char_lookup[alphabet_index[str(i)]],
+                                         char_lookup[alphabet_index[str(j)]],
+                                         blstm_outputs[i],
+                                         feats_input])
+
+            s = s.add_input(decoder_input)
+            decoder_rnn_output = s.output()
+            probs = softmax(R * decoder_rnn_output + bias)
+
+            # compute local loss
+            loss.append(-log(pick(probs, alphabet_index[STEP])))
+
+            # prepare for the next iteration - "feedback"
+            prev_output_vec = char_lookup[alphabet_index[STEP]]
+            i += 1
 
     # TODO: maybe here a "special" loss function is appropriate?
     # loss = esum(loss)
     loss = average(loss)
 
     return loss
+
+
+# noinspection PyPep8Naming
+def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, alphabet_index,
+                            inverse_alphabet_index, feat_index, feature_types):
+    renew_cg()
+
+    # read the parameters
+    char_lookup = model["char_lookup"]
+    feat_lookup = model["feat_lookup"]
+    R = parameter(model["R"])
+    bias = parameter(model["bias"])
+
+    # convert characters to matching embeddings, if UNK handle properly
+    lemma = BEGIN_WORD + lemma + END_WORD
+    lemma_char_vecs = []
+    for char in lemma:
+        try:
+            lemma_char_vecs.append(char_lookup[alphabet_index[char]])
+        except KeyError:
+            # handle UNK
+            lemma_char_vecs.append(char_lookup[alphabet_index[UNK]])
+
+    # convert features to matching embeddings, if UNK handle properly
+    feat_vecs = []
+    for feat in sorted(feature_types):
+        # TODO: is it OK to use same UNK for all feature types? and for unseen feats as well?
+        # if this feature has a value, take it from the lookup. otherwise use UNK
+        if feat in feats:
+            feat_str = feat + ':' + feats[feat]
+            try:
+                feat_vecs.append(feat_lookup[feat_index[feat_str]])
+            except KeyError:
+                # handle UNK or dropout
+                feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
+        else:
+            feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
+    feats_input = concatenate(feat_vecs)
+
+    # BiLSTM forward pass
+    s_0 = encoder_frnn.initial_state()
+    s = s_0
+    frnn_outputs = []
+    for c in lemma_char_vecs:
+        s = s.add_input(c)
+        frnn_outputs.append(s.output())
+
+    # BiLSTM backward pass
+    s_0 = encoder_rrnn.initial_state()
+    s = s_0
+    rrnn_outputs = []
+    for c in reversed(lemma_char_vecs):
+        s = s.add_input(c)
+        rrnn_outputs.append(s.output())
+
+    # BiLTSM outputs
+    blstm_outputs = []
+    lemma_char_vecs_len = len(lemma_char_vecs)
+    for i in xrange(lemma_char_vecs_len):
+        blstm_outputs.append(concatenate([frnn_outputs[i], rrnn_outputs[lemma_char_vecs_len - i - 1]]))
+
+    # initialize the decoder rnn
+    s_0 = decoder_rnn.initial_state()
+    s = s_0
+
+    # set prev_output_vec for first lstm step as BEGIN_WORD
+    prev_output_vec = char_lookup[alphabet_index[BEGIN_WORD]]
+
+    # i is input index, j is output index
+    i = j = 0
+    num_outputs = 0
+    predicted_output_sequence = []
+
+    # run the decoder through the sequence and predict characters, twice max prediction as step outputs are added
+    while num_outputs < MAX_PREDICTION_LEN * 3:
+
+        # prepare input vector and perform LSTM step
+        decoder_input = concatenate([prev_output_vec,
+                                     char_lookup[alphabet_index[str(i)]],
+                                     char_lookup[alphabet_index[str(j)]],
+                                     char_lookup[alphabet_index[lemma[i]]],
+                                     blstm_outputs[i],
+                                     feats_input])
+
+        s = s.add_input(decoder_input)
+
+        # compute softmax probs vector and predict with argmax
+        decoder_rnn_output = s.output()
+        probs = softmax(R * decoder_rnn_output + bias)
+        probs = probs.vec_value()
+        predicted_output_index = common.argmax(probs)
+        predicted_output = inverse_alphabet_index[predicted_output_index]
+        predicted_output_sequence.append(predicted_output)
+
+        # check if step or char output to promote i or j.
+        if predicted_output == STEP:
+            if i < len(lemma) - 1:
+                i += 1
+        else:
+            j += 1
+
+        num_outputs += 1
+        # check if reached end of word
+        if predicted_output_sequence[-1] == END_WORD:
+            break
+
+        # prepare for the next iteration - "feedback"
+        prev_output_vec = char_lookup[predicted_output_index]
+
+    # remove the end word symbol
+    return predicted_output_sequence[0:-1]
+
+
+def predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index, inverse_alphabet_index, lemmas,
+                      feats, feat_index, feature_types):
+    predictions = {}
+    for i, (lemma, feat_dict) in enumerate(zip(lemmas, feats)):
+        predicted_template = predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma,
+                                                     feat_dict, alphabet_index, inverse_alphabet_index, feat_index,
+                                                     feature_types)
+
+        # index each output by its matching inputs - lemma + features
+        joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
+        predictions[joint_index] = predicted_template
+
+    return predictions
+
+
+def instantiate_template(template, lemma):
+    word = ''
+    lemma = BEGIN_WORD + lemma + END_WORD
+    for t in template:
+        if t == STEP:
+            continue
+
+        if represents_int(t):
+            try:
+                word += lemma[int(t)]
+            except IndexError:
+                continue
+        else:
+            word += t
+
+    return word
+
+
+def represents_int(s):
+    try:
+        int(s)
+        return True
+    except ValueError:
+        return False
+
+
+def evaluate_model(predicted_templates, lemmas, feature_dicts, words, feature_types, print_results=True):
+    if print_results:
+        print 'evaluating model...'
+
+    # 2 possible approaches: one - predict template, instantiate, check if equal to word
+    # for now, go with one, maybe try two later
+    # TODO: two - predict template, generate template using the correct word, check if templates are equal
+    test_data = zip(lemmas, feature_dicts, words)
+    c = 0
+    for i, (lemma, feat_dict, word) in enumerate(test_data):
+        joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
+        predicted_word = instantiate_template(predicted_templates[joint_index], lemma)
+        if predicted_word == word:
+            c += 1
+            sign = 'V'
+        else:
+            sign = 'X'
+        if print_results:
+            print 'lemma: ' + lemma + ' gold: ' + words[i] + ' template:' + ''.join(predicted_templates[joint_index]) \
+                  + ' prediction: ' + predicted_word + ' ' + sign
+
+    accuracy = float(c) / len(predicted_templates)
+    if print_results:
+        print 'finished evaluating model. accuracy: ' + str(c) + '/' + str(len(predicted_templates)) + '=' + \
+              str(accuracy) + '\n\n'
+
+    return len(predicted_templates), accuracy
 
 
 if __name__ == '__main__':
