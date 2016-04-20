@@ -607,6 +607,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
             decoder_input = concatenate([prev_output_vec,
                                          char_lookup[alphabet_index[str(i)]],
                                          char_lookup[alphabet_index[str(j)]],
+                                         char_lookup[alphabet_index[lemma[i]]],
                                          blstm_outputs[i],
                                          feats_input])
 
@@ -648,6 +649,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
             decoder_input = concatenate([prev_output_vec,
                                          char_lookup[alphabet_index[str(i)]],
                                          char_lookup[alphabet_index[str(j)]],
+                                         char_lookup[alphabet_index[lemma[i]]],
                                          blstm_outputs[i],
                                          feats_input])
 
