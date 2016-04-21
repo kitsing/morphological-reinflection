@@ -39,8 +39,13 @@ def load_data(filename, task=1):
                 continue
             splt = line.strip().split()
             if task in [1,3]:
-                assert len(splt) == 3, 'bad line: ' + line + '\n'
-                source, feats, target = splt
+                if not 'test' in filename:
+                    assert len(splt) == 3, 'bad line: ' + line + '\n'
+                    source, feats, target = splt
+                else:
+                    assert len(splt) == 2, 'bad line: ' + line + '\n'
+                    source, feats = splt
+                    target = 'COVERED'
                 sources.append(source)
                 targets.append(target)
                 target_feat_dicts.append(make_feat_dict(feats))
