@@ -78,7 +78,7 @@ def evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, la
     os.chdir(src_dir)
     eval_str = 'dev'
     if test:
-        eval_str = 'test'
+        eval_str = 'test-covered'
 
     command_format = 'python {0} --cnn-mem {1} --input={2} \
         --hidden={3} --feat-input={4} --epochs={5} --layers={6} --optimization {7} \
