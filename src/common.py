@@ -95,7 +95,13 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
         f.write('Prediction Accuracy = ' + str(accuracy) + '\n')
 
     # write predictions in sigmorphon format
-    predictions_path = output_file_path + '.predictions'
+    # if final results, write the special file name format
+    if 'test-covered' in test_path:
+        lang = train_path.replace('-task1-train','')
+        predictions_path = '{0}-task1-solution'.format(lang)
+    else:
+        predictions_path = output_file_path + '.predictions'
+
     with codecs.open(test_path, 'r', encoding='utf8') as test_file:
         lines = test_file.readlines()
         with codecs.open(predictions_path, 'w', encoding='utf8') as predictions:
@@ -112,6 +118,7 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
                     predictions.write(u'{0}\t{1}\t{2}\n'.format(lemma, morph, 'ERROR'))
 
     # evaluate with sigmorphon script
+
     evaluation_path = output_file_path + '.evaluation'
     os.chdir(sigmorphon_root_dir)
     os.system('python ' + sigmorphon_root_dir + '/src/evalm.py --gold ' + test_path + ' --guesses ' + predictions_path +
