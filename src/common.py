@@ -100,7 +100,10 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
         lines = test_file.readlines()
         with codecs.open(predictions_path, 'w', encoding='utf8') as predictions:
             for i, line in enumerate(lines):
-                lemma, morph, word = line.split()
+                if 'test.covered' in test_path:
+                    lemma, morph = line.split()
+                else:
+                    lemma, morph, word = line.split()
                 if i in final_results:
                     predictions.write(u'{0}\t{1}\t{2}\n'.format(lemma, morph, final_results[i][2]))
                 else:

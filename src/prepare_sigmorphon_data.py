@@ -39,7 +39,7 @@ def load_data(filename, task=1):
                 continue
             splt = line.strip().split()
             if task in [1,3]:
-                if not 'test' in filename:
+                if not 'test.covered' in filename:
                     assert len(splt) == 3, 'bad line: ' + line + '\n'
                     source, feats, target = splt
                 else:
