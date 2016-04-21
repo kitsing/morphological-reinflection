@@ -1,0 +1,10 @@
+train path = /home/aharonr6/git/sigmorphon2016//data/georgian-task1-train
+test path = /home/aharonr6/git/sigmorphon2016//data/georgian-task1-dev
+LAYERS = 2
+EPOCHS = 300
+MAX_PREDICTION_LEN = 50
+FEAT_INPUT_DIM = 20
+OPTIMIZATION = ADAM
+HIDDEN_DIM = 200
+INPUT_DIM = 200
+Prediction Accuracy = 0.968869123253

@@ -79,7 +79,7 @@
 аудиолог	pos=N,case=DAT,num=PL	аудиологам
 афганец	pos=N,case=ACC,num=SG	афганца
 афганский	pos=ADJ,case=NOM,gen=NEUT,num=SG	афганское
-афинянка	pos=N,case=GEN,num=PL	афинянок
+афинянка	pos=N,case=GEN,num=PL	афинян
 аффинитет	pos=N,case=DAT,num=PL	аффинитетам
 аффинный	pos=ADJ,case=ACC,gen=FEM,num=SG	аффинную
 ахеменидский	pos=ADJ,case=ESS,num=PL	ахеменидских
@@ -106,7 +106,7 @@
 бессрочный	pos=ADJ,case=ACC,gen=MASC,anim=INAN,num=SG	бессрочный
 бетонировать	pos=V,tense=PST,gen=MASC,num=SG,aspect=IPFV	бетонировал
 бинарный	pos=ADJ,case=GEN,num=PL	бинарных
-бинокль	pos=N,case=INS,num=SG	биноклем
+бинокль	pos=N,case=INS,num=SG	биноклью
 биограф	pos=N,case=DAT,num=PL	биографам
 биограф	pos=N,case=INS,num=PL	биографами
 битьё	pos=N,case=NOM,num=SG	битьё
@@ -128,8 +128,8 @@
 бомбардировщик	pos=N,case=NOM,num=PL	бомбардировщики
 бомбить	pos=V,tense=PRS,per=1,num=PL,aspect=IPFV	бомбим
 бомбоубежище	pos=N,case=INS,num=SG	бомбоубежищем
-бортник	pos=N,case=ACC,num=SG	бортник
-боснийка	pos=N,gen=MASC	босниец
+бортник	pos=N,case=ACC,num=SG	бортника
+боснийка	pos=N,gen=MASC	босний
 боязнь	pos=N,case=ACC,num=SG	боязнь
 братский	pos=ADJ,case=DAT,num=PL	братским
 брать	pos=V,tense=PST,num=PL,aspect=IPFV	брали
@@ -153,7 +153,7 @@
 веселить	pos=V,mood=IMP,tense=FUT,num=PL,aspect=PFV	веселите
 весенний	pos=ADJ,case=NOM,num=PL	весенние
 весть	pos=N,case=GEN,num=SG	вести
-вече	pos=N,case=DAT,num=SG	вече
+вече	pos=N,case=DAT,num=SG	вечи
 вещественный	pos=ADJ,case=GEN,gen=MASC,num=SG	вещественного
 взаимность	pos=N,case=GEN,num=SG	взаимности
 взвешивать	pos=V,tense=PRS,per=1,num=SG,aspect=IPFV	взвешиваю
@@ -282,11 +282,11 @@
 гневить	pos=V,tense=PST,gen=MASC,num=SG,aspect=IPFV	гневил
 гневный	pos=ADJ,case=DAT,gen=NEUT,num=SG	гневному
 гнести	pos=V,tense=PST,aspect=IPFV	гнётши
-гной	pos=N,case=ACC,num=PL	гноев
+гной	pos=N,case=ACC,num=PL	гнояв
 говорить	pos=V,tense=PST,gen=NEUT,num=SG,aspect=IPFV	говорило
 говорящий	pos=ADJ,case=DAT,num=PL	говорящим
 гололёд	pos=N,case=GEN,num=SG	гололёда
-гонец	pos=N,case=NOM,num=SG	гонц
+гонец	pos=N,case=NOM,num=SG	гонец
 гот	pos=N,case=ESS,num=PL	готах
 грабить	pos=V,mood=IMP,num=SG,aspect=IPFV	граби
 грамотность	pos=N,case=ACC,num=SG	грамотность
@@ -343,7 +343,7 @@
 долгий	pos=ADJ,num=PL	долги
 домик	pos=N,case=ESS,num=PL	домиках
 доминирование	pos=N,case=NOM,num=SG	доминирование
-домработница	pos=N,case=INS,num=SG	домработницой
+домработница	pos=N,case=INS,num=SG	домработницей
 донесение	pos=N,case=ACC,num=SG	донесение
 допевать	pos=V,tense=PRS,per=1,num=SG,aspect=IPFV	допеваю
 дополнение	pos=N,case=ACC,num=SG	дополнение
@@ -435,7 +435,7 @@
 заявить	pos=V,tense=FUT,per=1,num=PL,aspect=PFV	заявим
 звание	pos=N,case=ACC,num=PL	звания
 звать	pos=V,tense=PRS,per=3,num=SG,aspect=IPFV	звает
-зверёк	pos=N,case=DAT,num=SG	зверьку
+зверёк	pos=N,case=DAT,num=SG	зверёку
 здоровый	pos=ADJ,case=ACC,gen=MASC,anim=INAN,num=SG	здоровый
 здоровый	pos=ADJ,case=ACC,num=PL	здоровые
 здравствовать	pos=V,finite=NFIN,aspect=IPFV	здравствовать
@@ -494,7 +494,7 @@
 исчерпывающий	pos=ADJ,case=ACC,gen=NEUT,num=SG	исчерпывающее
 итог	pos=N,case=NOM,num=SG	итог
 июнь	pos=N,case=DAT,num=SG	июню
-йот	pos=N,case=ACC,num=PL	йотов
+йот	pos=N,case=ACC,num=PL	йоты
 йотун	pos=N,case=GEN,num=PL	йотунов
 кабан	pos=N,case=ESS,num=SG	кабане
 кадык	pos=N,case=DAT,num=PL	кадыкам
@@ -565,7 +565,7 @@
 конечность	pos=N,case=ESS,num=SG	конечности
 консолирование	pos=N,case=DAT,num=PL	консолированиям
 консорциум	pos=N,case=ESS,num=SG	консорциуме
-конспирация	pos=N,case=INS,num=SG	конспирацияом
+конспирация	pos=N,case=INS,num=SG	конспирацияю
 контекст	pos=N,case=ACC,num=PL	контексты
 континент	pos=N,case=NOM,num=SG	континент
 конфигурация	pos=N,case=NOM,num=SG	конфигурация
@@ -573,7 +573,7 @@
 концерт	pos=N,case=GEN,num=PL	концертов
 концлагерь	pos=N,case=INS,num=SG	концлагерем
 кооператив	pos=N,case=DAT,num=SG	кооперативу
-коперниций	pos=N,case=ACC,num=PL	копернициев
+коперниций	pos=N,case=ACC,num=PL	коперниции
 копирование	pos=N,case=ESS,num=SG	копировании
 кормить	pos=V,tense=PRS,voice=PASS,aspect=IPFV	кормимый
 кормить	pos=V,tense=PST,gen=FEM,num=SG,aspect=IPFV	кормила
@@ -654,7 +654,7 @@
 махинация	pos=N,case=INS,num=PL	махинациями
 махнуть	pos=V,finite=NFIN,aspect=PFV	махнуть
 маятник	pos=N,case=NOM,num=PL	маятники
-медвежонок	pos=N,case=NOM,num=PL	медвежонки
+медвежонок	pos=N,case=NOM,num=PL	медвежата
 медлить	pos=V,tense=PRS,per=2,num=PL,aspect=IPFV	медлите
 медпункт	pos=N,case=DAT,num=SG	медпункту
 межгалактический	pos=ADJ,case=ACC,gen=NEUT,num=SG	межгалактическое
@@ -676,7 +676,7 @@
 модный	pos=ADJ,case=ESS,gen=MASC,num=SG	модном
 молодчик	pos=N,case=INS,num=SG	молодчиком
 молот	pos=N,case=NOM,num=PL	молоты
-монахиня	pos=N,case=ACC,num=SG	монахиня
+монахиня	pos=N,case=ACC,num=SG	монахину
 монотонный	pos=ADJ,case=NOM,gen=FEM,num=SG	монотонная
 мор	pos=N,case=INS,num=SG	мором
 москаль	pos=N,case=NOM,num=PL	москали
@@ -842,7 +842,7 @@
 осведомлённый	pos=ADJ,case=NOM,gen=MASC,num=SG	осведомлённый
 осветление	pos=N,case=ACC,num=PL	осветления
 оседлать	pos=V,tense=PST,gen=NEUT,num=PL,aspect=PFV	оседлали
-осень	pos=N,case=INS,num=SG	осенью
+осень	pos=N,case=INS,num=SG	осенем
 оскорбительный	pos=ADJ,case=DAT,gen=MASC,num=SG	оскорбительному
 оскорблять	pos=V,tense=PST,voice=PASS,aspect=IPFV	оскорбленный
 основоположник	pos=N,case=ESS,num=PL	основоположниках
@@ -937,7 +937,7 @@
 пискарь	pos=N,case=NOM,num=PL	пискари
 письменный	pos=ADJ,case=ESS,gen=NEUT,num=SG	письменном
 пищать	pos=V,tense=PRS,voice=ACT,aspect=IPFV	пищающий
-пластырь	pos=N,case=ESS,num=SG	пластыри
+пластырь	pos=N,case=ESS,num=SG	пластыре
 платочек	pos=N,case=INS,num=PL	платочками
 плацдарм	pos=N,case=NOM,num=SG	плацдарм
 плед	pos=N,case=ACC,num=PL	пледы
@@ -1120,7 +1120,7 @@
 пруд	pos=N,case=DAT,num=SG	пруду
 прыжок	pos=N,case=NOM,num=SG	прыжок
 психика	pos=N,case=NOM,num=PL	психики
-психолог	pos=N,case=NOM,num=PL	психологи
+психолог	pos=N,case=NOM,num=PL	психологы
 психосоматический	pos=ADJ,case=NOM,gen=MASC,num=SG	психосоматический
 пугач	pos=N,case=ESS,num=SG	пугаче
 пулемёт	pos=N,case=DAT,num=SG	пулемёту
@@ -1130,7 +1130,7 @@
 пустить	pos=V,mood=IMP,tense=FUT,num=PL,aspect=PFV	пустите
 путешествовать	pos=V,finite=NFIN,aspect=IPFV	путешествовать
 путник	pos=N,case=ESS,num=PL	путниках
-путь	pos=N,case=INS,num=PL	путями
+путь	pos=N,case=INS,num=PL	путьями
 пушкинский	pos=ADJ,case=INS,num=PL	пушкинскими
 пушок	pos=N,case=ACC,num=SG	пушок
 пушок	pos=N,case=GEN,num=PL	пушков
@@ -1241,7 +1241,7 @@
 сбегать	pos=V,tense=PST,num=PL,aspect=IPFV	сбегали
 сбивать	pos=V,aspect=PFV	сбивь
 сбить	pos=V,tense=PST,voice=ACT,aspect=PFV	сбивший
-свекровь	pos=N,case=GEN,num=SG	свекровя
+свекровь	pos=N,case=GEN,num=SG	свекрови
 свергать	pos=V,mood=IMP,num=SG,aspect=IPFV	свергай
 свергать	pos=V,tense=PRS,per=2,num=SG,aspect=IPFV	свергаешь
 светлый	pos=ADJ,case=NOM,gen=NEUT,num=SG	светлое
@@ -1261,7 +1261,7 @@
 сидеть	pos=V,tense=PST,gen=NEUT,num=SG,aspect=IPFV	сидело
 символический	pos=ADJ,case=INS,num=PL	символическими
 синтаксис	pos=N,case=ESS,num=SG	синтаксисе
-сирень	pos=N,case=DAT,num=PL	сирням
+сирень	pos=N,case=DAT,num=PL	сиреням
 сияющий	pos=ADJ,case=GEN,num=PL	сияющих
 скатить	pos=V,tense=FUT,per=3,num=SG,aspect=PFV	скатит
 скачок	pos=N,case=INS,num=PL	скачками
@@ -1332,7 +1332,7 @@
 становление	pos=N,case=ACC,num=PL	становления
 старание	pos=N,case=NOM,num=SG	старание
 стареть	pos=V,tense=PRS,per=1,num=SG,aspect=IPFV	старю
-стебель	pos=N,case=DAT,num=SG	стебелю
+стебель	pos=N,case=DAT,num=SG	стебели
 стенд	pos=N,case=NOM,num=SG	стенд
 степ	pos=N,case=DAT,num=PL	степам
 стеснительный	pos=ADJ,gen=NEUT,num=SG	стеснительно
@@ -1424,7 +1424,7 @@
 тротуар	pos=N,case=NOM,num=PL	тротуары
 трудиться	pos=V,tense=PRS,per=1,num=PL,aspect=IPFV	трудимся
 трюк	pos=N,case=INS,num=PL	трюками
-туземец	pos=N,case=ACC,num=SG	туземец
+туземец	pos=N,case=ACC,num=SG	туземеца
 туземец	pos=N,case=DAT,num=SG	туземцу
 турок	pos=N,case=ESS,num=PL	турках
 убирать	pos=V,tense=PRS,per=2,num=PL,aspect=IPFV	убираете
@@ -1435,7 +1435,7 @@
 увлекаться	pos=V,tense=PRS,per=1,num=SG,aspect=IPFV	увлекаюсь
 увлечься	pos=V,mood=IMP,tense=FUT,num=PL,aspect=PFV	увлечись
 увлечься	pos=V,tense=FUT,per=3,num=PL,aspect=PFV	увлекутся
-уголёк	pos=N,case=DAT,num=SG	угольку
+уголёк	pos=N,case=DAT,num=SG	уголёку
 угон	pos=N,case=DAT,num=SG	угону
 угощение	pos=N,case=INS,num=PL	угощениями
 угрюмый	pos=ADJ,case=NOM,gen=NEUT,num=SG	угрюмое
@@ -1447,7 +1447,7 @@
 удочерять	pos=V,tense=PRS,per=1,num=PL,aspect=IPFV	удочеряем
 ужас	pos=N,case=DAT,num=SG	ужасу
 ужасающий	pos=ADJ,case=DAT,num=PL	ужасающим
-уй	pos=N,case=ACC,num=PL	уев
+уй	pos=N,case=ACC,num=PL	уи
 укладывать	pos=V,tense=PRS,voice=PASS,aspect=IPFV	укладываемый
 укорять	pos=V,tense=PRS,per=2,num=PL,aspect=IPFV	укоряете
 укрывать	pos=V,tense=PST,gen=FEM,num=SG,aspect=IPFV	укрывала
@@ -1482,7 +1482,7 @@
 утрирование	pos=N,case=NOM,num=PL	утрирования
 участок	pos=N,case=ACC,num=PL	участки
 учить	pos=V,mood=IMP,num=PL,aspect=IPFV	учите
-ущелье	pos=N,case=GEN,num=PL	ущельй
+ущелье	pos=N,case=GEN,num=PL	ущелий
 фаза	pos=N,case=DAT,num=SG	фазе
 фактический	pos=ADJ,case=NOM,num=PL	фактические
 фаталист	pos=N,case=GEN,num=SG	фаталиста
@@ -1524,7 +1524,7 @@
 цугцванг	pos=N,case=ACC,num=SG	цугцванг
 часослов	pos=N,case=ACC,num=SG	часослов
 часть	pos=N,case=GEN,num=SG	части
-человеконенавистник	pos=N,case=ESS,num=SG	человеконенавистниие
+человеконенавистник	pos=N,case=ESS,num=SG	человеконенавистниве
 челядин	pos=N,case=GEN,num=SG	челядина
 червовый	pos=ADJ,case=DAT,gen=MASC,num=SG	червовому
 черепок	pos=N,case=DAT,num=PL	черепкам
@@ -1536,7 +1536,7 @@
 членораздельный	pos=ADJ,case=ESS,gen=FEM,num=SG	членораздельной
 чокнуться	pos=V,mood=IMP,num=SG,aspect=PFV	чокнись
 чокнуться	pos=V,tense=PST,aspect=PFV	чокнувшись
-чорт	pos=N,case=ACC,num=PL	чортов
+чорт	pos=N,case=ACC,num=PL	чертов
 шарабан	pos=N,case=ESS,num=SG	шарабане
 шарить	pos=V,tense=PRS,per=3,num=SG,aspect=IPFV	шарит
 шафран	pos=N,case=ACC,num=SG	шафран
@@ -1561,7 +1561,7 @@
 шуршание	pos=N,case=ACC,num=PL	шуршания
 шут	pos=N,case=NOM,num=PL	шуты
 щёлок	pos=N,case=ESS,num=PL	щёлоках
-эквивалент	pos=N,case=ACC,num=PL	эквивалентов
+эквивалент	pos=N,case=ACC,num=PL	эквиваленты
 экзотичный	pos=ADJ,case=GEN,gen=NEUT,num=SG	экзотичного
 экспонат	pos=N,case=GEN,num=PL	экспонатов
 экспресс	pos=N,case=DAT,num=PL	экспрессам

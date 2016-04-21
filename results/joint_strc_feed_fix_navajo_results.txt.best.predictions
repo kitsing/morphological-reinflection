@@ -22,7 +22,7 @@ achʼiish	pos=V,mood=REAL,per=3,num=PL,aspect={IPFV/PROG}	daʼachʼiish
 achʼiish	pos=V,mood=REAL,per=4,num={DU/PL},aspect={PFV/PRF}	ajííchʼiizh
 achʼiish	pos=V,mood=REAL,per=4,num=SG,aspect={PFV/PRF}	ajííchʼiizh
 achįʼ	pos=V,mood=REAL,per=1,num={DU/PL},aspect={IPFV/PROG}	iichįʼ
-achįʼ	pos=V,mood=REAL,per=1,num={DU/PL},aspect={PFV/PRF}	ashiichąąʼ
+achįʼ	pos=V,mood=REAL,per=1,num={DU/PL},aspect={PFV/PRF}	ashichąąʼ
 achįʼ	pos=V,mood=REAL,per=1,num=SG,aspect={IPFV/PROG}	ashchįʼ
 achįʼ	pos=V,mood=REAL,per=3,num={DU/PL},aspect={IPFV/PROG}	achįʼ
 achįʼ	pos=V,mood=REAL,per=3,num=PL,aspect={IPFV/PROG}	daʼachįʼ
@@ -289,7 +289,7 @@ dizééh	pos=V,mood=REAL,per=3,num={DU/PL},aspect={IPFV/PROG}	dizééh
 dizééh	pos=V,mood=REAL,per=3,num={DU/PL},aspect={PFV/PRF}	deezaʼ
 dizééh	pos=V,mood=REAL,per=3,num=PL,aspect={IPFV/PROG}	dadizééh
 dizheeh	pos=V,mood=REAL,per=1,num=SG,aspect={PFV/PRF}	díízhééʼ
-dizheeh	pos=V,mood=REAL,per=3,num=PL,aspect={PFV/PRF}	dadíízhééʼ
+dizheeh	pos=V,mood=REAL,per=3,num=PL,aspect={PFV/PRF}	dadizzhééʼ
 dizheeh	pos=V,mood=REAL,per=4,num={DU/PL},aspect={PFV/PRF}	jidíízhééʼ
 dizheeh	pos=V,mood=REAL,per=4,num=PL,aspect={PFV/PRF}	dazhdíízhééʼ
 ééʼ	pos=N,per=0,num=PL	aʼééʼ
@@ -377,12 +377,12 @@ hooghan	pos=N,per=2,num=SG	nighan
 íhoołʼaah	pos=V,mood=REAL,per=2,num=PL,aspect={IPFV/PROG}	ídahoołʼaah
 iichʼąh	pos=V,mood=REAL,per=1,num={DU/PL},aspect={IPFV/PROG}	iichʼąh
 iichʼąh	pos=V,mood=REAL,per=1,num=PL,aspect={IPFV/PROG}	daʼiichʼąh
-iichʼąh	pos=V,mood=REAL,per=1,num=PL,aspect={PFV/PRF}	daʼizhchʼąh
+iichʼąh	pos=V,mood=REAL,per=1,num=PL,aspect={PFV/PRF}	daʼiiichʼąh
 iichʼąh	pos=V,mood=REAL,per=3,num={DU/PL},aspect={IPFV/PROG}	iichʼąh
 iichʼąh	pos=V,mood=REAL,per=4,num={DU/PL},aspect={PFV/PRF}	ajizhchʼąh
 iiłʼá	pos=V,mood=REAL,per=1,num={DU/PL},aspect={PFV/PRF}	iilʼaʼ
 iiłʼá	pos=V,mood=REAL,per=2,num=SG,aspect={PFV/PRF}	ííníłʼaʼ
-iiłʼá	pos=V,mood=REAL,per=3,num=PL,aspect={IPFV/PROG}	adeiłʼá
+iiłʼá	pos=V,mood=REAL,per=3,num=PL,aspect={IPFV/PROG}	adaiłʼá
 iiłʼá	pos=V,mood=REAL,per=4,num=SG,aspect={PFV/PRF}	ajííłʼaʼ
 ííłdįįh	pos=V,mood=REAL,per=1,num=PL,aspect={PFV/PRF}	ádasiildįįd
 ííłdįįh	pos=V,mood=REAL,per=2,num={DU/PL},aspect={IPFV/PROG}	áłdįįh
@@ -511,7 +511,7 @@ naateeł	pos=V,mood=REAL,per=2,num=PL,aspect={PFV/PRF}	nidasootéél
 naateeł	pos=V,mood=REAL,per=2,num=SG,aspect={IPFV/PROG}	naniteeł
 naateeł	pos=V,mood=REAL,per=2,num=SG,aspect={PFV/PRF}	nisínítéél
 naateeł	pos=V,mood=REAL,per=3,num={DU/PL},aspect={PFV/PRF}	naaztéél
-naʼazo	pos=V,mood=REAL,per=1,num=PL,aspect={PFV/PRF}	nidaʼiidzo
+naʼazo	pos=V,mood=REAL,per=1,num=PL,aspect={PFV/PRF}	nidaʼsiizo
 naʼazo	pos=V,mood=REAL,per=3,num=SG,aspect={IPFV/PROG}	naʼazo
 naʼazo	pos=V,mood=REAL,per=4,num=SG,aspect={IPFV/PROG}	niʼjizo
 nádleeh	pos=V,mood=REAL,per=1,num={DU/PL},aspect={IPFV/PROG}	néiidleeh
@@ -530,7 +530,7 @@ naʼídíłkid	pos=V,mood=REAL,per=2,num=SG,aspect={PFV/PRF}	naʼídééłkid
 naʼídíłkid	pos=V,mood=REAL,per=3,num={DU/PL},aspect={IPFV/PROG}	naʼídíłkid
 naʼídíłkid	pos=V,mood=REAL,per=3,num=SG,aspect={PFV/PRF}	naʼídééłkid
 naʼídíłkid	pos=V,mood=REAL,per=4,num={DU/PL},aspect={IPFV/PROG}	naʼízhdíłkid
-naʼídíłkid	pos=V,mood=REAL,per=4,num=PL,aspect={IPFV/PROG}	naʼídazhdíłkid
+naʼídíłkid	pos=V,mood=REAL,per=4,num=PL,aspect={IPFV/PROG}	naʼídajdíłkid
 naʼídíłkid	pos=V,mood=REAL,per=4,num=PL,aspect={PFV/PRF}	naʼídazhdééłkid
 naʼídíłkid	pos=V,mood=REAL,per=4,num=SG,aspect={IPFV/PROG}	naʼízhdíłkid
 nákwi	pos=V,mood=REAL,per=1,num={DU/PL},aspect={PFV/PRF}	nísiikwi
@@ -622,13 +622,13 @@ neiyé	pos=V,mood=REAL,per=3,num=SG,aspect={IPFV/PROG}	neiyé
 neiyé	pos=V,mood=REAL,per=3,num=SG,aspect={PFV/PRF}	neizyį
 neiyé	pos=V,mood=REAL,per=4,num={DU/PL},aspect={PFV/PRF}	nijizyį
 neiyé	pos=V,mood=REAL,per=4,num=PL,aspect={PFV/PRF}	nidajizyį
-nidaah	pos=V,mood=REAL,per=1,num=SG,aspect={IPFV/PROG}	nishdaah
+nidaah	pos=V,mood=REAL,per=1,num=SG,aspect={IPFV/PROG}	nishééh
 nidaah	pos=V,mood=REAL,per=1,num=SG,aspect={PFV/PRF}	nédá
 nidaah	pos=V,mood=REAL,per=2,num=SG,aspect={IPFV/PROG}	nídaah
 nidaah	pos=V,mood=REAL,per=2,num=SG,aspect={PFV/PRF}	nínídá
-nidaah	pos=V,mood=REAL,per=3,num={DU/PL},aspect={PFV/PRF}	neezké
-nidaah	pos=V,mood=REAL,per=3,num=SG,aspect={IPFV/PROG}	nidaah
-nidaah	pos=V,mood=REAL,per=4,num=SG,aspect={PFV/PRF}	jineezdá
+nidaah	pos=V,mood=REAL,per=3,num={DU/PL},aspect={PFV/PRF}	neekéé
+nidaah	pos=V,mood=REAL,per=3,num=SG,aspect={IPFV/PROG}	nikeeh
+nidaah	pos=V,mood=REAL,per=4,num=SG,aspect={PFV/PRF}	jineezké
 nilʼąąh	pos=V,mood=REAL,per=1,num=SG,aspect={PFV/PRF}	nééshʼąąd
 nilʼąąh	pos=V,mood=REAL,per=2,num={DU/PL},aspect={IPFV/PROG}	nołʼąąh
 nilʼąąh	pos=V,mood=REAL,per=3,num={DU/PL},aspect={IPFV/PROG}	nilʼąąh
@@ -644,7 +644,7 @@ niné	pos=V,mood=REAL,per=4,num={DU/PL},aspect={IPFV/PROG}	jininé
 nitʼááh	pos=V,mood=REAL,per=1,num={DU/PL},aspect={PFV/PRF}	niitʼááʼ
 nitʼááh	pos=V,mood=REAL,per=2,num={DU/PL},aspect={IPFV/PROG}	nohtʼááh
 nitʼááh	pos=V,mood=REAL,per=2,num=SG,aspect={PFV/PRF}	níínítʼááʼ
-nitʼááh	pos=V,mood=REAL,per=3,num={DU/PL},aspect={PFV/PRF}	nootʼááʼ
+nitʼááh	pos=V,mood=REAL,per=3,num={DU/PL},aspect={PFV/PRF}	neeshtʼááʼ
 nitʼááh	pos=V,mood=REAL,per=4,num=SG,aspect={IPFV/PROG}	jinitʼááh
 nitʼááh	pos=V,mood=REAL,per=4,num=SG,aspect={PFV/PRF}	jinootʼááʼ
 óolyé	pos=V,mood=REAL,per=1,num=SG,aspect={IPFV/PROG}	íinishyé
@@ -673,7 +673,7 @@ tánéígis	pos=V,mood=REAL,per=2,num={DU/PL},aspect={IPFV/PROG}	tánáhgis
 tánéígis	pos=V,mood=REAL,per=2,num={DU/PL},aspect={PFV/PRF}	táásoogiz
 tánéígis	pos=V,mood=REAL,per=2,num=PL,aspect={PFV/PRF}	táádasoogiz
 tánéígis	pos=V,mood=REAL,per=2,num=SG,aspect={PFV/PRF}	táásínígiz
-tánéígis	pos=V,mood=REAL,per=3,num=PL,aspect={PFV/PRF}	táádeizgiz
+tánéígis	pos=V,mood=REAL,per=3,num=PL,aspect={PFV/PRF}	táádeisgiz
 tánéígis	pos=V,mood=REAL,per=3,num=SG,aspect={IPFV/PROG}	tánéígis
 tłʼaajįʼééʼ	pos=N,per=0,num={DU/PL}	atłʼaajįʼééʼ
 tłʼaajįʼééʼ	pos=N,per=1,num=SG	shitłʼaajįʼééʼ
@@ -752,7 +752,7 @@ yiʼéésh	pos=V,mood=REAL,per=3,num={DU/PL},aspect={PFV/PRF}	yiyííʼeezh
 yiʼéésh	pos=V,mood=REAL,per=3,num=SG,aspect={IPFV/PROG}	yiʼéésh
 yiʼeesh	pos=V,mood=REAL,per=4,num=PL,aspect={IPFV/PROG}	dajiʼeesh
 yiʼéésh	pos=V,mood=REAL,per=4,num=SG,aspect={IPFV/PROG}	jiʼéésh
-yiʼéés	pos=V,mood=REAL,per=1,num=PL,aspect={IPFV/PROG}	daaiiʼéés
+yiʼéés	pos=V,mood=REAL,per=1,num=PL,aspect={IPFV/PROG}	deiitʼéés
 yiʼéés	pos=V,mood=REAL,per=2,num={DU/PL},aspect={PFV/PRF}	wooʼeez
 yiʼéés	pos=V,mood=REAL,per=2,num=SG,aspect={IPFV/PROG}	niʼéés
 yigan	pos=V,mood=REAL,per=1,num={DU/PL},aspect={IPFV/PROG}	yiigan
@@ -773,10 +773,10 @@ yigháád	pos=V,mood=REAL,per=3,num={DU/PL},aspect={PFV/PRF}	yiyíígháád
 yighaał	pos=V,mood=REAL,per=1,num={DU/PL},aspect={PFV/PRF}	yiigal
 yighaał	pos=V,mood=REAL,per=1,num=SG,aspect={IPFV/PROG}	yishhaał
 yighaał	pos=V,mood=REAL,per=1,num=SG,aspect={PFV/PRF}	yíghal
-yighaał	pos=V,mood=REAL,per=2,num={DU/PL},aspect={IPFV/PROG}	wohhaał
+yighaał	pos=V,mood=REAL,per=2,num={DU/PL},aspect={IPFV/PROG}	wohghaał
 yighaał	pos=V,mood=REAL,per=2,num={DU/PL},aspect={PFV/PRF}	wooghal
 yighaał	pos=V,mood=REAL,per=2,num=SG,aspect={IPFV/PROG}	nighaał
-yighaał	pos=V,mood=REAL,per=2,num=SG,aspect={PFV/PRF}	yíníghałl
+yighaał	pos=V,mood=REAL,per=2,num=SG,aspect={PFV/PRF}	yíníghal
 yighaał	pos=V,mood=REAL,per=3,num=PL,aspect={PFV/PRF}	daazghal
 yighaał	pos=V,mood=REAL,per=3,num=SG,aspect={IPFV/PROG}	yighaał
 yighaał	pos=V,mood=REAL,per=4,num={DU/PL},aspect={PFV/PRF}	jííghal
@@ -803,7 +803,7 @@ yighą	pos=V,mood=REAL,per=3,num=PL,aspect={IPFV/PROG}	deighą
 yighą	pos=V,mood=REAL,per=3,num=PL,aspect={PFV/PRF}	dayííghąąʼ
 yighą	pos=V,mood=REAL,per=4,num={DU/PL},aspect={IPFV/PROG}	jighą
 yiibááh	pos=V,mood=REAL,per=2,num=PL,aspect={IPFV/PROG}	daoohbááh
-yiibááh	pos=V,mood=REAL,per=2,num=PL,aspect={PFV/PRF}	daoohaʼ
+yiibááh	pos=V,mood=REAL,per=2,num=PL,aspect={PFV/PRF}	daoohii
 yiibááh	pos=V,mood=REAL,per=3,num=PL,aspect={IPFV/PROG}	dayiibááh
 yiibááh	pos=V,mood=REAL,per=4,num=SG,aspect={PFV/PRF}	jiibaʼ
 yiichííh	pos=V,mood=REAL,per=1,num=PL,aspect={IPFV/PROG}	deiichííh
@@ -1160,7 +1160,7 @@ yinaalnish	pos=V,mood=REAL,per=1,num=SG,aspect={IPFV/PROG}	binaashnish
 yinaalnish	pos=V,mood=REAL,per=1,num=SG,aspect={PFV/PRF}	binishishnish
 yinaalnish	pos=V,mood=REAL,per=2,num={DU/PL},aspect={IPFV/PROG}	binaałnish
 yinaalnish	pos=V,mood=REAL,per=2,num=SG,aspect={IPFV/PROG}	binanilnish
-yinaalnish	pos=V,mood=REAL,per=2,num=SG,aspect={PFV/PRF}	binishoołnish
+yinaalnish	pos=V,mood=REAL,per=2,num=SG,aspect={PFV/PRF}	binishínílnish
 yinaalnish	pos=V,mood=REAL,per=3,num=PL,aspect={IPFV/PROG}	yinidaalnish
 yinaalnish	pos=V,mood=REAL,per=3,num=PL,aspect={PFV/PRF}	yinidaashnish
 yinaalnish	pos=V,mood=REAL,per=3,num=SG,aspect={PFV/PRF}	yinaashnish
@@ -1221,7 +1221,7 @@ yishíísh	pos=V,mood=REAL,per=3,num=SG,aspect={PFV/PRF}	yiyííshiizh
 yishíísh	pos=V,mood=REAL,per=4,num=PL,aspect={IPFV/PROG}	dajishíísh
 yishood	pos=V,mood=REAL,per=1,num=SG,aspect={PFV/PRF}	yíshóód
 yishood	pos=V,mood=REAL,per=2,num=PL,aspect={PFV/PRF}	dashooshóód
-yishood	pos=V,mood=REAL,per=3,num=PL,aspect={PFV/PRF}	dayííshóód
+yishood	pos=V,mood=REAL,per=3,num=PL,aspect={PFV/PRF}	dayishóód
 yishood	pos=V,mood=REAL,per=3,num=SG,aspect={IPFV/PROG}	yishood
 yishood	pos=V,mood=REAL,per=3,num=SG,aspect={PFV/PRF}	yiyííshóód
 yishood	pos=V,mood=REAL,per=4,num=PL,aspect={IPFV/PROG}	dajishood
@@ -1329,7 +1329,7 @@ yitsʼǫǫs	pos=V,mood=REAL,per=3,num=SG,aspect={PFV/PRF}	yiyíítsʼǫǫz
 yitsʼǫǫs	pos=V,mood=REAL,per=4,num={DU/PL},aspect={PFV/PRF}	jíítsʼǫǫz
 yitsʼǫǫs	pos=V,mood=REAL,per=4,num=SG,aspect={PFV/PRF}	jíítsʼǫǫz
 yiyeeh	pos=V,mood=REAL,per=1,num={DU/PL},aspect={IPFV/PROG}	yiigeeh
-yiyeeh	pos=V,mood=REAL,per=1,num=SG,aspect={IPFV/PROG}	yishyeeh
+yiyeeh	pos=V,mood=REAL,per=1,num=SG,aspect={IPFV/PROG}	yishheeh
 yiyeeh	pos=V,mood=REAL,per=1,num=SG,aspect={PFV/PRF}	yíyį
 yiyeeh	pos=V,mood=REAL,per=2,num=PL,aspect={IPFV/PROG}	daahheeh
 yiyeeh	pos=V,mood=REAL,per=3,num={DU/PL},aspect={IPFV/PROG}	yiyeeh
@@ -1342,7 +1342,7 @@ yiyiighas	pos=V,mood=REAL,per=3,num={DU/PL},aspect={PFV/PRF}	yizghas
 yiyiighas	pos=V,mood=REAL,per=4,num=SG,aspect={IPFV/PROG}	jiighas
 yiyiighas	pos=V,mood=REAL,per=4,num=SG,aspect={PFV/PRF}	jizghas
 yiyiigis	pos=V,mood=REAL,per=1,num={DU/PL},aspect={PFV/PRF}	siigis
-yiyiigis	pos=V,mood=REAL,per=1,num=SG,aspect={IPFV/PROG}	yiisis
+yiyiigis	pos=V,mood=REAL,per=1,num=SG,aspect={IPFV/PROG}	yiisxs
 yiyiigis	pos=V,mood=REAL,per=1,num=SG,aspect={PFV/PRF}	ségis
 yiyiigis	pos=V,mood=REAL,per=2,num=SG,aspect={IPFV/PROG}	yiigis
 yiyiigis	pos=V,mood=REAL,per=2,num=SG,aspect={PFV/PRF}	sínígis
@@ -1439,7 +1439,7 @@ yízííd	pos=V,mood=REAL,per=4,num=PL,aspect={IPFV/PROG}	dajízííd
 yízííd	pos=V,mood=REAL,per=4,num=SG,aspect={IPFV/PROG}	jízííd
 yizííd	pos=V,mood=REAL,per=4,num=SG,aspect={PFV/PRF}	jííziid
 yizǫǫs	pos=V,mood=REAL,per=1,num={DU/PL},aspect={IPFV/PROG}	yiidǫǫs
-yizǫǫs	pos=V,mood=REAL,per=1,num={DU/PL},aspect={PFV/PRF}	yiidǫǫz
+yizǫǫs	pos=V,mood=REAL,per=1,num={DU/PL},aspect={PFV/PRF}	yiidzǫǫz
 yizǫǫs	pos=V,mood=REAL,per=1,num=PL,aspect={IPFV/PROG}	deiidǫǫs
 yizǫǫs	pos=V,mood=REAL,per=1,num=PL,aspect={PFV/PRF}	deiidǫǫz
 yizǫǫs	pos=V,mood=REAL,per=2,num={DU/PL},aspect={PFV/PRF}	woozǫǫz

@@ -1,5 +1,5 @@
-train path = /home/aharonr6/git/sigmorphon2016/data/turkish-task1-train
-test path = /home/aharonr6/git/sigmorphon2016/data/turkish-task1-dev
+train path = /home/aharonr6/git/sigmorphon2016//data/turkish-task1-train
+test path = /home/aharonr6/git/sigmorphon2016//data/turkish-task1-dev
 LAYERS = 2
 MAX_PREDICTION_LEN = 50
 EPOCHS = 300
