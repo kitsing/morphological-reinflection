@@ -3,6 +3,7 @@
 Usage:
   run_all_langs.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN] [--epochs=EPOCHS]
   [--layers=LAYERS] [--optimization=OPTIMIZATION] [--pool=POOL] [--langs=LANGS] [--script=SCRIPT] [--prefix=PREFIX]
+  [--task=TASK]
   SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
@@ -23,6 +24,7 @@ Options:
   --langs=LANGS                 languages separated by comma
   --script=SCRIPT               the training script to run
   --prefix=PREFIX               the output files prefix
+  --task=TASK                   the current task to train
 """
 
 import os
@@ -45,13 +47,13 @@ CNN_MEM = 9096
 
 
 def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim, pool_size, langs, script, prefix):
+         optimization, feat_input_dim, pool_size, langs, script, prefix, task):
     parallelize_training = True
     params = []
     print 'now training langs: ' + str(langs)
     for lang in langs:
         params.append([CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                    sigmorphon_root_dir, src_dir, script, prefix])
+                    sigmorphon_root_dir, src_dir, script, prefix, task])
 
 
     # train models for each lang in parallel or in loop
@@ -71,16 +73,16 @@ def train_language_wrapper(params):
 
 
 def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                sigmorphon_root_dir, src_dir, script, prefix):
+                sigmorphon_root_dir, src_dir, script, prefix, task):
     start = time.time()
     os.chdir(src_dir)
     os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} \
         --feat-input={4} --epochs={5} --layers={6} --optimization {7} \
-        {8}/data/{9}-task1-train \
-        {8}/data/{9}-task1-dev \
+        {8}/data/{9}-task{12}-train \
+        {8}/data/{9}-task{12}-dev \
         {10}/{11}_{9}-results.txt \
         {8}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-                    sigmorphon_root_dir, lang, results_dir, prefix))
+                    sigmorphon_root_dir, lang, results_dir, prefix, task))
 
     end = time.time()
     print 'finished ' + lang + ' in ' + str(ms_to_timestring(end - start))
@@ -164,8 +166,13 @@ if __name__ == '__main__':
     else:
         print 'prefix is mandatory'
         raise ValueError
+    if arguments['--task']:
+        task_param = arguments['--task']
+    else:
+        task_param = '1'
+
 
     print arguments
 
     main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim, pool_size, langs_param, script_param, prefix_param)
+         optimization, feat_input_dim, pool_size, langs_param, script_param, prefix_param, task_param)
