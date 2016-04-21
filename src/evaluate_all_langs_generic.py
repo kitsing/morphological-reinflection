@@ -80,15 +80,21 @@ def evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, la
     if test:
         eval_str = 'test-covered'
 
+    # ugly workaroound for now
+    if 'blstm' in script:
+        separator = '_'
+    else:
+        separator = '-'
+
     command_format = 'python {0} --cnn-mem {1} --input={2} \
         --hidden={3} --feat-input={4} --epochs={5} --layers={6} --optimization {7} \
         {8}/data/{9}-task1-train \
         {8}/data/{9}-task1-{11} \
-        {10}/{12}_{9}-results.txt \
+        {10}/{12}_{9}{13}results.txt \
         {8}'
 
     os.system(command_format.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-                                    sigmorphon_root_dir, lang, results_dir, eval_str, prefix))
+                                    sigmorphon_root_dir, lang, results_dir, eval_str, prefix, separator))
 
     end = time.time()
     print 'finished ' + lang + ' in ' + str(ms_to_timestring(end - start))
