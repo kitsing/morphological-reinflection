@@ -3,10 +3,10 @@ import common
 
 def main():
 
-    langs = ['turkish', 'navajo', 'german', 'arabic', 'finnish', 'georgian', 'spanish', 'russian']
+    langs = ['turkish', 'navajo', 'german', 'arabic', 'finnish', 'georgian', 'spanish', 'russian', 'hungarian', 'maltese']
     for lang in langs:
-        train_path = '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/{0}-task1-train'.format(lang)
-        dev_path = '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/{0}-task1-dev'.format(lang)
+        train_path = '/Users/roeeaharoni/GitHub/sigmorphon2016/data/{0}-task1-train'.format(lang)
+        dev_path = '/Users/roeeaharoni/GitHub/sigmorphon2016/data/{0}-task1-dev'.format(lang)
         (train_words, train_lemmas, train_feat_dicts) = prepare_sigmorphon_data.load_data(train_path)
         (test_words, test_lemmas, test_feat_dicts) = prepare_sigmorphon_data.load_data(dev_path)
         alphabet, feature_types = prepare_sigmorphon_data.get_alphabet(train_words, train_lemmas, train_feat_dicts)

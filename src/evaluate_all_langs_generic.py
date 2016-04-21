@@ -81,7 +81,7 @@ def evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, la
         eval_str = 'test-covered'
 
     # ugly workaroound for now
-    if 'blstm' in script:
+    if 'blstm' in script and lang != 'hungarian' and lang != 'maltese':
         separator = '_'
     else:
         separator = '-'
