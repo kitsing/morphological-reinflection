@@ -23,3 +23,5 @@
 src/prepare_sigmorphon_data.pyc
 
 *.*~
+
+*.pyc
