@@ -98,7 +98,7 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
     # if final results, write the special file name format
     if 'test-covered' in test_path:
         results_prefix = '/'.join(output_file_path.split('/')[:-1])
-        lang = train_path.split('.')[-1].replace('-task1-train','')
+        lang = train_path.split('/')[-1].replace('-task1-train','')
         predictions_path = '{0}/{1}-task1-solution'.format(results_prefix, lang)
     else:
         predictions_path = output_file_path + '.predictions'
