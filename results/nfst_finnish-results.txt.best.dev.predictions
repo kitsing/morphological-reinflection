@@ -27,7 +27,7 @@ ahneus	pos=N,case=IN+LAT,num=SG	ahneuteen
 aivomato	pos=N,case=ON+ABL,num=PL	aivomadoilta
 aivosirppi	pos=N,case=IN+ABL,num=SG	aivosirpistä
 ajantasaistaa	pos=V,polar=POS,mood=IND,tense=PST,per=2,num=PL	ajantasaistitte
-ajettua	pos=V,polar=POS,mood=IND,tense=PST,per=1,num=PL	ajetuimme
+ajettua	pos=V,polar=POS,mood=IND,tense=PST,per=1,num=PL	ajettuimme
 ajoporo	pos=N,case=NOM,num=SG	ajoporo
 äkäillä	pos=V,polar=POS,mood=IND,tense=PST,per=2,num=PL	äkäilitte
 akankaali	pos=N,case=FRML,num=SG	akankaalina
@@ -66,7 +66,7 @@ apoptoosi	pos=N,case=ON+ESS,num=SG	apoptoosilla
 aposematismi	pos=N,case=TRANS,num=SG	aposematismiksi
 appro	pos=N,case=GEN,num=SG	appron
 aprikoosiseitikki	pos=N,case=COM,num=PL	aprikoosiseitikkeineen
-arabeski	pos=N,case=FRML,num=SG	arabeskinä
+arabeski	pos=N,case=FRML,num=SG	arabeskina
 arboretum	pos=N,case=PRIV,num=PL	arboretumeitta
 argonautti	pos=N,case=ON+ESS,num=PL	argonauteilla
 argumentoida	pos=V,voice=ACT,finite=NFIN	argumentoida
@@ -88,7 +88,7 @@ assosiatiivisuus	pos=N,case=ACC,num=PL	assosiatiivisuudet
 assosioida	pos=V,polar=POS,mood=POT,tense=PRS,per=3,num=SG	assosioinee
 asterismi	pos=N,case=INS,num=PL	asterismein
 astuttaa	pos=V,polar=POS,mood=POT,tense=PRS,per=1,num=PL	astuttanemme
-asuntomessut	pos=N,case=PRIV,num=PL	asuntomessuittä
+asuntomessut	pos=N,case=PRIV,num=PL	asuntomessuitta
 asunto	pos=N,case=NOM,num=SG	asunto
 augiitti	pos=N,case=NOM,num=PL	augiitit
 augiitti	pos=N,case=ON+ABL,num=SG	augiitilta
@@ -143,7 +143,7 @@ bylsiä	pos=V,polar=POS,mood=POT,tense=PRS,per=2,num=PL	bylsinette
 byrokraatti	pos=N,case=IN+ESS,num=PL	byrokraateissa
 cozumelinsupi	pos=N,case=COM,num=PL	cozumelinsupeineen
 danburiitti	pos=N,case=TRANS,num=PL	danburiiteiksi
-debata	pos=V,polar=POS,mood=IND,tense=PRS,per=2,num=PL	debaaete
+debata	pos=V,polar=POS,mood=IND,tense=PRS,per=2,num=PL	debaate
 definitiivisyys	pos=N,case=ON+ABL,num=SG	definitiivisyydeltä
 degeneroida	pos=V,polar=POS,mood=IND,tense=PRS,voice=PASS	degeneroidaan
 dekstropropoksifeeni	pos=N,case=ON+ESS,num=SG	dekstropropoksifeenilla
@@ -213,7 +213,7 @@ eurokorko	pos=N,case=PRT,num=PL	eurokorkoja
 eurooppalaisperäisyys	pos=N,case=ON+ABL,num=SG	eurooppalaisperäisyydeltä
 eväslaukku	pos=N,case=ON+ALL,num=SG	eväslaukulle
 eversti	pos=N,case=ACC,num=PL	everstit
-ewe	pos=N,case=INS,num=PL	eweej
+ewe	pos=N,case=INS,num=PL	eween
 fabulointi	pos=N,case=ON+ALL,num=SG	fabuloinnille
 fagosyytti	pos=N,case=ACC,num=SG	fagosyytin
 fakkiutua	pos=V,polar=POS,mood=IND,tense=PRS,per=3,num=PL	fakkiutuvat
@@ -226,7 +226,7 @@ feimi	pos=N,case=ON+ESS,num=PL	feimeillä
 fennougristi	pos=N,case=IN+ESS,num=PL	fennougristeissa
 feodalisti	pos=N,case=ACC,num=PL	feodalistit
 feromoni	pos=N,case=ACC,num=SG	feromonin
-fife	pos=N,case=ON+ABL,num=PL	fifeiltea
+fife	pos=N,case=ON+ABL,num=PL	fifeetla
 filmikasetti	pos=N,case=NOM,num=SG	filmikasetti
 flavaspidiinihappo	pos=N,case=IN+ABL,num=PL	flavaspidiinihapoista
 floksi	pos=N,case=FRML,num=SG	floksina
@@ -253,7 +253,7 @@ futia	pos=V,polar=POS,mood=COND,tense=PRS,per=2,num=SG	futisit
 fytonsidi	pos=N,case=NOM,num=PL	fytonsidit
 gaboninmahonki	pos=N,case=TRANS,num=PL	gaboninmahongeiksi
 galaktoosi	pos=N,case=GEN,num=PL	galaktoosien
-galaktoosi	pos=N,case=TRANS,num=PL	galaktooseiksi
+galaktoosi	pos=N,case=TRANS,num=PL	galaktoosiksi
 gaullismi	pos=N,case=ACC,num=PL	gaullismit
 gaullismi	pos=N,case=PRT,num=SG	gaullismia
 geenihoito	pos=N,case=ON+ESS,num=PL	geenihoidoilla
@@ -299,7 +299,7 @@ hakkaantua	pos=V,voice=ACT,aspect=PROSP	hakkaantumaisillaan
 hako	pos=N,case=ON+ESS,num=SG	hakolla
 halstaroida	pos=V,polar=POS,mood=IND,tense=PRS,per=2,num=PL	halstaroitte
 hälventää	pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=SG	hälvennän
-hamppuöljy	pos=N,case=PRT,num=SG	hamppuöljya
+hamppuöljy	pos=N,case=PRT,num=SG	hamppuöljyä
 hankinnaisominaisuus	pos=N,case=NOM,num=PL	hankinnaisominaisuudet
 hankkiutua	pos=V,polar=POS,mood=IMP,tense=PRS,voice=PASS	hankkiuduttakoon
 haparointi	pos=N,case=ACC,num=SG	haparoinnin
@@ -320,7 +320,7 @@ harustaa	pos=V,polar=POS,mood=IND,tense=PRS,per=2,num=SG	harustat
 harvinaisuus	pos=N,case=ON+ABL,num=SG	harvinaisuudelta
 hätkähdyttää	pos=V,polar=POS,mood=POT,tense=PRS,per=3,num=PL	hätkähdyttänevät
 hattutemppu	pos=N,case=IN+ABL,num=SG	hattutempusta
-hattutemppu	pos=N,case=TRANS,num=SG	hattutempuksi
+hattutemppu	pos=N,case=TRANS,num=SG	hattutempuksu
 hauskuuttaa	pos=V,polar=POS,mood=IND,tense=PST,per=1,num=SG	hauskuutin
 havaijinhanhi	pos=N,case=IN+ABL,num=SG	havaijinhanhesta
 havaiji	pos=N,case=IN+ABL,num=SG	havaijista
@@ -378,7 +378,7 @@ homogenisoida	pos=V,polar=POS,mood=IND,tense=PRS,per=3,num=SG	homogenisoi
 homokysteiini	pos=N,case=NOM,num=PL	homokysteiinit
 homoseksualisti	pos=N,case=PRT,num=PL	homoseksualisteja
 honata	pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=PL	honaamme
-hönkäistä	pos=V,polar=POS,mood=COND,tense=PRS,per=3,num=SG	hönkäisisii
+hönkäistä	pos=V,polar=POS,mood=COND,tense=PRS,per=3,num=SG	hönkäissisi
 hönö	pos=N,case=TRANS,num=PL	hönöiksi
 hopeahanhikki	pos=N,case=IN+ESS,num=PL	hopeahanhikeissä
 hopeakettu	pos=N,case=ON+ESS,num=PL	hopeaketuilla
@@ -397,11 +397,11 @@ humpsahtaa	pos=V,polar=POS,mood=COND,tense=PRS,per=1,num=SG	humpsahtaisin
 huojeta	pos=V,mood=PURP,voice=ACT	huojetakseen
 huolehtia	pos=V,polar=POS,mood=IMP,tense=PST,per=2,num=SG	huolehdi
 huoltajuus	pos=N,case=FRML,num=SG	huoltajuutena
-huoneenlämpö	pos=N,case=IN+LAT,num=SG	huoneenlämpöin
+huoneenlämpö	pos=N,case=IN+LAT,num=SG	huoneenlämpöön
 huonekalu	pos=N,case=GEN,num=PL	huonekalujen
 huovuttaa	pos=V,polar=POS,mood=IMP,tense=PRS,per=3,num=PL	huovuttakoot
-huttu	pos=N,case=ON+ABL,num=SG	hutolta
-huvittua	pos=V,polar=POS,mood=IND,tense=PRS,voice=PASS	huvitutuan
+huttu	pos=N,case=ON+ABL,num=SG	hutuita
+huvittua	pos=V,polar=POS,mood=IND,tense=PRS,voice=PASS	huvitutaan
 hylkeenpyynti	pos=N,case=PRT,num=SG	hylkeenpyyntiä
 hylsy	pos=N,case=IN+LAT,num=SG	hylsyyn
 hymähtää	pos=V,polar=POS,mood=IND,tense=PST,per=3,num=PL	hymähtivät
@@ -420,7 +420,7 @@ ikonoklasti	pos=N,case=ON+ALL,num=PL	ikonoklasteille
 ilahtua	pos=V,polar=POS,mood=POT,tense=PRS,voice=PASS	ilahduttaneen
 illusionismi	pos=N,case=ACC,num=PL	illusionismit
 ilmapöhö	pos=N,case=FRML,num=SG	ilmapöhönä
-ilmaylivoima	pos=N,case=IN+LAT,num=SG	ilmaylivoimioa
+ilmaylivoima	pos=N,case=IN+LAT,num=SG	ilmaylivoimoia
 ilmehtiä	pos=V,polar=POS,mood=IND,tense=PRS,per=2,num=SG	ilmehdit
 ilmoittautua	pos=V,polar=POS,mood=COND,tense=PRS,per=1,num=SG	ilmoittautuisin
 ilostuttaa	pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=PL	ilostutamme
@@ -460,7 +460,7 @@ jääkiekkoilla	pos=V,polar=POS,mood=POT,tense=PRS,per=3,num=PL	jääkiekkoillev
 jäätiköityä	pos=V,polar=POS,mood=IMP,tense=PRS,per=2,num=PL	jäätiköitykää
 jakku	pos=N,case=TRANS,num=SG	jakuksi
 jaksaa	pos=V,polar=POS,mood=IND,tense=PRS,per=3,num=PL	jaksavat
-jälkilöyly	pos=N,case=IN+LAT,num=SG	jälkilöylyn
+jälkilöyly	pos=N,case=IN+LAT,num=SG	jälkilöylyyn
 jämäköityä	pos=V,polar=POS,mood=IND,tense=PST,voice=PASS	jämäköidyttiin
 jäntevöittää	pos=V,polar=POS,mood=POT,tense=PRS,per=1,num=PL	jäntevöittänemme
 järähtää	pos=V,polar=POS,mood=COND,tense=PRS,per=1,num=PL	järähtäisimme
@@ -493,7 +493,7 @@ jujutsu	pos=N,case=PRIV,num=PL	jujutsuitta
 jumalanpelko	pos=N,case=FRML,num=SG	jumalanpelkona
 jumalusko	pos=N,case=ON+ABL,num=PL	jumaluskoilta
 junanvaunu	pos=N,case=ON+ABL,num=SG	junanvaunulta
-juoksukäki	pos=N,case=ON+ABL,num=SG	juoksukäeelta
+juoksukäki	pos=N,case=ON+ABL,num=SG	juoksukäkelta
 juoksuttaa	pos=V,polar=POS,mood=IND,tense=PST,per=2,num=SG	juoksutit
 juoru	pos=N,case=COM,num=PL	juoruineen
 jurnuttaa	pos=V,polar=POS,mood=COND,tense=PRS,voice=PASS	jurnutettaisiin
@@ -518,9 +518,9 @@ kaasu	pos=N,case=PRIV,num=PL	kaasuitta
 kaasuputki	pos=N,case=COM,num=PL	kaasuputkineen
 kadehtia	pos=V,polar=POS,mood=IND,tense=PST,per=3,num=SG	kadehti
 kähertää	pos=V,polar=POS,mood=COND,tense=PRS,per=3,num=SG	kähertäisi
-kahlita	pos=V,polar=POS,mood=POT,tense=PRS,per=1,num=PL	kahlinnemme
+kahlita	pos=V,polar=POS,mood=POT,tense=PRS,per=1,num=PL	kahlinnetme
 kahnata	pos=V,polar=POS,mood=IMP,tense=PRS,per=1,num=PL	kahnatkaamme
-kaihertaa	pos=V,polar=POS,mood=IND,tense=PRS,voice=PASS	kaihertetaan
+kaihertaa	pos=V,polar=POS,mood=IND,tense=PRS,voice=PASS	kaiheretaan
 kaistanleveys	pos=N,case=IN+ABL,num=SG	kaistanleveydestä
 kakoa	pos=V,polar=POS,mood=IMP,tense=PST,per=2,num=SG	kako
 kaksihaaraviuhko	pos=N,case=IN+ABL,num=SG	kaksihaaraviuhkosta
@@ -620,7 +620,7 @@ keuhkopussi	pos=N,case=ON+ABL,num=PL	keuhkopusseilta
 kiehnätä	pos=V,polar=POS,mood=IMP,tense=PRS,voice=PASS	kiehnättäköön
 kiekonheitto	pos=N,case=FRML,num=PL	kiekonheittoina
 kieputtaa	pos=V,polar=POS,mood=POT,tense=PRS,per=1,num=PL	kieputtanemme
-kieriä	pos=V,polar=POS,mood=IMP,tense=PRS,per=1,num=PL	kierikäämme
+kieriä	pos=V,polar=POS,mood=IMP,tense=PRS,per=1,num=PL	kierikämme
 kierrättää	pos=V,polar=POS,mood=IMP,tense=PRS,voice=PASS	kierrätettäköön
 kietaista	pos=V,polar=POS,mood=POT,tense=PRS,per=1,num=PL	kietaissemme
 kietoa	pos=V,polar=POS,mood=IND,tense=PST,per=1,num=SG	kiedoin
@@ -631,7 +631,7 @@ kiinalaisuus	pos=N,case=INS,num=PL	kiinalaisuuksin
 kiinteistöveroprosentti	pos=N,case=INS,num=PL	kiinteistöveroprosentein
 kiinteyttää	pos=V,polar=POS,mood=IMP,tense=PRS,per=2,num=PL	kiinteyttäkää
 kiivastua	pos=V,polar=POS,mood=IND,tense=PRS,per=3,num=PL	kiivastuvat
-kilisyttää	pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=PL	kilisytämme
+kilisyttää	pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=PL	kilisytamme
 kimröökki	pos=N,case=PRIV,num=SG	kimröökittä
 kipittää	pos=V,polar=POS,mood=IND,tense=PST,per=3,num=SG	kipitti
 kirjahylly	pos=N,case=ON+ABL,num=SG	kirjahyllyltä
@@ -655,7 +655,7 @@ kloonata	pos=V,polar=POS,mood=IND,tense=PST,per=1,num=PL	kloonasimme
 kloorinitraatti	pos=N,case=ON+ABL,num=PL	kloorinitraateilta
 kloraalihydraatti	pos=N,case=IN+ESS,num=PL	kloraalihydraateissa
 klubitakki	pos=N,case=IN+LAT,num=SG	klubitakkiin
-knesset	pos=N,case=TRANS,num=SG	knessetksi
+knesset	pos=N,case=TRANS,num=SG	knesseksitk
 kohdella	pos=V,polar=POS,mood=IND,tense=PST,per=3,num=PL	kohtelivat
 kohista	pos=V,polar=POS,mood=IMP,tense=PRS,per=2,num=PL	kohiskaa
 kohista	pos=V,polar=POS,mood=IND,tense=PST,per=2,num=SG	kohisit
@@ -667,7 +667,7 @@ kolli	pos=N,case=PRT,num=SG	kollia
 koltansaame	pos=N,case=ON+ALL,num=SG	koltansaamelle
 kommandopipo	pos=N,case=ACC,num=SG	kommandopivon
 kommentti	pos=N,case=ACC,num=SG	kommentin
-kompata	pos=V,polar=POS,mood=IND,tense=PRS,per=3,num=SG	komppaaa
+kompata	pos=V,polar=POS,mood=IND,tense=PRS,per=3,num=SG	komppaa
 konfetti	pos=N,case=COM,num=PL	konfetteineen
 konfutselaisuus	pos=N,case=ACC,num=PL	konfutselaisuudet
 koni	pos=N,case=NOM,num=PL	konit
@@ -681,7 +681,7 @@ kopsata	pos=V,polar=POS,mood=IND,tense=PST,per=3,num=SG	kopsasi
 korahdella	pos=V,polar=POS,mood=IMP,tense=PRS,per=3,num=SG	korahdelkoon
 korjaantua	pos=V,polar=POS,mood=IND,tense=PST,per=3,num=SG	korjaantui
 korkeakoulututkinto	pos=N,case=TRANS,num=SG	korkeakoulututkinnoksi
-korniisi	pos=N,case=PRIV,num=PL	korniiseitta
+korniisi	pos=N,case=PRIV,num=PL	korniiiseitta
 korohoro	pos=N,case=GEN,num=SG	korohoron
 korrelaatti	pos=N,case=NOM,num=PL	korrelaatit
 korvaketuppi	pos=N,case=GEN,num=PL	korvaketuppien
@@ -711,7 +711,7 @@ kritiikki	pos=N,case=GEN,num=SG	kritiikin
 kritisointi	pos=N,case=GEN,num=PL	kritisointien
 krokaani	pos=N,case=NOM,num=SG	krokaani
 kromaatti	pos=N,case=ON+ESS,num=PL	kromaateilla
-kronobiologia	pos=N,case=IN+LAT,num=SG	kronobiologian
+kronobiologia	pos=N,case=IN+LAT,num=SG	kronobiologiaaa
 kronobiologi	pos=N,case=INS,num=PL	kronobiologein
 kruppi	pos=N,case=NOM,num=SG	kruppi
 kruunauttaa	pos=V,polar=POS,mood=COND,tense=PRS,voice=PASS	kruunautettaisiin
@@ -740,7 +740,7 @@ kuutiodesimetri	pos=N,case=ON+ESS,num=SG	kuutiodesimetrillä
 kvintetti	pos=N,case=ACC,num=SG	kvintetin
 kyberpunk	pos=N,case=ACC,num=SG	kyberpunkin
 kyhätä	pos=V,polar=POS,mood=IND,tense=PRS,per=2,num=SG	kyhäät
-kykkiä	pos=V,polar=POS,mood=IND,tense=PST,voice=PASS	kykuitniin
+kykkiä	pos=V,polar=POS,mood=IND,tense=PST,voice=PASS	kykuittiin
 kylmälaukku	pos=N,case=IN+ESS,num=SG	kylmälaukussa
 kylmentyä	pos=V,polar=POS,mood=POT,tense=PRS,per=2,num=SG	kylmentynet
 kyörätä	pos=V,polar=POS,mood=POT,tense=PRS,per=1,num=PL	kyörännemme
@@ -768,7 +768,7 @@ lapinpöllö	pos=N,case=IN+ABL,num=SG	lapinpöllöstä
 läpsiä	pos=V,polar=POS,mood=POT,tense=PRS,per=3,num=PL	läpsinevät
 lassota	pos=V,polar=POS,mood=POT,tense=PRS,per=3,num=SG	lassonnee
 läträtä	pos=V,polar=POS,mood=POT,tense=PRS,per=2,num=PL	lätrännette
-lätty	pos=N,case=ON+ALL,num=PL	lätyylle
+lätty	pos=N,case=ON+ALL,num=PL	lätuyille
 laveerata	pos=V,mood=PURP,voice=ACT	laveeratakseen
 leego	pos=N,case=IN+ABL,num=SG	leegosta
 legionelloosi	pos=N,case=GEN,num=SG	legionelloosin
@@ -801,7 +801,7 @@ likviditeetti	pos=N,case=FRML,num=SG	likviditeettinä
 lilliä	pos=V,polar=POS,mood=COND,tense=PRS,per=3,num=PL	lillisivät
 limaseitikki	pos=N,case=FRML,num=SG	limaseitikkinä
 linnunpelätti	pos=N,case=ACC,num=PL	linnunpelätit
-linnunpönttö	pos=N,case=ON+ALL,num=PL	linnunpöntöillle
+linnunpönttö	pos=N,case=ON+ALL,num=PL	linnunpöntillä
 lipoa	pos=V,polar=POS,mood=COND,tense=PRS,per=1,num=PL	lipoisimme
 lippu	pos=N,case=IN+ABL,num=SG	lipusta
 lipunryöstö	pos=N,case=GEN,num=PL	lipunryöstöjen
@@ -902,7 +902,7 @@ mittaamattomuus	pos=N,case=IN+ABL,num=PL	mittaamattomuuksista
 mobilisoida	pos=V,polar=POS,mood=IND,tense=PRS,per=2,num=PL	mobilisoitte
 mobilisoida	pos=V,polar=POS,mood=IND,tense=PST,per=3,num=PL	mobilisoivat
 modifiointi	pos=N,case=ON+ABL,num=SG	modifioinnilta
-molekyylipilvi	pos=N,case=NOM,num=SG	molekyylipilvi
+molekyylipilvi	pos=N,case=NOM,num=SG	molekyylipilve
 molottaa	pos=V,polar=POS,mood=IMP,tense=PRS,per=3,num=PL	molottakoot
 momentti	pos=N,case=ON+ESS,num=PL	momenteilla
 monetarismi	pos=N,case=IN+ESS,num=PL	monetarismeissa
@@ -913,7 +913,7 @@ moninkertaistua	pos=V,polar=POS,mood=POT,tense=PRS,per=1,num=SG	moninkertaistune
 mooli	pos=N,case=GEN,num=SG	moolin
 moottoroida	pos=V,voice=ACT,finite=NFIN	moottoroida
 mopo	pos=N,case=INS,num=PL	mopoin
-mopo	pos=N,case=TRANS,num=SG	movoksi
+mopo	pos=N,case=TRANS,num=SG	mopoksi
 mössö	pos=N,case=ON+ABL,num=SG	mössöltä
 motivointi	pos=N,case=COM,num=PL	motivointeineen
 mukavuusavioliitto	pos=N,case=FRML,num=PL	mukavuusavioliittoina
@@ -922,7 +922,7 @@ munatorvi	pos=N,case=ACC,num=PL	munatorvit
 mungpapu	pos=N,case=PRT,num=PL	mungpapuja
 munuaisportti	pos=N,case=COM,num=PL	munuaisportteineen
 mureta	pos=V,polar=POS,mood=IMP,tense=PRS,per=1,num=PL	muretkaamme
-murista	pos=V,polar=POS,mood=IND,tense=PST,per=3,num=PL	murissivat
+murista	pos=V,polar=POS,mood=IND,tense=PST,per=3,num=PL	murisivat
 murtomaahiihto	pos=N,case=GEN,num=PL	murtomaahiihtojen
 musamaku	pos=N,case=PRIV,num=SG	musamautta
 muskoviitti	pos=N,case=ON+ESS,num=SG	muskoviitilla
@@ -931,12 +931,12 @@ mutustaa	pos=V,polar=POS,mood=IMP,tense=PRS,per=1,num=PL	mutustakaamme
 muuntaa	pos=V,polar=POS,mood=POT,tense=PRS,per=2,num=SG	muuntanet
 muurata	pos=V,polar=POS,mood=POT,tense=PRS,per=3,num=PL	muurannevat
 muutto	pos=N,case=IN+LAT,num=PL	muuttoihin
-myksomatoosi	pos=N,case=TRANS,num=PL	myksomatooseiksi
+myksomatoosi	pos=N,case=TRANS,num=PL	myksomatoosisiksi
 mylly	pos=N,case=PRIV,num=PL	myllyittä
 myöhentää	pos=V,polar=POS,mood=IND,tense=PRS,per=2,num=PL	myöhennätte
 myötämäki	pos=N,case=COM,num=PL	myötämäkineen
 myrskylintu	pos=N,case=FRML,num=PL	myrskylintuina
-myydä	pos=V,polar=POS,mood=IMP,tense=PRS,per=3,num=PL	myyköät
+myydä	pos=V,polar=POS,mood=IMP,tense=PRS,per=3,num=PL	myykööt
 myytti	pos=N,case=ON+ALL,num=PL	myyteille
 naamiohuvit	pos=N,case=ON+ALL,num=PL	naamiohuveille
 näennäisanglismi	pos=N,case=IN+LAT,num=PL	näennäisanglismeihin
@@ -1027,14 +1027,14 @@ ottaa	pos=V,polar=POS,mood=POT,tense=PRS,per=2,num=PL	ottanette
 oudoksua	pos=V,polar=POS,mood=IND,tense=PST,per=3,num=SG	oudoksui
 ovi	pos=N,case=TRANS,num=SG	oviksi
 ovipumppu	pos=N,case=ACC,num=PL	ovipumput
-ovivahti	pos=N,case=ACC,num=SG	ovivahtin
+ovivahti	pos=N,case=ACC,num=SG	ovivahdin
 päähänpisto	pos=N,case=FRML,num=SG	päähänpistona
 paahto	pos=N,case=COM,num=PL	paahtoineen
 päälaenlohko	pos=N,case=ACC,num=PL	päälaenlohkot
 paanuttaa	pos=V,polar=POS,mood=COND,tense=PRS,per=1,num=SG	paanuttaisin
 paasto	pos=N,case=ACC,num=SG	paaston
 paasto	pos=N,case=IN+ABL,num=PL	paastoista
-päättyä	pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=PL	päätymme
+päättyä	pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=PL	päätimme
 päätuki	pos=N,case=TRANS,num=SG	päätuetsi
 paatunut	pos=ADJ,case=GEN,num=SG	paatunut
 paheksua	pos=V,polar=POS,mood=IND,tense=PST,per=1,num=PL	paheksuimme
@@ -1090,10 +1090,10 @@ pidätysoikeus	pos=N,case=IN+ABL,num=PL	pidätysoikeuksista
 pidentää	pos=V,polar=POS,mood=COND,tense=PRS,per=1,num=SG	pidentäisin
 piehtaroida	pos=V,polar=POS,mood=POT,tense=PRS,per=3,num=SG	piehtaroinee
 pienuus	pos=N,case=ON+ABL,num=SG	pienuudelta
-pihdata	pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=SG	pihdaan
+pihdata	pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=SG	pihtaan
 piihappo	pos=N,case=PRIV,num=PL	piihapoitta
 piirustaa	pos=V,polar=POS,mood=IND,tense=PRS,per=2,num=PL	piirustatte
-piisata	pos=V,voice=ACT,aspect=PROSP	piisaanaisillaan
+piisata	pos=V,voice=ACT,aspect=PROSP	piisaamaisillaan
 piispanristi	pos=N,case=NOM,num=SG	piispanristi
 pikkujoulu	pos=N,case=IN+ESS,num=PL	pikkujouluissa
 pikkuporvaristo	pos=N,case=PRIV,num=PL	pikkuporvaristoitta
@@ -1139,7 +1139,7 @@ puhelinkioski	pos=N,case=ON+ESS,num=SG	puhelinkioskilla
 puhelinkoppi	pos=N,case=NOM,num=PL	puhelinkopit
 puhelinlasku	pos=N,case=ON+ABL,num=SG	puhelinlaskulta
 puhepostiviesti	pos=N,case=FRML,num=PL	puhepostiviesteinä
-puhujapönttö	pos=N,case=IN+ESS,num=SG	puhujapöntussä
+puhujapönttö	pos=N,case=IN+ESS,num=SG	puhujapöntössä
 puksuttaa	pos=V,polar=POS,mood=COND,tense=PRS,per=1,num=SG	puksuttaisin
 pukupussi	pos=N,case=INS,num=PL	pukupussein
 pulloveri	pos=N,case=ON+ESS,num=SG	pulloverillä
@@ -1147,15 +1147,15 @@ pullulaani	pos=N,case=NOM,num=PL	pullulaanit
 pulveroida	pos=V,polar=POS,mood=IMP,tense=PRS,voice=PASS	pulveroitakoon
 punata	pos=V,polar=POS,mood=IMP,tense=PRS,per=1,num=PL	punatkaamme
 punehtua	pos=V,polar=POS,mood=POT,tense=PRS,per=2,num=SG	punehtunet
-punnita	pos=V,polar=POS,mood=COND,tense=PRS,voice=PASS	punnitttaisiin
+punnita	pos=V,polar=POS,mood=COND,tense=PRS,voice=PASS	punnittaisiin
 puolittua	pos=V,polar=POS,mood=IMP,tense=PRS,per=3,num=SG	puolittukoon
 puoti	pos=N,case=PRT,num=PL	puoteja
-pusata	pos=V,polar=POS,mood=IND,tense=PRS,per=2,num=PL	pusaatte
+pusata	pos=V,polar=POS,mood=IND,tense=PRS,per=2,num=PL	pusaamte
 pussipeto	pos=N,case=GEN,num=PL	pussipetojen
 putkiremontti	pos=N,case=IN+ESS,num=SG	putkiremontissa
 putoilla	pos=V,polar=POS,mood=POT,tense=PRS,per=2,num=SG	putoillet
 puukko	pos=N,case=TRANS,num=SG	puukoksi
-puurtaa	pos=V,polar=POS,mood=IMP,tense=PRS,voice=PASS	puuretettkoon
+puurtaa	pos=V,polar=POS,mood=IMP,tense=PRS,voice=PASS	puulrettakoon
 pyältää	pos=V,polar=POS,mood=IND,tense=PST,per=2,num=PL	pyälsitte
 pygmi	pos=N,case=IN+ABL,num=SG	pygmistä
 pykriitti	pos=N,case=ON+ALL,num=SG	pykriitille
@@ -1216,7 +1216,7 @@ ripotella	pos=V,polar=POS,mood=IMP,tense=PRS,per=3,num=SG	ripotelkoon
 ristikasi	pos=N,case=IN+ESS,num=SG	ristikasissa
 ristikymppi	pos=N,case=ON+ESS,num=SG	ristikympillä
 ristitulo	pos=N,case=PRIV,num=SG	ristitulotta
-riuhtaista	pos=V,polar=POS,mood=POT,tense=PRS,per=2,num=PL	riuhtaissette
+riuhtaista	pos=V,polar=POS,mood=POT,tense=PRS,per=2,num=PL	riuhtaisisette
 rivous	pos=N,case=TRANS,num=PL	rivouksiksi
 rodium	pos=N,case=PRIV,num=PL	rodiumeitta
 rohtosalkoruusu	pos=N,case=FRML,num=PL	rohtosalkoruusuina
@@ -1247,7 +1247,7 @@ sääskiparvi	pos=N,case=TRANS,num=SG	sääskiparveksi
 saastepilvi	pos=N,case=ON+ABL,num=SG	saastepilveltä
 saattohoito	pos=N,case=ON+ESS,num=SG	saattohoidolla
 saattokoti	pos=N,case=INS,num=PL	saattokodein
-safkata	pos=V,polar=POS,mood=IND,tense=PST,per=2,num=SG	safkasit
+safkata	pos=V,polar=POS,mood=IND,tense=PST,per=2,num=SG	safkkasit
 sahata	pos=V,polar=POS,mood=COND,tense=PRS,per=3,num=SG	sahaisi
 sahata	pos=V,polar=POS,mood=IND,tense=PST,per=1,num=SG	sahasin
 sähköauto	pos=N,case=ON+ABL,num=PL	sähköautoilta
@@ -1258,7 +1258,7 @@ sairastua	pos=V,polar=POS,mood=IMP,tense=PRS,per=2,num=PL	sairastukaa
 sairastua	pos=V,polar=POS,mood=IND,tense=PST,per=1,num=PL	sairastuimme
 saksia	pos=V,mood=PURP,voice=ACT	saksiakseen
 salaliitto	pos=N,case=ON+ALL,num=PL	salaliitoille
-salaovi	pos=N,case=PRIV,num=SG	salaovitta
+salaovi	pos=N,case=PRIV,num=SG	salaovetta
 salko	pos=N,case=ON+ESS,num=SG	salolla
 salmonelloosi	pos=N,case=PRIV,num=SG	salmonelloositta
 sarkasmi	pos=N,case=NOM,num=PL	sarkasmit
@@ -1297,7 +1297,7 @@ sihti	pos=N,case=IN+ABL,num=SG	sihdistä
 siipeillä	pos=V,polar=POS,mood=COND,tense=PRS,per=3,num=SG	siipeilisi
 siirtopakko	pos=N,case=PRT,num=SG	siirtopakkoa
 siirto	pos=N,case=ACC,num=SG	siirron
-siisteys	pos=N,case=TRANS,num=PL	siisteyksiss
+siisteys	pos=N,case=TRANS,num=PL	siisteyksiksi
 siittää	pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=SG	siitää
 siittiösolu	pos=N,case=TRANS,num=SG	siittiösoluksi
 silikaattimineraali	pos=N,case=PRT,num=SG	silikaattimineraalia
@@ -1305,7 +1305,7 @@ silmäpeli	pos=N,case=ON+ALL,num=SG	silmäpelille
 silmikoitua	pos=V,polar=POS,mood=COND,tense=PRS,per=2,num=PL	silmikoituisitte
 silmukoida	pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=PL	silmukoimme
 silpiä	pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=SG	silvin
-sinilause	pos=N,case=FRML,num=SG	sinilauseena
+sinilause	pos=N,case=FRML,num=SG	sinilausena
 sinnikkyys	pos=N,case=ON+ABL,num=PL	sinnikkyyksiltä
 sirkkalehti	pos=N,case=IN+ESS,num=SG	sirkkalehdessä
 sisäkatto	pos=N,case=ON+ESS,num=PL	sisäkatoilla
@@ -1344,7 +1344,7 @@ stikki	pos=N,case=FRML,num=PL	stikkeinä
 stilettikorko	pos=N,case=NOM,num=SG	stilettikorko
 stilisoida	pos=V,polar=POS,mood=IND,tense=PRS,voice=PASS	stilisoidaan
 stratosfääri	pos=N,case=ON+ALL,num=PL	stratosfääreille
-strukturaalikielitiede	pos=N,case=IN+ESS,num=SG	strukturaalikielitiedesse
+strukturaalikielitiede	pos=N,case=IN+ESS,num=SG	strukturaalikielitiedessä
 sublimoitua	pos=V,polar=POS,mood=COND,tense=PRS,voice=PASS	sublimoiduttaisiin
 substantiivi	pos=N,case=PRT,num=PL	substantiiveja
 sudenmaito	pos=N,case=GEN,num=SG	sudenmaidon
@@ -1363,7 +1363,7 @@ sumuttua	pos=V,polar=POS,mood=POT,tense=PRS,per=2,num=SG	sumuttunet
 suomensotti	pos=N,case=ON+ABL,num=SG	suomensotilta
 suoria	pos=V,polar=POS,mood=COND,tense=PRS,per=1,num=SG	suorisin
 suorittaa	pos=V,voice=ACT,aspect=PROSP	suorittamaisillaan
-suosia	pos=V,polar=POS,mood=IND,tense=PST,per=3,num=PL	suosivat
+suosia	pos=V,polar=POS,mood=IND,tense=PST,per=3,num=PL	suossivat
 suostutella	pos=V,polar=POS,mood=IMP,tense=PRS,per=3,num=SG	suostutelkoon
 supistaa	pos=V,polar=POS,mood=POT,tense=PRS,per=2,num=PL	supistanette
 supistua	pos=V,polar=POS,mood=COND,tense=PRS,per=3,num=PL	supistuisivat
@@ -1373,7 +1373,7 @@ survivalismi	pos=N,case=IN+ESS,num=SG	survivalismissa
 suudita	pos=V,polar=POS,mood=IND,tense=PST,voice=PASS	suudittiin
 suukku	pos=N,case=IN+LAT,num=PL	suukkuihin
 suukopu	pos=N,case=IN+ABL,num=PL	suukovuista
-suulaki	pos=N,case=INS,num=PL	suulaiila
+suulaki	pos=N,case=INS,num=PL	suulaiin
 suuruudenhulluus	pos=N,case=IN+ABL,num=PL	suuruudenhulluuksista
 sydämensiirto	pos=N,case=ON+ABL,num=PL	sydämensiirroilta
 synkopoida	pos=V,polar=POS,mood=IND,tense=PRS,per=3,num=SG	synkopoi
@@ -1434,7 +1434,7 @@ tömähtää	pos=V,polar=POS,mood=POT,tense=PRS,per=1,num=SG	tömähtänen
 tonsilliitti	pos=N,case=FRML,num=PL	tonsilliitteina
 törmäyskurssi	pos=N,case=ON+ALL,num=SG	törmäyskurssille
 tornittaa	pos=V,polar=POS,mood=POT,tense=PRS,voice=PASS	tornitettaneen
-torut	pos=N,case=COM,num=PL	toruineen
+torut	pos=N,case=COM,num=PL	torueilt
 toteutua	pos=V,polar=POS,mood=IMP,tense=PRS,voice=PASS	toteuduttakoon
 toteutua	pos=V,voice=ACT,aspect=PROSP	toteutumaisillaan
 totuttautua	pos=V,polar=POS,mood=IMP,tense=PRS,per=3,num=PL	totuttautukoot
@@ -1444,7 +1444,7 @@ trampoliini	pos=N,case=IN+ESS,num=SG	trampoliinissa
 transversaalitaso	pos=N,case=IN+LAT,num=SG	transversaalitasoon
 trappi	pos=N,case=ON+ALL,num=PL	trapeille
 trieeri	pos=N,case=FRML,num=PL	trieereinä
-tsaguti	pos=N,case=ON+ABL,num=SG	tsagudilta
+tsaguti	pos=N,case=ON+ABL,num=SG	tsagutilta
 tuhkaluukku	pos=N,case=GEN,num=SG	tuhkaluukun
 tuhlata	pos=V,polar=POS,mood=IND,tense=PRS,per=1,num=SG	tuhlaan
 tuivertaa	pos=V,polar=POS,mood=POT,tense=PRS,per=3,num=PL	tuivertanevat
@@ -1472,10 +1472,10 @@ tympeytyä	pos=V,polar=POS,mood=IND,tense=PRS,per=3,num=PL	tympeytyvät
 työväentalo	pos=N,case=ACC,num=SG	työväentalon
 tyrannisoida	pos=V,polar=POS,mood=IND,tense=PRS,per=3,num=SG	tyrannisoi
 tyrmätä	pos=V,polar=POS,mood=COND,tense=PRS,per=1,num=PL	tyrmäisimme
-tyrmätä	pos=V,polar=POS,mood=COND,tense=PRS,per=3,num=SG	tyrmäisii
+tyrmätä	pos=V,polar=POS,mood=COND,tense=PRS,per=3,num=SG	tyrmäisi
 tyyneys	pos=N,case=TRANS,num=PL	tyyneyksiksi
 tyytymättömyys	pos=N,case=ON+ALL,num=SG	tyytymättömyydelle
-udella	pos=V,polar=POS,mood=IND,tense=PST,per=2,num=SG	udelit
+udella	pos=V,polar=POS,mood=IND,tense=PST,per=2,num=SG	utelit
 uhmakkuus	pos=N,case=PRT,num=SG	uhmakkuutta
 uida	pos=V,polar=POS,mood=IMP,tense=PRS,per=2,num=PL	uikaa
 uima-asu	pos=N,case=ON+ALL,num=SG	uima-asulle
@@ -1526,7 +1526,7 @@ vatsakipu	pos=N,case=ON+ALL,num=PL	vatsakivuille
 vaurastua	pos=V,polar=POS,mood=POT,tense=PRS,per=3,num=SG	vaurastunee
 veisata	pos=V,mood=PURP,voice=ACT	veisatakseen
 veistää	pos=V,polar=POS,mood=COND,tense=PRS,per=3,num=PL	veistäisivät
-venäläistää	pos=V,polar=POS,mood=COND,tense=PRS,voice=PASS	venäläistetäisiin
+venäläistää	pos=V,polar=POS,mood=COND,tense=PRS,voice=PASS	venäläistettäisiin
 ventata	pos=V,polar=POS,mood=IMP,tense=PRS,voice=PASS	ventattakoon
 venyttää	pos=V,polar=POS,mood=IMP,tense=PRS,per=2,num=PL	venyttäkää
 verensiirto	pos=N,case=NOM,num=PL	verensiirrot
