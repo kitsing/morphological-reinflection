@@ -3,7 +3,7 @@
 Usage:
   evaluate_all_langs.py [--cnn-mem MEM] [--input=INPUT] [--feat-input=FEAT] [--hidden=HIDDEN] [--epochs=EPOCHS]
   [--layers=LAYERS] [--optimization=OPTIMIZATION] [--pool=POOL] [--langs=LANGS] [--script=SCRIPT] [--test]
-  [--prefix=PREFIX] SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
+  [--prefix=PREFIX] [--task=TASK] SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
   SRC_PATH  source files directory path
@@ -24,7 +24,7 @@ Options:
   --script=SCRIPT               the chosen eval script
   --test                        evaluate on test files
   --prefix=PREFIX               the results files prefix
-
+  --task=TASK                   the current task
 """
 
 import os
@@ -45,7 +45,7 @@ POOL = 4
 LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german']
 
 def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers, optimization, feat_input_dim,
-         pool_size, langs, test, script, prefix):
+         pool_size, langs, test, script, prefix, task):
 
     cnn_mem = 9096
     parallelize_evaluation = True
@@ -54,7 +54,7 @@ def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epoch
     print 'now evaluating langs: ' + str(langs) + ' with script: ' + script + ' into prefix: ' + prefix
     for lang in langs:
         params.append([cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                    sigmorphon_root_dir, src_dir, test, script, prefix])
+                    sigmorphon_root_dir, src_dir, test, script, prefix, task])
 
     # train models for each lang in parallel or in loop
     if parallelize_evaluation:
@@ -73,7 +73,7 @@ def evaluate_language_wrapper(params):
 
 
 def evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                      sigmorphon_root_dir, src_dir, test, script, prefix):
+                      sigmorphon_root_dir, src_dir, test, script, prefix, task):
     start = time.time()
     os.chdir(src_dir)
     eval_str = 'dev'
@@ -88,13 +88,13 @@ def evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, la
 
     command_format = 'python {0} --cnn-mem {1} --input={2} \
         --hidden={3} --feat-input={4} --epochs={5} --layers={6} --optimization {7} \
-        {8}/data/{9}-task1-train \
-        {8}/data/{9}-task1-{11} \
+        {8}/data/{9}-task{14}-train \
+        {8}/data/{9}-task{14}-{11} \
         {10}/{12}_{9}{13}results.txt \
         {8}'
 
     os.system(command_format.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-                                    sigmorphon_root_dir, lang, results_dir, eval_str, prefix, separator))
+                                    sigmorphon_root_dir, lang, results_dir, eval_str, prefix, separator, task))
 
     end = time.time()
     print 'finished ' + lang + ' in ' + str(ms_to_timestring(end - start))
@@ -182,8 +182,12 @@ if __name__ == '__main__':
         test_param = True
     else:
         test_param = False
+    if arguments['--task']:
+        task_param = arguments['--task']
+    else:
+        task_param = '1'
 
     print arguments
 
     main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim, pool_size, langs_param, test_param, script_param, prefix_param)
+         optimization, feat_input_dim, pool_size, langs_param, test_param, script_param, prefix_param, task_param)
