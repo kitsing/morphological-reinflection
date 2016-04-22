@@ -784,14 +784,14 @@ def predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_i
 # TODO: this is indentical to the version from task 1; consider moving to some utils
 def instantiate_template(template, source_word):
     word = ''
-    lemma = BEGIN_WORD + lemma + END_WORD
+    source_word = BEGIN_WORD + source_word + END_WORD
     for t in template:
         if t == STEP:
             continue
 
         if represents_int(t):
             try:
-                word += lemma[int(t)]
+                word += source_word[int(t)]
             except IndexError:
                 continue
         else:
