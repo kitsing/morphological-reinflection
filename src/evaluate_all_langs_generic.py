@@ -3,7 +3,7 @@
 Usage:
   evaluate_all_langs.py [--cnn-mem MEM] [--input=INPUT] [--feat-input=FEAT] [--hidden=HIDDEN] [--epochs=EPOCHS]
   [--layers=LAYERS] [--optimization=OPTIMIZATION] [--pool=POOL] [--langs=LANGS] [--script=SCRIPT] [--test]
-  [--prefix=PREFIX] SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
+  [--prefix=PREFIX] [--task=TASK] SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
   SRC_PATH  source files directory path
@@ -24,7 +24,7 @@ Options:
   --script=SCRIPT               the chosen eval script
   --test                        evaluate on test files
   --prefix=PREFIX               the results files prefix
-
+  --task=TASK                   the current task
 """
 
 import os
