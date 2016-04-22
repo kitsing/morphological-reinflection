@@ -90,20 +90,36 @@ def ms_to_timestring(ms):
     return str(datetime.timedelta(ms))
 
 
-def evaluate_baseline(lang, results_dir, sig_root):
+def evaluate_baseline(lang, results_dir, sig_root, task):
     os.chdir(sig_root + '/src/baseline')
 
     # run baseline system
-    os.system('./baseline.py --task=1 --language={0} --path={1}/data/ > {2}/baseline_{0}_task1_predictions.txt'.format(
-        lang, sig_root, results_dir))
+    os.system('./baseline.py --task={3} --language={0} --path={1}/data/ > {2}/baseline_{0}_task{3}_predictions.txt'.format(
+        lang, sig_root, results_dir, task))
     os.chdir(sig_root + '/src')
 
     # eval baseline system
-    os.system('python evalm.py --gold ../data/{0}-task1-dev --guesses \
-        {1}/baseline_{0}_task1_predictions.txt'.format(lang, results_dir))
+    os.system('python evalm.py --gold ../data/{0}-task{2}-dev --guesses \
+        {1}/baseline_{0}_task{2}_predictions.txt'.format(lang, results_dir, task))
 
 
 if __name__ == '__main__':
+    # evaluate_baseline('hungarian',
+    #                   '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/',
+    #                   '/Users/roeeaharoni/GitHub/sigmorphon2016/', '2')
+    #
+    # evaluate_baseline('maltese',
+    #                   '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/',
+    #                   '/Users/roeeaharoni/GitHub/sigmorphon2016/', '2')
+    #
+    # evaluate_baseline('hungarian',
+    #                   '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/',
+    #                   '/Users/roeeaharoni/GitHub/sigmorphon2016/', '3')
+    #
+    # evaluate_baseline('maltese',
+    #               '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/',
+    #               '/Users/roeeaharoni/GitHub/sigmorphon2016/', '3')
+
     arguments = docopt.docopt(__doc__)
 
     ts = time.time()
