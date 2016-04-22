@@ -146,7 +146,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             accuracy = task2_joint_structured_inflection_feedback_fix.evaluate_model(predicted_templates, test_cluster_source_words,
                                                                         test_cluster_source_feat_dicts, test_cluster_target_words,
                                                                         test_cluster_target_feat_dicts,
-                                                                        feature_types, True)
+                                                                        feature_types, print_results=False)
             accuracies.append(accuracy)
 
             # get predicted_templates in the same order they appeared in the original file
