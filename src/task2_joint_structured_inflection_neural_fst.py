@@ -99,8 +99,11 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     alphabet.append(END_WORD)
 
     # add indices to alphabet - used to indicate when copying from lemma to word
-    for marker in [str(i) for i in xrange(MAX_PREDICTION_LEN)]:
+    for marker in [str(i) for i in xrange(3 * MAX_PREDICTION_LEN)]:
         alphabet.append(marker)
+
+    # indicates the FST to step forward in the input
+    alphabet.append(STEP)
 
     # char 2 int
     alphabet_index = dict(zip(alphabet, range(0, len(alphabet))))
