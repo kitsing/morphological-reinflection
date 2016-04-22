@@ -50,8 +50,13 @@ def load_data(filename, task=1):
                 targets.append(target)
                 target_feat_dicts.append(make_feat_dict(feats))
             else: # task = 2
-                assert len(splt) == 4, 'bad line: ' + line + '\n'
-                source_feats, source, target_feats, target = splt
+                if not 'test-covered' in filename:
+                    assert len(splt) == 4, 'bad line: ' + line + '\n'
+                    source_feats, source, target_feats, target = splt
+                else:
+                    assert len(splt) == 3, 'bad line: ' + line + '\n'
+                    source_feats, source, target_feats = splt
+                    target = 'COVERED'
                 sources.append(source)
                 targets.append(target)
                 source_feat_dicts.append(make_feat_dict(source_feats))
