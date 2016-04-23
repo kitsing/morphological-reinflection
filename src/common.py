@@ -105,11 +105,11 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
             task='3'
 
         if 'blstm' in output_file_path:
-            model_dir = 'blstm'
+            model_dir = 'solutions/blstm'
         elif 'nfst' in output_file_path:
-            model_dir = 'nfst'
+            model_dir = 'solutions/nfst'
         else:
-            model_dir = ''
+            model_dir = 'solutions'
 
         results_prefix = '/'.join(output_file_path.split('/')[:-1])
         lang = train_path.split('/')[-1].replace('-task{0}-train'.format(task),'')
