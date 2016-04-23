@@ -97,9 +97,15 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
     # write predictions in sigmorphon format
     # if final results, write the special file name format
     if 'test-covered' in test_path:
+        if 'task1' in test_path:
+            task='1'
+        if 'task2' in test_path:
+            task='2'
+        if 'task3' in test_path:
+            task='3'
         results_prefix = '/'.join(output_file_path.split('/')[:-1])
-        lang = train_path.split('/')[-1].replace('-task1-train','')
-        predictions_path = '{0}/{1}-task1-solution'.format(results_prefix, lang)
+        lang = train_path.split('/')[-1].replace('-task{0}-train'.format(task),'')
+        predictions_path = '{0}/{1}-task{2}-solution'.format(results_prefix, lang, task)
     else:
         predictions_path = output_file_path + '.predictions'
 
