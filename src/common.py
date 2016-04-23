@@ -103,9 +103,17 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
             task='2'
         if 'task3' in test_path:
             task='3'
+
+        if 'blstm' in output_file_path:
+            model_dir = 'blstm'
+        elif 'nfst' in output_file_path:
+            model_dir = 'nfst'
+        else:
+            model_dir = ''
+
         results_prefix = '/'.join(output_file_path.split('/')[:-1])
         lang = train_path.split('/')[-1].replace('-task{0}-train'.format(task),'')
-        predictions_path = '{0}/{1}-task{2}-solution'.format(results_prefix, lang, task)
+        predictions_path = '{0}/{3}/{1}-task{2}-solution'.format(results_prefix, lang, task, model_dir)
     else:
         predictions_path = output_file_path + '.predictions'
 
