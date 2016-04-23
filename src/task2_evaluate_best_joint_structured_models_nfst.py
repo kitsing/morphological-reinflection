@@ -77,22 +77,21 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     alphabet.append(BEGIN_WORD)
     alphabet.append(END_WORD)
 
-    feature_alphabet = common.get_feature_alphabet(train_source_feat_dicts + train_target_feat_dicts)
-    feature_alphabet.append(UNK_FEAT)
-
     # add indices to alphabet - used to indicate when copying from lemma to word
-    for marker in [str(i) for i in xrange(MAX_PREDICTION_LEN)]:
+    for marker in [str(i) for i in xrange(3 * MAX_PREDICTION_LEN)]:
         alphabet.append(marker)
 
     # indicates the FST to step forward in the input
     alphabet.append(STEP)
 
-    # feat 2 int
-    feat_index = dict(zip(feature_alphabet, range(0, len(feature_alphabet))))
-
     # char 2 int
     alphabet_index = dict(zip(alphabet, range(0, len(alphabet))))
     inverse_alphabet_index = {index: char for char, index in alphabet_index.items()}
+
+    # feat 2 int
+    feature_alphabet = common.get_feature_alphabet(train_source_feat_dicts + train_target_feat_dicts)
+    feature_alphabet.append(UNK_FEAT)
+    feat_index = dict(zip(feature_alphabet, range(0, len(feature_alphabet))))
 
     # cluster the data by POS type (features)
     # TODO: do we need to cluster on both source and target feats? 
