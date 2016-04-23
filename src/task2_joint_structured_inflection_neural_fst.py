@@ -99,8 +99,11 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     alphabet.append(END_WORD)
 
     # add indices to alphabet - used to indicate when copying from lemma to word
-    for marker in [str(i) for i in xrange(MAX_PREDICTION_LEN)]:
+    for marker in [str(i) for i in xrange(3 * MAX_PREDICTION_LEN)]:
         alphabet.append(marker)
+
+    # indicates the FST to step forward in the input
+    alphabet.append(STEP)
 
     # char 2 int
     alphabet_index = dict(zip(alphabet, range(0, len(alphabet))))
@@ -781,14 +784,14 @@ def predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_i
 # TODO: this is indentical to the version from task 1; consider moving to some utils
 def instantiate_template(template, source_word):
     word = ''
-    lemma = BEGIN_WORD + lemma + END_WORD
+    source_word = BEGIN_WORD + source_word + END_WORD
     for t in template:
         if t == STEP:
             continue
 
         if represents_int(t):
             try:
-                word += lemma[int(t)]
+                word += source_word[int(t)]
             except IndexError:
                 continue
         else:
