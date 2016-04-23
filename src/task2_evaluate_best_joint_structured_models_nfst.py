@@ -43,10 +43,12 @@ OPTIMIZATION = 'ADAM'
 
 NULL = '%'
 UNK = '#'
-UNK_FEAT = '@'
 EPSILON = '*'
 BEGIN_WORD = '<'
 END_WORD = '>'
+UNK_FEAT = '@'
+STEP = '^'
+ALIGN_SYMBOL = '~'
 
 
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
@@ -81,6 +83,9 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     # add indices to alphabet - used to indicate when copying from lemma to word
     for marker in [str(i) for i in xrange(MAX_PREDICTION_LEN)]:
         alphabet.append(marker)
+
+    # indicates the FST to step forward in the input
+    alphabet.append(STEP)
 
     # feat 2 int
     feat_index = dict(zip(feature_alphabet, range(0, len(feature_alphabet))))
@@ -181,13 +186,14 @@ def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_
     tmp_model_path = results_file_path + '_' + morph_index + '_bestmodel.txt'
     print 'trying to open ' + tmp_model_path
 
+    print 'creating model...'
+
     model = Model()
 
     # character embeddings
     model.add_lookup_parameters("char_lookup", (len(alphabet), input_dim))
 
     # feature embeddings
-    # TODO: add another input dim for features?
     model.add_lookup_parameters("feat_lookup", (len(feature_alphabet), feat_input_dim))
 
     # used in softmax output
@@ -198,13 +204,13 @@ def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_
     encoder_frnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
     encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
 
-    # TODO: inspect carefully, as dims may be sub-optimal in some cases (many feature types?)
-    # 2 * HIDDEN_DIM + 3 * INPUT_DIM + len(feats) * FEAT_INPUT_DIM, as it gets a concatenation of frnn, rrnn
-    # (both of HIDDEN_DIM size), previous output char, current lemma char (of INPUT_DIM size) current index char
-    # and feats * FEAT_INPUT_DIM
+    # 2 * HIDDEN_DIM + 3 * INPUT_DIM, as it gets a concatenation of frnn, rrnn, previous output char,
+    # current lemma char, current index marker
     # 2 * len(feature_types) * feat_input_dim, as it gets both source and target feature embeddings
-    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + 2 * len(feature_types) * feat_input_dim, hidden_dim,
+    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + 2 * len(feature_types) * feat_input_dim,
+                              hidden_dim,
                               model)
+    print 'finished creating model'
 
     model.load(tmp_model_path)
     return model, encoder_frnn, encoder_rrnn, decoder_rnn
