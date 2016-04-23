@@ -117,7 +117,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             train_morph_model(*p)
 
     # evaluate best models
-    os.system('python evaluate_best_factored_models.py --cnn-mem 4096 --input={0} --hidden={1} --epochs={2} --layers={3}\
+    os.system('python task1_evaluate_best_factored_models.py --cnn-mem 4096 --input={0} --hidden={1} --epochs={2} --layers={3}\
   --optimization={4} {5} {6} {7} {8}'.format(input_dim, hidden_dim, epochs, layers, optimization, train_path, test_path,
                                              results_file_path, sigmorphon_root_dir))
     return
