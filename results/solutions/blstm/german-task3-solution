@@ -55,7 +55,7 @@ kryptischer	pos=ADJ,case=DAT,gen=MASC,num=SG	kryptischem
 schämst	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	schämen
 lohnendste	pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG	lohnenderer
 untreues	pos=ADJ,case=ACC,num=PL	untreue
-Abrieb	pos=N,case=NOM,gen=MASC,num=SG	Abrie
+Abrieb	pos=N,case=NOM,gen=MASC,num=SG	Abrieb
 frankoprovenzalischem	pos=ADJ,case=GEN,gen=FEM,num=SG	frankoprovenzalischer
 bleibenderen	pos=ADJ,case=GEN,comp=CMPR,num=PL	bleibenderer
 kontroverseste	pos=ADJ,case=ACC,comp=CMPR,num=PL	kontroversere
@@ -284,7 +284,7 @@ spendablere	pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG	spendabeste
 sprengten	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG	sprengte
 altisländisches	pos=ADJ,case=GEN,gen=FEM,num=SG	altisländischer
 latinisierten	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL	latinisierten
-Transportvorganges	pos=N,case=DAT,gen=MASC,num=PL	Transportvorgängen
+Transportvorganges	pos=N,case=DAT,gen=MASC,num=PL	Transportvorgangen
 gewundeneren	pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG	gewundenstes
 besitzen	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL	besitzen
 militärischen	pos=ADJ,case=GEN,gen=NEUT,num=SG	militärischen
@@ -311,7 +311,7 @@ wahrhaftigen	pos=ADJ,case=ACC,gen=MASC,num=SG	wahrhaftigen
 angeblichem	pos=ADJ,case=ACC,gen=NEUT,num=SG	angebliches
 zugegebene	pos=ADJ,case=ACC,num=PL	zugegebene
 Schicksales	pos=N,case=NOM,gen=NEUT,num=SG	Schicksal
-Geschmäcke	pos=N,case=GEN,gen=MASC,num=SG	Geschmackes
+Geschmäcke	pos=N,case=GEN,gen=MASC,num=SG	Geschmuckes
 fauligstes	pos=ADJ,case=DAT,gen=FEM,num=SG	fauliger
 entleertest	pos=V,mood=IND,tense=PRS,per=2,num=SG	entleerst
 verspäten	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	verspäet
@@ -331,7 +331,7 @@ Regierungen	pos=N,case=GEN,gen=FEM,num=SG	Regierung
 waget	pos=V,mood=IND,tense=PRS,per=2,num=PL	wagt
 Lebensjahres	pos=N,case=NOM,gen=NEUT,num=SG	Lebensjahr
 schickste	pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG	schickere
-Notfall	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Notfals
+Notfall	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Notfalls
 passivierender	pos=ADJ,case=NOM,num=PL	passivierende
 verächtlicheres	pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG	verächtlichstem
 Supermarkts	pos=N,case=GEN,gen=MASC,num=PL	Supermarkte
@@ -622,7 +622,7 @@ zuverlässigeren	pos=ADJ,case=DAT,gen=FEM,num=SG	zuverlässiger
 unkaputtbare	pos=ADJ,case=GEN,gen=MASC,num=SG	unkaputtbaren
 berühmtesten	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	berühmterem
 domestizierst	pos=V,mood=IND,tense=PRS,per=2,num=PL	domestizier
-Butzemann	pos=N,case=GEN,gen=MASC,num=SG	Butzemanns
+Butzemann	pos=N,case=GEN,gen=MASC,num=SG	Butzemannes
 vergibt	pos=V,mood=IND,tense=PRS,per=1,num=PL	vergeien
 ärgeres	pos=ADJ,case=ACC,gen=FEM,num=SG	ärge
 unersetzlichsten	pos=ADJ,case=NOM,comp=CMPR,num=PL	unersetzlichere
@@ -646,8 +646,8 @@ bisexuelle	pos=ADJ,case=DAT,gen=MASC,num=SG	bisexuellem
 verübe	pos=V,tense=PRS	verübend
 kaltherzigen	pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG	kaltherzigster
 buchbarer	pos=ADJ,case=GEN,gen=NEUT,num=SG	buchbaren
-Formats	pos=N,case=GEN,gen=MASC,num=SG	Formatea
-Briefkastenfirma	pos=N,case=DAT,gen=FEM,num=PL	Briefkastenfirmane
+Formats	pos=N,case=GEN,gen=MASC,num=SG	Formate
+Briefkastenfirma	pos=N,case=DAT,gen=FEM,num=PL	Briefkastenfirmen
 unfreiwilligster	pos=ADJ,case=NOM,comp=CMPR,num=PL	unfreiwilligere
 zärtlicheren	pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG	zärtlicherer
 lösendes	pos=ADJ,case=NOM,gen=MASC,num=SG	lösender
@@ -973,7 +973,7 @@ Dämpfung	pos=N,case=NOM,gen=FEM,num=SG	Dämpfung
 klassifizierten	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL	klassifizierten
 kämmest	pos=V,tense=PST	gekämmt
 Schrottes	pos=N,case=ACC,gen=MASC,num=PL	Schrotte
-Angebots	pos=N,case=GEN,gen=NEUT,num=PL	Angebote
+Angebots	pos=N,case=GEN,gen=NEUT,num=PL	Angeböte
 träumte	pos=V,tense=PRS	träumend
 strategischen	pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG	strategischstes
 funktionalem	pos=ADJ,case=GEN,gen=MASC,num=SG	funktionalen
@@ -1036,7 +1036,7 @@ weitverbreiteterer	pos=ADJ,case=GEN,gen=MASC,num=SG	weitverbreiteten
 Demo	pos=N,case=ACC,gen=FEM,num=PL	Demon
 verbreitest	pos=V,tense=PST	verbreitet
 Rundbriefe	pos=N,case=NOM,gen=MASC,num=PL	Rundbriefe
-Schnittstellenbeschreibungssprache	pos=N,case=GEN,gen=FEM,num=PL	Schnittstellenbeschreibungsreibunnn
+Schnittstellenbeschreibungssprache	pos=N,case=GEN,gen=FEM,num=PL	Schnittstellenbeschreibunghreibuehn
 arbeitsaufwändige	pos=ADJ,case=DAT,gen=NEUT,num=SG	arbeitsaufwändigem
 verordnetes	pos=ADJ,case=ACC,gen=MASC,num=SG	verordneten
 Pfannen	pos=N,case=NOM,gen=FEM,num=PL	Pfannen
@@ -1356,7 +1356,7 @@ grausamem	pos=ADJ,comp=CMPR	grausamer
 abgeflachtester	pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG	abgeflachterer
 flechtend	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL	flöchtet
 bunteren	pos=ADJ,case=NOM,gen=MASC,num=SG	bunter
-Büsche	pos=N,case=ACC,gen=MASC,num=SG	Büsch
+Büsche	pos=N,case=ACC,gen=MASC,num=SG	Büuch
 planend	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG	plantest
 anwendbarstem	pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG	anwendbareren
 unbedenklicherem	pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG	unbedenklichster
@@ -1404,7 +1404,7 @@ Löslichkeitsprodukten	pos=N,case=NOM,gen=NEUT,num=SG	Löslichkeitsprodukt
 Kinnes	pos=N,case=DAT,gen=NEUT,num=PL	Kinnen
 herausragenden	pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG	herausragenderer
 Haltepunkts	pos=N,case=GEN,gen=MASC,num=SG	Haltepunktes
-Spültuchs	pos=N,case=GEN,gen=NEUT,num=PL	Spültucher
+Spültuchs	pos=N,case=GEN,gen=NEUT,num=PL	Spültücher
 Beschränkung	pos=N,case=DAT,gen=FEM,num=SG	Beschränkung
 selbstständigerem	pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG	selbstständigster
 schwindelerregendem	pos=ADJ,comp=CMPR	schwindelerregender
@@ -1754,7 +1754,7 @@ renige	pos=ADJ,case=ACC,gen=MASC,num=SG	renigen
 altgeorgischstem	pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG	altgeorgischsten
 zahlte	pos=V,tense=PST	gezahlt
 traditionelleren	pos=ADJ,case=NOM,num=PL	traditionelle
-Entwicklungsland	pos=N,case=DAT,gen=NEUT,num=PL	Entwicklungsländern
+Entwicklungsland	pos=N,case=DAT,gen=NEUT,num=PL	Entwicklungsländen
 grabest	pos=V,mood=IND,tense=PRS,per=1,num=SG	grabe
 neumodischeres	pos=ADJ,case=ACC,gen=NEUT,num=SG	neumodisches
 größeren	pos=ADJ,case=NOM,num=PL	größe
@@ -1941,7 +1941,7 @@ flehte	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	flehte
 desinfizierende	pos=ADJ,case=NOM,gen=NEUT,num=SG	desinfizierendes
 gesellige	pos=ADJ,case=NOM,num=PL	gesellige
 fränkischstem	pos=ADJ,case=ACC,gen=FEM,num=SG	fränkische
-Seifenoper	pos=N,case=NOM,gen=FEM,num=PL	Seifenoperen
+Seifenoper	pos=N,case=NOM,gen=FEM,num=PL	Seifenopern
 lullend	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL	lullten
 neunzigprozentigem	pos=ADJ,case=DAT,gen=FEM,num=SG	neunzigprozentiger
 zynischster	pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG	zynischeres
@@ -2006,8 +2006,8 @@ rother	pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG	rotherem
 Gottesanbeterinnen	pos=N,case=NOM,gen=FEM,num=SG	Gottesanbeterin
 hausend	pos=V,mood=IND,tense=PRS,per=2,num=PL	haust
 schneebedecktester	pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG	schneebedeckteste
-Schattenspiele	pos=N,case=GEN,gen=NEUT,num=SG,alt=LGSPEC1	Schattenspiele
-Heldin	pos=N,case=GEN,gen=FEM,num=PL	Heldinee
+Schattenspiele	pos=N,case=GEN,gen=NEUT,num=SG,alt=LGSPEC1	Schattenspiels
+Heldin	pos=N,case=GEN,gen=FEM,num=PL	Heldinnen
 Kommunistin	pos=N,case=ACC,gen=FEM,num=PL	Kommunistinnen
 Dissoziationen	pos=N,case=DAT,gen=FEM,num=PL	Dissoziationen
 Rasthof	pos=N,case=ACC,gen=MASC,num=PL	Rasthofe
@@ -2114,7 +2114,7 @@ ungehorsamerer	pos=ADJ,case=ACC,comp=SPRL,num=PL	ungehorsamste
 zapptest	pos=V,tense=PRS	zappend
 dünsteten	pos=V,mood=IND,tense=PRS,per=2,num=SG	dünstest
 Stromtrasse	pos=N,case=GEN,gen=FEM,num=PL	Stromtrassen
-Streckenverlaufes	pos=N,case=DAT,gen=MASC,num=PL	Streckenverläufen
+Streckenverlaufes	pos=N,case=DAT,gen=MASC,num=PL	Streckenverlaufen
 Stange	pos=N,case=ACC,gen=FEM,num=PL	Stangen
 ethnischer	pos=ADJ,case=ACC,gen=NEUT,num=SG	ethnisches
 feuchtestem	pos=ADJ,case=GEN,comp=SPRL,num=PL	feuchtester
@@ -2172,7 +2172,7 @@ bergmännischem	pos=ADJ,case=NOM,gen=NEUT,num=SG	bergmännisches
 bleihaltigste	pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG	bleihaltigerer
 unwirtschaftlichster	pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG	unwirtschaftlichsten
 vorangehende	pos=ADJ,case=NOM,gen=MASC,num=SG	vorangehender
-Abdankung	pos=N,case=ACC,gen=FEM,num=PL	Abdankunge
+Abdankung	pos=N,case=ACC,gen=FEM,num=PL	Abdankungen
 scheinend	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG	scheinte
 Museumstücke	pos=N,case=ACC,gen=NEUT,num=SG	Museumstock
 heisere	pos=ADJ,case=GEN,gen=FEM,num=SG	heiser
@@ -2225,7 +2225,7 @@ vertonet	pos=V,finite=NFIN	vertonen
 klinischer	pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG	klinischstem
 wertlosen	pos=ADJ,case=NOM,comp=CMPR,num=PL	wertlosere
 oxidiertest	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG	oxidierte
-Zähnen	pos=N,case=GEN,gen=MASC,num=SG	Zohnes
+Zähnen	pos=N,case=GEN,gen=MASC,num=SG	Zahnes
 hackedichter	pos=ADJ,case=GEN,gen=NEUT,num=SG	hackedichten
 Einzelheiten	pos=N,case=ACC,gen=FEM,num=SG	Einzelheit
 aufdringlichsten	pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG	aufdringlichstem
@@ -2337,7 +2337,7 @@ erschöpftem	pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG	erschöpftere
 agilere	pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG	agileres
 Einheiten	pos=N,case=NOM,gen=FEM,num=SG	Einheit
 Knicks	pos=N,case=GEN,gen=MASC,num=SG	Knickes
-Monologs	pos=N,case=GEN,gen=MASC,num=PL	Monologe
+Monologs	pos=N,case=GEN,gen=MASC,num=PL	Monolöge
 schlemmend	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL	schlemmen
 avantgardistischste	pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG	avantgardistischsten
 wesentlicherer	pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG	wesentlichere
@@ -2352,7 +2352,7 @@ rechtzeitigem	pos=ADJ,case=ACC,gen=NEUT,num=SG	rechtzeitiges
 phantastischste	pos=ADJ,case=NOM,num=PL	phantastische
 goldeneres	pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG	goldensten
 Ereignishorizont	pos=N,case=GEN,gen=MASC,num=PL	Ereignishorizonte
-Kälber	pos=N,case=GEN,gen=NEUT,num=PL	Kälbere
+Kälber	pos=N,case=GEN,gen=NEUT,num=PL	Kälber
 kratzend	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	kratzet
 steiget	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	staggen
 gedächte	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG	gedächtest
@@ -2392,7 +2392,7 @@ perfidem	pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG	perfidestes
 panikartigen	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	panikartigerem
 Steckdose	pos=N,case=GEN,gen=FEM,num=PL	Steckdosen
 nachhaltigerem	pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG	nachhaltigstem
-Zehnkämpfen	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Zehnkampfe
+Zehnkämpfen	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Zehnkampfs
 zügigerem	pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG	zügigste
 fresset	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	frossen
 fälschend	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL	fälschen
@@ -2522,7 +2522,7 @@ bedampfter	pos=ADJ,case=DAT,gen=FEM,num=SG	bedampfter
 verantwortlicheren	pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG	verantwortlichsten
 neuralgischeren	pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG	neuralgischsten
 seimigster	pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG	seimigerem
-Rückwegs	pos=N,case=ACC,gen=MASC,num=PL	Rückwüge
+Rückwegs	pos=N,case=ACC,gen=MASC,num=PL	Rückwöge
 sattester	pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG	satteren
 piesacke	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG	piesackte
 ergänztet	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL	ergänztet
@@ -2541,7 +2541,7 @@ panischsten	pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG	panischster
 beständigsten	pos=ADJ,case=ACC,comp=SPRL,num=PL	beständigste
 geborgt	pos=V,mood=IND,tense=PRS,per=2,num=PL	borgt
 entsprängen	pos=V,mood=IND,tense=PRS,per=2,num=SG	entsprangst
-Krug	pos=N,case=ACC,gen=MASC,num=PL	Krüge
+Krug	pos=N,case=ACC,gen=MASC,num=PL	Kröge
 republikanischste	pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG	republikanischste
 himmelweitere	pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG	himmelweiterer
 aufeinanderfolgende	pos=ADJ,case=NOM,gen=FEM,num=SG	aufeinanderfolgende
@@ -2698,7 +2698,7 @@ hervorragenden	pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG	hervorragenderen
 vernünftigere	pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG	vernünftigeren
 botest	pos=V,tense=PRS	betend
 bravurösere	pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG	bravuröseste
-Sträuchern	pos=N,case=GEN,gen=MASC,num=PL	Sträucherne
+Sträuchern	pos=N,case=GEN,gen=MASC,num=PL	Sträucher
 kennzeichnen	pos=V,mood=IND,tense=PRS,per=2,num=PL	kennzeichnt
 irregulärem	pos=ADJ,case=NOM,comp=SPRL,num=PL	irregulärste
 Doxologie	pos=N,case=ACC,gen=FEM,num=SG	Doxologie
@@ -2868,7 +2868,7 @@ Hälften	pos=N,case=ACC,gen=FEM,num=PL	Hälften
 abgefahrene	pos=ADJ,case=GEN,comp=SPRL,num=PL	abgefahrenster
 reduzierendem	pos=ADJ,case=DAT,gen=MASC,num=SG	reduzierendem
 gegenseitigen	pos=ADJ,case=GEN,gen=FEM,num=SG	gegenseitiger
-Fluoreszenz	pos=N,case=NOM,gen=FEM,num=PL	Fluoreszenzn
+Fluoreszenz	pos=N,case=NOM,gen=FEM,num=PL	Fluoreszenzen
 ordentlichsten	pos=ADJ,case=NOM,gen=FEM,num=SG	ordentliche
 onkelhaftes	pos=ADJ,case=ACC,comp=SPRL,num=PL	onkelhafteste
 spukhaftestes	pos=ADJ,case=NOM,gen=FEM,num=SG	spukhafte
@@ -2877,9 +2877,9 @@ gekonntes	pos=ADJ,case=NOM,gen=MASC,num=SG	gekonnter
 unzutreffendes	pos=ADJ,case=NOM,comp=SPRL,num=PL	unzutreffendste
 minimalistischsten	pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG	minimalistischster
 blödsinnigeren	pos=ADJ,case=GEN,gen=MASC,num=SG	blödsinnigen
-Mittelfelds	pos=N,case=NOM,gen=NEUT,num=PL	Mittelfelder
+Mittelfelds	pos=N,case=NOM,gen=NEUT,num=PL	Mittelfelde
 hauptsächlichem	pos=ADJ,case=GEN,gen=MASC,num=SG	hauptsächlichen
-Filzlaus	pos=N,case=GEN,gen=FEM,num=PL	Filzlauen
+Filzlaus	pos=N,case=GEN,gen=FEM,num=PL	Filzläuen
 milchiges	pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG	milchigstem
 haaren	pos=V,tense=PRS	haarend
 engmaschigstes	pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG	engmaschigeres
@@ -3104,7 +3104,7 @@ terroristischen	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	terroristischerem
 krosst	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG	krosse
 realisierten	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG	realisierte
 einstweiligen	pos=ADJ,case=DAT,gen=NEUT,num=SG	einstweiligem
-Lagergeld	pos=N,case=ACC,gen=NEUT,num=PL	Lagergelder
+Lagergeld	pos=N,case=ACC,gen=NEUT,num=PL	Lagergelde
 unzufriedensten	pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG	unzufriedenstes
 frühestes	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	früherem
 transchieret	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL	transchiertet
@@ -3113,7 +3113,7 @@ eindeutigere	pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG	eindeutigstem
 stellvertretendes	pos=ADJ,case=GEN,gen=MASC,num=SG	stellvertretenden
 ungewisser	pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG	ungewissesten
 vermögendstem	pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG	vermögenderer
-Schelms	pos=N,case=GEN,gen=MASC,num=SG	Schelmel
+Schelms	pos=N,case=GEN,gen=MASC,num=SG	Schelme
 subversivem	pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG	subversiveres
 Reuse	pos=N,case=GEN,gen=FEM,num=PL	Reusen
 gehehlt	pos=V,mood=IND,tense=PRS,per=1,num=SG	hehle
@@ -3137,8 +3137,8 @@ numerischerer	pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG	numerischster
 spannungsabhängigen	pos=ADJ,case=ACC,gen=NEUT,num=SG	spannungsabhängiges
 zupft	pos=V,mood=IND,tense=PRS,per=1,num=PL	zupfen
 Senfen	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Senfs
-Bromdampfes	pos=N,case=DAT,gen=MASC,num=PL	Bromdampfen
-Küste	pos=N,case=NOM,gen=FEM,num=SG	Kuste
+Bromdampfes	pos=N,case=DAT,gen=MASC,num=PL	Bromdämpfen
+Küste	pos=N,case=NOM,gen=FEM,num=SG	Kust
 tranchieren	pos=V,mood=IND,tense=PRS,per=2,num=PL	tranchiert
 unerschöpflicheres	pos=ADJ,case=NOM,gen=NEUT,num=SG	unerschöpflicher
 greiseren	pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG	greiseste
@@ -3258,7 +3258,7 @@ widerspenstigster	pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG	widerspenstigster
 gewalttätigste	pos=ADJ,case=ACC,gen=NEUT,num=SG	gewalttätiges
 rächt	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	rechet
 schneidbarer	pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG	schneidbarerer
-Insektizids	pos=N,case=NOM,gen=NEUT,num=PL	Insektizider
+Insektizids	pos=N,case=NOM,gen=NEUT,num=PL	Insektizide
 kanadische	pos=ADJ,case=DAT,gen=MASC,num=SG	kanadischem
 gedeutet	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	gedeute
 urkundlichen	pos=ADJ,case=NOM,gen=NEUT,num=SG	urkundliches
@@ -3556,7 +3556,7 @@ thermisches	pos=ADJ,case=NOM,gen=NEUT,num=SG	thermisches
 beherrschbareren	pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG	beherrschbareren
 behutsamstem	pos=ADJ,case=DAT,gen=FEM,num=SG	behutsamer
 Nutzung	pos=N,case=ACC,gen=FEM,num=SG	Nutzung
-Neutronensternen	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Neutronensterne
+Neutronensternen	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Neutronensterns
 mikrominiaturisierend	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	mikrominiaturisieret
 rosanstem	pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG	rosansten
 widerborstigeren	pos=ADJ,case=ACC,gen=MASC,num=SG	widerborstigen
@@ -4010,7 +4010,7 @@ apfelgrünen	pos=ADJ,case=NOM,gen=FEM,num=SG	apfelgrüne
 bodennahem	pos=ADJ,case=ACC,gen=MASC,num=SG	bodennahen
 verpuffend	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL	verpufftet
 Hinterkopf	pos=N,case=GEN,gen=MASC,num=PL	Hinterköpfe
-Laus	pos=N,case=DAT,gen=FEM,num=PL	Lauen
+Laus	pos=N,case=DAT,gen=FEM,num=PL	Lausen
 misstraut	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	misstraute
 replizierend	pos=V,mood=IND,tense=PRS,per=2,num=SG	replizierst
 Schmierfetts	pos=N,case=NOM,gen=NEUT,num=PL	Schmierfette
@@ -4271,7 +4271,7 @@ Börde	pos=N,case=ACC,gen=FEM,num=PL	Börden
 schuppte	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL	schuppen
 ansehnliche	pos=ADJ,case=GEN,comp=CMPR,num=PL	ansehnlicherer
 gleichmütiger	pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG	gleichmütigster
-Lohnes	pos=N,case=ACC,gen=MASC,num=PL	Lohne
+Lohnes	pos=N,case=ACC,gen=MASC,num=PL	Löhne
 engstirnigen	pos=ADJ,case=DAT,gen=NEUT,num=SG	engstirnigem
 Bildbestandteiles	pos=N,case=ACC,gen=MASC,num=PL	Bildbestandteile
 infiziertes	pos=ADJ,case=NOM,gen=NEUT,num=SG	infiziertes
@@ -4485,7 +4485,7 @@ dehydrierteres	pos=ADJ,case=GEN,comp=SPRL,num=PL	dehydriertester
 kriegslüsterner	pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG	kriegslüsternsten
 feigeren	pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG	feigsten
 arrangierten	pos=V,mood=IND,tense=PRS,per=3,num=SG	arrangiert
-Krankenschwester	pos=N,case=NOM,gen=FEM,num=PL	Krankenschwestern
+Krankenschwester	pos=N,case=NOM,gen=FEM,num=PL	Krankenschwester
 schlangenförmigeren	pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG	schlangenförmigere
 stutzigere	pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG	stutzigerem
 Spruchbands	pos=N,case=GEN,gen=NEUT,num=PL	Spruchbänder
@@ -4503,7 +4503,7 @@ fanatischen	pos=ADJ,case=GEN,comp=SPRL,num=PL	fanatischster
 nehme	pos=V,tense=PRS	nehmend
 parlieren	pos=V,mood=IND,tense=PRS,per=2,num=SG	parlierst
 Weichtier	pos=N,case=DAT,gen=NEUT,num=PL	Weichtieren
-Unterklassen	pos=N,case=ACC,gen=FEM,num=SG	Unterklass
+Unterklassen	pos=N,case=ACC,gen=FEM,num=SG	Unterklasse
 gegengezeichnte	pos=V,mood=IND,tense=PRS,per=2,num=SG	gegengezeichst
 austretender	pos=ADJ,case=GEN,gen=FEM,num=SG	austretender
 militärisches	pos=ADJ,case=GEN,gen=FEM,num=SG	militärischer
@@ -4582,8 +4582,8 @@ sexuelle	pos=ADJ,case=NOM,gen=MASC,num=SG	sexueller
 verzwicktestem	pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG	verzwicktesten
 sonderbareren	pos=ADJ,case=NOM,comp=CMPR,num=PL	sonderbarere
 andorranischerem	pos=ADJ,case=DAT,gen=FEM,num=SG	andorranischer
-Wemfall	pos=N,case=NOM,gen=MASC,num=SG	Wemfal
-Räder	pos=N,case=NOM,gen=NEUT,num=SG	Rodes
+Wemfall	pos=N,case=NOM,gen=MASC,num=SG	Wemfall
+Räder	pos=N,case=NOM,gen=NEUT,num=SG	Rode
 entfolgte	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	entfolgte
 entsagt	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL	entsagten
 dialektischen	pos=ADJ,case=ACC,gen=FEM,num=SG	dialektische
@@ -4608,7 +4608,7 @@ atypischerem	pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG	atypischeren
 unbekanntestem	pos=ADJ,case=DAT,gen=FEM,num=SG	unbekannter
 äquatoriale	pos=ADJ,case=DAT,gen=MASC,num=SG	äquatorialem
 unerschöpflicher	pos=ADJ,case=NOM,comp=CMPR,num=PL	unerschöpflichere
-Versuches	pos=N,case=NOM,gen=MASC,num=PL	Versuche
+Versuches	pos=N,case=NOM,gen=MASC,num=PL	Versüche
 estnisches	pos=ADJ,case=ACC,gen=FEM,num=SG	estnische
 gönnten	pos=V,mood=IND,tense=PRS,per=2,num=SG	gönnst
 verstrahlten	pos=V,mood=IND,tense=PRS,per=2,num=PL	verstrahlt
@@ -4629,7 +4629,7 @@ begrenzest	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG	begrenze
 mannigfaltigsten	pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG	mannigfaltigere
 Konditorei	pos=N,case=GEN,gen=FEM,num=PL	Konditoreien
 verwirklicht	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG	verwirklicest
-Bebauungsplanes	pos=N,case=DAT,gen=MASC,num=PL	Bebauungsplänen
+Bebauungsplanes	pos=N,case=DAT,gen=MASC,num=PL	Bebauungsplanen
 grösstes	pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG	gröserer
 populäreren	pos=ADJ,case=NOM,gen=FEM,num=SG	populäre
 stacheligstem	pos=ADJ,case=ACC,gen=NEUT,num=SG	stacheliges
@@ -4729,7 +4729,7 @@ angemesseneren	pos=ADJ,case=NOM,num=PL	angemessene
 mittelmäßigsten	pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG	mittelmäßigeres
 fahnenflüchtiges	pos=ADJ,case=NOM,num=PL	fahnenflüchtige
 klebrigsten	pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG	klebrigere
-Staatsbesuchs	pos=N,case=ACC,gen=MASC,num=PL	Staatsbesuche
+Staatsbesuchs	pos=N,case=ACC,gen=MASC,num=PL	Staatsbesüche
 wirteliges	pos=ADJ,case=ACC,gen=NEUT,num=SG	wirteliges
 tendiertest	pos=V,tense=PRS	tendierend
 eingesetzten	pos=ADJ,case=ACC,gen=MASC,num=SG	eingesetzten
@@ -4774,7 +4774,7 @@ flächigste	pos=ADJ,case=DAT,gen=MASC,num=SG	flächigem
 stahlgrauem	pos=ADJ,case=NOM,gen=FEM,num=SG	stahlgraue
 oktroyiert	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL	oktroyierten
 beharrsamster	pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG	beharrsamstem
-Kursbücher	pos=N,case=NOM,gen=NEUT,num=SG	Kursboch
+Kursbücher	pos=N,case=NOM,gen=NEUT,num=SG	Kursbuch
 eloxierst	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL	eloxieren
 Sezessionskriege	pos=N,case=ACC,gen=MASC,num=SG	Sezessionskrieg
 ungestüme	pos=ADJ,case=GEN,gen=FEM,num=SG	ungestümer
@@ -5239,10 +5239,10 @@ exzellenten	pos=ADJ,case=ACC,comp=SPRL,num=PL	exzellenteste
 verwittertest	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	verwitteret
 beknackten	pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG	beknacktester
 wässrigsten	pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG	wässrigster
-Instrument	pos=N,case=DAT,gen=NEUT,num=PL	Instrumenten
+Instrument	pos=N,case=DAT,gen=NEUT,num=PL	Instrumentern
 einkettigem	pos=ADJ,case=ACC,gen=NEUT,num=SG	einkettiges
 angemessenem	pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG	angemesseneren
-Betastrahles	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Betastrahle
+Betastrahles	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Betastrahls
 veränderliches	pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG	veränderlicheres
 Bremsbelags	pos=N,case=ACC,gen=MASC,num=SG	Bremsbelag
 missbräuchliches	pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG	missbräuchlichere
@@ -5434,7 +5434,7 @@ Bundesstraße	pos=N,case=DAT,gen=FEM,num=SG	Bundesstraße
 aufgenommenen	pos=ADJ,case=ACC,gen=FEM,num=SG	aufgenommene
 sparsamerem	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	sparsamerem
 zusammenhängendem	pos=ADJ,case=NOM,gen=FEM,num=SG	zusammenhängende
-Ionisierungsenergien	pos=N,case=ACC,gen=FEM,num=SG	Ionisierungsenergie
+Ionisierungsenergien	pos=N,case=ACC,gen=FEM,num=SG	Ionisierungsenergi
 tschechischer	pos=ADJ,case=GEN,gen=NEUT,num=SG	tschechischen
 kommunistischstem	pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG	kommunistischeren
 bestrahlest	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL	bestrahlen
@@ -5505,7 +5505,7 @@ gefoult	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	foulet
 benutzet	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL	benutztet
 Rats	pos=N,case=NOM,gen=MASC,num=PL	Rate
 charismatischstes	pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG	charismatischerer
-Bitterschokoladen	pos=N,case=NOM,gen=FEM,num=SG	Bitterschokolad
+Bitterschokoladen	pos=N,case=NOM,gen=FEM,num=SG	Bitterschokolade
 ignorante	pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG	ignoranterer
 hebräisches	pos=ADJ,case=GEN,num=PL	hebräischer
 weiblichere	pos=ADJ,case=NOM,num=PL	weibliche
@@ -5604,7 +5604,7 @@ rötheres	pos=ADJ,case=GEN,gen=FEM,num=SG	rother
 erkältend	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL	erkälteten
 ungläubigerem	pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG	ungläubigste
 einfacheres	pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG	einfacherer
-Begegnungsstätte	pos=N,case=DAT,gen=FEM,num=SG	Begegnungsstotte
+Begegnungsstätte	pos=N,case=DAT,gen=FEM,num=SG	Begegnungsstätt
 Schnitt	pos=N,case=ACC,gen=MASC,num=SG	Schnitt
 veranschlagtet	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	veranschlagte
 erwähnest	pos=V,mood=IND,tense=PRS,per=2,num=SG	erwähnes
@@ -5614,7 +5614,7 @@ laicht	pos=V,tense=PRS	laichend
 rosigeres	pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG	rosigstes
 vertaget	pos=V,mood=IND,tense=PRS,per=3,num=SG	vertage
 ungesetzlichsten	pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG	ungesetzlichster
-Notenbank	pos=N,case=DAT,gen=FEM,num=PL	Notenbänken
+Notenbank	pos=N,case=DAT,gen=FEM,num=PL	Notenbanken
 haart	pos=V,mood=IND,tense=PRS,per=2,num=SG	haarst
 verschwinden	pos=V,tense=PRS	verschwindend
 imposantestem	pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG	imposanteres
@@ -5654,7 +5654,7 @@ großräumigerem	pos=ADJ,case=ACC,comp=CMPR,num=PL	großräumigere
 zweiatomige	pos=ADJ,case=ACC,gen=NEUT,num=SG	zweiatomiges
 verleumdetet	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	verleumdete
 düngst	pos=V,tense=PST	gedacht
-Geschmackssinns	pos=N,case=ACC,gen=MASC,num=SG	Geschmackssin
+Geschmackssinns	pos=N,case=ACC,gen=MASC,num=SG	Geschmackssinn
 marktfähigstes	pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG	marktfähigeren
 verteilst	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG	verteilte
 vereinbarer	pos=ADJ,case=DAT,gen=MASC,num=SG	vereinbarem
@@ -5666,7 +5666,7 @@ Briefs	pos=N,case=ACC,gen=MASC,num=SG	Brief
 vulkanisierbaren	pos=ADJ,case=GEN,gen=NEUT,num=SG	vulkanisierbaren
 ausführbarer	pos=ADJ,case=DAT,gen=MASC,num=SG	ausführbarem
 Wasserpfeifen	pos=N,case=GEN,gen=FEM,num=SG	Wasserpfeif
-Aufschlag	pos=N,case=DAT,gen=MASC,num=PL	Aufschlägen
+Aufschlag	pos=N,case=DAT,gen=MASC,num=PL	Aufschläge
 korrumpierte	pos=V,tense=PRS	korrumpierend
 speziellere	pos=ADJ,case=ACC,comp=SPRL,num=PL	speziellste
 kopulierte	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	kopulierte
@@ -5692,7 +5692,7 @@ getratscht	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL	tratschten
 erstklassigem	pos=ADJ,case=ACC,gen=MASC,num=SG	erstklassigen
 zaghafte	pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG	zaghafterer
 Seeschwalbe	pos=N,case=NOM,gen=FEM,num=PL	Seeschwalben
-Werbung	pos=N,case=ACC,gen=FEM,num=PL	Werbüngen
+Werbung	pos=N,case=ACC,gen=FEM,num=PL	Werbungen
 stächet	pos=V,mood=IND,tense=PRS,per=2,num=PL	stächet
 entkämet	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG	entkämest
 eisenhaltigste	pos=ADJ,case=NOM,gen=NEUT,num=SG	eisenhaltiges
@@ -5749,7 +5749,7 @@ universeller	pos=ADJ,case=NOM,gen=NEUT,num=SG	universelles
 demonstriertem	pos=ADJ,case=GEN,gen=FEM,num=SG	demonstrierter
 alkalisches	pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG	alkalischerem
 schuldeten	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	schuldet
-Gesamtmassen	pos=N,case=GEN,gen=FEM,num=SG	Gesamtmasse
+Gesamtmassen	pos=N,case=GEN,gen=FEM,num=SG	Gesamtmass
 proprietärsten	pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG	proprietärstem
 verselbstständiget	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG	verselbstständigess
 salztolerante	pos=ADJ,case=NOM,gen=NEUT,num=SG	salztolerantes
@@ -5982,7 +5982,7 @@ preisverdächtigsten	pos=ADJ,comp=CMPR	preisverdächtiger
 prostete	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG	prostetest
 asymmetrischem	pos=ADJ,case=ACC,gen=NEUT,num=SG	asymmetrisches
 hitzebeständigere	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	hitzebeständigerem
-Dummkopf	pos=N,case=ACC,gen=MASC,num=PL	Dummkopfe
+Dummkopf	pos=N,case=ACC,gen=MASC,num=PL	Dummköpfe
 übend	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG	übtntest
 namhaftem	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	namhafterem
 untertänigsten	pos=ADJ,case=ACC,comp=CMPR,num=PL	untertänigere
@@ -6087,7 +6087,7 @@ untröstlichstes	pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG	untröstlichster
 elektrophileren	pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG	elektrophilsten
 hemmungsloser	pos=ADJ,case=DAT,gen=MASC,num=SG	hemmungslosem
 fangend	pos=V,tense=PST	gefangt
-Fuchshunds	pos=N,case=NOM,gen=MASC,num=PL	Fuchshunde
+Fuchshunds	pos=N,case=NOM,gen=MASC,num=PL	Fuchshünde
 leidenschaftsloseste	pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG	leidenschaftslosert
 misslängest	pos=V,mood=IND,tense=PRS,per=2,num=SG	misslingst
 fühlest	pos=V,mood=IND,tense=PRS,per=1,num=SG	fahle
@@ -6186,7 +6186,7 @@ Luftwurzeln	pos=N,case=ACC,gen=FEM,num=SG	Luftwurzel
 urinierte	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG	urinierte
 reaktivere	pos=ADJ,case=ACC,num=PL	reaktive
 populistischere	pos=ADJ,case=GEN,num=PL	populistischer
-Arenen	pos=N,case=GEN,gen=FEM,num=SG	Arene
+Arenen	pos=N,case=GEN,gen=FEM,num=SG	Aren
 rangierest	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL	rangiertet
 südasiatisches	pos=ADJ,case=GEN,gen=FEM,num=SG	südasiatischer
 cyklische	pos=ADJ,case=NOM,gen=MASC,num=SG	cyklischer
@@ -6217,7 +6217,7 @@ schneidigere	pos=ADJ,case=GEN,gen=MASC,num=SG	schneidigen
 verlogeneres	pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG	verlogenstem
 rhodiniere	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL	rhodinierten
 komprimierst	pos=V,finite=NFIN	komprimieren
-Säulen	pos=N,case=NOM,gen=FEM,num=SG	Saule
+Säulen	pos=N,case=NOM,gen=FEM,num=SG	Suule
 attackieret	pos=V,finite=NFIN	attackieren
 knappsten	pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG	knapperen
 erwüchsen	pos=V,tense=PST	erwüchset
@@ -6278,7 +6278,7 @@ entkamst	pos=V,mood=IND,tense=PRS,per=2,num=SG	entkamst
 kölsches	pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG	kölscheren
 zersetztes	pos=ADJ,case=GEN,num=PL	zersetzter
 farbiges	pos=ADJ,case=ACC,gen=FEM,num=SG	farbige
-Tüten	pos=N,case=NOM,gen=FEM,num=PL	Tüten
+Tüten	pos=N,case=NOM,gen=FEM,num=PL	Tüte
 notgeilster	pos=ADJ,case=NOM,gen=FEM,num=SG	notgeile
 Genehmigung	pos=N,case=GEN,gen=FEM,num=PL	Genehmigungen
 nährend	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL	nährtet
@@ -6331,7 +6331,7 @@ blondierst	pos=V,mood=IND,tense=PRS,per=1,num=SG	blondiere
 begehrtestes	pos=ADJ,case=GEN,gen=MASC,num=SG	begehrten
 Fachmarkts	pos=N,case=DAT,gen=MASC,num=PL	Fachmarkten
 ergonomischeres	pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG	ergonomischere
-Rotschopf	pos=N,case=ACC,gen=MASC,num=PL	Rotschopfe
+Rotschopf	pos=N,case=ACC,gen=MASC,num=PL	Rotschöpfe
 feitest	pos=V,finite=NFIN	feiten
 Steges	pos=N,case=ACC,gen=MASC,num=SG	Steg
 Lepidolith	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Lepidoliths
@@ -6344,7 +6344,7 @@ konterkariert	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL	konterkarierten
 formellere	pos=ADJ,case=GEN,gen=MASC,num=SG	formellen
 sommerlicheres	pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG	sommerlichstem
 fälliges	pos=ADJ,case=GEN,gen=NEUT,num=SG	fälligen
-Jahrtausendwende	pos=N,case=ACC,gen=FEM,num=SG	Jahrtausendwende
+Jahrtausendwende	pos=N,case=ACC,gen=FEM,num=SG	Jahrtausendwend
 betrügerischstem	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	betrügerischerem
 feuchtestem	pos=ADJ,case=GEN,gen=FEM,num=SG	feuchter
 ständige	pos=ADJ,case=NOM,gen=NEUT,num=SG	ständiges
@@ -6358,7 +6358,7 @@ verhaltensgestörtester	pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG	verhaltensges
 Abhandlung	pos=N,case=DAT,gen=FEM,num=PL	Abhandlungen
 numerischste	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	numerischerem
 exaltierteste	pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG	exaltierteste
-Obergespannes	pos=N,case=NOM,gen=MASC,num=PL	Obergespanne
+Obergespannes	pos=N,case=NOM,gen=MASC,num=PL	Obergespänne
 warnen	pos=V,mood=IND,tense=PRS,per=3,num=PL	warnen
 unterwürfigstes	pos=ADJ,case=GEN,gen=NEUT,num=SG	unterwürfigen
 rekapituliere	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	rekapitulieret
@@ -6389,7 +6389,7 @@ heyle	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG	heylte
 bestacht	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	bestachet
 gröberem	pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG	gröbsten
 verständigtem	pos=ADJ,case=NOM,gen=NEUT,num=SG	verständigtes
-Glückstags	pos=N,case=ACC,gen=MASC,num=PL	Glückstage
+Glückstags	pos=N,case=ACC,gen=MASC,num=PL	Glückstäge
 bakteriostatische	pos=ADJ,case=NOM,gen=FEM,num=SG	bakteriostatische
 ungeduldigster	pos=ADJ,case=ACC,gen=FEM,num=SG	ungeduldige
 hagerem	pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG	hageren
@@ -6430,7 +6430,7 @@ Aufwänden	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Aufwands
 trinkfreudigeren	pos=ADJ,case=NOM,gen=FEM,num=SG	trinkfreudige
 naschend	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	naschet
 kopulierte	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG	kopulierte
-Gosse	pos=N,case=ACC,gen=FEM,num=SG	Gosse
+Gosse	pos=N,case=ACC,gen=FEM,num=SG	Goss
 demobilisiert	pos=V,finite=NFIN	demobilisieren
 neunzigprozentiger	pos=ADJ,case=DAT,gen=NEUT,num=SG	neunzigprozentigem
 endlosestes	pos=ADJ,case=DAT,gen=MASC,num=SG	endlosem
@@ -6525,7 +6525,7 @@ ergonomischem	pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG	ergonomischeres
 einsilbigen	pos=ADJ,case=NOM,num=PL	einsilbige
 vordynastischer	pos=ADJ,case=DAT,gen=MASC,num=SG	vordynastischem
 spucket	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	spuckten
-Schweinhund	pos=N,case=NOM,gen=MASC,num=PL	Schweinhunde
+Schweinhund	pos=N,case=NOM,gen=MASC,num=PL	Schweinhünde
 Kellen	pos=N,case=NOM,gen=FEM,num=SG	Kelle
 blockierende	pos=ADJ,case=ACC,gen=MASC,num=SG	blockierenden
 Bildwörterbuchs	pos=N,case=ACC,gen=NEUT,num=SG	Bildwörterbuch
@@ -6767,7 +6767,7 @@ zierlicher	pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG	zierlicherer
 bekundeten	pos=V,tense=PRS	bekundeed
 elementarstes	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	elementarerem
 komischstes	pos=ADJ,case=DAT,gen=NEUT,num=SG	komischem
-Kernspinresonanzspektroskopie	pos=N,case=DAT,gen=FEM,num=SG	Kernspinresonanzspektroektekt
+Kernspinresonanzspektroskopie	pos=N,case=DAT,gen=FEM,num=SG	Kernspinresonanzspektrpektrkn
 organoleptischem	pos=ADJ,case=NOM,gen=NEUT,num=SG	organoleptisches
 erfahrenem	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	erfahrenem
 erfolglosstem	pos=ADJ,case=GEN,comp=CMPR,num=PL	erfolgloserer
@@ -6963,7 +6963,7 @@ implementierte	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG	implementierte
 grollend	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG	grollest
 eiltest	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG	eilte
 verdampftes	pos=ADJ,case=GEN,gen=MASC,num=SG	verdampften
-Abgöttern	pos=N,case=GEN,gen=MASC,num=SG	Abgattes
+Abgöttern	pos=N,case=GEN,gen=MASC,num=SG	Abguttes
 richte	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	richte
 halbflüssige	pos=ADJ,case=NOM,gen=FEM,num=SG	halbflüssige
 muffigste	pos=ADJ,case=DAT,gen=MASC,num=SG	muffigem
@@ -7188,7 +7188,7 @@ fürsorgliche	pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG	fürsorglicherer
 berylliumhaltigerem	pos=ADJ,case=DAT,gen=MASC,num=SG	berylliumhaltigem
 gleichseitigem	pos=ADJ,case=ACC,num=PL	gleichseitige
 ebnetest	pos=V,mood=IND,tense=PRS,per=1,num=SG	ebnete
-Holunderbuschs	pos=N,case=DAT,gen=MASC,num=PL	Holunderbuüchen
+Holunderbuschs	pos=N,case=DAT,gen=MASC,num=PL	Holunderbüschen
 schmälerer	pos=ADJ,case=NOM,comp=CMPR,num=PL	schmälere
 schmoren	pos=V,mood=IND,tense=PRS,per=3,num=PL	schmoren
 lesbareres	pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG	lesbarster
@@ -7221,7 +7221,7 @@ literarischerem	pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG	literarischeres
 selbstmörderischem	pos=ADJ,case=GEN,gen=MASC,num=SG	selbstmörderischen
 kreationärem	pos=ADJ,case=ACC,gen=FEM,num=SG	kreationäre
 behauptetet	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG	behauptetest
-Katatonie	pos=N,case=NOM,gen=FEM,num=SG	Katatonie
+Katatonie	pos=N,case=NOM,gen=FEM,num=SG	Katatoni
 kreieren	pos=V,mood=IND,tense=PRS,per=3,num=PL	kreieren
 gruppierest	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG	gruppiere
 durchschimmernden	pos=ADJ,case=GEN,gen=NEUT,num=SG	durchschimmernden
@@ -7297,7 +7297,7 @@ richtend	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	richtete
 berüchtigterem	pos=ADJ,case=GEN,gen=FEM,num=SG	berüchtigter
 diesjähriger	pos=ADJ,case=NOM,num=PL	diesjährige
 grausame	pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG	grausameres
-Gosse	pos=N,case=GEN,gen=FEM,num=SG	Gosse
+Gosse	pos=N,case=GEN,gen=FEM,num=SG	Goss
 tröstest	pos=V,mood=IND,tense=PRS,per=1,num=SG	tröse
 unspezifisches	pos=ADJ,case=DAT,gen=MASC,num=SG	unspezifischem
 schmerzlossten	pos=ADJ,case=NOM,gen=MASC,num=SG	schmerzlosster
@@ -7357,7 +7357,7 @@ unvermeidlichere	pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG	unvermeidlichere
 zauberhafterem	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	zauberhafterem
 komplexierend	pos=V,mood=IND,tense=PRS,per=2,num=PL	komplexiert
 schimmerndes	pos=ADJ,case=ACC,gen=FEM,num=SG	schimmernde
-Gehörsinnes	pos=N,case=ACC,gen=MASC,num=SG	Gehörsin
+Gehörsinnes	pos=N,case=ACC,gen=MASC,num=SG	Gehörsinn
 Jahresberichts	pos=N,case=DAT,gen=MASC,num=PL	Jahresberichten
 Zweigeschlechtern	pos=N,case=GEN,gen=NEUT,num=SG,alt=LGSPEC1	Zweigeschlechts
 kreierend	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG	kreierte
@@ -7367,7 +7367,7 @@ prognostiziertet	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL	prognostiziert
 salzhaltigstes	pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG	salzhaltigerer
 rauchigster	pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG	rauchigster
 dickstielige	pos=ADJ,case=ACC,gen=NEUT,num=SG	dickstieliges
-Bräute	pos=N,case=ACC,gen=FEM,num=SG	Braut
+Bräute	pos=N,case=ACC,gen=FEM,num=SG	Bruut
 Eigenschaftsworts	pos=N,case=GEN,gen=NEUT,num=PL	Eigenschaftsworte
 schmerzhafterer	pos=ADJ,case=ACC,gen=FEM,num=SG	schmerzhafte
 lutschten	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG	lutschte
@@ -7425,7 +7425,7 @@ vertipptet	pos=V,mood=IND,tense=PRS,per=2,num=SG	vertippst
 reduktivere	pos=ADJ,case=DAT,gen=MASC,num=SG	reduktivem
 generieret	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG	generiere
 entmutigender	pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG	entmutigendsten
-Blödmanns	pos=N,case=ACC,gen=MASC,num=SG	Blödman
+Blödmanns	pos=N,case=ACC,gen=MASC,num=SG	Blödmann
 versautest	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL	versauteten
 kartographierend	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG	kartographiere
 Schamhaaren	pos=N,case=NOM,gen=NEUT,num=PL	Schamhaare
@@ -7493,9 +7493,9 @@ blassgelbe	pos=ADJ,case=ACC,num=PL	blassgelbe
 traben	pos=V,mood=IND,tense=PRS,per=3,num=SG	trabt
 Übersetzungswörterbuch	pos=N,case=NOM,gen=NEUT,num=PL	Übersetzungswörterbucher
 bigotte	pos=ADJ,case=DAT,gen=NEUT,num=SG	bigottem
-Entwicklungslands	pos=N,case=NOM,gen=NEUT,num=PL	Entwicklungsländer
+Entwicklungslands	pos=N,case=NOM,gen=NEUT,num=PL	Entwicklungslände
 schalstem	pos=ADJ,case=DAT,gen=NEUT,num=SG	schalem
-Tonne	pos=N,case=GEN,gen=FEM,num=SG	Tonne
+Tonne	pos=N,case=GEN,gen=FEM,num=SG	Tonn
 merkwürdigen	pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG	merkwürdigstes
 nichtoxidierendem	pos=ADJ,case=NOM,gen=MASC,num=SG	nichtoxidierender
 Zusammenbrüchen	pos=N,case=ACC,gen=MASC,num=SG	Zusammenbruch
@@ -7633,7 +7633,7 @@ Grubenunglückes	pos=N,case=DAT,gen=NEUT,num=PL	Grubenunglücken
 schwaches	pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG	schwächeren
 auserkiest	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL	auserkies
 begnadigen	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	begnadigten
-Gelds	pos=N,case=GEN,gen=NEUT,num=SG,alt=LGSPEC1	Gelds
+Gelds	pos=N,case=GEN,gen=NEUT,num=SG,alt=LGSPEC1	Geldes
 blamabele	pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG	blamabelere
 spendabelen	pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG	spendabelste
 blinkest	pos=V,mood=IND,tense=PRS,per=2,num=SG	blinkst
@@ -7670,7 +7670,7 @@ Geruchssinnes	pos=N,case=DAT,gen=MASC,num=PL	Geruchssinnen
 scheußlichster	pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG	scheußlichere
 faderer	pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG	faderer
 verbeißet	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL	verbeißten
-Klathrat	pos=N,case=ACC,gen=NEUT,num=PL	Klathrate
+Klathrat	pos=N,case=ACC,gen=NEUT,num=PL	Klathräte
 versagtest	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG	versage
 bedürfet	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG	bederfe
 unvollständige	pos=ADJ,case=NOM,comp=SPRL,num=PL	unvollständigste
@@ -7759,10 +7759,10 @@ knusprigem	pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG	knusprigster
 intimerem	pos=ADJ,case=GEN,comp=CMPR,num=PL	intimerer
 regenerieret	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG	regeneriertest
 kriminellste	pos=ADJ,case=NOM,gen=MASC,num=SG	krimineller
-Gesetzentwürfen	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Gesetzentworfs
+Gesetzentwürfen	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Gesetzentwurfs
 brichst	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL	brachen
 Römischen	pos=ADJ,case=ACC,gen=NEUT,num=SG	Römisches
-Wirkungsgrads	pos=N,case=NOM,gen=MASC,num=PL	Wirkungsgrade
+Wirkungsgrads	pos=N,case=NOM,gen=MASC,num=PL	Wirkungsgräde
 einträglicherer	pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG	einträglichstem
 nachhaltigerem	pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG	nachhaltigster
 drakonischem	pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG	drakonischerer
@@ -7980,7 +7980,7 @@ eingelassenem	pos=ADJ,case=GEN,gen=NEUT,num=SG	eingelassenen
 vordynastischen	pos=ADJ,case=NOM,gen=NEUT,num=SG	vordynastisches
 betätigest	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL	betätigten
 nivelliertet	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	nivellierten
-Rotschopf	pos=N,case=ACC,gen=MASC,num=PL	Rotschopfe
+Rotschopf	pos=N,case=ACC,gen=MASC,num=PL	Rotschöpfe
 Offiziers	pos=N,case=NOM,gen=MASC,num=PL	Offiziere
 tongaisches	pos=ADJ,case=GEN,comp=SPRL,num=PL	tongaischster
 betenden	pos=ADJ,case=GEN,gen=NEUT,num=SG	betenden
@@ -8106,7 +8106,7 @@ praktischste	pos=ADJ,case=ACC,comp=SPRL,num=PL	praktischste
 privilegierteres	pos=ADJ,case=DAT,gen=NEUT,num=SG	privilegiertem
 magnetischerer	pos=ADJ,case=NOM,gen=NEUT,num=SG	magnetisches
 pyrotechnisches	pos=ADJ,case=GEN,num=PL	pyrotechnischer
-Kernspinresonanzspektroskopie	pos=N,case=GEN,gen=FEM,num=SG	Kernspinresonanzspektroskoekt
+Kernspinresonanzspektroskopie	pos=N,case=GEN,gen=FEM,num=SG	Kernspinresonanzspektrosktrkt
 fatalistischstes	pos=ADJ,case=GEN,comp=SPRL,num=PL	fatalistischster
 menschliche	pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG	menschlichsten
 werdende	pos=ADJ,case=ACC,gen=NEUT,num=SG	werdendes
@@ -8174,7 +8174,7 @@ fiebrigstem	pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG	fiebrigeren
 misstrauischstes	pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG	misstrauischeren
 urgierst	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL	urgiertet
 kesserem	pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG	kesseres
-Stiefsöhnen	pos=N,case=GEN,gen=MASC,num=PL	Stiefsöhnen
+Stiefsöhnen	pos=N,case=GEN,gen=MASC,num=PL	Stiefsöhne
 abheilender	pos=ADJ,case=ACC,num=PL	abheilende
 wohlhabendere	pos=ADJ,case=ACC,gen=FEM,num=SG	wohlhabende
 extrasolares	pos=ADJ,case=GEN,gen=NEUT,num=SG	extrasolaren
@@ -8287,7 +8287,7 @@ beauftragest	pos=V,mood=IND,tense=PRS,per=1,num=SG	beauftrage
 verknüpftem	pos=ADJ,case=NOM,gen=FEM,num=SG	verknüpfte
 unzugänglicheres	pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG	unzugänglichster
 gehörigstes	pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG	gehörigerer
-Aderhäute	pos=N,case=GEN,gen=FEM,num=SG	Aderhäut
+Aderhäute	pos=N,case=GEN,gen=FEM,num=SG	Aderhäute
 magnetisieret	pos=V,finite=NFIN	magnetisieren
 verwitweten	pos=ADJ,case=GEN,gen=FEM,num=SG	verwitweter
 silicatisches	pos=ADJ,case=GEN,num=PL	silicatischer
@@ -8341,7 +8341,7 @@ karge	pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG	kargerer
 kapitalisierten	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG	kapitalisierte
 entwirrtet	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL	entwirren
 sehenswürdigen	pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG	sehenswürdigstem
-Blauwale	pos=N,case=ACC,gen=MASC,num=PL	Blauwale
+Blauwale	pos=N,case=ACC,gen=MASC,num=PL	Blauwäle
 Wörterbuch	pos=N,case=ACC,gen=NEUT,num=PL	Wörterbücher
 Angeboten	pos=N,case=ACC,gen=NEUT,num=SG	Angebot
 trank	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG	trantest
@@ -8454,7 +8454,7 @@ früheren	pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG	frühsten
 geräumigstem	pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG	geräumigeres
 außenpolitisches	pos=ADJ,case=GEN,gen=NEUT,num=SG	außenpolitischen
 lakonischstes	pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG	lakonischerer
-Ptosis	pos=N,case=DAT,gen=FEM,num=PL	Ptosien
+Ptosis	pos=N,case=DAT,gen=FEM,num=PL	Ptösien
 Höchstwertes	pos=N,case=ACC,gen=MASC,num=PL	Höchstwerte
 fasziniertet	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	faszinierten
 radikalisierte	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL	radikalisieren
@@ -8485,7 +8485,7 @@ Analphabetinnen	pos=N,case=DAT,gen=FEM,num=SG	Analphabetin
 pustetest	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL	pustetet
 wundersamere	pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG	wundersameren
 hunnischem	pos=ADJ,case=DAT,gen=FEM,num=SG	hunnischer
-Restbetrages	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Restbetrage
+Restbetrages	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Restbetrags
 wirres	pos=ADJ,case=ACC,comp=CMPR,num=PL	wirrere
 unverfrorenstes	pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG	unverfrorenster
 erfasse	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG	erfasse
@@ -8506,7 +8506,7 @@ heißem	pos=ADJ,case=NOM,gen=FEM,num=SG	heiße
 tautologisches	pos=ADJ,case=ACC,num=PL	tautologische
 satanischsten	pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG	satanischeren
 eskortiert	pos=V,mood=IND,tense=PRS,per=2,num=SG	eskortierst
-Beugfall	pos=N,case=NOM,gen=MASC,num=SG	Beugfal
+Beugfall	pos=N,case=NOM,gen=MASC,num=SG	Beugfall
 Hauptsache	pos=N,case=ACC,gen=FEM,num=PL	Hauptsachen
 stickst	pos=V,mood=IND,tense=PRS,per=2,num=PL	stickt
 frappierenderer	pos=ADJ,case=NOM,comp=SPRL,num=PL	frappierendste
@@ -8534,7 +8534,7 @@ Arbeiten	pos=N,case=NOM,gen=FEM,num=SG	Arbeit
 beichtetest	pos=V,mood=IND,tense=PRS,per=2,num=SG	beichtest
 gutherzigsten	pos=ADJ,case=DAT,gen=FEM,num=SG	gutherziger
 Peroxides	pos=N,case=ACC,gen=NEUT,num=SG	Peroxid
-Ehrenmords	pos=N,case=ACC,gen=MASC,num=PL	Ehrenmorde
+Ehrenmords	pos=N,case=ACC,gen=MASC,num=PL	Ehrenmörde
 Ehrenmordes	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Ehrenmords
 Einkäufen	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Einkaufs
 tratschest	pos=V,mood=IND,tense=PRS,per=3,num=PL	tratschen
@@ -8566,7 +8566,7 @@ nanopartikuläres	pos=ADJ,case=GEN,gen=NEUT,num=SG	nanopartikulären
 kapitalisiere	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	kapitalisierte
 viertüriger	pos=ADJ,case=GEN,gen=MASC,num=SG	viertürigen
 hydrophilsten	pos=ADJ,case=ACC,gen=MASC,num=SG	hydrophilen
-Wegfalles	pos=N,case=DAT,gen=MASC,num=PL	Wegällle
+Wegfalles	pos=N,case=DAT,gen=MASC,num=PL	Wegfällen
 spontanere	pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG	spontanerer
 aktivem	pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG	aktivsten
 unterschiedlicherer	pos=ADJ,case=NOM,gen=FEM,num=SG	unterschiedliche
@@ -8637,7 +8637,7 @@ tauglicheren	pos=ADJ,case=NOM,gen=MASC,num=SG	tauglicher
 gnostischen	pos=ADJ,case=GEN,gen=FEM,num=SG	gnostischer
 verzeichnet	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG	verzeichnest
 Kahlkopfes	pos=N,case=DAT,gen=MASC,num=PL	Kahlköpfen
-Vortrags	pos=N,case=DAT,gen=MASC,num=PL	Vortragen
+Vortrags	pos=N,case=DAT,gen=MASC,num=PL	Vortragten
 jugendlichste	pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG	jugendlicheren
 fusioniertet	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG	fusioniere
 aufgesetzte	pos=ADJ,case=DAT,gen=MASC,num=SG	aufgesetztem
@@ -8702,7 +8702,7 @@ bilderstürmerischen	pos=ADJ,case=GEN,comp=SPRL,num=PL	bilderstürmerischster
 betreffe	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG	betrüffe
 außerordentlichen	pos=ADJ,case=GEN,gen=NEUT,num=SG	außerordentlichen
 hypochondrischem	pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG	hypochondrischere
-Wartes	pos=N,case=DAT,gen=MASC,num=PL	Wärten
+Wartes	pos=N,case=DAT,gen=MASC,num=PL	Warten
 demotivierst	pos=V,tense=PRS	demotivierend
 eisige	pos=ADJ,case=NOM,gen=MASC,num=SG	eisiger
 Einsatzkräfte	pos=N,case=DAT,gen=FEM,num=SG	Einsatzkraft
@@ -8813,7 +8813,7 @@ bindigen	pos=ADJ,case=ACC,num=PL	bindige
 stickstoffhaltigen	pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG	stickstoffhaltigster
 intensiven	pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG	intensivster
 usurpiert	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL	usurpierten
-Börden	pos=N,case=GEN,gen=FEM,num=PL	Börde
+Börden	pos=N,case=GEN,gen=FEM,num=PL	Börden
 Vergewaltigungen	pos=N,case=ACC,gen=FEM,num=SG	Vergewaltigung
 vermietetet	pos=V,mood=IND,tense=PRS,per=1,num=SG	vermiete
 dämonischerem	pos=ADJ,case=GEN,gen=NEUT,num=SG	dämonischen
@@ -8853,10 +8853,10 @@ traumatisiert	pos=V,finite=NFIN	traumatisieren
 Weiten	pos=N,case=GEN,gen=FEM,num=PL	Weiten
 außerreichischen	pos=ADJ,case=GEN,gen=FEM,num=SG	außerreichischer
 Grundstücke	pos=N,case=NOM,gen=NEUT,num=PL	Grundstücke
-Hinterköpfe	pos=N,case=NOM,gen=MASC,num=SG	Hinterkapf
+Hinterköpfe	pos=N,case=NOM,gen=MASC,num=SG	Hinteruapf
 entteere	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	entteert
 erfundenem	pos=ADJ,case=DAT,gen=FEM,num=SG	erfundener
-Safts	pos=N,case=GEN,gen=MASC,num=PL	Säfte
+Safts	pos=N,case=GEN,gen=MASC,num=PL	Safte
 hantiere	pos=V,mood=IND,tense=PRS,per=3,num=SG	hantiert
 fährst	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG	fahrt
 dämonisiertest	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG	dämonisiertest
@@ -9109,7 +9109,7 @@ räumlichem	pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG	räumlichstem
 vertrat	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG	vertraet
 antithetisches	pos=ADJ,case=ACC,gen=FEM,num=SG	antithetische
 bewussteren	pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG	bewussterem
-Ängste	pos=N,case=GEN,gen=FEM,num=SG	Ängste
+Ängste	pos=N,case=GEN,gen=FEM,num=SG	Ängst
 bahntet	pos=V,tense=PRS	bahnend
 Fluoreszenzfarbstoffs	pos=N,case=DAT,gen=MASC,num=PL	Fluoreszenzfarbstoffen
 gepressten	pos=ADJ,case=NOM,num=PL	gepresste
@@ -9232,7 +9232,7 @@ antibakterieller	pos=ADJ,case=GEN,num=PL	antibakterieller
 Ausführungen	pos=N,case=GEN,gen=FEM,num=PL	Ausführungen
 getreuerer	pos=ADJ,case=ACC,num=PL	getreue
 stippte	pos=V,mood=IND,tense=PRS,per=1,num=SG	stippt
-Physikerin	pos=N,case=GEN,gen=FEM,num=PL	Physikerinen
+Physikerin	pos=N,case=GEN,gen=FEM,num=PL	Physikerinnen
 besuchend	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG	besuchte
 energieliefernden	pos=ADJ,case=ACC,gen=NEUT,num=SG	energielieferndes
 transparentesten	pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG	transparentester
@@ -9297,7 +9297,7 @@ deutetet	pos=V,mood=IND,tense=PRS,per=2,num=PL	deutet
 getropft	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	tropfef
 isolierten	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	isolierten
 Stoffmengenanteilen	pos=N,case=NOM,gen=MASC,num=PL	Stoffmengenanteile
-Regelfall	pos=N,case=ACC,gen=MASC,num=SG	Regelfal
+Regelfall	pos=N,case=ACC,gen=MASC,num=SG	Regelfall
 Phosphatgesteinen	pos=N,case=GEN,gen=NEUT,num=PL	Phosphatgesteine
 geizigstem	pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG	geizigsten
 stimmigem	pos=ADJ,case=ACC,gen=NEUT,num=SG	stimmiges
@@ -9404,7 +9404,7 @@ bannest	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL	banntet
 würdigster	pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG	würdigste
 borgten	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL	borgen
 launischsten	pos=ADJ,case=GEN,num=PL	launischer
-Weißpunktbuntbarschs	pos=N,case=GEN,gen=MASC,num=SG	Weißpunktbuntbarsches
+Weißpunktbuntbarschs	pos=N,case=GEN,gen=MASC,num=SG	Weißpunktbuntbarschek
 bandagiert	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG	bandagiere
 achtunggebietendem	pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG	achtunggebietendstes
 geprägtem	pos=ADJ,case=NOM,gen=MASC,num=SG	geprägter
@@ -9424,7 +9424,7 @@ scharmante	pos=ADJ,case=NOM,gen=NEUT,num=SG	scharmantes
 Kalbes	pos=N,case=ACC,gen=NEUT,num=SG	Kalb
 feinpulvrigem	pos=ADJ,case=GEN,num=PL	feinpulvriger
 germanistisches	pos=ADJ,case=DAT,gen=FEM,num=SG	germanistischer
-Kurzstreckenlaufes	pos=N,case=GEN,gen=MASC,num=PL	Kurzstreckenläufe
+Kurzstreckenlaufes	pos=N,case=GEN,gen=MASC,num=PL	Kurzstreckenlaufe
 plattestem	pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG	platterer
 mickrigerer	pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG	mickrigste
 sauerstofffreiem	pos=ADJ,case=NOM,num=PL	sauerstofffreie
@@ -9447,7 +9447,7 @@ kulturelle	pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG	kulturellste
 hoffnungsvollste	pos=ADJ,case=ACC,gen=FEM,num=SG	hoffnungsvolle
 erschöpfteste	pos=ADJ,case=ACC,gen=NEUT,num=SG	erschöpftes
 unterzeichnest	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG	unterzeichne
-Weltraumfähren	pos=N,case=GEN,gen=FEM,num=SG	Weltraumfahr
+Weltraumfähren	pos=N,case=GEN,gen=FEM,num=SG	Weltraumfähr
 vorsorglichster	pos=ADJ,case=ACC,gen=FEM,num=SG	vorsorgliche
 vereisest	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG	vereistes
 nachweisbarster	pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG	nachweisbarste
@@ -9612,11 +9612,11 @@ verschmutzt	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG	verschmutze
 figürlicheres	pos=ADJ,case=GEN,comp=SPRL,num=PL	figürlichster
 tauchtet	pos=V,tense=PRS	tauchend
 nervten	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL	nervten
-Inbusschraube	pos=N,case=ACC,gen=FEM,num=SG	Inbusschraube
+Inbusschraube	pos=N,case=ACC,gen=FEM,num=SG	Inbusschraub
 hektische	pos=ADJ,case=DAT,gen=FEM,num=SG	hektischer
 verschollenen	pos=ADJ,case=DAT,gen=FEM,num=SG	verschollener
 erlebst	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL	erleben
-Hinterkopfes	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Hinterkopfe
+Hinterkopfes	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Hinterkopfs
 schlugst	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG	schlugest
 stillschweigenden	pos=ADJ,case=DAT,gen=MASC,num=SG	stillschweigendem
 schmeckendem	pos=ADJ,case=NOM,num=PL	schmeckende
@@ -9678,7 +9678,7 @@ ausnahmslosem	pos=ADJ,case=DAT,gen=MASC,num=SG	ausnahmslosem
 Rucks	pos=N,case=GEN,gen=MASC,num=PL	Rucke
 photoaktivsten	pos=ADJ,case=ACC,comp=CMPR,num=PL	photoaktivere
 härtester	pos=ADJ,case=NOM,comp=CMPR,num=PL	härtere
-Feuerwehrmannes	pos=N,case=ACC,gen=MASC,num=PL	Feuerwehrmänne
+Feuerwehrmannes	pos=N,case=ACC,gen=MASC,num=PL	Feuerwehräänne
 interaktiverem	pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG	interaktivstes
 frühreifster	pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG	frühreifere
 Dichteschwankung	pos=N,case=DAT,gen=FEM,num=PL	Dichteschwankungen
@@ -9761,7 +9761,7 @@ beeinflusstem	pos=ADJ,case=NOM,gen=FEM,num=SG	beeinfluse
 polierte	pos=V,mood=IND,tense=PRS,per=3,num=PL	polieren
 gestörtem	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	gestörterem
 silberglänzende	pos=ADJ,case=ACC,gen=NEUT,num=SG	silberglänzendes
-Abgrenzung	pos=N,case=DAT,gen=FEM,num=PL	Abgrenzüngen
+Abgrenzung	pos=N,case=DAT,gen=FEM,num=PL	Abgrenzungen
 molybdänreicherer	pos=ADJ,case=NOM,num=PL	molybdänreiche
 elendesten	pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG	elenderen
 Kindertagesstätte	pos=N,case=GEN,gen=FEM,num=PL	Kindertagesstätten
@@ -9784,7 +9784,7 @@ wissbegierigerem	pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG	wissbegierigster
 stiegst	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG	stieget
 tagget	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL	taggen
 liebliche	pos=ADJ,case=ACC,num=PL	liebliche
-Nahrungsquellen	pos=N,case=NOM,gen=FEM,num=SG	Nahrungsquelle
+Nahrungsquellen	pos=N,case=NOM,gen=FEM,num=SG	Nahrungsquell
 verschmähend	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL	verschmähen
 geräumigeres	pos=ADJ,case=DAT,gen=NEUT,num=SG	geräumigem
 bezeichnetem	pos=ADJ,case=NOM,gen=FEM,num=SG	bezeichnete
@@ -9959,7 +9959,7 @@ feuchteres	pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG	feuchterer
 geglaubt	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG	glaubtest
 ermüdenderes	pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG	ermüdendstes
 präsentiertet	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	präsentierten
-Weltstädten	pos=N,case=NOM,gen=FEM,num=SG	Weltstadt
+Weltstädten	pos=N,case=NOM,gen=FEM,num=SG	Weltstädt
 blindes	pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG	blinderes
 planen	pos=ADJ,comp=CMPR	planer
 Ausweg	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Auswegs
@@ -9999,12 +9999,12 @@ verabschiede	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL	verabschied
 fremdsprachlichen	pos=ADJ,case=NOM,gen=FEM,num=SG	fremdsprachliche
 säurehaltigsten	pos=ADJ,case=ACC,gen=NEUT,num=SG	säurehaltiges
 interaktivere	pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG	interaktiveres
-Linien	pos=N,case=DAT,gen=FEM,num=SG	Linie
+Linien	pos=N,case=DAT,gen=FEM,num=SG	Lini
 applaudierten	pos=V,tense=PST	applaudiert
 beträgt	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG	betrüge
 entionisiert	pos=V,tense=PRS	entionisierend
 brackigstes	pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG	brackigstes
-Fehlschlages	pos=N,case=GEN,gen=MASC,num=PL	Fehlschlage
+Fehlschlages	pos=N,case=GEN,gen=MASC,num=PL	Fehlschläge
 kategorisierend	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL	kategorisierten
 turnet	pos=V,finite=NFIN	turnen
 kristallisiertet	pos=V,mood=IND,tense=PRS,per=3,num=PL	kristallisieren
@@ -10020,7 +10020,7 @@ grundsätzlicheres	pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG	grundsätzlicherem
 Senf	pos=N,case=NOM,gen=MASC,num=SG	Senf
 blauäugigstem	pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG	blauäugigere
 Feind	pos=N,case=GEN,gen=MASC,num=SG	Feindes
-Töchtern	pos=N,case=DAT,gen=FEM,num=PL	Töchter
+Töchtern	pos=N,case=DAT,gen=FEM,num=PL	Töchtern
 kacken	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL	kackten
 unwichtigerer	pos=ADJ,case=ACC,gen=FEM,num=SG	unwichtige
 feuerfesterer	pos=ADJ,case=GEN,comp=CMPR,num=PL	feuerfesterer
@@ -10166,9 +10166,9 @@ oszillierest	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG	oszillierte
 bevorzugtest	pos=V,mood=IND,tense=PRS,per=3,num=PL	bevorzugen
 verheiratest	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	verheirate
 Kombinationsfeldes	pos=N,case=NOM,gen=NEUT,num=SG	Kombinationsfeld
-Rücksichten	pos=N,case=DAT,gen=FEM,num=SG	Rücksicht
+Rücksichten	pos=N,case=DAT,gen=FEM,num=SG	Rücksichte
 verfluchest	pos=V,tense=PRS	verfluchend
-Einfangquerschnitts	pos=N,case=DAT,gen=MASC,num=PL	Einfangquerschnitten
+Einfangquerschnitts	pos=N,case=DAT,gen=MASC,num=PL	Einfangquerschnitte
 trägt	pos=V,mood=IND,tense=PRS,per=2,num=SG	tregst
 kostenintensivstem	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	kostenintensiverem
 terrorisiertest	pos=V,tense=PRS	terrorisierend
@@ -10197,7 +10197,7 @@ relationalem	pos=ADJ,case=GEN,gen=NEUT,num=SG	relationalen
 strukturelleren	pos=ADJ,case=NOM,num=PL	strukturelle
 hupend	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG	hupe
 ärmlichstem	pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG	ärmlicheren
-Faustfeuerwaffen	pos=N,case=GEN,gen=FEM,num=SG	Faustfeuerwaff
+Faustfeuerwaffen	pos=N,case=GEN,gen=FEM,num=SG	Faustfeuerwaffe
 Mobilmachungen	pos=N,case=ACC,gen=FEM,num=SG	Mobilmachung
 besternährtes	pos=ADJ,case=GEN,gen=FEM,num=SG	besternährter
 missourisches	pos=ADJ,case=DAT,gen=FEM,num=SG	missourischer
@@ -10296,7 +10296,7 @@ didaktischen	pos=ADJ,case=ACC,gen=FEM,num=SG	didaktische
 bessere	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	besserem
 gewärtigten	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL	gewärtigten
 teilen	pos=V,mood=IND,tense=PRS,per=3,num=PL	teilen
-Elementarzellen	pos=N,case=ACC,gen=FEM,num=SG	Elementarzell
+Elementarzellen	pos=N,case=ACC,gen=FEM,num=SG	Elementarzelle
 helfe	pos=V,tense=PST	gehelft
 weißrussische	pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG	weißrussischerer
 offiziellsten	pos=ADJ,case=ACC,gen=NEUT,num=SG	offizielles
@@ -10349,7 +10349,7 @@ begrüben	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	begrübte
 coloriert	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL	coloriertet
 pharyngalisiertest	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	pharyngalisierte
 ordinäre	pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG	ordinäreren
-Steinböcken	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Steinböcke
+Steinböcken	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Steinbucks
 hochreinem	pos=ADJ,case=NOM,gen=MASC,num=SG	hochreiner
 tastete	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG	tastete
 glühtest	pos=V,mood=IND,tense=PRS,per=3,num=SG	glüht
@@ -10361,7 +10361,7 @@ ergonomischste	pos=ADJ,case=ACC,gen=MASC,num=SG	ergonomischen
 namhaftestes	pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG	namhafterer
 halbierend	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL	halbierten
 einkettige	pos=ADJ,case=DAT,gen=FEM,num=SG	einkettiger
-Abgötter	pos=N,case=ACC,gen=MASC,num=SG	Abgatt
+Abgötter	pos=N,case=ACC,gen=MASC,num=SG	Abgött
 störe	pos=V,tense=PRS	störend
 Geweihs	pos=N,case=DAT,gen=NEUT,num=PL	Geweihen
 verwirklichet	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG	verwirklichte
@@ -10648,7 +10648,7 @@ erwirtschafteten	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	erwirtschaftet
 schläfrigem	pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG	schläfrigster
 Abdeckplatten	pos=N,case=DAT,gen=FEM,num=PL	Abdeckplatten
 desensibilisiertest	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL	desensibilisierten
-Zinne	pos=N,case=GEN,gen=FEM,num=SG	Zinne
+Zinne	pos=N,case=GEN,gen=FEM,num=SG	Zinn
 kaputte	pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG	kaputtester
 dressiertet	pos=V,mood=IND,tense=PRS,per=3,num=PL	dressieren
 Segelflugzeug	pos=N,case=NOM,gen=NEUT,num=PL	Segelflugzeuge
@@ -10799,7 +10799,7 @@ addiert	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL	addieren
 korrigiert	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	korrigierte
 abstrakterem	pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG	abstraktestem
 ungefiltertste	pos=ADJ,case=GEN,comp=CMPR,num=PL	ungefilterterer
-Info	pos=N,case=ACC,gen=FEM,num=PL	Inöoen
+Info	pos=N,case=ACC,gen=FEM,num=PL	Inöon
 unfreieres	pos=ADJ,case=GEN,gen=FEM,num=SG	unfreier
 Pizzateiges	pos=N,case=ACC,gen=MASC,num=SG	Pizzateig
 forcierend	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL	forcierten
@@ -10909,7 +10909,7 @@ Politik	pos=N,case=ACC,gen=FEM,num=SG	Politik
 abenteuerlichen	pos=ADJ,case=NOM,comp=CMPR,num=PL	abenteuerlichere
 redseligsten	pos=ADJ,case=GEN,num=PL	redseliger
 jetziger	pos=ADJ,case=NOM,gen=MASC,num=SG	jetziger
-Abgrenzung	pos=N,case=DAT,gen=FEM,num=PL	Abgrenzüngen
+Abgrenzung	pos=N,case=DAT,gen=FEM,num=PL	Abgrenzungen
 fingt	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG	fingte
 schwätztet	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG	schwätztest
 kanzerogensten	pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG	kanzerogenerer
@@ -10962,10 +10962,10 @@ freigelegte	pos=ADJ,case=GEN,gen=MASC,num=SG	freigelegten
 pompösem	pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG	pompösester
 würfe	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	würfet
 stibitzet	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL	stibitzten
-Abkühlung	pos=N,case=NOM,gen=FEM,num=PL	Abkühlunge
+Abkühlung	pos=N,case=NOM,gen=FEM,num=PL	Abkühlungen
 homophoberen	pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG	homophobster
 zerrest	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL	zerrten
-Armes	pos=N,case=NOM,gen=MASC,num=PL	Arme
+Armes	pos=N,case=NOM,gen=MASC,num=PL	Ärme
 hemmungsloserer	pos=ADJ,case=GEN,comp=CMPR,gen=MASC,num=SG	hemmungsloseren
 Geschirrtuches	pos=N,case=ACC,gen=NEUT,num=SG	Geschirrtuch
 bleibet	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL	blibetn
@@ -11000,7 +11000,7 @@ Journalistin	pos=N,case=GEN,gen=FEM,num=PL	Journalistinnen
 hörenswertesten	pos=ADJ,case=ACC,num=PL	hörenswerte
 notierter	pos=ADJ,case=NOM,gen=NEUT,num=SG	notiertes
 reserviert	pos=V,tense=PRS	reservierend
-Wandelstern	pos=N,case=GEN,gen=MASC,num=SG	Wandelstern
+Wandelstern	pos=N,case=GEN,gen=MASC,num=SG	Wandelsters
 picardischsten	pos=ADJ,case=ACC,comp=CMPR,num=PL	picardischere
 intrigierten	pos=V,finite=NFIN	intrigieren
 gegenständlicheren	pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG	gegenständlicheres
@@ -11038,7 +11038,7 @@ basischstes	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	basischerem
 psychotischstes	pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG	psychotischeres
 Diakonie	pos=N,case=NOM,gen=FEM,num=SG	Diakonie
 wissenschaftlichen	pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG	wissenschaftlicherer
-Zugangs	pos=N,case=GEN,gen=MASC,num=SG	Zugangen
+Zugangs	pos=N,case=GEN,gen=MASC,num=SG	Zugange
 bölket	pos=V,mood=IND,tense=PRS,per=3,num=SG	bölkt
 bedauernswerten	pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG	bedauernswerterem
 stacheligeres	pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG	stacheligsten
@@ -11102,7 +11102,7 @@ schwele	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	schwelten
 geflecktesten	pos=ADJ,case=DAT,gen=FEM,num=SG	gefleckter
 revidierend	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL	revidiertet
 süßlichstes	pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG	süßlicherem
-Lücken	pos=N,case=GEN,gen=FEM,num=PL	Lücke
+Lücken	pos=N,case=GEN,gen=FEM,num=PL	Lücken
 hellviolettes	pos=ADJ,case=GEN,gen=FEM,num=SG	hellvioletter
 rixigem	pos=ADJ,case=NOM,num=PL	rixige
 Begegnungen	pos=N,case=DAT,gen=FEM,num=SG	Begegnung
@@ -11172,7 +11172,7 @@ kotzten	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL	kotzen
 versetztest	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL	versetztet
 erkennend	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL	erkennen
 ausgemergeltstes	pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG	ausgemergeltster
-Schmuck	pos=N,case=DAT,gen=MASC,num=PL	Schmucken
+Schmuck	pos=N,case=DAT,gen=MASC,num=PL	Schmücken
 geflohen	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	flohe
 Trauerspiels	pos=N,case=GEN,gen=NEUT,num=PL	Trauerspiele
 verächtlichstem	pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG	verächtlichsten
@@ -11628,7 +11628,7 @@ eisernes	pos=ADJ,case=ACC,gen=FEM,num=SG	eiserne
 anlegiertem	pos=ADJ,case=GEN,gen=MASC,num=SG	anlegierten
 Krankheitsfällen	pos=N,case=GEN,gen=MASC,num=PL	Krankheitsfälle
 schwaches	pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG	schwachstes
-Abschlags	pos=N,case=DAT,gen=MASC,num=PL	Abschlagen
+Abschlags	pos=N,case=DAT,gen=MASC,num=PL	Abschlägen
 angelsächsischen	pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG	angelsächsischster
 arsenathaltigen	pos=ADJ,case=NOM,num=PL	arsenathaltige
 unverständlicheren	pos=ADJ,case=ACC,num=PL	unverständliche
@@ -11766,7 +11766,7 @@ massenhaftester	pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG	massenhaftestes
 figürlichsten	pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG	figürlichstes
 geradlinigsten	pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG	geradlinigerer
 knauserigen	pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG	knauserigeres
-Wegällen	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Wegalls
+Wegällen	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Wegälls
 Ingenieurinnen	pos=N,case=NOM,gen=FEM,num=SG	Ingenieurin
 haltbarstem	pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG	haltbarstes
 gesperrt	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	sperrten
@@ -11803,7 +11803,7 @@ zeitaufwendigstes	pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG	zeitaufwendigster
 altsächsischere	pos=ADJ,case=GEN,comp=CMPR,num=PL	altsächsischerer
 einsatzbereites	pos=ADJ,case=GEN,gen=FEM,num=SG	einsatzbereiter
 erschienst	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG	erschösn
-Großdemos	pos=N,case=DAT,gen=FEM,num=SG	Großdemo
+Großdemos	pos=N,case=DAT,gen=FEM,num=SG	Großdemos
 eisigem	pos=ADJ,case=GEN,num=PL	eisiger
 schwache	pos=ADJ,case=DAT,gen=MASC,num=SG	schwachem
 Holzgerüstes	pos=N,case=GEN,gen=NEUT,num=PL	Holzgerüste
@@ -11830,7 +11830,7 @@ abgestorbener	pos=ADJ,case=GEN,gen=MASC,num=SG	abgestorbenen
 defilieren	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL	defilieren
 mikrobiologisches	pos=ADJ,case=ACC,gen=MASC,num=SG	mikrobiologischen
 zweitleichtestem	pos=ADJ,case=GEN,num=PL	zweitleichter
-Tombolas	pos=N,case=ACC,gen=FEM,num=PL	Tombolane
+Tombolas	pos=N,case=ACC,gen=FEM,num=PL	Tombolasen
 unvergesslicherem	pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG	unvergesslicheren
 komprimiertem	pos=ADJ,case=DAT,gen=NEUT,num=SG	komprimiertem
 robbst	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG	robbte
@@ -11909,7 +11909,7 @@ erfandet	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	erfande
 schalldichterem	pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG	schalldichtere
 fröhlichen	pos=ADJ,case=DAT,gen=FEM,num=SG	fröhlicher
 tauschte	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG	tauschte
-Fahnen	pos=N,case=GEN,gen=FEM,num=SG	Fahne
+Fahnen	pos=N,case=GEN,gen=FEM,num=SG	Fahn
 mögliches	pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG	möglichsten
 quälst	pos=V,finite=NFIN	quälen
 wackeligem	pos=ADJ,case=GEN,comp=SPRL,gen=MASC,num=SG	wackeligsten
@@ -11938,7 +11938,7 @@ Elastomere	pos=N,case=DAT,gen=NEUT,num=PL	Elastomeren
 grenadischer	pos=ADJ,case=DAT,gen=NEUT,num=SG	grenadischem
 irreführender	pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG	irreführendsten
 gottgegebenen	pos=ADJ,case=GEN,gen=MASC,num=SG	gottgegebenen
-Gang	pos=N,case=DAT,gen=MASC,num=PL	Gängen
+Gang	pos=N,case=DAT,gen=MASC,num=PL	Gangen
 thermochemische	pos=ADJ,case=ACC,gen=MASC,num=SG	thermochemischen
 schwindelerregendster	pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG	schwindelerregendstem
 zyprischem	pos=ADJ,case=ACC,num=PL	zyprische
@@ -12217,7 +12217,7 @@ schlichtetest	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG	schlichtete
 hissest	pos=V,mood=IND,tense=PRS,per=3,num=SG	hisse
 induktivem	pos=ADJ,case=GEN,gen=FEM,num=SG	induktiver
 allgemeinstes	pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG	allgemeinster
-Dampfkochtöpfen	pos=N,case=GEN,gen=MASC,num=SG	Dampfkochtopfes
+Dampfkochtöpfen	pos=N,case=GEN,gen=MASC,num=SG	Dampfkochtapfes
 invasiven	pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG	invasivster
 karikierst	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL	karikiertet
 beträchtlicherer	pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG	beträchtlichsten
@@ -12267,7 +12267,7 @@ Linksrucken	pos=N,case=GEN,gen=MASC,num=SG	Linksruckes
 süffisantes	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	süffisanterem
 Arzneistoffes	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Arzneistoffs
 schliffen	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG	schleiff
-Mine	pos=N,case=GEN,gen=FEM,num=SG	Mine
+Mine	pos=N,case=GEN,gen=FEM,num=SG	Min
 nennenswertes	pos=ADJ,case=NOM,num=PL	nennenswerte
 betrügerischste	pos=ADJ,case=DAT,gen=FEM,num=SG	betrügerischer
 belgienweitem	pos=ADJ,case=DAT,gen=MASC,num=SG	belgienweitem
@@ -12322,7 +12322,7 @@ manganometrischer	pos=ADJ,case=NOM,gen=MASC,num=SG	manganometrischer
 lieblichstes	pos=ADJ,case=GEN,comp=CMPR,num=PL	lieblicherer
 Wälder	pos=N,case=GEN,gen=MASC,num=SG	Woldes
 Abart	pos=N,case=DAT,gen=FEM,num=PL	Abarten
-Hansestädte	pos=N,case=ACC,gen=FEM,num=SG	Hansestadt
+Hansestädte	pos=N,case=ACC,gen=FEM,num=SG	Hansestädt
 problematischem	pos=ADJ,case=GEN,gen=NEUT,num=SG	problematischen
 Verführerinnen	pos=N,case=GEN,gen=FEM,num=SG	Verführerin
 populärem	pos=ADJ,case=ACC,comp=CMPR,num=PL	populärere
@@ -12344,7 +12344,7 @@ gotischerer	pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG	gotischsten
 boykottierten	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG	boykottiere
 Arbeitsfelds	pos=N,case=ACC,gen=NEUT,num=PL	Arbeitsfelde
 unruhigeres	pos=ADJ,case=NOM,num=PL	unruhige
-Räten	pos=N,case=NOM,gen=MASC,num=SG	Rate
+Räten	pos=N,case=NOM,gen=MASC,num=SG	Rat
 instituierst	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL	instituiertet
 Besatzungsarmee	pos=N,case=GEN,gen=FEM,num=SG	Besatzungsarmee
 hackend	pos=V,mood=IND,tense=PRS,per=1,num=PL	hacken
@@ -12397,7 +12397,7 @@ wertvollsten	pos=ADJ,case=DAT,comp=CMPR,gen=FEM,num=SG	wertvollerer
 taufet	pos=V,finite=NFIN	taufen
 weltlichster	pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG	weltlicheres
 flauschigeren	pos=ADJ,case=DAT,gen=NEUT,num=SG	flauschigem
-Rändern	pos=N,case=GEN,gen=MASC,num=SG	Rondes
+Rändern	pos=N,case=GEN,gen=MASC,num=SG	Randes
 Tintenfisches	pos=N,case=GEN,gen=MASC,num=PL	Tintenfische
 geruchlichem	pos=ADJ,case=GEN,gen=FEM,num=SG	geruchlicher
 Abendes	pos=N,case=ACC,gen=MASC,num=SG	Abend
@@ -12443,7 +12443,7 @@ arsenathaltigerer	pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG	arsenathaltigstes
 Stelzen	pos=N,case=NOM,gen=FEM,num=SG	Stelze
 australischem	pos=ADJ,case=ACC,gen=NEUT,num=SG	australisches
 christologischen	pos=ADJ,case=DAT,gen=NEUT,num=SG	christologischem
-Apfelsinensafts	pos=N,case=ACC,gen=MASC,num=PL	Apfelsinensäfte
+Apfelsinensafts	pos=N,case=ACC,gen=MASC,num=PL	Apfelsinensafte
 unsichere	pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG	unsicheres
 verknöchertes	pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG	verknöcherteste
 raschesten	pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG	raschesten
@@ -12477,7 +12477,7 @@ unveränderbarste	pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG	unveränderbarerer
 sauerstoffreiche	pos=ADJ,case=GEN,gen=MASC,num=SG	sauerstoffreichen
 akademischstes	pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG	akademischstes
 Rhythmik	pos=N,case=ACC,gen=FEM,num=SG	Rhythmik
-Öls	pos=N,case=GEN,gen=NEUT,num=SG,alt=LGSPEC1	Öls
+Öls	pos=N,case=GEN,gen=NEUT,num=SG,alt=LGSPEC1	Öle
 Wasserstoffatomes	pos=N,case=NOM,gen=NEUT,num=PL	Wasserstoffatome
 verheißen	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG	verheißtest
 frischstem	pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG	frischere
@@ -12501,7 +12501,7 @@ deutscher	pos=ADJ,case=NOM,gen=FEM,num=SG	deutsche
 erforderlicherer	pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG	erforderlichste
 disziplinenübergreifenden	pos=ADJ,case=NOM,gen=NEUT,num=SG	disziplinenübergreifendes
 diktatorisches	pos=ADJ,case=DAT,gen=MASC,num=SG	diktatorischem
-Politikwissenschaftlerin	pos=N,case=NOM,gen=FEM,num=PL	Politikwissenschaftlerinnef
+Politikwissenschaftlerin	pos=N,case=NOM,gen=FEM,num=PL	Politikwissenschaftlerinnen
 greifbarstem	pos=ADJ,comp=CMPR	greifbarer
 sauerstofftransportierendem	pos=ADJ,case=GEN,gen=NEUT,num=SG	sauerstofftransportierenden
 seismologischen	pos=ADJ,case=ACC,num=PL	seismologische
@@ -12647,7 +12647,7 @@ einfacheres	pos=ADJ,case=GEN,comp=SPRL,num=PL	einfachster
 gotischere	pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG	gotischste
 kubischem	pos=ADJ,case=ACC,num=PL	kubische
 patriotisches	pos=ADJ,case=NOM,gen=FEM,num=SG	patriotische
-Neujahrstags	pos=N,case=ACC,gen=MASC,num=PL	Neujahrstage
+Neujahrstags	pos=N,case=ACC,gen=MASC,num=PL	Neujahrstäge
 maskulineres	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	maskulinerem
 vergreisest	pos=V,tense=PST	gevergrei
 gelösterem	pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG	gelösterem
@@ -12790,7 +12790,7 @@ eckigstes	pos=ADJ,case=NOM,gen=NEUT,num=SG	eckiges
 leckerste	pos=ADJ,case=GEN,gen=NEUT,num=SG	leckeren
 belaufest	pos=V,mood=IND,tense=PRS,per=3,num=SG	belauft
 drohest	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG	drohte
-Eroberungszugs	pos=N,case=DAT,gen=MASC,num=PL	Eroberungszügen
+Eroberungszugs	pos=N,case=DAT,gen=MASC,num=PL	Eroberungszugen
 Anlageprodukts	pos=N,case=DAT,gen=NEUT,num=PL	Anlageprodukten
 laxierenden	pos=ADJ,case=GEN,gen=MASC,num=SG	laxierenden
 verwelkten	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG	verwelktest
@@ -12832,7 +12832,7 @@ Lautmalereien	pos=N,case=ACC,gen=FEM,num=SG	Lautmalerei
 günstiges	pos=ADJ,case=GEN,gen=MASC,num=SG	günstigen
 nutzen	pos=V,mood=IND,tense=PRS,per=2,num=PL	nutzt
 pulvriges	pos=ADJ,case=DAT,gen=MASC,num=SG	pulvrigem
-Hautärztin	pos=N,case=GEN,gen=FEM,num=PL	Hautärztinen
+Hautärztin	pos=N,case=GEN,gen=FEM,num=PL	Hautärztinnen
 betender	pos=ADJ,case=DAT,gen=MASC,num=SG	betendem
 eifrige	pos=ADJ,case=NOM,num=PL	eifrige
 sieghafte	pos=ADJ,case=ACC,comp=SPRL,num=PL	sieghafteste
@@ -13081,7 +13081,7 @@ exergoneren	pos=ADJ,case=GEN,comp=SPRL,num=PL	exergonster
 deutet	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL	deuten
 zündete	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL	zündetet
 betriebssystemübergreifende	pos=ADJ,case=GEN,gen=FEM,num=SG	betriebssystemübergreifender
-Theaterstücke	pos=N,case=ACC,gen=NEUT,num=SG	Theaterstack
+Theaterstücke	pos=N,case=ACC,gen=NEUT,num=SG	Theaterstuck
 verflieget	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL	verflösset
 zerstäuben	pos=V,tense=PST	zerstäubt
 strukturiertestem	pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG	strukturiertertr
@@ -13128,7 +13128,7 @@ entbehrlichen	pos=ADJ,case=ACC,gen=NEUT,num=SG	entbehrliches
 Ängstigung	pos=N,case=NOM,gen=FEM,num=SG	Ängstigung
 zeuget	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG	zeugte
 Aufträgen	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Auftrags
-Tiefschlags	pos=N,case=ACC,gen=MASC,num=PL	Tiefschlage
+Tiefschlags	pos=N,case=ACC,gen=MASC,num=PL	Tiefschläge
 spontanerer	pos=ADJ,case=GEN,gen=FEM,num=SG	spontaner
 zielten	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG	zielte
 geringfügiges	pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG	geringfügigeren
@@ -13222,7 +13222,7 @@ schmuddeligerem	pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG	schmuddeligeren
 schlangenförmigster	pos=ADJ,case=NOM,gen=FEM,num=SG	schlangenförmige
 divergiertest	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL	divergiertet
 benutzerfreundlichstes	pos=ADJ,case=GEN,comp=CMPR,num=PL	benutzerfreundlicherer
-Metaborates	pos=N,case=ACC,gen=NEUT,num=PL	Metaborate
+Metaborates	pos=N,case=ACC,gen=NEUT,num=PL	Metaborater
 demagogischere	pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG	demagogischere
 gnädigem	pos=ADJ,case=NOM,comp=SPRL,num=PL	gnädigste
 ungewissester	pos=ADJ,case=NOM,comp=SPRL,num=PL	ungewisseste
@@ -13230,7 +13230,7 @@ veranschaulichte	pos=ADJ,case=DAT,gen=NEUT,num=SG	veranschaulichtem
 zweckmäßiger	pos=ADJ,case=ACC,comp=CMPR,gen=FEM,num=SG	zweckmäßigere
 zahlreichstes	pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG	zahlreichstem
 Fließgleichgewicht	pos=N,case=GEN,gen=NEUT,num=PL	Fließgleichgewichte
-Elektrolysezelle	pos=N,case=ACC,gen=FEM,num=SG	Elektrolysezelle
+Elektrolysezelle	pos=N,case=ACC,gen=FEM,num=SG	Elektrolysezell
 verlangtet	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG	verlangest
 arktischeren	pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG	arktischere
 stützte	pos=V,mood=IND,tense=PRS,per=2,num=SG	stützt
@@ -13273,7 +13273,7 @@ hundemüden	pos=ADJ,case=ACC,gen=NEUT,num=SG	hundemüdes
 korreliertes	pos=ADJ,case=GEN,gen=MASC,num=SG	korrelierten
 Wasserquelle	pos=N,case=GEN,gen=FEM,num=SG	Wasserquelle
 avisierend	pos=V,tense=PST	avisiert
-Kindergelds	pos=N,case=NOM,gen=NEUT,num=PL	Kindergelder
+Kindergelds	pos=N,case=NOM,gen=NEUT,num=PL	Kindergelde
 Liebenswürdigkeiten	pos=N,case=DAT,gen=FEM,num=PL	Liebenswürdigkeiten
 versteckt	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG	verstecktest
 bewerte	pos=V,mood=IND,tense=PRS,per=1,num=PL	beweren
@@ -13290,7 +13290,7 @@ tumorhemmender	pos=ADJ,case=ACC,gen=NEUT,num=SG	tumorhemmendes
 Coventrisierung	pos=N,case=ACC,gen=FEM,num=PL	Coventrisierungen
 touchiertest	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG	touchiere
 Inhaltsstoffe	pos=N,case=ACC,gen=MASC,num=PL	Inhaltsstoffe
-Gottklasse	pos=N,case=ACC,gen=FEM,num=SG	Gottklass
+Gottklasse	pos=N,case=ACC,gen=FEM,num=SG	Gottklasse
 Brotschnitten	pos=N,case=GEN,gen=FEM,num=SG	Brotschnitt
 Klathrate	pos=N,case=GEN,gen=NEUT,num=SG	Klathrates
 läufigstes	pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG	läufigeren
@@ -13303,7 +13303,7 @@ niveauvollere	pos=ADJ,case=ACC,comp=CMPR,gen=MASC,num=SG	niveauvolleren
 sensibelem	pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG	sensibelere
 unersetzlichstem	pos=ADJ,case=NOM,num=PL	unersetzliche
 saftigere	pos=ADJ,case=NOM,num=PL	saftige
-Konstruktionswerkstoffe	pos=N,case=NOM,gen=MASC,num=SG	Konstruktionswerkstofu
+Konstruktionswerkstoffe	pos=N,case=NOM,gen=MASC,num=SG	Konstruktionswerkstoff
 erstickend	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG	erstickest
 sauberes	pos=ADJ,case=GEN,comp=CMPR,gen=NEUT,num=SG	sauberen
 unreaktivere	pos=ADJ,case=DAT,gen=MASC,num=SG	unreaktivem
@@ -13363,7 +13363,7 @@ rückwärtsgewandtester	pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG	rückwärtsge
 Brotschnitte	pos=N,case=NOM,gen=FEM,num=PL	Brotschnitten
 gutmeinendererer	pos=ADJ,case=NOM,comp=SPRL,num=PL	gutmeinenderste
 Lärche	pos=N,case=ACC,gen=FEM,num=PL	Lärchen
-Geruchs	pos=N,case=GEN,gen=MASC,num=SG	Geruchec
+Geruchs	pos=N,case=GEN,gen=MASC,num=SG	Geruche
 mütterlicher	pos=ADJ,case=GEN,gen=FEM,num=SG	mütterlicher
 schwefelorganische	pos=ADJ,case=NOM,gen=FEM,num=SG	schwefelorganische
 uranhaltigen	pos=ADJ,case=NOM,gen=MASC,num=SG	uranhaltiger
@@ -13400,7 +13400,7 @@ Elementes	pos=N,case=ACC,gen=NEUT,num=SG	Element
 Fußabdruckes	pos=N,case=NOM,gen=MASC,num=SG	Fußabdruck
 siedet	pos=V,mood=IND,tense=PRS,per=3,num=SG	siede
 militärischer	pos=ADJ,case=NOM,gen=MASC,num=SG	militärischer
-Elementarzellen	pos=N,case=NOM,gen=FEM,num=SG	Elementarzell
+Elementarzellen	pos=N,case=NOM,gen=FEM,num=SG	Elementarzelle
 ruhten	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL	ruhten
 niederschmetterndstem	pos=ADJ,case=NOM,num=PL	niederschmetternde
 kindlichster	pos=ADJ,case=NOM,comp=SPRL,num=PL	kindlichste
@@ -13461,7 +13461,7 @@ säkularere	pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG	säkularerer
 schikaniertest	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	schikanierten
 aufgeweckten	pos=ADJ,case=NOM,gen=NEUT,num=SG	aufgewecktes
 lösender	pos=ADJ,case=ACC,gen=NEUT,num=SG	lösendes
-Herbstwald	pos=N,case=GEN,gen=MASC,num=SG	Herbstwaldes
+Herbstwald	pos=N,case=GEN,gen=MASC,num=SG	Herbstwäldes
 Dohlen	pos=N,case=DAT,gen=FEM,num=PL	Dohlen
 greisenhafterer	pos=ADJ,comp=CMPR	greisenhafter
 entenartigerem	pos=ADJ,case=GEN,gen=NEUT,num=SG	entenartigen
@@ -13584,7 +13584,7 @@ Beninerin	pos=N,case=ACC,gen=FEM,num=SG	Beninerin
 fönet	pos=V,mood=IND,tense=PRS,per=3,num=SG	fönt
 kanzerogenem	pos=ADJ,case=ACC,comp=CMPR,num=PL	kanzerogenere
 Leiche	pos=N,case=GEN,gen=FEM,num=SG	Leiche
-Avantgardekunst	pos=N,case=ACC,gen=FEM,num=PL	Avantgardekunsten
+Avantgardekunst	pos=N,case=ACC,gen=FEM,num=PL	Avantgardekunste
 boykottierst	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG	boykottierte
 desinfizierest	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG	desinfizierte
 abfälliger	pos=ADJ,case=NOM,num=PL	abfällige
@@ -13650,10 +13650,10 @@ Steinböcken	pos=N,case=GEN,gen=MASC,num=PL	Steinböcke
 schweren	pos=ADJ,case=GEN,gen=FEM,num=SG	schwer
 sorgend	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG	sorge
 vergeudet	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG	vergeude
-Grundgerüsten	pos=N,case=NOM,gen=NEUT,num=SG	Grundgerost
+Grundgerüsten	pos=N,case=NOM,gen=NEUT,num=SG	Grundgerüst
 hochleistungsfähiges	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	hochleistungsfähigerem
 köstlichsten	pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG	köstlichere
-Backbords	pos=N,case=GEN,gen=NEUT,num=PL	Backborder
+Backbords	pos=N,case=GEN,gen=NEUT,num=PL	Backbörder
 leuchtendster	pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG	leuchtendster
 luxuriösen	pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG	luxuriöseste
 domestiziere	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=SG	domestizierte
@@ -13720,7 +13720,7 @@ Gegebenheit	pos=N,case=DAT,gen=FEM,num=PL	Gegebenheiten
 Medikaments	pos=N,case=GEN,gen=NEUT,num=PL	Medikamente
 systematisiere	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL	systematisierten
 abgeratenem	pos=ADJ,case=DAT,gen=FEM,num=SG	abgeratener
-Brennstoffen	pos=N,case=DAT,gen=MASC,num=PL	Brennstoffen
+Brennstoffen	pos=N,case=DAT,gen=MASC,num=PL	Brennstoffe
 graphische	pos=ADJ,case=ACC,gen=FEM,num=SG	graphische
 durchquertest	pos=V,tense=PRS	durchquerend
 verächtlichstes	pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG	verächtlichste
@@ -13749,7 +13749,7 @@ Röntgenstrahl	pos=N,case=ACC,gen=MASC,num=SG	Röntgenstrahl
 entsprochen	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG	entspreche
 quadriert	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL	quadriertet
 unnatürliches	pos=ADJ,case=ACC,num=PL	unnatürliche
-Metallatom	pos=N,case=NOM,gen=NEUT,num=PL	Metallatomen
+Metallatom	pos=N,case=NOM,gen=NEUT,num=PL	Metallatome
 vorhersehbare	pos=ADJ,case=DAT,gen=FEM,num=SG	vorhersehbarer
 beschwert	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=SG	beschwere
 bedeutetet	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL	bedeuteten
@@ -13986,7 +13986,7 @@ blutarmer	pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG	blutarmerer
 leichtentzündliches	pos=ADJ,case=DAT,gen=MASC,num=SG	leichtentzündlichem
 unerschöpflicheres	pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG	unerschöpflichere
 essigsauerem	pos=ADJ,case=ACC,gen=FEM,num=SG	essigsaue
-Zeitscheibe	pos=N,case=NOM,gen=FEM,num=SG	Zeitscheib
+Zeitscheibe	pos=N,case=NOM,gen=FEM,num=SG	Zeitscheibe
 verknöchertstes	pos=ADJ,comp=CMPR	verknöcherter
 exportierten	pos=V,mood=IND,tense=PRS,per=2,num=SG	exportierst
 gewillterem	pos=ADJ,case=DAT,gen=FEM,num=SG	gewillter
@@ -14066,9 +14066,9 @@ bescheuerteren	pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG	bescheuerterer
 gehustet	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=SG	hustest
 übertrefft	pos=V,mood=IND,tense=PRS,per=2,num=SG	übertrefst
 Pfanne	pos=N,case=DAT,gen=FEM,num=SG	Pfanne
-Tanne	pos=N,case=DAT,gen=FEM,num=SG	Tanne
+Tanne	pos=N,case=DAT,gen=FEM,num=SG	Tann
 nuklearmedizinischem	pos=ADJ,case=GEN,num=PL	nuklearmedizinischer
-Meer	pos=N,case=GEN,gen=NEUT,num=SG	Meers
+Meer	pos=N,case=GEN,gen=NEUT,num=SG	Meeres
 konformistischsten	pos=ADJ,case=GEN,comp=SPRL,gen=NEUT,num=SG	konformistischsten
 renaissancistischeres	pos=ADJ,case=ACC,num=PL	renaissancistische
 wasserentziehende	pos=ADJ,case=NOM,gen=FEM,num=SG	wasserentziehende
@@ -14084,7 +14084,7 @@ entführest	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	entführte
 protestiere	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG	protestierte
 kambrische	pos=ADJ,case=NOM,gen=NEUT,num=SG	kambrisches
 klang	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	klange
-Sohns	pos=N,case=GEN,gen=MASC,num=PL	Söhne
+Sohns	pos=N,case=GEN,gen=MASC,num=PL	Sohne
 beherrschst	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	beherrsche
 reichhaltigstes	pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG	reichhaltigeres
 terroristischstes	pos=ADJ,case=ACC,gen=MASC,num=SG	terroristischen
@@ -14182,7 +14182,7 @@ referierend	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL	referiertet
 Bremsbelag	pos=N,case=ACC,gen=MASC,num=PL	Bremsbelage
 schmiedbares	pos=ADJ,case=ACC,num=PL	schmiedbare
 textend	pos=V,mood=IND,tense=PRS,per=3,num=SG	textet
-Widerstandes	pos=N,case=GEN,gen=MASC,num=SG	Widerstandes
+Widerstandes	pos=N,case=GEN,gen=MASC,num=SG	Widerstande
 Haut	pos=N,case=GEN,gen=FEM,num=PL	Hauten
 kreuzigst	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG	kreuzigtet
 Tierversuches	pos=N,case=ACC,gen=MASC,num=PL	Tierversuche
@@ -14405,7 +14405,7 @@ verformet	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL	verformen
 ehernstem	pos=ADJ,case=GEN,gen=MASC,num=SG	ehernen
 rekapitulierend	pos=V,mood=IND,tense=PRS,per=3,num=PL	rekapitulieren
 empörst	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=SG	empörte
-Bebauungsplan	pos=N,case=ACC,gen=MASC,num=PL	Bebauungspläne
+Bebauungsplan	pos=N,case=ACC,gen=MASC,num=PL	Bebauungsplane
 zementierten	pos=V,mood=IND,tense=PRS,per=2,num=SG	zementierst
 richteten	pos=V,mood=IND,tense=PRS,per=1,num=SG	richte
 eventuelles	pos=ADJ,case=ACC,gen=FEM,num=SG	eventuelle
@@ -14492,10 +14492,10 @@ eggen	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG	egge
 heizbare	pos=ADJ,case=NOM,gen=MASC,num=SG	heizbarer
 randalierst	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG	randaliertest
 gesurft	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG	surftest
-Sendegeräten	pos=N,case=NOM,gen=NEUT,num=SG	Sendegerät
+Sendegeräten	pos=N,case=NOM,gen=NEUT,num=SG	Sendegerat
 grünsten	pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG	grünstes
 sorglose	pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG	sorgloserer
-Läufen	pos=N,case=GEN,gen=MASC,num=SG	Loufes
+Läufen	pos=N,case=GEN,gen=MASC,num=SG	Laufes
 verabscheuungswürdigstes	pos=ADJ,case=GEN,comp=CMPR,gen=FEM,num=SG	verabscheuungswürdigerer
 unhöflichstem	pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG	unhöflichster
 Reimen	pos=N,case=GEN,gen=MASC,num=SG	Reimes
@@ -14573,7 +14573,7 @@ mattes	pos=ADJ,case=GEN,num=PL	matter
 handhabet	pos=V,mood=IND,tense=PRS,per=1,num=SG	handhabe
 sträubtest	pos=V,finite=NFIN	sträuben
 untauglichstes	pos=ADJ,case=NOM,comp=CMPR,num=PL	untauglichere
-Räder	pos=N,case=GEN,gen=NEUT,num=SG,alt=LGSPEC1	Rädes
+Räder	pos=N,case=GEN,gen=NEUT,num=SG,alt=LGSPEC1	Rodes
 Arrest	pos=N,case=DAT,gen=MASC,num=PL	Arresten
 infernalischer	pos=ADJ,case=NOM,comp=CMPR,gen=NEUT,num=SG	infernalischeres
 geniest	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL	genieset
@@ -14619,7 +14619,7 @@ fließender	pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG	fließenderem
 gefragte	pos=ADJ,case=ACC,num=PL	gefragte
 verblasste	pos=V,tense=PRS	verblassend
 nutzlose	pos=ADJ,case=DAT,comp=SPRL,gen=NEUT,num=SG	nutzlosestem
-Zugversuches	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Zugversuche
+Zugversuches	pos=N,case=GEN,gen=MASC,num=SG,alt=LGSPEC1	Zugversuchs
 maritimer	pos=ADJ,case=GEN,gen=NEUT,num=SG	maritimen
 altjapanischem	pos=ADJ,case=ACC,comp=CMPR,gen=NEUT,num=SG	altjapanischeres
 rodetest	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG	rodete
@@ -14692,7 +14692,7 @@ bilderreiches	pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG	bilderreichere
 geprüft	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL	prüftet
 nützlichere	pos=ADJ,case=GEN,num=PL	nützlicher
 Altersunterschieden	pos=N,case=NOM,gen=MASC,num=SG	Altersunterschied
-Braut	pos=N,case=NOM,gen=FEM,num=PL	Bräuten
+Braut	pos=N,case=NOM,gen=FEM,num=PL	Brauten
 Ausbeuten	pos=N,case=GEN,gen=FEM,num=SG	Ausbeute
 komorischer	pos=ADJ,case=NOM,num=PL	komorische
 stumpfste	pos=ADJ,case=NOM,comp=SPRL,num=PL	stumpfste
@@ -14779,7 +14779,7 @@ gehorsamerer	pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG	gehorsamere
 bratend	pos=V,finite=NFIN	braten
 grabest	pos=V,mood=IND,tense=PRS,per=2,num=SG	grabt
 dialektische	pos=ADJ,case=DAT,gen=MASC,num=SG	dialektischem
-Lebenskräften	pos=N,case=NOM,gen=FEM,num=SG	Lebenskraft
+Lebenskräften	pos=N,case=NOM,gen=FEM,num=SG	Lebenskräft
 Staatsbürgerinnen	pos=N,case=GEN,gen=FEM,num=SG	Staatsbürgerin
 fällen	pos=V,mood=IND,tense=PRS,per=2,num=PL	fällt
 empfänglichstem	pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG	empfänglichstes
@@ -14886,7 +14886,7 @@ goldrichtigen	pos=ADJ,case=NOM,num=PL	goldrichtige
 gutmeinendereres	pos=ADJ,case=GEN,comp=CMPR,num=PL	gutmeinendererer
 definierst	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL	definierten
 satanischerem	pos=ADJ,case=NOM,comp=SPRL,num=PL	satanischste
-Beeinflussungen	pos=N,case=DAT,gen=FEM,num=SG	Beeinflussung
+Beeinflussungen	pos=N,case=DAT,gen=FEM,num=SG	Beeinflussunge
 ambivalenter	pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG	ambivalenteste
 schwächlichstes	pos=ADJ,case=NOM,comp=SPRL,gen=MASC,num=SG	schwächlichster
 zweiachsigen	pos=ADJ,case=NOM,num=PL	zweiachsige
@@ -14975,7 +14975,7 @@ Festelektrolyts	pos=N,case=DAT,gen=MASC,num=PL	Festelektrolyten
 ineffizienteren	pos=ADJ,comp=CMPR	ineffizienter
 schlichtestes	pos=ADJ,case=DAT,gen=FEM,num=SG	schlichter
 befleckbarsten	pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG	befleckbarste
-Arbeiten	pos=N,case=DAT,gen=FEM,num=SG	Arbeit
+Arbeiten	pos=N,case=DAT,gen=FEM,num=SG	Arbeite
 privatem	pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG	privaterem
 konterkarieren	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL	konterkarieren
 profitabler	pos=ADJ,case=GEN,comp=CMPR,num=PL	profitablerer
@@ -14998,7 +14998,7 @@ verschriebenen	pos=ADJ,case=NOM,num=PL	verschriebene
 Kreationistin	pos=N,case=DAT,gen=FEM,num=SG	Kreationistin
 ereignisgesteuerterem	pos=ADJ,case=NOM,num=PL	ereignisgesteuerte
 kostenintensivste	pos=ADJ,case=NOM,gen=NEUT,num=SG	kostenintensives
-Tücken	pos=N,case=NOM,gen=FEM,num=PL	Tücke
+Tücken	pos=N,case=NOM,gen=FEM,num=PL	Tücken
 lotrechtem	pos=ADJ,case=NOM,gen=NEUT,num=SG	lotrechtes
 Mahles	pos=N,case=NOM,gen=NEUT,num=SG	Mahl
 unrühmlicheres	pos=ADJ,case=NOM,comp=CMPR,gen=MASC,num=SG	unrühmlicherer
@@ -15018,14 +15018,14 @@ horrendesten	pos=ADJ,case=ACC,gen=NEUT,num=SG	horrendes
 verselbständigtet	pos=V,mood=IND,tense=PST,aspect=PFV,per=3,num=PL	verselbständigten
 Bahnübergänge	pos=N,case=NOM,gen=MASC,num=SG	Bahnübergang
 frühreiferem	pos=ADJ,case=ACC,comp=SPRL,gen=FEM,num=SG	frühreifste
-Hecke	pos=N,case=GEN,gen=NEUT,num=SG	Heckes
+Hecke	pos=N,case=GEN,gen=NEUT,num=SG	Heck
 leuchte	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	leucht
 aphoristisches	pos=ADJ,case=ACC,comp=SPRL,gen=NEUT,num=SG	aphoristischstes
 Denkmales	pos=N,case=GEN,gen=NEUT,num=PL	Denkmäle
 einfältigem	pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG	einfältigster
 photovoltaisches	pos=ADJ,case=GEN,num=PL	photovoltaischer
 austauschbaren	pos=ADJ,case=ACC,num=PL	austauschbare
-Berglandes	pos=N,case=GEN,gen=NEUT,num=PL	Bergländer
+Berglandes	pos=N,case=GEN,gen=NEUT,num=PL	Berglände
 perforierst	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=SG	perforiertest
 hunnischem	pos=ADJ,case=NOM,gen=NEUT,num=SG	hunnisches
 verkaufend	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=SG	verkaufte
@@ -15098,7 +15098,7 @@ tobest	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	tobet
 schrillere	pos=ADJ,case=GEN,comp=CMPR,num=PL	schrillerer
 gnädigeres	pos=ADJ,comp=CMPR	gnädiger
 pekigeres	pos=ADJ,case=DAT,comp=SPRL,gen=MASC,num=SG	pekigstem
-Spinquantenzahl	pos=N,case=DAT,gen=FEM,num=PL	Spinquantenzahln
+Spinquantenzahl	pos=N,case=DAT,gen=FEM,num=PL	Spinquantenzahlen
 landläufigerer	pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG	landläufigste
 verwunde	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG	verwand
 arglistigeres	pos=ADJ,case=ACC,comp=SPRL,num=PL	arglistigste
@@ -15214,7 +15214,7 @@ packtest	pos=V,tense=PST	gepackt
 untreueste	pos=ADJ,case=DAT,gen=FEM,num=SG	untreuer
 Masturbation	pos=N,case=DAT,gen=FEM,num=SG	Masturbation
 markiertest	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=SG	markierte
-Flugstaubes	pos=N,case=ACC,gen=MASC,num=PL	Flugstaube
+Flugstaubes	pos=N,case=ACC,gen=MASC,num=PL	Flugstäube
 editierbaren	pos=ADJ,case=NOM,num=PL	editierbare
 glatzköpfigen	pos=ADJ,case=GEN,num=PL	glatzköpfiger
 glänzender	pos=ADJ,case=NOM,gen=NEUT,num=SG	glänzendes
@@ -15243,7 +15243,7 @@ deistischstes	pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG	deistischsten
 desertiertest	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	desertieret
 selbstständigster	pos=ADJ,case=DAT,gen=MASC,num=SG	selbstständigem
 entschlaft	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	entschlaften
-Kontrollboxen	pos=N,case=GEN,gen=FEM,num=SG	Kontrollbox
+Kontrollboxen	pos=N,case=GEN,gen=FEM,num=SG	Kontrollboxe
 illustriere	pos=V,mood=IND,tense=PST,aspect=PFV,per=2,num=PL	illustriertet
 kapriziösestem	pos=ADJ,case=DAT,comp=SPRL,gen=FEM,num=SG	kapriziösester
 behauptest	pos=V,tense=PST	behauptet
@@ -15341,7 +15341,7 @@ chauffiertet	pos=V,mood={OPT/SBJV},tense=PRS,per=1,num=PL	chauffieren
 unterwerft	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG	unterwerfe
 ineffizienterem	pos=ADJ,case=DAT,comp=CMPR,gen=NEUT,num=SG	ineffizienterem
 strategischeren	pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG	strategischste
-Neujahrstages	pos=N,case=GEN,gen=MASC,num=PL	Neujahrstage
+Neujahrstages	pos=N,case=GEN,gen=MASC,num=PL	Neujahrstäge
 Brioches	pos=N,case=ACC,gen=FEM,num=SG	Brioche
 misstraut	pos=V,mood=IND,tense=PST,aspect=PFV,per=1,num=PL	misstrauten
 elektronenstrahlgeschmolzenen	pos=ADJ,case=NOM,gen=NEUT,num=SG	elektronenstrahlgeschmoenstrs
@@ -15486,7 +15486,7 @@ kickest	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=1,num=PL	kickten
 neuralgischem	pos=ADJ,case=GEN,gen=NEUT,num=SG	neuralgischen
 bräunlichsten	pos=ADJ,case=NOM,num=PL	bräunliche
 Kanne	pos=N,case=ACC,gen=FEM,num=PL	Kannen
-Spezialstahles	pos=N,case=NOM,gen=MASC,num=PL	Spezialstahle
+Spezialstahles	pos=N,case=NOM,gen=MASC,num=PL	Spezialstähle
 psychoaktives	pos=ADJ,case=ACC,comp=SPRL,gen=MASC,num=SG	psychoaktivsten
 strande	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	strandet
 strickten	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=3,num=PL	strickten
@@ -15585,7 +15585,7 @@ vergeude	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=SG	vergeudetest
 engelhaftester	pos=ADJ,case=NOM,comp=SPRL,gen=FEM,num=SG	engelhafteste
 bedankest	pos=V,tense=PRS	bedankend
 frommere	pos=ADJ,case=NOM,comp=CMPR,gen=FEM,num=SG	frommere
-Rückwärtsgängen	pos=N,case=ACC,gen=MASC,num=SG	Rückwurtsgang
+Rückwärtsgängen	pos=N,case=ACC,gen=MASC,num=SG	Rückwärtsgang
 rollet	pos=V,mood=IND,tense=PRS,per=1,num=PL	rollen
 schwirrend	pos=V,mood=IND,tense=PRS,per=3,num=PL	schwirren
 zerstöret	pos=V,mood={SBJV/COND},tense=PST,aspect=PFV,per=2,num=PL	zerstörtet
@@ -15594,7 +15594,7 @@ erzieltet	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=SG	erziele
 elfenbeinfarbenem	pos=ADJ,case=ACC,gen=NEUT,num=SG	elfenbeinfarbenes
 Fallschirmspringerinnen	pos=N,case=GEN,gen=FEM,num=PL	Fallschirmspringerinnen
 sächliche	pos=ADJ,case=GEN,num=PL	sächlicher
-Mahles	pos=N,case=GEN,gen=NEUT,num=PL	Mahle
+Mahles	pos=N,case=GEN,gen=NEUT,num=PL	Mähle
 ernstes	pos=ADJ,case=ACC,gen=MASC,num=SG	ernsn
 rückwärtsgewandtester	pos=ADJ,case=NOM,comp=SPRL,gen=NEUT,num=SG	rückwärtsgewandtestes
 posiertet	pos=V,mood={OPT/SBJV},tense=PRS,per=2,num=PL	posiere
@@ -15762,7 +15762,7 @@ schiereren	pos=ADJ,case=GEN,gen=FEM,num=SG	schierer
 geduldigerer	pos=ADJ,case=GEN,gen=FEM,num=SG	geduldiger
 rötlichbrauner	pos=ADJ,case=ACC,gen=MASC,num=SG	rötlichbraunen
 autoritären	pos=ADJ,case=DAT,comp=CMPR,gen=MASC,num=SG	autoritärerem
-Empfangsgeräts	pos=N,case=DAT,gen=NEUT,num=PL	Empfangsgeräten
+Empfangsgeräts	pos=N,case=DAT,gen=NEUT,num=PL	Empfangsgeräte
 reinigen	pos=V,mood={OPT/SBJV},tense=PRS,per=3,num=PL	reinigen
 verlernte	pos=V,tense=PST	verlernt
 tiefem	pos=ADJ,case=GEN,comp=SPRL,gen=FEM,num=SG	tiefster
