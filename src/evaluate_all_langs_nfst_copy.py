@@ -72,7 +72,7 @@ def evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, la
                       sigmorphon_root_dir, src_dir):
     start = time.time()
     os.chdir(src_dir)
-    command_format = 'python evaluate_best_nfst_copy_models.py --cnn-mem {0} --input={1} \
+    command_format = 'python task1_evaluate_best_nfst_copy_models.py --cnn-mem {0} --input={1} \
         --hidden={2} --feat-input={3} --epochs={4} --layers={5} --optimization {6} \
         {7}/data/{8}-task1-train \
         {7}/data/{8}-task1-dev \

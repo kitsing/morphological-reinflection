@@ -124,7 +124,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     print 'finished training all models'
 
     # evaluate best models
-    os.system('python evaluate_best_joint_models.py --cnn-mem 4096 --input={0} --hidden={1} --input-feat {2} \
+    os.system('python task1_evaluate_best_joint_models.py --cnn-mem 4096 --input={0} --hidden={1} --input-feat {2} \
               --epochs={3} --layers={4} --optimization={5} {6} {7} {8} {9}'.format(input_dim, hidden_dim,
                                                                                    feat_input_dim, epochs, layers,
                                                                                    optimization, train_path, test_path,

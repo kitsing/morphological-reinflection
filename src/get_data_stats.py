@@ -5,15 +5,31 @@ def main():
 
     langs = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german', 'hungarian', 'maltese']
     for lang in langs:
-        train_path = '/Users/roeeaharoni/GitHub/sigmorphon2016/data/{0}-task1-train'.format(lang)
-        dev_path = '/Users/roeeaharoni/GitHub/sigmorphon2016/data/{0}-task1-dev'.format(lang)
-        (train_words, train_lemmas, train_feat_dicts) = prepare_sigmorphon_data.load_data(train_path)
-        (test_words, test_lemmas, test_feat_dicts) = prepare_sigmorphon_data.load_data(dev_path)
-        alphabet, feature_types = prepare_sigmorphon_data.get_alphabet(train_words, train_lemmas, train_feat_dicts)
-        train_cluster_to_data_indices = common.cluster_data_by_pos(train_feat_dicts)
-        test_cluster_to_data_indices = common.cluster_data_by_pos(test_feat_dicts)
-        train_morph_to_data_indices = common.cluster_data_by_morph_type(train_feat_dicts, feature_types)
-        test_morph_to_data_indices = common.cluster_data_by_morph_type(test_feat_dicts, feature_types)
+        task_num = 3
+        train_path = '/Users/roeeaharoni/GitHub/sigmorphon2016/data/{0}-task{1}-train'.format(lang, str(task_num))
+        dev_path = '/Users/roeeaharoni/GitHub/sigmorphon2016/data/{0}-task{1}-dev'.format(lang,str(task_num))
+
+        if task_num == 1 or task_num == 3:
+            (train_targets, train_sources, train_feat_dicts) = prepare_sigmorphon_data.load_data(train_path)
+            (test_words, test_lemmas, test_feat_dicts) = prepare_sigmorphon_data.load_data(dev_path)
+            alphabet, feature_types = prepare_sigmorphon_data.get_alphabet(train_targets, train_sources, train_feat_dicts)
+            train_cluster_to_data_indices = common.cluster_data_by_pos(train_feat_dicts)
+            test_cluster_to_data_indices = common.cluster_data_by_pos(test_feat_dicts)
+            train_morph_to_data_indices = common.cluster_data_by_morph_type(train_feat_dicts, feature_types)
+            test_morph_to_data_indices = common.cluster_data_by_morph_type(test_feat_dicts, feature_types)
+        if task_num == 2:
+            (train_targets, train_sources, train_target_feat_dicts, train_source_feat_dicts) = prepare_sigmorphon_data.load_data(train_path, task=2)
+            (test_targets, test_sources, test_target_feat_dicts, test_source_feat_dicts) = prepare_sigmorphon_data.load_data(dev_path, task=2)
+            alphabet, feature_types = prepare_sigmorphon_data.get_alphabet(train_targets, train_sources,
+                                                                           train_target_feat_dicts,
+                                                                           train_source_feat_dicts)
+            train_cluster_to_data_indices = common.cluster_data_by_pos(train_target_feat_dicts)
+            test_cluster_to_data_indices = common.cluster_data_by_pos(test_target_feat_dicts)
+            train_morph_to_data_indices = common.cluster_data_by_morph_type(train_target_feat_dicts, feature_types)
+            test_morph_to_data_indices = common.cluster_data_by_morph_type(test_target_feat_dicts, feature_types)
+
+
+
         train_agg = 0
         for cluster in train_cluster_to_data_indices:
             train_agg += len(train_cluster_to_data_indices[cluster])
@@ -31,20 +47,22 @@ def main():
         print lang + ' num features: ' + str(len(feature_types))
 
         for cluster in train_cluster_to_data_indices:
-            print 'train ' + lang + ' ' + cluster + ' : ' + str(
-                len(train_cluster_to_data_indices[cluster])) + ' examples'
-            train_cluster_words = [train_words[i] for i in train_cluster_to_data_indices[cluster]]
-            train_cluster_lemmas = [train_lemmas[i] for i in train_cluster_to_data_indices[cluster]]
+            train_cluster_words = [train_targets[i] for i in train_cluster_to_data_indices[cluster]]
+            train_cluster_lemmas = [train_sources[i] for i in train_cluster_to_data_indices[cluster]]
             prefix_count, suffix_count, same_count, circumfix_count, other_count, lev_avg = get_morpheme_stats(
                 train_cluster_words,
                 train_cluster_lemmas)
-            print "train {0} {1} {2} &  {3} & {4} & {5} & {6} & {7:.3f}".format(
+            print "train {0} {1}    {2} &  {3} & {4} & {5} & {6} & {7:.3f}".format(
                 lang, cluster, prefix_count, suffix_count, same_count, circumfix_count, other_count, lev_avg)
 
+        for cluster in train_cluster_to_data_indices:
+            print 'train ' + lang + ' ' + cluster + ' : ' + str(
+                len(train_cluster_to_data_indices[cluster])) + ' examples'
+
         prefix_count, suffix_count, same_count, circumfix_count, other_count, lev_avg = get_morpheme_stats(
-            train_words,
-            train_lemmas)
-        print "train {0} {1} {2} &  {3} & {4} & {5} & {6} & {7:.3f}".format(
+            train_targets,
+            train_sources)
+        print "train {0} {1}    {2} &  {3} & {4} & {5} & {6} & {7:.3f}".format(
             lang, 'AGG', prefix_count, suffix_count, same_count, circumfix_count, other_count, lev_avg)
 
 def get_morpheme_stats(train_lemmas, train_words):

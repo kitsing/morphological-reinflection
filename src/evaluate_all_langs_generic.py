@@ -42,7 +42,8 @@ EPOCHS = 1
 LAYERS = 2
 OPTIMIZATION = 'ADAM'
 POOL = 4
-LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german']
+LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german', 'hungarian',
+         'maltese']
 
 def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers, optimization, feat_input_dim,
          pool_size, langs, test, script, prefix, task):
@@ -81,7 +82,7 @@ def evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, la
         eval_str = 'test-covered'
 
     # ugly workaroound for now
-    if 'blstm' in script and lang != 'hungarian' and lang != 'maltese':
+    if 'blstm' in script and lang != 'hungarian' and lang != 'maltese' and task != '3':
         separator = '_'
     else:
         separator = '-'
