@@ -91,7 +91,7 @@ vél	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=PL	véljünk
 megtizedel	pos=V,tense=FUT	megtizedelendő
 zsákmányol	pos=V,mood=COND,def=INDF,tense=PRS,per=1,num=SG	zsákmányolnék
 véglegesít	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=SG	véglegesítetted
-összerak	pos=V,tense=FUT	összerakanok
+összerak	pos=V,tense=FUT	összerakak
 alosztály	pos=N,case=DAT,num=SG	alosztálynak
 találgat	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=PL	találgatunk
 kutya	pos=N,case=IN+ABL,num=PL	kutyákból
@@ -131,7 +131,7 @@ pirít	pos=V,mood=IND,def=DEF,tense=PST,per=1,num=PL	pirítottuk
 felhatalmaz	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	felhatalmazod
 rövidít	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=SG	rövidítsek
 taperol	pos=V,tense=PRS	taperoló
-megad	pos=V,mood=IND,def=DEF,tense=PRS,per=1,num=PL	megadjuk
+megad	pos=V,mood=IND,def=DEF,tense=PRS,per=1,num=PL	megadtunk
 berendez	pos=V,polite=INFM,per=2,num=SG,finite=NFIN	berendezned
 diszkvalifikál	pos=V,mood=SBJV,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	diszkvalifikáljátok
 feltalál	pos=V,mood=COND,def=INDF,tense=PRS,per=1,num=SG	feltalálnék
@@ -141,7 +141,7 @@ feltüntet	pos=V,mood=SBJV,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	feltüntes
 indexel	pos=V,mood=IND,def=INDF,tense=PST,per=1,num=SG	indexeltem
 színlel	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=PL	színleltetek
 terrorizál	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=SG	terrorizáljak
-letartóztat	pos=V,tense=PST	letartóztatott
+letartóztat	pos=V,tense=PST	letartóztatt
 tágít	pos=V,mood=IND,def=DEF,tense=PST,per=1,num=PL	tágítottuk
 beiktat	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=PL	beiktattatok
 ítél	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=PL	ítélünk
@@ -213,7 +213,7 @@ rak	pos=V,per=1,num=SG,finite=NFIN	raknom
 baskír	pos=N,case=TRANS,num=SG	baskírrá
 állít	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=PL	állítunk
 dinsztel	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=PL	dinsztelünk
-megtilt	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	megtiltottok
+megtilt	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	megtiltotok
 beint	pos=V,mood=COND,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	beintenétek
 körülnéz	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=PL	körülnézünk
 tekint	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=SG	tekintek
@@ -302,7 +302,7 @@ villant	pos=V,mood=POT	villanthat
 szétlapít	pos=V,polite=INFM,per=2,num=SG,finite=NFIN	szétlapítanod
 helyez	pos=V,mood=SBJV,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	helyezzetek
 dönt	pos=V,mood=SBJV,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	döntsétek
-üdvözöl	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=SG	üdvözölök
+üdvözöl	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=SG	üdvözl
 forraszt	pos=V,mood=POT	forraszthat
 kelt	pos=V,mood=POT	kelthet
 determinál	pos=V,mood=IND,def=DEF,tense=PST,per=1,num=PL	determináltuk
@@ -429,8 +429,8 @@ felnyergel	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	felnyergele
 kiközösít	pos=V,tense=FUT	kiközösítendő
 reklámoz	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	reklámoztok
 kurd	pos=N,poss=PSS3P,num=PL	kurdjaik
-kialszik	pos=V,mood=SBJV,def=DEF,tense=PRS,per=1,num=PL	kialuddunk
-enged	pos=V,mood=IND,def=DEF,tense=PRS,per=1,num=PL	engedjük
+kialszik	pos=V,mood=SBJV,def=DEF,tense=PRS,per=1,num=PL	kialudjuk
+enged	pos=V,mood=IND,def=DEF,tense=PRS,per=1,num=PL	engedünk
 díjaz	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=PL	díjazunk
 tájol	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=SG	tájolok
 megkárosít	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=SG	megkárosítok
@@ -478,7 +478,7 @@ beint	pos=V,tense=FUT	beintendő
 vonszol	pos=V,polite=INFM,per=2,num=PL,finite=NFIN	vonszolnotok
 igéz	pos=V,finite=NFIN	igézni
 bólint	pos=V,mood=IND,def=INDF,tense=PST,per=1,num=PL	bólintottunk
-ücsörög	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=PL	ücsörögünk
+ücsörög	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=PL	ücsörggnk
 zeng	pos=V,tense=PRS	zengő
 flamand	pos=N,case=NOM,num=PL	flamandok
 célpont	pos=N,case=IN+ABL,num=SG	célpontból
@@ -499,7 +499,7 @@ bódít	pos=V,mood=SBJV,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	bódítsátok
 kitagad	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=SG	kitagadsz
 fordít	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=SG	fordítsak
 gyúr	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=PL	gyúrtátok
-elkényeztet	pos=V,polite=INFM,per=2,num=PL,finite=NFIN	elkényeztetetnetek
+elkényeztet	pos=V,polite=INFM,per=2,num=PL,finite=NFIN	elkényeztetnetek
 pörget	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=SG	pörgetek
 merészel	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=SG	merészeltél
 fibrillál	pos=V,mood=COND,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	fibrillálnátok
@@ -560,7 +560,7 @@ felruház	pos=V,mood=COND,def=INDF,tense=PRS,per=1,num=PL	felruháznánk
 operál	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=PL	operáltatok
 kialakít	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=SG	kialakítottál
 elragadtat	pos=V,mood=SBJV,def=DEF,tense=PRS,per=1,num=PL	elragadtassuk
-megbocsát	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=PL	megbocsátttátok
+megbocsát	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=PL	megbocsáttátok
 készít	pos=V,mood=IND,def=DEF,tense=PST,per=1,num=PL	készítettük
 tárol	pos=V,polite=INFM,per=2,num=SG,finite=NFIN	tárolnod
 forog	pos=V,mood=POT	foroghat
@@ -575,7 +575,7 @@ helyreállít	pos=V,mood=IND,def=DEF,tense=PRS,per=1,num=PL	helyreállítjuk
 elver	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	elvered
 indít	pos=V,mood=COND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	indítanád
 vedel	pos=V,mood=IND,def=DEF,tense=PST,per=1,num=PL	vedeltük
-tetet	pos=V,mood=POT	tetheteet
+tetet	pos=V,mood=POT	tetetet
 jár	pos=V,mood=COND,def=INDF,tense=PRS,per=1,num=PL	járnánk
 átkoz	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	átkozzátok
 fölír	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=PL	fölírjunk
@@ -590,7 +590,7 @@ fertőtlenít	pos=V,mood=SBJV,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	fertőt
 feltüntet	pos=V,tense=PST	feltüntetett
 adomány	pos=N,case=TERM,num=SG	adományig
 érvénytelenít	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	érvényteleníted
-befogad	pos=V,mood=IND,def=DEF,tense=PRS,per=1,num=PL	befogadjuk
+befogad	pos=V,mood=IND,def=DEF,tense=PRS,per=1,num=PL	befogadunk
 akadály	pos=N,poss=PSS1P,num=PL	akadályaink
 kefél	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=SG	kefélsz
 pucol	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	pucolod
@@ -653,7 +653,7 @@ figyel	pos=V,mood=POT	figyelhet
 támad	pos=V,mood=COND,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	támadnátok
 hűt	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=SG	hűtesz
 dagaszt	pos=V,mood=COND,def=INDF,tense=PRS,per=1,num=PL	dagasztanánk
-tát	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=PL	tettátok
+tát	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=PL	tetátottatok
 adat	pos=N,case=ABL,num=SG	adatól
 kesereg	pos=V,tense=PST	kesergett
 ural	pos=V,tense=PST	uralt
@@ -683,7 +683,7 @@ megjavít	pos=V,mood=IND,def=DEF,tense=PST,per=1,num=PL	megjavítottuk
 prolongál	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=SG	prolongáltad
 befed	pos=V,mood=IND,def=DEF,tense=PST,per=1,num=PL	befedtük
 végez	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=SG	végezek
-megment	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=PL	megmentettetek
+megment	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=PL	megmettentetek
 fizet	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=SG	fizetsz
 átejt	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=SG	átejtsek
 hasonlít	pos=V,mood=COND,def=INDF,tense=PRS,per=1,num=SG	hasonlítanék
@@ -724,7 +724,7 @@ kijelöl	pos=V,tense=PRS	kijelölő
 szappanoz	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=SG	szappanozok
 őr	pos=N,poss=PSS3S,num=PL	őrei
 felülír	pos=V,per=1,num=PL,finite=NFIN	felülírnunk
-becsuk	pos=V,mood=IND,def=INDF,tense=PST,per=1,num=SG	becsuktam
+becsuk	pos=V,mood=IND,def=INDF,tense=PST,per=1,num=SG	becsukta
 ábrázol	pos=V,polite=INFM,per=2,num=PL,finite=NFIN	ábrázolnotok
 felel	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=PL	felelünk
 csór	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=PL	csórtátok
@@ -792,7 +792,7 @@ szocializál	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=PL	szocializáljunk
 előkészít	pos=V,mood=IND,def=DEF,tense=PST,per=1,num=PL	előkészítettük
 hozomány	pos=N,poss=PSS2P,num=PL	hozományaitok
 nagydíj	pos=N,case=TRANS,num=SG	nagydíjjá
-végrendelkezik	pos=V,tense=FUT	végrendelkezndő
+végrendelkezik	pos=V,tense=FUT	végrendelkezendő
 árt	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=PL	ártottátok
 elvét	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	elvéted
 hátraköt	pos=V,mood=IND,def=INDF,tense=PST,per=1,num=PL	hátraköttünk
@@ -882,7 +882,7 @@ bejegyez	pos=V,tense=PRS	bejegyzző
 termeszt	pos=V,mood=IND,def=INDF,tense=PST,per=1,num=SG	termesztettem
 továbbad	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=PL	továbbadunk
 nevelőnő	pos=N,case=TERM,num=PL	nevelőnőkig
-forog	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	forgoo
+forog	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	forgon
 utal	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=PL	utaljunk
 aranyoz	pos=V,mood=COND,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	aranyoznátok
 elpusztít	pos=V,polite=INFM,per=2,num=SG,finite=NFIN	elpusztítanod
@@ -1094,7 +1094,7 @@ eliminál	pos=V,mood=POT	eliminálhat
 sóvárog	pos=V,mood=SBJV,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	sóvárogjatok
 meghatároz	pos=V,mood=SBJV,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	meghatározzatok
 pisil	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	pisiled
-megköszön	pos=V,finite=NFIN	megköszönnö
+megköszön	pos=V,finite=NFIN	megköszönni
 vacsorázik	pos=V,tense=PRS	vacsorázó
 vél	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=SG	vélted
 megrendel	pos=V,tense=FUT	megrendelendő
@@ -1138,7 +1138,7 @@ bombardíroz	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	bombardí
 farag	pos=V,mood=COND,def=DEF,tense=PRS,per=1,num=PL	faragnánk
 döntés	pos=N,poss=PSS2P,num=PL	döntéseitek
 fizet	pos=V,mood=SBJV,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	fizessétek
-levesz	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=PL	levettetétek
+levesz	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=PL	levettétek
 kollaborál	pos=V,mood=COND,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	kollaborálnátok
 éget	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	égetitek
 városiasít	pos=V,mood=COND,def=INDF,tense=PRS,per=1,num=PL	városiasítanánk
@@ -1164,7 +1164,7 @@ elfogyaszt	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	elfogyasztj
 automatizál	pos=V,per=1,num=SG,finite=NFIN	automatizálnom
 regisztrál	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	regisztrálod
 előállít	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	előállítotok
-bevall	pos=V,mood=COND,def=INDF,polite=INFM,tense=PRS,per=2,num=SG	bevalnálnl
+bevall	pos=V,mood=COND,def=INDF,polite=INFM,tense=PRS,per=2,num=SG	bevallnál
 alábecsül	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=SG	alábecsülted
 utolér	pos=V,mood=IND,def=DEF,tense=PRS,per=1,num=PL	utolérjük
 patkol	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=PL	patkoltátok
@@ -1280,8 +1280,8 @@ legalizál	pos=V,mood=IND,def=INDF,tense=PST,per=1,num=SG	legalizáltam
 pucol	pos=V,mood=IND,def=INDF,tense=PST,per=1,num=PL	pucoltunk
 megnevez	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	megnevezed
 szervál	pos=V,tense=PRS	szerváló
-megbán	pos=V,finite=NFIN	megbánn
-terelget	pos=V,tense=PST	terelgetett
+megbán	pos=V,finite=NFIN	megbánni
+terelget	pos=V,tense=PST	terelgett
 összeállít	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=SG	összeállítasz
 beidéz	pos=V,mood=COND,def=INDF,polite=INFM,tense=PRS,per=2,num=SG	beidéznél
 mosogat	pos=V,mood=SBJV,def=DEF,tense=PRS,per=1,num=PL	mosogassuk
@@ -1381,7 +1381,7 @@ adat	pos=N,case=IN+ESS,num=SG	adatban
 terel	pos=V,finite=NFIN	terelni
 hív	pos=V,tense=PST	hívott
 átejt	pos=V,mood=IND,def=DEF,tense=PRS,per=1,num=PL	átejtjük
-szórakoztat	pos=V,tense=PST	szórakoztatott
+szórakoztat	pos=V,tense=PST	szórakoztatt
 vesz	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=SG	vettél
 parancsol	pos=V,finite=NFIN	parancsolni
 meggyújt	pos=V,mood=COND,def=DEF,tense=PRS,per=1,num=PL	meggyújtanánk
@@ -1533,7 +1533,7 @@ megjelentet	pos=V,mood=COND,def=DEF,tense=PRS,per=1,num=PL	megjelentetnénk
 ösztöndíj	pos=N,case=IN+ABL,num=SG	ösztöndíjból
 mellébeszél	pos=V,mood=POT	mellébeszélhet
 filmez	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	filmeztek
-megköszön	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=PL	megköszönjünk
+megköszön	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=PL	megköszönjük
 undorít	pos=V,mood=SBJV,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	undorítsatok
 olajoz	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=SG	olajoztál
 agyonvág	pos=V,mood=COND,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	agyonvágnátok
@@ -1567,7 +1567,7 @@ megáld	pos=V,polite=INFM,per=2,num=SG,finite=NFIN	megáldanod
 csuk	pos=V,finite=NFIN	csukni
 agyonszúr	pos=V,mood=COND,def=INDF,tense=PRS,per=1,num=SG	agyonszúrnék
 privatizál	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=PL	privatizáljunk
-üzen	pos=V,tense=PRS	üzenő
+üzen	pos=V,tense=PRS	üzen
 fésül	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=PL	fésültétek
 ágyúz	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=SG	ágyúztad
 vihog	pos=V,mood=SBJV,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	vihogjátok
@@ -1644,7 +1644,7 @@ iktat	pos=V,mood=SBJV,def=DEF,tense=PRS,per=1,num=PL	iktassuk
 összehasonlít	pos=V,finite=NFIN	összehasonlítani
 alábecsül	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	alábecsülöd
 kóstol	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=PL	kóstoltátok
-ó	pos=V,tense=PST	óttt
+ó	pos=V,tense=PST	ót
 felismer	pos=V,mood=IND,def=INDF,tense=PST,per=1,num=PL	felismertünk
 felülír	pos=V,mood=COND,def=INDF,tense=PRS,per=1,num=SG	felülírnék
 feltart	pos=V,mood=COND,def=INDF,tense=PRS,per=1,num=PL	feltartanánk
@@ -1669,7 +1669,7 @@ rongyol	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	rongyoltok
 megfejt	pos=V,mood=IND,def=INDF,tense=PST,per=1,num=SG	megfejtettem
 szarik	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=PL	szarunk
 reorganizál	pos=V,mood=COND,def=INDF,polite=INFM,tense=PRS,per=2,num=SG	reorganizálnál
-szűr	pos=V,polite=INFM,per=2,num=SG,finite=NFIN	szűrnöd
+szűr	pos=V,polite=INFM,per=2,num=SG,finite=NFIN	szűrned
 trombitál	pos=V,tense=FUT	trombitálandó
 kéret	pos=V,mood=SBJV,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	kéressetek
 kasztrál	pos=V,tense=PRS	kasztráló
@@ -1697,10 +1697,10 @@ egyenlít	pos=V,polite=INFM,per=2,num=SG,finite=NFIN	egyenlítened
 árt	pos=V,mood=SBJV,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	ártsátok
 villant	pos=V,tense=PST	villantott
 szeletel	pos=V,per=1,num=SG,finite=NFIN	szeletelnem
-kibocsát	pos=V,mood=IND,def=INDF,tense=PST,per=1,num=SG	kibocsátottam
+kibocsát	pos=V,mood=IND,def=INDF,tense=PST,per=1,num=SG	kibocsáttam
 nemz	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=PL	nemzettétek
 megkap	pos=V,per=1,num=SG,finite=NFIN	megkapnom
-megszámlál	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=SG	megszálmltáltál
+megszámlál	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=SG	megszámláltál
 átfésül	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=SG	átfésülök
 tervez	pos=V,tense=FUT	tervezendő
 osztály	pos=N,case=PRP,num=SG	osztályért
@@ -1713,7 +1713,7 @@ profanizál	pos=V,mood=IND,def=INDF,tense=PST,per=1,num=PL	profanizáltunk
 mászik	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=SG	másztad
 nevelőnő	pos=N,case=FRML,num=PL	nevelőnőkként
 rí	pos=V,mood=IND,def=INDF,tense=PST,per=1,num=PL	ríttunk
-elvét	pos=V,mood=SBJV,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	elvétsetek
+elvét	pos=V,mood=SBJV,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	elvéssetek
 kiállít	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	kiállítotok
 elnyer	pos=V,mood=SBJV,def=DEF,tense=PRS,per=1,num=PL	elnyerjük
 vakációzik	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=SG	vakációztad
@@ -1801,7 +1801,7 @@ ken	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=SG	kenek
 görbít	pos=V,mood=IND,def=DEF,tense=PRS,per=1,num=PL	görbítjük
 díj	pos=N,poss=PSS2P,num=PL	díjaitok
 adminisztrál	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=PL	adminisztráltatok
-visszabeszél	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=SG	visszabeszéltél
+visszabeszél	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=SG	visszabeszáltél
 visszaír	pos=V,mood=COND,def=INDF,polite=INFM,tense=PRS,per=2,num=SG	visszaírnál
 korszerűsít	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=SG	korszerűsítettél
 foszt	pos=V,polite=INFM,per=2,num=SG,finite=NFIN	fosztanod
@@ -1976,7 +1976,7 @@ tallóz	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	tallóztok
 felír	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=PL	felírtátok
 vív	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	vívtok
 sokkol	pos=V,mood=IND,def=DEF,tense=PST,per=1,num=PL	sokkoltuk
-ó	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=SG	óttad
+ó	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=SG	ótad
 megkárosít	pos=V,mood=IND,def=INDF,tense=PST,per=1,num=PL	megkárosítottunk
 vacsorázik	pos=V,mood=COND,def=INDF,polite=INFM,tense=PRS,per=2,num=SG	vacsoráznál
 bojkottál	pos=V,polite=INFM,per=2,num=SG,finite=NFIN	bojkottálnod
@@ -2032,7 +2032,7 @@ regisztrál	pos=V,mood=SBJV,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	regisztr
 beütemez	pos=V,mood=COND,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	beütemeznétek
 szembenéz	pos=V,mood=IND,def=DEF,tense=PST,per=1,num=PL	szembenéztük
 portugál	pos=N,case=BYWAY,num=SG	portugálul
-fingik	pos=V,mood=IND,def=DEF,tense=PST,per=1,num=PL	finguuk
+fingik	pos=V,mood=IND,def=DEF,tense=PST,per=1,num=PL	fingtuk
 irt	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	irtjátok
 megbüntet	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=PL	megbüntessünk
 sétál	pos=V,mood=COND,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	sétálnátok
@@ -2143,7 +2143,7 @@ bosnyák	pos=N,poss=PSS1P,num=SG	bosnyákunk
 takarmányoz	pos=V,per=1,num=SG,finite=NFIN	takarmányoznom
 tanítvány	pos=N,case=NOM,num=SG	tanítvány
 nemz	pos=V,tense=PRS	nemző
-átejt	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	átejtjétek
+átejt	pos=V,mood=IND,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	átejtitek
 szemerkél	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=PL	szemerkéltétek
 szentel	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=PL	szenteljünk
 visszautasít	pos=V,mood=COND,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	visszautasítanátok
@@ -2214,7 +2214,7 @@ megjelenít	pos=V,mood=COND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	megjelen�
 elhamvaszt	pos=V,mood=IND,def=INDF,tense=PRS,per=1,num=PL	elhamvasztunk
 faggat	pos=V,mood=COND,def=DEF,polite=INFM,tense=PRS,per=2,num=SG	faggatnád
 kivisz	pos=V,mood=IND,def=INDF,polite=INFM,tense=PST,per=2,num=PL	kivittetek
-tékozol	pos=V,tense=PRS	tékozlok
+tékozol	pos=V,tense=PRS	tékozoló
 lefordít	pos=V,mood=IND,def=DEF,polite=INFM,tense=PST,per=2,num=PL	lefordítottátok
 hoz	pos=V,per=1,num=PL,finite=NFIN	hoznunk
 boldogít	pos=V,mood=SBJV,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	boldogítsátok
@@ -2235,7 +2235,7 @@ jegyez	pos=V,mood=COND,def=DEF,polite=INFM,tense=PRS,per=2,num=PL	jegyeznétek
 visszavon	pos=V,tense=PST	visszavont
 restell	pos=V,finite=NFIN	restellni
 angol	pos=N,case=IN+ESS,num=PL	angolokban
-szopik	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=SG	szopol
+szopik	pos=V,mood=IND,def=INDF,polite=INFM,tense=PRS,per=2,num=SG	szopsz
 bizonyíték	pos=N,case=ABL,num=PL	bizonyítékoktól
 ivartalanít	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=PL	ivartalanítsunk
 gépel	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=SG	gépeljek
@@ -2248,7 +2248,7 @@ kert	pos=N,poss=PSS2P,num=PL	kerteteitek
 lel	pos=V,mood=POT	lelhet
 álcáz	pos=V,mood=POT	álcázhat
 megold	pos=V,mood=SBJV,def=INDF,tense=PRS,per=1,num=SG	megoldjak
-mászik	pos=V,mood=SBJV,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	másszatok
+mászik	pos=V,mood=SBJV,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	másszotok
 megpróbál	pos=V,mood=SBJV,def=INDF,polite=INFM,tense=PRS,per=2,num=PL	megpróbáljatok
 okoz	pos=V,mood=IND,def=DEF,tense=PRS,per=1,num=PL	okozzuk
 elfogad	pos=V,mood=COND,def=INDF,polite=INFM,tense=PRS,per=2,num=SG	elfogadnál
