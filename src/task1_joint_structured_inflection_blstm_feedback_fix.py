@@ -52,6 +52,7 @@ MAX_PATIENCE = 100
 REGULARIZATION = 0.0
 LEARNING_RATE = 0.0001  # 0.1
 PARALLELIZE = True
+BEAM_WIDTH = 5
 
 NULL = '%'
 UNK = '#'
@@ -558,6 +559,152 @@ def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, 
     return predicted_template[0:-1]
 
 
+# noinspection PyPep8Naming
+def predict_nbest_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, alphabet_index,
+                                inverse_alphabet_index, feat_index, feature_types, nbest):
+    renew_cg()
+
+    # read the parameters
+    char_lookup = model["char_lookup"]
+    feat_lookup = model["feat_lookup"]
+    R = parameter(model["R"])
+    bias = parameter(model["bias"])
+
+    # convert characters to matching embeddings, if UNK handle properly
+    lemma = BEGIN_WORD + lemma + END_WORD
+    lemma_char_vecs = []
+    for char in lemma:
+        try:
+            lemma_char_vecs.append(char_lookup[alphabet_index[char]])
+        except KeyError:
+            # handle UNK
+            lemma_char_vecs.append(char_lookup[alphabet_index[UNK]])
+
+    # convert features to matching embeddings, if UNK handle properly
+    feat_vecs = []
+    for feat in sorted(feature_types):
+        # TODO: is it OK to use same UNK for all feature types? and for unseen feats as well?
+        # if this feature has a value, take it from the lookup. otherwise use UNK
+        if feat in feats:
+            feat_str = feat + ':' + feats[feat]
+            try:
+                feat_vecs.append(feat_lookup[feat_index[feat_str]])
+            except KeyError:
+                # handle UNK or dropout
+                feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
+        else:
+            feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
+    feats_input = concatenate(feat_vecs)
+
+    # BiLSTM forward pass
+    s_0 = encoder_frnn.initial_state()
+    s = s_0
+    frnn_outputs = []
+    for c in lemma_char_vecs:
+        s = s.add_input(c)
+        frnn_outputs.append(s.output())
+
+    # BiLSTM backward pass
+    s_0 = encoder_rrnn.initial_state()
+    s = s_0
+    rrnn_outputs = []
+    for c in reversed(lemma_char_vecs):
+        s = s.add_input(c)
+        rrnn_outputs.append(s.output())
+
+    # BiLTSM outputs
+    blstm_outputs = []
+    lemma_char_vecs_len = len(lemma_char_vecs)
+    for i in xrange(lemma_char_vecs_len):
+        blstm_outputs.append(concatenate([frnn_outputs[i], rrnn_outputs[lemma_char_vecs_len - i - 1]]))
+
+    # beam search
+
+    # initialize the decoder rnn
+    s_0 = decoder_rnn.initial_state()
+
+    # set prev_output_vec for first lstm step as BEGIN_WORD
+    prev_output_vec = char_lookup[alphabet_index[BEGIN_WORD]]
+
+    i = 0
+    beam_width = BEAM_WIDTH
+    beam = {}
+    beam[-1] = [([BEGIN_WORD], 1.0, s_0)] # (sequence, probability, decoder_rnn)
+    final_states = []
+
+    # run the decoder through the sequence and predict characters
+    while i < MAX_PREDICTION_LEN and len(beam[i-1]) > 0:
+
+        # at each stage:
+        # create all expansions from the previous beam:
+        new_hypos = []
+        for hypothesis in beam[i-1]:
+            seq, hyp_prob, prefix_decoder = hypothesis
+            last_hypo_char = seq[-1]
+
+            # cant expand finished sequences
+            if last_hypo_char == END_WORD:
+                continue
+
+            # expand from the last character of the hypothesis
+            try:
+                prev_output_vec = char_lookup[alphabet_index[last_hypo_char]]
+            except KeyError:
+                # not a character
+                # print 'impossible to expand, key error'# + str(seq)
+                continue
+
+            # if the lemma is finished, pad with epsilon chars
+            if i < len(lemma):
+                blstm_output = blstm_outputs[i]
+                try:
+                    lemma_input_char_vec = char_lookup[alphabet_index[lemma[i]]]
+                except KeyError:
+                    # handle unseen characters
+                    lemma_input_char_vec = char_lookup[alphabet_index[UNK]]
+            else:
+                lemma_input_char_vec = char_lookup[alphabet_index[EPSILON]]
+                blstm_output = blstm_outputs[lemma_char_vecs_len - 1]
+
+            decoder_input = concatenate([blstm_output,
+                                         prev_output_vec,
+                                         lemma_input_char_vec,
+                                         char_lookup[alphabet_index[str(i)]],
+                                         feats_input])
+
+            # prepare input vector and perform LSTM step
+            s = prefix_decoder.add_input(decoder_input)
+
+            # compute softmax probs
+            decoder_rnn_output = s.output()
+            probs = softmax(R * decoder_rnn_output + bias)
+            probs = probs.vec_value()
+
+            # expand - create new hypos
+            for index, p in enumerate(probs):
+                new_seq = list(seq)
+                new_seq.append(inverse_alphabet_index[index])
+                new_prob = hyp_prob * p
+                if new_seq[-1] == END_WORD:
+                    # if found a complete sequence - add to final states
+                    final_states.append((new_seq[1:-1], new_prob))
+                else:
+                    new_hypos.append((new_seq, new_prob, s))
+
+        # add the expansions with the largest probability to the beam together with their score and prefix rnn state
+        new_probs = [p for (s, p, r) in new_hypos]
+        argmax_indices = common.argmax(new_probs, n=beam_width)
+        beam[i] = [new_hypos[l] for l in argmax_indices]
+        i += 1
+
+    # get nbest results from final states found in search
+    final_probs = [p for (s, p) in final_states]
+    argmax_indices = common.argmax(final_probs, n=nbest)
+    nbest_templates = [final_states[l] for l in argmax_indices]
+
+    return nbest_templates
+
+
 def predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index, inverse_alphabet_index, lemmas,
                       feats, feat_index, feature_types):
     predictions = {}
@@ -568,6 +715,53 @@ def predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_i
 
         joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
         predictions[joint_index] = predicted_template
+
+    return predictions
+
+def predict_nbest_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index, inverse_alphabet_index,
+                          lemmas, feats, feat_index, feature_types, nbest, words):
+    predictions = {}
+    fix_count = 0
+    for i, (lemma, feat_dict) in enumerate(zip(lemmas, feats)):
+        predicted_template = predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma,
+                                                         feat_dict, alphabet_index, inverse_alphabet_index, feat_index,
+                                                         feature_types)
+        predicted_nbest = predict_nbest_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma,
+                                                     feat_dict, alphabet_index, inverse_alphabet_index, feat_index,
+                                                     feature_types,nbest)
+
+        # DEBUG:
+        greedy_guess = instantiate_template(predicted_template, lemma)
+        if words[i] == greedy_guess:
+            gsign = 'V'
+        else:
+            gsign = 'X'
+
+        for j, n in enumerate(predicted_nbest):
+            s, p = n
+            nbest_guess = instantiate_template(s, lemma)
+
+            if words[i] == nbest_guess:
+                nsign = 'V'
+            else:
+                nsign = 'X'
+
+            if gsign == 'X' and nsign == 'V':
+                fix_count += 1
+                print str(i) + ' out of ' + str(len(lemmas))
+                print lemma + '\n'
+                print 'GREEDY: \n' + str(''.join(predicted_template).encode('utf8'))
+                print  greedy_guess + ' ' + gsign + '\n'
+                print '{0}-BEST:'.format(j+1)
+                print str(''.join(s).encode('utf8')) + ' ' + str(p)
+                print nbest_guess + ' ' + nsign + '\n'
+
+
+        joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
+        predictions[joint_index] = predicted_nbest
+    print '================================================================'
+    print 'beam search fixed {0} out of {1}, {2}%'.format(fix_count, len(lemmas), float(fix_count)/len(lemmas)*100)
+    print '================================================================'
 
     return predictions
 

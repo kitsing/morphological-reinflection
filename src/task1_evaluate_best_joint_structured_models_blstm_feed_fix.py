@@ -3,7 +3,8 @@ files and evaluation script.
 
 Usage:
   evaluate_best_joint_structured_models.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN]
-  [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+  [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--nbest=NBEST]
+  TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
   TRAIN_PATH    train data path
@@ -20,7 +21,7 @@ Options:
   --epochs=EPOCHS               amount of training epochs
   --layers=LAYERS               amount of layers in lstm network
   --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM
-
+  --nbest=NBEST                 amount of nbest results
 """
 
 import time
@@ -39,6 +40,7 @@ EPOCHS = 1
 LAYERS = 2
 MAX_PREDICTION_LEN = 50
 OPTIMIZATION = 'ADAM'
+NBEST = 1
 
 NULL = '%'
 UNK = '#'
@@ -49,9 +51,9 @@ END_WORD = '>'
 
 
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim):
+         optimization, feat_input_dim, nbest):
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'EPOCHS': epochs, 'LAYERS': layers,
-                    'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN, 'OPTIMIZATION': optimization}
+                    'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN, 'OPTIMIZATION': optimization, 'NBEST':nbest}
 
     print 'train path = ' + str(train_path)
     print 'test path =' + str(test_path)
@@ -113,32 +115,35 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                   str(len(train_cluster_words)) + ' examples'
 
         # test best model
-        try:
-            test_cluster_lemmas = [test_lemmas[i] for i in test_cluster_to_data_indices[cluster_type]]
-            test_cluster_words = [test_words[i] for i in test_cluster_to_data_indices[cluster_type]]
-            test_cluster_feat_dicts = [test_feat_dicts[i] for i in test_cluster_to_data_indices[cluster_type]]
+        # try:
+        test_cluster_lemmas = [test_lemmas[i] for i in test_cluster_to_data_indices[cluster_type]]
+        test_cluster_words = [test_words[i] for i in test_cluster_to_data_indices[cluster_type]]
+        test_cluster_feat_dicts = [test_feat_dicts[i] for i in test_cluster_to_data_indices[cluster_type]]
 
-            # load best model
-            best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(cluster_index), alphabet,
-                                                                                  results_file_path, input_dim,
-                                                                                  hidden_dim, layers,
-                                                                                  feature_alphabet, feat_input_dim,
-                                                                                  feature_types)
+        # load best model
+        best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(cluster_index), alphabet,
+                                                                              results_file_path, input_dim,
+                                                                              hidden_dim, layers,
+                                                                              feature_alphabet, feat_input_dim,
+                                                                              feature_types)
 
-            predicted_templates = task1_joint_structured_inflection_blstm_feedback_fix.predict_templates(best_model,
-                                                                                                         decoder_rnn,
-                                                                                      encoder_frnn, encoder_rrnn,
-                                                                                      alphabet_index,
-                                                                                      inverse_alphabet_index,
-                                                                                      test_cluster_lemmas,
-                                                                                      test_cluster_feat_dicts,
-                                                                                      feat_index,
-                                                                                      feature_types)
+        if nbest == 1:
+            is_nbest = False
+            predicted_templates = task1_joint_structured_inflection_blstm_feedback_fix.predict_templates(
+                best_model,
+                decoder_rnn,
+                encoder_frnn, encoder_rrnn,
+                alphabet_index,
+                inverse_alphabet_index,
+                test_cluster_lemmas,
+                test_cluster_feat_dicts,
+                feat_index,
+                feature_types)
 
             accuracy = task1_joint_structured_inflection_blstm_feedback_fix.evaluate_model(predicted_templates,
-                                                                                           test_cluster_lemmas,
-                                                                        test_cluster_feat_dicts, test_cluster_words,
-                                                                        feature_types, print_results=False)
+                                                                                       test_cluster_lemmas,
+                                                                    test_cluster_feat_dicts, test_cluster_words,
+                                                                    feature_types, print_results=False)
             accuracies.append(accuracy)
 
             # get predicted_templates in the same order they appeared in the original file
@@ -149,25 +154,63 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                     predicted_templates[joint_index], test_lemmas[i])
                 final_results[i] = (test_lemmas[i], test_feat_dicts[i], inflection)
 
-        except KeyError:
-            print 'could not find relevant examples in test data for cluster: ' + cluster_type
+            accuracy_vals = [accuracies[i][1] for i in xrange(len(accuracies))]
+            macro_avg_accuracy = sum(accuracy_vals) / len(accuracies)
+            print 'macro avg accuracy: ' + str(macro_avg_accuracy)
 
-    accuracy_vals = [accuracies[i][1] for i in xrange(len(accuracies))]
-    macro_avg_accuracy = sum(accuracy_vals) / len(accuracies)
-    print 'macro avg accuracy: ' + str(macro_avg_accuracy)
+            mic_nom = sum([accuracies[i][0] * accuracies[i][1] for i in xrange(len(accuracies))])
+            mic_denom = sum([accuracies[i][0] for i in xrange(len(accuracies))])
+            micro_average_accuracy = mic_nom / mic_denom
+            print 'micro avg accuracy: ' + str(micro_average_accuracy)
+        else:
+            is_nbest = True
+            try:
+                predicted_nbset_templates = task1_joint_structured_inflection_blstm_feedback_fix.predict_nbest_templates(
+                best_model,
+                decoder_rnn,
+                encoder_frnn,
+                encoder_rrnn,
+                alphabet_index,
+                inverse_alphabet_index,
+                test_cluster_lemmas,
+                test_cluster_feat_dicts,
+                feat_index,
+                feature_types,
+                nbest,
+                test_cluster_words)
 
-    mic_nom = sum([accuracies[i][0] * accuracies[i][1] for i in xrange(len(accuracies))])
-    mic_denom = sum([accuracies[i][0] for i in xrange(len(accuracies))])
-    micro_average_accuracy = mic_nom / mic_denom
-    print 'micro avg accuracy: ' + str(micro_average_accuracy)
+                # get predicted_templates in the same order they appeared in the original file
+                # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
+                for i in test_cluster_to_data_indices[cluster_type]:
+                    joint_index = test_lemmas[i] + ':' + common.get_morph_string(test_feat_dicts[i], feature_types)
+
+                    nbest_inflections = []
+                    templates = [t for (t,p) in predicted_nbset_templates[joint_index]]
+                    for template in templates:
+                        nbest_inflections.append(
+                                task1_joint_structured_inflection_blstm_feedback_fix.instantiate_template(
+                                    template,
+                                    test_lemmas[i]))
+                    final_results[i] = (test_lemmas[i], test_feat_dicts[i], nbest_inflections)
+
+                    micro_average_accuracy = 0
+            except KeyError as k:
+                print 'could not find relevant examples in test data for cluster: ' + cluster_type
+
 
     if 'test' in test_path:
         suffix = '.best.test'
     else:
         suffix = '.best'
-    common.write_results_file(hyper_params, micro_average_accuracy, train_path,
-                                              test_path, results_file_path + suffix, sigmorphon_root_dir,
-                                              final_results)
+
+    common.write_results_file(hyper_params,
+                              micro_average_accuracy,
+                              train_path,
+                              test_path,
+                              results_file_path + suffix,
+                              sigmorphon_root_dir,
+                              final_results,
+                              is_nbest)
 
 
 def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_dim, layers, feature_alphabet,
@@ -251,8 +294,12 @@ if __name__ == '__main__':
         optimization = arguments['--optimization']
     else:
         optimization = OPTIMIZATION
+    if arguments['--nbest']:
+        nbest = int(arguments['--nbest'])
+    else:
+        nbest = NBEST
 
     print arguments
 
     main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim)
+         optimization, feat_input_dim, nbest)

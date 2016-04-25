@@ -1,6 +1,7 @@
 import align
 import codecs
 import os
+import heapq
 
 NULL = '%'
 
@@ -41,8 +42,11 @@ def cluster_data_by_pos(feat_dicts):
     return pos_to_indices
 
 
-def argmax(iterable):
-    return max(enumerate(iterable), key=lambda x: x[1])[0]
+def argmax(iterable, n=1):
+    if n==1:
+        return max(enumerate(iterable), key=lambda x: x[1])[0]
+    else:
+        return heapq.nlargest(n, xrange(len(iterable)), iterable.__getitem__)
 
 
 def get_feature_alphabet(feat_dicts):
@@ -77,7 +81,7 @@ def med_align(wordpairs, align_symbol):
     return a.alignedpairs
 
 def write_results_file(hyper_params, accuracy, train_path, test_path, output_file_path, sigmorphon_root_dir,
-                           final_results):
+                           final_results, nbest=False):
     if 'test' in test_path:
         output_file_path += '.test'
 
@@ -111,11 +115,16 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
         else:
             model_dir = 'solutions'
 
+        if nbest:
+            model_dir += '/nbest'
+
         results_prefix = '/'.join(output_file_path.split('/')[:-1])
         lang = train_path.split('/')[-1].replace('-task{0}-train'.format(task),'')
         predictions_path = '{0}/{3}/{1}-task{2}-solution'.format(results_prefix, lang, task, model_dir)
     else:
         predictions_path = output_file_path + '.predictions'
+        if nbest:
+            predictions_path += '.nbest'
 
     with codecs.open(test_path, 'r', encoding='utf8') as test_file:
         lines = test_file.readlines()
@@ -126,14 +135,17 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
                 else:
                     lemma, morph, word = line.split()
                 if i in final_results:
-                    predictions.write(u'{0}\t{1}\t{2}\n'.format(lemma, morph, final_results[i][2]))
+                    if nbest:
+                        for p in final_results[i][2]:
+                            predictions.write(u'{0}\t{1}\t{2}\n'.format(lemma, morph, p))
+                    else:
+                        predictions.write(u'{0}\t{1}\t{2}\n'.format(lemma, morph, final_results[i][2]))
                 else:
                     # TODO: handle unseen morphs?
                     print u'could not find prediction for {0} {1}'.format(lemma, morph)
                     predictions.write(u'{0}\t{1}\t{2}\n'.format(lemma, morph, 'ERROR'))
 
     # evaluate with sigmorphon script
-
     evaluation_path = output_file_path + '.evaluation'
     os.chdir(sigmorphon_root_dir)
     os.system('python ' + sigmorphon_root_dir + '/src/evalm.py --gold ' + test_path + ' --guesses ' + predictions_path +
