@@ -870,11 +870,11 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
         print instantiated
         raise Exception()
 
-    lemma = BEGIN_WORD + lemma + END_WORD
+    padded_lemma = BEGIN_WORD + lemma + END_WORD
 
     # convert characters to matching embeddings
     lemma_char_vecs = []
-    for char in lemma:
+    for char in padded_lemma:
         try:
             lemma_char_vecs.append(char_lookup[alphabet_index[char]])
         except KeyError:
@@ -937,10 +937,10 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
     for i, template_char in enumerate(template):
 
         # if the lemma is finished, pad with epsilon chars and use last blstm output as encoded
-        if i < len(lemma):
+        if i < len(padded_lemma):
             blstm_output = blstm_outputs[i]
             try:
-                lemma_input_char_vec = char_lookup[alphabet_index[lemma[i]]]
+                lemma_input_char_vec = char_lookup[alphabet_index[padded_lemma[i]]]
             except KeyError:
                 # handle UNK
                 lemma_input_char_vec = char_lookup[alphabet_index[UNK]]
@@ -948,8 +948,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
             lemma_input_char_vec = char_lookup[alphabet_index[EPSILON]]
             blstm_output = blstm_outputs[lemma_char_vecs_len - 1]
 
-        # TODO: check if template index char helps, maybe redundant
-        # encoded lemma, previous output (hidden) vector, lemma input char, template index char, features
+        # blstm output, previous output vector, lemma input char vector, template index char, features
         decoder_input = concatenate([blstm_output,
                                      prev_output_vec,
                                      lemma_input_char_vec,
