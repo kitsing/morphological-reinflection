@@ -126,7 +126,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                               hidden_dim, layers,
                                                                               feature_alphabet, feat_input_dim,
                                                                               feature_types)
-        lang  = train_path.split('/')[-1].replace('-task{0}-train'.format(task),'')
+
+        lang  = train_path.split('/')[-1].replace('-task{0}-train'.format('1'),'')
         if nbest == 1:
             is_nbest = False
             predicted_templates = task1_joint_structured_inflection_blstm_feedback_fix.predict_templates(
