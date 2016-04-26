@@ -6994,7 +6994,7 @@ al-maʿlūmatu	pos=N,poss=PSSD,case=ACC,num=DU	maʿlūmatay
 ʿaḏḏaba	pos=V,mood=IND,tense=PST,gen=FEM,per=1,voice=ACT,num=SG,aspect={IPFV/PFV/PRF}	ʿaḏḏabtu
 ʾaṣlaḥa	pos=V,mood=IMP,gen=FEM,per=2,voice=ACT,num=PL	ʾaṣliḥna
 al-lawnu	pos=N,poss=PSSD,case=NOM,num=PL	ʾalwānu
-ṣafā	pos=V,voice=PASS	
+ṣafā	pos=V,voice=PASS	ṣafā
 as-samʿu	pos=N,def=DEF,case=GEN,num=PL	al-ʾasmāʿi
 ʿilmāniyyun	pos=ADJ,def=DEF,case=NOM,gen=MASC,num=SG	al-ʿilmāniyyu
 inšaḡala	pos=V,mood={IND/COND/IMP},gen=FEM,per=3,voice=ACT,num=SG,aspect={IPFV/PFV}	tanšaḡil
