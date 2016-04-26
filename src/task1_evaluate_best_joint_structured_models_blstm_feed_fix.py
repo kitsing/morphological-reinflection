@@ -126,7 +126,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                               hidden_dim, layers,
                                                                               feature_alphabet, feat_input_dim,
                                                                               feature_types)
-
+        lang  = train_path.split('/')[-1].replace('-task{0}-train'.format(task),'')
         if nbest == 1:
             is_nbest = False
             predicted_templates = task1_joint_structured_inflection_blstm_feedback_fix.predict_templates(
@@ -145,7 +145,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                     test_cluster_feat_dicts, test_cluster_words,
                                                                     feature_types, print_results=False)
             accuracies.append(accuracy)
-            print 'accuracy: {0}'.format(accuracy[1])
+            print '{0} {1} accuracy: {2}'.format(lang, cluster_type, accuracy[1])
 
             # get predicted_templates in the same order they appeared in the original file
             # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
