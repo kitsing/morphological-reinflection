@@ -950,8 +950,11 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
 
         # TODO: check if template index char helps, maybe redundant
         # encoded lemma, previous output (hidden) vector, lemma input char, template index char, features
-        decoder_input = concatenate([blstm_output, prev_output_vec, lemma_input_char_vec,
-                                     char_lookup[alphabet_index[str(i)]], feats_input])
+        decoder_input = concatenate([blstm_output,
+                                     prev_output_vec,
+                                     lemma_input_char_vec,
+                                     char_lookup[alphabet_index[str(i)]],
+                                     feats_input])
 
         s = s.add_input(decoder_input)
         decoder_rnn_output = s.output()

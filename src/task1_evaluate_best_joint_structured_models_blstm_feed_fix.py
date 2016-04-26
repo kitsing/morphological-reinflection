@@ -155,6 +155,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                     predicted_templates[joint_index], test_lemmas[i])
                 final_results[i] = (test_lemmas[i], test_feat_dicts[i], inflection)
 
+            micro_average_accuracy = accuracy[1]
+
         else:
             is_nbest = True
 
@@ -186,7 +188,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                 test_lemmas[i]))
                 final_results[i] = (test_lemmas[i], test_feat_dicts[i], nbest_inflections)
 
-                micro_average_accuracy = -1
+            micro_average_accuracy = -1
 
 
     if 'test' in test_path:
