@@ -812,12 +812,12 @@ def predict_nbest_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alph
             if gsign == 'X' and nsign == 'V':
                 fix_count += 1
                 print str(i) + ' out of ' + str(len(source_words))
-                print source_word + '\n'
-                print 'GREEDY: \n' + str(''.join(predicted_template).encode('utf8'))
+                print source_word.encode('utf8') + '\n'
+                print u'GREEDY: \n' + str(''.join(predicted_template).encode('utf8'))
                 print  greedy_guess + ' ' + gsign + '\n'
-                print '{0}-BEST:'.format(j + 1)
+                print u'{0}-BEST:'.format(j + 1)
                 print str(''.join(s).encode('utf8')) + ' ' + str(p)
-                print nbest_guess + ' ' + nsign + '\n'
+                print nbest_guess.encode('utf8') + ' ' + nsign + '\n'
 
         joint_index = source_word + ':' + common.get_morph_string(source_feat_dict, feature_types) \
                       + ':' + common.get_morph_string(target_feat_dict, feature_types)
