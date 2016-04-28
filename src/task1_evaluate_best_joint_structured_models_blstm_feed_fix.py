@@ -115,7 +115,6 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                   str(len(train_cluster_words)) + ' examples'
 
         # test best model
-        # try:
         test_cluster_lemmas = [test_lemmas[i] for i in test_cluster_to_data_indices[cluster_type]]
         test_cluster_words = [test_words[i] for i in test_cluster_to_data_indices[cluster_type]]
         test_cluster_feat_dicts = [test_feat_dicts[i] for i in test_cluster_to_data_indices[cluster_type]]

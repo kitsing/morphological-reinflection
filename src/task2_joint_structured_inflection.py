@@ -236,7 +236,7 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
 
 # TODO: move this to task2_joint_inflection.py once it's ready
 def write_results_file(hyper_params, accuracy, train_path, test_path, output_file_path, sigmorphon_root_dir,
-                       final_results):
+                       final_results, nbest=False):
     # write hyperparams, micro + macro avg. accuracy
     with codecs.open(output_file_path, 'w', encoding='utf8') as f:
         f.write('train path = ' + str(train_path) + '\n')
@@ -248,6 +248,7 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
         f.write('Prediction Accuracy = ' + str(accuracy) + '\n')
 
     # write predictions in sigmorphon format
+    # if final results, write the special file name format
     if 'test-covered' in test_path:
         if 'task1' in test_path:
             task = '1'
@@ -263,11 +264,17 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
         else:
             model_dir = 'solutions'
 
+        if nbest:
+            model_dir += '/nbest'
+
         results_prefix = '/'.join(output_file_path.split('/')[:-1])
         lang = train_path.split('/')[-1].replace('-task{0}-train'.format(task), '')
         predictions_path = '{0}/{3}/{1}-task{2}-solution'.format(results_prefix, lang, task, model_dir)
     else:
         predictions_path = output_file_path + '.predictions'
+        if nbest:
+            predictions_path += '.nbest'
+
     with codecs.open(test_path, 'r', encoding='utf8') as test_file:
         lines = test_file.readlines()
         with codecs.open(predictions_path, 'w', encoding='utf8') as predictions:
@@ -277,7 +284,12 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
                 else:
                     source_morph, source_word, target_morph, target_word = line.split()
                 if i in final_results:
-                    predictions.write(u'{0}\t{1}\t{2}\t{3}\n'.format(source_morph, source_word, target_morph, final_results[i][2]))
+                    if nbest:
+                        for p in final_results[i][2]:
+                            predictions.write(u'{0}\t{1}\t{2}\t{3}\n'.format(source_morph, source_word, target_morph,
+                                                                             p))
+                    else:
+                        predictions.write(u'{0}\t{1}\t{2}\t{3}\n'.format(source_morph, source_word, target_morph, final_results[i][2]))
                 else:
                     # TODO: handle unseen morphs?
                     print u'could not find prediction for {0} {1} {2}'.format(source_morph, source_word, target_morph)
