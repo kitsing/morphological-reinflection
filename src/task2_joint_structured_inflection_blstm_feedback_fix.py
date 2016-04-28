@@ -814,9 +814,8 @@ def predict_nbest_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alph
                 print str(i) + ' out of ' + str(len(source_words))
                 print source_word.encode('utf8') + '\n'
                 print str(predicted_template)
-                for c in predicted_template:
-                    print c.encode('utf8')
-                print u'GREEDY: \n' + u''.join(predicted_template).encode('utf8')
+                encoded_template = [c.encode('utf8') for c in predicted_template]
+                print u'GREEDY: \n' + u''.join(encoded_template)
                 print  greedy_guess.encode('utf8') + ' ' + gsign + '\n'
                 print u'{0}-BEST:'.format(j + 1)
                 print str(''.join(s).encode('utf8')) + ' ' + str(p)
