@@ -89,7 +89,7 @@ def evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, la
         nbest_string=''
 
     # ugly workaroound for now
-    if 'blstm' in script and lang != 'hungarian' and lang != 'maltese' and task != '3':
+    if 'blstm' in script and lang != 'hungarian' and lang != 'maltese' and task != '3' and not (task=='2' and nbest==5):
         separator = '_'
     else:
         separator = '-'
