@@ -277,6 +277,8 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
 
     with codecs.open(test_path, 'r', encoding='utf8') as test_file:
         lines = test_file.readlines()
+        print 'opened test file: {0} with {1} lines'.format(test_path, len(lines))
+        print 'final results len: {0}'.format(len(final_results))
         with codecs.open(predictions_path, 'w', encoding='utf8') as predictions:
             for i, line in enumerate(lines):
                 if 'test-covered' in test_path:

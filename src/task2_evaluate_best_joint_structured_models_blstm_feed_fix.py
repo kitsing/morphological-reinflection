@@ -167,10 +167,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                                    feature_types) \
                               + ':' + common.get_morph_string(test_target_feat_dicts[i], feature_types)
                 inflection = task2_joint_structured_inflection_blstm_feedback_fix.instantiate_template(
-                    predicted_templates[joint_index],
-                    test_source_words[i])
-                final_results[i] = (
-                test_source_words[i], test_source_feat_dicts[i], inflection, test_target_feat_dicts[i])
+                    predicted_templates[joint_index], test_source_words[i])
+                final_results[i] = (test_source_words[i], test_source_feat_dicts[i], inflection, test_target_feat_dicts[i])
 
             micro_average_accuracy = accuracy[1]
 
