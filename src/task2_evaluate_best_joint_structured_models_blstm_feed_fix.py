@@ -55,7 +55,7 @@ END_WORD = '>'
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
          optimization, feat_input_dim, nbest):
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'EPOCHS': epochs, 'LAYERS': layers,
-                    'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN, 'OPTIMIZATION': optimization, 'NBEST':nbest}
+                    'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN, 'OPTIMIZATION': optimization, 'NBEST': nbest}
 
     print 'train path = ' + str(train_path)
     print 'test path =' + str(test_path)
@@ -63,11 +63,14 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         print param + '=' + str(hyper_params[param])
 
     # load data
-    (train_target_words, train_source_words, train_target_feat_dicts, train_source_feat_dicts) = prepare_sigmorphon_data.load_data(
+    (train_target_words, train_source_words, train_target_feat_dicts,
+     train_source_feat_dicts) = prepare_sigmorphon_data.load_data(
         train_path, 2)
-    (test_target_words, test_source_words, test_target_feat_dicts, test_source_feat_dicts) = prepare_sigmorphon_data.load_data(
+    (test_target_words, test_source_words, test_target_feat_dicts,
+     test_source_feat_dicts) = prepare_sigmorphon_data.load_data(
         test_path, 2)
-    alphabet, feature_types = prepare_sigmorphon_data.get_alphabet(train_target_words, train_source_words, train_target_feat_dicts, train_source_feat_dicts)
+    alphabet, feature_types = prepare_sigmorphon_data.get_alphabet(train_target_words, train_source_words,
+                                                                   train_target_feat_dicts, train_source_feat_dicts)
 
     # used for character dropout
     alphabet.append(NULL)
@@ -168,7 +171,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                               + ':' + common.get_morph_string(test_target_feat_dicts[i], feature_types)
                 inflection = task2_joint_structured_inflection_blstm_feedback_fix.instantiate_template(
                     predicted_templates[joint_index], test_source_words[i])
-                final_results[i] = (test_source_words[i], test_source_feat_dicts[i], inflection, test_target_feat_dicts[i])
+                final_results[i] = (
+                test_source_words[i], test_source_feat_dicts[i], inflection, test_target_feat_dicts[i])
 
             micro_average_accuracy = accuracy[1]
 
@@ -205,23 +209,24 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                         task2_joint_structured_inflection_blstm_feedback_fix.instantiate_template(
                             template,
                             test_source_words[i]))
-                final_results[i] = (test_source_words[i], test_source_feat_dicts[i], nbest_inflections, test_target_feat_dicts[i])
+                final_results[i] = (
+                test_source_words[i], test_source_feat_dicts[i], nbest_inflections, test_target_feat_dicts[i])
 
             micro_average_accuracy = -1
 
-        if 'test' in test_path:
-            suffix = '.best.test'
-        else:
-            suffix = '.best'
+    if 'test' in test_path:
+        suffix = '.best.test'
+    else:
+        suffix = '.best'
 
-        task2_joint_structured_inflection.write_results_file(hyper_params,
-                                                             micro_average_accuracy,
-                                                             train_path,
-                                                             test_path,
-                                                             results_file_path + suffix,
-                                                             sigmorphon_root_dir,
-                                                             final_results,
-                                                             is_nbest)
+    task2_joint_structured_inflection.write_results_file(hyper_params,
+                                                         micro_average_accuracy,
+                                                         train_path,
+                                                         test_path,
+                                                         results_file_path + suffix,
+                                                         sigmorphon_root_dir,
+                                                         final_results,
+                                                         is_nbest)
 
 
 def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_dim, layers, feature_alphabet,
@@ -251,7 +256,8 @@ def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_
     # (both of HIDDEN_DIM size), previous output char, current lemma char (of INPUT_DIM size) current index char
     # and feats * FEAT_INPUT_DIM
     # 2 * len(feature_types) * feat_input_dim, as it gets both source and target feature embeddings
-    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + 2 * len(feature_types) * feat_input_dim, hidden_dim,
+    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + 2 * len(feature_types) * feat_input_dim,
+                              hidden_dim,
                               model)
 
     model.load(tmp_model_path)
@@ -276,7 +282,7 @@ if __name__ == '__main__':
     if arguments['RESULTS_PATH']:
         results_file_path = arguments['RESULTS_PATH']
     else:
-        results_file_path = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/results_'\
+        results_file_path = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/results_' \
                             + st + '.txt'
     if arguments['SIGMORPHON_PATH']:
         sigmorphon_root_dir = arguments['SIGMORPHON_PATH'][0]
@@ -315,5 +321,3 @@ if __name__ == '__main__':
 
     main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
          optimization, feat_input_dim, nbest)
-
-
