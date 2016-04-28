@@ -813,7 +813,7 @@ def predict_nbest_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alph
                 fix_count += 1
                 print str(i) + ' out of ' + str(len(source_words))
                 print source_word.encode('utf8') + '\n'
-                print u'GREEDY: \n' + str(''.join(predicted_template)).encode('utf8')
+                print u'GREEDY: \n' + str(''.join(predicted_template))
                 print  greedy_guess.encode('utf8') + ' ' + gsign + '\n'
                 print u'{0}-BEST:'.format(j + 1)
                 print str(''.join(s).encode('utf8')) + ' ' + str(p)
