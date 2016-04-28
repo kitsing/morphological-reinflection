@@ -146,6 +146,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                 inverse_alphabet_index,
                 test_cluster_source_words,
                 test_cluster_source_feat_dicts,
+                test_cluster_target_feat_dicts,
                 feat_index,
                 feature_types)
 
