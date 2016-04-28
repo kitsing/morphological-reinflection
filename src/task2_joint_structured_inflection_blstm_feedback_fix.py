@@ -813,7 +813,6 @@ def predict_nbest_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alph
                 fix_count += 1
                 print str(i) + ' out of ' + str(len(source_words))
                 print source_word.encode('utf8') + '\n'
-                print str(predicted_template)
                 encoded_template = [c.encode('utf8') for c in predicted_template]
                 joined = ''.join(encoded_template)
                 print 'GREEDY: \n' + joined
