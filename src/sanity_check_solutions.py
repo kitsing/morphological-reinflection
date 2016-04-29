@@ -46,14 +46,14 @@ def main():
     print 'now checking nbest files'
     # check for lines amount in nbest
     i = 0
-    tasks=['1']
+    tasks=['1','2','3']
     models= ['blstm']
 
     for lang in langs:
         for task in tasks:
             input_file_path = solution_input_file_format.format(lang, task)
             for model in models:
-                if task == '3' and model == 'nfst':
+                if model == 'nfst':
                     continue
                 nbest_output_file_path = nbest_solution_output_file_format.format(model, lang, task)
                 output_file_path = solution_output_file_format.format(model,lang,task)
@@ -69,7 +69,7 @@ def main():
 
                             if l%5 == 0:
                                 # check that first hypo is not empty
-                                if len(nbest_output_lines[l].split()) != 3:
+                                if task !='2' and len(nbest_output_lines[l].split()) != 3:
                                     print 'EMPTY FIRST HYPO AT {0} LINE {1}'.format(nbest_output_file_path, l)
 
                                 # check consistency between greedy and nbest
@@ -80,6 +80,7 @@ def main():
                                         output_file_path,
                                         l/5,
                                         nbest_output_lines[l], output_lines[l/5])
+
 
                             # check if no empty predictions
                             if ((task == '1' or task == '3') and len(line.split()) != 3) or (

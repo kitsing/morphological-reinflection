@@ -748,14 +748,16 @@ def predict_nbest_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alph
 
             if gsign == 'X' and nsign == 'V':
                 fix_count += 1
-                print str(i) + ' out of ' + str(len(lemmas))
-                print lemma + '\n'
-                print 'GREEDY: \n' + str(''.join(predicted_template).encode('utf8'))
-                print  greedy_guess + ' ' + gsign + '\n'
-                print '{0}-BEST:'.format(j+1)
-                print str(''.join(s).encode('utf8')) + ' ' + str(p)
-                print nbest_guess + ' ' + nsign + '\n'
 
+                print str(i) + ' out of ' + str(len(lemmas))
+                print lemma.encode('utf8') + '\n'
+                encoded_template = [c.encode('utf8') for c in predicted_template]
+                joined = ''.join(encoded_template)
+                print 'GREEDY: \n' + joined
+                print  greedy_guess.encode('utf8') + ' ' + gsign + '\n'
+                print u'{0}-BEST:'.format(j + 1)
+                print str(''.join(s).encode('utf8')) + ' ' + str(p)
+                print nbest_guess.encode('utf8') + ' ' + nsign + '\n'
 
         joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
         predictions[joint_index] = predicted_nbest
