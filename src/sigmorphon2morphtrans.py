@@ -10,13 +10,30 @@ def main():
     #train_path = '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/german-task1-train'
     #test_path = '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/german-task1-dev'
 
-    train_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_train.txt.sigmorphon_format'
-    test_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_test.txt.sigmorphon_format'
-    dev_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_dev.txt.sigmorphon_format'
+    # train_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_train.txt.sigmorphon_format'
+    # test_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_test.txt.sigmorphon_format'
+    # dev_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_dev.txt.sigmorphon_format'
 
-    convert_sigmorphon_to_morphtrans(train_path, '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_train.txt.morphtrans_format.txt')
-    convert_sigmorphon_to_morphtrans(test_path, '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_test.txt.morphtrans_format.txt', False)
-    convert_sigmorphon_to_morphtrans(dev_path, '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_dev.txt.morphtrans_format.txt', False)
+    sigmorphon_path = '/Users/roeeaharoni/GitHub/sigmorphon2016'
+    output_path = '/Users/roeeaharoni/GitHub/morphological-reinflection/data'
+    langs = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german']
+    train_format = '{0}/data/{1}-task1-train'
+    train_output_format = '{0}/{1}-task1-train.morphtrans.txt'
+    dev_format = '{0}/data/{1}-task1-dev'
+    dev_output_format = '{0}/{1}-task1-dev.morphtrans.txt'
+
+    for lang in langs:
+        train_file = train_format.format(sigmorphon_path, lang)
+        train_output_file = train_output_format.format(output_path,lang)
+        convert_sigmorphon_to_morphtrans(train_file, train_output_file)
+        dev_file = dev_format.format(sigmorphon_path, lang)
+        dev_output_file = dev_output_format.format(output_path, lang)
+        convert_sigmorphon_to_morphtrans(dev_file, dev_output_file)
+
+
+    # convert_sigmorphon_to_morphtrans(train_path, '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_train.txt.morphtrans_format.txt')
+    # convert_sigmorphon_to_morphtrans(test_path, '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_test.txt.morphtrans_format.txt', False)
+    # convert_sigmorphon_to_morphtrans(dev_path, '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_de_noun_dev.txt.morphtrans_format.txt', False)
 
 def convert_sigmorphon_to_morphtrans(sig_file, morphtrans_file, create_alphabet = True):
 
