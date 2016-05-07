@@ -145,7 +145,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                                            test_cluster_feat_dicts,
                                                                                            test_cluster_words,
                                                                                            feature_types,
-                                                                                           print_results=False)
+                                                                                           print_results=True)
             accuracies.append(accuracy)
 
             # get predicted_templates in the same order they appeared in the original file
