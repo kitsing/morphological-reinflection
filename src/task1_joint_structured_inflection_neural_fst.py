@@ -837,8 +837,8 @@ def evaluate_model(predicted_templates, lemmas, feature_dicts, words, feature_ty
         else:
             sign = 'X'
         if print_results:
-            print 'lemma: ' + lemma + '\ngold: ' + words[i] + '\ntemplate:' + ''.join(predicted_templates[joint_index]) \
-                  + '\nprediction: ' + predicted_word + ' ' + sign
+            print 'lemma:\t' + lemma + '\ngold:\t' + words[i] + '\ntemplate:\t' + ''.join(predicted_templates[joint_index]) \
+                  + '\nprediction: ' + predicted_word + ' ' + sign + '\n'
 
     accuracy = float(c) / len(predicted_templates)
     if print_results:
