@@ -158,9 +158,10 @@ def train_morph_model(input_dim, hidden_dim, layers, morph_index, morph_type, tr
                                 inverse_alphabet_index, epochs, optimization, results_file_path, str(morph_index))
 
     # evaluate last model on dev
-    predicted = predict(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+    if len(dev_morph_lemmas) > 0:
+        predicted = predict(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
                         inverse_alphabet_index, dev_morph_lemmas, dev_morph_words)
-    evaluate_model(predicted, zip(dev_morph_lemmas, dev_morph_words))
+        evaluate_model(predicted, zip(dev_morph_lemmas, dev_morph_words))
 
     return trained_model
 
