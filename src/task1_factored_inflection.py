@@ -110,7 +110,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 
     if parallelize_training:
         p = Pool(4, maxtasksperchild=1)
-        p.map(train_morph_model, params)
+        p.map(train_morph_model_wrapper, params)
         print 'finished training all models'
     else:
         for p in params:
@@ -122,6 +122,9 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                              results_file_path, sigmorphon_root_dir))
     return
 
+def train_morph_model_wrapper(params):
+    # from matplotlib import pyplot as plt
+    return train_morph_model(*params)
 
 def train_morph_model(input_dim, hidden_dim, layers, morph_index, morph_type, train_lemmas, train_words, test_lemmas,
                       train_morph_to_data_indices, test_words, test_morph_to_data_indices, alphabet, alphabet_index,
