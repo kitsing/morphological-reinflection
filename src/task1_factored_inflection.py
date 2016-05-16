@@ -374,10 +374,10 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_word
                 for word, lemma in dev_data:
                     total_dev_loss += one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, word,
                                                     alphabet_index).value()
-
-                avg_dev_loss = total_dev_loss / float(len(dev_morph_lemmas))
-                if avg_dev_loss < best_avg_dev_loss:
-                    best_avg_dev_loss = avg_dev_loss
+                if len(dev_morph_lemmas) > 0:
+                    avg_dev_loss = total_dev_loss / float(len(dev_morph_lemmas))
+                    if avg_dev_loss < best_avg_dev_loss:
+                        best_avg_dev_loss = avg_dev_loss
 
                 print 'epoch: {0} train loss: {1:.2f} dev loss: {2:.2f} dev accuracy: {3:.2f} train accuracy = {4:.2f} \
  best dev accuracy {5:.2f} best train accuracy: {6:.2f} patience = {7}'.format(e, avg_loss, avg_dev_loss, dev_accuracy,
