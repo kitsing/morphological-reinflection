@@ -5,7 +5,7 @@ def main():
 
     langs = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german', 'hungarian', 'maltese']
     for lang in langs:
-        task_num = 3
+        task_num = 1
         train_path = '/Users/roeeaharoni/GitHub/sigmorphon2016/data/{0}-task{1}-train'.format(lang, str(task_num))
         dev_path = '/Users/roeeaharoni/GitHub/sigmorphon2016/data/{0}-task{1}-dev'.format(lang,str(task_num))
 
@@ -49,23 +49,24 @@ def main():
         for cluster in train_cluster_to_data_indices:
             train_cluster_words = [train_targets[i] for i in train_cluster_to_data_indices[cluster]]
             train_cluster_lemmas = [train_sources[i] for i in train_cluster_to_data_indices[cluster]]
-            prefix_count, suffix_count, same_count, circumfix_count, other_count, lev_avg = get_morpheme_stats(
+            prefix_count, suffix_count, same_count, circumfix_count, other_count, lev_avg, del_avg = get_morpheme_stats(
                 train_cluster_words,
                 train_cluster_lemmas)
-            print "train {0} {1}    {2} &  {3} & {4} & {5} & {6} & {7:.3f}".format(
-                lang, cluster, prefix_count, suffix_count, same_count, circumfix_count, other_count, lev_avg)
+            print "train {0} {1}    {2} &  {3} & {4} & {5} & {6} & {7:.3f} & {8:.3f}".format(
+                lang, cluster, prefix_count, suffix_count, same_count, circumfix_count, other_count, lev_avg, del_avg)
 
         for cluster in train_cluster_to_data_indices:
             print 'train ' + lang + ' ' + cluster + ' : ' + str(
                 len(train_cluster_to_data_indices[cluster])) + ' examples'
 
-        prefix_count, suffix_count, same_count, circumfix_count, other_count, lev_avg = get_morpheme_stats(
+        prefix_count, suffix_count, same_count, circumfix_count, other_count, lev_avg, del_avg = get_morpheme_stats(
             train_targets,
             train_sources)
-        print "train {0} {1}    {2} &  {3} & {4} & {5} & {6} & {7:.3f}".format(
-            lang, 'AGG', prefix_count, suffix_count, same_count, circumfix_count, other_count, lev_avg)
+        print "train {0} {1}    {2} &  {3} & {4} & {5} & {6} & {7:.3f} & {8:.3f}".format(
+            lang, 'AGG', prefix_count, suffix_count, same_count, circumfix_count, other_count, lev_avg, del_avg)
 
 def get_morpheme_stats(train_lemmas, train_words):
+    del_count = 0
     prefix_count = 0
     suffix_count = 0
     other_count = 0
@@ -87,10 +88,19 @@ def get_morpheme_stats(train_lemmas, train_words):
         else:
             other_count +=1
 
+        for char in lemma:
+            if char not in word:
+                del_count+=1
+
         lev_sum += levenshtein(lemma, word)
 
-
-    return prefix_count, suffix_count, same_count, circumfix_count, other_count, lev_sum/float(len(train_lemmas))
+    return prefix_count, \
+           suffix_count, \
+           same_count, \
+           circumfix_count, \
+           other_count, \
+           lev_sum/float(len(train_lemmas)), \
+           del_count/float(len(train_lemmas))
 
 def levenshtein(s1, s2):
     if len(s1) < len(s2):
