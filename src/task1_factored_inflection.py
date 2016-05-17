@@ -139,6 +139,14 @@ def train_morph_model(input_dim, hidden_dim, layers, morph_index, morph_type, tr
         print 'now training model for morph ' + str(morph_index) + '/' + str(len(train_morph_to_data_indices)) + \
               ': ' + morph_type + ' with ' + str(len(train_morph_words)) + ' examples'
 
+    # TODO: remove this later, it's a temporary fix to avoid re-training already trained models
+    tmp_model_path = results_file_path + '_' + morph_index + '_bestmodel.txt'
+    if os.path.isfile(tmp_model_path):
+        print '\n\n\n**********************************SKIPPING {}*******************************\n\n\n'.format(
+            tmp_model_path)
+        return
+
+
     # build model
     initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers)
 
@@ -276,12 +284,6 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_morph_word
                 dev_morph_lemmas, alphabet_index, inverse_alphabet_index, epochs, optimization, results_file_path,
                 morph_index):
     print 'training...'
-
-    # TODO: remove this later, it's a temporary fix to avoid re-training already trained models
-    tmp_model_path = results_file_path + '_' + morph_index + '_bestmodel.txt'
-    if os.path.isfile(tmp_model_path):
-        print '\n\n\n**********************************SKIPPING {}*******************************\n\n\n'.format(tmp_model_path)
-        return model
 
     np.random.seed(17)
     random.seed(17)
