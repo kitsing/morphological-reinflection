@@ -152,20 +152,26 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         p = Pool(4, maxtasksperchild=1)
         print 'now training {0} models in parallel'.format(len(train_cluster_to_data_indices))
         models = p.map(train_cluster_model_wrapper, params)
+        print 'finished training all {} models in parallel'.format(len(models))
     else:
         print 'now training {0} models in loop'.format(len(train_cluster_to_data_indices))
         for p in params:
             trained_model, last_epoch = train_cluster_model(*p)
-    print 'finished training all models'
+            print 'last epoch is {}'.format(last_epoch)
+        print 'finished training all {} models in loop'.format(len(train_cluster_to_data_indices))
 
     # evaluate best models
-    os.system('python task1_evaluate_best_joint_structured_models_blstm_feed_fix.py --cnn-mem 6096 --input={0} --hidden={1} --feat-input={2} \
-                 --epochs={3} --layers={4} --optimization={5} {6} {7} {8} {9}'.format(input_dim, hidden_dim,
-                                                                                      feat_input_dim, epochs,
-                                                                                      layers, optimization, train_path,
-                                                                                      test_path,
-                                                                                      results_file_path,
-                                                                                      sigmorphon_root_dir))
+    os.system('python task1_evaluate_best_joint_structured_models_blstm_feed_fix.py --cnn-mem 6096 --input={0} \
+    --hidden={1} --feat-input={2} --epochs={3} --layers={4} --optimization={5} {6} {7} {8} {9}'.format(input_dim,
+                                                                                                       hidden_dim,
+                                                                                                       feat_input_dim,
+                                                                                                       epochs,
+                                                                                                       layers,
+                                                                                                       optimization,
+                                                                                                       train_path,
+                                                                                                       test_path,
+                                                                                                       results_file_path,
+                                                                                                       sigmorphon_root_dir))
     return
 
 
@@ -214,11 +220,14 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
         print 'could not find relevant examples in dev data for cluster: ' + cluster_type
 
     # train model
-    trained_model, last_epoch = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn, train_cluster_lemmas,
-                                train_cluster_feat_dicts, train_cluster_words, dev_cluster_lemmas,
-                                dev_cluster_feat_dicts, dev_cluster_words, alphabet_index, inverse_alphabet_index,
-                                epochs, optimization, results_file_path, str(cluster_index),
-                                train_cluster_alignments, dev_cluster_alignments, feat_index, feature_types, plot)
+    trained_model, last_epoch = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn,
+                                            train_cluster_lemmas,
+                                            train_cluster_feat_dicts, train_cluster_words, dev_cluster_lemmas,
+                                            dev_cluster_feat_dicts, dev_cluster_words, alphabet_index,
+                                            inverse_alphabet_index,
+                                            epochs, optimization, results_file_path, str(cluster_index),
+                                            train_cluster_alignments, dev_cluster_alignments, feat_index, feature_types,
+                                            plot)
 
     # evaluate last model on dev
     predicted_templates = predict_templates(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
@@ -264,7 +273,8 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
 
 def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, train_feat_dicts, train_words, dev_lemmas,
                 dev_feat_dicts, dev_words, alphabet_index, inverse_alphabet_index, epochs, optimization,
-                results_file_path, morph_index, train_aligned_pairs, dev_aligned_pairs, feat_index, feature_types, plot):
+                results_file_path, morph_index, train_aligned_pairs, dev_aligned_pairs, feat_index, feature_types,
+                plot):
     print 'training...'
 
     np.random.seed(17)
@@ -299,6 +309,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
     widgets = [progressbar.Bar('>'), ' ', progressbar.ETA()]
     train_progress_bar = progressbar.ProgressBar(widgets=widgets, maxval=epochs).start()
     avg_loss = -1
+    e = 0
 
     for e in xrange(epochs):
 
@@ -561,7 +572,7 @@ def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, 
 
 # noinspection PyPep8Naming
 def predict_nbest_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, alphabet_index,
-                                inverse_alphabet_index, feat_index, feature_types, nbest):
+                           inverse_alphabet_index, feat_index, feature_types, nbest):
     renew_cg()
 
     # read the parameters
@@ -623,22 +634,20 @@ def predict_nbest_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma
     # initialize the decoder rnn
     s_0 = decoder_rnn.initial_state()
 
-    # set prev_output_vec for first lstm step as BEGIN_WORD
-    prev_output_vec = char_lookup[alphabet_index[BEGIN_WORD]]
-
     i = 0
     beam_width = BEAM_WIDTH
-    beam = {}
-    beam[-1] = [([BEGIN_WORD], 1.0, s_0)] # (sequence, probability, decoder_rnn)
+
+    # holds beam step index mapped to sequences, probability, decoder state
+    beam = {-1: [([BEGIN_WORD], 1.0, s_0)]}
     final_states = []
 
     # run the decoder through the sequence and predict characters
-    while i < MAX_PREDICTION_LEN and len(beam[i-1]) > 0:
+    while i < MAX_PREDICTION_LEN and len(beam[i - 1]) > 0:
 
         # at each stage:
         # create all expansions from the previous beam:
         new_hypos = []
-        for hypothesis in beam[i-1]:
+        for hypothesis in beam[i - 1]:
             seq, hyp_prob, prefix_decoder = hypothesis
             last_hypo_char = seq[-1]
 
@@ -718,8 +727,9 @@ def predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_i
 
     return predictions
 
+
 def predict_nbest_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index, inverse_alphabet_index,
-                          lemmas, feats, feat_index, feature_types, nbest, words):
+                            lemmas, feats, feat_index, feature_types, nbest, words):
     predictions = {}
     fix_count = 0
     for i, (lemma, feat_dict) in enumerate(zip(lemmas, feats)):
@@ -727,8 +737,8 @@ def predict_nbest_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alph
                                                          feat_dict, alphabet_index, inverse_alphabet_index, feat_index,
                                                          feature_types)
         predicted_nbest = predict_nbest_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma,
-                                                     feat_dict, alphabet_index, inverse_alphabet_index, feat_index,
-                                                     feature_types,nbest)
+                                                 feat_dict, alphabet_index, inverse_alphabet_index, feat_index,
+                                                 feature_types, nbest)
 
         # DEBUG:
         greedy_guess = instantiate_template(predicted_template, lemma)
@@ -754,7 +764,7 @@ def predict_nbest_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alph
                 encoded_template = [c.encode('utf8') for c in predicted_template]
                 joined = ''.join(encoded_template)
                 print 'GREEDY: \n' + joined
-                print  greedy_guess.encode('utf8') + ' ' + gsign + '\n'
+                print greedy_guess.encode('utf8') + ' ' + gsign + '\n'
                 print u'{0}-BEST:'.format(j + 1)
                 print str(''.join(s).encode('utf8')) + ' ' + str(p)
                 print nbest_guess.encode('utf8') + ' ' + nsign + '\n'
@@ -762,7 +772,7 @@ def predict_nbest_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alph
         joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
         predictions[joint_index] = predicted_nbest
     print '================================================================'
-    print 'beam search fixed {0} out of {1}, {2}%'.format(fix_count, len(lemmas), float(fix_count)/len(lemmas)*100)
+    print 'beam search fixed {0} out of {1}, {2}%'.format(fix_count, len(lemmas), float(fix_count) / len(lemmas) * 100)
     print '================================================================'
 
     return predictions
