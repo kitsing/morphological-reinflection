@@ -25,8 +25,11 @@ logger = logging.getLogger(__name__)
 
 # Get the arguments
 parser = argparse.ArgumentParser()
-parser.add_argument("--proto",  default="get_config_cs2en",
+# parser.add_argument("--proto",  default="get_config_cs2en",
+#                     help="Prototype config to use for config")
+parser.add_argument("--proto", default="get_config_reinflection",
                     help="Prototype config to use for config")
+
 parser.add_argument("--bokeh",  default=False, action="store_true",
                     help="Use bokeh server for plotting")
 args = parser.parse_args()
