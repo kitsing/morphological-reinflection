@@ -24,6 +24,7 @@ Options:
   --reg=REGULARIZATION          regularization parameter for optimization
   --learning=LEARNING           learning rate parameter for optimization
   --plot                        draw a learning curve plot while training each model
+  --dev=DEV                     development set file path
 """
 
 import sys
@@ -49,19 +50,35 @@ def main(train_path, dev_path, test_path, results_path):
     # read morph input files (train+dev)
     (train_words, train_lemmas, train_feat_dicts) = prepare_sigmorphon_data.load_data(train_path)
     (test_words, test_lemmas, test_feat_dicts) = prepare_sigmorphon_data.load_data(test_path)
-    if dev_path != 'NONE':
-        (dev_words, dev_lemmas, dev_feat_dicts) = prepare_sigmorphon_data.load_data(dev_path)
+    (dev_words, dev_lemmas, dev_feat_dicts) = prepare_sigmorphon_data.load_data(dev_path)
 
+    merged_train_dev_lemmas = []
+    merged_train_dev_words = []
+    merged_train_dev_feat_dicts = []
+
+    if dev_path != 'NONE':
         # merge the train and dev files, if dev exists
-        train_lemmas += dev_lemmas
-        train_words += dev_words
-        train_feat_dicts += dev_feat_dicts
+        merged_train_dev_lemmas += train_lemmas
+        merged_train_dev_lemmas += dev_lemmas
+
+        merged_train_dev_words += train_words
+        merged_train_dev_words += dev_words
+
+        merged_train_dev_feat_dicts += train_feat_dicts
+        merged_train_dev_feat_dicts += dev_feat_dicts
 
     # TODO: optional - implement data augmentation
 
     # concatenate feats and characters for input
-    tokenized_test_inputs, tokenized_test_outputs = convert_to_MED_format(test_feat_dicts, test_lemmas, test_words)
-    tokenized_train_inputs, tokenized_train_outputs = convert_to_MED_format(train_feat_dicts, train_lemmas, train_words)
+    tokenized_test_inputs, tokenized_test_outputs = convert_sigmorphon_to_MED_format(test_feat_dicts, test_lemmas, test_words)
+
+    tokenized_train_inputs, tokenized_train_outputs = convert_sigmorphon_to_MED_format(train_feat_dicts, train_lemmas, train_words)
+
+    tokenized_dev_inputs, tokenized_dev_outputs = convert_sigmorphon_to_MED_format(dev_feat_dicts, dev_lemmas, dev_words)
+
+    tokenized_merged_inputs, tokenized_merged_outputs = convert_sigmorphon_to_MED_format(merged_train_dev_feat_dicts,
+                                                                                         merged_train_dev_lemmas,
+                                                                                         merged_train_dev_words)
 
     parallel_data = zip(tokenized_train_inputs, tokenized_train_outputs)
 
@@ -90,30 +107,59 @@ def main(train_path, dev_path, test_path, results_path):
                                                                          'test.in.tok',
                                                                          'test.out.tok')
 
-    # HARD preprocess by instantiating the args variables in prepare_data.py to point the created files
-    # only changes in original preprocess.py code are:
+    merged_inputs_file_path, merged_outputs_file_path = write_converted_file(results_path,
+                                                                         tokenized_merged_inputs,
+                                                                         tokenized_merged_outputs,
+                                                                         'merged.in',
+                                                                         'merged.out')
+
+
+    merged_inputs_file_path, merged_outputs_file_path = write_converted_file(results_path,
+                                                                     tokenized_merged_inputs,
+                                                                     tokenized_merged_outputs,
+                                                                     'merged.in.tok',
+                                                                     'merged.out.tok')
+
+    dev_inputs_file_path, dev_outputs_file_path = write_converted_file(results_path,
+                                                                             tokenized_dev_inputs,
+                                                                             tokenized_dev_outputs,
+                                                                             'dev.in',
+                                                                             'dev.out')
+
+
+    dev_inputs_file_path, dev_outputs_file_path = write_converted_file(results_path,
+                                                                       tokenized_dev_inputs,
+                                                                       tokenized_dev_outputs,
+                                                                       'dev.in.tok',
+                                                                       'dev.out.tok')
+
+
+    # after the above files are created, hacky preprocess by instantiating the args variables in prepare_data.py to
+    # point the created files. only changes in original prepare_data.py code required for that are:
+
     # args.source = 'train.in'
     # args.target = 'train.out'
     # args.source_dev = 'test.in'
     # args.target_dev = 'test.out'
+
     # tr_files = ['/Users/roeeaharoni/GitHub/morphological-reinflection/src/machine_translation/data/train.in',
     #             '/Users/roeeaharoni/GitHub/morphological-reinflection/src/machine_translation/data/train.out']
-    # and change shuf to gshuf on mac
 
-    # preprocess using the MILA scripts - create_vocabularies(), shuffle()
-    # train_files = [train_inputs_file_path, train_outputs_file_path]
-    # test_files = [test_inputs_file_path, test_outputs_file_path]
-    # preprocess_file = './machine_translation/preprocess.py'
-    # OUTPUT_DIR = './data/'
+    # change shuf to gshuf on mac
 
-    # Apply preprocessing and construct vocabularies
-    # src_filename, trg_filename = create_vocabularies(tr_files, preprocess_file, OUTPUT_DIR)
+    # blocks search.py - line 102 - add on_unused_input='ignore'
 
-    # Shuffle datasets
-    # prepare_data.shuffle_parallel(os.path.join(OUTPUT_DIR, src_filename),
-    #                                                       os.path.join(OUTPUT_DIR, trg_filename))
+    # eventually, run training script on the preprocessed files by changing those values in configuration.py:
+    # bleu_val_freq, val_burn_in, val_set, val_set_grndtruth
 
-    # run training script on the preprocessed files
+    # and then run:
+    # python -m machine_translation
+
+    # finally run the script that converts the validation_out.txt file into the sigmorphon format and run evaluation
+    sigmorphon_dev_file_path = dev_path
+    MED_validation_file_path = './search_model_morph/validation_out.txt'
+    output_file_path = './search_model_morph/validation_out.sigmorphon.txt'
+    convert_MED_output_to_sigmorphon_format(sigmorphon_dev_file_path, MED_validation_file_path, output_file_path)
 
     return
 
@@ -131,7 +177,7 @@ def write_converted_file(results_path, tokenized_train_inputs, tokenized_train_o
     return inputs_file_path, outputs_file_path
 
 
-def convert_to_MED_format(train_feat_dicts, train_lemmas, train_words):
+def convert_sigmorphon_to_MED_format(train_feat_dicts, train_lemmas, train_words):
     tokenized_inputs = []
     tokenized_outputs = []
     train_set = zip(train_lemmas, train_feat_dicts, train_words)
@@ -156,44 +202,20 @@ def convert_to_MED_format(train_feat_dicts, train_lemmas, train_words):
     return tokenized_inputs, tokenized_outputs
 
 
-def create_vocabularies(tr_files, preprocess_file, output_dir):
-    source = 'inputs.txt'
-    target = 'outputs.txt'
-    source_vocab = 999
+def convert_MED_output_to_sigmorphon_format(sigmorphon_dev_file_path, MED_validation_file_path, output_file_path):
+    with codecs.open(sigmorphon_dev_file_path, 'r', encoding='utf8') as test_file:
+        sig_lines = test_file.readlines()
 
-    src_vocab_name = os.path.join(
-        output_dir, 'vocab.{}-{}.{}.pkl'.format(
-            source, target, source))
+        with codecs.open(MED_validation_file_path, 'r', encoding='utf8') as MED_file:
+            med_lines = MED_file.readlines()
 
-    trg_vocab_name = os.path.join(
-        output_dir, 'vocab.{}-{}.{}.pkl'.format(
-            source, target, target))
+            with codecs.open(output_file_path, 'w', encoding='utf8') as predictions:
+                for i, line in enumerate(sig_lines):
+                    input = line.split('\t')[0]
+                    feats = line.split('\t')[1]
+                    prediction = med_lines[i].replace(' ','').replace('</S>\n','')
+                    predictions.write(u'{0}\t{1}\t{2}\n'.format(input, feats, prediction))
 
-
-    src_filename = os.path.basename(
-        tr_files[[i for i, n in enumerate(tr_files)
-                  if n.endswith(source)][0]]) + '.tok'
-
-    trg_filename = os.path.basename(
-        tr_files[[i for i, n in enumerate(tr_files)
-                  if n.endswith(target)][0]]) + '.tok'
-
-
-    print "Creating source vocabulary [{}]".format(src_vocab_name)
-    if not os.path.exists(src_vocab_name):
-        subprocess.check_call(" python {} -d {} -v {} {}".format(
-            preprocess_file, src_vocab_name, source_vocab,
-            os.path.join(output_dir, src_filename)),
-            shell=True)
-
-    print "Creating target vocabulary [{}]".format(trg_vocab_name)
-    if not os.path.exists(trg_vocab_name):
-        subprocess.check_call(" python {} -d {} -v {} {}".format(
-            preprocess_file, trg_vocab_name, args.target_vocab,
-            os.path.join(OUTPUT_DIR, trg_filename)),
-            shell=True)
-
-    return src_filename, trg_filename
 
 if __name__ == '__main__':
     arguments = docopt(__doc__)
@@ -206,7 +228,7 @@ if __name__ == '__main__':
     else:
         train_path_param = '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/turkish-task1-train'
     if arguments['--dev']:
-        dev_path_param = arguments['dev']
+        dev_path_param = arguments['--dev']
     else:
         dev_path_param = 'NONE'
     if arguments['TEST_PATH']:

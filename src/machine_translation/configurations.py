@@ -199,17 +199,17 @@ def get_config_reinflection():
     # Early stopping based on bleu related ------------------------------------
 
     # Normalize cost according to sequence length after beam-search
-    # config['normalized_bleu'] = True
+    config['normalized_bleu'] = False
 
     # Bleu script that will be used (moses multi-perl in this case)
-    # config['bleu_script'] = datadir + 'multi-bleu.perl'
-    config['bleu_script'] = None
+    config['bleu_script'] = datadir + 'multi-bleu.perl'
+    # config['bleu_script'] = None
 
     # Validation set source file
-    config['val_set'] = datadir + 'test.in.tok'
+    config['val_set'] = datadir + 'dev.in.tok'
 
     # Validation set gold file
-    config['val_set_grndtruth'] = datadir + 'test.out.tok'
+    config['val_set_grndtruth'] = datadir + 'dev.out.tok'
 
     # Print validation output to file
     config['output_val_set'] = True
@@ -235,12 +235,12 @@ def get_config_reinflection():
     config['sampling_freq'] = 13
 
     # Show this many samples at each sampling
-    config['hook_samples'] = 2
+    config['hook_samples'] = 5
 
     # Validate bleu after this many updates
-    config['bleu_val_freq'] = 5000
+    config['bleu_val_freq'] = 1
 
     # Start bleu validation after this many updates
-    config['val_burn_in'] = 80000
+    config['val_burn_in'] = 1
 
     return config

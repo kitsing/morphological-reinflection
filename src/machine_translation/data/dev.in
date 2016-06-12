@@ -1,0 +1,1591 @@
+case=ESS num=SG pos=N а а р о н о в е ц
+case=GEN num=SG pos=ADJ gen=MASC а б о н е м е н т н ы й
+case=DAT num=PL pos=N а б с е н т и з м
+case=ESS num=SG pos=N а б с о л ю т и з м
+case=GEN num=SG pos=N а б с о л ю т и с т
+case=INS num=PL pos=N а б с о л ю т и с т
+case=ESS num=PL pos=N а б с о л ю т н о с т ь
+case=ACC num=PL pos=N а б с о р б а т
+case=NOM num=SG pos=N а б с о р б е н т
+case=GEN num=PL pos=N а б с т р а к т н о с т ь
+case=INS num=SG pos=N а в и а у д а р
+case=NOM num=SG pos=N а в с т р и й к а
+aspect=PFV num=SG tense=FUT pos=V per=2 а в т о р и з о в а т ь
+case=ACC num=SG pos=N а г е н т у р а
+case=NOM num=SG pos=N а г н о с т и к
+case=ACC num=SG pos=N а г р о н о м
+case=INS num=PL pos=N а д в е н т и с т
+case=INS num=SG pos=N а д д о н
+case=ESS num=SG pos=ADJ gen=NEUT а д е к в а т н ы й
+case=ESS num=PL pos=N а д р е с а н т
+case=GEN num=SG pos=N а д р о н
+case=DAT num=PL pos=N а ж а н
+case=DAT num=PL pos=ADJ а к т и в н ы й
+case=ESS num=PL pos=N а к т и н и й
+case=DAT num=PL pos=N а л е у т
+pos=N gen=MASC а л е у т к а
+case=ESS num=PL pos=N а л к и н
+case=ESS num=SG pos=N а л у н и т
+case=INS num=PL pos=N а л ф а в и т
+case=DAT num=PL pos=N а л ь я н с
+case=ESS num=SG pos=ADJ gen=FEM а м б у л а т о р н ы й
+case=ESS num=SG pos=ADJ gen=NEUT а м е р и к а н с к и й
+case=ACC num=PL pos=ADJ а м ё б н ы й
+case=DAT num=SG pos=ADJ gen=MASC а м ё б н ы й
+case=INS num=PL pos=N а м п е р с а н д
+case=ACC num=PL pos=N а н а б и о з
+case=DAT num=PL pos=N а н а л о г
+case=DAT num=SG pos=N а н а л ь г е т и к
+case=GEN num=SG pos=ADJ gen=FEM а н а т о м и ч е с к и й
+case=ESS num=SG pos=ADJ gen=NEUT а н г е л ь с к и й
+case=NOM num=SG pos=ADJ gen=NEUT а н г л о с а к с о н с к и й
+case=NOM num=PL pos=N а н д р о и д
+case=DAT num=SG pos=N а н е с т е з и р о в а н и е
+case=DAT num=PL pos=N а н е с т е т и к
+case=ACC num=SG pos=N а н к х
+case=DAT num=SG pos=N а н к х
+case=NOM num=PL pos=N а н о н с
+case=INS num=SG pos=N а н о р а к
+case=ESS num=SG pos=ADJ gen=FEM а н т а р к т и ч е с к и й
+case=ESS num=PL pos=N а н т и б и о т и к
+case=DAT num=PL pos=ADJ а н т и п о д н ы й
+case=DAT num=PL pos=N а н т и ч н о с т ь
+case=NOM num=PL pos=N а н т р а ц и т
+case=NOM num=SG pos=N а н ч о у с
+case=ACC num=SG pos=ADJ gen=FEM а о р и с т н ы й
+case=NOM num=PL pos=N а п о п т о з
+case=DAT num=SG pos=ADJ gen=NEUT а п о с т е р и о р н ы й
+case=ACC num=PL pos=N а п п а р а т
+case=ACC num=SG pos=N а п п а р а т
+case=INS num=PL pos=N а п р е л ь
+case=ACC num=PL pos=ADJ а п р и о р н ы й
+case=NOM num=SG pos=N а р и с т о к р а т
+case=INS num=PL pos=N а р н о с т ь
+case=GEN num=PL pos=N а р с е н а л
+case=NOM num=SG pos=ADJ gen=NEUT а р т и л л е р и й с к и й
+case=ACC num=SG pos=N а р х е о п т е р и к с
+case=GEN num=SG pos=N а р х е о п т е р и к с
+case=INS num=PL pos=N а с
+case=NOM num=SG pos=N а с б е с т
+case=ESS num=SG pos=N а с с е м б л е р
+case=ESS num=PL pos=N а с с о р т и м е н т
+case=NOM num=SG pos=ADJ gen=NEUT а с т р а л ь н ы й
+case=DAT num=SG pos=N а с т р о л о г
+case=INS num=SG pos=ADJ gen=NEUT а с т у р и й с к и й
+num=SG tense=PST pos=V aspect=IPFV gen=MASC а с ф а л ь т и р о в а т ь
+case=NOM num=SG pos=ADJ gen=MASC а т м о с ф е р н ы й
+case=NOM num=PL pos=N а т о л л
+case=GEN num=PL pos=N а т о м
+case=DAT num=PL pos=N а у д и о л о г
+case=ACC num=SG pos=N а ф г а н е ц
+case=NOM num=SG pos=ADJ gen=NEUT а ф г а н с к и й
+case=GEN num=PL pos=N а ф и н я н к а
+case=DAT num=PL pos=N а ф ф и н и т е т
+case=ACC num=SG pos=ADJ gen=FEM а ф ф и н н ы й
+case=ESS num=PL pos=ADJ а х е м е н и д с к и й
+case=INS num=PL pos=N а ц и н у с
+case=ACC num=SG pos=N б а з и р о в а н и е
+case=GEN num=SG pos=N б а к т р и а н
+case=INS num=SG pos=N б а м б у к
+case=GEN num=SG pos=N б а р в и н о к
+case=INS num=SG pos=N б а р р а ж и р о в а н и е
+case=NOM num=SG pos=N б а р р е л ь
+case=INS num=SG pos=N б а р с
+case=NOM num=PL pos=ADJ б а с к о й
+case=ESS num=SG pos=N б а т р а ч о н о к
+case=NOM num=PL pos=N б а ш к и р
+case=GEN num=SG pos=N б д и т е л ь н о с т ь
+case=ESS num=SG pos=N б е г
+tense=PRS pos=V aspect=IPFV б е г а т ь
+case=DAT num=SG pos=N б е з д а р н о с т ь
+case=NOM num=PL pos=ADJ б е з з в ё з д н ы й
+case=ESS num=SG pos=ADJ gen=MASC б е з р а з л и ч н ы й
+case=DAT num=SG pos=ADJ gen=NEUT б е з ы м я н н ы й
+finite=NFIN pos=V aspect=IPFV б е р е ч ь с я
+case=ACC num=SG pos=ADJ gen=NEUT б е с п р и з о р н ы й
+case=ACC anim=INAN num=SG pos=ADJ gen=MASC б е с с р о ч н ы й
+num=SG tense=PST pos=V aspect=IPFV gen=MASC б е т о н и р о в а т ь
+case=GEN num=PL pos=ADJ б и н а р н ы й
+case=INS num=SG pos=N б и н о к л ь
+case=DAT num=PL pos=N б и о г р а ф
+case=INS num=PL pos=N б и о г р а ф
+case=NOM num=SG pos=N б и т ь ё
+voice=ACT tense=PST pos=V aspect=IPFV б и т ь с я
+num=SG pos=V aspect=IPFV mood=IMP б л а г о д а р и т ь
+case=ACC num=PL pos=N б л а г о д а т ь
+case=NOM num=PL pos=N б л а г о р а з у м и е
+num=SG tense=PST pos=V aspect=IPFV gen=MASC б л а г о с л о в л я т ь
+case=GEN num=PL pos=N б л а г о с о с т о я н и е
+case=INS num=SG pos=ADJ gen=MASC б л е д н ы й
+case=ACC num=SG pos=ADJ gen=FEM б л о х а с т ы й
+case=NOM num=PL pos=N б л ю з
+case=NOM num=SG pos=ADJ gen=NEUT б о г е м н ы й
+case=DAT num=SG pos=ADJ gen=MASC б о к о в о й
+case=DAT num=PL pos=N б о к с ё р
+case=ESS num=PL pos=N б о л г а р к а
+case=DAT num=PL pos=ADJ б о л е у т о л я ю щ и й
+case=GEN num=PL pos=N б о л ь ш е в и з м
+case=NOM num=PL pos=N б о м б а р д и р о в щ и к
+aspect=IPFV num=PL tense=PRS pos=V per=1 б о м б и т ь
+case=INS num=SG pos=N б о м б о у б е ж и щ е
+case=ACC num=SG pos=N б о р т н и к
+pos=N gen=MASC б о с н и й к а
+case=ACC num=SG pos=N б о я з н ь
+case=DAT num=PL pos=ADJ б р а т с к и й
+num=PL tense=PST pos=V aspect=IPFV б р а т ь
+case=INS num=SG pos=N б р е н д
+case=ESS num=SG pos=ADJ gen=MASC б р и т а н с к и й
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT б р и т ь
+case=NOM num=PL pos=N б р у с о к
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT б р ы з г а т ь
+case=ESS num=SG pos=ADJ gen=FEM б р ю ш н о й
+case=GEN num=SG pos=N б у р я к
+case=GEN num=PL pos=N б у с с о л ь
+case=GEN num=PL pos=N б у т ы л о ч к а
+case=GEN num=SG pos=N б у х г а л т е р ш а
+case=ESS num=SG pos=N в а к у ф
+case=ACC num=SG pos=N в а л е т
+finite=NFIN pos=V aspect=IPFV в а л я т ь с я
+case=GEN num=SG pos=N в е р н о с т ь
+case=ESS num=SG pos=ADJ gen=FEM в е р о л о м н ы й
+case=ESS num=PL pos=N в е р о я т и е
+pos=V aspect=PFV в е р т е т ь
+num=PL tense=FUT pos=V aspect=PFV mood=IMP в е с е л и т ь
+case=NOM num=PL pos=ADJ в е с е н н и й
+case=GEN num=SG pos=N в е с т ь
+case=DAT num=SG pos=N в е ч е
+case=GEN num=SG pos=ADJ gen=MASC в е щ е с т в е н н ы й
+case=GEN num=SG pos=N в з а и м н о с т ь
+aspect=IPFV num=SG tense=PRS pos=V per=1 в з в е ш и в а т ь
+num=SG tense=PST pos=V aspect=PFV gen=MASC в з в о л н о в а т ь
+num=PL tense=FUT pos=V aspect=PFV mood=IMP в з в о л н о в а т ь с я
+pos=V aspect=IPFV в з г н е с т и
+case=ACC num=PL pos=N в з и м а н и е
+aspect=IPFV num=SG tense=PRS pos=V per=3 в з л е т а т ь
+num=PL tense=FUT pos=V aspect=PFV mood=IMP в з о п р е т ь
+aspect=IPFV num=PL tense=PRS pos=V per=3 в з р о с л е т ь
+aspect=PFV num=SG tense=FUT pos=V per=2 в з я т ь с я
+case=DAT num=PL pos=N в и з и р ь
+case=GEN num=PL pos=N в и к и а л ь н о с т ь
+case=INS num=PL pos=N в и н е г р е т
+case=GEN num=SG pos=ADJ gen=FEM в и н о в а т ы й
+case=GEN num=PL pos=ADJ в и р у с н ы й
+aspect=PFV num=SG tense=FUT pos=V per=3 в л ю б и т ь с я
+case=ACC num=SG pos=N в л ю б л ё н н о с т ь
+aspect=IPFV num=PL tense=PRS pos=V per=1 в н и к а т ь
+num=SG tense=PST pos=V aspect=IPFV gen=MASC в н о с и т ь
+case=NOM num=SG pos=ADJ gen=FEM в н у т р е н н и й
+case=ESS num=SG pos=ADJ gen=MASC в о д и т е л ь с к и й
+case=INS num=SG pos=N в о д о в о д
+case=INS num=PL pos=N в о д о л е й
+case=ESS num=SG pos=N в о ж а к
+case=GEN num=SG pos=ADJ gen=NEUT в о з б у д и м ы й
+aspect=IPFV num=PL tense=PRS pos=V per=3 в о з б у ж д а т ь
+case=ESS num=SG pos=N в о з в р а т
+aspect=IPFV num=SG tense=PRS pos=V per=2 в о з в р а щ а т ь
+case=NOM num=SG pos=N в о з в р а щ е н и е
+aspect=PFV num=PL tense=FUT pos=V per=2 в о з в ы с и т ь с я
+aspect=IPFV num=SG tense=PRS pos=V per=2 в о з в ы ш а т ь с я
+aspect=PFV num=PL tense=FUT pos=V per=1 в о з г л а в и т ь
+case=ESS num=SG pos=N в о з г л а с
+case=GEN num=PL pos=N в о з д е р ж а н н о с т ь
+case=INS num=SG pos=N в о з д е р ж а н н о с т ь
+aspect=PFV num=SG tense=FUT pos=V per=1 в о з д е р ж а т ь с я
+tense=PST pos=V aspect=PFV в о з д е р ж а т ь с я
+finite=NFIN pos=V aspect=IPFV в о з д е р ж и в а т ь с я
+case=INS num=SG pos=N в о з м у щ е н и е
+aspect=IPFV num=PL tense=PRS pos=V per=1 в о з н и к а т ь
+num=SG tense=PST pos=V aspect=PFV gen=NEUT в о з р а с т и
+case=DAT num=SG pos=N в о и н
+case=GEN num=SG pos=ADJ gen=NEUT в о и н с т в е н н ы й
+case=INS num=SG pos=ADJ gen=NEUT в о и н с т в е н н ы й
+num=SG tense=PST pos=V aspect=PFV gen=NEUT в о й т и
+case=NOM num=PL pos=N в о л о с
+case=ACC num=PL pos=ADJ в о р о н о й
+case=NOM num=SG pos=N в о р о т н и ч о к
+aspect=IPFV num=PL tense=PRS pos=V per=3 в о р ч а т ь
+aspect=IPFV num=SG tense=PRS pos=V per=3 в о с п и т ы в а т ь
+case=ACC num=SG pos=ADJ gen=NEUT в о с х и т и т е л ь н ы й
+case=INS num=SG pos=N в о с х о ж д е н и е
+case=NOM num=SG pos=N в о ш ь
+tense=PRS pos=V aspect=IPFV в р а щ а т ь с я
+case=INS num=PL pos=N в р е м е н щ и к
+case=NOM num=PL pos=N в р е м я
+case=DAT num=SG pos=N в р у н
+case=ESS num=SG pos=ADJ gen=NEUT в с е м и р н ы й
+case=INS num=PL pos=ADJ в с е о х в а т ы в а ю щ и й
+case=DAT num=SG pos=ADJ gen=MASC в с е с и л ь н ы й
+aspect=IPFV num=SG tense=PRS pos=V per=2 в с к а к и в а т ь
+tense=PRS pos=V aspect=IPFV в с м а т р и в а т ь с я
+case=NOM num=SG pos=N в с п л е с к
+num=PL tense=PST pos=V aspect=PFV gen=NEUT в с т а т ь
+aspect=IPFV num=SG tense=PRS pos=V per=2 в с х л и п ы в а т ь
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT в с х л и п ы в а т ь
+case=NOM num=SG pos=N в у н д е р к и н д
+num=PL pos=ADJ в ч е р а ш н и й
+num=SG pos=V aspect=IPFV mood=IMP в ы б р а с ы в а т ь
+case=NOM num=SG pos=N в ы в о д о к
+num=SG tense=PST pos=V aspect=PFV gen=MASC в ы г н а т ь
+aspect=IPFV num=SG tense=PRS pos=V per=3 в ы г о н я т ь
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT в ы г о н я т ь
+voice=PASS tense=PST pos=V aspect=IPFV в ы г о н я т ь
+aspect=IPFV num=PL tense=PRS pos=V per=3 в ы д а в а т ь
+tense=PST pos=V aspect=IPFV в ы д а в а т ь с я
+num=PL tense=PST pos=V aspect=IPFV в ы е д а т ь
+aspect=PFV num=PL tense=FUT pos=V per=3 в ы е с т ь
+voice=PASS tense=PST pos=V aspect=PFV в ы з в а т ь
+case=DAT num=SG pos=N в ы з д о р о в л е н и е
+voice=ACT tense=PRS pos=V aspect=IPFV в ы з ы в а т ь
+aspect=IPFV num=SG tense=PRS pos=V per=2 в ы к а т ь
+pos=V aspect=IPFV в ы к л ю ч и т ь
+voice=ACT tense=PRS pos=V aspect=IPFV в ы к о в ы р и в а т ь
+aspect=PFV num=SG tense=FUT pos=V per=2 в ы к о в ы р н у т ь
+voice=PASS tense=PST pos=V aspect=IPFV в ы н у ж д а т ь
+voice=ACT tense=PST pos=V aspect=IPFV в ы п а л ы в а т ь
+pos=V aspect=IPFV в ы п л а т и т ь
+voice=ACT tense=PST pos=V aspect=PFV в ы п л а т и т ь
+aspect=PFV num=SG tense=FUT pos=V per=3 в ы п о л н и т ь
+case=INS num=SG pos=N в ы р а щ и в а н и е
+pos=V aspect=IPFV в ы р в а т ь с я
+case=DAT num=PL pos=N в ы р у ч к а
+voice=ACT tense=PRS pos=V aspect=IPFV в ы с и т ь с я
+aspect=PFV num=PL tense=FUT pos=V per=3 в ы с л а т ь
+case=INS num=SG pos=N в ы с л у ш и в а н и е
+num=SG pos=ADJ gen=FEM в ы с о к о о п л а ч и в а е м ы й
+num=SG tense=PST pos=V aspect=PFV gen=MASC в ы с п а т ь с я
+case=INS num=PL pos=N в ы с т у п л е н и е
+case=GEN num=SG pos=N в ы с ы л к а
+aspect=IPFV num=SG tense=PRS pos=V per=3 в ы с ы х а т ь
+case=INS num=PL pos=N в ы ч е т
+case=INS num=SG pos=N в ы ч и с л е н и е
+voice=PASS tense=PST pos=V aspect=IPFV в ы ш и б а т ь
+finite=NFIN pos=V aspect=PFV в ы я с н я т ь с я
+aspect=IPFV num=PL tense=PRS pos=V per=1 в я з а т ь
+case=INS num=PL pos=N г а д ж е т
+case=GEN num=SG pos=N г а л о ш а
+case=ACC num=PL pos=N г а л у н
+case=NOM num=SG pos=N г е й м п л е й
+case=ACC num=SG pos=N г е н ш т а б
+case=INS num=SG pos=N г е п а т и т
+case=ESS num=SG pos=N г е р ц
+case=INS num=PL pos=N г е р ц о г и н я
+case=ESS num=SG pos=ADJ gen=NEUT г и г р о с к о п и ч н ы й
+case=ESS num=SG pos=N г и д р о п л а н
+case=DAT num=SG pos=N г л а д и а т о р
+case=DAT num=SG pos=ADJ gen=FEM г л а д и л ь н ы й
+case=ACC num=PL pos=N г л о б у с
+case=INS num=SG pos=N г л о б у с
+case=INS num=SG pos=ADJ gen=MASC г л у б о к и й
+case=NOM num=PL pos=N г л у п о с т ь
+aspect=IPFV num=SG tense=PRS pos=V per=1 г л я д е т ь
+case=NOM num=SG pos=ADJ gen=MASC г л я н ц е в ы й
+num=SG tense=PST pos=V aspect=IPFV gen=MASC г н е в и т ь
+case=DAT num=SG pos=ADJ gen=NEUT г н е в н ы й
+tense=PST pos=V aspect=IPFV г н е с т и
+case=ACC num=PL pos=N г н о й
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT г о в о р и т ь
+case=DAT num=PL pos=ADJ г о в о р я щ и й
+case=GEN num=SG pos=N г о л о л ё д
+case=NOM num=SG pos=N г о н е ц
+case=ESS num=PL pos=N г о т
+num=SG pos=V aspect=IPFV mood=IMP г р а б и т ь
+case=ACC num=SG pos=N г р а м о т н о с т ь
+voice=ACT tense=PST pos=V aspect=PFV г р о х н у т ь с я
+case=ESS num=PL pos=N г р у з
+case=INS num=SG pos=ADJ gen=NEUT г р у з о п а с с а ж и р с к и й
+case=NOM num=SG pos=ADJ gen=MASC г р у з о п а с с а ж и р с к и й
+num=PL pos=V aspect=IPFV mood=IMP г р у с т и т ь
+case=DAT num=SG pos=N г у а ш ь
+case=INS num=SG pos=ADJ gen=MASC г у б н о й
+case=ACC num=SG pos=N г у л а г
+case=NOM num=PL pos=N г у л я н ь е
+num=SG tense=PST pos=V aspect=IPFV gen=MASC д а в а т ь
+case=INS num=PL pos=ADJ д а н н ы й
+case=DAT num=SG pos=N д а н т и с т
+case=ESS num=PL pos=N д а н т и с т
+case=GEN num=SG pos=ADJ gen=NEUT д а т е л ь н ы й
+tense=PRS pos=V aspect=IPFV д в и г а т ь с я
+case=GEN num=PL pos=N д в о е ч н и ц а
+case=ESS num=SG pos=N д в о й к а
+case=DAT num=SG pos=ADJ gen=NEUT д е д с к и й
+case=GEN num=SG pos=N д е е п р и ч а с т и е
+case=ACC num=SG pos=N д е и з м
+case=ESS num=PL pos=N д е и с т
+case=DAT num=PL pos=N д е к а б р ь
+aspect=IPFV num=PL tense=PRS pos=V per=3 д е л а т ь с я
+voice=ACT tense=PRS pos=V aspect=IPFV д е л и т ь
+case=GEN num=PL pos=N д е л ь ф и н
+case=ACC num=SG pos=N д е р в и ш
+case=ESS num=SG pos=ADJ gen=MASC д е р е в о о б р а б а т ы в а ю щ и й
+case=GEN num=SG pos=ADJ gen=FEM д е р е в я н н ы й
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT д е р ж а т ь с я
+case=ACC num=PL pos=N д е с а н т н и к
+case=ESS num=SG pos=N д е с а н т н и к
+case=DAT num=SG pos=N д е т ё н ы ш
+aspect=IPFV num=SG tense=PRS pos=V per=2 д е я т ь
+num=SG tense=PST pos=V aspect=IPFV gen=FEM д ё р г а т ь
+case=ESS num=PL pos=N д ё р н
+case=DAT num=PL pos=N д и а л е к т
+case=ACC anim=INAN num=SG pos=ADJ gen=MASC д и к и й
+case=ACC num=SG pos=N д и к т а т о р
+case=ESS num=SG pos=ADJ gen=NEUT д и п л о м а т и ч е с к и й
+case=NOM num=PL pos=N д и т ё н о к
+case=NOM num=SG pos=N д о в е р ч и в о с т ь
+aspect=IPFV num=SG tense=PRS pos=V per=3 д о в е р я т ь
+case=NOM num=PL pos=N д о г
+aspect=PFV num=SG tense=FUT pos=V per=2 д о ж д а т ь с я
+num=PL tense=FUT pos=V aspect=PFV mood=IMP д о к а з а т ь
+aspect=IPFV num=SG tense=PRS pos=V per=3 д о к а з ы в а т ь
+voice=ACT tense=PRS pos=V aspect=IPFV д о к а з ы в а т ь
+aspect=IPFV num=PL tense=PRS pos=V per=2 д о к л а д ы в а т ь
+case=ESS num=PL pos=N д о к у м е н т
+voice=ACT tense=PST pos=V aspect=IPFV д о к у ч а т ь
+num=PL pos=ADJ д о л г и й
+case=ESS num=PL pos=N д о м и к
+case=NOM num=SG pos=N д о м и н и р о в а н и е
+case=INS num=SG pos=N д о м р а б о т н и ц а
+case=ACC num=SG pos=N д о н е с е н и е
+aspect=IPFV num=SG tense=PRS pos=V per=1 д о п е в а т ь
+case=ACC num=SG pos=N д о п о л н е н и е
+case=ESS num=PL pos=N д о п у с к
+tense=PRS pos=V aspect=IPFV д о р о ж а т ь
+finite=NFIN pos=V aspect=PFV д о с т а в и т ь
+num=SG tense=PST pos=V aspect=PFV gen=NEUT д о с т а т ь с я
+case=ESS num=PL pos=ADJ д о с т у п н ы й
+case=NOM num=SG pos=N д р е в е с н о с т ь
+case=DAT num=PL pos=N д р е в о н а с а ж д е н и е
+aspect=IPFV num=PL tense=PRS pos=V per=3 д р е й ф о в а т ь
+case=ACC num=SG pos=N д р о б л е н и е
+case=NOM num=SG pos=N д р о м а д е р
+case=ESS num=PL pos=N д р о п
+case=GEN num=PL pos=ADJ д р у ж е л ю б н ы й
+case=ACC num=PL pos=ADJ д у б о в ы й
+case=GEN num=SG pos=ADJ gen=MASC д у р а ц к и й
+case=DAT num=SG pos=ADJ gen=FEM д у х о в н ы й
+case=ACC num=SG pos=N д ы х а н и е
+voice=ACT tense=PRS pos=V aspect=IPFV д ы ш а т ь
+case=GEN num=SG pos=ADJ gen=NEUT е б а н у т ы й
+case=GEN num=SG pos=ADJ gen=MASC е д к и й
+case=ACC num=SG pos=N е л е й
+case=GEN num=SG pos=N е л е й
+num=SG tense=PST pos=V aspect=IPFV gen=FEM е х а т ь
+case=GEN num=SG pos=ADJ gen=MASC ж а л к и й
+case=DAT num=SG pos=N ж а л о с т ь
+case=ESS num=SG pos=ADJ gen=FEM ж е л а н н ы й
+case=ACC num=SG pos=ADJ gen=FEM ж е л а ю щ и й
+case=GEN num=SG pos=N ж е л в а к
+case=DAT num=SG pos=ADJ gen=NEUT ж е м а й т с к и й
+case=DAT num=SG pos=N ж е м ч у г
+case=ESS num=SG pos=N ж е н и т ь б а
+case=ACC num=SG pos=N ж е н о н е н а в и с т н и к
+case=DAT num=PL pos=N ж е р т в о п р и н о ш е н и е
+aspect=IPFV num=PL tense=PRS pos=V per=2 ж е с т и к у л и р о в а т ь
+num=SG pos=V aspect=IPFV mood=IMP ж е ч ь
+case=ESS num=SG pos=N ж и в о т и к
+case=GEN num=SG pos=N ж и з н е с п о с о б н о с т ь
+case=INS num=PL pos=ADJ ж о к е й с к и й
+case=ACC num=PL pos=N ж о п о р о ж е ц
+num=SG tense=PST pos=V aspect=IPFV gen=MASC з а б а в и т ь
+finite=NFIN pos=V aspect=PFV з а б л у д и т ь с я
+aspect=PFV num=SG tense=FUT pos=V per=1 з а б л у д и т ь с я
+case=ESS num=SG pos=ADJ gen=MASC з а б о т л и в ы й
+finite=NFIN pos=V aspect=IPFV з а б ы в а т ь
+case=NOM num=PL pos=ADJ з а б ы т ы й
+finite=NFIN pos=V aspect=IPFV з а в е д о в а т ь
+num=SG tense=PST pos=V aspect=PFV gen=MASC з а в е с т и
+finite=NFIN pos=V aspect=IPFV з а в ё р т ы в а т ь
+voice=PASS tense=PRS pos=V aspect=IPFV з а в о ё в ы в а т ь
+case=ACC num=SG pos=ADJ gen=NEUT з а г л а в н ы й
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT з а г о в а р и в а т ь
+case=ACC num=SG pos=N з а д е р ж а н и е
+aspect=IPFV num=PL tense=PRS pos=V per=1 з а д у м ы в а т ь с я
+case=ACC num=PL pos=N з а и н т е р е с о в а н н о с т ь
+aspect=IPFV num=SG tense=PRS pos=V per=3 з а к а н ч и в а т ь
+voice=PASS tense=PST pos=V aspect=PFV з а к а т и т ь
+case=GEN num=PL pos=N з а л е ж ь
+aspect=PFV num=PL tense=FUT pos=V per=3 з а л о м и т ь
+case=ACC num=SG pos=N з а м е д л е н и е
+pos=V aspect=PFV з а м е н я т ь
+finite=NFIN pos=V aspect=IPFV з а м е н я т ь
+case=ACC num=SG pos=N з а м е ч а н и е
+case=INS num=SG pos=N з а м и н к а
+num=SG tense=PST pos=V aspect=IPFV gen=FEM з а м о л к а т ь
+aspect=PFV num=SG tense=FUT pos=V per=3 з а м о р о з и т ь
+case=NOM num=SG pos=N з а м п о л и т
+case=NOM num=SG pos=N з а м ы с е л
+voice=ACT tense=PRS pos=V aspect=IPFV з а н и м а т ь
+case=GEN num=SG pos=ADJ gen=NEUT з а о ч н ы й
+case=ACC num=PL pos=N з а п а д
+voice=PASS tense=PST pos=V aspect=PFV з а п и с а т ь
+num=SG tense=PST pos=V aspect=PFV gen=MASC з а п л а т и т ь
+aspect=PFV num=SG tense=FUT pos=V per=1 з а п о д о з р и т ь
+num=SG pos=V aspect=IPFV mood=IMP з а п р я г а т ь
+aspect=IPFV num=PL tense=PRS pos=V per=2 з а п р я г а т ь
+case=GEN num=PL pos=N з а р а ж е н и е
+case=DAT num=PL pos=N з а р о с л ь
+case=ACC num=PL pos=N з а с е д а н и е
+num=PL tense=PST pos=V aspect=PFV gen=NEUT з а с е с т ь
+case=NOM num=SG pos=N з а с т у п н и к
+voice=ACT tense=PST pos=V aspect=PFV з а т е р я т ь с я
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT з а т ы к а т ь
+case=GEN num=SG pos=ADJ gen=MASC з а т я г и в а ю щ и й
+aspect=PFV num=PL tense=FUT pos=V per=1 з а х в а т ы в а т ь
+voice=ACT tense=PST pos=V aspect=IPFV з а ч а р о в ы в а т ь
+num=PL pos=V aspect=IPFV mood=IMP з а щ и щ а т ь
+aspect=PFV num=PL tense=FUT pos=V per=1 з а я в и т ь
+case=ACC num=PL pos=N з в а н и е
+aspect=IPFV num=SG tense=PRS pos=V per=3 з в а т ь
+case=DAT num=SG pos=N з в е р ё к
+case=ACC anim=INAN num=SG pos=ADJ gen=MASC з д о р о в ы й
+case=ACC num=PL pos=ADJ з д о р о в ы й
+finite=NFIN pos=V aspect=IPFV з д р а в с т в о в а т ь
+case=ESS num=SG pos=ADJ gen=NEUT з е м н о в о д н ы й
+aspect=IPFV num=SG tense=PRS pos=V per=1 з н а т ь
+case=ACC num=PL pos=N з н о й
+case=GEN num=PL pos=N з я т ь
+case=DAT num=PL pos=N и г р о к
+case=INS num=PL pos=N и г у м е н ь я
+case=GEN num=SG pos=ADJ gen=FEM и д е а л ь н ы й
+case=INS num=SG pos=ADJ gen=NEUT и д и о м а т и ч е с к и й
+case=INS num=PL pos=N и е р о г л и ф
+case=ACC num=PL pos=N и з б и е н и е
+case=ACC num=SG pos=N и з в е с т и е
+case=DAT num=PL pos=ADJ и з в е с т н ы й
+aspect=PFV num=PL tense=FUT pos=V per=2 и з в л е ч ь
+case=DAT num=PL pos=N и з в о л е н и е
+case=DAT num=SG pos=N и з в о л е н и е
+case=INS num=PL pos=N и з г и б
+case=INS num=PL pos=N и з л и ш е к
+aspect=IPFV num=PL tense=PRS pos=V per=1 и з н у р я т ь
+case=GEN num=SG pos=ADJ gen=FEM и з у м и т е л ь н ы й
+case=GEN num=SG pos=ADJ gen=MASC и з у м и т е л ь н ы й
+num=PL tense=FUT pos=V aspect=PFV mood=IMP и к н у т ь
+case=GEN num=SG pos=N и м б и р ь
+case=ESS num=SG pos=N и м е й л
+aspect=IPFV num=PL tense=PRS pos=V per=2 и м е н о в а т ь
+case=INS num=PL pos=N и м п е р и а л и с т
+case=DAT num=PL pos=N и н в а л и д к а
+case=ESS num=SG pos=N и н г р е д и е н т
+case=INS num=SG pos=N и н д о л о г
+case=NOM num=SG pos=N и н д о л о г
+case=GEN num=PL pos=ADJ и н д у с т р и а л ь н ы й
+case=INS num=PL pos=N и н и ц и а т о р
+case=INS num=SG pos=ADJ gen=MASC и н т е л л е к т у а л ь н ы й
+case=ACC num=PL pos=N и н т е р н а ц и о н а л и з м
+case=DAT num=SG pos=ADJ gen=NEUT и н ф р а к р а с н ы й
+case=ESS num=SG pos=ADJ gen=MASC и р а к с к и й
+case=INS num=PL pos=N и с к а н и е
+case=GEN num=SG pos=N и с к л ю ч е н и е
+case=INS num=PL pos=N и с к л ю ч и т е л ь н о с т ь
+case=GEN num=SG pos=ADJ gen=MASC и с к у с с т в е н н ы й
+case=ESS num=PL pos=N и с к у с с т в о в е д
+num=SG tense=PST pos=V aspect=IPFV gen=FEM и с п р а в л я т ь
+aspect=IPFV num=PL tense=PRS pos=V per=2 и с п р а в л я т ь с я
+tense=PRS pos=V aspect=IPFV и с п у с т и т ь
+aspect=PFV num=PL tense=FUT pos=V per=1 и с п ы т а т ь
+num=PL tense=PST pos=V aspect=PFV gen=NEUT и с п ы т а т ь
+num=PL pos=V aspect=IPFV mood=IMP и с п ы т ы в а т ь
+num=SG tense=PST pos=V aspect=IPFV gen=MASC и с т е р и т ь
+case=NOM num=SG pos=N и с т е ч е н и е
+case=INS num=SG pos=N и с т о л к о в а н и е
+case=NOM num=SG pos=N и с т о р и к
+case=INS num=SG pos=N и с т о щ е н и е
+case=GEN num=SG pos=ADJ gen=NEUT и с х о д н ы й
+case=ACC num=SG pos=ADJ gen=NEUT и с ч е р п ы в а ю щ и й
+case=NOM num=SG pos=N и т о г
+case=DAT num=SG pos=N и ю н ь
+case=ACC num=PL pos=N й о т
+case=GEN num=PL pos=N й о т у н
+case=ESS num=SG pos=N к а б а н
+case=DAT num=PL pos=N к а д ы к
+case=INS num=PL pos=N к а к т у с
+case=ACC num=SG pos=N к а л а ш н и к о в
+case=GEN num=PL pos=N к а м и н
+case=NOM num=SG pos=N к а м и н
+case=ESS num=PL pos=N к а н а л и з а ц и я
+case=NOM num=SG pos=ADJ gen=MASC к а н т о н с к и й
+aspect=IPFV num=SG tense=PRS pos=V per=1 к а н ю ч и т ь
+case=ESS num=PL pos=N к а п и ш о н
+voice=ACT tense=PST pos=V aspect=IPFV к а р а б к а т ь с я
+case=ESS num=SG pos=ADJ gen=FEM к а р а и м с к и й
+case=ACC num=SG pos=N к а р а н т и н
+case=DAT num=SG pos=N к а р м а н
+tense=PRS pos=V aspect=IPFV к а с а т ь с я
+num=PL tense=PST pos=V aspect=IPFV к а с а т ь с я
+case=ESS num=SG pos=N к а с к а д ё р
+case=ESS num=SG pos=N к а т о д
+num=SG pos=ADJ gen=FEM к в а л и ф и ц и р о в а н н ы й
+case=ESS num=SG pos=N к в а н т
+case=NOM num=PL pos=ADJ к в а н т о в ы й
+case=DAT num=PL pos=N к в а р т п л а т а
+case=INS num=PL pos=N к е д р
+case=ESS num=PL pos=N к е й с
+case=ESS num=SG pos=N к е н г у р ё н о к
+case=ESS num=SG pos=N к е н о т а ф
+case=ACC num=SG pos=N к е ф а л ь
+case=GEN num=SG pos=N к и б е р п р е с т у п л е н и е
+case=ESS num=SG pos=N к и б у ц
+case=NOM num=PL pos=N к и б у ц
+case=DAT num=SG pos=ADJ gen=NEUT к и е в с к и й
+aspect=IPFV num=PL tense=PRS pos=V per=3 к и п е т ь
+case=DAT num=SG pos=ADJ gen=NEUT к и р г и з с к и й
+case=GEN num=SG pos=ADJ gen=NEUT к и р г и з с к и й
+case=ESS num=PL pos=ADJ к и р и л л и ч е с к и й
+case=DAT num=SG pos=N к и т ё н о к
+case=NOM num=SG pos=N к л а в е с и н
+case=NOM num=PL pos=ADJ к л а с с и ч е с к и й
+case=GEN num=SG pos=ADJ gen=MASC к л а с с н ы й
+case=NOM num=SG pos=N к л ё н
+case=DAT num=SG pos=N к л и ч
+case=ACC num=PL pos=N к л у б е н ь
+case=ESS num=SG pos=N к л у б е н ь
+case=ESS num=SG pos=ADJ gen=MASC к н и ж н ы й
+case=ESS num=PL pos=N к н о п о ч к а
+case=INS num=SG pos=N к о б а л ь т
+case=INS num=PL pos=N к о б ь
+case=ESS num=SG pos=ADJ gen=NEUT к о ж н ы й
+voice=ACT tense=PST pos=V aspect=IPFV к о л д о в а т ь
+case=ACC num=SG pos=ADJ gen=NEUT к о л и ч е с т в е н н ы й
+case=DAT num=SG pos=ADJ gen=MASC к о л и ч е с т в е н н ы й
+case=ESS num=SG pos=N к о л л и з и я
+case=ACC num=SG pos=N к о л о к о л
+case=INS num=SG pos=N к о л о к о л ь ч и к
+aspect=IPFV num=PL tense=PRS pos=V per=1 к о л о т ь
+case=ESS num=PL pos=N к о л ь ц о
+case=NOM num=SG pos=N к о м и к
+case=INS num=SG pos=N к о м и т е т
+case=NOM num=SG pos=N к о м м е н т а р и й
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT к о м м е н т и р о в а т ь
+case=ACC num=SG pos=ADJ gen=NEUT к о м н а т н ы й
+case=INS num=SG pos=N к о м п л е к т о в а н и е
+case=ESS num=PL pos=N к о м п р о м а т
+case=ESS num=PL pos=ADJ к о м п ь ю т е р н ы й
+case=NOM num=SG pos=ADJ gen=NEUT к о м с о м о л ь с к и й
+case=INS num=PL pos=N к о н д и ц и о н е р
+case=ESS num=SG pos=N к о н е ч н о с т ь
+case=DAT num=PL pos=N к о н с о л и р о в а н и е
+case=ESS num=SG pos=N к о н с о р ц и у м
+case=INS num=SG pos=N к о н с п и р а ц и я
+case=ACC num=PL pos=N к о н т е к с т
+case=NOM num=SG pos=N к о н т и н е н т
+case=NOM num=SG pos=N к о н ф и г у р а ц и я
+case=ACC num=PL pos=N к о н ф и с к а ц и я
+case=GEN num=PL pos=N к о н ц е р т
+case=INS num=SG pos=N к о н ц л а г е р ь
+case=DAT num=SG pos=N к о о п е р а т и в
+case=ACC num=PL pos=N к о п е р н и ц и й
+case=ESS num=SG pos=N к о п и р о в а н и е
+voice=PASS tense=PRS pos=V aspect=IPFV к о р м и т ь
+num=SG tense=PST pos=V aspect=IPFV gen=FEM к о р м и т ь
+case=GEN num=SG pos=N к о р о л ь
+case=ACC num=PL pos=ADJ к о р о т к и й
+case=ACC num=SG pos=N к о р р у п ц и о н е р
+num=SG tense=PST pos=V aspect=PFV gen=NEUT к о с н у т ь с я
+case=DAT num=SG pos=N к о с т ё р
+case=ESS num=SG pos=N к о т ё н о к
+case=DAT num=PL pos=N к р а с а в е ц
+case=DAT num=SG pos=N к р а с н о а р м е е ц
+case=GEN num=SG pos=ADJ gen=NEUT к р а с н о к о ж и й
+case=INS num=SG pos=ADJ gen=MASC к р е с т н ы й
+finite=NFIN pos=V aspect=PFV к р и к н у т ь
+case=ESS num=PL pos=N к р и м и н о л о г
+case=ESS num=SG pos=ADJ gen=FEM к р о в о т о ч а щ и й
+case=GEN num=PL pos=N к р о м к а
+voice=PASS tense=PST pos=V aspect=IPFV к р о ш и т ь
+case=GEN num=SG pos=ADJ gen=NEUT к р у г л о с у т о ч н ы й
+case=NOM num=SG pos=N к р у г о з о р
+aspect=IPFV num=PL tense=PRS pos=V per=3 к р ы т ь
+num=PL tense=PST pos=V aspect=IPFV к р ы т ь
+voice=ACT tense=PRS pos=V aspect=IPFV к у п а т ь с я
+case=GEN num=PL pos=N к у п о л
+case=DAT num=SG pos=N к у р е н и е
+case=GEN num=PL pos=N к у р е н и е
+case=ESS num=PL pos=ADJ к у х о н н ы й
+case=ACC num=SG pos=N л а д о н ь
+case=DAT num=SG pos=N л а н д г р а ф
+case=INS num=SG pos=ADJ gen=NEUT л а т в и й с к и й
+case=ACC num=SG pos=ADJ gen=FEM л е н и н с к и й
+case=DAT num=SG pos=N л е п е с т о к
+case=GEN num=SG pos=N л е с е н к а
+case=GEN num=PL pos=ADJ л е с и с т ы й
+case=GEN num=SG pos=ADJ gen=MASC л е с о в о д с т в е н н ы й
+case=DAT num=PL pos=ADJ л е с о з а щ и т н ы й
+case=ACC num=SG pos=ADJ gen=FEM л е с о п о с а д о ч н ы й
+case=DAT num=PL pos=ADJ л е с о т е х н и ч е с к и й
+case=INS num=SG pos=ADJ gen=NEUT л е с о т у н д р о в ы й
+tense=PRS pos=V aspect=IPFV л е т е т ь
+num=SG pos=V aspect=IPFV mood=IMP л е ч и т ь
+case=ACC num=PL pos=N л и б е р а л и з м
+aspect=PFV num=PL tense=FUT pos=V per=3 л и з н у т ь
+case=ACC num=SG pos=N л и к в и д н о с т ь
+case=DAT num=PL pos=N л и с ё н о к
+case=INS num=SG pos=N л и с т о в к а
+case=NOM num=PL pos=N л и с т о в к а
+case=ACC num=SG pos=N л и с т о ч е к
+case=DAT num=PL pos=N л и х о д е й к а
+case=GEN num=PL pos=N л и ц е н з и а р
+case=ESS num=SG pos=N л и ш а й н и к
+case=INS num=SG pos=N л и ш а й н и к
+case=ACC num=PL pos=N л о б о т р я с
+case=DAT num=SG pos=ADJ gen=FEM л о г и ч е с к и й
+case=ACC num=PL pos=N л о к а т о р
+case=ESS num=PL pos=N л о м а к а
+aspect=IPFV num=PL tense=PRS pos=V per=3 л о м а т ь
+case=INS num=SG pos=N л о с ь о н
+case=NOM num=SG pos=ADJ gen=MASC л о ш а д и н ы й
+case=DAT num=SG pos=ADJ gen=MASC л у ж и ц к и й
+case=GEN num=SG pos=N л у ч
+case=DAT num=PL pos=N л ь в ё н о к
+case=ACC num=PL pos=N л ь в и ц а
+case=DAT num=PL pos=N л ю б о в н и ц а
+case=INS num=PL pos=N м а г
+case=NOM num=SG pos=N м а г
+case=NOM num=SG pos=N м а з г а н
+case=INS num=SG pos=ADJ gen=NEUT м а й с к и й
+case=NOM num=SG pos=N м а л ы ш к а
+case=GEN num=PL pos=N м а н е р н о с т ь
+aspect=IPFV num=PL tense=PRS pos=V per=1 м а р а т ь
+case=ACC num=SG pos=N м а р к г р а ф
+case=ACC num=SG pos=N м а р м е л а д
+case=ACC num=SG pos=N м а с л ё н о к
+case=GEN num=PL pos=N м а с с а ж
+case=GEN num=SG pos=ADJ gen=FEM м а т е р и н
+case=NOM num=PL pos=N м а т ч
+case=INS num=PL pos=N м а х и н а ц и я
+finite=NFIN pos=V aspect=PFV м а х н у т ь
+case=NOM num=PL pos=N м а я т н и к
+case=NOM num=PL pos=N м е д в е ж о н о к
+aspect=IPFV num=PL tense=PRS pos=V per=2 м е д л и т ь
+case=DAT num=SG pos=N м е д п у н к т
+case=ACC num=SG pos=ADJ gen=NEUT м е ж г а л а к т и ч е с к и й
+case=ACC num=PL pos=N м е л о ч ь
+case=NOM num=PL pos=N м е с т о и м е н и е
+case=ACC num=PL pos=N м е т а н
+case=ACC num=SG pos=N м е т а с т а з
+case=ESS num=SG pos=N м е т р о н о м
+case=ACC num=PL pos=N м е х а н и з м
+num=SG pos=V aspect=IPFV mood=IMP м е ч т а т ь
+case=ACC num=PL pos=N м и л и ц и о н е р
+case=ESS num=SG pos=N м и н у т о ч к а
+case=INS num=PL pos=N м и р о з д а н и е
+case=ACC num=SG pos=N м и р о т в о р е ц
+case=GEN num=PL pos=ADJ м н о г о с л о ж н ы й
+case=NOM num=SG pos=ADJ gen=MASC м н о г о с л о ж н ы й
+case=ESS num=PL pos=ADJ м о г у щ е с т в е н н ы й
+case=DAT num=SG pos=N м о д е л и р о в а н и е
+case=ESS num=SG pos=ADJ gen=MASC м о д н ы й
+case=INS num=SG pos=N м о л о д ч и к
+case=NOM num=PL pos=N м о л о т
+case=ACC num=SG pos=N м о н а х и н я
+case=NOM num=SG pos=ADJ gen=FEM м о н о т о н н ы й
+case=INS num=SG pos=N м о р
+case=NOM num=PL pos=N м о с к а л ь
+case=NOM num=SG pos=N м о с т и к
+case=NOM num=SG pos=N м о ч ь
+case=DAT num=PL pos=N м у ж
+case=NOM num=SG pos=ADJ gen=MASC м у ж е п о д о б н ы й
+case=INS num=SG pos=ADJ gen=MASC м у ж н и й
+num=PL pos=V aspect=IPFV mood=IMP м у с о р и т ь
+voice=PASS tense=PRS pos=V aspect=IPFV м у с о р и т ь
+case=INS num=SG pos=N м у т а н т
+case=ESS num=SG pos=N м у ф л о н
+case=NOM num=PL pos=N м у ч е н и е
+case=DAT num=PL pos=N м ю о н
+case=DAT num=PL pos=N м я т е ж н и к
+finite=NFIN pos=V aspect=IPFV м я т ь
+aspect=IPFV num=SG tense=PRS pos=V per=3 м я т ь
+case=ESS num=PL pos=N н а б л ю д а т е л ь н о с т ь
+aspect=IPFV num=SG tense=PRS pos=V per=2 н а б л ю д а т ь
+case=GEN num=PL pos=N н а в а ж д е н и е
+case=DAT num=PL pos=N н а г а н
+case=ESS num=SG pos=ADJ gen=FEM н а г л ы й
+finite=NFIN pos=V aspect=PFV н а д о е с т ь
+aspect=PFV num=SG tense=FUT pos=V per=2 н а д о е с т ь
+case=INS num=SG pos=N н а д р ы в
+case=NOM num=PL pos=N н а е з д
+case=ESS num=SG pos=ADJ gen=FEM н а ё м н ы й
+aspect=IPFV num=SG tense=PRS pos=V per=2 н а з ы в а т ь с я
+case=ESS num=PL pos=ADJ н а и б о л ь ш и й
+case=ESS num=PL pos=ADJ н а и х у д ш и й
+case=GEN num=SG pos=N н а к а з а н и е
+num=PL tense=PST pos=V aspect=IPFV н а к л о н я т ь
+aspect=PFV num=SG tense=FUT pos=V per=2 н а к о п и т ь
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT н а л и в а т ь
+case=ACC num=PL pos=N н а л о г о о б л о ж е н и е
+case=DAT num=SG pos=N н а м ё к
+case=NOM num=SG pos=N н а п а д е н и е
+case=ESS num=PL pos=N н а п а р н и ц а
+case=GEN num=PL pos=N н а п а с т ь
+finite=NFIN pos=V aspect=PFV н а п и т ь с я
+case=NOM num=PL pos=N н а п л ы в
+aspect=PFV num=PL tense=FUT pos=V per=2 н а п р а в и т ь с я
+case=INS num=PL pos=ADJ н а р у ж н ы й
+aspect=PFV num=PL tense=FUT pos=V per=3 н а р я д и т ь
+case=GEN num=SG pos=N н а с е л е н и е
+case=ACC num=SG pos=ADJ gen=FEM н а с л а ж д е н ч е с к и й
+aspect=IPFV num=SG tense=PRS pos=V per=3 н а с л е д о в а т ь
+case=ACC num=PL pos=N н а с л е д с т в е н н о с т ь
+case=DAT num=SG pos=ADJ gen=MASC н а с л е д с т в е н н ы й
+case=GEN num=SG pos=N н а с т и л
+aspect=PFV num=SG tense=FUT pos=V per=1 н а у ч и т ь с я
+aspect=IPFV num=PL tense=PRS pos=V per=2 н а х м у р и т ь
+case=INS num=PL pos=ADJ н а ц и с т с к и й
+case=DAT num=PL pos=ADJ н а ч а л ь н и ч и й
+voice=ACT tense=PST pos=V aspect=PFV н а ч е р т и т ь
+case=INS num=PL pos=ADJ н а ч и н а ю щ и й
+case=INS num=PL pos=N н а ш е с т в и е
+case=INS num=SG pos=ADJ gen=MASC н е в о с п и т а н н ы й
+case=GEN num=SG pos=N н е г а т и в
+case=GEN num=SG pos=ADJ gen=NEUT н е д а в н и й
+case=INS num=SG pos=ADJ gen=NEUT н е д е л ь н ы й
+case=NOM num=SG pos=N н е д о м о г а н и е
+case=INS num=SG pos=N н е д р у г
+case=ESS num=SG pos=ADJ gen=MASC н е з а к о н н ы й
+num=SG pos=ADJ gen=FEM н е з н а ч и т е л ь н ы й
+case=INS num=SG pos=N н е й т р а л и з а ц и я
+case=DAT num=SG pos=N н е к р о л о г
+case=ACC num=SG pos=N н е л е п о с т ь
+case=DAT num=SG pos=ADJ gen=FEM н е м а л ы й
+case=NOM num=SG pos=ADJ gen=NEUT н е м н о г и й
+case=ESS num=SG pos=ADJ gen=FEM н е о б у з д а н н ы й
+case=GEN num=SG pos=ADJ gen=MASC н е о п и с у е м ы й
+case=NOM num=SG pos=ADJ gen=MASC н е о т л о ж н ы й
+case=DAT num=SG pos=ADJ gen=MASC н е п о д а т л и в ы й
+case=INS num=PL pos=N н е п о д в и ж н о с т ь
+case=GEN num=SG pos=ADJ gen=NEUT н е п о к о л е б и м ы й
+case=ACC num=PL pos=ADJ н е п о л н ы й
+case=NOM num=SG pos=ADJ gen=MASC н е п р е д в и д е н н ы й
+num=SG pos=ADJ gen=NEUT н е р а з б о р ч и в ы й
+case=ESS num=PL pos=ADJ н е р а з о р в а в ш и й с я
+case=ACC num=SG pos=N н е с т а б и л ь н о с т ь
+num=SG tense=PST pos=V aspect=IPFV gen=FEM н е с т и
+voice=ACT tense=PST pos=V aspect=IPFV н е с т и с ь
+case=ACC num=PL pos=ADJ н е у м е л ы й
+case=NOM num=PL pos=N н е ф т е п р о в о д
+case=INS num=PL pos=N н о в и ч о к
+case=INS num=PL pos=N н о в о б р а н е ц
+case=GEN num=PL pos=N н о в о о б р а з о в а н и е
+case=INS num=PL pos=ADJ н о в о р о ж д ё н н ы й
+case=INS num=PL pos=N н о м а д
+case=DAT num=SG pos=N н о р д
+case=GEN num=SG pos=ADJ gen=FEM н о с о в о й
+case=INS num=PL pos=ADJ н о с о в о й
+case=ESS num=PL pos=N н о у т
+case=INS num=SG pos=N н о ч л е г
+case=NOM num=PL pos=N н о ч л е г
+case=INS num=SG pos=N н о ч н и к
+case=ESS num=SG pos=ADJ gen=FEM н о я б р ь с к и й
+case=NOM num=SG pos=ADJ gen=MASC н о я б р ь с к и й
+case=GEN num=SG pos=ADJ gen=NEUT н р а в с т в е н н ы й
+case=ACC num=PL pos=ADJ н у д н ы й
+aspect=IPFV num=PL tense=PRS pos=V per=2 о б д у м ы в а т ь
+aspect=PFV num=SG tense=FUT pos=V per=3 о б е д н е т ь
+case=ESS num=SG pos=N о б е з б о л и в а н и е
+aspect=IPFV num=PL tense=PRS pos=V per=2 о б е с п е ч и в а т ь
+voice=PASS tense=PRS pos=V aspect=IPFV о б е с п е ч и в а т ь
+case=ESS num=PL pos=N о б е т
+aspect=PFV num=SG tense=FUT pos=V per=3 о б и д е т ь
+case=GEN num=PL pos=N о б к о м
+num=SG pos=V aspect=IPFV mood=IMP о б л а ч а т ь
+num=PL tense=PST pos=V aspect=PFV gen=NEUT о б м е р и т ь
+tense=PRS pos=V aspect=IPFV о б м е р я т ь
+case=DAT num=SG pos=N о б м у н д и р о в а н и е
+case=ESS num=SG pos=N о б м у н д и р о в а н и е
+case=DAT num=PL pos=ADJ о б р а з н ы й
+aspect=PFV num=PL tense=FUT pos=V per=2 о б р а т и т ь с я
+num=PL tense=PST pos=V aspect=PFV gen=NEUT о б р а т и т ь с я
+num=SG pos=V aspect=IPFV mood=IMP о б р е к а т ь
+case=NOM num=SG pos=N о б р о к
+case=INS num=SG pos=N о б р ы в о к
+case=ACC num=PL pos=N о б с л е д о в а н и е
+voice=ACT tense=PST pos=V aspect=IPFV о б с т у п а т ь
+voice=ACT tense=PST pos=V aspect=IPFV о б т е к а т ь
+case=INS num=PL pos=N о б х о д
+num=SG tense=PST pos=V aspect=IPFV gen=MASC о б х о д и т ь с я
+case=GEN num=SG pos=ADJ gen=NEUT о б щ и т е л ь н ы й
+case=DAT num=SG pos=ADJ gen=FEM о б ъ е к т н ы й
+num=SG pos=ADJ gen=FEM о б ы д е н н ы й
+case=DAT num=SG pos=ADJ gen=FEM о б я з а т е л ь н ы й
+aspect=PFV num=SG tense=FUT pos=V per=3 о г л а с и т ь
+case=ACC num=SG pos=N о г р ы з о к
+num=PL tense=FUT pos=V aspect=PFV mood=IMP о д е р е в е н е т ь
+case=GEN num=SG pos=N о д е я н и е
+case=ESS num=SG pos=ADJ gen=FEM о д и н а р н ы й
+case=GEN num=SG pos=ADJ gen=NEUT о д н о к о м н а т н ы й
+case=INS num=PL pos=ADJ о д о б р я ю щ и й
+case=NOM num=PL pos=N о д о л ж е н и е
+case=ACC num=SG pos=N о з н о б
+aspect=IPFV num=PL tense=PRS pos=V per=1 о к а н ч и в а т ь с я
+aspect=PFV num=PL tense=FUT pos=V per=3 о к о н ч и т ь с я
+case=ESS num=SG pos=N о к р и к
+finite=NFIN pos=V aspect=PFV о к р у ж и т ь
+case=ESS num=SG pos=ADJ gen=MASC о л и м п и й с к и й
+num=PL pos=V aspect=IPFV mood=IMP о л и ц е т в о р я т ь
+num=SG tense=PST pos=V aspect=IPFV gen=FEM о л и ц е т в о р я т ь
+case=DAT num=SG pos=ADJ gen=FEM о л о в я н н ы й
+voice=PASS tense=PRS pos=V aspect=IPFV о п е р е ж а т ь
+finite=NFIN pos=V aspect=PFV о п е р е т ь с я
+case=NOM num=PL pos=N о п и с а н и е
+finite=NFIN pos=V aspect=PFV о п л а к а т ь
+voice=PASS tense=PRS pos=V aspect=IPFV о п л а к и в а т ь
+case=DAT num=SG pos=N о п у с
+voice=ACT tense=PRS pos=V aspect=IPFV о п у с к а т ь с я
+case=INS num=SG pos=N о п ь я н е н и е
+case=DAT num=SG pos=N о р г а н и з а т о р
+aspect=IPFV num=SG tense=PRS pos=V per=1 о р г а н и з о в ы в а т ь
+aspect=IPFV num=PL tense=PRS pos=V per=3 о р г а н и з о в ы в а т ь
+case=GEN num=PL pos=N о р и е н т и р
+pos=V aspect=PFV о р и е н т и р о в а т ь с я
+case=ESS num=PL pos=N о р т
+case=DAT num=SG pos=N о с а д о к
+case=ACC num=SG pos=ADJ gen=NEUT о с в е д о м л ё н н ы й
+case=NOM num=SG pos=ADJ gen=MASC о с в е д о м л ё н н ы й
+case=ACC num=PL pos=N о с в е т л е н и е
+num=PL tense=PST pos=V aspect=PFV gen=NEUT о с е д л а т ь
+case=INS num=SG pos=N о с е н ь
+case=DAT num=SG pos=ADJ gen=MASC о с к о р б и т е л ь н ы й
+voice=PASS tense=PST pos=V aspect=IPFV о с к о р б л я т ь
+case=ESS num=PL pos=N о с н о в о п о л о ж н и к
+aspect=IPFV num=SG tense=PRS pos=V per=3 о с н о в ы в а т ь
+case=INS num=PL pos=N о с о з н а н и е
+voice=ACT tense=PST pos=V aspect=IPFV о с т а в л я т ь
+case=GEN num=SG pos=ADJ gen=MASC о с т о р о ж н ы й
+case=INS num=SG pos=ADJ gen=NEUT о с т о р о ж н ы й
+case=GEN num=PL pos=N о с т р о у м и е
+case=ESS num=SG pos=ADJ gen=FEM о с т р ы й
+case=ESS num=SG pos=ADJ gen=NEUT о с у щ е с т в и м ы й
+num=SG tense=PST pos=V aspect=IPFV gen=FEM о т в а л и в а т ь
+aspect=PFV num=PL tense=FUT pos=V per=3 о т в л е ч ь
+aspect=IPFV num=SG tense=PRS pos=V per=3 о т д ы х а т ь
+aspect=IPFV num=PL tense=PRS pos=V per=1 о т л и ч а т ь с я
+case=NOM num=PL pos=N о т л и ч и е
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT о т м е ч а т ь
+num=PL tense=PST pos=V aspect=PFV gen=NEUT о т о б р а т ь
+case=ACC num=SG pos=N о т о п л е н и е
+case=INS num=SG pos=N о т о п л е н и е
+case=GEN num=SG pos=N о т п е ч а т о к
+voice=ACT tense=PRS pos=V aspect=IPFV о т п л ы в а т ь
+voice=ACT tense=PST pos=V aspect=PFV о т п о ч к о в а т ь с я
+case=NOM num=SG pos=N о т п у с к
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT о т р а ж а т ь
+voice=ACT tense=PST pos=V aspect=IPFV о т р а ж а т ь
+num=SG tense=PST pos=V aspect=PFV gen=NEUT о т р е г у л и р о в а т ь
+case=NOM num=SG pos=ADJ gen=FEM о т с т а л ы й
+case=NOM num=SG pos=ADJ gen=MASC о т т а л к и в а ю щ и й
+case=ESS num=SG pos=N о т т е п е л ь
+case=NOM num=SG pos=N о т т о к
+case=DAT num=PL pos=N о т ч и м
+finite=NFIN pos=V aspect=PFV о т ч у д и т ь
+aspect=PFV num=PL tense=FUT pos=V per=1 о т ш л и ф о в а т ь
+case=ESS num=SG pos=N о ф и г е н н о с т ь
+num=SG tense=PST pos=V aspect=PFV gen=NEUT о х в а т и т ь
+num=SG tense=PST pos=V aspect=IPFV gen=FEM о х в а т ы в а т ь
+case=ACC num=PL pos=N о ц е н и в а н и е
+aspect=IPFV num=SG tense=PRS pos=V per=2 о ц е н и в а т ь
+case=ESS num=PL pos=N о ч и щ е н и е
+num=PL tense=PST pos=V aspect=PFV о ч н у т ь с я
+case=ESS num=SG pos=N о ш е л о м л е н и е
+tense=PRS pos=V aspect=IPFV п а д а т ь
+case=ESS num=SG pos=N п а з л
+case=GEN num=SG pos=ADJ gen=MASC п а к и с т а н с к и й
+case=GEN num=PL pos=N п а к т
+case=NOM num=SG pos=ADJ gen=FEM п а л е с т и н с к и й
+case=DAT num=SG pos=N п а л и с а д н и к
+case=DAT num=PL pos=N п а л о ч н и к
+case=GEN num=SG pos=N п а н п с и х и з м
+case=DAT num=SG pos=N п а п у а с
+case=INS num=PL pos=N п а р и к м а х е р
+case=INS num=SG pos=N п а р т и з а н
+case=DAT num=PL pos=N п а р т н ё р ш а
+case=DAT num=PL pos=N п а р у с н и к
+case=NOM num=SG pos=N п а с е ч н и к
+case=ACC num=PL pos=N п а с п о р т
+case=ACC num=PL pos=N п а с т б и щ е
+case=GEN num=PL pos=N п а т о г е н
+case=GEN num=PL pos=N п а т р и а р х
+case=ESS num=PL pos=ADJ п а т р и о т и ч е с к и й
+case=ESS num=PL pos=N п а ш т е т
+case=ACC num=SG pos=N п е д и к
+case=DAT num=PL pos=N п е н ё к
+case=NOM num=SG pos=N п е р в о и с т о ч н и к
+aspect=IPFV num=PL tense=PRS pos=V per=2 п е р д е т ь
+pos=V aspect=IPFV п е р е б и т ь
+case=GEN num=SG pos=N п е р е в а л
+num=SG pos=V aspect=PFV mood=IMP п е р е в е р н у т ь
+case=GEN num=PL pos=ADJ п е р е в о д н ы й
+aspect=PFV num=PL tense=FUT pos=V per=3 п е р е г н у т ь
+num=PL tense=PST pos=V aspect=PFV gen=NEUT п е р е д е л а т ь
+num=PL tense=PST pos=V aspect=IPFV п е р е ж и в а т ь
+case=ACC num=SG pos=N п е р е и м е н о в а н и е
+case=DAT num=SG pos=N п е р е к л ю ч е н и е
+case=DAT num=SG pos=N п е р е л и в а н и е
+case=NOM num=SG pos=ADJ gen=FEM п е р е н о с н ы й
+case=ACC num=PL pos=N п е р е п л ё т
+voice=ACT tense=PST pos=V aspect=IPFV п е р е п у т ы в а т ь
+num=SG tense=PST pos=V aspect=IPFV gen=FEM п е р е с т а в а т ь
+aspect=IPFV num=PL tense=PRS pos=V per=1 п е р е с т р а и в а т ь
+case=INS num=SG pos=N п е р с о н а ж
+case=GEN num=PL pos=N п е р с т е н ь
+case=DAT num=PL pos=N п е с е ц
+case=GEN num=PL pos=N п е т а б а й т
+case=NOM num=SG pos=ADJ gen=NEUT п е т е р б у р г с к и й
+case=INS num=SG pos=N п е т у х
+num=PL pos=V aspect=IPFV mood=IMP п е т ь
+case=ESS num=PL pos=N п и г м е н т
+case=ESS num=PL pos=N п и к
+case=INS num=SG pos=N п и с к
+case=NOM num=PL pos=N п и с к а р ь
+case=ESS num=SG pos=ADJ gen=NEUT п и с ь м е н н ы й
+voice=ACT tense=PRS pos=V aspect=IPFV п и щ а т ь
+case=ESS num=SG pos=N п л а с т ы р ь
+case=INS num=PL pos=N п л а т о ч е к
+case=NOM num=SG pos=N п л а ц д а р м
+case=ACC num=PL pos=N п л е д
+case=GEN num=PL pos=N п л е д
+aspect=PFV num=PL tense=FUT pos=V per=3 п л е с н у т ь
+case=NOM num=SG pos=N п л е ш ь
+case=ESS num=PL pos=N п л и н т у с
+case=INS num=PL pos=ADJ п л о д о т в о р н ы й
+case=ESS num=SG pos=N п л о т ь
+case=ESS num=SG pos=N п л ю щ
+aspect=PFV num=PL tense=FUT pos=V per=3 п о б е д и т ь
+num=SG tense=PST pos=V aspect=PFV gen=FEM п о б л е д н е т ь
+aspect=PFV num=PL tense=FUT pos=V per=1 п о б ы в а т ь
+aspect=PFV num=PL tense=FUT pos=V per=1 п о в е с т и
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT п о в о р а ч и в а т ь с я
+case=ACC num=SG pos=N п о в т о р е н и е
+num=PL tense=FUT pos=V aspect=PFV mood=IMP п о г р у з и т ь
+aspect=IPFV num=SG tense=PRS pos=V per=3 п о д б и р а т ь
+aspect=IPFV num=PL tense=PRS pos=V per=2 п о д в е р г а т ь
+voice=ACT tense=PST pos=V aspect=IPFV п о д в е р г а т ь
+num=PL tense=PST pos=V aspect=IPFV п о д г о н я т ь
+aspect=PFV num=PL tense=FUT pos=V per=1 п о д г о т о в и т ь
+aspect=PFV num=SG tense=FUT pos=V per=3 п о д е р ж а т ь
+aspect=IPFV num=SG tense=PRS pos=V per=1 п о д ж и д а т ь
+case=GEN num=SG pos=N п о д и у м
+aspect=PFV num=SG tense=FUT pos=V per=2 п о д к у п и т ь
+finite=NFIN pos=V aspect=IPFV п о д л а ж и в а т ь
+num=PL tense=FUT pos=V aspect=PFV mood=IMP п о д м и г н у т ь
+num=SG tense=PST pos=V aspect=IPFV gen=FEM п о д н и м а т ь
+num=SG pos=V aspect=IPFV mood=IMP п о д н и м а т ь с я
+case=INS num=PL pos=ADJ п о д о б н ы й
+case=NOM num=SG pos=N п о д п и с а н и е
+aspect=IPFV num=SG tense=PRS pos=V per=1 п о д с м а т р и в а т ь
+case=INS num=PL pos=N п о д с н е ж н и к
+finite=NFIN pos=V aspect=PFV п о д с т р е л и т ь
+case=ACC num=SG pos=N п о д т в е р ж д е н и е
+case=ESS num=PL pos=N п о д т в е р ж д е н и е
+case=ESS num=SG pos=N п о д т е к с т
+num=SG tense=PST pos=V aspect=PFV gen=NEUT п о е с т ь
+finite=NFIN pos=V aspect=PFV п о ж е в а т ь
+voice=PASS tense=PST pos=V aspect=PFV п о ж е в а т ь
+case=INS num=PL pos=N п о ж е л а н и е
+voice=ACT tense=PST pos=V aspect=PFV п о з а в и д о в а т ь
+case=ACC num=SG pos=N п о з в о л е н и е
+case=DAT num=SG pos=N п о к а з
+aspect=PFV num=SG tense=FUT pos=V per=3 п о к а з а т ь с я
+aspect=IPFV num=PL tense=PRS pos=V per=3 п о к л о н я т ь с я
+voice=ACT tense=PST pos=V aspect=IPFV п о к л о н я т ь с я
+num=PL tense=PST pos=V aspect=IPFV п о к р ы в а т ь
+case=NOM num=PL pos=N п о к р ы т и е
+case=ACC num=PL pos=ADJ п о л е з н ы й
+case=ESS num=PL pos=ADJ п о л и ц е й с к и й
+case=GEN num=SG pos=ADJ gen=FEM п о л о в о й
+aspect=IPFV num=PL tense=PRS pos=V per=1 п о л о т ь
+case=ACC num=SG pos=ADJ gen=NEUT п о л у р а з в а л и в ш и й с я
+case=ACC num=PL pos=N п о л у с т а н о к
+case=GEN num=PL pos=N п о л у ч а т е л ь н и ц а
+case=DAT num=SG pos=ADJ gen=NEUT п о л ы й
+voice=ACT tense=PRS pos=V aspect=IPFV п о л ь з о в а т ь с я
+aspect=IPFV num=SG tense=PRS pos=V per=2 п о м е ч а т ь
+voice=ACT tense=PRS pos=V aspect=IPFV п о м е щ а т ь
+num=SG pos=V aspect=PFV mood=IMP п о м о ч ь
+case=INS num=PL pos=N п о н о с
+case=ACC num=PL pos=ADJ п о н я т л и в ы й
+case=NOM num=SG pos=ADJ gen=MASC п о н я т н ы й
+aspect=PFV num=SG tense=FUT pos=V per=3 п о о б е д а т ь
+aspect=IPFV num=PL tense=PRS pos=V per=1 п о о щ р я т ь
+num=SG tense=PST pos=V aspect=PFV gen=NEUT п о п р ы г а т ь
+num=SG tense=PST pos=V aspect=PFV gen=FEM п о п у г а т ь
+case=INS num=PL pos=N п о р е й
+case=DAT num=SG pos=N п о р н о г р а ф
+case=ESS num=SG pos=N п о р о с ё н о к
+case=ACC num=SG pos=ADJ gen=NEUT п о р т у г а л ь с к и й
+case=ESS num=SG pos=N п о р у ч е н и е
+case=INS num=SG pos=N п о с е л е н е ц
+voice=ACT tense=PST pos=V aspect=PFV п о с е я т ь
+case=GEN num=SG pos=N п о с ё л о к
+case=ACC num=SG pos=ADJ gen=NEUT п о с л е д н и й
+case=DAT num=PL pos=N п о с о х
+case=INS num=PL pos=N п о с т р е л ё н о к
+num=SG tense=PST pos=V aspect=PFV gen=FEM п о т я н у т ь с я
+case=NOM num=SG pos=N п о ч а т о к
+finite=NFIN pos=V aspect=PFV п о ч и с т и т ь
+case=ACC num=SG pos=ADJ gen=FEM п о ч т е н н ы й
+case=ACC num=PL pos=ADJ п о ч т е н н ы й
+case=ACC num=PL pos=N п р е в а л и р о в а н и е
+num=SG tense=PST pos=V aspect=PFV gen=MASC п р е в з о й т и
+case=DAT num=PL pos=N п р е в ы ш е н и е
+num=SG pos=V aspect=PFV mood=IMP п р е д в а р и т ь
+num=SG tense=PST pos=V aspect=PFV gen=MASC п р е д в а р и т ь
+num=SG tense=PST pos=V aspect=PFV gen=NEUT п р е д в о с х и т и т ь
+case=GEN num=SG pos=N п р е д и с л о в и е
+case=GEN num=SG pos=N п р е д м е с т ь е
+case=DAT num=PL pos=ADJ п р е д о с т е р е г а ю щ и й
+num=SG pos=ADJ gen=NEUT п р е д п о л а г а е м ы й
+aspect=IPFV num=PL tense=PRS pos=V per=2 п р е д п о л а г а т ь
+aspect=PFV num=SG tense=FUT pos=V per=1 п р е д п о л о ж и т ь
+num=SG tense=PST pos=V aspect=PFV gen=MASC п р е д п о ч е с т ь
+aspect=IPFV num=PL tense=PRS pos=V per=2 п р е д п р и н и м а т ь
+finite=NFIN pos=V aspect=IPFV п р е д с т о я т ь
+case=DAT num=SG pos=ADJ gen=MASC п р е д с т о я щ и й
+case=ESS num=SG pos=ADJ gen=FEM п р е д с т о я щ и й
+aspect=IPFV num=SG tense=PRS pos=V per=2 п р е д у п р е ж д а т ь
+case=GEN num=SG pos=N п р е д у п р е ж д е н и е
+num=PL tense=PST pos=V aspect=PFV п р е л ь с т и т ь
+aspect=PFV num=PL tense=FUT pos=V per=2 п р е р в а т ь
+case=ACC num=SG pos=N п р е т к н о в е н и е
+case=NOM num=SG pos=ADJ gen=MASC п р е у с п е в а ю щ и й
+pos=V aspect=IPFV п р и в е з т и
+num=SG tense=PST pos=V aspect=PFV gen=NEUT п р и в е с т и
+num=SG tense=PST pos=V aspect=IPFV gen=MASC п р и в о з и т ь
+voice=PASS tense=PRS pos=V aspect=IPFV п р и в я з ы в а т ь
+aspect=PFV num=PL tense=FUT pos=V per=2 п р и г л а с и т ь
+case=NOM num=SG pos=N п р и г о в о р
+aspect=PFV num=SG tense=FUT pos=V per=2 п р и г о в о р и т ь
+case=NOM num=SG pos=ADJ gen=NEUT п р и г о д н ы й
+num=SG tense=PST pos=V aspect=IPFV gen=MASC п р и е з ж а т ь
+num=SG tense=PST pos=V aspect=IPFV gen=FEM п р и з е м л я т ь с я
+num=PL tense=PST pos=V aspect=IPFV п р и з н а в а т ь
+case=NOM num=PL pos=N п р и з н а т е л ь н о с т ь
+aspect=IPFV num=PL tense=PRS pos=V per=2 п р и к и д ы в а т ь с я
+finite=NFIN pos=V aspect=PFV п р и к р е п и т ь
+aspect=IPFV num=SG tense=PRS pos=V per=2 п р и к р е п л я т ь
+case=DAT num=SG pos=ADJ gen=MASC п р и л а г а т е л ь н ы й
+aspect=IPFV num=SG tense=PRS pos=V per=3 п р и л е г а т ь
+num=SG tense=PST pos=V aspect=IPFV gen=FEM п р и л е г а т ь
+case=NOM num=SG pos=ADJ gen=NEUT п р и л и ч н ы й
+num=PL tense=FUT pos=V aspect=PFV mood=IMP п р и м е р и т ь
+case=NOM num=SG pos=ADJ gen=FEM п р и м е р н ы й
+num=SG tense=PST pos=V aspect=PFV gen=NEUT п р и м к н у т ь
+case=NOM num=PL pos=ADJ п р и м ы к а ю щ и й
+case=NOM num=SG pos=N п р и н у ж д е н и е
+case=GEN num=SG pos=ADJ gen=MASC п р и н ц и п и а л ь н ы й
+aspect=IPFV num=SG tense=PRS pos=V per=2 п р и с л у ш и в а т ь с я
+case=INS num=SG pos=N п р и с п о с о б л е н и е
+voice=ACT tense=PST pos=V aspect=IPFV п р и с у т с т в о в а т ь
+num=SG tense=PST pos=V aspect=IPFV gen=MASC п р и т я г и в а т ь
+case=ESS num=PL pos=N п р и ц е л
+case=INS num=SG pos=ADJ gen=MASC п р и ш л ы й
+case=ACC num=SG pos=N п р и ю т
+aspect=PFV num=PL tense=FUT pos=V per=1 п р о б и р а т ь
+case=NOM num=PL pos=N п р о б о р
+case=NOM num=PL pos=N п р о в е д е н и е
+aspect=IPFV num=SG tense=PRS pos=V per=3 п р о в е р я т ь
+num=PL tense=PST pos=V aspect=IPFV п р о в е р я т ь
+case=ESS num=PL pos=N п р о в и н н о с т ь
+pos=V aspect=IPFV п р о д в и н у т ь
+voice=ACT tense=PST pos=V aspect=PFV п р о д в и н у т ь
+aspect=IPFV num=SG tense=PRS pos=V per=2 п р о д о л ж а т ь с я
+case=INS num=SG pos=N п р о е к т и р о в а н и е
+case=ESS num=SG pos=N п р о ж и в а н и е
+num=PL pos=V aspect=IPFV mood=IMP п р о ж и в а т ь
+case=NOM num=SG pos=N п р о и з н е с е н и е
+aspect=PFV num=PL tense=FUT pos=V per=2 п р о и з н е с т и с ь
+num=SG pos=V aspect=IPFV mood=IMP п р о и з н о с и т ь с я
+case=GEN num=SG pos=N п р о м а х
+case=GEN num=PL pos=N п р о м е р
+tense=PRS pos=V aspect=IPFV п р о н и к а т ь
+voice=ACT tense=PST pos=V aspect=IPFV п р о н и к а т ь
+case=GEN num=SG pos=N п р о о б р а з
+aspect=IPFV num=SG tense=PRS pos=V per=2 п р о п а д а т ь
+aspect=IPFV num=PL tense=PRS pos=V per=3 п р о п а д а т ь
+case=NOM num=SG pos=N п р о п о р ц и о н а л ь н о с т ь
+aspect=PFV num=PL tense=FUT pos=V per=2 п р о с п а т ь
+case=DAT num=PL pos=N п р о с т о л ю д и н
+case=INS num=PL pos=N п р о с т о р е ч и е
+case=DAT num=PL pos=N п р о т е з и р о в а н и е
+case=GEN num=PL pos=N п р о т е з и р о в а н и е
+finite=NFIN pos=V aspect=IPFV п р о т е с т о в а т ь
+case=NOM num=PL pos=ADJ п р о т и в о г л и с т н ы й
+case=NOM num=SG pos=ADJ gen=MASC п р о т и в о п о л о ж н ы й
+case=ESS num=SG pos=ADJ gen=FEM п р о т и в о р е ч и в ы й
+num=PL tense=PST pos=V aspect=PFV п р о т я н у т ь
+case=DAT num=PL pos=N п р о ф а н
+case=INS num=PL pos=N п р о ф и л ь
+voice=ACT tense=PST pos=V aspect=PFV п р о ч е с т ь
+aspect=PFV num=PL tense=FUT pos=V per=3 п р о ч и т а т ь
+num=SG pos=ADJ gen=FEM п р о ч н ы й
+aspect=PFV num=PL tense=FUT pos=V per=2 п р о я в и т ь
+case=DAT num=SG pos=N п р у д
+case=NOM num=SG pos=N п р ы ж о к
+case=NOM num=PL pos=N п с и х и к а
+case=NOM num=PL pos=N п с и х о л о г
+case=NOM num=SG pos=ADJ gen=MASC п с и х о с о м а т и ч е с к и й
+case=ESS num=SG pos=N п у г а ч
+case=DAT num=SG pos=N п у л е м ё т
+case=ACC num=SG pos=N п у л ь с
+case=GEN num=SG pos=ADJ gen=MASC п у н ц о в ы й
+case=DAT num=PL pos=N п у п о к
+num=PL tense=FUT pos=V aspect=PFV mood=IMP п у с т и т ь
+finite=NFIN pos=V aspect=IPFV п у т е ш е с т в о в а т ь
+case=ESS num=PL pos=N п у т н и к
+case=INS num=PL pos=N п у т ь
+case=INS num=PL pos=ADJ п у ш к и н с к и й
+case=ACC num=SG pos=N п у ш о к
+case=GEN num=PL pos=N п у ш о к
+case=ACC num=PL pos=ADJ п ы л к и й
+case=NOM num=PL pos=N п ы л ь н и к
+aspect=IPFV num=SG tense=PRS pos=V per=3 п я л и т ь с я
+voice=ACT tense=PRS pos=V aspect=IPFV р а б о т а т ь
+case=ESS num=SG pos=ADJ gen=NEUT р а в н о з н а ч а щ и й
+pos=V aspect=PFV р а в н я т ь с я
+aspect=IPFV num=PL tense=PRS pos=V per=3 р а в н я т ь с я
+case=ESS num=PL pos=N р а д и й
+case=GEN num=PL pos=N р а д о н
+case=DAT num=PL pos=ADJ р а д о с т н ы й
+case=DAT num=PL pos=N р а д о с т ь
+num=PL pos=V aspect=IPFV mood=IMP р а з б и р а т ь
+num=PL tense=FUT pos=V aspect=PFV mood=IMP р а з в и т ь с я
+num=SG tense=PST pos=V aspect=PFV gen=NEUT р а з в и т ь с я
+case=ACC num=PL pos=N р а з в о д
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT р а з в о р а ч и в а т ь
+aspect=IPFV num=SG tense=PRS pos=V per=1 р а з в о р а ч и в а т ь с я
+case=NOM num=SG pos=ADJ gen=NEUT р а з г н е в а н н ы й
+num=PL pos=ADJ р а з г о в о р ч и в ы й
+pos=V aspect=PFV р а з д а в а т ь с я
+tense=PST pos=V aspect=IPFV р а з д а в а т ь с я
+case=INS num=SG pos=N р а з д р а ж е н и е
+case=NOM num=PL pos=ADJ р а з н у з д а н н ы й
+num=SG pos=ADJ gen=FEM р а з н у з д а н н ы й
+num=PL pos=ADJ р а з н у з д а н н ы й
+case=DAT num=SG pos=N р а з о р у ж е н и е
+num=PL tense=PST pos=V aspect=IPFV р а з р а б а т ы в а т ь
+tense=PRS pos=V aspect=IPFV р а з р у ш а т ь
+num=SG pos=V aspect=IPFV mood=IMP р а з у м е т ь
+case=ACC num=SG pos=ADJ gen=NEUT р а з у м н ы й
+num=PL tense=PST pos=V aspect=IPFV р а з ы г р ы в а т ь
+case=INS num=SG pos=N р а н г
+case=NOM num=SG pos=ADJ gen=FEM р а с к р ы т ы й
+num=PL tense=FUT pos=V aspect=PFV mood=IMP р а с п а х н у т ь
+aspect=PFV num=PL tense=FUT pos=V per=3 р а с п е ч а т а т ь
+case=NOM num=SG pos=N р а с п о р я ж е н и е
+case=NOM num=SG pos=N р а с п р о с т р а н е н и е
+case=INS num=PL pos=ADJ р а с п р о с т р а н ё н н ы й
+case=INS num=SG pos=ADJ gen=MASC р а с п у т н ы й
+num=PL pos=ADJ р а с с е я н н ы й
+num=SG tense=PST pos=V aspect=IPFV gen=MASC р а с с к а з ы в а т ь
+case=GEN num=PL pos=ADJ р а с с л а б л е н н ы й
+num=PL tense=PST pos=V aspect=PFV gen=NEUT р а с с м о т р е т ь с я
+num=PL tense=PST pos=V aspect=PFV р а с с м о т р е т ь с я
+aspect=IPFV num=PL tense=PRS pos=V per=3 р а с с т а в л я т ь
+num=SG pos=V aspect=PFV mood=IMP р а с с т а т ь с я
+case=DAT num=PL pos=N р а с с т р е л
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT р а с с т у п а т ь с я
+case=ACC num=PL pos=N р а с т я ж е н и е
+num=SG tense=PST pos=V aspect=IPFV gen=MASC р а с ш а т ы в а т ь
+case=GEN num=PL pos=N р в е н и е
+case=ACC num=SG pos=ADJ gen=NEUT р е а л ь н ы й
+case=ESS num=PL pos=N р е б у с
+case=GEN num=SG pos=N р е в а н ш и з м
+case=ESS num=SG pos=N р е в н о с т ь
+case=ACC num=PL pos=N р е г и с т р и р о в а н и е
+aspect=IPFV num=SG tense=PRS pos=V per=1 р е г у л и р о в а т ь
+case=ESS num=SG pos=N р е г у л я ц и я
+pos=V aspect=PFV р е д а к т и р о в а т ь
+case=DAT num=PL pos=N р е з о н
+case=INS num=SG pos=N р е н е с с а н с
+case=ACC num=PL pos=N р е н т г е н и з д а т
+case=DAT num=SG pos=N р е п о р т ё р
+case=INS num=PL pos=N р е с к р и п т
+case=ACC num=SG pos=N р е т у ш и р о в а н и е
+case=DAT num=SG pos=N р е ф е р е н д у м
+case=ESS num=SG pos=N р е ф е р е н т
+case=GEN num=SG pos=N р е ф е р е н т
+case=GEN num=PL pos=ADJ р е ч и с т ы й
+voice=ACT tense=PST pos=V aspect=IPFV р е ш а т ь с я
+case=ESS num=SG pos=ADJ gen=FEM р и б о н у к л е и н о в ы й
+case=DAT num=PL pos=N р и с к
+num=PL tense=PST pos=V aspect=PFV gen=NEUT р и с к н у т ь
+case=DAT num=PL pos=N р и с у н о к
+case=ACC num=PL pos=N р и т м
+case=ESS num=SG pos=N р и т у а л
+case=NOM num=SG pos=N р и ф
+case=GEN num=SG pos=ADJ gen=MASC р о д н о й
+case=GEN num=PL pos=N р о д о в с п о м о ж е н и е
+case=INS num=PL pos=N р о л ь
+case=GEN num=SG pos=ADJ gen=MASC р о м а н т и ч н ы й
+case=INS num=PL pos=N р о м б и к
+case=ESS num=SG pos=ADJ gen=NEUT р о м о в ы й
+case=INS num=SG pos=ADJ gen=MASC р о т о в о й
+tense=PRS pos=V aspect=IPFV р у к о в о д и т ь
+case=GEN num=SG pos=ADJ gen=NEUT р у к о п и с н ы й
+case=GEN num=SG pos=N р у к о п и с ь
+case=NOM num=SG pos=ADJ gen=NEUT р у м я н ы й
+case=NOM num=PL pos=ADJ р у с с к о я з ы ч н ы й
+case=INS num=SG pos=ADJ gen=NEUT р ы н о ч н ы й
+case=ESS num=PL pos=N р ы ц а р ь
+case=INS num=SG pos=N р я б ч и к
+case=DAT num=SG pos=N с а б о т а ж
+case=DAT num=SG pos=N с а л а т
+case=ACC num=PL pos=N с а л у н
+case=NOM num=SG pos=ADJ gen=FEM с а м о д е р ж а в н ы й
+case=DAT num=SG pos=N с а м о о п р е д е л е н и е
+case=ACC num=PL pos=N с а м о с о х р а н е н и е
+case=ACC num=SG pos=N с а м о у д о в л е т в о р е н и е
+case=GEN num=SG pos=N с а н г в и н и к
+case=DAT num=PL pos=N с а н к т п е т е р б у р ж е ц
+case=ESS num=PL pos=N с а п о ж н и к
+case=INS num=PL pos=N с а т и р и к
+voice=ACT tense=PST pos=V aspect=IPFV с а ч к о в а т ь
+num=PL tense=PST pos=V aspect=IPFV с б е г а т ь
+pos=V aspect=PFV с б и в а т ь
+voice=ACT tense=PST pos=V aspect=PFV с б и т ь
+case=GEN num=SG pos=N с в е к р о в ь
+num=SG pos=V aspect=IPFV mood=IMP с в е р г а т ь
+aspect=IPFV num=SG tense=PRS pos=V per=2 с в е р г а т ь
+case=NOM num=SG pos=ADJ gen=NEUT с в е т л ы й
+case=ACC num=PL pos=N с в е т л я ч о к
+num=SG pos=V aspect=IPFV mood=IMP с в и с т а т ь
+case=ACC num=PL pos=ADJ с в я т о й
+num=SG tense=PST pos=V aspect=IPFV gen=MASC с г у щ а т ь с я
+finite=NFIN pos=V aspect=IPFV с д а в а т ь с я
+tense=PRS pos=V aspect=IPFV с д а в а т ь с я
+case=INS num=SG pos=ADJ gen=NEUT с е д е л ь н ы й
+case=ACC num=SG pos=N с е л е з е н ь
+case=ESS num=PL pos=N с е м а ф о р
+case=ACC num=SG pos=ADJ gen=NEUT с е м е й н ы й
+case=ACC num=SG pos=ADJ gen=FEM с е р б с к о х о р в а т с к и й
+num=SG tense=PST pos=V aspect=IPFV gen=FEM с е я т ь
+aspect=IPFV num=SG tense=PRS pos=V per=2 с ё р б а т ь
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT с и д е т ь
+case=INS num=PL pos=ADJ с и м в о л и ч е с к и й
+case=ESS num=SG pos=N с и н т а к с и с
+case=DAT num=PL pos=N с и р е н ь
+case=GEN num=PL pos=ADJ с и я ю щ и й
+aspect=PFV num=SG tense=FUT pos=V per=3 с к а т и т ь
+case=INS num=PL pos=N с к а ч о к
+case=GEN num=SG pos=N с к е п т и к
+case=ACC num=SG pos=N с к е п т и ц и з м
+num=SG tense=PST pos=V aspect=PFV gen=FEM с к л о н и т ь
+case=DAT num=PL pos=ADJ с к о в а н н ы й
+case=DAT num=PL pos=N с к о л ь ж е н и е
+case=ACC num=PL pos=N с к о т
+case=INS num=SG pos=ADJ gen=NEUT с к р ы т н ы й
+voice=ACT tense=PST pos=V aspect=IPFV с к у ч а т ь
+aspect=IPFV num=PL tense=PRS pos=V per=1 с л а т ь
+case=ACC num=SG pos=N с л о в е н к а
+case=ESS num=PL pos=N с л о в о с о ч е т а н и е
+case=NOM num=SG pos=N с л о в о с о ч е т а н и е
+case=INS num=PL pos=N с л о г
+num=PL tense=FUT pos=V aspect=PFV mood=IMP с л о ж и т ь с я
+case=INS num=SG pos=N с л о й
+case=ACC num=SG pos=N с л у г а
+voice=ACT tense=PRS pos=V aspect=IPFV с л у ж и т ь
+pos=V aspect=PFV с л у ш а т ь
+case=ESS num=SG pos=N с м е ш о к
+case=GEN num=SG pos=N с м о к и н г
+num=SG tense=PST pos=V aspect=IPFV gen=NEUT с м о т р е т ь
+voice=ACT tense=PST pos=V aspect=IPFV с м о т р е т ь
+case=INS num=PL pos=N с м о т р и т е л ь
+finite=NFIN pos=V aspect=PFV с м у т и т ь
+num=SG pos=V aspect=IPFV mood=IMP с н а б ж а т ь
+voice=PASS tense=PRS pos=V aspect=IPFV с н а б ж а т ь
+case=DAT num=SG pos=N с н а й п е р
+num=SG pos=V aspect=IPFV mood=IMP с н и т ь с я
+case=INS num=PL pos=N с н о п
+num=SG pos=V aspect=IPFV mood=IMP с о б и р а т ь с я
+num=SG tense=PST pos=V aspect=PFV gen=FEM с о б л а з н и т ь
+num=SG tense=PST pos=V aspect=PFV gen=FEM с о б р а т ь
+tense=PRS pos=V aspect=IPFV с о г л а с о в ы в а т ь с я
+num=PL tense=PST pos=V aspect=PFV с о г н у т ь с я
+num=SG tense=PST pos=V aspect=IPFV gen=FEM с о д е р ж а т ь с я
+num=SG tense=PST pos=V aspect=IPFV gen=MASC с о д е р ж а т ь с я
+num=SG pos=ADJ gen=FEM с о е д и н ё н н ы й
+voice=PASS tense=PST pos=V aspect=PFV с о е д и н и т ь
+num=SG tense=PST pos=V aspect=IPFV gen=MASC с о ж а л е т ь
+case=INS num=SG pos=N с о к о л ё н о к
+aspect=PFV num=PL tense=FUT pos=V per=3 с о к р а т и т ь
+case=GEN num=SG pos=ADJ gen=MASC с о л о в ы й
+case=ACC num=SG pos=N с о н а т а
+case=DAT num=SG pos=N с о п р о т и в л е н и е
+case=ESS num=PL pos=N с о р а т н и к
+case=NOM num=PL pos=N с о с л о в и е
+case=DAT num=PL pos=N с о с т а в л е н и е
+case=NOM num=SG pos=ADJ gen=MASC с о с т о я т е л ь н ы й
+voice=ACT tense=PST pos=V aspect=PFV с о т к а т ь
+case=INS num=PL pos=N с о у ч а с т н и ц а
+case=DAT num=PL pos=N с п а с е н и е
+case=ACC num=PL pos=N с п е к а н и е
+case=ESS num=SG pos=ADJ gen=FEM с п е с и в ы й
+case=DAT num=SG pos=ADJ gen=FEM с п е т ы й
+aspect=IPFV num=PL tense=PRS pos=V per=2 с п е ш и в а т ь с я
+case=ACC num=SG pos=ADJ gen=NEUT с п о р н ы й
+voice=PASS tense=PRS pos=V aspect=IPFV с п о с о б с т в о в а т ь
+case=NOM num=PL pos=N с п р а в е д л и в о с т ь
+voice=ACT tense=PRS pos=V aspect=IPFV с п р а ш и в а т ь
+num=PL tense=FUT pos=V aspect=PFV mood=IMP с п р я т а т ь
+tense=PST pos=V aspect=IPFV с п у с к а т ь с я
+tense=PRS pos=V aspect=IPFV с р а ж а т ь с я
+case=GEN num=SG pos=N с т а в е н ь
+case=ACC num=SG pos=N с т а к а н ч и к
+case=ACC num=PL pos=N с т а н о в л е н и е
+case=NOM num=SG pos=N с т а р а н и е
+aspect=IPFV num=SG tense=PRS pos=V per=1 с т а р е т ь
+case=DAT num=SG pos=N с т е б е л ь
+case=NOM num=SG pos=N с т е н д
+case=DAT num=PL pos=N с т е п
+num=SG pos=ADJ gen=NEUT с т е с н и т е л ь н ы й
+num=SG tense=PST pos=V aspect=IPFV gen=FEM с т и р а т ь
+case=ESS num=SG pos=N с т о л б
+case=INS num=SG pos=ADJ gen=NEUT с т о л и ч н ы й
+case=NOM num=SG pos=ADJ gen=FEM с т р а н н ы й
+case=NOM num=PL pos=N с т р а н с т в и е
+aspect=IPFV num=PL tense=PRS pos=V per=2 с т р а н с т в о в а т ь
+case=GEN num=SG pos=ADJ gen=MASC с т р а с т н ы й
+case=ESS num=PL pos=N с т р о й
+case=NOM num=PL pos=N с т р о й
+case=ACC num=SG pos=N с т у д е н ь
+case=NOM num=PL pos=N с т у п е н ь
+case=INS num=SG pos=N с у в е р е н
+case=DAT num=PL pos=N с у д а к
+case=ACC num=SG pos=ADJ gen=NEUT с у д е б н ы й
+case=GEN num=SG pos=ADJ gen=MASC с у д е б н ы й
+case=DAT num=SG pos=ADJ gen=FEM с у м а с б р о д н ы й
+case=GEN num=PL pos=ADJ с у м а с б р о д н ы й
+num=SG tense=PST pos=V aspect=PFV gen=MASC с у м е т ь
+case=DAT num=PL pos=N с у м р а к
+case=NOM num=PL pos=N с у с л и к
+case=NOM num=SG pos=ADJ gen=MASC с у с т а в н ы й
+num=PL pos=ADJ с у с т а в н ы й
+case=ACC num=SG pos=N с у х а р ь
+case=ACC num=SG pos=N с у ш к а
+case=ESS num=SG pos=ADJ gen=NEUT с х о д н ы й
+aspect=PFV num=PL tense=FUT pos=V per=1 с х о р о н и т ь
+case=ACC num=PL pos=N с ч ё т
+case=INS num=PL pos=ADJ с ъ е д о б н ы й
+case=NOM num=SG pos=N с ы ч
+case=GEN num=PL pos=N с э н д в и ч
+case=GEN num=PL pos=N т а б е л ь щ и к
+case=DAT num=PL pos=N т а й ф у н
+case=GEN num=SG pos=ADJ gen=FEM т а м о ж е н н ы й
+case=ESS num=PL pos=N т а н г е н с
+pos=V aspect=PFV т а р а щ и т ь с я
+aspect=IPFV num=PL tense=PRS pos=V per=3 т а с о в а т ь
+case=DAT num=SG pos=N т а т ь
+case=ESS num=SG pos=ADJ gen=MASC т в о р ч е с к и й
+case=ESS num=PL pos=N т е г
+case=DAT num=SG pos=ADJ gen=NEUT т е к с т о в ы й
+case=GEN num=PL pos=N т е л е к а м е р а
+case=ESS num=PL pos=N т е л е п е р е д а ч а
+case=GEN num=PL pos=ADJ т е л е ф о н н ы й
+case=ESS num=SG pos=N т е л ё н о к
+case=ESS num=SG pos=ADJ gen=NEUT т е л л у р и ч е с к и й
+case=ESS num=SG pos=N т е м б р
+case=INS num=SG pos=N т е н т
+case=NOM num=SG pos=ADJ gen=NEUT т е о л о г и ч е с к и й
+case=NOM num=SG pos=N т е п л о х о д
+case=INS num=PL pos=N т е р м о м е т р
+aspect=IPFV num=PL tense=PRS pos=V per=2 т е р п е т ь
+voice=PASS tense=PRS pos=V aspect=IPFV т е р п е т ь
+num=SG tense=PST pos=V aspect=IPFV gen=MASC т е р п е т ь
+case=ESS num=PL pos=ADJ т е х а с с к и й
+case=NOM num=PL pos=N т е ч е н и е
+case=GEN num=SG pos=N т е ч ь
+case=NOM num=PL pos=N т и п о г р а ф
+case=GEN num=SG pos=N т и р а н
+tense=PRS pos=V aspect=IPFV т л е т ь
+num=SG tense=PST pos=V aspect=IPFV gen=MASC т л е т ь
+case=GEN num=SG pos=N т м е з и с
+case=INS num=PL pos=N т м е з и с
+case=DAT num=PL pos=N т м и н
+case=ACC num=PL pos=N т о к с и н
+pos=V aspect=PFV т о л с т е т ь
+case=ESS num=PL pos=N т о н и к
+num=PL tense=PST pos=V aspect=IPFV т о р г о в а т ь с я
+finite=NFIN pos=V aspect=IPFV т о р ч а т ь
+voice=ACT tense=PST pos=V aspect=IPFV т о р ч а т ь
+case=GEN num=PL pos=N т о т е м
+case=ESS num=PL pos=ADJ т о ч н ы й
+case=NOM num=PL pos=ADJ т о ч н ы й
+case=ESS num=PL pos=ADJ т о щ и й
+case=NOM num=SG pos=ADJ gen=NEUT т р а в я н и с т ы й
+case=GEN num=PL pos=N т р а н с
+case=DAT num=SG pos=N т р а н с п а р а н т
+case=ACC num=SG pos=N т р а п
+case=INS num=SG pos=N т р е б о в а н и е
+case=INS num=SG pos=N т р е к
+case=INS num=SG pos=N т р е с т
+case=ACC num=SG pos=N т р и а д а
+case=ESS num=SG pos=N т р и м а р а н
+case=ESS num=PL pos=N т р и т о н
+case=ACC num=SG pos=N т р о г л о д и т
+case=INS num=PL pos=N т р о л л ь
+case=NOM num=PL pos=N т р о т у а р
+aspect=IPFV num=PL tense=PRS pos=V per=1 т р у д и т ь с я
+case=INS num=PL pos=N т р ю к
+case=ACC num=SG pos=N т у з е м е ц
+case=DAT num=SG pos=N т у з е м е ц
+case=ESS num=PL pos=N т у р о к
+aspect=IPFV num=PL tense=PRS pos=V per=2 у б и р а т ь
+num=SG pos=ADJ gen=NEUT у б и т ы й
+voice=ACT tense=PRS pos=V aspect=IPFV у в а ж а т ь
+aspect=IPFV num=SG tense=PRS pos=V per=3 у в е д о м л я т ь
+aspect=IPFV num=SG tense=PRS pos=V per=1 у в и л и в а т ь
+aspect=IPFV num=SG tense=PRS pos=V per=1 у в л е к а т ь с я
+num=PL tense=FUT pos=V aspect=PFV mood=IMP у в л е ч ь с я
+aspect=PFV num=PL tense=FUT pos=V per=3 у в л е ч ь с я
+case=DAT num=SG pos=N у г о л ё к
+case=DAT num=SG pos=N у г о н
+case=INS num=PL pos=N у г о щ е н и е
+case=NOM num=SG pos=ADJ gen=NEUT у г р ю м ы й
+num=SG tense=PST pos=V aspect=IPFV gen=FEM у д а л я т ь
+case=INS num=PL pos=N у д а р н и к
+num=SG tense=PST pos=V aspect=IPFV gen=FEM у д а р я т ь
+case=NOM num=PL pos=N у д е р ж а н и е
+num=PL pos=V aspect=IPFV mood=IMP у д и в л я т ь
+aspect=IPFV num=PL tense=PRS pos=V per=1 у д о ч е р я т ь
+case=DAT num=SG pos=N у ж а с
+case=DAT num=PL pos=ADJ у ж а с а ю щ и й
+case=ACC num=PL pos=N у й
+voice=PASS tense=PRS pos=V aspect=IPFV у к л а д ы в а т ь
+aspect=IPFV num=PL tense=PRS pos=V per=2 у к о р я т ь
+num=SG tense=PST pos=V aspect=IPFV gen=FEM у к р ы в а т ь
+case=GEN num=PL pos=N у к у с
+case=INS num=PL pos=N у л и к а
+case=NOM num=PL pos=ADJ у л ь т р а ф и о л е т о в ы й
+num=SG pos=V aspect=IPFV mood=IMP у м е н ь ш а т ь
+case=ACC num=PL pos=ADJ у м е с т н ы й
+finite=NFIN pos=V aspect=IPFV у н и ж а т ь
+case=NOM num=PL pos=N у н и к а л ь н о с т ь
+aspect=IPFV num=PL tense=PRS pos=V per=3 у н о с и т ь
+aspect=IPFV num=PL tense=PRS pos=V per=2 у п и р а т ь с я
+voice=ACT tense=PST pos=V aspect=IPFV у п о р я д о ч и в а т ь
+aspect=IPFV num=PL tense=PRS pos=V per=2 у п р а в л я т ь
+case=DAT num=SG pos=N у р ч а н и е
+case=ESS num=PL pos=ADJ у с е р д н ы й
+voice=PASS tense=PST pos=V aspect=PFV у с е ч ь
+case=DAT num=SG pos=N у с и л и т е л ь
+voice=PASS tense=PRS pos=V aspect=IPFV у с л о ж н я т ь
+aspect=PFV num=SG tense=FUT pos=V per=3 у с п е т ь
+aspect=PFV num=SG tense=FUT pos=V per=3 у с с а т ь с я
+case=DAT num=PL pos=ADJ у с т а л ы й
+aspect=IPFV num=PL tense=PRS pos=V per=3 у с т а н а в л и в а т ь
+aspect=PFV num=SG tense=FUT pos=V per=3 у с т а н о в и т ь
+num=SG pos=ADJ gen=NEUT у с т о й ч и в ы й
+voice=ACT tense=PST pos=V aspect=PFV у с т р о и т ь
+num=SG pos=V aspect=PFV mood=IMP у с т у п и т ь
+aspect=PFV num=PL tense=FUT pos=V per=1 у с ы н о в и т ь
+voice=ACT tense=PST pos=V aspect=IPFV у т в е р ж д а т ь
+aspect=PFV num=SG tense=FUT pos=V per=1 у т е ш и т ь
+case=DAT num=SG pos=N у т р и р о в а н и е
+case=NOM num=PL pos=N у т р и р о в а н и е
+case=ACC num=PL pos=N у ч а с т о к
+num=PL pos=V aspect=IPFV mood=IMP у ч и т ь
+case=GEN num=PL pos=N у щ е л ь е
+case=DAT num=SG pos=N ф а з а
+case=NOM num=PL pos=ADJ ф а к т и ч е с к и й
+case=GEN num=SG pos=N ф а т а л и с т
+case=DAT num=PL pos=N ф а ш и з м
+case=GEN num=SG pos=N ф е д е р а л и с т
+case=NOM num=PL pos=ADJ ф е д е р а л ь н ы й
+case=DAT num=PL pos=ADJ ф е д е р а т и в н ы й
+case=INS num=SG pos=N ф е й е р в е р к
+case=DAT num=SG pos=N ф е х т о в а н и е
+case=ESS num=PL pos=N ф и г у р к а
+case=ESS num=SG pos=N ф и л и с т и м л я н и н
+case=ACC num=PL pos=N ф и н а л
+case=INS num=PL pos=N ф о н о г р а м м а
+case=DAT num=SG pos=N ф р а е р
+case=ESS num=PL pos=N ф р а н ц и й
+case=GEN num=SG pos=ADJ gen=NEUT ф р и г и д н ы й
+case=NOM num=PL pos=N ф ю з е л я ж
+case=NOM num=PL pos=N х а д ж
+tense=PRS pos=V aspect=IPFV х а р а к т е р и з о в а т ь
+case=GEN num=SG pos=N х а р и у с
+case=GEN num=SG pos=ADJ gen=MASC х в о р ы й
+num=SG tense=PST pos=V aspect=PFV gen=MASC х и х и к н у т ь
+case=INS num=PL pos=ADJ х л е б н ы й
+case=ESS num=SG pos=N х о л у й
+case=DAT num=PL pos=N х о р е о г р а ф
+case=ESS num=SG pos=N х о р е о г р а ф
+case=ESS num=SG pos=N х о р ё к
+case=DAT num=SG pos=N х о р о в о д
+case=NOM num=SG pos=N х р а м
+case=INS num=SG pos=N х р а н и л и щ е
+case=NOM num=PL pos=N х р а н и т е л ь
+voice=ACT tense=PST pos=V aspect=IPFV х р а п е т ь
+case=DAT num=SG pos=ADJ gen=NEUT х у д о ж е с т в е н н ы й
+case=ESS num=PL pos=N х у м у с
+case=NOM num=PL pos=N х у м у с
+case=DAT num=PL pos=N ц в е т е н и е
+case=GEN num=SG pos=ADJ gen=MASC ц е р е б р а л ь н ы й
+case=ACC num=SG pos=N ц и л и н д р
+case=ACC num=SG pos=N ц у г ц в а н г
+case=ACC num=SG pos=N ч а с о с л о в
+case=GEN num=SG pos=N ч а с т ь
+case=ESS num=SG pos=N ч е л о в е к о н е н а в и с т н и к
+case=GEN num=SG pos=N ч е л я д и н
+case=DAT num=SG pos=ADJ gen=MASC ч е р в о в ы й
+case=DAT num=PL pos=N ч е р е п о к
+case=DAT num=PL pos=N ч е р н о г о р к а
+case=ESS num=SG pos=ADJ gen=NEUT ч е р н о к о ж и й
+case=ACC num=SG pos=N ч и н а р
+case=ESS num=PL pos=ADJ ч и с л о в о й
+aspect=PFV num=PL tense=FUT pos=V per=1 ч и х н у т ь
+case=ESS num=SG pos=ADJ gen=FEM ч л е н о р а з д е л ь н ы й
+num=SG pos=V aspect=PFV mood=IMP ч о к н у т ь с я
+tense=PST pos=V aspect=PFV ч о к н у т ь с я
+case=ACC num=PL pos=N ч о р т
+case=ESS num=SG pos=N ш а р а б а н
+aspect=IPFV num=SG tense=PRS pos=V per=3 ш а р и т ь
+case=ACC num=SG pos=N ш а ф р а н
+case=GEN num=SG pos=N ш е й х
+case=GEN num=PL pos=N ш е л ь ф
+case=NOM num=PL pos=ADJ ш и п я щ и й
+case=DAT num=SG pos=N ш к о л ь н и ц а
+case=ESS num=PL pos=N ш л а н г
+case=DAT num=PL pos=N ш л е й ф
+case=DAT num=PL pos=N ш л ё п а н е ц
+aspect=IPFV num=PL tense=PRS pos=V per=1 ш л и ф о в а т ь
+case=ACC num=PL pos=N ш л я п к а
+case=ACC num=SG pos=N ш н о б е л ь
+case=GEN num=SG pos=N ш о у р у м
+num=SG tense=PST pos=V aspect=IPFV gen=FEM ш п а р г а л и т ь
+case=ESS num=PL pos=N ш п а т е л ь
+case=INS num=SG pos=N ш т е к е р
+pos=V aspect=PFV ш т о п а т ь
+case=INS num=SG pos=N ш т р а ф
+case=DAT num=PL pos=N ш т у ф
+voice=ACT tense=PST pos=V aspect=IPFV ш у м е т ь
+case=ACC num=PL pos=N ш у р ш а н и е
+case=NOM num=PL pos=N ш у т
+case=ESS num=PL pos=N щ ё л о к
+case=ACC num=PL pos=N э к в и в а л е н т
+case=GEN num=SG pos=ADJ gen=NEUT э к з о т и ч н ы й
+case=GEN num=PL pos=N э к с п о н а т
+case=DAT num=PL pos=N э к с п р е с с
+case=GEN num=SG pos=N э к с т р а к т
+case=DAT num=SG pos=N э к ш н
+case=NOM num=PL pos=N э л е к т о р а т
+case=ESS num=PL pos=N э л е к т р о ф о н
+case=DAT num=SG pos=ADJ gen=NEUT э л е м е н т а р н ы й
+case=INS num=PL pos=N э л и к с и р
+case=ACC num=SG pos=N э п и ц е н т р
+case=ESS num=SG pos=N э р д е л ь т е р ь е р
+case=NOM num=SG pos=N э р и т р о ц и т
+case=DAT num=SG pos=N э т а н о л
+case=INS num=SG pos=N э т н о л е к т
+case=NOM num=SG pos=N э ф е с
+case=DAT num=SG pos=ADJ gen=NEUT ю р и д и ч е с к и й
+num=PL tense=PST pos=V aspect=PFV gen=NEUT я в и т ь с я
+case=ESS num=SG pos=ADJ gen=NEUT я в н ы й
+case=ACC num=SG pos=N я в ь
+case=GEN num=SG pos=ADJ gen=FEM я з в и т е л ь н ы й
+num=SG pos=ADJ gen=FEM я з в и т е л ь н ы й
+num=SG pos=V aspect=IPFV mood=IMP я з в и т ь
+case=INS num=SG pos=N я з ь
+case=GEN num=SG pos=N я н в а р ь
+case=ACC num=PL pos=ADJ я н т а р н ы й
+case=INS num=SG pos=N я н ы ч а р
+case=GEN num=PL pos=N я р к о с т ь

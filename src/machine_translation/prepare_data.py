@@ -243,8 +243,8 @@ def main():
     # Apply preprocessing and construct vocabularies
     args.source = 'train.in'
     args.target = 'train.out'
-    args.source_dev = 'test.in'
-    args.target_dev = 'test.out'
+    args.source_dev = 'dev.in'
+    args.target_dev = 'dev.out'
     tr_files = ['/Users/roeeaharoni/GitHub/morphological-reinflection/src/machine_translation/data/train.in',
                 '/Users/roeeaharoni/GitHub/morphological-reinflection/src/machine_translation/data/train.out']
     src_filename, trg_filename = create_vocabularies(tr_files, preprocess_file)
