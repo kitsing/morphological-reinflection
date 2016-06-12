@@ -4,7 +4,7 @@ files and evaluation script.
 Usage:
   task2_joint_structured_inflection_blstm_feedback_fix.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
   [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION]
-  [--learning=LEARNING] [--plot] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+  [--learning=LEARNING] [--plot] [--augment] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
   TRAIN_PATH    destination path
@@ -24,6 +24,7 @@ Options:
   --reg=REGULARIZATION          regularization parameter for optimization
   --learning=LEARNING           learning rate parameter for optimization
   --plot                        draw a learning curve plot while training each model
+  --augment                     mirror the data to create twice as much training examples
 """
 
 import numpy as np
@@ -67,7 +68,7 @@ ALIGN_SYMBOL = '~'
 # TODO: add attention mechanism?
 # TODO: try sutskever trick - predict inverse
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, feat_input_dim, epochs,
-         layers, optimization, regularization, learning_rate, plot):
+         layers, optimization, regularization, learning_rate, plot, augment):
     if plot:
         parallelize_training = False
         print 'plotting, parallelization is disabled!!!'
@@ -88,6 +89,14 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     (train_target_words, train_source_words, train_target_feat_dicts, train_source_feat_dicts) = prepare_sigmorphon_data.load_data(train_path, 2)
     (test_target_words, test_source_words, test_target_feat_dicts, test_source_feat_dicts) = prepare_sigmorphon_data.load_data(test_path, 2)
     alphabet, feature_types = prepare_sigmorphon_data.get_alphabet(train_target_words, train_source_words, train_target_feat_dicts, train_source_feat_dicts)
+
+    # data augmentation - mirror the data to create twice as much training examples
+    if augment:
+        train_target_words, train_source_words, train_target_feat_dicts, train_source_feat_dicts = common.mirror_data(
+            train_target_words,
+            train_source_words,
+            train_target_feat_dicts,
+            train_source_feat_dicts)
 
     # used for character dropout
     alphabet.append(NULL)
@@ -130,7 +139,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     #    generate_template(p)
     print 'finished aligning'
 
-    # joint model: cluster the data by POS type (features)
+    # joint model: cluster the data by POS type
     # TODO: do we need to cluster on both source and target feats? 
     #       probably enough to cluster on source here becasue pos will be same
     #       (no derivational morphology in this task)
@@ -898,9 +907,13 @@ if __name__ == '__main__':
         plot_param = True
     else:
         plot_param = False
+    if arguments['--augment']:
+        augment_param = True
+    else:
+        augment_param = False
 
     print arguments
 
     main(train_path_param, test_path_param, results_file_path_param, sigmorphon_root_dir_param, input_dim_param,
          hidden_dim_param, feat_input_dim_param, epochs_param, layers_param, optimization_param, regularization_param,
-         learning_rate_param, plot_param)
+         learning_rate_param, plot_param, augment_param)

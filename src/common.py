@@ -154,3 +154,15 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
 
     print 'wrote results to: ' + output_file_path + '\n' + evaluation_path + '\n' + predictions_path
     return
+
+
+def mirror_data(train_target_words, train_source_words, train_target_feat_dicts, train_source_feat_dicts):
+    mirrored_train_target_words = train_target_words + train_source_words
+    mirrored_train_source_words = train_source_words + train_target_words
+    mirrored_train_target_feat_dicts = train_target_feat_dicts + train_source_feat_dicts
+    mirrored_train_source_feat_dicts = train_source_feat_dicts + train_target_feat_dicts
+
+    return mirrored_train_target_words, \
+           mirrored_train_source_words, \
+           mirrored_train_target_feat_dicts, \
+           mirrored_train_source_feat_dicts
