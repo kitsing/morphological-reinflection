@@ -358,7 +358,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 print 'dev:'
                 # get dev accuracy
                 dev_accuracy = evaluate_model(dev_predictions, dev_lemmas, dev_feat_dicts, dev_words, feature_types,
-                                              print_results=True)[1]
+                                              print_results=False)[1]
 
                 if dev_accuracy > best_dev_accuracy:
                     best_dev_accuracy = dev_accuracy
