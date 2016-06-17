@@ -3,7 +3,7 @@
 Usage:
   run_all_langs.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN] [--epochs=EPOCHS]
   [--layers=LAYERS] [--optimization=OPTIMIZATION] [--pool=POOL] [--langs=LANGS] [--script=SCRIPT] [--prefix=PREFIX]
-  [--augment] [--task=TASK]
+  [--augment] [--merged] [--task=TASK]
   SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
@@ -25,6 +25,7 @@ Options:
   --script=SCRIPT               the training script to run
   --prefix=PREFIX               the output files prefix
   --augment                     whether to perform data augmentation
+  --merged                      whether to train on train+dev merged
   --task=TASK                   the current task to train
 """
 
@@ -43,18 +44,19 @@ EPOCHS = 1
 LAYERS = 2
 OPTIMIZATION = 'ADAM'
 POOL = 4
-LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german']
+LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german',
+         'hungarian', 'maltese']
 CNN_MEM = 9096
 
 
 def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim, pool_size, langs, script, prefix, task, augment):
+         optimization, feat_input_dim, pool_size, langs, script, prefix, task, augment, merged):
     parallelize_training = True
     params = []
     print 'now training langs: ' + str(langs)
     for lang in langs:
         params.append([CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                    sigmorphon_root_dir, src_dir, script, prefix, task, augment])
+                    sigmorphon_root_dir, src_dir, script, prefix, task, augment, merged])
 
 
     # train models for each lang in parallel or in loop
@@ -74,7 +76,7 @@ def train_language_wrapper(params):
 
 
 def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                sigmorphon_root_dir, src_dir, script, prefix, task, augment):
+                sigmorphon_root_dir, src_dir, script, prefix, task, augment, merged):
 
     if augment:
         augment_str='--augment'
@@ -83,13 +85,25 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
 
     start = time.time()
     os.chdir(src_dir)
-    os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} \
-        --feat-input={4} --epochs={5} --layers={6} --optimization {7} {13}\
-        {8}/data/{9}-task{12}-train \
-        {8}/data/{9}-task{12}-dev \
-        {10}/{11}_{9}-results.txt \
-        {8}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-                    sigmorphon_root_dir, lang, results_dir, prefix, task, augment_str))
+
+    if merged:
+        # train on train+dev, evaluate on dev for early stopping
+        os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} \
+            --feat-input={4} --epochs={5} --layers={6} --optimization {7} {13}\
+            ../data/sigmorphon_train_dev_merged/{9}-task{12}-merged \
+            {8}/data/{9}-task{12}-dev \
+            {10}/{11}_{9}-results.txt \
+            {8}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
+                        sigmorphon_root_dir, lang, results_dir, prefix, task, augment_str))
+    else:
+        # train on train, evaluate on dev for early stopping
+        os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} \
+            --feat-input={4} --epochs={5} --layers={6} --optimization {7} {13}\
+            {8}/data/{9}-task{12}-train \
+            {8}/data/{9}-task{12}-dev \
+            {10}/{11}_{9}-results.txt \
+            {8}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
+                        sigmorphon_root_dir, lang, results_dir, prefix, task, augment_str))
 
     end = time.time()
     print 'finished ' + lang + ' in ' + str(ms_to_timestring(end - start))
@@ -181,10 +195,13 @@ if __name__ == '__main__':
         augment_param = True
     else:
         augment_param = False
-
+    if arguments['--merged']:
+        merged_param = True
+    else:
+        merged_param = False
 
     print arguments
 
     main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
          optimization, feat_input_dim, pool_size, langs_param, script_param, prefix_param, task_param,
-         augment_param)
+         augment_param, merged_param)
