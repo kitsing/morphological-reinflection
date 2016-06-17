@@ -1,7 +1,7 @@
 """Runs the script on all langs in parallel
 
 Usage:
-  run_all_langs.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN] [--epochs=EPOCHS]
+  run_all_langs_generic.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN] [--epochs=EPOCHS]
   [--layers=LAYERS] [--optimization=OPTIMIZATION] [--pool=POOL] [--langs=LANGS] [--script=SCRIPT] [--prefix=PREFIX]
   [--augment] [--merged] [--task=TASK]
   SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
