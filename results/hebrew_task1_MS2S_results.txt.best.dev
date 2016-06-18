@@ -1,0 +1,10 @@
+train path = /Users/roeeaharoni/GitHub/morphological-reinflection/data/heb/hebrew-task1-train
+test path = /Users/roeeaharoni/GitHub/morphological-reinflection/data/heb/hebrew-task1-dev
+LAYERS = 2
+MAX_PREDICTION_LEN = 50
+EPOCHS = 300
+OPTIMIZATION = ADAM
+HIDDEN_DIM = 200
+INPUT_DIM = 200
+NBEST = 1
+Prediction Accuracy = 0.849498327759
