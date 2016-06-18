@@ -100,7 +100,7 @@ def evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, la
             --hidden={3} --feat-input={4} --epochs={5} --layers={6} --optimization={7} {15} \
             ../data/sigmorphon_train_dev_merged/{9}-task{14}-merged \
             ../biu/gold/{9}-task{14}-test \
-            {10}/{12}_{9}{13}results.txt \
+            {10}/{12}_{9}-results.txt \
             {8}'
     else:
         command_format = 'python {0} --cnn-mem {1} --input={2} \
