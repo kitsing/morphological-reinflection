@@ -95,11 +95,13 @@ def evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, la
     else:
         separator = '-'
 
+    root_dir = src_dir.replace('/src','')
+
     if merged:
         command_format = 'python {0} --cnn-mem {1} --input={2} \
             --hidden={3} --feat-input={4} --epochs={5} --layers={6} --optimization={7} {15} \
-            ../data/sigmorphon_train_dev_merged/{9}-task{14}-merged \
-            ../biu/gold/{9}-task{14}-test \
+            {15}/data/sigmorphon_train_dev_merged/{9}-task{14}-merged \
+            {15}/biu/gold/{9}-task{14}-test \
             {10}/{12}_{9}-results.txt \
             {8}'
     else:
@@ -112,7 +114,7 @@ def evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, la
 
     os.system(command_format.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
                                     sigmorphon_root_dir, lang, results_dir, eval_str, prefix, separator, task,
-                                    nbest_string))
+                                    nbest_string, root_dir))
 
     end = time.time()
     print 'finished ' + lang + ' in ' + str(ms_to_timestring(end - start))
