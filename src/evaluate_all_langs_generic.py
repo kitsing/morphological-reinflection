@@ -3,7 +3,7 @@
 Usage:
   evaluate_all_langs.py [--cnn-mem MEM] [--input=INPUT] [--feat-input=FEAT] [--hidden=HIDDEN] [--epochs=EPOCHS]
   [--layers=LAYERS] [--optimization=OPTIMIZATION] [--pool=POOL] [--langs=LANGS] [--script=SCRIPT] [--test]
-  [--prefix=PREFIX] [--task=TASK] [--nbest=NBEST] SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
+  [--prefix=PREFIX] [--task=TASK] [--nbest=NBEST] [--merged] SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
   SRC_PATH  source files directory path
@@ -26,6 +26,7 @@ Options:
   --prefix=PREFIX               the results files prefix
   --task=TASK                   the current task
   --nbest=NBEST                 nbest list size
+  --merged                      uses the merged files for training and the uncovered test files for eval
 """
 
 import os
@@ -48,7 +49,7 @@ LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turki
          'maltese']
 
 def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers, optimization, feat_input_dim,
-         pool_size, langs, test, script, prefix, task, nbest):
+         pool_size, langs, test, script, prefix, task, nbest, merged):
 
     cnn_mem = 9096
     parallelize_evaluation = True
@@ -57,7 +58,7 @@ def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epoch
     print 'now evaluating langs: ' + str(langs) + ' with script: ' + script + ' into prefix: ' + prefix
     for lang in langs:
         params.append([cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                    sigmorphon_root_dir, src_dir, test, script, prefix, task, nbest])
+                    sigmorphon_root_dir, src_dir, test, script, prefix, task, nbest, merged])
 
     # train models for each lang in parallel or in loop
     if parallelize_evaluation:
@@ -76,7 +77,7 @@ def evaluate_language_wrapper(params):
 
 
 def evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                      sigmorphon_root_dir, src_dir, test, script, prefix, task, nbest):
+                      sigmorphon_root_dir, src_dir, test, script, prefix, task, nbest, merged):
     start = time.time()
     os.chdir(src_dir)
     eval_str = 'dev'
@@ -94,12 +95,20 @@ def evaluate_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, la
     else:
         separator = '-'
 
-    command_format = 'python {0} --cnn-mem {1} --input={2} \
-        --hidden={3} --feat-input={4} --epochs={5} --layers={6} --optimization={7} {15} \
-        {8}/data/{9}-task{14}-train \
-        {8}/data/{9}-task{14}-{11} \
-        {10}/{12}_{9}{13}results.txt \
-        {8}'
+    if merged:
+        command_format = 'python {0} --cnn-mem {1} --input={2} \
+            --hidden={3} --feat-input={4} --epochs={5} --layers={6} --optimization={7} {15} \
+            ../data/sigmorphon_train_dev_merged/{9}-task{14}-merged \
+            ../biu/gold/{9}-task{14}-test \
+            {10}/{12}_{9}{13}results.txt \
+            {8}'
+    else:
+        command_format = 'python {0} --cnn-mem {1} --input={2} \
+            --hidden={3} --feat-input={4} --epochs={5} --layers={6} --optimization={7} {15} \
+            {8}/data/{9}-task{14}-train \
+            {8}/data/{9}-task{14}-{11} \
+            {10}/{12}_{9}{13}results.txt \
+            {8}'
 
     os.system(command_format.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
                                     sigmorphon_root_dir, lang, results_dir, eval_str, prefix, separator, task,
@@ -199,9 +208,13 @@ if __name__ == '__main__':
         nbest_param = int(arguments['--nbest'])
     else:
         nbest_param = NBEST
+    if arguments['--merged']:
+        merged_param = True
+    else:
+        merged_param = False
 
     print arguments
 
     main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
          optimization, feat_input_dim, pool_size, langs_param, test_param, script_param, prefix_param, task_param,
-         nbest_param)
+         nbest_param, merged_param)
