@@ -26,6 +26,7 @@ Options:
   --plot                        draw a learning curve plot while training each model
 """
 
+import sys
 import numpy as np
 import random
 import prepare_sigmorphon_data
@@ -926,6 +927,10 @@ def predict_templates_with_ensemble(ensemble_models,
 
         joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
         predictions[joint_index] = predicted_template
+
+        # progress indication
+        sys.stdout.write("\r%d%%" % i)
+        sys.stdout.flush()
 
     return predictions
 
