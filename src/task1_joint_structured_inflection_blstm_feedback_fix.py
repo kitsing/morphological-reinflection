@@ -837,13 +837,13 @@ def predict_inflection_template_with_ensemble(ensemble_models,
         # predict the most voted character
         next_char_index = most_common(votes)
 
-        # debug
-        print 'votes:'
-        print [inverse_alphabet_index[c] for c in votes]
-        print 'chosen:'
-        print inverse_alphabet_index[next_char_index]
-        print 'hypo:'
-        print predicted_template
+        # debug ensemble
+        # print 'votes:'
+        # print [inverse_alphabet_index[c] for c in votes]
+        # print 'chosen:'
+        # print inverse_alphabet_index[next_char_index]
+        # print 'hypo:'
+        # print predicted_template
 
         predicted_template.append(inverse_alphabet_index[next_char_index])
 
