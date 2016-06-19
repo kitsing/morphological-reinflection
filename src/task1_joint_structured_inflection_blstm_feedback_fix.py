@@ -738,6 +738,9 @@ def predict_inflection_template_with_ensemble(ensemble_models,
     renew_cg()
     ensemble_params = []
 
+    # pad the lemma with begin and end markers
+    lemma = BEGIN_WORD + lemma + END_WORD
+
     # collect the parameters from each model
     for em in ensemble_models:
         model, encoder_frnn, encoder_rrnn, decoder_rnn = em
@@ -746,8 +749,7 @@ def predict_inflection_template_with_ensemble(ensemble_models,
         R = parameter(model["R"])
         bias = parameter(model["bias"])
 
-        # convert characters to matching embeddings, if UNK handle properly
-        lemma = BEGIN_WORD + lemma + END_WORD
+        # convert characters to matching embedding vectors, if UNK handle properly
         lemma_char_vecs = []
         for char in lemma:
             try:
@@ -801,8 +803,7 @@ def predict_inflection_template_with_ensemble(ensemble_models,
         # set prev_output_vec for first lstm step as BEGIN_WORD
         prev_output_vec = char_lookup[alphabet_index[BEGIN_WORD]]
 
-        ensemble_params.append((R, bias, blstm_outputs, char_lookup, feats_input,
-                                prev_output_vec, s))
+        ensemble_params.append((R, bias, blstm_outputs, char_lookup, feats_input, prev_output_vec, s))
 
     i = 0
     predicted_template = []
@@ -845,8 +846,7 @@ def predict_inflection_template_with_ensemble(ensemble_models,
         for index, params in enumerate(ensemble_params):
 
             # get model params
-            R, bias, blstm_outputs, char_lookup, feats_input, \
-            prev_output_vec, s = params
+            R, bias, blstm_outputs, char_lookup, feats_input, prev_output_vec, s = params
 
             # prepare for the next iteration - "feedback"
             updated_output_vec = char_lookup[next_char_index]
