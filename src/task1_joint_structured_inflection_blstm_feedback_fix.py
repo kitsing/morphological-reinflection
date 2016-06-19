@@ -826,6 +826,7 @@ def predict_inflection_template_with_ensemble(ensemble_models,
                                                              feats_input,
                                                              i,
                                                              lemma,
+                                                             lemma_char_vecs_len,
                                                              prev_output_vec,
                                                              s)
             votes.append(next_char_index)
