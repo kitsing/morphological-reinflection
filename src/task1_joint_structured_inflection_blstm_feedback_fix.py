@@ -728,6 +728,194 @@ def predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_i
     return predictions
 
 
+def predict_inflection_template_with_ensemble(ensemble_models,
+                                              lemma,
+                                              feats,
+                                              alphabet_index,
+                                              inverse_alphabet_index,
+                                              feat_index,
+                                              feature_types):
+    renew_cg()
+    ensemble_params = []
+
+    # collect the parameters from each model
+    for em in ensemble_models:
+        model, encoder_frnn, encoder_rrnn, decoder_rnn = em
+        char_lookup = model["char_lookup"]
+        feat_lookup = model["feat_lookup"]
+        R = parameter(model["R"])
+        bias = parameter(model["bias"])
+
+        # convert characters to matching embeddings, if UNK handle properly
+        lemma = BEGIN_WORD + lemma + END_WORD
+        lemma_char_vecs = []
+        for char in lemma:
+            try:
+                lemma_char_vecs.append(char_lookup[alphabet_index[char]])
+            except KeyError:
+                # handle UNK
+                lemma_char_vecs.append(char_lookup[alphabet_index[UNK]])
+
+        # convert features to matching embeddings, if UNK handle properly
+        feat_vecs = []
+        for feat in sorted(feature_types):
+            # TODO: is it OK to use same UNK for all feature types? and for unseen feats as well?
+            # if this feature has a value, take it from the lookup. otherwise use UNK
+            if feat in feats:
+                feat_str = feat + ':' + feats[feat]
+                try:
+                    feat_vecs.append(feat_lookup[feat_index[feat_str]])
+                except KeyError:
+                    # handle UNK or dropout
+                    feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
+            else:
+                feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
+        feats_input = concatenate(feat_vecs)
+
+        # BiLSTM forward pass
+        s_0 = encoder_frnn.initial_state()
+        s = s_0
+        frnn_outputs = []
+        for c in lemma_char_vecs:
+            s = s.add_input(c)
+            frnn_outputs.append(s.output())
+
+        # BiLSTM backward pass
+        s_0 = encoder_rrnn.initial_state()
+        s = s_0
+        rrnn_outputs = []
+        for c in reversed(lemma_char_vecs):
+            s = s.add_input(c)
+            rrnn_outputs.append(s.output())
+
+        # BiLTSM outputs
+        blstm_outputs = []
+        lemma_char_vecs_len = len(lemma_char_vecs)
+        for i in xrange(lemma_char_vecs_len):
+            blstm_outputs.append(concatenate([frnn_outputs[i], rrnn_outputs[lemma_char_vecs_len - i - 1]]))
+
+        # initialize the decoder rnn
+        s_0 = decoder_rnn.initial_state()
+        s = s_0
+
+        # set prev_output_vec for first lstm step as BEGIN_WORD
+        prev_output_vec = char_lookup[alphabet_index[BEGIN_WORD]]
+
+        ensemble_params.append((R, bias, blstm_outputs, char_lookup, feats_input,
+                                prev_output_vec, s))
+
+    i = 0
+    predicted_template = []
+
+    # run the decoder through the sequence and predict characters
+    while i < MAX_PREDICTION_LEN:
+
+        votes = []
+        updated_states = []
+        for params in ensemble_params:
+
+            # get model params
+            R, bias, blstm_outputs, char_lookup, feats_input,\
+            prev_output_vec, s = params
+
+            next_char_index, new_s = predict_next_char_index(R,
+                                                             alphabet_index,
+                                                             bias,
+                                                             blstm_outputs,
+                                                             char_lookup,
+                                                             feats_input,
+                                                             i,
+                                                             lemma,
+                                                             prev_output_vec,
+                                                             s)
+            votes.append(next_char_index)
+            updated_states.append(new_s)
+
+        # predict the most voted character
+        next_char_index = most_common(votes)
+        predicted_template.append(inverse_alphabet_index[next_char_index])
+
+        # check if reached end of word
+        if predicted_template[-1] == END_WORD:
+            break
+
+        # update state for all models in ensemble
+        next_step_ensemble_params = []
+        for index, params in enumerate(ensemble_params):
+
+            # get model params
+            R, bias, blstm_outputs, char_lookup, feats_input, \
+            prev_output_vec, s = params
+
+            # prepare for the next iteration - "feedback"
+            updated_output_vec = char_lookup[next_char_index]
+
+            next_step_ensemble_params.append((R, bias, blstm_outputs, char_lookup, feats_input, \
+                                        updated_output_vec, updated_states[index]))
+
+        ensemble_params = next_step_ensemble_params
+        i += 1
+
+    # remove the end word symbol
+    return predicted_template[0:-1]
+
+
+def most_common(lst):
+    return max(set(lst), key=lst.count)
+
+
+def predict_next_char_index(R, alphabet_index, bias, blstm_outputs, char_lookup, feats_input, i, lemma,
+                            lemma_char_vecs_len, prev_output_vec, s):
+    # if the lemma is finished, pad with epsilon chars
+    if i < len(lemma):
+        blstm_output = blstm_outputs[i]
+        try:
+            lemma_input_char_vec = char_lookup[alphabet_index[lemma[i]]]
+        except KeyError:
+            # handle unseen characters
+            lemma_input_char_vec = char_lookup[alphabet_index[UNK]]
+    else:
+        lemma_input_char_vec = char_lookup[alphabet_index[EPSILON]]
+        blstm_output = blstm_outputs[lemma_char_vecs_len - 1]
+    decoder_input = concatenate([blstm_output,
+                                 prev_output_vec,
+                                 lemma_input_char_vec,
+                                 char_lookup[alphabet_index[str(i)]],
+                                 feats_input])
+    # prepare input vector and perform LSTM step
+    # decoder_input = concatenate([encoded, prev_output_vec])
+    s = s.add_input(decoder_input)
+    # compute softmax probs and predict
+    decoder_rnn_output = s.output()
+    probs = softmax(R * decoder_rnn_output + bias)
+    probs = probs.vec_value()
+    next_char_index = common.argmax(probs)
+    return next_char_index, s
+
+
+def predict_templates_with_ensemble(ensemble_models,
+                                    alphabet_index,
+                                    inverse_alphabet_index,
+                                    lemmas,
+                                    feats,
+                                    feat_index,
+                                    feature_types):
+    predictions = {}
+    for i, (lemma, feat_dict) in enumerate(zip(lemmas, feats)):
+        predicted_template = predict_inflection_template_with_ensemble(ensemble_models,
+                                                                    lemma,
+                                                                    feat_dict,
+                                                                    alphabet_index,
+                                                                    inverse_alphabet_index,
+                                                                    feat_index,
+                                                                    feature_types)
+
+        joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
+        predictions[joint_index] = predicted_template
+
+    return predictions
+
+
 def predict_nbest_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index, inverse_alphabet_index,
                             lemmas, feats, feat_index, feature_types, nbest, words):
     predictions = {}
@@ -1048,3 +1236,5 @@ if __name__ == '__main__':
     main(train_path_param, test_path_param, results_file_path_param, sigmorphon_root_dir_param, input_dim_param,
          hidden_dim_param, feat_input_dim_param, epochs_param, layers_param, optimization_param, regularization_param,
          learning_rate_param, plot_param)
+
+

@@ -51,7 +51,7 @@ END_WORD = '>'
 
 
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim, nbest):
+         optimization, feat_input_dim, nbest, ensemble):
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'EPOCHS': epochs, 'LAYERS': layers,
                     'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN, 'OPTIMIZATION': optimization, 'NBEST':nbest}
 
@@ -119,17 +119,49 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         test_cluster_words = [test_words[i] for i in test_cluster_to_data_indices[cluster_type]]
         test_cluster_feat_dicts = [test_feat_dicts[i] for i in test_cluster_to_data_indices[cluster_type]]
 
-        # load best model
-        best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(cluster_index), alphabet,
-                                                                              results_file_path, input_dim,
-                                                                              hidden_dim, layers,
-                                                                              feature_alphabet, feat_input_dim,
-                                                                              feature_types)
+        # handle model ensemble
+        if ensemble:
+            ensemble_model_names = ensemble.split(',')
+            ensemble_models = []
+            for e in ensemble_model_names:
+                model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(cluster_index),
+                                                                                alphabet,
+                                                                                results_file_path,
+                                                                                input_dim,
+                                                                                hidden_dim,
+                                                                                layers,
+                                                                                feature_alphabet,
+                                                                                feat_input_dim,
+                                                                                feature_types)
+
+                ensemble_models.append((model, encoder_frnn, encoder_rrnn, decoder_rnn))
+
+            # predict using the ensemble
+            predicted_templates = task1_joint_structured_inflection_blstm_feedback_fix.predict_templates_with_ensemble(
+                ensemble_models,
+                alphabet_index,
+                inverse_alphabet_index,
+                test_cluster_lemmas,
+                test_cluster_feat_dicts,
+                feat_index,
+                feature_types)
+        else:
+            # load best model
+            best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(cluster_index),
+                                                                                  alphabet,
+                                                                                  results_file_path,
+                                                                                  input_dim,
+                                                                                  hidden_dim,
+                                                                                  layers,
+                                                                                  feature_alphabet,
+                                                                                  feat_input_dim,
+                                                                                  feature_types)
 
         lang  = train_path.split('/')[-1].replace('-task{0}-train'.format('1'),'')
         if nbest == 1:
             is_nbest = False
-            predicted_templates = task1_joint_structured_inflection_blstm_feedback_fix.predict_templates(
+            if not ensemble:
+                predicted_templates = task1_joint_structured_inflection_blstm_feedback_fix.predict_templates(
                 best_model,
                 decoder_rnn,
                 encoder_frnn, encoder_rrnn,
@@ -140,10 +172,13 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                 feat_index,
                 feature_types)
 
+            # compute the predictions accuracy
             accuracy = task1_joint_structured_inflection_blstm_feedback_fix.evaluate_model(predicted_templates,
-                                                                                       test_cluster_lemmas,
-                                                                    test_cluster_feat_dicts, test_cluster_words,
-                                                                    feature_types, print_results=False)
+                                                                                            test_cluster_lemmas,
+                                                                                            test_cluster_feat_dicts,
+                                                                                            test_cluster_words,
+                                                                                            feature_types,
+                                                                                            print_results=True)
             accuracies.append(accuracy)
             print '{0} {1} accuracy: {2}'.format(lang, cluster_type, accuracy[1])
 
@@ -158,6 +193,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             micro_average_accuracy = accuracy[1]
 
         else:
+            # handle the creation of nbest lists
             is_nbest = True
 
             predicted_nbset_templates = task1_joint_structured_inflection_blstm_feedback_fix.predict_nbest_templates(
@@ -291,8 +327,12 @@ if __name__ == '__main__':
         nbest = int(arguments['--nbest'])
     else:
         nbest = NBEST
+    if arguments['--ensemble']:
+        ensemble_param = arguments['--ensemble']
+    else:
+        ensemble_param = False
 
     print arguments
 
     main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim, nbest)
+         optimization, feat_input_dim, nbest, ensemble_param)
