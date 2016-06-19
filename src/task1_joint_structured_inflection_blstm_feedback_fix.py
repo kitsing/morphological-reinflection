@@ -803,6 +803,7 @@ def predict_inflection_template_with_ensemble(ensemble_models,
         # set prev_output_vec for first lstm step as BEGIN_WORD
         prev_output_vec = char_lookup[alphabet_index[BEGIN_WORD]]
 
+        # save the extracted model params
         ensemble_params.append((R, bias, blstm_outputs, char_lookup, feats_input, prev_output_vec, s))
 
     i = 0
@@ -835,6 +836,15 @@ def predict_inflection_template_with_ensemble(ensemble_models,
 
         # predict the most voted character
         next_char_index = most_common(votes)
+
+        # debug
+        print 'votes:'
+        print [inverse_alphabet_index[c] for c in votes]
+        print 'chosen:'
+        print inverse_alphabet_index[next_char_index]
+        print 'hypo:'
+        print predicted_template
+
         predicted_template.append(inverse_alphabet_index[next_char_index])
 
         # check if reached end of word
@@ -869,8 +879,6 @@ def predict_next_char_index(R, alphabet_index, bias, blstm_outputs, char_lookup,
                             lemma_char_vecs_len, prev_output_vec, s):
     # if the lemma is finished, pad with epsilon chars
     if i < len(lemma):
-        print 'i=' + str(i)
-        print 'len blstm=' + str(len(blstm_outputs))
         blstm_output = blstm_outputs[i]
         try:
             lemma_input_char_vec = char_lookup[alphabet_index[lemma[i]]]
