@@ -123,6 +123,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         # handle model ensemble
         if ensemble:
             ensemble_model_names = ensemble.split(',')
+            print ensemble_model_names
             ensemble_models = []
             for e in ensemble_model_names:
                 model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(cluster_index),
