@@ -3,7 +3,7 @@ files and evaluation script.
 
 Usage:
   evaluate_best_joint_structured_models.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN]
-  [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--nbest=NBEST]
+  [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--nbest=NBEST] [--ensemble=ENSEMBLE]
   TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
@@ -22,6 +22,7 @@ Options:
   --layers=LAYERS               amount of layers in lstm network
   --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM
   --nbest=NBEST                 amount of nbest results
+  --ensemble=ENSEMBLE           ensemble model paths, separated by comma
 """
 
 import time
