@@ -869,8 +869,8 @@ def predict_next_char_index(R, alphabet_index, bias, blstm_outputs, char_lookup,
                             lemma_char_vecs_len, prev_output_vec, s):
     # if the lemma is finished, pad with epsilon chars
     if i < len(lemma):
-        print 'i=' + i
-        print 'len blstm=' + len(blstm_outputs)
+        print 'i=' + str(i)
+        print 'len blstm=' + str(len(blstm_outputs))
         blstm_output = blstm_outputs[i]
         try:
             lemma_input_char_vec = char_lookup[alphabet_index[lemma[i]]]
