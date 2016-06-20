@@ -929,7 +929,7 @@ def predict_templates_with_ensemble(ensemble_models,
         predictions[joint_index] = predicted_template
 
         # progress indication
-        sys.stdout.write("\r%d%%" % i)
+        sys.stdout.write("\r%d%%" % float(i) / len(lemmas) * 100)
         sys.stdout.flush()
 
     return predictions
