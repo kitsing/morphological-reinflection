@@ -298,6 +298,8 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
     best_avg_dev_loss = 999
     best_dev_accuracy = -1
     best_train_accuracy = -1
+    best_dev_epoch = 0
+    best_train_epoch = 0
     patience = 0
     train_len = len(train_words)
     epochs_x = []
@@ -346,6 +348,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
 
             if train_accuracy > best_train_accuracy:
                 best_train_accuracy = train_accuracy
+                best_train_epoch = e
 
             dev_accuracy = 0
             avg_dev_loss = 0
@@ -363,6 +366,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
 
                 if dev_accuracy > best_dev_accuracy:
                     best_dev_accuracy = dev_accuracy
+                    best_dev_epoch = e
 
                     # save best model to disk
                     save_pycnn_model(model, results_file_path, morph_index)
@@ -390,9 +394,11 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                     best_avg_dev_loss = avg_dev_loss
 
                 print 'epoch: {0} train loss: {1:.4f} dev loss: {2:.4f} dev accuracy: {3:.4f} train accuracy = {4:.4f} \
- best dev accuracy {5:.4f} best train accuracy: {6:.4f} patience = {7}'.format(e, avg_loss, avg_dev_loss, dev_accuracy,
+ best dev accuracy {5:.4f} (epoch {8}) best train accuracy: {6:.4f} (epoch {9}) patience = {7}'.format(e, avg_loss, avg_dev_loss, dev_accuracy,
                                                                                train_accuracy, best_dev_accuracy,
-                                                                               best_train_accuracy, patience)
+                                                                               best_train_accuracy, patience,
+                                                                                                best_dev_epoch,
+                                                                                                best_train_epoch)
 
                 if patience == MAX_PATIENCE:
                     print 'out of patience after {0} epochs'.format(str(e))
@@ -448,7 +454,9 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
     train_progress_bar.finish()
     if plot:
         plt.cla()
-    print 'finished training. average loss: ' + str(avg_loss)
+    print 'finished training. average loss: {} best epoch on dev: {} best epoch on train: {}'.format(str(avg_loss),
+                                                                                                     best_dev_epoch,
+                                                                                                     best_train_epoch)
     return model, e
 
 
