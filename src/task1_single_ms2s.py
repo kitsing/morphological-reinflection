@@ -2,7 +2,7 @@
 files and evaluation script.
 
 Usage:
-  task1_joint_structured_inflection_blstm_feedback_fix.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
+  task1_single_ms2s.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
   [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION]
   [--learning=LEARNING] [--plot] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
@@ -129,21 +129,26 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     print 'finished aligning'
 
     # joint model: cluster the data by POS type (features)
-    train_pos_to_data_indices = common.cluster_data_by_pos(train_feat_dicts)
-    test_pos_to_data_indices = common.cluster_data_by_pos(test_feat_dicts)
-    train_cluster_to_data_indices = train_pos_to_data_indices
-    test_cluster_to_data_indices = test_pos_to_data_indices
+    # train_pos_to_data_indices = common.cluster_data_by_pos(train_feat_dicts)
+    # test_pos_to_data_indices = common.cluster_data_by_pos(test_feat_dicts)
+    # train_cluster_to_data_indices = train_pos_to_data_indices
+    # test_cluster_to_data_indices = test_pos_to_data_indices
 
     # factored model: cluster the data by inflection type (features)
     # train_morph_to_data_indices = common.cluster_data_by_morph_type(train_feat_dicts, feature_types)
-    # test_morph_to_data_indices = common.cluster_data_by_morph_type(test_feat_dicts, feature_types)
+    # test_morph_to_data_indices = common.cluster_data_by_morph_type(train_feat_dicts, feature_types)
     # train_cluster_to_data_indices = train_morph_to_data_indices
     # test_cluster_to_data_indices = test_morph_to_data_indices
 
+    train_cluster_to_data_indices = common.get_single_pseudo_cluster(train_feat_dicts)
+    test_cluster_to_data_indices = common.get_single_pseudo_cluster(test_feat_dicts)
+    cluster_index = 0
+    cluster_type = 'all'
+
     # create input for each model and then parallelize or run in loop.
     params = []
-    for cluster_index, cluster_type in enumerate(train_cluster_to_data_indices):
-        params.append([input_dim, hidden_dim, layers, cluster_index, cluster_type, train_lemmas, train_feat_dicts,
+    # for cluster_index, cluster_type in enumerate(train_cluster_to_data_indices):
+    params.append([input_dim, hidden_dim, layers, cluster_index, cluster_type, train_lemmas, train_feat_dicts,
                        train_words, test_lemmas, test_feat_dicts, train_cluster_to_data_indices, test_words,
                        test_cluster_to_data_indices, alphabet, alphabet_index, inverse_alphabet_index, epochs,
                        optimization, results_file_path, train_aligned_pairs, test_aligned_pairs, feat_index,
@@ -163,7 +168,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         print 'finished training all {} models in loop'.format(len(train_cluster_to_data_indices))
 
     # evaluate best models
-    os.system('python task1_evaluate_best_joint_structured_models_blstm_feed_fix.py --cnn-mem 6096 --input={0} \
+    os.system('python task1_evaluate_single_ms2s.py --cnn-mem 6096 --input={0} \
     --hidden={1} --feat-input={2} --epochs={3} --layers={4} --optimization={5} {6} {7} {8} {9}'.format(input_dim,
                                                                                                        hidden_dim,
                                                                                                        feat_input_dim,
@@ -943,13 +948,14 @@ def predict_templates_with_ensemble(ensemble_models,
 
     return predictions
 
+
 def predict_templates_with_ensemble_majority(ensemble_models,
-                                        alphabet_index,
-                                        inverse_alphabet_index,
-                                        lemmas,
-                                        feats,
-                                        feat_index,
-                                        feature_types):
+                                                 alphabet_index,
+                                                 inverse_alphabet_index,
+                                                 lemmas,
+                                                 feats,
+                                                 feat_index,
+                                                 feature_types):
     predictions = defaultdict()
     for i, (lemma, feat_dict) in enumerate(zip(lemmas, feats)):
         for em in ensemble_models:
@@ -1063,7 +1069,7 @@ def evaluate_model(predicted_templates, lemmas, feature_dicts, words, feature_ty
         else:
             sign = 'X'
         if print_results:
-            print 'lemma: ' + lemma + ' gold: ' + words[i] + ' template: ' + ''.join(predicted_templates[joint_index]) \
+            print 'lemma: ' + lemma + ' gold: ' + words[i] + ' template:' + ''.join(predicted_templates[joint_index]) \
                   + ' prediction: ' + predicted_word + ' ' + sign
 
     accuracy = float(c) / len(predicted_templates)

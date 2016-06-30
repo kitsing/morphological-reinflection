@@ -42,6 +42,14 @@ def cluster_data_by_pos(feat_dicts):
     return pos_to_indices
 
 
+def get_single_pseudo_cluster(feat_dicts):
+    key = 'all'
+    cluster_to_indices = {key:[]}
+    for i, d in enumerate(feat_dicts):
+        cluster_to_indices[key].append(i)
+    return cluster_to_indices
+
+
 def argmax(iterable, n=1):
     if n==1:
         return max(enumerate(iterable), key=lambda x: x[1])[0]

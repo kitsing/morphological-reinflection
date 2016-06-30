@@ -23,12 +23,12 @@ Options:
   --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM
   --nbest=NBEST                 amount of nbest results
   --ensemble=ENSEMBLE           ensemble model paths, separated by comma
-  --majority                    use ensemble with simple majority vote
+  --majority                    perform simple majority vote instead of majority decoding
 """
 
 import time
 import docopt
-import task1_joint_structured_inflection_blstm_feedback_fix
+import task1_single_ms2s
 import prepare_sigmorphon_data
 import datetime
 import common
@@ -93,12 +93,18 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     inverse_alphabet_index = {index: char for char, index in alphabet_index.items()}
 
     # cluster the data by POS type (features)
-    train_cluster_to_data_indices = common.cluster_data_by_pos(train_feat_dicts)
-    test_cluster_to_data_indices = common.cluster_data_by_pos(test_feat_dicts)
+    # train_cluster_to_data_indices = common.cluster_data_by_pos(train_feat_dicts)
+    # test_cluster_to_data_indices = common.cluster_data_by_pos(test_feat_dicts)
 
     # cluster the data by inflection type (features)
     # train_cluster_to_data_indices = common.cluster_data_by_morph_type(train_feat_dicts, feature_types)
     # test_cluster_to_data_indices = common.cluster_data_by_morph_type(test_feat_dicts, feature_types)
+
+
+    train_cluster_to_data_indices = task1_single_ms2s.get_single_pseudo_cluster(train_feat_dicts)
+    test_cluster_to_data_indices = task1_single_ms2s.get_single_pseudo_cluster(test_feat_dicts)
+    cluster_index = 0
+    cluster_type = 'single'
 
     accuracies = []
     final_results = {}
@@ -141,16 +147,16 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 
             # predict using the ensemble
             if not majority:
-                predicted_templates = task1_joint_structured_inflection_blstm_feedback_fix.predict_templates_with_ensemble(
-                    ensemble_models,
-                    alphabet_index,
-                    inverse_alphabet_index,
-                    test_cluster_lemmas,
-                    test_cluster_feat_dicts,
-                    feat_index,
-                    feature_types)
+                predicted_templates = task1_single_ms2s.predict_templates_with_ensemble(
+                ensemble_models,
+                alphabet_index,
+                inverse_alphabet_index,
+                test_cluster_lemmas,
+                test_cluster_feat_dicts,
+                feat_index,
+                feature_types)
             else:
-                predicted_templates = task1_joint_structured_inflection_blstm_feedback_fix.predict_templates_with_ensemble_majority(
+                predicted_templates = task1_single_ms2s.predict_templates_with_ensemble_majority(
                     ensemble_models,
                     alphabet_index,
                     inverse_alphabet_index,
@@ -174,7 +180,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         if nbest == 1:
             is_nbest = False
             if not ensemble:
-                predicted_templates = task1_joint_structured_inflection_blstm_feedback_fix.predict_templates(
+                predicted_templates = task1_single_ms2s.predict_templates(
                 best_model,
                 decoder_rnn,
                 encoder_frnn, encoder_rrnn,
@@ -186,12 +192,12 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                 feature_types)
 
             # compute the predictions accuracy
-            accuracy = task1_joint_structured_inflection_blstm_feedback_fix.evaluate_model(predicted_templates,
-                                                                                            test_cluster_lemmas,
-                                                                                            test_cluster_feat_dicts,
-                                                                                            test_cluster_words,
-                                                                                            feature_types,
-                                                                                            print_results=True)
+            accuracy = task1_single_ms2s.evaluate_model(predicted_templates,
+                                                        test_cluster_lemmas,
+                                                        test_cluster_feat_dicts,
+                                                        test_cluster_words,
+                                                        feature_types,
+                                                        print_results=True)
             accuracies.append(accuracy)
             print '{0} {1} accuracy: {2}'.format(lang, cluster_type, accuracy[1])
 
@@ -199,7 +205,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
             for i in test_cluster_to_data_indices[cluster_type]:
                 joint_index = test_lemmas[i] + ':' + common.get_morph_string(test_feat_dicts[i], feature_types)
-                inflection = task1_joint_structured_inflection_blstm_feedback_fix.instantiate_template(
+                inflection = task1_single_ms2s.instantiate_template(
                     predicted_templates[joint_index], test_lemmas[i])
                 final_results[i] = (test_lemmas[i], test_feat_dicts[i], inflection)
 
@@ -209,7 +215,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             # handle the creation of nbest lists
             is_nbest = True
 
-            predicted_nbset_templates = task1_joint_structured_inflection_blstm_feedback_fix.predict_nbest_templates(
+            predicted_nbset_templates = task1_single_ms2s.predict_nbest_templates(
             best_model,
             decoder_rnn,
             encoder_frnn,
@@ -232,7 +238,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                 templates = [t for (t,p) in predicted_nbset_templates[joint_index]]
                 for template in templates:
                     nbest_inflections.append(
-                            task1_joint_structured_inflection_blstm_feedback_fix.instantiate_template(
+                        task1_single_ms2s.instantiate_template(
                                 template,
                                 test_lemmas[i]))
                 final_results[i] = (test_lemmas[i], test_feat_dicts[i], nbest_inflections)
@@ -345,7 +351,7 @@ if __name__ == '__main__':
     else:
         ensemble_param = False
     if arguments['--majority']:
-        majority_param = arguments['--majority']
+        majority_param = True
     else:
         majority_param = False
 
