@@ -950,7 +950,7 @@ def predict_templates_with_ensemble_majority(ensemble_models,
                                         feats,
                                         feat_index,
                                         feature_types):
-    predictions = defaultdict()
+    predictions = defaultdict(int)
     for i, (lemma, feat_dict) in enumerate(zip(lemmas, feats)):
         for em in ensemble_models:
             model, encoder_frnn, encoder_rrnn, decoder_rnn = em
