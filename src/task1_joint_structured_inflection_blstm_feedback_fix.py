@@ -959,7 +959,7 @@ def predict_templates_with_ensemble_majority(ensemble_models,
                                                              feat_dict, alphabet_index,
                                                              inverse_alphabet_index,
                                                              feat_index, feature_types)
-            predictions[''.join(predicted_template)] += 1
+            predictions[''.join(predicted_template)] = predictions[''.join(predicted_template)] + 1
 
         # return the most predicted output
         predicted_template = list(max(predictions, key=predictions.get))
