@@ -965,7 +965,7 @@ def predict_templates_with_ensemble_majority(ensemble_models,
             string_to_template[''.join(predicted_template)] = predicted_template
 
         # return the most predicted output
-        predicted_template_string = list(max(ensemble_predictions, key=ensemble_predictions.get))
+        predicted_template_string = max(ensemble_predictions, key=ensemble_predictions.get)
         joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
         predictions[joint_index] = string_to_template[predicted_template_string]
 
