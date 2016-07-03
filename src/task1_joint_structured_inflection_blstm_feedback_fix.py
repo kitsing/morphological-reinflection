@@ -953,6 +953,7 @@ def predict_templates_with_ensemble_majority(ensemble_models,
     predictions = {}
     for i, (lemma, feat_dict) in enumerate(zip(lemmas, feats)):
         ensemble_predictions = defaultdict(int)
+        string_to_template = {}
         for em in ensemble_models:
             model, encoder_frnn, encoder_rrnn, decoder_rnn = em
             predicted_template = predict_inflection_template(model, encoder_frnn, encoder_rrnn,
@@ -961,11 +962,12 @@ def predict_templates_with_ensemble_majority(ensemble_models,
                                                              inverse_alphabet_index,
                                                              feat_index, feature_types)
             ensemble_predictions[''.join(predicted_template)] = ensemble_predictions[''.join(predicted_template)] + 1
+            string_to_template[''.join(predicted_template)] = predicted_template
 
         # return the most predicted output
-        predicted_template = list(max(ensemble_predictions, key=ensemble_predictions.get))
+        predicted_template_string = list(max(ensemble_predictions, key=ensemble_predictions.get))
         joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
-        predictions[joint_index] = predicted_template
+        predictions[joint_index] = string_to_template[predicted_template_string]
 
         # progress indication
         sys.stdout.write("\r%d%%" % (float(i) / len(lemmas) * 100))
