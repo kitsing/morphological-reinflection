@@ -37,6 +37,8 @@ import os
 import common
 from collections import defaultdict
 from multiprocessing import Pool
+import matplotlib
+matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 from docopt import docopt
 from pycnn import *

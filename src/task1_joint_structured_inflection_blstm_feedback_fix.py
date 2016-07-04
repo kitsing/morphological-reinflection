@@ -1066,7 +1066,7 @@ def evaluate_model(predicted_templates, lemmas, feature_dicts, words, feature_ty
         else:
             sign = 'X'
         if print_results:
-            print predicted_templates[joint_index]
+            print ''.join(predicted_templates[joint_index])
             # print 'lemma: ' + lemma + ' gold: ' + words[i] + ' template: ' + ''.join(predicted_templates[joint_index]) \
             #       + ' prediction: ' + predicted_word + ' ' + sign
 
