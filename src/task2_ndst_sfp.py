@@ -270,6 +270,7 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
     model.add_lookup_parameters("feat_lookup", (len(feature_alphabet), feat_input_dim))
 
     # used in softmax output
+    # 2 * len(feature_types) * feat_input_dim, as it gets both source and target feature embeddings
     model.add_parameters("R", (len(alphabet), hidden_dim + 2 * len(feature_types) * feat_input_dim))
     model.add_parameters("bias", len(alphabet))
 
@@ -279,8 +280,7 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
 
     # 2 * HIDDEN_DIM + 3 * INPUT_DIM, as it gets a concatenation of frnn, rrnn, previous output char,
     # current lemma char, current index marker
-    # 2 * len(feature_types) * feat_input_dim, as it gets both source and target feature embeddings
-    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + 2 * len(feature_types) * feat_input_dim, hidden_dim,
+    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim, hidden_dim,
                               model)
     print 'finished creating model'
 
