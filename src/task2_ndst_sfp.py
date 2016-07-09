@@ -274,6 +274,10 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
     model.add_parameters("R", (len(alphabet), hidden_dim + 2 * len(feature_types) * feat_input_dim))
     model.add_parameters("bias", len(alphabet))
 
+    model.add_parameters("R_hidden", (hidden_dim + 2 * len(feature_types) * feat_input_dim,
+                               hidden_dim + 2 * len(feature_types) * feat_input_dim))
+    model.add_parameters("bias_hidden", hidden_dim + 2 * len(feature_types) * feat_input_dim)
+
     # rnn's
     encoder_frnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
     encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
@@ -489,6 +493,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, source_word, s
     feat_lookup = model["feat_lookup"]
     R = parameter(model["R"])
     bias = parameter(model["bias"])
+    R_hidden = parameter(model["R_hidden"])
+    bias_hidden = parameter(model["bias_hidden"])
 
     source_word = BEGIN_WORD + source_word + END_WORD
 
@@ -573,7 +579,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, source_word, s
         if output_char == END_WORD:
             s = s.add_input(decoder_input)
             decoder_rnn_output = s.output()
-            probs = softmax(R * concatenate([decoder_rnn_output, feats_input]) + bias)
+            probs = softmax(R * ( R_hidden * concatenate([decoder_rnn_output, feats_input]) + bias_hidden) + bias)
 
             # compute local loss
             loss.append(-log(pick(probs, alphabet_index[END_WORD])))
@@ -585,7 +591,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, source_word, s
             # feedback, i, j, blstm[i]
             s = s.add_input(decoder_input)
             decoder_rnn_output = s.output()
-            probs = softmax(R * concatenate([decoder_rnn_output, feats_input]) + bias)
+            probs = softmax(R * (R_hidden * concatenate([decoder_rnn_output, feats_input]) + bias_hidden) + bias)
 
             # compute local loss
             loss.append(-log(pick(probs, alphabet_index[STEP])))
@@ -611,7 +617,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, source_word, s
             # perform rnn step
             s = s.add_input(decoder_input)
             decoder_rnn_output = s.output()
-            probs = softmax(R * concatenate([decoder_rnn_output, feats_input]) + bias)
+            probs = softmax(R * (R_hidden * concatenate([decoder_rnn_output, feats_input]) + bias_hidden) + bias)
 
             local_loss = scalarInput(0)
             max_output_loss = -log(pick(probs, alphabet_index[possible_outputs[0]]))
@@ -643,7 +649,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, source_word, s
 
             s = s.add_input(decoder_input)
             decoder_rnn_output = s.output()
-            probs = softmax(R * concatenate([decoder_rnn_output, feats_input]) + bias)
+            probs = softmax(R * (R_hidden * concatenate([decoder_rnn_output, feats_input]) + bias_hidden) + bias)
 
             # compute local loss
             loss.append(-log(pick(probs, alphabet_index[STEP])))
@@ -670,6 +676,8 @@ def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, 
     feat_lookup = model["feat_lookup"]
     R = parameter(model["R"])
     bias = parameter(model["bias"])
+    R_hidden = parameter(model["R_hidden"])
+    bias_hidden = parameter(model["bias_hidden"])
 
     # convert characters to matching embeddings, if UNK handle properly
     source_word = BEGIN_WORD + source_word + END_WORD
@@ -745,7 +753,7 @@ def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, 
 
         # compute softmax probs vector and predict with argmax
         decoder_rnn_output = s.output()
-        probs = softmax(R * concatenate([decoder_rnn_output, feats_input]) + bias)
+        probs = softmax(R * (R_hidden * concatenate([decoder_rnn_output, feats_input]) + bias_hidden) + bias)
         probs = probs.vec_value()
         predicted_output_index = common.argmax(probs)
         predicted_output = inverse_alphabet_index[predicted_output_index]
