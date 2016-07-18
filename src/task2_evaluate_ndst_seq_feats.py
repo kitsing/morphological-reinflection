@@ -25,7 +25,7 @@ Options:
 
 import time
 import docopt
-import task2_joint_structured_inflection_neural_fst
+import task2_ndst
 import task2_ndst_seq_feats
 import prepare_sigmorphon_data
 import datetime
@@ -155,8 +155,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             for i in test_cluster_to_data_indices[cluster_type]:
                 joint_index = test_source_words[i] + ':' + common.get_morph_string(test_source_feat_dicts[i], feature_types) \
                                                     + ':' + common.get_morph_string(test_target_feat_dicts[i], feature_types)
-                inflection = task2_joint_structured_inflection_neural_fst.instantiate_template(predicted_templates[joint_index],
-                                                                                    test_source_words[i])
+                inflection = task2_ndst.instantiate_template(predicted_templates[joint_index],
+                                                             test_source_words[i])
                 final_results[i] = (test_source_words[i], test_source_feat_dicts[i], inflection, test_target_feat_dicts[i])
 
         except KeyError:

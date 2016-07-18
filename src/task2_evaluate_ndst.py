@@ -2,7 +2,7 @@
 files and evaluation script.
 
 Usage:
-  evaluate_best_nfst_models.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN]
+  task2_evaluate_best_joint_structured_models_nfst.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN]
   [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
@@ -25,7 +25,8 @@ Options:
 
 import time
 import docopt
-import task1_joint_structured_inflection_neural_fst
+import task2_ndst
+import task2_joint_structured_inflection
 import prepare_sigmorphon_data
 import datetime
 import common
@@ -52,20 +53,20 @@ ALIGN_SYMBOL = '~'
 
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
          optimization, feat_input_dim):
-    hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'FEAT_INPUT_DIM': feat_input_dim,
-                    'EPOCHS': epochs, 'LAYERS': layers, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
-                    'OPTIMIZATION': optimization}
-
+    hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'EPOCHS': epochs, 'LAYERS': layers,
+                    'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN, 'OPTIMIZATION': optimization}
 
     print 'train path = ' + str(train_path)
     print 'test path =' + str(test_path)
     for param in hyper_params:
         print param + '=' + str(hyper_params[param])
 
-    # load train and test data
-    (train_words, train_lemmas, train_feat_dicts) = prepare_sigmorphon_data.load_data(train_path)
-    (test_words, test_lemmas, test_feat_dicts) = prepare_sigmorphon_data.load_data(test_path)
-    alphabet, feature_types = prepare_sigmorphon_data.get_alphabet(train_words, train_lemmas, train_feat_dicts)
+    # load data
+    (train_target_words, train_source_words, train_target_feat_dicts, train_source_feat_dicts) = prepare_sigmorphon_data.load_data(
+        train_path, 2)
+    (test_target_words, test_source_words, test_target_feat_dicts, test_source_feat_dicts) = prepare_sigmorphon_data.load_data(
+        test_path, 2)
+    alphabet, feature_types = prepare_sigmorphon_data.get_alphabet(train_target_words, train_source_words, train_target_feat_dicts, train_source_feat_dicts)
 
     # used for character dropout
     alphabet.append(NULL)
@@ -88,13 +89,16 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     inverse_alphabet_index = {index: char for char, index in alphabet_index.items()}
 
     # feat 2 int
-    feature_alphabet = common.get_feature_alphabet(train_feat_dicts)
+    feature_alphabet = common.get_feature_alphabet(train_source_feat_dicts + train_target_feat_dicts)
     feature_alphabet.append(UNK_FEAT)
     feat_index = dict(zip(feature_alphabet, range(0, len(feature_alphabet))))
 
     # cluster the data by POS type (features)
-    train_cluster_to_data_indices = common.cluster_data_by_pos(train_feat_dicts)
-    test_cluster_to_data_indices = common.cluster_data_by_pos(test_feat_dicts)
+    # TODO: do we need to cluster on both source and target feats? 
+    #       probably enough to cluster on source here becasue pos will be same
+    #       (no derivational morphology in this task)
+    train_cluster_to_data_indices = common.cluster_data_by_pos(train_source_feat_dicts)
+    test_cluster_to_data_indices = common.cluster_data_by_pos(test_source_feat_dicts)
 
     # cluster the data by inflection type (features)
     # train_cluster_to_data_indices = common.cluster_data_by_morph_type(train_feat_dicts, feature_types)
@@ -107,20 +111,21 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     for cluster_index, cluster_type in enumerate(train_cluster_to_data_indices):
 
         # get the inflection-specific data
-        train_cluster_words = [train_words[i] for i in train_cluster_to_data_indices[cluster_type]]
-        if len(train_cluster_words) < 1:
-            print 'only ' + str(len(train_cluster_words)) + ' samples for this inflection type. skipping'
+        train_cluster_target_words = [train_target_words[i] for i in train_cluster_to_data_indices[cluster_type]]
+        if len(train_cluster_target_words) < 1:
+            print 'only ' + str(len(train_cluster_target_words)) + ' samples for this inflection type. skipping'
             continue
         else:
             print 'now evaluating model for cluster ' + str(cluster_index + 1) + '/' + \
                   str(len(train_cluster_to_data_indices)) + ': ' + cluster_type + ' with ' + \
-                  str(len(train_cluster_words)) + ' examples'
+                  str(len(train_cluster_target_words)) + ' examples'
 
         # test best model
         try:
-            test_cluster_lemmas = [test_lemmas[i] for i in test_cluster_to_data_indices[cluster_type]]
-            test_cluster_words = [test_words[i] for i in test_cluster_to_data_indices[cluster_type]]
-            test_cluster_feat_dicts = [test_feat_dicts[i] for i in test_cluster_to_data_indices[cluster_type]]
+            test_cluster_source_words = [test_source_words[i] for i in test_cluster_to_data_indices[cluster_type]]
+            test_cluster_target_words = [test_target_words[i] for i in test_cluster_to_data_indices[cluster_type]]
+            test_cluster_source_feat_dicts = [test_source_feat_dicts[i] for i in test_cluster_to_data_indices[cluster_type]]
+            test_cluster_target_feat_dicts = [test_target_feat_dicts[i] for i in test_cluster_to_data_indices[cluster_type]]
 
             # load best model
             best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(cluster_index), alphabet,
@@ -129,32 +134,30 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                                   feature_alphabet, feat_input_dim,
                                                                                   feature_types)
 
-            predicted_templates = task1_joint_structured_inflection_neural_fst.predict_templates(best_model,
-                                                                                                 decoder_rnn,
-                                                                                                 encoder_frnn,
-                                                                                                 encoder_rrnn,
-                                                                                                 alphabet_index,
-                                                                                                 inverse_alphabet_index,
-                                                                                                 test_cluster_lemmas,
-                                                                                                 test_cluster_feat_dicts,
-                                                                                                 feat_index,
-                                                                                                 feature_types)
+            predicted_templates = task2_ndst.predict_templates(best_model, decoder_rnn,
+                                                               encoder_frnn, encoder_rrnn,
+                                                               alphabet_index,
+                                                               inverse_alphabet_index,
+                                                               test_cluster_source_words,
+                                                               test_cluster_source_feat_dicts,
+                                                               test_cluster_target_feat_dicts,
+                                                               feat_index,
+                                                               feature_types)
 
-            accuracy = task1_joint_structured_inflection_neural_fst.evaluate_model(predicted_templates,
-                                                                                           test_cluster_lemmas,
-                                                                                           test_cluster_feat_dicts,
-                                                                                           test_cluster_words,
-                                                                                           feature_types,
-                                                                                           print_results=True)
+            accuracy = task2_ndst.evaluate_model(predicted_templates, test_cluster_source_words,
+                                                 test_cluster_source_feat_dicts, test_cluster_target_words,
+                                                 test_cluster_target_feat_dicts,
+                                                 feature_types, print_results=False)
             accuracies.append(accuracy)
 
             # get predicted_templates in the same order they appeared in the original file
             # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
             for i in test_cluster_to_data_indices[cluster_type]:
-                joint_index = test_lemmas[i] + ':' + common.get_morph_string(test_feat_dicts[i], feature_types)
-                inflection = task1_joint_structured_inflection_neural_fst.instantiate_template(
-                    predicted_templates[joint_index], test_lemmas[i])
-                final_results[i] = (test_lemmas[i], test_feat_dicts[i], inflection)
+                joint_index = test_source_words[i] + ':' + common.get_morph_string(test_source_feat_dicts[i], feature_types) \
+                                                    + ':' + common.get_morph_string(test_target_feat_dicts[i], feature_types)
+                inflection = task2_ndst.instantiate_template(predicted_templates[joint_index],
+                                                             test_source_words[i])
+                final_results[i] = (test_source_words[i], test_source_feat_dicts[i], inflection, test_target_feat_dicts[i])
 
         except KeyError:
             print 'could not find relevant examples in test data for cluster: ' + cluster_type
@@ -172,7 +175,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         suffix = '.best.test'
     else:
         suffix = '.best'
-    common.write_results_file(hyper_params, micro_average_accuracy, train_path,
+    task2_joint_structured_inflection.write_results_file(hyper_params, micro_average_accuracy, train_path,
                                               test_path, results_file_path + suffix, sigmorphon_root_dir,
                                               final_results)
 
@@ -181,6 +184,8 @@ def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_
                     feat_input_dim, feature_types):
     tmp_model_path = results_file_path + '_' + morph_index + '_bestmodel.txt'
     print 'trying to open ' + tmp_model_path
+
+    print 'creating model...'
 
     model = Model()
 
@@ -198,9 +203,13 @@ def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_
     encoder_frnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
     encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
 
-    # 3 * INPUT_DIM + 2 * HIDDEN_DIM, as it gets previous output, input index, output index, BLSTM[i]
-    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + len(feature_types) * feat_input_dim, hidden_dim,
+    # 2 * HIDDEN_DIM + 3 * INPUT_DIM, as it gets a concatenation of frnn, rrnn, previous output char,
+    # current lemma char, current index marker
+    # 2 * len(feature_types) * feat_input_dim, as it gets both source and target feature embeddings
+    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + 2 * len(feature_types) * feat_input_dim,
+                              hidden_dim,
                               model)
+    print 'finished creating model'
 
     model.load(tmp_model_path)
     return model, encoder_frnn, encoder_rrnn, decoder_rnn
@@ -224,7 +233,7 @@ if __name__ == '__main__':
     if arguments['RESULTS_PATH']:
         results_file_path = arguments['RESULTS_PATH']
     else:
-        results_file_path = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/results_' \
+        results_file_path = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/results_'\
                             + st + '.txt'
     if arguments['SIGMORPHON_PATH']:
         sigmorphon_root_dir = arguments['SIGMORPHON_PATH'][0]

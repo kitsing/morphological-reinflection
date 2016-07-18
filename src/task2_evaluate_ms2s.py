@@ -27,7 +27,7 @@ Options:
 
 import time
 import docopt
-import task2_joint_structured_inflection_blstm_feedback_fix
+import task2_ms2s
 import task2_joint_structured_inflection
 import prepare_sigmorphon_data
 import datetime
@@ -141,7 +141,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         # handle greedy prediction
         if nbest == 1:
             is_nbest = False
-            predicted_templates = task2_joint_structured_inflection_blstm_feedback_fix.predict_templates(
+            predicted_templates = task2_ms2s.predict_templates(
                 best_model,
                 decoder_rnn,
                 encoder_frnn, encoder_rrnn,
@@ -153,13 +153,13 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                 feat_index,
                 feature_types)
 
-            accuracy = task2_joint_structured_inflection_blstm_feedback_fix.evaluate_model(predicted_templates,
-                                                                                           test_cluster_source_words,
-                                                                                           test_cluster_source_feat_dicts,
-                                                                                           test_cluster_target_words,
-                                                                                           test_cluster_target_feat_dicts,
-                                                                                           feature_types,
-                                                                                           print_results=False)
+            accuracy = task2_ms2s.evaluate_model(predicted_templates,
+                                                 test_cluster_source_words,
+                                                 test_cluster_source_feat_dicts,
+                                                 test_cluster_target_words,
+                                                 test_cluster_target_feat_dicts,
+                                                 feature_types,
+                                                 print_results=False)
             accuracies.append(accuracy)
             print '{0} {1} accuracy: {2}'.format(lang, cluster_type, accuracy[1])
 
@@ -169,7 +169,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                 joint_index = test_source_words[i] + ':' + common.get_morph_string(test_source_feat_dicts[i],
                                                                                    feature_types) \
                               + ':' + common.get_morph_string(test_target_feat_dicts[i], feature_types)
-                inflection = task2_joint_structured_inflection_blstm_feedback_fix.instantiate_template(
+                inflection = task2_ms2s.instantiate_template(
                     predicted_templates[joint_index], test_source_words[i])
                 final_results[i] = (
                 test_source_words[i], test_source_feat_dicts[i], inflection, test_target_feat_dicts[i])
@@ -180,7 +180,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         else:
             is_nbest = True
 
-            predicted_nbset_templates = task2_joint_structured_inflection_blstm_feedback_fix.predict_nbest_templates(
+            predicted_nbset_templates = task2_ms2s.predict_nbest_templates(
                 best_model,
                 decoder_rnn,
                 encoder_frnn,
@@ -206,7 +206,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                 templates = [t for (t, p) in predicted_nbset_templates[joint_index]]
                 for template in templates:
                     nbest_inflections.append(
-                        task2_joint_structured_inflection_blstm_feedback_fix.instantiate_template(
+                        task2_ms2s.instantiate_template(
                             template,
                             test_source_words[i]))
                 final_results[i] = (
