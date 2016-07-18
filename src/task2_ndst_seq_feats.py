@@ -528,7 +528,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, source_word, s
     feats_input = concatenate(feat_vecs)
 
     # rescale feats into hidden_dim to insert them as input to the bilstm
-    adjusted_feats = sigmoid(feats_layer * feats_input + feats_bias)
+    adjusted_feats = logistic(feats_layer * feats_input + feats_bias)
 
     input_seq = [adjusted_feats] + source_word_char_vecs
 
@@ -730,7 +730,7 @@ def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, 
     feats_input = concatenate(feat_vecs)
 
     # rescale feats into hidden_dim to insert them as input to the bilstm
-    adjusted_feats = sigmoid(feats_layer * feats_input + feats_bias)
+    adjusted_feats = logistic(feats_layer * feats_input + feats_bias)
 
     input_seq = [adjusted_feats] + source_word_char_vecs
 
