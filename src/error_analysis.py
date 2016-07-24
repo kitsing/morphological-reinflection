@@ -3,33 +3,38 @@
 def main():
 
     evaluate(
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/pos-par-fi-joint-results.txt.best.predictions',
-        '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/finnish-task1-dev',
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_finnish_results.txt.best.predictions.error_analysis')
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/solutions/nfst/turkish-task1-solution',
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/biu/gold/turkish-task1-test',
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/turkish-task1-test-error_analysis.txt')
 
     evaluate(
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_finnish_results.txt.best.predictions',
-        '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/finnish-task1-dev',
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_finnish_results.txt.best.predictions.error_analysis')
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/solutions/nfst/russian-task1-solution',
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/biu/gold/russian-task1-test',
+        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/russian-task1-test-error_analysis.txt')
 
-    compare_error_analysis('/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_finnish_results.txt.best.predictions.error_analysis',
-                           '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_finnish_results.txt.best.predictions.error_analysis',
-                           '/Users/roeeaharoni/GitHub/morphological-reinflection/results/error_analysis_finnish_joint_vs_joint_structured.txt')
+    # evaluate(
+    #     '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_finnish_results.txt.best.predictions',
+    #     '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/finnish-task1-dev',
+    #     '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_finnish_results.txt.best.predictions.error_analysis')
 
-    evaluate(
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/real-par-pos-russian-results.txt.best.predictions',
-        '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/russian-task1-dev',
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_russian_results.txt.best.predictions.error_analysis')
-
-    evaluate(
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_russian_results.txt.best.predictions',
-        '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/russian-task1-dev',
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_russian_results.txt.best.predictions.error_analysis')
-
-    compare_error_analysis(
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_russian_results.txt.best.predictions.error_analysis',
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_russian_results.txt.best.predictions.error_analysis',
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/error_analysis_russian_joint_vs_joint_structured.txt')
+    # compare_error_analysis('/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_finnish_results.txt.best.predictions.error_analysis',
+    #                        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_finnish_results.txt.best.predictions.error_analysis',
+    #                        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/error_analysis_finnish_joint_vs_joint_structured.txt')
+    #
+    # evaluate(
+    #     '/Users/roeeaharoni/GitHub/morphological-reinflection/results/real-par-pos-russian-results.txt.best.predictions',
+    #     '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/russian-task1-dev',
+    #     '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_russian_results.txt.best.predictions.error_analysis')
+    #
+    # evaluate(
+    #     '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_russian_results.txt.best.predictions',
+    #     '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/russian-task1-dev',
+    #     '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_russian_results.txt.best.predictions.error_analysis')
+    #
+    # compare_error_analysis(
+    #     '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_russian_results.txt.best.predictions.error_analysis',
+    #     '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_russian_results.txt.best.predictions.error_analysis',
+    #     '/Users/roeeaharoni/GitHub/morphological-reinflection/results/error_analysis_russian_joint_vs_joint_structured.txt')
 
     return
 
@@ -78,8 +83,8 @@ def evaluate(predicted_file, gold_file, output_file):
                             mark = 'V'
                         else:
                             mark = 'X'
-                            line_format = "{0}\t\t{1}\t\t{2}\t\t{3}\t\t{4}\n"
-                            output_line = line_format.format(lemma, morph, 'gold: ' + gold_inflection, 'predicted: ' + predicted_inflection, mark)
+                            line_format = "lemma:\n{0}\nfeatures:\n{1}\ngold:\n{2}\npredicted:\n{3}\n{4}\n"
+                            output_line = line_format.format(lemma, morph, gold_inflection, predicted_inflection, mark)
                             if morph in morph2results:
                                 morph2results[morph].append(output_line)
                             else:
@@ -91,6 +96,7 @@ def evaluate(predicted_file, gold_file, output_file):
                         output.write('\n\n#################################\n\n')
                         for line in morph2results[morph]:
                             output.write(line)
+                            output.write('\n')
 
 
 
@@ -158,5 +164,6 @@ def group_by_pos(lines):
         if 'pos=N' in line:
             n_lines.append(line)
     return v_lines, adj_lines, n_lines
+
 if __name__ == '__main__':
     main()

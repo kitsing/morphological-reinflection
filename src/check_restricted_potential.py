@@ -11,9 +11,9 @@ def main():
     # dev_path = '/Users/roeeaharoni/GitHub/sigmorphon2016/data/german-task1-dev'
     # test_path = '../biu/gold/german-task1-test'
 
-    train_path = '/Users/roeeaharoni/GitHub/sigmorphon2016/data/russian-task1-train'
-    dev_path = '/Users/roeeaharoni/GitHub/sigmorphon2016/data/russian-task1-dev'
-    test_path = '../biu/gold/russian-task1-test'
+    train_path = '/Users/roeeaharoni/GitHub/sigmorphon2016/data/finnish-task1-train'
+    dev_path = '/Users/roeeaharoni/GitHub/sigmorphon2016/data/finnish-task1-dev'
+    test_path = '../biu/gold/finnish-task1-test'
 
     (train_words, train_lemmas, train_feat_dicts) = prepare_sigmorphon_data.load_data(train_path)
     (dev_words, dev_lemmas, dev_feat_dicts) = prepare_sigmorphon_data.load_data(dev_path)
