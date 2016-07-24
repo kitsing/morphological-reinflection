@@ -569,7 +569,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
     c_f_state = c_f_state.add_input(begin_vec)
     a_s_state = a_s_state.add_input(begin_vec)
     feedback_lstms_concat = concatenate([c_f_state.output(), a_s_state.output()])
-    prev_output_vec = feedback_R * feedback_lstms_concat + feedback_bias
+    prev_output_vec = tanh(feedback_R * feedback_lstms_concat + feedback_bias)
 
     # initialize the loss array (one loss value for each step in the sequence)
     loss = []
@@ -801,7 +801,7 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
     a_s_state = action_feedback_rnn.initial_state()
     c_f_state = c_f_state.add_input(begin_vec)
     a_s_state = a_s_state.add_input(begin_vec)
-    prev_output_vec = feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias
+    prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
 
     # i is input index, j is output index
     i = j = 0
