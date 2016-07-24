@@ -740,8 +740,8 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
     R = parameter(model["R"])
     bias = parameter(model["bias"])
 
-    feedback_R = model["feedback_R"]
-    feedback_bias = model["feedback_bias"]
+    feedback_R = parameter(model["feedback_R"])
+    feedback_bias = parameter(model["feedback_bias"])
 
     # convert characters to matching embeddings, if UNK handle properly
     padded_lemma = BEGIN_WORD + lemma + END_WORD
