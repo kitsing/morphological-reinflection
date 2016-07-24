@@ -504,8 +504,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
     R = parameter(model["R"])
     bias = parameter(model["bias"])
 
-    feedback_R = model["feedback_R"]
-    feedback_bias = model["feedback_bias"]
+    feedback_R = parameter(model["feedback_R"])
+    feedback_bias = parameter(model["feedback_bias"])
 
     padded_lemma = BEGIN_WORD + lemma + END_WORD
 
@@ -568,7 +568,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
     a_s_state = action_feedback_rnn.initial_state()
     c_f_state = c_f_state.add_input(begin_vec)
     a_s_state = a_s_state.add_input(begin_vec)
-    prev_output_vec = feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias
+    feedback_lstms_concat = concatenate([c_f_state.output(), a_s_state.output()])
+    prev_output_vec = feedback_R * feedback_lstms_concat + feedback_bias
 
     # initialize the loss array (one loss value for each step in the sequence)
     loss = []
