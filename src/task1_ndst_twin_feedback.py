@@ -733,8 +733,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
 
             i += 1
-    print u'in:  {}\nout: {}\npredicted: {}'.format(aligned_lemma, aligned_word, predicted_seq)
-    print u'actions: {}\nchars:{}'.format(action_feedback_seq, char_feedback_seq)
+    # print u'in:  {}\nout: {}\npredicted: {}'.format(aligned_lemma, aligned_word, predicted_seq)
+    # print u'actions: {}\nchars:{}'.format(action_feedback_seq, char_feedback_seq)
     # TODO: maybe here a "special" loss function is appropriate?
     # loss = esum(loss)
     loss = average(loss)
