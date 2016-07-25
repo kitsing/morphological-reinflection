@@ -656,7 +656,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
                 action_feedback_seq += str(i)
             else:
                 action_feedback_vec = char_lookup[alphabet_index[aligned_word[index]]]
-                action_feedback_seq += str(aligned_word[index])
+                action_feedback_seq += aligned_word[index]
 
             # create proper character feedback vector
             possible_outputs.append(aligned_word[index])
