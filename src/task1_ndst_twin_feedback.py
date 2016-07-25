@@ -585,6 +585,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
     aligned_lemma = aligned_lemma + END_WORD
     aligned_word = aligned_word + END_WORD
 
+    predicted_seq = ''
+
     # run through the alignments
     for index, (input_char, output_char) in enumerate(zip(aligned_lemma, aligned_word)):
         possible_outputs = []
@@ -604,6 +606,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
 
             # compute local loss
             loss.append(-log(pick(probs, alphabet_index[END_WORD])))
+            predicted_seq += END_WORD
             continue
 
         # if there is no prefix (= there is no align symbol in the beginning of the aligned lemma), step to skip
@@ -617,6 +620,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
 
             # compute local loss
             loss.append(-log(pick(probs, alphabet_index[STEP])))
+            predicted_seq += STEP
 
             # prepare for the next iteration - "feedback"
             # prev_output_vec = char_lookup[alphabet_index[STEP]]
@@ -646,9 +650,6 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
                 # copy action
                 possible_outputs.append(str(i))
                 action_feedback_vec = char_lookup[alphabet_index[str(i)]]
-            else:
-                # char action
-                action_feedback_vec = char_lookup[alphabet_index[aligned_word[index]]]
 
             # create proper character feedback vector
             possible_outputs.append(aligned_word[index])
@@ -678,6 +679,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
                 #     max_output_loss = neg_log_likelihood
 
                 local_loss += neg_log_likelihood
+            predicted_seq += possible_outputs[0]
             loss.append(local_loss)
 
             # prepare for the next iteration - "feedback"
@@ -711,6 +713,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
 
             # compute local loss
             loss.append(-log(pick(probs, alphabet_index[STEP])))
+            predicted_seq += STEP
 
             # prepare for the next iteration - "feedback"
             # prev_output_vec = char_lookup[alphabet_index[STEP]]
@@ -721,7 +724,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
 
             i += 1
-
+    print 'in:  {}\nout: {}\npredicted: {}'.format(aligned_lemma, aligned_word, predicted_seq)
     # TODO: maybe here a "special" loss function is appropriate?
     # loss = esum(loss)
     loss = average(loss)
