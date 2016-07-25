@@ -729,6 +729,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             # not changing c_f_state as no character was predicted, only step action is done
             # stepping the actions feedback lstm with step
             a_s_state = a_s_state.add_input(step_vec)
+            action_feedback_seq += STEP
             prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
 
             i += 1
