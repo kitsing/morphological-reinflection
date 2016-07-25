@@ -586,6 +586,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
     aligned_word = aligned_word + END_WORD
 
     predicted_seq = ''
+    action_feedback_seq = ''
+    char_feedback_seq = ''
 
     # run through the alignments
     for index, (input_char, output_char) in enumerate(zip(aligned_lemma, aligned_word)):
@@ -629,6 +631,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             # c_f_state = c_f_state.add_input(begin_vec)
             # stepping the actions feedback lstm with step
             a_s_state = a_s_state.add_input(step_vec)
+            action_feedback_seq += STEP
             prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
 
             i += 1
@@ -650,8 +653,10 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
                 # copy action
                 possible_outputs.append(str(i))
                 action_feedback_vec = char_lookup[alphabet_index[str(i)]]
+                action_feedback_seq += str(i)
             else:
                 action_feedback_vec = char_lookup[alphabet_index[aligned_word[index]]]
+                action_feedback_seq += str(aligned_word[index])
 
             # create proper character feedback vector
             possible_outputs.append(aligned_word[index])
@@ -689,6 +694,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
 
             # stepping the char feedback lstm with gold char
             c_f_state = c_f_state.add_input(char_feedback_vec)
+            char_feedback_seq += aligned_word[index]
 
             # stepping the actions feedback lstm with char or copy action
             a_s_state = a_s_state.add_input(action_feedback_vec)
@@ -727,6 +733,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
 
             i += 1
     print u'in:  {}\nout: {}\npredicted: {}'.format(aligned_lemma, aligned_word, predicted_seq)
+    print u'actions: {}\nchars:{}'.format(action_feedback_seq, char_feedback_seq)
     # TODO: maybe here a "special" loss function is appropriate?
     # loss = esum(loss)
     loss = average(loss)
