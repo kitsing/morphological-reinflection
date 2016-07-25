@@ -181,33 +181,11 @@ def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_
                     feat_input_dim, feature_types):
 
     tmp_model_path = results_file_path + '_' + morph_index + '_bestmodel.txt'
-
     model, encoder_frnn, encoder_rrnn, decoder_rnn = task1_ndst_wo_ij_feats.build_model(alphabet, input_dim, hidden_dim,
                                                                                         layers, feature_types,
                                                                                         feat_input_dim,
                                                                                         feature_alphabet)
-    print 'trying to open model from: {}'.format(tmp_model_path)
-
-    # model = Model()
-    #
-    # # character embeddings
-    # model.add_lookup_parameters("char_lookup", (len(alphabet), input_dim))
-    #
-    # # feature embeddings
-    # model.add_lookup_parameters("feat_lookup", (len(feature_alphabet), feat_input_dim))
-    #
-    # # used in softmax output
-    # model.add_parameters("R", (len(alphabet), hidden_dim))
-    # model.add_parameters("bias", len(alphabet))
-    #
-    # # rnn's
-    # encoder_frnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
-    # encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
-    #
-    # # 3 * INPUT_DIM + 2 * HIDDEN_DIM, as it gets previous output, input index, output index, BLSTM[i]
-    # decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + len(feature_types) * feat_input_dim, hidden_dim,
-    #                           model)
-
+    print 'trying to load model from: {}'.format(tmp_model_path)
     model.load(tmp_model_path)
     return model, encoder_frnn, encoder_rrnn, decoder_rnn
 

@@ -257,33 +257,13 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 
 def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_dim, layers, feature_alphabet,
                     feat_input_dim, feature_types):
+
     tmp_model_path = results_file_path + '_' + morph_index + '_bestmodel.txt'
-    print 'trying to open ' + tmp_model_path
 
-    model = Model()
-
-    # character embeddings
-    model.add_lookup_parameters("char_lookup", (len(alphabet), input_dim))
-
-    # feature embeddings
-    # TODO: add another input dim for features?
-    model.add_lookup_parameters("feat_lookup", (len(feature_alphabet), feat_input_dim))
-
-    # used in softmax output
-    model.add_parameters("R", (len(alphabet), hidden_dim))
-    model.add_parameters("bias", len(alphabet))
-
-    # rnn's
-    encoder_frnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
-    encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
-
-    # TODO: inspect carefully, as dims may be sub-optimal in some cases (many feature types?)
-    # 2 * HIDDEN_DIM + 3 * INPUT_DIM + len(feats) * FEAT_INPUT_DIM, as it gets a concatenation of frnn, rrnn
-    # (both of HIDDEN_DIM size), previous output char, current lemma char (of INPUT_DIM size) current index char
-    # and feats * FEAT_INPUT_DIM
-    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + len(feature_types) * feat_input_dim, hidden_dim,
-                              model)
-
+    model, encoder_frnn, encoder_rrnn, decoder_rnn = task1_ms2s.build_model(alphabet, input_dim, hidden_dim, layers,
+                                                                            feature_types, feat_input_dim,
+                                                                            feature_alphabet)
+    print 'trying to load model from: {}'.format(tmp_model_path)
     model.load(tmp_model_path)
     return model, encoder_frnn, encoder_rrnn, decoder_rnn
 
