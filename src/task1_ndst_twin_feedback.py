@@ -302,7 +302,8 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
     # model.add_parameters("feedback_bias", hidden_dim)
 
     # 2 * INPUT_DIM + 2 * HIDDEN_DIM, as it gets feedback action, feedback char, BLSTM[i]
-    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 2 * input_dim + len(feature_types) * feat_input_dim, hidden_dim,
+    # TODO: changed to 1 * hidden to remove prev char
+    decoder_rnn = LSTMBuilder(layers, 1 * hidden_dim + 2 * input_dim + len(feature_types) * feat_input_dim, hidden_dim,
                               model)
     print 'dims in decoder are {} to {}'.format(2 * hidden_dim + 2 * input_dim + len(feature_types) * feat_input_dim,
                                                 hidden_dim)
@@ -609,7 +610,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
 
         # feedback, i, j, blstm[i], feats
         decoder_input = concatenate([prev_action_vec,
-                                     prev_char_vec,
+                                     # prev_char_vec,
                                      # prev_output_vec,
                                      # input_char_lookup[alphabet_index[str(i)]],
                                      # input_char_lookup[alphabet_index[str(j)]],
@@ -659,7 +660,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             decoder_input = concatenate([
                                          # prev_output_vec,
                                          prev_action_vec,
-                                         prev_char_vec,
+                                         # prev_char_vec,
                                          # input_char_lookup[alphabet_index[str(i)]],
                                          # input_char_lookup[alphabet_index[str(j)]],
                                          blstm_outputs[i],
@@ -739,7 +740,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             # feedback, i, j, blstm[i], feats
             decoder_input = concatenate([
                                          prev_action_vec,
-                                         prev_char_vec,
+                                         # prev_char_vec,
                                          # prev_output_vec,
                                          # input_char_lookup[alphabet_index[str(i)]],
                                          # input_char_lookup[alphabet_index[str(j)]],
@@ -863,7 +864,7 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
         # prepare input vector and perform LSTM step
         decoder_input = concatenate([
                                      prev_action_vec,
-                                     prev_char_vec,
+                                     # prev_char_vec,
                                      # prev_output_vec,
                                      # input_char_lookup[alphabet_index[str(i)]],
                                      # input_char_lookup[alphabet_index[str(j)]],
