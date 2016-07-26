@@ -625,8 +625,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             predicted_seq += END_WORD
             continue
 
-        # if there is no prefix (= there is no align symbol in the beginning of the aligned lemma), step to skip
-        # the "begin word" character embedding in the input sequence
+        # end case: if there is no prefix (= there is no align symbol in the beginning of the aligned lemma), step to
+        # skip the "begin word" character embedding in the input sequence
         if padded_lemma[i] == BEGIN_WORD and aligned_lemma[index] != ALIGN_SYMBOL:
             # perform rnn step
             # feedback, i, j, blstm[i], feats
@@ -671,11 +671,11 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             if padded_lemma[i] == aligned_word[j]:
                 # copy action
                 possible_outputs.append(str(i))
-                action_feedback_vec = output_char_lookup[alphabet_index[str(i)]]
+                # action_feedback_vec = output_char_lookup[alphabet_index[str(i)]]
                 action_feedback_seq += str(i)
-            else:
-                action_feedback_vec = output_char_lookup[alphabet_index[aligned_word[index]]]
-                action_feedback_seq += aligned_word[index]
+            # else:
+                # action_feedback_vec = output_char_lookup[alphabet_index[aligned_word[index]]]
+                # action_feedback_seq += aligned_word[index]
 
             # create proper character feedback vector
             possible_outputs.append(aligned_word[index])
@@ -692,20 +692,24 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             # max loss is not interesting as we give both as feedback - maybe we should give copy action feedback only
             # if its better?
             # TODO: for now always give copy action if possible, otherwise only char action *in both*
-            # max_output_loss = -log(pick(probs, alphabet_index[possible_outputs[0]]))
-            # max_likelihood_output = possible_outputs[0]
+            max_output_loss = -log(pick(probs, alphabet_index[possible_outputs[0]]))
+            max_likelihood_output = possible_outputs[0]
 
             # sum over all correct output possibilities
             for output in possible_outputs:
                 neg_log_likelihood = -log(pick(probs, alphabet_index[output]))
                 # TODO: same as above - irrelevant as we give both in feedback, maybe in the future choose action
-                # feedback accordingly
-                # if neg_log_likelihood < max_output_loss:
-                #     max_likelihood_output = output
-                #     max_output_loss = neg_log_likelihood
+
+                if neg_log_likelihood < max_output_loss:
+                    max_likelihood_output = output
+                    max_output_loss = neg_log_likelihood
 
                 local_loss += neg_log_likelihood
-            predicted_seq += possible_outputs[0]
+
+            # action feedback according to max likelihood output
+            action_feedback_vec = output_char_lookup[alphabet_index[max_likelihood_output]]
+            predicted_seq += max_likelihood_output
+            action_feedback_seq += max_likelihood_output
             loss.append(local_loss)
 
             # prepare for the next iteration - "feedback"
