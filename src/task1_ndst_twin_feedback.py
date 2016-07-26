@@ -372,7 +372,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_rn
 
             epoch_progress_percentage = i/train_len
             stdout.flush()
-            stdout.write("current epoch progress: %d\%" % epoch_progress_percentage)
+            stdout.write("current epoch progress: %d/100 percent" % epoch_progress_percentage)
 
 
         if EARLY_STOPPING:
