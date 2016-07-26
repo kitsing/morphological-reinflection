@@ -373,7 +373,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_rn
                 avg_loss = total_loss
 
             epoch_progress_percentage = int(float(i)/train_len * 100)
-            print morph_index, " ", epoch_progress_percentage, " percent complete \r",
+            print "model ", morph_index, ": ", epoch_progress_percentage, " percent complete \r",
 
         if EARLY_STOPPING:
 
@@ -668,7 +668,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             # TODO: was aligned_word[j], changed j to index to be consistent, make sure there's no end case where
             # TODO: j != index
             # create proper action feedback vector
-            if padded_lemma[i] == aligned_word[index]:
+            if padded_lemma[i] == aligned_word[j]:
                 # copy action
                 possible_outputs.append(str(i))
                 action_feedback_vec = output_char_lookup[alphabet_index[str(i)]]
