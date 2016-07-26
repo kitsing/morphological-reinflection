@@ -378,10 +378,11 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_rn
         if EARLY_STOPPING:
 
             # get train accuracy
+            print 'evaluating on train set...'
             train_predictions = predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, char_feedback_rnn,
                                                   action_feedback_rnn, alphabet_index, inverse_alphabet_index,
                                                   train_lemmas, train_feat_dicts, feat_index, feature_types)
-            print 'train:'
+
             train_accuracy = evaluate_model(train_predictions, train_lemmas, train_feat_dicts, train_words,
                                             feature_types, print_results=False)[1]
 
@@ -394,10 +395,11 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_rn
             if len(dev_lemmas) > 0:
 
                 # get dev accuracy
+                print 'evaluating on dev set...'
                 dev_predictions = predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, char_feedback_rnn,
                                                     action_feedback_rnn, alphabet_index, inverse_alphabet_index,
                                                     dev_lemmas, dev_feat_dicts, feat_index, feature_types)
-                print 'dev:'
+
                 # get dev accuracy
                 dev_accuracy = evaluate_model(dev_predictions, dev_lemmas, dev_feat_dicts, dev_words, feature_types,
                                               print_results=True)[1]
