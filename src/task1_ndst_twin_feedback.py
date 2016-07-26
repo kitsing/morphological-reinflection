@@ -751,7 +751,8 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
     renew_cg()
 
     # read the parameters
-    char_lookup = model["char_lookup"]
+    input_char_lookup = model["input_char_lookup"]
+    output_char_lookup = model["output_char_lookup"]
     feat_lookup = model["feat_lookup"]
     R = parameter(model["R"])
     bias = parameter(model["bias"])
@@ -764,10 +765,10 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
     lemma_char_vecs = []
     for char in padded_lemma:
         try:
-            lemma_char_vecs.append(char_lookup[alphabet_index[char]])
+            lemma_char_vecs.append(input_char_lookup[alphabet_index[char]])
         except KeyError:
             # handle UNK
-            lemma_char_vecs.append(char_lookup[alphabet_index[UNK]])
+            lemma_char_vecs.append(input_char_lookup[alphabet_index[UNK]])
 
     # convert features to matching embeddings, if UNK handle properly
     feat_vecs = []
@@ -812,7 +813,7 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
 
     # set prev_output_vec for first lstm step as BEGIN_WORD for both feedback lstms
     # prev_output_vec = char_lookup[alphabet_index[BEGIN_WORD]]
-    begin_vec = char_lookup[alphabet_index[BEGIN_WORD]]
+    begin_vec = output_char_lookup[alphabet_index[BEGIN_WORD]]
     c_f_state = char_feedback_rnn.initial_state()
     a_s_state = action_feedback_rnn.initial_state()
     c_f_state = c_f_state.add_input(begin_vec)
@@ -829,8 +830,8 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
 
         # prepare input vector and perform LSTM step
         decoder_input = concatenate([prev_output_vec,
-                                     char_lookup[alphabet_index[str(i)]],
-                                     char_lookup[alphabet_index[str(j)]],
+                                     input_char_lookup[alphabet_index[str(i)]],
+                                     input_char_lookup[alphabet_index[str(j)]],
                                      blstm_outputs[i],
                                      feats_input])
 
@@ -844,11 +845,15 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
         predicted_output = inverse_alphabet_index[predicted_output_index]
         predicted_output_sequence.append(predicted_output)
 
+        # check if reached end of word
+        if predicted_output_sequence[-1] == END_WORD:
+            break
+
         # check if step or char output to promote i or j.
         if predicted_output == STEP:
             # prepare for the next iteration - "feedback"
             # prev_output_vec = char_lookup[alphabet_index[STEP]]
-            step_vec = char_lookup[alphabet_index[STEP]]
+            step_vec = output_char_lookup[alphabet_index[STEP]]
             # not changing c_f_state as no character was predicted, only step action is done
             # stepping the actions feedback lstm with step
             a_s_state = a_s_state.add_input(step_vec)
@@ -858,16 +863,16 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
         else:
             if predicted_output.isdigit():
                 # copy action
-                action_feedback_vec = char_lookup[predicted_output_index]
+                action_feedback_vec = output_char_lookup[predicted_output_index]
 
                 # the copied char
-                char_feedback_vec = char_lookup[alphabet_index[padded_lemma[i]]]
+                char_feedback_vec = output_char_lookup[alphabet_index[padded_lemma[i]]]
             else:
                 # char action
-                action_feedback_vec = char_lookup[predicted_output_index]
+                action_feedback_vec = output_char_lookup[predicted_output_index]
 
                 # the predicted char embedding
-                char_feedback_vec = char_lookup[predicted_output_index]
+                char_feedback_vec = output_char_lookup[predicted_output_index]
 
             # stepping the char feedback lstm with predicted char
             c_f_state = c_f_state.add_input(char_feedback_vec)
@@ -882,9 +887,6 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
             j += 1
 
         num_outputs += 1
-        # check if reached end of word
-        if predicted_output_sequence[-1] == END_WORD:
-            break
 
         # prepare for the next iteration - "feedback" - already computed above using the two feedback lstms
         # prev_output_vec = char_lookup[predicted_output_index]
