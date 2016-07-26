@@ -370,7 +370,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_rn
             else:
                 avg_loss = total_loss
 
-            epoch_progress_percentage = i/train_len
+            epoch_progress_percentage = int(float(i)/train_len * 100)
             print epoch_progress_percentage, " percent complete         \r",
 
         if EARLY_STOPPING:
