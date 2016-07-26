@@ -706,7 +706,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
 
                 local_loss += neg_log_likelihood
 
-            # action feedback according to max likelihood output
+            # choose action feedback according to max likelihood output - may still overfit?
+            # shouldn't as it's identical to the previous setup minus i,j embeddings and plus char feedback embedding
             action_feedback_vec = output_char_lookup[alphabet_index[max_likelihood_output]]
             predicted_seq += max_likelihood_output
             action_feedback_seq += max_likelihood_output
