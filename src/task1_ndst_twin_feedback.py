@@ -37,6 +37,7 @@ import common
 from multiprocessing import Pool
 from matplotlib import pyplot as plt
 from docopt import docopt
+from sys import stdout
 from pycnn import *
 
 # default values
@@ -369,6 +370,11 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_rn
             else:
                 avg_loss = total_loss
 
+            epoch_progress_percentage = i/train_len
+            stdout.flush()
+            stdout.write("current epoch progress: %d\%" % epoch_progress_percentage)
+
+
         if EARLY_STOPPING:
 
             # get train accuracy
@@ -463,6 +469,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_rn
                     if plot:
                         plt.cla()
                     return model, e
+
 
             # update lists for plotting
             train_accuracy_y.append(train_accuracy)
