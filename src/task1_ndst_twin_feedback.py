@@ -201,7 +201,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                                       results_file_path,
                                                                                       sigmorphon_root_dir))
     for e in last_epochs:
-        print e
+        print 'last epoch is {}'.format(e)
 
     return
 
@@ -298,12 +298,14 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
     action_feedback_rnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
 
     # feedback MLP used to combine the two feedback rnns
-    model.add_parameters("feedback_R", (hidden_dim, 2*hidden_dim))
-    model.add_parameters("feedback_bias", hidden_dim)
+    # model.add_parameters("feedback_R", (hidden_dim, 2*hidden_dim))
+    # model.add_parameters("feedback_bias", hidden_dim)
 
-    # 3 * INPUT_DIM + 2 * HIDDEN_DIM, as it gets previous output, input index, output index, BLSTM[i]
-    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + len(feature_types) * feat_input_dim, hidden_dim,
+    # 2 * INPUT_DIM + 2 * HIDDEN_DIM, as it gets feedback action, feedback char, BLSTM[i]
+    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 2 * input_dim + len(feature_types) * feat_input_dim, hidden_dim,
                               model)
+    print 'dims in decoder are {} to {}'.format(2 * hidden_dim + 2 * input_dim + len(feature_types) * feat_input_dim,
+                                                hidden_dim)
     print 'finished creating model'
 
     return model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_rnn, action_feedback_rnn
@@ -371,7 +373,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_rn
                 avg_loss = total_loss
 
             epoch_progress_percentage = int(float(i)/train_len * 100)
-            print morph_index, " ", epoch_progress_percentage, " percent complete         \r",
+            print morph_index, " ", epoch_progress_percentage, " percent complete \r",
 
         if EARLY_STOPPING:
 
@@ -512,8 +514,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
     R = parameter(model["R"])
     bias = parameter(model["bias"])
 
-    feedback_R = parameter(model["feedback_R"])
-    feedback_bias = parameter(model["feedback_bias"])
+    # feedback_R = parameter(model["feedback_R"])
+    # feedback_bias = parameter(model["feedback_bias"])
 
     padded_lemma = BEGIN_WORD + lemma + END_WORD
 
@@ -572,12 +574,14 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
     # set prev_output_vec for first lstm step as BEGIN_WORD for both feedback lstms
     # prev_output_vec = input_char_lookup[alphabet_index[BEGIN_WORD]]
     begin_vec = output_char_lookup[alphabet_index[BEGIN_WORD]]
-    c_f_state = char_feedback_rnn.initial_state()
-    a_s_state = action_feedback_rnn.initial_state()
-    c_f_state = c_f_state.add_input(begin_vec)
-    a_s_state = a_s_state.add_input(begin_vec)
-    feedback_lstms_concat = concatenate([c_f_state.output(), a_s_state.output()])
-    prev_output_vec = tanh(feedback_R * feedback_lstms_concat + feedback_bias)
+    # c_f_state = char_feedback_rnn.initial_state()
+    # a_s_state = action_feedback_rnn.initial_state()
+    # c_f_state = c_f_state.add_input(begin_vec)
+    # a_s_state = a_s_state.add_input(begin_vec)
+    # feedback_lstms_concat = concatenate([c_f_state.output(), a_s_state.output()])
+    # prev_output_vec = tanh(feedback_R * feedback_lstms_concat + feedback_bias)
+    prev_action_vec = begin_vec
+    prev_char_vec = begin_vec
 
     # initialize the loss array (one loss value for each step in the sequence)
     loss = []
@@ -602,9 +606,11 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
         possible_outputs = []
 
         # feedback, i, j, blstm[i], feats
-        decoder_input = concatenate([prev_output_vec,
-                                     input_char_lookup[alphabet_index[str(i)]],
-                                     input_char_lookup[alphabet_index[str(j)]],
+        decoder_input = concatenate([prev_action_vec,
+                                     prev_char_vec,
+                                     # prev_output_vec,
+                                     # input_char_lookup[alphabet_index[str(i)]],
+                                     # input_char_lookup[alphabet_index[str(j)]],
                                      blstm_outputs[i],
                                      feats_input])
 
@@ -638,17 +644,22 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             # not changing c_f_state as no character was predicted
             # c_f_state = c_f_state.add_input(begin_vec)
             # stepping the actions feedback lstm with step
-            a_s_state = a_s_state.add_input(step_vec)
+            # a_s_state = a_s_state.add_input(step_vec)
             action_feedback_seq += STEP
-            prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
+            # prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
+            prev_action_vec = step_vec
+            prev_char_vec = output_char_lookup[alphabet_index[EPSILON]]
 
             i += 1
 
-        # if there is new char to output as a prediction in the aligned gold example
+        # if there is a new char to output as a prediction in the aligned gold example
         if aligned_word[index] != ALIGN_SYMBOL:
-            decoder_input = concatenate([prev_output_vec,
-                                         input_char_lookup[alphabet_index[str(i)]],
-                                         input_char_lookup[alphabet_index[str(j)]],
+            decoder_input = concatenate([
+                                         # prev_output_vec,
+                                         prev_action_vec,
+                                         prev_char_vec,
+                                         # input_char_lookup[alphabet_index[str(i)]],
+                                         # input_char_lookup[alphabet_index[str(j)]],
                                          blstm_outputs[i],
                                          feats_input])
 
@@ -701,14 +712,16 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             # prev_output_vec = input_char_lookup[alphabet_index[max_likelihood_output]]
 
             # stepping the char feedback lstm with gold char
-            c_f_state = c_f_state.add_input(char_feedback_vec)
+            # c_f_state = c_f_state.add_input(char_feedback_vec)
             char_feedback_seq += aligned_word[index]
 
             # stepping the actions feedback lstm with char or copy action
-            a_s_state = a_s_state.add_input(action_feedback_vec)
+            # a_s_state = a_s_state.add_input(action_feedback_vec)
 
             # combine lstm feedbacks through MLP
-            prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
+            # prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
+            prev_action_vec = action_feedback_vec
+            prev_char_vec = char_feedback_vec
             j += 1
 
         # now check if it's time to progress on input - perform step (= next input is not the align symbol + seq. isn't
@@ -717,9 +730,12 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
         if i < len(padded_lemma) - 1 and aligned_lemma[index + 1] != ALIGN_SYMBOL:
             # perform rnn step
             # feedback, i, j, blstm[i], feats
-            decoder_input = concatenate([prev_output_vec,
-                                         input_char_lookup[alphabet_index[str(i)]],
-                                         input_char_lookup[alphabet_index[str(j)]],
+            decoder_input = concatenate([
+                                         prev_action_vec,
+                                         prev_char_vec,
+                                         # prev_output_vec,
+                                         # input_char_lookup[alphabet_index[str(i)]],
+                                         # input_char_lookup[alphabet_index[str(j)]],
                                          blstm_outputs[i],
                                          feats_input])
 
@@ -736,16 +752,18 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             step_vec = output_char_lookup[alphabet_index[STEP]]
             # not changing c_f_state as no character was predicted, only step action is done
             # stepping the actions feedback lstm with step
-            a_s_state = a_s_state.add_input(step_vec)
+            # a_s_state = a_s_state.add_input(step_vec)
             action_feedback_seq += STEP
-            prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
+            # prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
+            prev_action_vec = step_vec
+            prev_char_vec = output_char_lookup[alphabet_index[EPSILON]]
 
             i += 1
     # print u'in:  {}\nout: {}\npredicted: {}'.format(aligned_lemma, aligned_word, predicted_seq)
     # print u'actions: {}\nchars:{}\n'.format(action_feedback_seq, char_feedback_seq)
     # TODO: maybe here a "special" loss function is appropriate?
-    loss = esum(loss)
-    # loss = average(loss)
+    # loss = esum(loss)
+    loss = average(loss)
 
     return loss
 
@@ -762,8 +780,8 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
     R = parameter(model["R"])
     bias = parameter(model["bias"])
 
-    feedback_R = parameter(model["feedback_R"])
-    feedback_bias = parameter(model["feedback_bias"])
+    # feedback_R = parameter(model["feedback_R"])
+    # feedback_bias = parameter(model["feedback_bias"])
 
     # convert characters to matching embeddings, if UNK handle properly
     padded_lemma = BEGIN_WORD + lemma + END_WORD
@@ -819,11 +837,13 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
     # set prev_output_vec for first lstm step as BEGIN_WORD for both feedback lstms
     # prev_output_vec = char_lookup[alphabet_index[BEGIN_WORD]]
     begin_vec = output_char_lookup[alphabet_index[BEGIN_WORD]]
-    c_f_state = char_feedback_rnn.initial_state()
-    a_s_state = action_feedback_rnn.initial_state()
-    c_f_state = c_f_state.add_input(begin_vec)
-    a_s_state = a_s_state.add_input(begin_vec)
-    prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
+    # c_f_state = char_feedback_rnn.initial_state()
+    # a_s_state = action_feedback_rnn.initial_state()
+    # c_f_state = c_f_state.add_input(begin_vec)
+    # a_s_state = a_s_state.add_input(begin_vec)
+    # prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
+    prev_action_vec = begin_vec
+    prev_char_vec = begin_vec
 
     # i is input index, j is output index
     i = j = 0
@@ -834,9 +854,12 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
     while num_outputs < MAX_PREDICTION_LEN * 3:
 
         # prepare input vector and perform LSTM step
-        decoder_input = concatenate([prev_output_vec,
-                                     input_char_lookup[alphabet_index[str(i)]],
-                                     input_char_lookup[alphabet_index[str(j)]],
+        decoder_input = concatenate([
+                                     prev_action_vec,
+                                     prev_char_vec,
+                                     # prev_output_vec,
+                                     # input_char_lookup[alphabet_index[str(i)]],
+                                     # input_char_lookup[alphabet_index[str(j)]],
                                      blstm_outputs[i],
                                      feats_input])
 
@@ -861,8 +884,10 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
             step_vec = output_char_lookup[alphabet_index[STEP]]
             # not changing c_f_state as no character was predicted, only step action is done
             # stepping the actions feedback lstm with step
-            a_s_state = a_s_state.add_input(step_vec)
-            prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
+            # a_s_state = a_s_state.add_input(step_vec)
+            # prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
+            prev_action_vec = step_vec
+            prev_char_vec = output_char_lookup[alphabet_index[EPSILON]]
             if i < len(lemma) - 1:
                 i += 1
         else:
@@ -880,13 +905,15 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
                 char_feedback_vec = output_char_lookup[predicted_output_index]
 
             # stepping the char feedback lstm with predicted char
-            c_f_state = c_f_state.add_input(char_feedback_vec)
+            # c_f_state = c_f_state.add_input(char_feedback_vec)
 
             # stepping the actions feedback lstm with char or copy action
-            a_s_state = a_s_state.add_input(action_feedback_vec)
+            # a_s_state = a_s_state.add_input(action_feedback_vec)
 
             # combine lstm feedbacks through an MLP
-            prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
+            # prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
+            prev_action_vec = action_feedback_vec
+            prev_char_vec = char_feedback_vec
 
             # promote j as a new character was added to the output
             j += 1
