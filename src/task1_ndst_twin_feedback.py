@@ -900,16 +900,16 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
         else:
             if predicted_output.isdigit():
                 # copy action
-                action_feedback_vec = output_char_lookup[predicted_output_index]
+                action_feedback_vec = output_char_lookup[alphabet_index[predicted_output]]
 
                 # the copied char
                 char_feedback_vec = output_char_lookup[alphabet_index[padded_lemma[i]]]
             else:
                 # char action
-                action_feedback_vec = output_char_lookup[predicted_output_index]
+                action_feedback_vec = output_char_lookup[alphabet_index[predicted_output]]
 
                 # the predicted char embedding
-                char_feedback_vec = output_char_lookup[predicted_output_index]
+                char_feedback_vec = output_char_lookup[alphabet_index[predicted_output]]
 
             # stepping the char feedback lstm with predicted char
             # c_f_state = c_f_state.add_input(char_feedback_vec)
