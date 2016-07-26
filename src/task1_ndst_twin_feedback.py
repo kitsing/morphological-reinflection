@@ -277,7 +277,9 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
     model = Model()
 
     # character embeddings
-    model.add_lookup_parameters("char_lookup", (len(alphabet), input_dim))
+    model.add_lookup_parameters("input_char_lookup", (len(alphabet), input_dim))
+
+    model.add_lookup_parameters("output_char_lookup", (len(alphabet), input_dim))
 
     # feature embeddings
     model.add_lookup_parameters("feat_lookup", (len(feature_alphabet), feat_input_dim))
@@ -499,7 +501,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
     renew_cg()
 
     # read the model parameters
-    char_lookup = model["char_lookup"]
+    input_char_lookup = model["input_char_lookup"]
+    output_char_lookup = model["output_char_lookup"]
     feat_lookup = model["feat_lookup"]
     R = parameter(model["R"])
     bias = parameter(model["bias"])
@@ -513,10 +516,10 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
     lemma_char_vecs = []
     for char in padded_lemma:
         try:
-            lemma_char_vecs.append(char_lookup[alphabet_index[char]])
+            lemma_char_vecs.append(input_char_lookup[alphabet_index[char]])
         except KeyError:
             # handle UNK
-            lemma_char_vecs.append(char_lookup[alphabet_index[UNK]])
+            lemma_char_vecs.append(input_char_lookup[alphabet_index[UNK]])
 
     # convert features to matching embeddings, if UNK handle properly
     feat_vecs = []
@@ -562,8 +565,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
     # TODO: change one word loss, predict sequence, "test drive" on hebrew and russian
 
     # set prev_output_vec for first lstm step as BEGIN_WORD for both feedback lstms
-    #prev_output_vec = char_lookup[alphabet_index[BEGIN_WORD]]
-    begin_vec = char_lookup[alphabet_index[BEGIN_WORD]]
+    # prev_output_vec = input_char_lookup[alphabet_index[BEGIN_WORD]]
+    begin_vec = output_char_lookup[alphabet_index[BEGIN_WORD]]
     c_f_state = char_feedback_rnn.initial_state()
     a_s_state = action_feedback_rnn.initial_state()
     c_f_state = c_f_state.add_input(begin_vec)
@@ -595,8 +598,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
 
         # feedback, i, j, blstm[i], feats
         decoder_input = concatenate([prev_output_vec,
-                                     char_lookup[alphabet_index[str(i)]],
-                                     char_lookup[alphabet_index[str(j)]],
+                                     input_char_lookup[alphabet_index[str(i)]],
+                                     input_char_lookup[alphabet_index[str(j)]],
                                      blstm_outputs[i],
                                      feats_input])
 
@@ -625,8 +628,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             predicted_seq += STEP
 
             # prepare for the next iteration - "feedback"
-            # prev_output_vec = char_lookup[alphabet_index[STEP]]
-            step_vec = char_lookup[alphabet_index[STEP]]
+            # prev_output_vec = input_char_lookup[alphabet_index[STEP]]
+            step_vec = output_char_lookup[alphabet_index[STEP]]
             # not changing c_f_state as no character was predicted
             # c_f_state = c_f_state.add_input(begin_vec)
             # stepping the actions feedback lstm with step
@@ -639,8 +642,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
         # if there is new char to output as a prediction in the aligned gold example
         if aligned_word[index] != ALIGN_SYMBOL:
             decoder_input = concatenate([prev_output_vec,
-                                         char_lookup[alphabet_index[str(i)]],
-                                         char_lookup[alphabet_index[str(j)]],
+                                         input_char_lookup[alphabet_index[str(i)]],
+                                         input_char_lookup[alphabet_index[str(j)]],
                                          blstm_outputs[i],
                                          feats_input])
 
@@ -652,15 +655,15 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             if padded_lemma[i] == aligned_word[index]:
                 # copy action
                 possible_outputs.append(str(i))
-                action_feedback_vec = char_lookup[alphabet_index[str(i)]]
+                action_feedback_vec = output_char_lookup[alphabet_index[str(i)]]
                 action_feedback_seq += str(i)
             else:
-                action_feedback_vec = char_lookup[alphabet_index[aligned_word[index]]]
+                action_feedback_vec = output_char_lookup[alphabet_index[aligned_word[index]]]
                 action_feedback_seq += aligned_word[index]
 
             # create proper character feedback vector
             possible_outputs.append(aligned_word[index])
-            char_feedback_vec = char_lookup[alphabet_index[aligned_word[index]]]
+            char_feedback_vec = output_char_lookup[alphabet_index[aligned_word[index]]]
 
             # perform prediction rnn step in the decoder
             s = s.add_input(decoder_input)
@@ -690,7 +693,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             loss.append(local_loss)
 
             # prepare for the next iteration - "feedback"
-            # prev_output_vec = char_lookup[alphabet_index[max_likelihood_output]]
+            # prev_output_vec = input_char_lookup[alphabet_index[max_likelihood_output]]
 
             # stepping the char feedback lstm with gold char
             c_f_state = c_f_state.add_input(char_feedback_vec)
@@ -710,8 +713,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             # perform rnn step
             # feedback, i, j, blstm[i], feats
             decoder_input = concatenate([prev_output_vec,
-                                         char_lookup[alphabet_index[str(i)]],
-                                         char_lookup[alphabet_index[str(j)]],
+                                         input_char_lookup[alphabet_index[str(i)]],
+                                         input_char_lookup[alphabet_index[str(j)]],
                                          blstm_outputs[i],
                                          feats_input])
 
@@ -724,8 +727,8 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             predicted_seq += STEP
 
             # prepare for the next iteration - "feedback"
-            # prev_output_vec = char_lookup[alphabet_index[STEP]]
-            step_vec = char_lookup[alphabet_index[STEP]]
+            # prev_output_vec = input_char_lookup[alphabet_index[STEP]]
+            step_vec = output_char_lookup[alphabet_index[STEP]]
             # not changing c_f_state as no character was predicted, only step action is done
             # stepping the actions feedback lstm with step
             a_s_state = a_s_state.add_input(step_vec)
@@ -734,10 +737,10 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
 
             i += 1
     # print u'in:  {}\nout: {}\npredicted: {}'.format(aligned_lemma, aligned_word, predicted_seq)
-    # print u'actions: {}\nchars:{}'.format(action_feedback_seq, char_feedback_seq)
+    # print u'actions: {}\nchars:{}\n'.format(action_feedback_seq, char_feedback_seq)
     # TODO: maybe here a "special" loss function is appropriate?
-    # loss = esum(loss)
-    loss = average(loss)
+    loss = esum(loss)
+    # loss = average(loss)
 
     return loss
 
