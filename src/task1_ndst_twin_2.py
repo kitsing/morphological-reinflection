@@ -586,7 +586,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
             continue
 
         # if there is no prefix, step
-        if padded_lemma[i] == '<' and aligned_lemma[index] != ALIGN_SYMBOL:
+        if padded_lemma[i] == BEGIN_WORD and aligned_lemma[index] != ALIGN_SYMBOL:
             # perform rnn step
             # feedback, i, j, blstm[i], feats
             s = s.add_input(decoder_input)
@@ -640,7 +640,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
             j += 1
 
         # now check if it's time to progress on input
-        if i < len(padded_lemma) - 1 and aligned_lemma[index + 1] != '~':
+        if i < len(padded_lemma) - 1 and aligned_lemma[index + 1] != ALIGN_SYMBOL:
             # perform rnn step
             # feedback, i, j, blstm[i], feats
             decoder_input = concatenate([prev_output_vec,
