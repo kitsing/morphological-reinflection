@@ -674,15 +674,17 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             if padded_lemma[i] == aligned_word[j]:
                 # copy action
                 possible_outputs.append(str(i))
+                possible_outputs.append(padded_lemma[i])
                 # action_feedback_vec = output_char_lookup[alphabet_index[str(i)]]
                 action_feedback_seq += str(i)
-            # else:
+            else:
                 # action_feedback_vec = output_char_lookup[alphabet_index[aligned_word[index]]]
                 # action_feedback_seq += aligned_word[index]
+                possible_outputs.append(aligned_word[index])
 
             # create proper character feedback vector
-            possible_outputs.append(aligned_word[index])
-            char_feedback_vec = output_char_lookup[alphabet_index[aligned_word[index]]]
+
+            # char_feedback_vec = output_char_lookup[alphabet_index[aligned_word[index]]]
 
             # perform prediction rnn step in the decoder
             s = s.add_input(decoder_input)
@@ -708,20 +710,20 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
                     max_output_loss = neg_log_likelihood
 
                 local_loss += neg_log_likelihood
+            loss.append(local_loss)
 
             # choose action feedback according to max likelihood output - may still overfit?
             # shouldn't as it's identical to the previous setup minus i,j embeddings and plus char feedback embedding
             action_feedback_vec = output_char_lookup[alphabet_index[max_likelihood_output]]
             predicted_seq += max_likelihood_output
             action_feedback_seq += max_likelihood_output
-            loss.append(local_loss)
+            char_feedback_seq += aligned_word[index]
 
             # prepare for the next iteration - "feedback"
             # prev_output_vec = input_char_lookup[alphabet_index[max_likelihood_output]]
 
             # stepping the char feedback lstm with gold char
             # c_f_state = c_f_state.add_input(char_feedback_vec)
-            char_feedback_seq += aligned_word[index]
 
             # stepping the actions feedback lstm with char or copy action
             # a_s_state = a_s_state.add_input(action_feedback_vec)
@@ -729,7 +731,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, char_feedback_
             # combine lstm feedbacks through MLP
             # prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
             prev_action_vec = action_feedback_vec
-            prev_char_vec = char_feedback_vec
+            # prev_char_vec = char_feedback_vec
             j += 1
 
         # now check if it's time to progress on input - perform step (= next input is not the align symbol + seq. isn't
@@ -881,36 +883,35 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
         predicted_output = inverse_alphabet_index[predicted_output_index]
         predicted_output_sequence.append(predicted_output)
 
-        # check if reached end of word
-        if predicted_output_sequence[-1] == END_WORD:
-            break
 
         # check if step or char output to promote i or j.
         if predicted_output == STEP:
             # prepare for the next iteration - "feedback"
             # prev_output_vec = char_lookup[alphabet_index[STEP]]
-            step_vec = output_char_lookup[alphabet_index[STEP]]
+            # step_vec = output_char_lookup[alphabet_index[STEP]]
             # not changing c_f_state as no character was predicted, only step action is done
             # stepping the actions feedback lstm with step
             # a_s_state = a_s_state.add_input(step_vec)
             # prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
-            prev_action_vec = step_vec
-            prev_char_vec = output_char_lookup[alphabet_index[EPSILON]]
+            # prev_action_vec = step_vec
+            # prev_char_vec = output_char_lookup[alphabet_index[EPSILON]]
             if i < len(lemma) - 1:
                 i += 1
         else:
-            if predicted_output.isdigit():
+            j += 1
+            # if predicted_output.isdigit():
                 # copy action
-                action_feedback_vec = output_char_lookup[alphabet_index[predicted_output]]
+                # action_feedback_vec = output_char_lookup[alphabet_index[predicted_output]]
 
                 # the copied char
-                char_feedback_vec = output_char_lookup[alphabet_index[padded_lemma[i]]]
-            else:
+                # char_feedback_vec = output_char_lookup[alphabet_index[padded_lemma[i]]]
+            # else:
                 # char action
-                action_feedback_vec = output_char_lookup[alphabet_index[predicted_output]]
+                # action_feedback_vec = output_char_lookup[alphabet_index[predicted_output]]
 
                 # the predicted char embedding
-                char_feedback_vec = output_char_lookup[alphabet_index[predicted_output]]
+                # char_feedback_vec = output_char_lookup[alphabet_index[predicted_output]]
+
 
             # stepping the char feedback lstm with predicted char
             # c_f_state = c_f_state.add_input(char_feedback_vec)
@@ -920,13 +921,19 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, char
 
             # combine lstm feedbacks through an MLP
             # prev_output_vec = tanh(feedback_R * concatenate([c_f_state.output(), a_s_state.output()]) + feedback_bias)
-            prev_action_vec = action_feedback_vec
-            prev_char_vec = char_feedback_vec
+            # prev_action_vec = action_feedback_vec
+            # prev_char_vec = char_feedback_vec
 
             # promote j as a new character was added to the output
-            j += 1
+
 
         num_outputs += 1
+
+        # check if reached end of word
+        if predicted_output_sequence[-1] == END_WORD:
+            break
+
+        prev_action_vec = output_char_lookup[predicted_output_index]
 
         # prepare for the next iteration - "feedback" - already computed above using the two feedback lstms
         # prev_output_vec = char_lookup[predicted_output_index]
