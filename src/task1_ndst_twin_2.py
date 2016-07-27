@@ -292,8 +292,10 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
     encoder_frnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
     encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
 
-    # 3 * HIDDEN_DIM, as it gets previous output, BLSTM[i]
-    decoder_rnn = LSTMBuilder(layers, 3 * hidden_dim + len(feature_types) * feat_input_dim, hidden_dim, model)
+    # 4 * HIDDEN_DIM, as it gets previous output, previous char, BLSTM[i]
+    concatenated_input_dim = 4 * hidden_dim + len(feature_types) * feat_input_dim
+    decoder_rnn = LSTMBuilder(layers, concatenated_input_dim, hidden_dim, model)
+    print 'decoder lstm dimensions are {} x {}'.format(concatenated_input_dim, hidden_dim)
     print 'finished creating model'
 
     return model, encoder_frnn, encoder_rrnn, decoder_rnn
@@ -551,6 +553,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
 
     # set prev_output_vec for first lstm step as BEGIN_WORD
     prev_output_vec = char_lookup[alphabet_index[BEGIN_WORD]]
+    prev_char_vec = char_lookup[alphabet_index[BEGIN_WORD]]
     loss = []
 
     # i is input index, j is output index
@@ -570,6 +573,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
 
         # feedback, i, j, blstm[i], feats
         decoder_input = concatenate([prev_output_vec,
+                                     prev_char_vec,
                                      # char_lookup[alphabet_index[str(i)]],
                                      # char_lookup[alphabet_index[str(j)]],
                                      blstm_outputs[i],
@@ -598,11 +602,13 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
 
             # prepare for the next iteration - "feedback"
             prev_output_vec = char_lookup[alphabet_index[STEP]]
+            prev_char_vec = char_lookup[alphabet_index[EPSILON]]
             i += 1
 
         # if there is new output
         if aligned_word[index] != ALIGN_SYMBOL:
             decoder_input = concatenate([prev_output_vec,
+                                         prev_char_vec,
                                          # char_lookup[alphabet_index[str(i)]],
                                          # char_lookup[alphabet_index[str(j)]],
                                          blstm_outputs[i],
@@ -637,6 +643,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
 
             # prepare for the next iteration - "feedback"
             prev_output_vec = char_lookup[alphabet_index[max_likelihood_output]]
+            prev_char_vec = char_lookup[alphabet_index[aligned_word[index]]]
             j += 1
 
         # now check if it's time to progress on input
@@ -644,6 +651,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
             # perform rnn step
             # feedback, i, j, blstm[i], feats
             decoder_input = concatenate([prev_output_vec,
+                                         prev_char_vec,
                                          # char_lookup[alphabet_index[str(i)]],
                                          # char_lookup[alphabet_index[str(j)]],
                                          blstm_outputs[i],
@@ -658,6 +666,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
 
             # prepare for the next iteration - "feedback"
             prev_output_vec = char_lookup[alphabet_index[STEP]]
+            prev_char_vec = char_lookup[alphabet_index[EPSILON]]
             i += 1
 
     # TODO: maybe here a "special" loss function is appropriate?
@@ -732,6 +741,7 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
 
     # set prev_output_vec for first lstm step as BEGIN_WORD
     prev_output_vec = char_lookup[alphabet_index[BEGIN_WORD]]
+    prev_char_vec = char_lookup[alphabet_index[BEGIN_WORD]]
 
     # i is input index, j is output index
     i = j = 0
@@ -743,6 +753,7 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
 
         # prepare input vector and perform LSTM step
         decoder_input = concatenate([prev_output_vec,
+                                     prev_char_vec,
                                      # char_lookup[alphabet_index[str(i)]],
                                      # char_lookup[alphabet_index[str(j)]],
                                      blstm_outputs[i],
@@ -760,9 +771,17 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
 
         # check if step or char output to promote i or j.
         if predicted_output == STEP:
+            prev_char_vec = char_lookup[alphabet_index[EPSILON]]
             if i < len(padded_lemma) - 1:
                 i += 1
         else:
+            if predicted_output.isdigit():
+                # handle copy
+                prev_char_vec = char_lookup[alphabet_index[padded_lemma[i]]]
+            else:
+                # handle char
+                prev_char_vec = char_lookup[predicted_output_index]
+
             j += 1
 
         num_outputs += 1
