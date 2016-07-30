@@ -129,7 +129,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                                   feature_alphabet, feat_input_dim,
                                                                                   feature_types)
             print 'starting to predict for cluster: {}'.format(cluster_type)
-            predicted_templates = task1_ndst_twin_2.predict_templates(best_model,
+            try:
+                predicted_templates = task1_ndst_twin_2.predict_templates(best_model,
                                                                       decoder_rnn,
                                                                       encoder_frnn,
                                                                       encoder_rrnn,
@@ -139,6 +140,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                       test_cluster_feat_dicts,
                                                                       feat_index,
                                                                       feature_types)
+            except Exception as e:
+                print e.message
 
             print 'evaluating predictions for cluster: {}'.format(cluster_type)
             accuracy = task1_ndst_twin_2.evaluate_model(predicted_templates,
@@ -161,6 +164,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         except KeyError:
             print 'could not find relevant examples in test data for cluster: ' + cluster_type
             print 'clusters in test are: {}'.format(test_cluster_to_data_indices.keys())
+            print 'clusters in train are: {}'.format(train_cluster_to_data_indices.keys())
 
     accuracy_vals = [accuracies[i][1] for i in xrange(len(accuracies))]
     macro_avg_accuracy = sum(accuracy_vals) / len(accuracies)
