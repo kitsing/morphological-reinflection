@@ -136,6 +136,8 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
 
     with codecs.open(test_path, 'r', encoding='utf8') as test_file:
         lines = test_file.readlines()
+        print 'len of test file is {}'.format(len(lines))
+        print 'len of predictions file is {}'.format(len(final_results))
         with codecs.open(predictions_path, 'w', encoding='utf8') as predictions:
             for i, line in enumerate(lines):
                 if 'test-covered' in test_path:
@@ -150,7 +152,7 @@ def write_results_file(hyper_params, accuracy, train_path, test_path, output_fil
                         predictions.write(u'{0}\t{1}\t{2}\n'.format(lemma, morph, final_results[i][2]))
                 else:
                     # TODO: handle unseen morphs?
-                    print u'could not find prediction for {0} {1}'.format(lemma, morph)
+                    # print u'could not find prediction for {0} {1}'.format(lemma, morph)
                     predictions.write(u'{0}\t{1}\t{2}\n'.format(lemma, morph, 'ERROR'))
 
     # evaluate with sigmorphon script
