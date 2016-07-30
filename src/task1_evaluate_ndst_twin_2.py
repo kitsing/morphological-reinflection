@@ -109,7 +109,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
         # get the inflection-specific data
         train_cluster_words = [train_words[i] for i in train_cluster_to_data_indices[cluster_type]]
         if len(train_cluster_words) < 1:
-            print 'only ' + str(len(train_cluster_words)) + ' samples for this inflection type. skipping'
+            print 'only {} samples for this inflection type. skipping'.format(str(len(train_cluster_words)))
             continue
         else:
             print 'now evaluating model for cluster ' + str(cluster_index + 1) + '/' + \
@@ -128,36 +128,39 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                                   hidden_dim, layers,
                                                                                   feature_alphabet, feat_input_dim,
                                                                                   feature_types)
-
+            print 'starting to predict for cluster: {}'.format(cluster_type)
             predicted_templates = task1_ndst_twin_2.predict_templates(best_model,
-                                                               decoder_rnn,
-                                                               encoder_frnn,
-                                                               encoder_rrnn,
-                                                               alphabet_index,
-                                                               inverse_alphabet_index,
-                                                               test_cluster_lemmas,
-                                                               test_cluster_feat_dicts,
-                                                               feat_index,
-                                                               feature_types)
+                                                                      decoder_rnn,
+                                                                      encoder_frnn,
+                                                                      encoder_rrnn,
+                                                                      alphabet_index,
+                                                                      inverse_alphabet_index,
+                                                                      test_cluster_lemmas,
+                                                                      test_cluster_feat_dicts,
+                                                                      feat_index,
+                                                                      feature_types)
 
+            print 'evaluating predictions for cluster: {}'.format(cluster_type)
             accuracy = task1_ndst_twin_2.evaluate_model(predicted_templates,
-                                                 test_cluster_lemmas,
-                                                 test_cluster_feat_dicts,
-                                                 test_cluster_words,
-                                                 feature_types,
-                                                 print_results=True)
+                                                        test_cluster_lemmas,
+                                                        test_cluster_feat_dicts,
+                                                        test_cluster_words,
+                                                        feature_types,
+                                                        print_results=True)
             accuracies.append(accuracy)
 
             # get predicted_templates in the same order they appeared in the original file
             # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
             for i in test_cluster_to_data_indices[cluster_type]:
                 joint_index = test_lemmas[i] + ':' + common.get_morph_string(test_feat_dicts[i], feature_types)
-                inflection = task1_ndst_twin_2.instantiate_template(
-                    predicted_templates[joint_index], test_lemmas[i])
+                inflection = task1_ndst_twin_2.instantiate_template(predicted_templates[joint_index],
+                                                                    test_lemmas[i])
+
                 final_results[i] = (test_lemmas[i], test_feat_dicts[i], inflection)
 
         except KeyError:
             print 'could not find relevant examples in test data for cluster: ' + cluster_type
+            print 'clusters in test are: {}'.format(test_cluster_to_data_indices.keys())
 
     accuracy_vals = [accuracies[i][1] for i in xrange(len(accuracies))]
     macro_avg_accuracy = sum(accuracy_vals) / len(accuracies)
