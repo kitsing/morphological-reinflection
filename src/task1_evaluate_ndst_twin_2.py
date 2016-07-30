@@ -29,6 +29,7 @@ import task1_ndst_twin_2
 import prepare_sigmorphon_data
 import datetime
 import common
+import traceback
 from pycnn import *
 
 # default values
@@ -142,6 +143,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                       feature_types)
             except Exception as e:
                 print e
+                traceback.print_exc()
 
             print 'evaluating predictions for cluster: {}'.format(cluster_type)
             try:
@@ -153,6 +155,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                         print_results=True)
             except Exception as e:
                 print e
+                traceback.print_exc()
             accuracies.append(accuracy)
 
             # get predicted_templates in the same order they appeared in the original file
