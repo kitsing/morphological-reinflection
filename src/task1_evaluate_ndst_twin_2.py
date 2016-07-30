@@ -141,15 +141,18 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                       feat_index,
                                                                       feature_types)
             except Exception as e:
-                print e.message
+                print e
 
             print 'evaluating predictions for cluster: {}'.format(cluster_type)
-            accuracy = task1_ndst_twin_2.evaluate_model(predicted_templates,
+            try:
+                accuracy = task1_ndst_twin_2.evaluate_model(predicted_templates,
                                                         test_cluster_lemmas,
                                                         test_cluster_feat_dicts,
                                                         test_cluster_words,
                                                         feature_types,
                                                         print_results=True)
+            except Exception as e:
+                print e
             accuracies.append(accuracy)
 
             # get predicted_templates in the same order they appeared in the original file
