@@ -777,7 +777,10 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
         else:
             if predicted_output.isdigit():
                 # handle copy
-                prev_char_vec = char_lookup[alphabet_index[padded_lemma[i]]]
+                try:
+                    prev_char_vec = char_lookup[alphabet_index[padded_lemma[i]]]
+                except KeyError:
+                    prev_char_vec = char_lookup[alphabet_index[UNK]]
             else:
                 # handle char
                 prev_char_vec = char_lookup[predicted_output_index]
