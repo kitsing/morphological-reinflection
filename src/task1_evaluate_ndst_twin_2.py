@@ -176,7 +176,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 
                     # return the most predicted output
                     predicted_template_string = max(prediction_counter, key=prediction_counter.get)
-                    print 'chosen:{}\n'.format(predicted_template_string)
+                    print u'chosen:{} with {} votes\n'.format(predicted_template_string,
+                                                              prediction_counter[predicted_template_string])
                     predicted_templates[joint_index] = string_to_template[predicted_template_string]
 
                     # progress indication
