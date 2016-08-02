@@ -3,7 +3,7 @@ files and evaluation script.
 
 Usage:
   evaluate_best_nfst_models.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN]
-  [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+  [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--ensemble=ENSEMBLE] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
   TRAIN_PATH    train data path
@@ -20,11 +20,16 @@ Options:
   --epochs=EPOCHS               amount of training epochs
   --layers=LAYERS               amount of layers in lstm network
   --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM
+  --ensemble=ENSEMBLE           ensemble model paths, separated by comma
 
 """
 
 import time
+from collections import defaultdict
+
 import docopt
+import sys
+
 import task1_ndst_twin_2
 import prepare_sigmorphon_data
 import datetime
@@ -52,7 +57,7 @@ ALIGN_SYMBOL = '~'
 
 
 def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim):
+         optimization, feat_input_dim, ensemble):
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'FEAT_INPUT_DIM': feat_input_dim,
                     'EPOCHS': epochs, 'LAYERS': layers, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
                     'OPTIMIZATION': optimization}
@@ -123,15 +128,70 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
             test_cluster_words = [test_words[i] for i in test_cluster_to_data_indices[cluster_type]]
             test_cluster_feat_dicts = [test_feat_dicts[i] for i in test_cluster_to_data_indices[cluster_type]]
 
-            # load best model
-            best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(cluster_index), alphabet,
+            if ensemble:
+                # load ensemble models
+                ensemble_model_names = ensemble.split(',')
+                print 'ensemble paths:\n'
+                print '\n'.join(ensemble_model_names)
+                ensemble_models = []
+                for ens in ensemble_model_names:
+                    model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(cluster_index),
+                                                                                     alphabet,
+                                                                                     ens,
+                                                                                     input_dim,
+                                                                                     hidden_dim,
+                                                                                     layers,
+                                                                                     feature_alphabet,
+                                                                                     feat_input_dim,
+                                                                                     feature_types)
+
+                    ensemble_models.append((model, encoder_frnn, encoder_rrnn, decoder_rnn))
+
+
+                # predict the entire test set with each model in the ensemble
+                ensemble_predictions = []
+                for em in ensemble_models:
+                    model, encoder_frnn, encoder_rrnn, decoder_rnn = em
+                    predicted_templates = task1_ndst_twin_2.predict_templates(model, decoder_rnn,
+                                                                                 encoder_frnn,
+                                                                                 encoder_rrnn,
+                                                                                 alphabet_index,
+                                                                                 inverse_alphabet_index,
+                                                                                 test_cluster_lemmas,
+                                                                                 test_cluster_feat_dicts,
+                                                                                 feat_index,
+                                                                                 feature_types)
+                    ensemble_predictions.append(predicted_templates)
+
+                predicted_templates = {}
+                string_to_template = {}
+                # perform voting for each input - joint_index is a lemma+feats representation
+                for joint_index in ensemble_predictions[0].keys():
+                    prediction_counter = defaultdict(int)
+                    for ens in ensemble_predictions:
+                        prediction_str = ''.join(ens[joint_index])
+                        prediction_counter[prediction_str] = prediction_counter[prediction_str] + 1
+                        string_to_template[prediction_str] = ens[joint_index]
+                        print prediction_str
+
+                    # return the most predicted output
+                    predicted_template_string = max(prediction_counter, key=prediction_counter.get)
+                    print 'chosen:{}\n'.format(predicted_template_string)
+                    predicted_templates[joint_index] = string_to_template[predicted_template_string]
+
+                    # progress indication
+                    sys.stdout.write("\r%d%%" % (float(i) / len(test_cluster_lemmas) * 100))
+                    sys.stdout.flush()
+            else:
+                # load best model - no ensemble
+                best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(cluster_index), alphabet,
                                                                                   results_file_path, input_dim,
                                                                                   hidden_dim, layers,
                                                                                   feature_alphabet, feat_input_dim,
                                                                                   feature_types)
-            print 'starting to predict for cluster: {}'.format(cluster_type)
-            try:
-                predicted_templates = task1_ndst_twin_2.predict_templates(best_model,
+                print 'starting to predict for cluster: {}'.format(cluster_type)
+                try:
+                    predicted_templates = task1_ndst_twin_2.predict_templates(best_model,
                                                                       decoder_rnn,
                                                                       encoder_frnn,
                                                                       encoder_rrnn,
@@ -141,9 +201,9 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                                                                       test_cluster_feat_dicts,
                                                                       feat_index,
                                                                       feature_types)
-            except Exception as e:
-                print e
-                traceback.print_exc()
+                except Exception as e:
+                    print e
+                    traceback.print_exc()
 
             print 'evaluating predictions for cluster: {}'.format(cluster_type)
             try:
@@ -251,8 +311,12 @@ if __name__ == '__main__':
         optimization = arguments['--optimization']
     else:
         optimization = OPTIMIZATION
+    if arguments['--ensemble']:
+        ensemble = arguments['--ensemble']
+    else:
+        ensemble = False
 
     print arguments
 
     main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim)
+         optimization, feat_input_dim, ensemble)
