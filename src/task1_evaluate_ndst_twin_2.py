@@ -175,7 +175,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                         prediction_str = ''.join(task1_ndst_twin_2.instantiate_template(ens[joint_index], lemma))
                         prediction_counter[prediction_str] = prediction_counter[prediction_str] + 1
                         string_to_template[prediction_str] = ens[joint_index]
-                        print 'template: {} prediction: {}'.format(prediction_str)
+                        print u'template: {} prediction: {}'.format(prediction_str)
 
                     # return the most predicted output
                     predicted_template_string = max(prediction_counter, key=prediction_counter.get)
