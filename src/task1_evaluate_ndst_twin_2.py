@@ -165,14 +165,17 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 
                 predicted_templates = {}
                 string_to_template = {}
-                # perform voting for each input - joint_index is a lemma+feats representation
-                for joint_index in ensemble_predictions[0].keys():
+
+                # perform voting for each test input - joint_index is a lemma+feats representation
+                test_data = zip(test_cluster_lemmas, test_cluster_feat_dicts, test_cluster_words)
+                for i, (lemma, feat_dict, word) in enumerate(test_data):
+                    joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
                     prediction_counter = defaultdict(int)
                     for ens in ensemble_predictions:
-                        prediction_str = ''.join(ens[joint_index])
+                        prediction_str = ''.join(task1_ndst_twin_2.instantiate_template(ens[joint_index], lemma))
                         prediction_counter[prediction_str] = prediction_counter[prediction_str] + 1
                         string_to_template[prediction_str] = ens[joint_index]
-                        print prediction_str
+                        print 'template: {} prediction: {}'.format(prediction_str)
 
                     # return the most predicted output
                     predicted_template_string = max(prediction_counter, key=prediction_counter.get)
@@ -183,6 +186,8 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                     # progress indication
                     sys.stdout.write("\r%d%%" % (float(i) / len(test_cluster_lemmas) * 100))
                     sys.stdout.flush()
+                ##
+
             else:
                 # load best model - no ensemble
                 best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(cluster_index), alphabet,
