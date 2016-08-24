@@ -64,7 +64,7 @@ def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epoch
     if parallelize_training:
         pool = Pool(int(pool_size), maxtasksperchild=1)
         print 'now training {0} langs in parallel'.format(len(langs))
-        pool.map(train_language_wrapper, params)
+        pool.map(train_language_ensemble_wrapper, params)
     else:
         print 'now training {0} langs in loop'.format(len(langs))
         for p in params:
@@ -72,12 +72,43 @@ def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epoch
     print 'finished training all models'
 
 
+def train_language_ensemble_wrapper(params):
+
+    # unpack params
+    CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir, \
+    sigmorphon_root_dir, src_dir, script, prefix, task, augment, merged, ensemble = params
+
+    # check if an ensemble was requested
+    if ensemble > 1:
+        ensemble_params = []
+
+        # create params entry for each ensemble model
+        for e in xrange(ensemble):
+
+            # change prefix for ensemble
+            ens_prefix = prefix + '_ens_{}'.format(e)
+
+            # add params set for model execution
+            ensemble_params.append([CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization,
+                                   results_dir, sigmorphon_root_dir, src_dir, script, ens_prefix, task, augment,
+                                   merged])
+
+        print 'now training {0} ensemble models in parallel'.format(ensemble)
+        ensemble_pool = Pool(int(ensemble), maxtasksperchild=1)
+        ensemble_pool.map(train_language_wrapper, ensemble_params)
+    else:
+        # remove ensemble param and run
+        params = [CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
+                 sigmorphon_root_dir, src_dir, script, prefix, task, augment, merged]
+        train_language(*params)
+
+
 def train_language_wrapper(params):
     train_language(*params)
 
 
 def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                sigmorphon_root_dir, src_dir, script, prefix, task, augment, merged, ensemble):
+                sigmorphon_root_dir, src_dir, script, prefix, task, augment, merged):
 
     if augment:
         augment_str='--augment'
@@ -87,32 +118,27 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
     start = time.time()
     os.chdir(src_dir)
 
-    # train ensemble models in parallel
-    for e in xrange(ensemble):
-        if ensemble != 1:
-            prefix += '_ens_{}'.format(e)
-
-        if merged:
-            # train on train+dev, evaluate on dev for early stopping
-            os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} \
-                --feat-input={4} --epochs={5} --layers={6} --optimization {7} {13}\
-                ../data/sigmorphon_train_dev_merged/{9}-task{12}-merged \
-                {8}/data/{9}-task{12}-dev \
-                {10}/{11}_{9}-results.txt \
-                {8}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-                            sigmorphon_root_dir, lang, results_dir, prefix, task, augment_str))
-        else:
-            # train on train, evaluate on dev for early stopping
-            os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} \
-                --feat-input={4} --epochs={5} --layers={6} --optimization {7} {13}\
-                {8}/data/{9}-task{12}-train \
-                {8}/data/{9}-task{12}-dev \
-                {10}/{11}_{9}-results.txt \
-                {8}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-                            sigmorphon_root_dir, lang, results_dir, prefix, task, augment_str))
+    if merged:
+        # train on train+dev, evaluate on dev for early stopping
+        os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} \
+            --feat-input={4} --epochs={5} --layers={6} --optimization {7} {13}\
+            ../data/sigmorphon_train_dev_merged/{9}-task{12}-merged \
+            {8}/data/{9}-task{12}-dev \
+            {10}/{11}_{9}-results.txt \
+            {8}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
+                        sigmorphon_root_dir, lang, results_dir, prefix, task, augment_str))
+    else:
+        # train on train, evaluate on dev for early stopping
+        os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} \
+            --feat-input={4} --epochs={5} --layers={6} --optimization {7} {13}\
+            {8}/data/{9}-task{12}-train \
+            {8}/data/{9}-task{12}-dev \
+            {10}/{11}_{9}-results.txt \
+            {8}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
+                        sigmorphon_root_dir, lang, results_dir, prefix, task, augment_str))
 
     end = time.time()
-    print 'finished ' + lang + ' in ' + str(ms_to_timestring(end - start))
+    print 'finished {} in {}'.format(lang, str(ms_to_timestring(end - start)))
 
 
 def ms_to_timestring(ms):
