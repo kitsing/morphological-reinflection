@@ -3,7 +3,7 @@
 Usage:
   run_all_langs_generic.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN] [--epochs=EPOCHS]
   [--layers=LAYERS] [--optimization=OPTIMIZATION] [--pool=POOL] [--langs=LANGS] [--script=SCRIPT] [--prefix=PREFIX]
-  [--augment] [--merged] [--task=TASK] [--ensemble]
+  [--augment] [--merged] [--task=TASK] [--ensemble=ENSEMBLE]
   SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
@@ -27,7 +27,7 @@ Options:
   --augment                     whether to perform data augmentation
   --merged                      whether to train on train+dev merged
   --task=TASK                   the current task to train
-  --ensemble                    the amount of ensemble models to train, 1 if not mentioned
+  --ensemble=ENSEMBLE           the amount of ensemble models to train, 1 if not mentioned
 """
 
 import os
