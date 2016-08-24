@@ -134,7 +134,7 @@ def main(train_path, dev_path, test_path, results_path):
                                                                        'dev.out.tok')
 
 
-    # after the above files are created, hacky preprocess by instantiating the args variables in prepare_data.py to
+    # after the above files are created, hacky preprocess them by instantiating the args variables in prepare_data.py to
     # point the created files. only changes in original prepare_data.py code required for that are:
 
     # args.source = 'train.in'
