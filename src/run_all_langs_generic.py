@@ -56,52 +56,35 @@ def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epoch
     params = []
     print 'now training langs: ' + str(langs)
     for lang in langs:
-        params.append([CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                    sigmorphon_root_dir, src_dir, script, prefix, task, augment, merged, ensemble])
+
+        # check if an ensemble was requested
+        if ensemble > 1:
+
+            # create params entry for each ensemble model
+            for e in xrange(ensemble):
+
+                # change prefix for ensemble
+                ens_prefix = prefix + '_ens_{}'.format(e)
+
+                # add params set for model execution
+                params.append([CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization,
+                              results_dir, sigmorphon_root_dir, src_dir, script, ens_prefix, task, augment, merged])
+        else:
+            params.append([CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization,
+                           results_dir, sigmorphon_root_dir, src_dir, script, prefix, task, augment, merged])
 
 
-    # train models for each lang in parallel or in loop
+    # train models for each lang/ensemble in parallel or in loop
     if parallelize_training:
-        pool = Pool(int(pool_size), maxtasksperchild=1)
-        print 'now training {0} langs in parallel'.format(len(langs))
-        pool.map(train_language_ensemble_wrapper, params)
+        pool = Pool(int(pool_size) * ensemble, maxtasksperchild=1)
+        print 'now training {} langs in parallel, {} ensemble models per lang'.format(len(langs), ensemble)
+        pool.map(train_language_wrapper, params)
     else:
-        print 'now training {0} langs in loop'.format(len(langs))
+        print 'now training {0} langs in loop, {} ensemble models per lang'.format(len(langs), ensemble)
         for p in params:
             train_language(*p)
+
     print 'finished training all models'
-
-
-def train_language_ensemble_wrapper(params):
-
-    # unpack params
-    CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir, \
-    sigmorphon_root_dir, src_dir, script, prefix, task, augment, merged, ensemble = params
-
-    # check if an ensemble was requested
-    if ensemble > 1:
-        ensemble_params = []
-
-        # create params entry for each ensemble model
-        for e in xrange(ensemble):
-
-            # change prefix for ensemble
-            ens_prefix = prefix + '_ens_{}'.format(e)
-
-            # add params set for model execution
-            ensemble_params.append([CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization,
-                                   results_dir, sigmorphon_root_dir, src_dir, script, ens_prefix, task, augment,
-                                   merged])
-
-        print 'now training {0} ensemble models in parallel'.format(ensemble)
-        ensemble_pool = Pool(int(ensemble), maxtasksperchild=1)
-        ensemble_pool.map(train_language_wrapper, ensemble_params)
-    else:
-        # remove ensemble param and run
-        params = [CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                 sigmorphon_root_dir, src_dir, script, prefix, task, augment, merged]
-        train_language(*params)
-
 
 def train_language_wrapper(params):
     train_language(*params)
