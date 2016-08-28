@@ -28,7 +28,6 @@ Options:
   --override                    override the existing model with the same name, if exists
 """
 
-import sys
 import numpy as np
 import random
 import prepare_sigmorphon_data
@@ -39,19 +38,17 @@ import os
 import common
 import pycnn as pc
 
-from collections import defaultdict
-from multiprocessing import Pool
 from matplotlib import pyplot as plt
 from docopt import docopt
 
 # default values
-INPUT_DIM = 100
-FEAT_INPUT_DIM = 100
-HIDDEN_DIM = 200
+INPUT_DIM = 300
+FEAT_INPUT_DIM = 300
+HIDDEN_DIM = 100
 EPOCHS = 1
 LAYERS = 2
 MAX_PREDICTION_LEN = 50
-OPTIMIZATION = 'ADAM'
+OPTIMIZATION = 'ADADELTA'
 EARLY_STOPPING = True
 MAX_PATIENCE = 100
 REGULARIZATION = 0.0
@@ -111,19 +108,21 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
     if os.path.isfile(model_file_name) and not override:
         print 'loading existing model from {}'.format(model_file_name)
         initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(alphabet, results_file_path, input_dim,
-                                                                             hidden_dim, layers, feature_alphabet,
-                                                                             feat_input_dim, feature_types)
+                                                                                 hidden_dim, layers, feature_alphabet,
+                                                                                 feat_input_dim, feature_types)
         print 'loaded existing model successfully'
     else:
         print 'could not find existing model or explicit override was requested. starting training from scratch...'
         initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers,
-                                                                         feature_types, feat_input_dim,
-                                                                         feature_alphabet)
+                                                                             feature_types, feat_input_dim,
+                                                                             feature_alphabet)
 
     trained_model, last_epoch, best_epoch = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn,
-                                            train_lemmas, train_feat_dicts, train_words, dev_lemmas,
-                                            dev_feat_dicts, dev_words, alphabet_index, inverse_alphabet_index,
-                                            epochs, optimization, results_file_path, feat_index, feature_types, plot)
+                                                        train_lemmas, train_feat_dicts, train_words, dev_lemmas,
+                                                        dev_feat_dicts, dev_words, alphabet_index,
+                                                        inverse_alphabet_index,
+                                                        epochs, optimization, results_file_path, feat_index,
+                                                        feature_types, plot)
 
     print 'last epoch is {}'.format(last_epoch)
     print 'best epoch is {}'.format(best_epoch)
@@ -139,16 +138,17 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
 
     # evaluate best models
     os.system('python task1_evaluate_best_joint_structured_models_blstm_feed_fix.py --cnn-mem 6096 --input={0} \
-    --hidden={1} --feat-input={2} --epochs={3} --layers={4} --optimization={5} {6} {7} {8} {9}'.format(input_dim,
-                                                                                                       hidden_dim,
-                                                                                                       feat_input_dim,
-                                                                                                       epochs,
-                                                                                                       layers,
-                                                                                                       optimization,
-                                                                                                       train_path,
-                                                                                                       test_path,
-                                                                                                       results_file_path,
-                                                                                                       sigmorphon_root_dir))
+    --hidden={1} --feat-input={2} --epochs={3} --layers={4} --optimization={5} {6} {7} {8} {9}'.format(
+                                                                                                input_dim,
+                                                                                                hidden_dim,
+                                                                                                feat_input_dim,
+                                                                                                epochs,
+                                                                                                layers,
+                                                                                                optimization,
+                                                                                                train_path,
+                                                                                                test_path,
+                                                                                                results_file_path,
+                                                                                                sigmorphon_root_dir))
     return
 
 
@@ -162,7 +162,6 @@ def save_pycnn_model(model, results_file_path):
 def load_best_model(alphabet, results_file_path, input_dim, hidden_dim, layers, feature_alphabet,
                     feat_input_dim, feature_types):
 
-
     tmp_model_path = results_file_path + '_bestmodel.txt'
     model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers,
                                                                  feature_types, feat_input_dim, feature_alphabet)
@@ -171,6 +170,7 @@ def load_best_model(alphabet, results_file_path, input_dim, hidden_dim, layers, 
     return model, encoder_frnn, encoder_rrnn, decoder_rnn
 
 
+# noinspection PyUnusedLocal
 def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_input_dim, feature_alphabet):
     print 'creating model...'
 
@@ -332,16 +332,17 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                     best_avg_dev_loss = avg_dev_loss
 
                 print 'epoch: {0} train loss: {1:.4f} dev loss: {2:.4f} dev accuracy: {3:.4f} train accuracy = {4:.4f} \
- best dev accuracy {5:.4f} (epoch {8}) best train accuracy: {6:.4f} (epoch {9}) patience = {7}'.format(e,
-                                                                                                       avg_loss,
-                                                                                                       avg_dev_loss,
-                                                                                                       dev_accuracy,
-                                                                                                       train_accuracy,
-                                                                                                       best_dev_accuracy,
-                                                                                                       best_train_accuracy,
-                                                                                                       patience,
-                                                                                                       best_dev_epoch,
-                                                                                                       best_train_epoch)
+ best dev accuracy {5:.4f} (epoch {8}) best train accuracy: {6:.4f} (epoch {9}) patience = {7}'.format(
+                                                                                                e,
+                                                                                                avg_loss,
+                                                                                                avg_dev_loss,
+                                                                                                dev_accuracy,
+                                                                                                train_accuracy,
+                                                                                                best_dev_accuracy,
+                                                                                                best_train_accuracy,
+                                                                                                patience,
+                                                                                                best_dev_epoch,
+                                                                                                best_train_epoch)
 
                 if patience == MAX_PATIENCE:
                     print 'out of patience after {0} epochs'.format(str(e))
@@ -395,6 +396,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 p4, = plt.plot(epochs_x, train_accuracy_y, label='train acc.')
                 plt.legend(loc='upper left', handles=[p1, p2, p3, p4])
             plt.savefig(results_file_path + 'plot.png')
+
     train_progress_bar.finish()
     if plot:
         plt.cla()
@@ -417,38 +419,8 @@ def compute_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, w
     W_a = pc.parameter(model["W_a"])
     W_c = pc.parameter(model["W_c"])
 
-    padded_lemma = BEGIN_WORD + lemma + END_WORD
-
-    # convert characters to matching embeddings
-    lemma_char_vecs = []
-    for char in padded_lemma:
-        try:
-            lemma_char_vecs.append(char_lookup[alphabet_index[char]])
-        except KeyError:
-            # handle UNK
-            lemma_char_vecs.append(char_lookup[alphabet_index[UNK]])
-
-    # convert features to matching embeddings, if UNK handle properly
-    feat_vecs = []
-    for feat in sorted(feature_types):
-        # TODO: is it OK to use same UNK for all feature types? and for unseen feats as well?
-        # if this feature has a value, take it from the lookup. otherwise use UNK
-        if feat in feats:
-            feat_str = feat + ':' + feats[feat]
-            try:
-                feat_vecs.append(feat_lookup[feat_index[feat_str]])
-            except KeyError:
-                # handle UNK or dropout
-                feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
-        else:
-            feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
-
-    feats_input = pc.concatenate(feat_vecs)
-
-    # add feats in the beginning of the input sequence
-    feats_and_lemma_vecs = feat_vecs + lemma_char_vecs
-
-    blstm_outputs = bilstm_transduce(encoder_frnn, encoder_rrnn, feats_and_lemma_vecs)
+    blstm_outputs = encode_feats_and_chars(alphabet_index, char_lookup, encoder_frnn, encoder_rrnn, feat_index,
+                                           feat_lookup, feats, feature_types, lemma)
 
     # initialize the decoder rnn
     s_0 = decoder_rnn.initial_state()
@@ -475,7 +447,6 @@ def compute_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, w
         # prepare for the next iteration - "feedback"
         prev_output_vec = char_lookup[alphabet_index[output_char]]
 
-    # TODO: maybe here a "special" loss function is appropriate?
     total_sequence_loss = pc.esum(loss)
     # loss = average(loss)
 
@@ -483,6 +454,7 @@ def compute_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, w
 
 
 def bilstm_transduce(encoder_frnn, encoder_rrnn, lemma_char_vecs):
+
     # BiLSTM forward pass
     s_0 = encoder_frnn.initial_state()
     s = s_0
@@ -503,6 +475,7 @@ def bilstm_transduce(encoder_frnn, encoder_rrnn, lemma_char_vecs):
     blstm_outputs = []
     for i in xrange(len(lemma_char_vecs)):
         blstm_outputs.append(pc.concatenate([frnn_outputs[i], rrnn_outputs[len(lemma_char_vecs) - i - 1]]))
+
     return blstm_outputs
 
 
@@ -519,37 +492,8 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
     W_a = pc.parameter(model["W_a"])
     W_c = pc.parameter(model["W_c"])
 
-    # convert characters to matching embeddings, if UNK handle properly
-    padded_lemma = BEGIN_WORD + lemma + END_WORD
-    lemma_char_vecs = []
-    for char in padded_lemma:
-        try:
-            lemma_char_vecs.append(char_lookup[alphabet_index[char]])
-        except KeyError:
-            # handle UNK
-            lemma_char_vecs.append(char_lookup[alphabet_index[UNK]])
-
-    # convert features to matching embeddings, if UNK handle properly
-    feat_vecs = []
-    for feat in sorted(feature_types):
-        # TODO: is it OK to use same UNK for all feature types? and for unseen feats as well?
-        # if this feature has a value, take it from the lookup. otherwise use UNK
-        if feat in feats:
-            feat_str = feat + ':' + feats[feat]
-            try:
-                feat_vecs.append(feat_lookup[feat_index[feat_str]])
-            except KeyError:
-                # handle UNK or dropout
-                feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
-        else:
-            feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
-
-    feats_input = pc.concatenate(feat_vecs)
-
-    # add feats in the beginning of the input sequence
-    feats_and_lemma_vecs = feat_vecs + lemma_char_vecs
-
-    blstm_outputs = bilstm_transduce(encoder_frnn, encoder_rrnn, feats_and_lemma_vecs)
+    blstm_outputs = encode_feats_and_chars(alphabet_index, char_lookup, encoder_frnn, encoder_rrnn, feat_index,
+                                           feat_lookup, feats, feature_types, lemma)
 
     # initialize the decoder rnn
     s_0 = decoder_rnn.initial_state()
@@ -585,6 +529,46 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
 
     # remove the end word symbol
     return predicted_sequence[0:-1]
+
+
+def encode_feats_and_chars(alphabet_index, char_lookup, encoder_frnn, encoder_rrnn, feat_index, feat_lookup, feats,
+                           feature_types, lemma):
+
+    # convert features to matching embeddings, if UNK handle properly
+    feat_vecs = [char_lookup[alphabet_index[BEGIN_WORD]]]
+    for feat in sorted(feature_types):
+        # TODO: is it OK to use same UNK for all feature types? and for unseen feats as well?
+        # if this feature has a value, take it from the lookup. otherwise use UNK
+        if feat in feats:
+            feat_str = feat + ':' + feats[feat]
+            try:
+                feat_vecs.append(feat_lookup[feat_index[feat_str]])
+            except KeyError:
+                continue
+                # handle UNK or dropout
+                # feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
+                # else:
+                # feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
+    # feats_input = pc.concatenate(feat_vecs)
+
+    # convert characters to matching embeddings, if UNK handle properly
+    # padded_lemma = BEGIN_WORD + lemma + END_WORD
+    lemma_char_vecs = []
+    for char in lemma:
+        try:
+            lemma_char_vecs.append(char_lookup[alphabet_index[char]])
+        except KeyError:
+            # handle UNK
+            lemma_char_vecs.append(char_lookup[alphabet_index[UNK]])
+
+    lemma_char_vecs.append(char_lookup[alphabet_index[END_WORD]])
+
+    # add feats in the beginning of the input sequence
+    feats_and_lemma_vecs = feat_vecs + lemma_char_vecs
+
+    # create bidirectional representation
+    blstm_outputs = bilstm_transduce(encoder_frnn, encoder_rrnn, feats_and_lemma_vecs)
+    return blstm_outputs
 
 
 def attend(blstm_outputs, decoder_rnn_output, R, bias, W_c, W_a):
@@ -647,7 +631,8 @@ def evaluate_model(predicted_templates, lemmas, feature_dicts, words, feature_ty
         else:
             sign = 'X'
         if print_results:
-            print u'lemma: {} gold: {} template: {} prediction: {} correct: {}'.format(lemma, words[i],
+            print u'lemma: {} gold: {} template: {} prediction: {} correct: {}'.format(
+                                                                            lemma, words[i],
                                                                             ''.join(predicted_templates[joint_index]),
                                                                             predicted_word,
                                                                             sign)

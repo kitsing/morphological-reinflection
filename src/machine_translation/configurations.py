@@ -173,7 +173,7 @@ def get_config_reinflection():
 
     # Root directory for dataset
     # datadir = './data/'
-    datadir = '/Users/roeeaharoni/GitHub/morphological-reinflection/src/machine_translation/data/'
+    datadir = '/Users/roeeaharoni/git/morphological-reinflection/src/machine_translation/data/'
 
     # Module name of the stream that will be used
     config['stream'] = 'stream'
