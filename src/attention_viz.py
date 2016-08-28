@@ -75,35 +75,70 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
                     'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': regularization,
                     'LEARNING_RATE': learning_rate}
 
+    alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types, initial_model, \
+    inverse_alphabet_index = init_model(
+        dev_path, feat_input_dim, hidden_dim, input_dim, layers, results_file_path, test_path, train_path)
+
     # get user input word and features
     # feats = {u'pos': u'NN', u'num': u'P', u'gen': u'F', u'poss_per': u'2', u'poss_gen': u'M', u'poss_num': u'P'}
     feats = {u'pos': u'NN', u'num': u'P', u'gen': u'F'} #, u'poss_per': u'2', u'poss_gen': u'M', u'poss_num': u'P'}
 
     user_input = u'מדינה'
-    plot_attn_for_inflection(dev_path, feat_input_dim, feats, hidden_dim, hyper_params, input_dim, layers,
-                             results_file_path, test_path, train_path, user_input)
+    plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
+                             initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
+                             hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input)
 
     user_input = u'חגיגה'
-    plot_attn_for_inflection(dev_path, feat_input_dim, feats, hidden_dim, hyper_params, input_dim, layers,
-                             results_file_path, test_path, train_path, user_input)
+    plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
+                             initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
+                             hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input)
 
     user_input = u'ישיבה'
-    plot_attn_for_inflection(dev_path, feat_input_dim, feats, hidden_dim, hyper_params, input_dim, layers,
-                             results_file_path, test_path, train_path, user_input)
+    plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
+                             initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
+                             hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input)
 
     user_input = u'פעולה'
-    plot_attn_for_inflection(dev_path, feat_input_dim, feats, hidden_dim, hyper_params, input_dim, layers,
-                             results_file_path, test_path, train_path, user_input)
+    plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
+                             initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
+                             hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input)
     print '.'
 
 
-def plot_attn_for_inflection(dev_path, feat_input_dim, feats, hidden_dim, hyper_params, input_dim, layers,
-                             results_file_path, test_path, train_path, user_input):
-    print 'train path = ' + str(train_path)
-    print 'test path =' + str(test_path)
-    for param in hyper_params:
-        print param + '=' + str(hyper_params[param])
+def plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
+                             initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
+                             hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input):
 
+    # predict
+    output, alphas_mtx, input = predict_output_sequence(initial_model, encoder_frnn, encoder_rrnn,
+                                                        decoder_rnn, user_input, feats, alphabet_index,
+                                                        inverse_alphabet_index, feat_index, feature_types)
+    fig, ax = plt.subplots()
+
+    # plot heatmap
+    image = np.array(alphas_mtx)
+    ax.imshow(image, cmap=plt.cm.gray, interpolation='nearest')
+
+    # fix x axis ticks density
+    ax.xaxis.set_ticks(np.arange(0, len(alphas_mtx[0]), 1))
+
+    # fix y axis ticks density
+    ax.yaxis.set_ticks(np.arange(0, len(alphas_mtx), 1))
+
+    # set tick labels to meaningful symbols
+    ax.set_xticklabels(list(input))
+    ax.set_yticklabels(list(output))
+
+    # set title
+    input_word = u''.join(input)
+    output_word = u''.join(output)
+    ax.set_title(u'attention-based alignment: {} -> {}'.format(user_input, output_word[0:-1]))
+
+    print input_word
+    print output_word[0:-1]
+
+
+def init_model(dev_path, feat_input_dim, hidden_dim, input_dim, layers, results_file_path, test_path, train_path):
     # load train and test data
     (train_words, train_lemmas, train_feat_dicts) = prepare_sigmorphon_data.load_data(train_path)
     (test_words, test_lemmas, test_feat_dicts) = prepare_sigmorphon_data.load_data(test_path)
@@ -138,34 +173,7 @@ def plot_attn_for_inflection(dev_path, feat_input_dim, feats, hidden_dim, hyper_
                                                                                                             feat_input_dim,
                                                                                                             feature_types)
     print 'loaded existing model successfully'
-
-    # predict
-    output, alphas_mtx, input = predict_output_sequence(initial_model, encoder_frnn, encoder_rrnn,
-                                                        decoder_rnn, user_input, feats, alphabet_index,
-                                                        inverse_alphabet_index, feat_index, feature_types)
-    fig, ax = plt.subplots()
-
-    # plot heatmap
-    image = np.array(alphas_mtx)
-    ax.imshow(image, cmap=plt.cm.gray, interpolation='nearest')
-
-    # fix x axis ticks density
-    ax.xaxis.set_ticks(np.arange(0, len(alphas_mtx[0]), 1))
-
-    # fix y axis ticks density
-    ax.yaxis.set_ticks(np.arange(0, len(alphas_mtx), 1))
-
-    # set tick labels to meaningful symbols
-    ax.set_xticklabels(list(input))
-    ax.set_yticklabels(list(output))
-
-    # set title
-    input_word = u''.join(input)
-    output_word = u''.join(output)
-    ax.set_title(u'attention-based alignment: {} -> {}'.format(user_input, output_word[0:-1]))
-
-    print input_word
-    print output_word[0:-1]
+    return alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types, initial_model, inverse_alphabet_index
 
 
 # noinspection PyPep8Naming
@@ -207,7 +215,8 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
         decoder_rnn_output = s.output()
 
         # perform attention step
-        attention_output_vector, alphas = attend(blstm_outputs, decoder_rnn_output, R, bias, W_c, W_a)
+        attention_output_vector, alphas = task1_attention_implementation.attend(blstm_outputs,
+                                                                                decoder_rnn_output, R, bias, W_c, W_a)
         val = alphas.vec_value()
         alphas_mtx.append(val)
 
@@ -226,36 +235,6 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
 
     # remove the end word symbol
     return predicted_sequence, alphas_mtx, [BEGIN_WORD] + feat_list + list(lemma) + [END_WORD]
-
-
-def attend(blstm_outputs, decoder_rnn_output, R, bias, W_c, W_a):
-    # attention mechanism:
-    # iterate through input states to compute alphas
-    # print 'computing scores...'
-    scores = [pc.transpose(W_a) * pc.concatenate([decoder_rnn_output, input_state]) for input_state in blstm_outputs]
-    # print 'computed scores'
-    # normalize to alphas using softmax
-    # print 'computing alphas...'
-    alphas = pc.softmax(pc.concatenate(scores))
-    print 'dec_h (first 10 vals):'
-    print decoder_rnn_output.vec_value()[0:10]
-    print 'alphas:'
-    print alphas.vec_value()
-    # print 'computed alphas...'
-    # compute c using alphas
-    # print 'computing c...'
-    c = pc.esum([blstm_outputs[j] * pc.scalarInput(alpha) for j, alpha in enumerate(alphas.vec_value())])
-    # print 'computed c'
-    # print 'c len is {}'.format(len(c.vec_value()))
-    # compute output state h~ using c and the decoder's h (global attention variation from Loung and Manning 2015)
-    # print 'computing h~...'
-    h_output = pc.tanh(W_c * pc.concatenate([decoder_rnn_output, c]))
-    # print 'len of h_output is {}'.format(len(h_output.vec_value()))
-    # print 'computed h~'
-    # compute output probabilities
-    # print 'computing readout layer...'
-    attention_output_vector = R * h_output + bias
-    return attention_output_vector, alphas
 
 
 if __name__ == '__main__':

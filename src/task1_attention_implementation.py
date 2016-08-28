@@ -227,6 +227,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
     else:
         trainer = pc.SimpleSGDTrainer(model)
 
+    train_sanity_set_size = 100
     total_loss = 0
     best_avg_dev_loss = 999
     best_dev_accuracy = -1
@@ -276,12 +277,16 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
             print 'starting epoch evaluation'
 
             # get train accuracy
-            print 'train prediction:'
+            print 'train sanity prediction:'
             train_predictions = predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
-                                                  inverse_alphabet_index, train_lemmas, train_feat_dicts, feat_index,
+                                                  inverse_alphabet_index, train_lemmas[:train_sanity_set_size],
+                                                  train_feat_dicts[:train_sanity_set_size],
+                                                  feat_index,
                                                   feature_types)
-            print 'train evaluation:'
-            train_accuracy = evaluate_model(train_predictions, train_lemmas, train_feat_dicts, train_words,
+            print 'train sanity evaluation:'
+            train_accuracy = evaluate_model(train_predictions, train_lemmas[:train_sanity_set_size],
+                                            train_feat_dicts[:train_sanity_set_size],
+                                            train_words[:train_sanity_set_size],
                                             feature_types, True)[1]
 
             if train_accuracy > best_train_accuracy:
@@ -438,7 +443,7 @@ def compute_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, w
         s = s.add_input(prev_output_vec)
         decoder_rnn_output = s.output()
 
-        attention_output_vector = attend(blstm_outputs, decoder_rnn_output, R, bias, W_c, W_a)
+        attention_output_vector, alphas = attend(blstm_outputs, decoder_rnn_output, R, bias, W_c, W_a)
 
         current_loss = pc.pickneglogsoftmax(attention_output_vector, alphabet_index[output_char])
         # print 'computed readout layer'
@@ -512,7 +517,7 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
         decoder_rnn_output = s.output()
 
         # perform attention step
-        attention_output_vector = attend(blstm_outputs, decoder_rnn_output, R, bias, W_c, W_a)
+        attention_output_vector, alphas = attend(blstm_outputs, decoder_rnn_output, R, bias, W_c, W_a)
 
         # find best candidate output
         probs = pc.softmax(attention_output_vector)
@@ -571,12 +576,11 @@ def encode_feats_and_chars(alphabet_index, char_lookup, encoder_frnn, encoder_rr
     return blstm_outputs
 
 
-def attend(blstm_outputs, decoder_rnn_output, R, bias, W_c, W_a):
+def attend(blstm_outputs, h_t, R, bias, W_c, W_a):
     # attention mechanism:
     # iterate through input states to compute alphas
     # print 'computing scores...'
-    scores = [pc.transpose(W_a) * pc.concatenate([decoder_rnn_output, input_state]) for input_state in
-              blstm_outputs]
+    scores = [pc.transpose(W_a) * pc.concatenate([h_t, h_input]) for h_input in blstm_outputs]
     # print 'computed scores'
     # normalize to alphas using softmax
     # print 'computing alphas...'
@@ -589,13 +593,13 @@ def attend(blstm_outputs, decoder_rnn_output, R, bias, W_c, W_a):
     # print 'c len is {}'.format(len(c.vec_value()))
     # compute output state h~ using c and the decoder's h (global attention variation from Loung and Manning 2015)
     # print 'computing h~...'
-    h_output = pc.tanh(W_c * pc.concatenate([decoder_rnn_output, c]))
+    h_output = pc.tanh(W_c * pc.concatenate([h_t, c]))
     # print 'len of h_output is {}'.format(len(h_output.vec_value()))
     # print 'computed h~'
     # compute output probabilities
     # print 'computing readout layer...'
     attention_output_vector = R * h_output + bias
-    return attention_output_vector
+    return attention_output_vector, alphas
 
 
 def predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index, inverse_alphabet_index, lemmas,
