@@ -4,7 +4,7 @@ files and evaluation script.
 Usage:
   task1_joint_structured_inflection_blstm_feedback_fix.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
   [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION]
-  [--learning=LEARNING] [--plot] [--override] TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+  [--learning=LEARNING] [--plot] [--override] [--eval] TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
   TRAIN_PATH    train set path path
@@ -131,27 +131,24 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
         print 'skipped training, evaluating on test set...'
 
     # evaluate last model on test
-    predicted_templates = predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+    predicted_sequences = predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
                                             inverse_alphabet_index, test_lemmas, test_feat_dicts, feat_index,
                                             feature_types)
-    if len(predicted_templates) > 0:
-        amount, accuracy = evaluate_model(predicted_templates, test_lemmas, test_feat_dicts, test_words, feature_types,
+    if len(predicted_sequences) > 0:
+        final_results = {}
+        amount, accuracy = evaluate_model(predicted_sequences, test_lemmas, test_feat_dicts, test_words, feature_types,
                        print_results=False)
-        print 'initial eval: {}% accuracy'
+        print 'initial eval: {}% accuracy'.format(accuracy)
+
+        for i in xrange(len(test_lemmas)):
+            joint_index = test_lemmas[i] + ':' + common.get_morph_string(test_feat_dicts[i], feature_types)
+            inflection = predicted_sequences[joint_index]
+            final_results[i] = (test_lemmas[i], test_feat_dicts[i], ''.join(inflection))
 
         # evaluate best models
-        os.system('python task1_evaluate_best_joint_structured_models_blstm_feed_fix.py --cnn-mem 6096 --input={0} \
-    --hidden={1} --feat-input={2} --epochs={3} --layers={4} --optimization={5} {6} {7} {8} {9}'.format(
-                                                                                                input_dim,
-                                                                                                hidden_dim,
-                                                                                                feat_input_dim,
-                                                                                                epochs,
-                                                                                                layers,
-                                                                                                optimization,
-                                                                                                train_path,
-                                                                                                test_path,
-                                                                                                results_file_path,
-                                                                                                sigmorphon_root_dir))
+        common.write_results_file_and_evaluate_externally(hyper_params, accuracy, train_path, test_path,
+                                                          results_file_path + '.external_eval.txt', sigmorphon_root_dir,
+                                                          final_results)
     return
 
 
@@ -567,8 +564,10 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
 def encode_feats_and_chars(alphabet_index, char_lookup, encoder_frnn, encoder_rrnn, feat_index, feat_lookup, feats,
                            feature_types, lemma):
 
-    # convert features to matching embeddings, if UNK handle properly
+    # initialize sequence with begin symbol
     feat_vecs = [char_lookup[alphabet_index[BEGIN_WORD]]]
+
+    # convert features to matching embeddings, if UNK handle properly
     for feat in sorted(feature_types):
         # TODO: is it OK to use same UNK for all feature types? and for unseen feats as well?
         # if this feature has a value, take it from the lookup. otherwise use UNK
@@ -579,25 +578,19 @@ def encode_feats_and_chars(alphabet_index, char_lookup, encoder_frnn, encoder_rr
             except KeyError:
                 print 'Bad feat: {}'.format(feat_str)
                 # handle UNK or dropout
-                # feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
-                # else:
-                # feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
-    # feats_input = pc.concatenate(feat_vecs)
+                feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
 
     # convert characters to matching embeddings, if UNK handle properly
-    # padded_lemma = BEGIN_WORD + lemma + END_WORD
     lemma_char_vecs = []
     for char in lemma:
         try:
             lemma_char_vecs.append(char_lookup[alphabet_index[char]])
         except KeyError:
-            # handle UNK
+            # handle UNK character
             lemma_char_vecs.append(char_lookup[alphabet_index[UNK]])
 
-    lemma_char_vecs.append(char_lookup[alphabet_index[END_WORD]])
-
-    # add feats in the beginning of the input sequence
-    feats_and_lemma_vecs = feat_vecs + lemma_char_vecs
+    # add feats in the beginning of the input sequence and terminator symbol
+    feats_and_lemma_vecs = feat_vecs + lemma_char_vecs + [char_lookup[alphabet_index[END_WORD]]]
 
     # create bidirectional representation
     blstm_outputs = bilstm_transduce(encoder_frnn, encoder_rrnn, feats_and_lemma_vecs)
@@ -609,7 +602,7 @@ def attend(blstm_outputs, h_t, W_c, W_a, v_a, W__a, U__a):
     # iterate through input states to compute alphas
     # print 'computing scores...'
     # scores = [W_a * pc.concatenate([h_t, h_input]) for h_input in blstm_outputs]
-    scores = [pc.tanh(W__a * h_t + U__a * h_input) for h_input in blstm_outputs]
+    scores = [v_a * pc.tanh(W__a * h_t + U__a * h_input) for h_input in blstm_outputs]
     # print 'computed scores'
     # normalize to alphas using softmax
     # print 'computing alphas...'
