@@ -65,7 +65,7 @@ UNK_FEAT = '@'
 
 
 def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, feat_input_dim,
-         epochs, layers, optimization, regularization, learning_rate, plot, override):
+         epochs, layers, optimization, regularization, learning_rate, plot, override, eval):
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'FEAT_INPUT_DIM': feat_input_dim,
                     'EPOCHS': epochs, 'LAYERS': layers, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
                     'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': regularization,
@@ -107,37 +107,40 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
     model_file_name = results_file_path + '_bestmodel.txt'
     if os.path.isfile(model_file_name) and not override:
         print 'loading existing model from {}'.format(model_file_name)
-        initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(alphabet, results_file_path, input_dim,
+        model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(alphabet, results_file_path, input_dim,
                                                                                  hidden_dim, layers, feature_alphabet,
                                                                                  feat_input_dim, feature_types)
         print 'loaded existing model successfully'
     else:
         print 'could not find existing model or explicit override was requested. starting training from scratch...'
-        initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers,
+        model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers,
                                                                              feature_types, feat_input_dim,
                                                                              feature_alphabet)
-
-    trained_model, last_epoch, best_epoch = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn,
+    if not eval:
+        trained_model, last_epoch, best_epoch = train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn,
                                                         train_lemmas, train_feat_dicts, train_words, dev_lemmas,
                                                         dev_feat_dicts, dev_words, alphabet_index,
                                                         inverse_alphabet_index,
                                                         epochs, optimization, results_file_path, feat_index,
                                                         feature_types, plot)
-
-    print 'last epoch is {}'.format(last_epoch)
-    print 'best epoch is {}'.format(best_epoch)
-    print 'finished training'
+        model = trained_model
+        print 'last epoch is {}'.format(last_epoch)
+        print 'best epoch is {}'.format(best_epoch)
+        print 'finished training'
+    else:
+        print 'skipped training, evaluating on test set...'
 
     # evaluate last model on test
-    predicted_templates = predict_templates(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+    predicted_templates = predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
                                             inverse_alphabet_index, test_lemmas, test_feat_dicts, feat_index,
                                             feature_types)
     if len(predicted_templates) > 0:
-        evaluate_model(predicted_templates, test_lemmas, test_feat_dicts, test_words, feature_types,
+        amount, accuracy = evaluate_model(predicted_templates, test_lemmas, test_feat_dicts, test_words, feature_types,
                        print_results=False)
+        print 'initial eval: {}% accuracy'
 
-    # evaluate best models
-    os.system('python task1_evaluate_best_joint_structured_models_blstm_feed_fix.py --cnn-mem 6096 --input={0} \
+        # evaluate best models
+        os.system('python task1_evaluate_best_joint_structured_models_blstm_feed_fix.py --cnn-mem 6096 --input={0} \
     --hidden={1} --feat-input={2} --epochs={3} --layers={4} --optimization={5} {6} {7} {8} {9}'.format(
                                                                                                 input_dim,
                                                                                                 hidden_dim,
@@ -190,13 +193,23 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
     encoder_frnn = pc.LSTMBuilder(layers, input_dim, hidden_dim, model)
     encoder_rrnn = pc.LSTMBuilder(layers, input_dim, hidden_dim, model)
 
-    # attention MLPs
+    # attention MLPs - Loung-style
 
     # concatenation layer for h_input (2*hidden_dim), h_output (hidden_dim)
-    model.add_parameters("W_a", 3 * hidden_dim)
+    model.add_parameters("W_a", (1, 3 * hidden_dim))
 
     # concatenation layer for h (hidden dim), c (2 * hidden_dim)
     model.add_parameters("W_c", (3 * hidden_dim, 3 * hidden_dim))
+
+    # attention MLP's - Bahdanau-style
+    # concatenation layer for h_input (2*hidden_dim), h_output (hidden_dim)
+    model.add_parameters("W__a", (hidden_dim, hidden_dim))
+
+    # concatenation layer for h (hidden dim), c (2 * hidden_dim)
+    model.add_parameters("U__a", (hidden_dim, 2 * hidden_dim))
+
+    # concatenation layer for h_input (2*hidden_dim), h_output (hidden_dim)
+    model.add_parameters("v__a", (1, hidden_dim))
 
     # 1 * HIDDEN_DIM - gets only the feedback input
     decoder_rnn = pc.LSTMBuilder(layers, input_dim, hidden_dim, model)
@@ -305,7 +318,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 print 'dev evaluation:'
                 # get dev accuracy
                 dev_accuracy = evaluate_model(dev_predictions, dev_lemmas, dev_feat_dicts, dev_words, feature_types,
-                                              print_results=False)[1]
+                                              print_results=True)[1]
 
                 if dev_accuracy >= best_dev_accuracy:
                     best_dev_accuracy = dev_accuracy
@@ -443,9 +456,16 @@ def compute_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, w
         s = s.add_input(prev_output_vec)
         decoder_rnn_output = s.output()
 
-        attention_output_vector, alphas = attend(blstm_outputs, decoder_rnn_output, R, bias, W_c, W_a)
+        W__a = pc.parameter(model["W__a"])
+        U__a = pc.parameter(model["U__a"])
+        v__a = pc.parameter(model["v__a"])
+        attention_output_vector, alphas, W = attend(blstm_outputs, decoder_rnn_output, W_c, W_a, v__a, W__a, U__a)
 
-        current_loss = pc.pickneglogsoftmax(attention_output_vector, alphabet_index[output_char])
+        # compute output probabilities
+        # print 'computing readout layer...'
+        readout = R * attention_output_vector + bias
+
+        current_loss = pc.pickneglogsoftmax(readout, alphabet_index[output_char])
         # print 'computed readout layer'
         loss.append(current_loss)
 
@@ -517,10 +537,18 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
         decoder_rnn_output = s.output()
 
         # perform attention step
-        attention_output_vector, alphas = attend(blstm_outputs, decoder_rnn_output, R, bias, W_c, W_a)
+        W__a = pc.parameter(model["W__a"])
+        U__a = pc.parameter(model["U__a"])
+        v__a = pc.parameter(model["v__a"])
+        attention_output_vector, alphas, W = attend(blstm_outputs, decoder_rnn_output, W_c, W_a, v__a, W__a, U__a)
+        # attention_output_vector, alphas, W = attend(blstm_outputs, decoder_rnn_output, W_c, W_a)
+
+        # compute output probabilities
+        # print 'computing readout layer...'
+        readout = R * attention_output_vector + bias
 
         # find best candidate output
-        probs = pc.softmax(attention_output_vector)
+        probs = pc.softmax(readout)
         next_char_index = common.argmax(probs.vec_value())
         predicted_sequence.append(inverse_alphabet_index[next_char_index])
 
@@ -549,7 +577,7 @@ def encode_feats_and_chars(alphabet_index, char_lookup, encoder_frnn, encoder_rr
             try:
                 feat_vecs.append(feat_lookup[feat_index[feat_str]])
             except KeyError:
-                continue
+                print 'Bad feat: {}'.format(feat_str)
                 # handle UNK or dropout
                 # feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
                 # else:
@@ -576,11 +604,12 @@ def encode_feats_and_chars(alphabet_index, char_lookup, encoder_frnn, encoder_rr
     return blstm_outputs
 
 
-def attend(blstm_outputs, h_t, R, bias, W_c, W_a):
-    # attention mechanism:
+def attend(blstm_outputs, h_t, W_c, W_a, v_a, W__a, U__a):
+    # attention mechanism - Loung style:
     # iterate through input states to compute alphas
     # print 'computing scores...'
-    scores = [pc.transpose(W_a) * pc.concatenate([h_t, h_input]) for h_input in blstm_outputs]
+    # scores = [W_a * pc.concatenate([h_t, h_input]) for h_input in blstm_outputs]
+    scores = [pc.tanh(W__a * h_t + U__a * h_input) for h_input in blstm_outputs]
     # print 'computed scores'
     # normalize to alphas using softmax
     # print 'computing alphas...'
@@ -588,7 +617,18 @@ def attend(blstm_outputs, h_t, R, bias, W_c, W_a):
     # print 'computed alphas...'
     # compute c using alphas
     # print 'computing c...'
-    c = pc.esum([blstm_outputs[j] * pc.scalarInput(alpha) for j, alpha in enumerate(alphas.vec_value())])
+
+    # import time
+    # s = time.time()
+    # dim = len(blstm_outputs[0].vec_value())
+    # stacked_alphas = pc.concatenate_cols([alphas for j in xrange(dim)])
+    # stacked_vecs = pc.concatenate_cols([h_input for h_input in blstm_outputs])
+    # c = pc.esum(pc.cwise_multiply(stacked_vecs, stacked_alphas))
+    # print "stack time:", time.time() - s
+
+    # s = time.time()
+    c = pc.esum([h_input * pc.pick(alphas, j) for j, h_input in enumerate(blstm_outputs)])
+    # print "pick time:", time.time() - s
     # print 'computed c'
     # print 'c len is {}'.format(len(c.vec_value()))
     # compute output state h~ using c and the decoder's h (global attention variation from Loung and Manning 2015)
@@ -596,9 +636,27 @@ def attend(blstm_outputs, h_t, R, bias, W_c, W_a):
     h_output = pc.tanh(W_c * pc.concatenate([h_t, c]))
     # print 'len of h_output is {}'.format(len(h_output.vec_value()))
     # print 'computed h~'
-    # compute output probabilities
-    # print 'computing readout layer...'
-    attention_output_vector = R * h_output + bias
+
+    return h_output, alphas, W__a.value()
+
+
+# Bahdanau style attention
+def attend2(blstm_outputs, s_prev, y_feedback, v_a, W_a, U_a, U_o, V_o, C_o):
+
+    # attention mechanism - Bahdanau style
+    # iterate through input states to compute alphas
+    # print 'computing scores...'
+
+    # W_a: hidden x hidden, U_a: hidden x 2 hidden, v_a: hidden, each score: scalar
+    scores = [v_a * pc.tanh(W_a * s_prev + U_a * h_j) for h_j in blstm_outputs]
+    alphas = pc.softmax(pc.concatenate(scores))
+
+    # c_i: 2 hidden
+    c_i = pc.esum([h_input * pc.pick(alphas, j) for j, h_input in enumerate(blstm_outputs)])
+
+    # U_o = 2l x hidden, V_o = 2l x input, C_o = 2l x 2 hidden
+    attention_output_vector = U_o * s_prev + V_o * y_feedback + C_o * c_i
+
     return attention_output_vector, alphas
 
 
@@ -716,9 +774,13 @@ if __name__ == '__main__':
         override_param = True
     else:
         override_param = False
+    if arguments['--eval']:
+        eval_param = True
+    else:
+        eval_param = False
 
     print arguments
 
     main(train_path_param, dev_path_param, test_path_param, results_file_path_param, sigmorphon_root_dir_param,
          input_dim_param, hidden_dim_param, feat_input_dim_param, epochs_param, layers_param, optimization_param,
-         regularization_param, learning_rate_param, plot_param, override_param)
+         regularization_param, learning_rate_param, plot_param, override_param, eval_param)
