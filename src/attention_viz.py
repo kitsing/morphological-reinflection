@@ -75,9 +75,10 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
                     'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': regularization,
                     'LEARNING_RATE': learning_rate}
 
-    alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types, initial_model, \
-    inverse_alphabet_index, dev_words, dev_lemmas, dev_feat_dicts = init_model(
-        dev_path, feat_input_dim, hidden_dim, input_dim, layers, results_file_path, test_path, train_path)
+    (alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types, initial_model,
+     inverse_alphabet_index, dev_words, dev_lemmas, dev_feat_dicts) = init_model(dev_path, feat_input_dim, hidden_dim,
+                                                                                 input_dim, layers, results_file_path,
+                                                                                 test_path, train_path)
 
     start = 300
     end = 350
@@ -89,26 +90,27 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
     return
     # get user input word and features
     # feats = {u'pos': u'NN', u'num': u'P', u'gen': u'F', u'poss_per': u'2', u'poss_gen': u'M', u'poss_num': u'P'}
-    feats = {u'pos': u'NN', u'num': u'P', u'gen': u'F', u'poss_per': u'2', u'poss_gen': u'M', u'poss_num': u'P' } # u'tense' : u'FUTURE', u'poss_per': u'2', u'poss_gen': u'M', u'poss_num': u'P'}
+    feats = {u'pos': u'NN', u'num': u'P', u'gen': u'F', u'poss_per': u'2', u'poss_gen': u'M',
+             u'poss_num': u'P'}  # u'tense' : u'FUTURE', u'poss_per': u'2', u'poss_gen': u'M', u'poss_num': u'P'}
 
     user_input = u'כלב'
     plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
                              initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
                              hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input)
 
-    feats = {u'pos': u'VB', u'num': u'S', u'gen': u'F', u'per': u'3', u'tense' : u'FUTURE', u'binyan': u'PAAL'}
+    feats = {u'pos': u'VB', u'num': u'S', u'gen': u'F', u'per': u'3', u'tense': u'FUTURE', u'binyan': u'PAAL'}
     user_input = u'ישן'
     plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
                              initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
                              hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input)
 
-    feats = {u'pos': u'VB', u'num': u'P', u'gen': u'M', u'per': u'3', u'tense' : u'FUTURE', u'binyan': u'PAAL'}
+    feats = {u'pos': u'VB', u'num': u'P', u'gen': u'M', u'per': u'3', u'tense': u'FUTURE', u'binyan': u'PAAL'}
     user_input = u'ישן'
     plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
                              initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
                              hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input)
 
-    feats = {u'pos': u'VB', u'num': u'P', u'gen': u'F', u'per': u'3', u'tense' : u'FUTURE', u'binyan': u'PAAL'}
+    feats = {u'pos': u'VB', u'num': u'P', u'gen': u'F', u'per': u'3', u'tense': u'FUTURE', u'binyan': u'PAAL'}
     user_input = u'ישן'
     plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
                              initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
@@ -119,11 +121,10 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
 def plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
                              initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
                              hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input):
-
     # predict
-    output, alphas_mtx, input, W = predict_output_sequence(initial_model, encoder_frnn, encoder_rrnn,
-                                                        decoder_rnn, user_input, feats, alphabet_index,
-                                                        inverse_alphabet_index, feat_index, feature_types)
+    output_seq, alphas_mtx, input_seq, W = predict_output_sequence(initial_model, encoder_frnn, encoder_rrnn,
+                                                                   decoder_rnn, user_input, feats, alphabet_index,
+                                                                   inverse_alphabet_index, feat_index, feature_types)
     fig, ax = plt.subplots()
     new = []
     for row in W:
@@ -144,12 +145,12 @@ def plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_
     ax.yaxis.set_ticks(np.arange(0, len(alphas_mtx), 1))
 
     # set tick labels to meaningful symbols
-    ax.set_xticklabels(list(input))
-    ax.set_yticklabels(list(output))
+    ax.set_xticklabels(list(input_seq))
+    ax.set_yticklabels(list(output_seq))
 
     # set title
-    input_word = u''.join(input)
-    output_word = u''.join(output)
+    input_word = u''.join(input_seq)
+    output_word = u''.join(output_seq)
     ax.set_title(u'attention-based alignment: {} -> {}'.format(user_input, output_word[0:-1]))
 
     print input_word
@@ -182,17 +183,18 @@ def init_model(dev_path, feat_input_dim, hidden_dim, input_dim, layers, results_
     feat_index = dict(zip(feature_alphabet, range(0, len(feature_alphabet))))
     model_file_name = results_file_path + '_bestmodel.txt'
     # load model and everything else needed for prediction
-    initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = task1_attention_implementation.load_best_model(alphabet,
-                                                                                                            results_file_path,
-                                                                                                            input_dim,
-                                                                                                            hidden_dim,
-                                                                                                            layers,
-                                                                                                            feature_alphabet,
-                                                                                                            feat_input_dim,
-                                                                                                            feature_types)
+    initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = task1_attention_implementation.load_best_model(
+                                                                                                    alphabet,
+                                                                                                    results_file_path,
+                                                                                                    input_dim,
+                                                                                                    hidden_dim,
+                                                                                                    layers,
+                                                                                                    feature_alphabet,
+                                                                                                    feat_input_dim,
+                                                                                                    feature_types)
     print 'loaded existing model successfully'
-    return alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types, initial_model, \
-           inverse_alphabet_index, dev_words, dev_lemmas, dev_feat_dicts
+    return (alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types, initial_model,
+            inverse_alphabet_index, dev_words, dev_lemmas, dev_feat_dicts)
 
 
 # noinspection PyPep8Naming
@@ -205,7 +207,9 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
     feat_lookup = model["feat_lookup"]
     R = pc.parameter(model["R"])
     bias = pc.parameter(model["bias"])
-    W_a = pc.parameter(model["W_a"])
+    W__a = pc.parameter(model["W__a"])
+    U__a = pc.parameter(model["U__a"])
+    v__a = pc.parameter(model["v__a"])
     W_c = pc.parameter(model["W_c"])
 
     blstm_outputs = task1_attention_implementation.encode_feats_and_chars(alphabet_index, char_lookup, encoder_frnn,
@@ -234,15 +238,8 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
         decoder_rnn_output = s.output()
 
         # perform attention step
-        # attention_output_vector, alphas, W = task1_attention_implementation.attend(blstm_outputs, decoder_rnn_output, W_c,
-        #                                                                         W_a)
-
-        W__a = pc.parameter(model["W__a"])
-        U__a = pc.parameter(model["U__a"])
-        v__a = pc.parameter(model["v__a"])
         attention_output_vector, alphas, W = task1_attention_implementation.attend(blstm_outputs, decoder_rnn_output,
-                                                                                   W_c, W_a, v__a, W__a, U__a)
-
+                                                                                   W_c, v__a, W__a, U__a)
         val = alphas.vec_value()
         print 'alphas:'
         print val
