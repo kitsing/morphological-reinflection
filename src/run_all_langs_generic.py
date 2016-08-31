@@ -120,6 +120,17 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
             {8}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
                         sigmorphon_root_dir, lang, results_dir, prefix, task, augment_str))
 
+    if 'attention' in script:
+        # train on train, evaluate on dev for early stopping, finally eval on train
+        os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} \
+                --feat-input={4} --epochs={5} --layers={6} --optimization {7} {13}\
+                {8}/data/{9}-task{12}-train \
+                {8}/data/{9}-task{12}-dev \
+                ../biu/gold/{9}-task{12}-test \
+                {10}/{11}_{9}-results.txt \
+                {8}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
+                            sigmorphon_root_dir, lang, results_dir, prefix, task, augment_str))
+
     end = time.time()
     print 'finished {} in {}'.format(lang, str(ms_to_timestring(end - start)))
 
