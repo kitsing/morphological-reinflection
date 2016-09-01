@@ -4,7 +4,8 @@ files and evaluation script.
 Usage:
   task1_joint_structured_inflection_blstm_feedback_fix.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
   [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION]
-  [--learning=LEARNING] [--plot] [--override] [--eval] TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+  [--learning=LEARNING] [--plot] [--override] [--eval] [--ensemble] TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH
+  SIGMORPHON_PATH...
 
 Arguments:
   TRAIN_PATH    train set path path
@@ -26,6 +27,7 @@ Options:
   --learning=LEARNING           learning rate parameter for optimization
   --plot                        draw a learning curve plot while training each model
   --override                    override the existing model with the same name, if exists
+  --ensemble                    ensemble model paths separated by a comma
 """
 
 import numpy as np
@@ -40,6 +42,7 @@ import pycnn as pc
 
 from matplotlib import pyplot as plt
 from docopt import docopt
+from collections import defaultdict
 
 # default values
 INPUT_DIM = 300
@@ -65,7 +68,7 @@ UNK_FEAT = '@'
 
 
 def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, feat_input_dim,
-         epochs, layers, optimization, regularization, learning_rate, plot, override, eval_only):
+         epochs, layers, optimization, regularization, learning_rate, plot, override, eval_only, ensemble):
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'FEAT_INPUT_DIM': feat_input_dim,
                     'EPOCHS': epochs, 'LAYERS': layers, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
                     'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': regularization,
@@ -116,6 +119,7 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
         model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers,
                                                                      feature_types, feat_input_dim, feature_alphabet)
     if not eval_only:
+        # start training
         trained_model, last_epoch, best_epoch = train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn,
                                                             train_lemmas, train_feat_dicts, train_words, dev_lemmas,
                                                             dev_feat_dicts, dev_words, alphabet_index,
@@ -128,16 +132,22 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
     else:
         print 'skipped training, evaluating on test set...'
 
-    # evaluate last model on test
-    predicted_sequences = predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
-                                            inverse_alphabet_index, test_lemmas, test_feat_dicts, feat_index,
-                                            feature_types)
+    if ensemble:
+        predicted_sequences = predict_with_ensemble_majority(alphabet, alphabet_index, ensemble, feat_index,
+                                                             feat_input_dim, feature_alphabet, feature_types,
+                                                             hidden_dim, input_dim, inverse_alphabet_index, layers,
+                                                             test_feat_dicts, test_lemmas, test_words)
+    else:
+        predicted_sequences = predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+                                                inverse_alphabet_index, test_lemmas, test_feat_dicts, feat_index,
+                                                feature_types)
     if len(predicted_sequences) > 0:
-        final_results = {}
+        # evaluate last model on test
         amount, accuracy = evaluate_model(predicted_sequences, test_lemmas, test_feat_dicts, test_words, feature_types,
                                           print_results=False)
         print 'initial eval: {}% accuracy'.format(accuracy)
 
+        final_results = {}
         for i in xrange(len(test_lemmas)):
             joint_index = test_lemmas[i] + ':' + common.get_morph_string(test_feat_dicts[i], feature_types)
             inflection = predicted_sequences[joint_index]
@@ -148,6 +158,55 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
                                                           results_file_path + '.external_eval.txt', sigmorphon_root_dir,
                                                           final_results)
     return
+
+
+def predict_with_ensemble_majority(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim, feature_alphabet,
+                                   feature_types, hidden_dim, input_dim, inverse_alphabet_index, layers,
+                                   test_feat_dicts, test_lemmas, test_words):
+
+    ensemble_model_names = ensemble.split(',')
+    print 'ensemble paths:\n'
+    print '\n'.join(ensemble_model_names)
+    ensemble_models = []
+
+    # load ensemble models
+    for ens in ensemble_model_names:
+        model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(alphabet, ens, input_dim, hidden_dim, layers,
+                                                                         feature_alphabet, feat_input_dim,
+                                                                         feature_types)
+
+        ensemble_models.append((model, encoder_frnn, encoder_rrnn, decoder_rnn))
+
+    # predict the entire test set with each model in the ensemble
+    ensemble_predictions = []
+    for em in ensemble_models:
+        model, encoder_frnn, encoder_rrnn, decoder_rnn = em
+        predicted_sequences = predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+                                                inverse_alphabet_index, test_lemmas, test_feat_dicts, feat_index,
+                                                feature_types)
+
+        ensemble_predictions.append(predicted_sequences)
+
+    # perform voting for each test input - joint_index is a lemma+feats representation
+    majority_predicted_sequences = {}
+    string_to_template = {}
+    test_data = zip(test_lemmas, test_feat_dicts, test_words)
+    for i, (lemma, feat_dict, word) in enumerate(test_data):
+        joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
+        prediction_counter = defaultdict(int)
+        for ens in ensemble_predictions:
+            prediction_str = ''.join(ens[joint_index])
+            prediction_counter[prediction_str] += 1
+            string_to_template[prediction_str] = ens[joint_index]
+            print u'template: {} prediction: {}'.format(ens[joint_index], prediction_str)
+
+        # return the most predicted output
+        majority_prediction_string = max(prediction_counter, key=prediction_counter.get)
+        print u'chosen:{} with {} votes\n'.format(majority_prediction_string,
+                                                  prediction_counter[majority_prediction_string])
+        majority_predicted_sequences[joint_index] = string_to_template[majority_prediction_string]
+
+    return majority_predicted_sequences
 
 
 def save_pycnn_model(model, results_file_path):
@@ -766,9 +825,13 @@ if __name__ == '__main__':
         eval_param = True
     else:
         eval_param = False
+    if arguments['--ensemble']:
+        ensemble_param = arguments['--ensemble']
+    else:
+        ensemble_param = False
 
     print arguments
 
     main(train_path_param, dev_path_param, test_path_param, results_file_path_param, sigmorphon_root_dir_param,
          input_dim_param, hidden_dim_param, feat_input_dim_param, epochs_param, layers_param, optimization_param,
-         regularization_param, learning_rate_param, plot_param, override_param, eval_param)
+         regularization_param, learning_rate_param, plot_param, override_param, eval_param, ensemble_param)

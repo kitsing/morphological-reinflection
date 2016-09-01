@@ -3,7 +3,7 @@
 Usage:
   run_all_langs_generic.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN] [--epochs=EPOCHS]
   [--layers=LAYERS] [--optimization=OPTIMIZATION] [--pool=POOL] [--langs=LANGS] [--script=SCRIPT] [--prefix=PREFIX]
-  [--augment] [--merged] [--task=TASK] [--ensemble=ENSEMBLE]
+  [--augment] [--merged] [--task=TASK] [--ensemble=ENSEMBLE] [--eval]
   SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
@@ -28,6 +28,7 @@ Options:
   --merged                      whether to train on train+dev merged
   --task=TASK                   the current task to train
   --ensemble=ENSEMBLE           the amount of ensemble models to train, 1 if not mentioned
+  --eval                        run only evaluation without training
 """
 
 import os
@@ -45,34 +46,44 @@ EPOCHS = 1
 LAYERS = 2
 OPTIMIZATION = 'ADAM'
 POOL = 4
-LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german',
-         'hungarian', 'maltese']
+LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german', 'hungarian', 'maltese']
 CNN_MEM = 9096
 
 
 def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim, pool_size, langs, script, prefix, task, augment, merged, ensemble):
+         optimization, feat_input_dim, pool_size, langs, script, prefix, task, augment, merged, ensemble, eval_only):
     parallelize_training = True
     params = []
     print 'now training langs: ' + str(langs)
     for lang in langs:
 
         # check if an ensemble was requested
+        ensemble_paths = []
         if ensemble > 1:
-
-            # create params entry for each ensemble model
             for e in xrange(ensemble):
 
-                # change prefix for ensemble
+                # create prefix for ensemble
                 ens_prefix = prefix + '_ens_{}'.format(e)
 
-                # add params set for model execution
+                if not eval_only:
+                    # should train ensemble model: add params set for parallel model training execution
+                    params.append([CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization,
+                                   results_dir, sigmorphon_root_dir, src_dir, script, ens_prefix, task, augment,
+                                   merged, '', eval_only])
+                else:
+                    # eval ensemble by generating a list of existing ensemble model paths and then passing it to
+                    # the script as a single concatenated string parameter
+                    ensemble_paths.append('{}/{}_{}-results.txt'.format(results_dir, ens_prefix, lang))
+            if eval_only:
+                concat_paths = ','.join(ensemble_paths)
                 params.append([CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization,
-                              results_dir, sigmorphon_root_dir, src_dir, script, ens_prefix, task, augment, merged])
+                               results_dir, sigmorphon_root_dir, src_dir, script, prefix, task, augment,
+                               merged, concat_paths, eval_only])
         else:
+            # train a single model
             params.append([CNN_MEM, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization,
-                           results_dir, sigmorphon_root_dir, src_dir, script, prefix, task, augment, merged])
-
+                           results_dir, sigmorphon_root_dir, src_dir, script, prefix, task, augment, merged,
+                           ensemble_paths, eval_only])
 
     # train models for each lang/ensemble in parallel or in loop
     if parallelize_training:
@@ -86,57 +97,56 @@ def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epoch
 
     print 'finished training all models'
 
+
 def train_language_wrapper(params):
     train_language(*params)
 
 
 def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang, layers, optimization, results_dir,
-                sigmorphon_root_dir, src_dir, script, prefix, task, augment, merged):
+                   sigmorphon_root_dir, src_dir, script, prefix, task, augment, merged, ensemble_paths, eval_only):
 
     if augment:
-        augment_str='--augment'
+        augment_str = '--augment'
     else:
-        augment_str=''
+        augment_str = ''
+
+    if eval_param:
+        augment_str = '--augment'
+    else:
+        augment_str = ''
 
     start = time.time()
     os.chdir(src_dir)
 
+    train_path = '{}/data/{}-task{}-train'.format(sigmorphon_root_dir, lang, task)
+    dev_path = '{}/data/{}-task{}-dev'.format(sigmorphon_root_dir, lang, task)
+    test_path = '../biu/gold/{}-task{}-test'.format(lang, task)
+    results_path = '{}/{}_{}-results.txt'.format(results_dir, prefix, lang)
     if merged:
-        # train on train+dev, evaluate on dev for early stopping
-        os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} \
-            --feat-input={4} --epochs={5} --layers={6} --optimization {7} {13}\
-            ../data/sigmorphon_train_dev_merged/{9}-task{12}-merged \
-            {8}/data/{9}-task{12}-dev \
-            {10}/{11}_{9}-results.txt \
-            {8}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-                        sigmorphon_root_dir, lang, results_dir, prefix, task, augment_str))
-    else:
-        # train on train, evaluate on dev for early stopping
-        os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} \
-            --feat-input={4} --epochs={5} --layers={6} --optimization {7} {13}\
-            {8}/data/{9}-task{12}-train \
-            {8}/data/{9}-task{12}-dev \
-            {10}/{11}_{9}-results.txt \
-            {8}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-                        sigmorphon_root_dir, lang, results_dir, prefix, task, augment_str))
+        train_path = '../data/sigmorphon_train_dev_merged/{}-task{}-merged'.format(lang, task)
 
     if 'attention' in script:
         # train on train, evaluate on dev for early stopping, finally eval on train
-        os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} \
-                --feat-input={4} --epochs={5} --layers={6} --optimization {7} {13}\
-                {8}/data/{9}-task{12}-train \
-                {8}/data/{9}-task{12}-dev \
-                ../biu/gold/{9}-task{12}-test \
-                {10}/{11}_{9}-results.txt \
-                {8}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-                            sigmorphon_root_dir, lang, results_dir, prefix, task, augment_str))
+        os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} --feat-input={4} --epochs={5} --layers={6} \
+        --optimization={7} {8} --ensemble={9}\
+        {10} \
+        {11} \
+        {12} \
+        {13} \
+        {14}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
+                     augment_str, ensemble_paths, train_path, dev_path, test_path, results_path, sigmorphon_root_dir))
+    else:
+        # train on train+dev, evaluate on dev for early stopping
+        os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} --feat-input={4} --epochs={5} --layers={6} \
+        --optimization={7} {8}\
+        {9} \
+        {10} \
+        {11} \
+        {12}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
+                     augment_str, train_path, dev_path, results_path, sigmorphon_root_dir))
 
     end = time.time()
-    print 'finished {} in {}'.format(lang, str(ms_to_timestring(end - start)))
-
-
-def ms_to_timestring(ms):
-    return str(datetime.timedelta(ms))
+    print 'finished {} in {}'.format(lang, str(end - start))
 
 
 def evaluate_baseline(lang, results_dir, sig_root):
@@ -160,45 +170,45 @@ if __name__ == '__main__':
 
     # default values
     if arguments['SRC_PATH']:
-        src_dir = arguments['SRC_PATH']
+        src_dir_param = arguments['SRC_PATH']
     else:
-        src_dir = '/Users/roeeaharoni/GitHub/morphological-reinflection/src/'
+        src_dir_param = '/Users/roeeaharoni/GitHub/morphological-reinflection/src/'
     if arguments['RESULTS_PATH']:
-        results_dir = arguments['RESULTS_PATH']
+        results_dir_param = arguments['RESULTS_PATH']
     else:
-        results_dir = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/'
+        results_dir_param = '/Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/'
     if arguments['SIGMORPHON_PATH']:
-        sigmorphon_root_dir = arguments['SIGMORPHON_PATH'][0]
+        sigmorphon_root_dir_param = arguments['SIGMORPHON_PATH'][0]
     else:
-        sigmorphon_root_dir = '/Users/roeeaharoni/research_data/sigmorphon2016-master/'
+        sigmorphon_root_dir_param = '/Users/roeeaharoni/research_data/sigmorphon2016-master/'
     if arguments['--input']:
-        input_dim = int(arguments['--input'])
+        input_dim_param = int(arguments['--input'])
     else:
-        input_dim = INPUT_DIM
+        input_dim_param = INPUT_DIM
     if arguments['--hidden']:
-        hidden_dim = int(arguments['--hidden'])
+        hidden_dim_param = int(arguments['--hidden'])
     else:
-        hidden_dim = HIDDEN_DIM
+        hidden_dim_param = HIDDEN_DIM
     if arguments['--feat-input']:
-        feat_input_dim = int(arguments['--feat-input'])
+        feat_input_dim_param = int(arguments['--feat-input'])
     else:
-        feat_input_dim = FEAT_INPUT_DIM
+        feat_input_dim_param = FEAT_INPUT_DIM
     if arguments['--epochs']:
-        epochs = int(arguments['--epochs'])
+        epochs_param = int(arguments['--epochs'])
     else:
-        epochs = EPOCHS
+        epochs_param = EPOCHS
     if arguments['--layers']:
-        layers = int(arguments['--layers'])
+        layers_param = int(arguments['--layers'])
     else:
-        layers = LAYERS
+        layers_param = LAYERS
     if arguments['--optimization']:
-        optimization = arguments['--optimization']
+        optimization_param = arguments['--optimization']
     else:
-        optimization = OPTIMIZATION
+        optimization_param = OPTIMIZATION
     if arguments['--pool']:
-        pool_size = arguments['--pool']
+        pool_size_param = arguments['--pool']
     else:
-        pool_size = POOL
+        pool_size_param = POOL
     if arguments['--langs']:
         langs_param = [l.strip() for l in arguments['--langs'].split(',')]
     else:
@@ -229,9 +239,13 @@ if __name__ == '__main__':
         ensemble_param = int(arguments['--ensemble'])
     else:
         ensemble_param = 1
+    if arguments['--eval']:
+        eval_param = True
+    else:
+        eval_param = False
 
     print arguments
 
-    main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
-         optimization, feat_input_dim, pool_size, langs_param, script_param, prefix_param, task_param,
-         augment_param, merged_param, ensemble_param)
+    main(src_dir_param, results_dir_param, sigmorphon_root_dir_param, input_dim_param, hidden_dim_param, epochs_param,
+         layers_param, optimization_param, feat_input_dim_param, pool_size_param, langs_param, script_param,
+         prefix_param, task_param, augment_param, merged_param, ensemble_param, eval_param)
