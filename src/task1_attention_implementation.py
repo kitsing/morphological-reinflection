@@ -2,9 +2,9 @@
 files and evaluation script.
 
 Usage:
-  task1_joint_structured_inflection_blstm_feedback_fix.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
+  task1_attention_implementation.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
   [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION]
-  [--learning=LEARNING] [--plot] [--override] [--eval] [--ensemble] TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH
+  [--learning=LEARNING] [--plot] [--override] [--eval] [--ensemble=ENSEMBLE] TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH
   SIGMORPHON_PATH...
 
 Arguments:
@@ -27,7 +27,7 @@ Options:
   --learning=LEARNING           learning rate parameter for optimization
   --plot                        draw a learning curve plot while training each model
   --override                    override the existing model with the same name, if exists
-  --ensemble                    ensemble model paths separated by a comma
+  --ensemble=ENSEMBLE           ensemble model paths separated by a comma
 """
 
 import numpy as np
