@@ -120,7 +120,7 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
 
     train_path = '{}/data/{}-task{}-train'.format(sigmorphon_root_dir, lang, task)
     dev_path = '{}/data/{}-task{}-dev'.format(sigmorphon_root_dir, lang, task)
-    test_path = '../biu/gold/{}-task{}-test'.format(lang, task)
+    test_path = '{}/biu/gold/{}-task{}-test'.format(src_dir.replace('/src/',''), lang, task)
     results_path = '{}/{}_{}-results.txt'.format(results_dir, prefix, lang)
     if merged:
         train_path = '../data/sigmorphon_train_dev_merged/{}-task{}-merged'.format(lang, task)
