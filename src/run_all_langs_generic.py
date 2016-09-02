@@ -135,6 +135,7 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
         {13} \
         {14}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
                      augment_str, ensemble_paths, train_path, dev_path, test_path, results_path, sigmorphon_root_dir)
+        print command
         os.system(command)
     else:
         # train on train+dev, evaluate on dev for early stopping
