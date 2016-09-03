@@ -115,6 +115,11 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
     else:
         eval_str = ''
 
+    if len(ensemble_paths) > 0:
+        ensemble_str = '--ensemble={}'.format(ensemble_paths)
+    else:
+        ensemble_str = ''
+
     start = time.time()
     os.chdir(src_dir)
 
@@ -128,13 +133,13 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
     if 'attention' in script:
         # train on train, evaluate on dev for early stopping, finally eval on train
         command = 'python {0} --cnn-mem {1} --input={2} --hidden={3} --feat-input={4} --epochs={5} --layers={6} \
-        --optimization={7} {8} {9} --ensemble={10}\
+        --optimization={7} {8} {9} {10}\
         {11} \
         {12} \
         {13} \
         {14} \
         {15}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
-                     eval_str, augment_str, ensemble_paths, train_path, dev_path, test_path, results_path,
+                     eval_str, augment_str, ensemble_str, train_path, dev_path, test_path, results_path,
                      sigmorphon_root_dir)
         print '\n' + command +'\n'
         os.system(command)
