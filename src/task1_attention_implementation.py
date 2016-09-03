@@ -716,7 +716,7 @@ def predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_i
         predicted_template = predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma,
                                                      feat_dict, alphabet_index, inverse_alphabet_index, feat_index,
                                                      feature_types)
-        if i % 100 == 0 and i > 0:
+        if i % 1000 == 0 and i > 0:
             print 'predicted {} examples out of {}'.format(i, data_len)
 
         joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
