@@ -39,6 +39,7 @@ import os
 import common
 import pycnn as pc
 import task1_attention_implementation
+from sklearn.decomposition import TruncatedSVD
 
 from collections import defaultdict
 from multiprocessing import Pool
@@ -80,6 +81,53 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
                                                                                  input_dim, layers, results_file_path,
                                                                                  test_path, train_path)
 
+    feats = {u'pos': u'VB', u'num': u'S', u'per':u'2', u'gen': u'M', u'binyan': u'HITPAEL', u'tense': u'PAST'}
+    user_input = u'ספר'
+    plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
+                             initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
+                             hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input)
+
+
+    char_lookup = initial_model["char_lookup"]
+    char_embeddings = {}
+    char_embeddings_matrix = []
+    clean_alphabet_index = {}
+
+    # workaround to remove feat embeddings from plot
+    for char in alphabet_index:
+        if not len(char) > 1 and not char.isdigit() and not char in [UNK, UNK_FEAT, EPSILON, NULL]:
+            clean_alphabet_index[char] = alphabet_index[char]
+
+    for char in clean_alphabet_index:
+        char_embeddings[char] = char_lookup[clean_alphabet_index[char]].vec_value()
+        char_embeddings_matrix.append(char_lookup[clean_alphabet_index[char]].vec_value())
+    X = np.array(char_embeddings_matrix)
+
+    plot_svd_reduction(X, clean_alphabet_index)
+
+    feat_lookup = initial_model["feat_lookup"]
+    feat_embeddings = {}
+    feat_embeddings_matrix = []
+    for feat in feat_index:
+        feat_embeddings[feat] = feat_lookup[feat_index[feat]].vec_value()
+        feat_embeddings_matrix.append(feat_lookup[feat_index[feat]].vec_value())
+    Y = np.array(feat_embeddings_matrix)
+
+    plot_svd_reduction(Y, feat_index)
+
+
+    feats = {u'pos': u'JJ', u'num': u'P', u'def':u'DEF', u'gen':u'F'}
+    user_input = u'צמחוני'
+    plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
+                             initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
+                             hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input)
+
+    feats = {u'pos': u'VB', u'num': u'S', u'gen': u'F', u'per': u'3', u'tense': u'FUTURE', u'binyan': u'PAAL'}
+    user_input = u'שש'
+    plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
+                             initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
+                             hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input)
+
     start = 300
     end = 350
     for lemma, feats in zip(dev_lemmas[start:end], dev_feat_dicts[start:end]):
@@ -98,12 +146,6 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
                              initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
                              hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input)
 
-    feats = {u'pos': u'VB', u'num': u'S', u'gen': u'F', u'per': u'3', u'tense': u'FUTURE', u'binyan': u'PAAL'}
-    user_input = u'ישן'
-    plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
-                             initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
-                             hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input)
-
     feats = {u'pos': u'VB', u'num': u'P', u'gen': u'M', u'per': u'3', u'tense': u'FUTURE', u'binyan': u'PAAL'}
     user_input = u'ישן'
     plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
@@ -116,6 +158,18 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
                              initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
                              hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input)
     print 'Bye!'
+
+
+def plot_svd_reduction(X, alphabet_index):
+    svd = TruncatedSVD()
+    reduced_X = svd.fit_transform(X)
+    x = reduced_X[:, 0]
+    y = reduced_X[:, 1]
+    # plt.plot(x,y, 'ro')
+    fig, ax = plt.subplots()
+    ax.scatter(x, y, s=[0 for i in x])
+    for i, feat in enumerate(alphabet_index):
+        ax.annotate(feat, (x[i], y[i]), (x[i], y[i]))
 
 
 def plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
