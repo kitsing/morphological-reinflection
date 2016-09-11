@@ -81,21 +81,147 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
                                                                                  input_dim, layers, results_file_path,
                                                                                  test_path, train_path)
 
-    feats = {u'pos': u'VB', u'num': u'S', u'per':u'2', u'gen': u'M', u'binyan': u'HITPAEL', u'tense': u'PAST'}
+    char_lookup = initial_model["char_lookup"]
+    feat_lookup = initial_model["feat_lookup"]
+
+    # "what is learned by the encoder" experiment:
+    # get lots of input words (dev set)
+    # run blstm encoder on them (encode feats and chars)
+    # experiments:
+    # we want to understand what's captured/whats more significant: current symbol, context or all?
+    # to do so:
+    # take the blstm rep. for the same character, same context, different positions. how will it cluster by position?
+    # i.e: abbbbbb, babbbb, bbabbbb, bbbabbbb, bbbbabb, bbbbbba...
+
+    # take the blstm rep. for the same character, same position, diff. contexts. how will it cluster by context?
+    # aaaabaaaa, bbbbbbbbb, cccbcccc, dddbdddd, eeeebeeee...
+
+    # take the blstm rep. for diff characters, same position, same contexts. how will it cluster by character?
+    # aaaaaaaa, aaabaaa, aaacaaa, aaadaaa, aaaeaaa, aaafaaa...
+
+    # other option: take (all?) "natural" (dev) examples, throw on SVD, paint by location, character, context (last one
+    #  is more complex but can probably think about something)
+
+    start = 0
+    end = len(dev_lemmas) - 1
+    encoded_vecs = {}
+
+    index_to_feats_and_lemma = {}
+
+    # get bilstm encoder representation
+    for lemma, feats in zip(dev_lemmas[start:end], dev_feat_dicts[start:end]):
+        index = common.get_morph_string(feats, feature_types) + lemma
+        index_to_feats_and_lemma[index] = (feats, lemma)
+        encoded_vecs[index] = task1_attention_implementation.encode_feats_and_chars(alphabet_index, char_lookup,
+                                                                                    encoder_frnn, encoder_rrnn,
+                                                                                    feat_index, feat_lookup, feats,
+                                                                                    feature_types, lemma)
+    # get examples (encoder hidden states) by location: 1, 2, 3, 4, 5...
+    location_to_vec = {}
+    for encoded_rep_index in encoded_vecs:
+        encoded_rep =  encoded_vecs[encoded_rep_index]
+        for location, vec in enumerate(encoded_rep):
+            if location in location_to_vec:
+                location_to_vec[location].append(vec)
+            else:
+                location_to_vec[location] = [vec]
+
+    location_labels = []
+    vecs = []
+
+    # take 10 samples from each character
+    for key in location_to_vec:
+        for value in location_to_vec[key][0:100]:
+            location_labels.append(key)
+            vecs.append(value.vec_value())
+
+    hidden_states = np.array(vecs)
+    # plot_svd_reduction(hidden_states, location_labels, title='SVD for encoder hidden states by location')
+
+    # get examples (encoder hidden states) by character: א,ב,ג,ד,ה,ו...
+    char_to_vec = {}
+    char_vecs = []
+    char_labels = []
+    char_location_labels = []
+    feat_vecs = []
+    feat_labels = []
+    for encoded_rep_index in encoded_vecs:
+
+        # get bilstm encoding for the sequence
+        encoded_rep = encoded_vecs[encoded_rep_index]
+
+        # should skip the feat vecs (?)
+        # get matching lemma and features
+        feats, lemma = index_to_feats_and_lemma[encoded_rep_index]
+        sorted_feats = []
+        for feat in sorted(feature_types):
+            if feat in feats:
+                sorted_feats.append(u'{}:{}'.format(feat, feats[feat]))
+
+        seq_symbols = ['<']  + list(sorted_feats) + list(lemma) + ['>']
+
+        # sort vectors by symbol
+        for i, symbol in enumerate(seq_symbols):
+            if symbol in lemma:
+                char_vecs.append(encoded_rep[i])
+                if i > 0:
+                    prev_symbol = seq_symbols[i-1]
+                else:
+                    prev_symbol = '_'
+                if i < len(seq_symbols) - 1:
+                    next_symbol = seq_symbols[i+1]
+                else:
+                    next_symbol = '_'
+                char_labels.append(u'{} ({},{},{})'.format(symbol, prev_symbol, i, next_symbol))
+                char_location_labels.append(u'{}'.format(i))
+            else:
+                if symbol in sorted_feats:
+                    feat_vecs.append(encoded_rep[i])
+                    feat_labels.append(symbol)
+
+            if symbol in char_to_vec:
+                char_to_vec[symbol].append(encoded_rep[i])
+            else:
+                char_to_vec[symbol] = [encoded_rep[i]]
+
+    symbol_labels = []
+    vecs = []
+
+    # take 20 samples from each symbol
+    for key in char_to_vec:
+        for value in char_to_vec[key][0:20]:
+            symbol_labels.append(key)
+            vecs.append(value.vec_value())
+
+    all_hidden_states = np.array(vecs)
+    # plot_svd_reduction(all_hidden_states, symbol_labels, title='SVD for encoder hidden states by symbol')
+
+    char_hidden_states = np.array([v.vec_value() for v in char_vecs])
+    # plot_svd_reduction(char_hidden_states[0:100], char_labels[0:100], title='SVD for encoder hidden states by symbol (characters only)')
+
+    plot_svd_reduction(char_hidden_states[0:200], char_labels[0:200], color_labels=char_location_labels[0:200],
+                       title='SVD for encoder hidden states by location (characters only)')
+
+    feat_hidden_states = np.array([v.vec_value() for v in feat_vecs])
+    plot_svd_reduction(feat_hidden_states[0:50], feat_labels[0:50],
+                       color_labels=[f[0:4] for f in feat_labels[0:50]],
+                       title = 'SVD for encoder hidden states by type (features only)')
+
+    # TODO: get examples (encoder hidden states) by context: after/before א,ב,ג,ד,ה...
+
+    feats = {u'pos': u'VB', u'num': u'S', u'per': u'2', u'gen': u'M', u'binyan': u'HITPAEL', u'tense': u'PAST'}
     user_input = u'ספר'
     plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
                              initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
                              hyper_params, input_dim, layers, results_file_path, test_path, train_path, user_input)
 
-
-    char_lookup = initial_model["char_lookup"]
     char_embeddings = {}
     char_embeddings_matrix = []
     clean_alphabet_index = {}
 
     # workaround to remove feat embeddings from plot
     for char in alphabet_index:
-        if not len(char) > 1 and not char.isdigit() and not char in [UNK, UNK_FEAT, EPSILON, NULL]:
+        if not len(char) > 1 and not char.isdigit() and char not in [UNK, UNK_FEAT, EPSILON, NULL]:
             clean_alphabet_index[char] = alphabet_index[char]
 
     for char in clean_alphabet_index:
@@ -105,7 +231,6 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
 
     plot_svd_reduction(X, clean_alphabet_index)
 
-    feat_lookup = initial_model["feat_lookup"]
     feat_embeddings = {}
     feat_embeddings_matrix = []
     for feat in feat_index:
@@ -115,8 +240,7 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
 
     plot_svd_reduction(Y, feat_index)
 
-
-    feats = {u'pos': u'JJ', u'num': u'P', u'def':u'DEF', u'gen':u'F'}
+    feats = {u'pos': u'JJ', u'num': u'P', u'def': u'DEF', u'gen': u'F'}
     user_input = u'צמחוני'
     plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
                              initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
@@ -135,7 +259,7 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
                                  initial_model, inverse_alphabet_index, dev_path, feat_input_dim, feats, hidden_dim,
                                  hyper_params, input_dim, layers, results_file_path, test_path, train_path, lemma)
 
-    return
+
     # get user input word and features
     # feats = {u'pos': u'NN', u'num': u'P', u'gen': u'F', u'poss_per': u'2', u'poss_gen': u'M', u'poss_num': u'P'}
     feats = {u'pos': u'NN', u'num': u'P', u'gen': u'F', u'poss_per': u'2', u'poss_gen': u'M',
@@ -160,7 +284,25 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
     print 'Bye!'
 
 
-def plot_svd_reduction(X, alphabet_index):
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
+
+def plot_svd_reduction(X, labels, color_labels = [], title=''):
+    if len(color_labels) == 0:
+        color_labels = labels
+
+    max_label = 0
+    for label in color_labels:
+        if is_number(label):
+            num = float(label)
+            if num > max_label:
+                max_label = num
+
     svd = TruncatedSVD()
     reduced_X = svd.fit_transform(X)
     x = reduced_X[:, 0]
@@ -168,8 +310,25 @@ def plot_svd_reduction(X, alphabet_index):
     # plt.plot(x,y, 'ro')
     fig, ax = plt.subplots()
     ax.scatter(x, y, s=[0 for i in x])
-    for i, feat in enumerate(alphabet_index):
-        ax.annotate(feat, (x[i], y[i]), (x[i], y[i]))
+
+    colors = ['blue', 'green', 'red', 'cyan', 'magenta', 'yellow', 'black', '#FFA500']
+    label_to_color = {}
+    color_index = 0
+    color = 'black'
+
+    for i, (label, color_label) in enumerate(zip(labels, color_labels)):
+        if max_label != 0:
+            ax.annotate(label, (x[i], y[i]), (x[i], y[i]), color = str(float(color_label)/max_label))
+        else:
+            if color_label in label_to_color:
+                color = label_to_color[color_label]
+            else:
+                color_index = (color_index + 1) % len(colors)
+                label_to_color[color_label] = colors[color_index]
+                color = colors[color_index]
+            ax.annotate(label, (x[i], y[i]), (x[i], y[i]), color = color)
+    if title != '':
+        ax.set_title(title)
 
 
 def plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
@@ -238,14 +397,14 @@ def init_model(dev_path, feat_input_dim, hidden_dim, input_dim, layers, results_
     model_file_name = results_file_path + '_bestmodel.txt'
     # load model and everything else needed for prediction
     initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = task1_attention_implementation.load_best_model(
-                                                                                                    alphabet,
-                                                                                                    results_file_path,
-                                                                                                    input_dim,
-                                                                                                    hidden_dim,
-                                                                                                    layers,
-                                                                                                    feature_alphabet,
-                                                                                                    feat_input_dim,
-                                                                                                    feature_types)
+        alphabet,
+        results_file_path,
+        input_dim,
+        hidden_dim,
+        layers,
+        feature_alphabet,
+        feat_input_dim,
+        feature_types)
     print 'loaded existing model successfully'
     return (alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types, initial_model,
             inverse_alphabet_index, dev_words, dev_lemmas, dev_feat_dicts)
