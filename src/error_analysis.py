@@ -2,15 +2,19 @@
 
 def main():
 
-    evaluate(
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/solutions/nfst/turkish-task1-solution',
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/biu/gold/turkish-task1-test',
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/turkish-task1-test-error_analysis.txt')
+    evaluate('/Users/roeeaharoni/git/morphological-reinflection/results/heb-task1-attention-exp-bugfix-II.external_eval.txt.test.predictions',
+             '/Users/roeeaharoni/git/morphological-reinflection/data/heb/hebrew-task1-test',
+             '/Users/roeeaharoni/git/morphological-reinflection/results/heb_attn_error_analysis.txt')
 
-    evaluate(
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/solutions/nfst/russian-task1-solution',
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/biu/gold/russian-task1-test',
-        '/Users/roeeaharoni/GitHub/morphological-reinflection/results/russian-task1-test-error_analysis.txt')
+    # evaluate(
+    #     '/Users/roeeaharoni/GitHub/morphological-reinflection/results/solutions/nfst/turkish-task1-solution',
+    #     '/Users/roeeaharoni/GitHub/morphological-reinflection/biu/gold/turkish-task1-test',
+    #     '/Users/roeeaharoni/GitHub/morphological-reinflection/results/turkish-task1-test-error_analysis.txt')
+    #
+    # evaluate(
+    #     '/Users/roeeaharoni/GitHub/morphological-reinflection/results/solutions/nfst/russian-task1-solution',
+    #     '/Users/roeeaharoni/GitHub/morphological-reinflection/biu/gold/russian-task1-test',
+    #     '/Users/roeeaharoni/GitHub/morphological-reinflection/results/russian-task1-test-error_analysis.txt')
 
     # evaluate(
     #     '/Users/roeeaharoni/GitHub/morphological-reinflection/results/joint_structured_finnish_results.txt.best.predictions',

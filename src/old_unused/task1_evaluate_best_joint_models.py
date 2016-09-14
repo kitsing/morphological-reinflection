@@ -152,9 +152,9 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     micro_average_accuracy = mic_nom/mic_denom
     print 'micro avg accuracy: ' + str(micro_average_accuracy)
 
-    common.write_results_file(hyper_params, micro_average_accuracy, train_path,
-                                              test_path, results_file_path + '.best', sigmorphon_root_dir,
-                                              final_results)
+    common.write_results_file_and_evaluate_externally(hyper_params, micro_average_accuracy, train_path,
+                                                      test_path, results_file_path + '.best', sigmorphon_root_dir,
+                                                      final_results)
 
 
 def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_dim, layers, feature_alphabet,
