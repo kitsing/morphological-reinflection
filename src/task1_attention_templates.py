@@ -537,7 +537,7 @@ def compute_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, w
     for i, output_char in enumerate(padded_word):
 
         # find all possible actions - copy from index, output specific character etc.
-        possible_outputs = list(set([padded_template[i]] + [output_char]))
+        possible_outputs = list(set([padded_template[i]]))# + [output_char]))
 
         # get current h of the decoder
         s = s.add_input(pc.concatenate([prev_output_vec, prev_char_vec]))
