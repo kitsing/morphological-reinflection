@@ -46,7 +46,8 @@ EPOCHS = 1
 LAYERS = 2
 OPTIMIZATION = 'ADAM'
 POOL = 4
-LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german', 'hungarian', 'maltese']
+LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german', 'hungarian', 'maltese',
+         'celex']
 CNN_MEM = 9096
 
 
@@ -123,10 +124,19 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
     start = time.time()
     os.chdir(src_dir)
 
-    train_path = '{}/data/{}-task{}-train'.format(sigmorphon_root_dir, lang, task)
-    dev_path = '{}/data/{}-task{}-dev'.format(sigmorphon_root_dir, lang, task)
-    test_path = '{}/biu/gold/{}-task{}-test'.format(src_dir.replace('/src/',''), lang, task)
-    results_path = '{}/{}_{}-results.txt'.format(results_dir, prefix, lang)
+    root_dir = src_dir.replace('/src/', '')
+
+    if lang == 'celex':
+        train_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_0.train.txt'.format(root_dir)
+        dev_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_0.dev.txt'.format(root_dir)
+        test_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_0.test.txt'.format(root_dir)
+        results_path = '{}/{}_{}-results.txt'.format(results_dir, prefix, lang)
+    else:
+        train_path = '{}/data/{}-task{}-train'.format(sigmorphon_root_dir, lang, task)
+        dev_path = '{}/data/{}-task{}-dev'.format(sigmorphon_root_dir, lang, task)
+        test_path = '{}/biu/gold/{}-task{}-test'.format(root_dir, lang, task)
+        results_path = '{}/{}_{}-results.txt'.format(results_dir, prefix, lang)
+
     if merged:
         train_path = '../data/sigmorphon_train_dev_merged/{}-task{}-merged'.format(lang, task)
 
