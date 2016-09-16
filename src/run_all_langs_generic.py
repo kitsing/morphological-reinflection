@@ -48,7 +48,7 @@ OPTIMIZATION = 'ADAM'
 POOL = 4
 LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german', 'hungarian', 'maltese',
          'celex']
-CNN_MEM = 9096
+CNN_MEM = 2000
 
 
 def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epochs, layers,
