@@ -880,7 +880,7 @@ def evaluate_model(predicted_templates, lemmas, feature_dicts, words, feature_ty
             sign = 'V'
         else:
             sign = 'X'
-        if print_results:
+        if print_results or sign == 'X':
             print 'lemma: ' + lemma + ' gold: ' + words[i] + ' template: ' + ''.join(predicted_templates[joint_index]) \
                   + ' prediction: ' + predicted_word + ' ' + sign
 
