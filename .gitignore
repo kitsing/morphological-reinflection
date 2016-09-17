@@ -6,8 +6,6 @@
 
 *.pyc
 
-*.txt
-
 *.txt.evaluation
 
 *.txt.predictions

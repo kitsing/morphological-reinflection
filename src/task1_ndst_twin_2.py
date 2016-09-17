@@ -4,10 +4,12 @@ files and evaluation script.
 Usage:
   task1_joint_structured_inflection_neural_fst.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
   [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION]
-  [--learning=LEARNING] [--plot] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+  [--learning=LEARNING] [--plot] [--eval] [--ensemble=ENSEMBLE] TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH
+  SIGMORPHON_PATH...
 
 Arguments:
   TRAIN_PATH    destination path
+  DEV_PATH      development set path
   TEST_PATH     test path
   RESULTS_PATH  results file to be written
   SIGMORPHON_PATH   sigmorphon root containing data, src dirs
@@ -24,20 +26,24 @@ Options:
   --reg=REGULARIZATION          regularization parameter for optimization
   --learning=LEARNING           learning rate parameter for optimization
   --plot                        draw a learning curve plot while training each model
+  --eval                        run evaluation without training
+  --ensemble=ENSEMBLE           ensemble model paths, separated by comma
 """
 
+import traceback
 import numpy as np
 import random
 import prepare_sigmorphon_data
 import progressbar
 import datetime
 import time
-import os
 import common
 from multiprocessing import Pool
 from matplotlib import pyplot as plt
 from docopt import docopt
-from pycnn import *
+import pycnn as pc
+from collections import defaultdict
+import sys
 
 # default values
 INPUT_DIM = 200
@@ -79,11 +85,10 @@ ALIGN_SYMBOL = '~'
 
 
 # TODO: add numbered epsilons to vocabulary?
-# TODO: add attention mechanism?
 # TODO: try sutskever trick - predict inverse
 # TODO: different vocabulary for input and output chars?
-def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, feat_input_dim, epochs,
-         layers, optimization, regularization, learning_rate, plot):
+def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, feat_input_dim,
+         epochs, layers, optimization, regularization, learning_rate, plot, eval_only, ensemble):
     if plot:
         parallelize_training = False
         print 'plotting, parallelization is disabled!!!'
@@ -96,12 +101,14 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
                     'LEARNING_RATE': learning_rate}
 
     print 'train path = ' + str(train_path)
+    print 'dev path =' + str(dev_path)
     print 'test path =' + str(test_path)
     for param in hyper_params:
         print param + '=' + str(hyper_params[param])
 
     # load train and test data
     (train_words, train_lemmas, train_feat_dicts) = prepare_sigmorphon_data.load_data(train_path)
+    (dev_words, dev_lemmas, dev_feat_dicts) = prepare_sigmorphon_data.load_data(dev_path)
     (test_words, test_lemmas, test_feat_dicts) = prepare_sigmorphon_data.load_data(test_path)
     alphabet, feature_types = prepare_sigmorphon_data.get_alphabet(train_words, train_lemmas, train_feat_dicts)
 
@@ -115,7 +122,7 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     alphabet.append(END_WORD)
 
     # add indices to alphabet - used to indicate when copying from lemma to word
-    for marker in [str(i) for i in xrange(3*MAX_PREDICTION_LEN)]:
+    for marker in [str(i) for i in xrange(3 * MAX_PREDICTION_LEN)]:
         alphabet.append(marker)
 
     # indicates the FST to step forward in the input
@@ -133,13 +140,13 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     # align the words to the inflections, the alignment will later be used by the model
     print 'started aligning'
     train_word_pairs = zip(train_lemmas, train_words)
-    test_word_pairs = zip(test_lemmas, test_words)
+    dev_word_pairs = zip(dev_lemmas, dev_words)
 
     # train_aligned_pairs = dumb_align(train_word_pairs, ALIGN_SYMBOL)
     train_aligned_pairs = common.mcmc_align(train_word_pairs, ALIGN_SYMBOL)
 
     # TODO: align together?
-    test_aligned_pairs = common.mcmc_align(test_word_pairs, ALIGN_SYMBOL)
+    dev_aligned_pairs = common.mcmc_align(dev_word_pairs, ALIGN_SYMBOL)
     # random.shuffle(train_aligned_pairs)
     # for p in train_aligned_pairs[:100]:
     #    generate_template(p)
@@ -147,60 +154,64 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
 
     # joint model: cluster the data by POS type (features)
     train_pos_to_data_indices = common.cluster_data_by_pos(train_feat_dicts)
-    test_pos_to_data_indices = common.cluster_data_by_pos(test_feat_dicts)
+    dev_pos_to_data_indices = common.cluster_data_by_pos(dev_feat_dicts)
     train_cluster_to_data_indices = train_pos_to_data_indices
-    test_cluster_to_data_indices = test_pos_to_data_indices
+    dev_cluster_to_data_indices = dev_pos_to_data_indices
 
     # factored model: cluster the data by inflection type (features)
     # train_morph_to_data_indices = common.cluster_data_by_morph_type(train_feat_dicts, feature_types)
-    # test_morph_to_data_indices = common.cluster_data_by_morph_type(test_feat_dicts, feature_types)
+    # test_morph_to_data_indices = common.cluster_data_by_morph_type(dev_feat_dicts, feature_types)
     # train_cluster_to_data_indices = train_morph_to_data_indices
-    # test_cluster_to_data_indices = test_morph_to_data_indices
+    # dev_cluster_to_data_indices = test_morph_to_data_indices
 
     # create input for each model and then parallelize or run in loop.
     params = []
     for cluster_index, cluster_type in enumerate(train_cluster_to_data_indices):
         params.append([input_dim, hidden_dim, layers, cluster_index, cluster_type, train_lemmas, train_feat_dicts,
-                       train_words, test_lemmas, test_feat_dicts, train_cluster_to_data_indices, test_words,
-                       test_cluster_to_data_indices, alphabet, alphabet_index, inverse_alphabet_index, epochs,
-                       optimization, results_file_path, train_aligned_pairs, test_aligned_pairs, feat_index,
+                       train_words, dev_lemmas, dev_feat_dicts, train_cluster_to_data_indices, dev_words,
+                       dev_cluster_to_data_indices, alphabet, alphabet_index, inverse_alphabet_index, epochs,
+                       optimization, results_file_path, train_aligned_pairs, dev_aligned_pairs, feat_index,
                        feature_types, feat_input_dim, feature_alphabet, plot])
 
-    if parallelize_training:
+    if not eval_only:
+        if parallelize_training:
 
-        # set maxtasksperchild=1 to free finished processes
-        p = Pool(4, maxtasksperchild=1)
-        print 'now training {0} models in parallel'.format(len(train_cluster_to_data_indices))
-        models = p.map(train_cluster_model_wrapper, params)
+            # set maxtasksperchild=1 to free finished processes
+            p = Pool(4, maxtasksperchild=1)
+            print 'now training {0} models in parallel'.format(len(train_cluster_to_data_indices))
+            p.map(train_cluster_model_wrapper, params)
+        else:
+            print 'now training {0} models in loop'.format(len(train_cluster_to_data_indices))
+            last_epochs = []
+            for p in params:
+                cluster_index = p[3]
+                cluster_name = p[4]
+                trained_model, last_epoch = train_cluster_model(*p)
+
+                # print when did each model stop
+                epoch_output = 'cluster {0} - {1} stopped on epoch {2}'.format(cluster_index, cluster_name, last_epoch)
+                last_epochs.append(epoch_output)
+                print epoch_output
+
+            with open(results_file_path + '.epochs', 'w') as f:
+                f.writelines(last_epochs)
+
+        print 'finished training all models'
     else:
-        print 'now training {0} models in loop'.format(len(train_cluster_to_data_indices))
-        last_epochs = []
-        for p in params:
-            cluster_index = p[3]
-            cluster_name = p[4]
-            trained_model, last_epoch = train_cluster_model(*p)
+        print 'skipped training by request. evaluating best models:'
 
-            # print when did each model stop
-            epoch_output = 'cluster {0} - {1} stopped on epoch {2}'.format(cluster_index, cluster_name,
-                                                                           last_epoch)
-            last_epochs.append(epoch_output)
-            print epoch_output
+    # eval on dev
+    evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim, feature_alphabet, feature_types,
+                  hidden_dim, hyper_params, input_dim, inverse_alphabet_index, layers, results_file_path,
+                  sigmorphon_root_dir, dev_cluster_to_data_indices, dev_feat_dicts, dev_lemmas, dev_path,
+                  dev_words, train_cluster_to_data_indices, train_path, train_words)
 
-        with open(results_file_path + '.epochs', 'w') as f:
-            f.writelines(last_epochs)
-
-    print 'finished training all models'
-
-    # evaluate best models
-    os.system('python task1_evaluate_best_nfst_models.py --cnn-mem 6096 --input={0} --hidden={1} \
-    --feat-input={2} --epochs={3} --layers={4} --optimization={5} {6} {7} {8} {9}'.format(input_dim, hidden_dim,
-                                                                                      feat_input_dim, epochs,
-                                                                                      layers, optimization, train_path,
-                                                                                      test_path,
-                                                                                      results_file_path,
-                                                                                      sigmorphon_root_dir))
-    for e in last_epochs:
-        print e
+    # eval on test
+    test_cluster_to_data_indices = common.cluster_data_by_pos(dev_feat_dicts)
+    evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim, feature_alphabet, feature_types,
+                  hidden_dim, hyper_params, input_dim, inverse_alphabet_index, layers, results_file_path,
+                  sigmorphon_root_dir, test_cluster_to_data_indices, test_feat_dicts, test_lemmas, test_path,
+                  test_words, train_cluster_to_data_indices, train_path, train_words)
 
     return
 
@@ -214,7 +225,6 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
                         test_cluster_to_data_indices, alphabet, alphabet_index, inverse_alphabet_index, epochs,
                         optimization, results_file_path, train_aligned_pairs, test_aligned_pairs, feat_index,
                         feature_types, feat_input_dim, feature_alphabet, plot):
-
     # get the inflection-specific data
     train_cluster_words = [train_words[i] for i in train_cluster_to_data_indices[cluster_type]]
     train_cluster_lemmas = [train_lemmas[i] for i in train_cluster_to_data_indices[cluster_type]]
@@ -276,7 +286,7 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
 def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_input_dim, feature_alphabet):
     print 'creating model...'
 
-    model = Model()
+    model = pc.Model()
 
     # character embeddings
     model.add_lookup_parameters("char_lookup", (len(alphabet), input_dim))
@@ -289,15 +299,27 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
     model.add_parameters("bias", len(alphabet))
 
     # rnn's
-    encoder_frnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
-    encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
+    encoder_frnn = pc.LSTMBuilder(layers, input_dim, hidden_dim, model)
+    encoder_rrnn = pc.LSTMBuilder(layers, input_dim, hidden_dim, model)
 
     # 4 * HIDDEN_DIM, as it gets previous output, previous char, BLSTM[i]
     concatenated_input_dim = 4 * hidden_dim + len(feature_types) * feat_input_dim
-    decoder_rnn = LSTMBuilder(layers, concatenated_input_dim, hidden_dim, model)
+    decoder_rnn = pc.LSTMBuilder(layers, concatenated_input_dim, hidden_dim, model)
     print 'decoder lstm dimensions are {} x {}'.format(concatenated_input_dim, hidden_dim)
     print 'finished creating model'
 
+    return model, encoder_frnn, encoder_rrnn, decoder_rnn
+
+
+def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_dim, layers, feature_alphabet,
+                    feat_input_dim, feature_types):
+    tmp_model_path = results_file_path + '_' + morph_index + '_bestmodel.txt'
+    model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim,
+                                                                 layers, feature_types,
+                                                                 feat_input_dim,
+                                                                 feature_alphabet)
+    print 'trying to load model from: {}'.format(tmp_model_path)
+    model.load(tmp_model_path)
     return model, encoder_frnn, encoder_rrnn, decoder_rnn
 
 
@@ -311,17 +333,17 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
     random.seed(17)
 
     if optimization == 'ADAM':
-        trainer = AdamTrainer(model, lam=REGULARIZATION, alpha=LEARNING_RATE, beta_1=0.9, beta_2=0.999, eps=1e-8)
+        trainer = pc.AdamTrainer(model, lam=REGULARIZATION, alpha=LEARNING_RATE, beta_1=0.9, beta_2=0.999, eps=1e-8)
     elif optimization == 'MOMENTUM':
-        trainer = MomentumSGDTrainer(model)
+        trainer = pc.MomentumSGDTrainer(model)
     elif optimization == 'SGD':
-        trainer = SimpleSGDTrainer(model)
+        trainer = pc.SimpleSGDTrainer(model)
     elif optimization == 'ADAGRAD':
-        trainer = AdagradTrainer(model)
+        trainer = pc.AdagradTrainer(model)
     elif optimization == 'ADADELTA':
-        trainer = AdadeltaTrainer(model)
+        trainer = pc.AdadeltaTrainer(model)
     else:
-        trainer = SimpleSGDTrainer(model)
+        trainer = pc.SimpleSGDTrainer(model)
 
     total_loss = 0
     best_avg_dev_loss = 999
@@ -334,6 +356,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
     dev_loss_y = []
     train_accuracy_y = []
     dev_accuracy_y = []
+    e = -1
 
     # progress bar init
     widgets = [progressbar.Bar('>'), ' ', progressbar.ETA()]
@@ -368,7 +391,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
             train_predictions = predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
                                                   inverse_alphabet_index, train_lemmas, train_feat_dicts, feat_index,
                                                   feature_types)
-            print 'train:'
+            print 'evaluating on train...'
             train_accuracy = evaluate_model(train_predictions, train_lemmas, train_feat_dicts, train_words,
                                             feature_types, print_results=False)[1]
 
@@ -384,7 +407,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 dev_predictions = predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
                                                     inverse_alphabet_index, dev_lemmas, dev_feat_dicts, feat_index,
                                                     feature_types)
-                print 'dev:'
+                print 'evaluating on dev...'
                 # get dev accuracy
                 dev_accuracy = evaluate_model(dev_predictions, dev_lemmas, dev_feat_dicts, dev_words, feature_types,
                                               print_results=False)[1]
@@ -487,16 +510,16 @@ def save_pycnn_model(model, results_file_path, model_index):
     print 'saved to {0}'.format(tmp_model_path)
 
 
-# noinspection PyPep8Naming
+# noinspection PyPep8Naming,PyUnusedLocal,PyUnusedLocal,PyUnusedLocal,PyUnusedLocal,PyUnusedLocal,PyUnusedLocal
 def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, word, alphabet_index, aligned_pair,
                   feat_index, feature_types):
-    renew_cg()
+    pc.renew_cg()
 
     # read the parameters
     char_lookup = model["char_lookup"]
     feat_lookup = model["feat_lookup"]
-    R = parameter(model["R"])
-    bias = parameter(model["bias"])
+    R = pc.parameter(model["R"])
+    bias = pc.parameter(model["bias"])
 
     padded_lemma = BEGIN_WORD + lemma + END_WORD
 
@@ -523,7 +546,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
                 feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
         else:
             feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
-    feats_input = concatenate(feat_vecs)
+    feats_input = pc.concatenate(feat_vecs)
 
     # BiLSTM forward pass
     s_0 = encoder_frnn.initial_state()
@@ -545,7 +568,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
     blstm_outputs = []
     lemma_char_vecs_len = len(lemma_char_vecs)
     for i in xrange(lemma_char_vecs_len):
-        blstm_outputs.append(concatenate([frnn_outputs[i], rrnn_outputs[lemma_char_vecs_len - i - 1]]))
+        blstm_outputs.append(pc.concatenate([frnn_outputs[i], rrnn_outputs[lemma_char_vecs_len - i - 1]]))
 
     # initialize the decoder rnn
     s_0 = decoder_rnn.initial_state()
@@ -564,29 +587,29 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
     # TODO: try sutskever flip trick?
     # TODO: attention on the lemma chars/feats could help here?
     aligned_lemma, aligned_word = aligned_pair
-    aligned_lemma = aligned_lemma + END_WORD
-    aligned_word = aligned_word + END_WORD
+    aligned_lemma += END_WORD
+    aligned_word += END_WORD
 
     # run through the alignments
     for index, (input_char, output_char) in enumerate(zip(aligned_lemma, aligned_word)):
         possible_outputs = []
 
         # feedback, i, j, blstm[i], feats
-        decoder_input = concatenate([prev_output_vec,
-                                     prev_char_vec,
-                                     # char_lookup[alphabet_index[str(i)]],
-                                     # char_lookup[alphabet_index[str(j)]],
-                                     blstm_outputs[i],
-                                     feats_input])
+        decoder_input = pc.concatenate([prev_output_vec,
+                                        prev_char_vec,
+                                        # char_lookup[alphabet_index[str(i)]],
+                                        # char_lookup[alphabet_index[str(j)]],
+                                        blstm_outputs[i],
+                                        feats_input])
 
         # if reached the end word symbol
         if output_char == END_WORD:
             s = s.add_input(decoder_input)
             decoder_rnn_output = s.output()
-            probs = softmax(R * decoder_rnn_output + bias)
+            probs = pc.softmax(R * decoder_rnn_output + bias)
 
             # compute local loss
-            loss.append(-log(pick(probs, alphabet_index[END_WORD])))
+            loss.append(-pc.log(pc.pick(probs, alphabet_index[END_WORD])))
             continue
 
         # if there is no prefix, step
@@ -595,10 +618,10 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
             # feedback, i, j, blstm[i], feats
             s = s.add_input(decoder_input)
             decoder_rnn_output = s.output()
-            probs = softmax(R * decoder_rnn_output + bias)
+            probs = pc.softmax(R * decoder_rnn_output + bias)
 
             # compute local loss
-            loss.append(-log(pick(probs, alphabet_index[STEP])))
+            loss.append(-pc.log(pc.pick(probs, alphabet_index[STEP])))
 
             # prepare for the next iteration - "feedback"
             prev_output_vec = char_lookup[alphabet_index[STEP]]
@@ -607,12 +630,12 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
 
         # if there is new output
         if aligned_word[index] != ALIGN_SYMBOL:
-            decoder_input = concatenate([prev_output_vec,
-                                         prev_char_vec,
-                                         # char_lookup[alphabet_index[str(i)]],
-                                         # char_lookup[alphabet_index[str(j)]],
-                                         blstm_outputs[i],
-                                         feats_input])
+            decoder_input = pc.concatenate([prev_output_vec,
+                                            prev_char_vec,
+                                            # char_lookup[alphabet_index[str(i)]],
+                                            # char_lookup[alphabet_index[str(j)]],
+                                            blstm_outputs[i],
+                                            feats_input])
 
             # copy i action - maybe model as a single action?
             if padded_lemma[i] == aligned_word[j]:
@@ -624,16 +647,16 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
             # perform rnn step
             s = s.add_input(decoder_input)
             decoder_rnn_output = s.output()
-            probs = softmax(R * decoder_rnn_output + bias)
+            probs = pc.softmax(R * decoder_rnn_output + bias)
 
-            local_loss = scalarInput(0)
-            max_output_loss = -log(pick(probs, alphabet_index[possible_outputs[0]]))
+            local_loss = pc.scalarInput(0)
+            max_output_loss = -pc.log(pc.pick(probs, alphabet_index[possible_outputs[0]]))
             max_likelihood_output = possible_outputs[0]
 
             # sum over all correct output possibilities and pick feedback output to be the one with the highest
             # probability
             for output in possible_outputs:
-                neg_log_likelihood = -log(pick(probs, alphabet_index[output]))
+                neg_log_likelihood = -pc.log(pc.pick(probs, alphabet_index[output]))
                 if neg_log_likelihood < max_output_loss:
                     max_likelihood_output = output
                     max_output_loss = neg_log_likelihood
@@ -650,19 +673,19 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
         if i < len(padded_lemma) - 1 and aligned_lemma[index + 1] != ALIGN_SYMBOL:
             # perform rnn step
             # feedback, i, j, blstm[i], feats
-            decoder_input = concatenate([prev_output_vec,
-                                         prev_char_vec,
-                                         # char_lookup[alphabet_index[str(i)]],
-                                         # char_lookup[alphabet_index[str(j)]],
-                                         blstm_outputs[i],
-                                         feats_input])
+            decoder_input = pc.concatenate([prev_output_vec,
+                                            prev_char_vec,
+                                            # char_lookup[alphabet_index[str(i)]],
+                                            # char_lookup[alphabet_index[str(j)]],
+                                            blstm_outputs[i],
+                                            feats_input])
 
             s = s.add_input(decoder_input)
             decoder_rnn_output = s.output()
-            probs = softmax(R * decoder_rnn_output + bias)
+            probs = pc.softmax(R * decoder_rnn_output + bias)
 
             # compute local loss
-            loss.append(-log(pick(probs, alphabet_index[STEP])))
+            loss.append(-pc.log(pc.pick(probs, alphabet_index[STEP])))
 
             # prepare for the next iteration - "feedback"
             prev_output_vec = char_lookup[alphabet_index[STEP]]
@@ -671,7 +694,7 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
 
     # TODO: maybe here a "special" loss function is appropriate?
     # loss = esum(loss)
-    loss = average(loss)
+    loss = pc.average(loss)
 
     return loss
 
@@ -679,13 +702,13 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
 # noinspection PyPep8Naming
 def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, alphabet_index,
                             inverse_alphabet_index, feat_index, feature_types):
-    renew_cg()
+    pc.renew_cg()
 
     # read the parameters
     char_lookup = model["char_lookup"]
     feat_lookup = model["feat_lookup"]
-    R = parameter(model["R"])
-    bias = parameter(model["bias"])
+    R = pc.parameter(model["R"])
+    bias = pc.parameter(model["bias"])
 
     # convert characters to matching embeddings, if UNK handle properly
     padded_lemma = BEGIN_WORD + lemma + END_WORD
@@ -711,7 +734,7 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
                 feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
         else:
             feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
-    feats_input = concatenate(feat_vecs)
+    feats_input = pc.concatenate(feat_vecs)
 
     # BiLSTM forward pass
     s_0 = encoder_frnn.initial_state()
@@ -733,7 +756,7 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
     blstm_outputs = []
     lemma_char_vecs_len = len(lemma_char_vecs)
     for i in xrange(lemma_char_vecs_len):
-        blstm_outputs.append(concatenate([frnn_outputs[i], rrnn_outputs[lemma_char_vecs_len - i - 1]]))
+        blstm_outputs.append(pc.concatenate([frnn_outputs[i], rrnn_outputs[lemma_char_vecs_len - i - 1]]))
 
     # initialize the decoder rnn
     s_0 = decoder_rnn.initial_state()
@@ -752,18 +775,18 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
     while num_outputs < MAX_PREDICTION_LEN * 3:
 
         # prepare input vector and perform LSTM step
-        decoder_input = concatenate([prev_output_vec,
-                                     prev_char_vec,
-                                     # char_lookup[alphabet_index[str(i)]],
-                                     # char_lookup[alphabet_index[str(j)]],
-                                     blstm_outputs[i],
-                                     feats_input])
+        decoder_input = pc.concatenate([prev_output_vec,
+                                        prev_char_vec,
+                                        # char_lookup[alphabet_index[str(i)]],
+                                        # char_lookup[alphabet_index[str(j)]],
+                                        blstm_outputs[i],
+                                        feats_input])
 
         s = s.add_input(decoder_input)
 
         # compute softmax probs vector and predict with argmax
         decoder_rnn_output = s.output()
-        probs = softmax(R * decoder_rnn_output + bias)
+        probs = pc.softmax(R * decoder_rnn_output + bias)
         probs = probs.vec_value()
         predicted_output_index = common.argmax(probs)
         predicted_output = inverse_alphabet_index[predicted_output_index]
@@ -869,6 +892,161 @@ def evaluate_model(predicted_templates, lemmas, feature_dicts, words, feature_ty
     return len(predicted_templates), accuracy
 
 
+def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim, feature_alphabet, feature_types,
+                  hidden_dim, hyper_params, input_dim, inverse_alphabet_index, layers, results_file_path,
+                  sigmorphon_root_dir, test_cluster_to_data_indices, test_feat_dicts, test_lemmas, test_path,
+                  test_words, train_cluster_to_data_indices, train_path, train_words):
+    accuracies = []
+    final_results = {}
+    # factored model: new model per inflection type
+    for cluster_index, cluster_type in enumerate(train_cluster_to_data_indices):
+
+        # get the inflection-specific data
+        train_cluster_words = [train_words[i] for i in train_cluster_to_data_indices[cluster_type]]
+        if len(train_cluster_words) < 1:
+            print 'only {} samples for this inflection type. skipping'.format(str(len(train_cluster_words)))
+            continue
+        else:
+            print 'now evaluating model for cluster ' + str(cluster_index + 1) + '/' + \
+                  str(len(train_cluster_to_data_indices)) + ': ' + cluster_type + ' with ' + \
+                  str(len(train_cluster_words)) + ' examples'
+
+        # test best model
+        try:
+            test_cluster_lemmas = [test_lemmas[i] for i in test_cluster_to_data_indices[cluster_type]]
+            test_cluster_words = [test_words[i] for i in test_cluster_to_data_indices[cluster_type]]
+            test_cluster_feat_dicts = [test_feat_dicts[i] for i in test_cluster_to_data_indices[cluster_type]]
+
+            if ensemble:
+                # load ensemble models
+                ensemble_model_names = ensemble.split(',')
+                print 'ensemble paths:\n'
+                print '\n'.join(ensemble_model_names)
+                ensemble_models = []
+                for ens in ensemble_model_names:
+                    model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(
+                        str(cluster_index),
+                        alphabet,
+                        ens,
+                        input_dim,
+                        hidden_dim,
+                        layers,
+                        feature_alphabet,
+                        feat_input_dim,
+                        feature_types)
+
+                    ensemble_models.append((model, encoder_frnn, encoder_rrnn, decoder_rnn))
+
+                # predict the entire test set with each model in the ensemble
+                ensemble_predictions = []
+                for em in ensemble_models:
+                    model, encoder_frnn, encoder_rrnn, decoder_rnn = em
+                    predicted_templates = predict_templates(model, decoder_rnn,
+                                                            encoder_frnn,
+                                                            encoder_rrnn,
+                                                            alphabet_index,
+                                                            inverse_alphabet_index,
+                                                            test_cluster_lemmas,
+                                                            test_cluster_feat_dicts,
+                                                            feat_index,
+                                                            feature_types)
+                    ensemble_predictions.append(predicted_templates)
+
+                predicted_templates = {}
+                string_to_template = {}
+
+                # perform voting for each test input - joint_index is a lemma+feats representation
+                test_data = zip(test_cluster_lemmas, test_cluster_feat_dicts, test_cluster_words)
+                for i, (lemma, feat_dict, word) in enumerate(test_data):
+                    joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
+                    prediction_counter = defaultdict(int)
+                    for ens in ensemble_predictions:
+                        prediction_str = ''.join(instantiate_template(ens[joint_index], lemma))
+                        prediction_counter[prediction_str] += 1
+                        string_to_template[prediction_str] = ens[joint_index]
+                        print u'template: {} prediction: {}'.format(ens[joint_index], prediction_str)
+
+                    # return the most predicted output
+                    predicted_template_string = max(prediction_counter, key=prediction_counter.get)
+                    print u'chosen:{} with {} votes\n'.format(predicted_template_string,
+                                                              prediction_counter[predicted_template_string])
+                    predicted_templates[joint_index] = string_to_template[predicted_template_string]
+
+                    # progress indication
+                    sys.stdout.write("\r%d%%" % (float(i) / len(test_cluster_lemmas) * 100))
+                    sys.stdout.flush()
+                    ##
+
+            else:
+                # load best model - no ensemble
+                best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(
+                    str(cluster_index), alphabet,
+                    results_file_path, input_dim,
+                    hidden_dim, layers,
+                    feature_alphabet, feat_input_dim,
+                    feature_types)
+                print 'starting to predict for cluster: {}'.format(cluster_type)
+                try:
+                    predicted_templates = predict_templates(best_model,
+                                                            decoder_rnn,
+                                                            encoder_frnn,
+                                                            encoder_rrnn,
+                                                            alphabet_index,
+                                                            inverse_alphabet_index,
+                                                            test_cluster_lemmas,
+                                                            test_cluster_feat_dicts,
+                                                            feat_index,
+                                                            feature_types)
+                except Exception as e:
+                    print e
+                    traceback.print_exc()
+
+            print 'evaluating predictions for cluster: {}'.format(cluster_type)
+            try:
+                accuracy = evaluate_model(predicted_templates,
+                                          test_cluster_lemmas,
+                                          test_cluster_feat_dicts,
+                                          test_cluster_words,
+                                          feature_types,
+                                          print_results=True)
+                accuracies.append(accuracy)
+            except Exception as e:
+                print e
+                traceback.print_exc()
+
+            # get predicted_templates in the same order they appeared in the original file
+            # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
+            for i in test_cluster_to_data_indices[cluster_type]:
+                joint_index = test_lemmas[i] + ':' + common.get_morph_string(test_feat_dicts[i], feature_types)
+                inflection = instantiate_template(predicted_templates[joint_index],
+                                                  test_lemmas[i])
+
+                final_results[i] = (test_lemmas[i], test_feat_dicts[i], inflection)
+
+        except KeyError:
+            print 'could not find relevant examples in test data for cluster: ' + cluster_type
+            print 'clusters in test are: {}'.format(test_cluster_to_data_indices.keys())
+            print 'clusters in train are: {}'.format(train_cluster_to_data_indices.keys())
+
+    accuracy_vals = [accuracies[i][1] for i in xrange(len(accuracies))]
+    macro_avg_accuracy = sum(accuracy_vals) / len(accuracies)
+    print 'macro avg accuracy: ' + str(macro_avg_accuracy)
+
+    mic_nom = sum([accuracies[i][0] * accuracies[i][1] for i in xrange(len(accuracies))])
+    mic_denom = sum([accuracies[i][0] for i in xrange(len(accuracies))])
+    micro_average_accuracy = mic_nom / mic_denom
+    print 'micro avg accuracy: ' + str(micro_average_accuracy)
+
+    if 'test' in test_path:
+        suffix = '.best.test'
+    else:
+        suffix = '.best'
+
+    common.write_results_file_and_evaluate_externally(hyper_params, micro_average_accuracy, train_path,
+                                                      test_path, results_file_path + suffix, sigmorphon_root_dir,
+                                                      final_results)
+
+
 if __name__ == '__main__':
     arguments = docopt(__doc__)
     ts = time.time()
@@ -879,6 +1057,10 @@ if __name__ == '__main__':
         train_path_param = arguments['TRAIN_PATH']
     else:
         train_path_param = '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/turkish-task1-train'
+    if arguments['DEV_PATH']:
+        dev_path_param = arguments['DEV_PATH']
+    else:
+        dev_path_param = '/Users/roeeaharoni/research_data/sigmorphon2016-master/data/turkish-task1-train'
     if arguments['TEST_PATH']:
         test_path_param = arguments['TEST_PATH']
     else:
@@ -928,9 +1110,17 @@ if __name__ == '__main__':
         plot_param = True
     else:
         plot_param = False
+    if arguments['--eval']:
+        eval_param = True
+    else:
+        eval_param = False
+    if arguments['--ensemble']:
+        ensemble_param = arguments['--ensemble']
+    else:
+        ensemble_param = False
 
     print arguments
 
-    main(train_path_param, test_path_param, results_file_path_param, sigmorphon_root_dir_param, input_dim_param,
+    main(train_path_param, dev_path_param, test_path_param, results_file_path_param, sigmorphon_root_dir_param, input_dim_param,
          hidden_dim_param, feat_input_dim_param, epochs_param, layers_param, optimization_param, regularization_param,
-         learning_rate_param, plot_param)
+         learning_rate_param, plot_param, eval_param, ensemble_param)

@@ -140,7 +140,7 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
     if merged:
         train_path = '../data/sigmorphon_train_dev_merged/{}-task{}-merged'.format(lang, task)
 
-    if 'attention' in script:
+    if 'attention' or 'ndst_twin_2' in script:
         # train on train, evaluate on dev for early stopping, finally eval on train
         command = 'python {0} --cnn-mem {1} --input={2} --hidden={3} --feat-input={4} --epochs={5} --layers={6} \
         --optimization={7} {8} {9} {10}\

@@ -2,8 +2,9 @@
 files and evaluation script.
 
 Usage:
-  evaluate_best_nfst_models.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN]
-  [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--ensemble=ENSEMBLE] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+  task1_evaluate_ndst_twin_2.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN]
+  [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--ensemble=ENSEMBLE] TRAIN_PATH TEST_PATH
+  RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
   TRAIN_PATH    train data path
@@ -25,16 +26,11 @@ Options:
 """
 
 import time
-from collections import defaultdict
-
 import docopt
-import sys
-
 import task1_ndst_twin_2
 import prepare_sigmorphon_data
 import datetime
 import common
-import traceback
 from pycnn import *
 
 # default values
@@ -61,7 +57,6 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'FEAT_INPUT_DIM': feat_input_dim,
                     'EPOCHS': epochs, 'LAYERS': layers, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
                     'OPTIMIZATION': optimization}
-
 
     print 'train path = ' + str(train_path)
     print 'test path =' + str(test_path)
@@ -106,167 +101,11 @@ def main(train_path, test_path, results_file_path, sigmorphon_root_dir, input_di
     # train_cluster_to_data_indices = common.cluster_data_by_morph_type(train_feat_dicts, feature_types)
     # test_cluster_to_data_indices = common.cluster_data_by_morph_type(test_feat_dicts, feature_types)
 
-    accuracies = []
-    final_results = {}
-
-    # factored model: new model per inflection type
-    for cluster_index, cluster_type in enumerate(train_cluster_to_data_indices):
-
-        # get the inflection-specific data
-        train_cluster_words = [train_words[i] for i in train_cluster_to_data_indices[cluster_type]]
-        if len(train_cluster_words) < 1:
-            print 'only {} samples for this inflection type. skipping'.format(str(len(train_cluster_words)))
-            continue
-        else:
-            print 'now evaluating model for cluster ' + str(cluster_index + 1) + '/' + \
-                  str(len(train_cluster_to_data_indices)) + ': ' + cluster_type + ' with ' + \
-                  str(len(train_cluster_words)) + ' examples'
-
-        # test best model
-        try:
-            test_cluster_lemmas = [test_lemmas[i] for i in test_cluster_to_data_indices[cluster_type]]
-            test_cluster_words = [test_words[i] for i in test_cluster_to_data_indices[cluster_type]]
-            test_cluster_feat_dicts = [test_feat_dicts[i] for i in test_cluster_to_data_indices[cluster_type]]
-
-            if ensemble:
-                # load ensemble models
-                ensemble_model_names = ensemble.split(',')
-                print 'ensemble paths:\n'
-                print '\n'.join(ensemble_model_names)
-                ensemble_models = []
-                for ens in ensemble_model_names:
-                    model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(cluster_index),
-                                                                                     alphabet,
-                                                                                     ens,
-                                                                                     input_dim,
-                                                                                     hidden_dim,
-                                                                                     layers,
-                                                                                     feature_alphabet,
-                                                                                     feat_input_dim,
-                                                                                     feature_types)
-
-                    ensemble_models.append((model, encoder_frnn, encoder_rrnn, decoder_rnn))
-
-
-                # predict the entire test set with each model in the ensemble
-                ensemble_predictions = []
-                for em in ensemble_models:
-                    model, encoder_frnn, encoder_rrnn, decoder_rnn = em
-                    predicted_templates = task1_ndst_twin_2.predict_templates(model, decoder_rnn,
-                                                                                 encoder_frnn,
-                                                                                 encoder_rrnn,
-                                                                                 alphabet_index,
-                                                                                 inverse_alphabet_index,
-                                                                                 test_cluster_lemmas,
-                                                                                 test_cluster_feat_dicts,
-                                                                                 feat_index,
-                                                                                 feature_types)
-                    ensemble_predictions.append(predicted_templates)
-
-                predicted_templates = {}
-                string_to_template = {}
-
-                # perform voting for each test input - joint_index is a lemma+feats representation
-                test_data = zip(test_cluster_lemmas, test_cluster_feat_dicts, test_cluster_words)
-                for i, (lemma, feat_dict, word) in enumerate(test_data):
-                    joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
-                    prediction_counter = defaultdict(int)
-                    for ens in ensemble_predictions:
-                        prediction_str = ''.join(task1_ndst_twin_2.instantiate_template(ens[joint_index], lemma))
-                        prediction_counter[prediction_str] = prediction_counter[prediction_str] + 1
-                        string_to_template[prediction_str] = ens[joint_index]
-                        print u'template: {} prediction: {}'.format(ens[joint_index], prediction_str)
-
-                    # return the most predicted output
-                    predicted_template_string = max(prediction_counter, key=prediction_counter.get)
-                    print u'chosen:{} with {} votes\n'.format(predicted_template_string,
-                                                              prediction_counter[predicted_template_string])
-                    predicted_templates[joint_index] = string_to_template[predicted_template_string]
-
-                    # progress indication
-                    sys.stdout.write("\r%d%%" % (float(i) / len(test_cluster_lemmas) * 100))
-                    sys.stdout.flush()
-                ##
-
-            else:
-                # load best model - no ensemble
-                best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(str(cluster_index), alphabet,
-                                                                                  results_file_path, input_dim,
-                                                                                  hidden_dim, layers,
-                                                                                  feature_alphabet, feat_input_dim,
-                                                                                  feature_types)
-                print 'starting to predict for cluster: {}'.format(cluster_type)
-                try:
-                    predicted_templates = task1_ndst_twin_2.predict_templates(best_model,
-                                                                      decoder_rnn,
-                                                                      encoder_frnn,
-                                                                      encoder_rrnn,
-                                                                      alphabet_index,
-                                                                      inverse_alphabet_index,
-                                                                      test_cluster_lemmas,
-                                                                      test_cluster_feat_dicts,
-                                                                      feat_index,
-                                                                      feature_types)
-                except Exception as e:
-                    print e
-                    traceback.print_exc()
-
-            print 'evaluating predictions for cluster: {}'.format(cluster_type)
-            try:
-                accuracy = task1_ndst_twin_2.evaluate_model(predicted_templates,
-                                                        test_cluster_lemmas,
-                                                        test_cluster_feat_dicts,
-                                                        test_cluster_words,
-                                                        feature_types,
-                                                        print_results=True)
-            except Exception as e:
-                print e
-                traceback.print_exc()
-            accuracies.append(accuracy)
-
-            # get predicted_templates in the same order they appeared in the original file
-            # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
-            for i in test_cluster_to_data_indices[cluster_type]:
-                joint_index = test_lemmas[i] + ':' + common.get_morph_string(test_feat_dicts[i], feature_types)
-                inflection = task1_ndst_twin_2.instantiate_template(predicted_templates[joint_index],
-                                                                    test_lemmas[i])
-
-                final_results[i] = (test_lemmas[i], test_feat_dicts[i], inflection)
-
-        except KeyError:
-            print 'could not find relevant examples in test data for cluster: ' + cluster_type
-            print 'clusters in test are: {}'.format(test_cluster_to_data_indices.keys())
-            print 'clusters in train are: {}'.format(train_cluster_to_data_indices.keys())
-
-    accuracy_vals = [accuracies[i][1] for i in xrange(len(accuracies))]
-    macro_avg_accuracy = sum(accuracy_vals) / len(accuracies)
-    print 'macro avg accuracy: ' + str(macro_avg_accuracy)
-
-    mic_nom = sum([accuracies[i][0] * accuracies[i][1] for i in xrange(len(accuracies))])
-    mic_denom = sum([accuracies[i][0] for i in xrange(len(accuracies))])
-    micro_average_accuracy = mic_nom / mic_denom
-    print 'micro avg accuracy: ' + str(micro_average_accuracy)
-
-    if 'test' in test_path:
-        suffix = '.best.test'
-    else:
-        suffix = '.best'
-    common.write_results_file_and_evaluate_externally(hyper_params, micro_average_accuracy, train_path,
-                                                      test_path, results_file_path + suffix, sigmorphon_root_dir,
-                                                      final_results)
-
-
-def load_best_model(morph_index, alphabet, results_file_path, input_dim, hidden_dim, layers, feature_alphabet,
-                    feat_input_dim, feature_types):
-
-    tmp_model_path = results_file_path + '_' + morph_index + '_bestmodel.txt'
-    model, encoder_frnn, encoder_rrnn, decoder_rnn = task1_ndst_twin_2.build_model(alphabet, input_dim, hidden_dim,
-                                                                                        layers, feature_types,
-                                                                                        feat_input_dim,
-                                                                                        feature_alphabet)
-    print 'trying to load model from: {}'.format(tmp_model_path)
-    model.load(tmp_model_path)
-    return model, encoder_frnn, encoder_rrnn, decoder_rnn
+    task1_ndst_twin_2.evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim, feature_alphabet,
+                                    feature_types, hidden_dim, hyper_params, input_dim, inverse_alphabet_index, layers,
+                                    results_file_path, sigmorphon_root_dir, test_cluster_to_data_indices,
+                                    test_feat_dicts, test_lemmas, test_path, test_words, train_cluster_to_data_indices,
+                                    train_path, train_words)
 
 
 if __name__ == '__main__':
