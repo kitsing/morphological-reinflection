@@ -941,7 +941,7 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
 
     # get predicted_templates in the same order they appeared in the original file
     # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
-    for i in test_lemmas:
+    for i, lemma in enumerate(test_lemmas):
         joint_index = test_lemmas[i] + ':' + common.get_morph_string(test_feat_dicts[i], feature_types)
         inflection = instantiate_template(predicted_templates[joint_index], test_lemmas[i])
         final_results[i] = (test_lemmas[i], test_feat_dicts[i], inflection)
