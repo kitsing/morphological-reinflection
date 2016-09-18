@@ -88,7 +88,6 @@ ALIGN_SYMBOL = '~'
 # TODO: different vocabulary for input and output chars?
 def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, feat_input_dim,
          epochs, layers, optimization, regularization, learning_rate, plot, eval_only, ensemble):
-
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'FEAT_INPUT_DIM': feat_input_dim,
                     'EPOCHS': epochs, 'LAYERS': layers, 'MAX_PREDICTION_LEN': MAX_PREDICTION_LEN,
                     'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': regularization,
@@ -860,90 +859,92 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
                 feature_types)
 
             ensemble_models.append((model, encoder_frnn, encoder_rrnn, decoder_rnn))
-            # predict the entire test set with each model in the ensemble
-            ensemble_predictions = []
-            for em in ensemble_models:
-                model, encoder_frnn, encoder_rrnn, decoder_rnn = em
-                predicted_templates = predict_templates(model, decoder_rnn,
-                                                        encoder_frnn,
-                                                        encoder_rrnn,
-                                                        alphabet_index,
-                                                        inverse_alphabet_index,
-                                                        test_lemmas,
-                                                        test_feat_dicts,
-                                                        feat_index,
-                                                        feature_types)
-                ensemble_predictions.append(predicted_templates)
 
-                predicted_templates = {}
-                string_to_template = {}
+        # predict the entire test set with each model in the ensemble
+        ensemble_predictions = []
+        for em in ensemble_models:
+            model, encoder_frnn, encoder_rrnn, decoder_rnn = em
+            predicted_templates = predict_templates(model, decoder_rnn,
+                                                    encoder_frnn,
+                                                    encoder_rrnn,
+                                                    alphabet_index,
+                                                    inverse_alphabet_index,
+                                                    test_lemmas,
+                                                    test_feat_dicts,
+                                                    feat_index,
+                                                    feature_types)
+            ensemble_predictions.append(predicted_templates)
 
-                # perform voting for each test input - joint_index is a lemma+feats representation
-                test_data = zip(test_lemmas, test_feat_dicts, test_words)
-                for i, (lemma, feat_dict, word) in enumerate(test_data):
-                    joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
-                    prediction_counter = defaultdict(int)
-                    for en in ensemble_predictions:
-                        prediction_str = ''.join(instantiate_template(en[joint_index], lemma))
-                        prediction_counter[prediction_str] += 1
-                        string_to_template[prediction_str] = en[joint_index]
-                        print u'template: {} prediction: {}'.format(en[joint_index], prediction_str)
+        predicted_templates = {}
+        string_to_template = {}
 
-                    # return the most predicted output
-                    predicted_template_string = max(prediction_counter, key=prediction_counter.get)
+        # perform voting for each test input - joint_index is a lemma+feats representation
+        test_data = zip(test_lemmas, test_feat_dicts, test_words)
+        for i, (lemma, feat_dict, word) in enumerate(test_data):
+            joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
+            prediction_counter = defaultdict(int)
 
-                    # hack: if chosen without majority, pick shortest prediction
-                    if prediction_counter[predicted_template_string] == 1:
-                        predicted_template_string = min(prediction_counter, key=len)
+            # count votes
+            for en in ensemble_predictions:
+                prediction_str = ''.join(instantiate_template(en[joint_index], lemma))
+                prediction_counter[prediction_str] += 1
+                string_to_template[prediction_str] = en[joint_index]
+                print u'template: {} prediction: {}'.format(en[joint_index], prediction_str)
 
-                    print u'chosen:{} with {} votes\n'.format(predicted_template_string,
-                                                              prediction_counter[predicted_template_string])
-                    predicted_templates[joint_index] = string_to_template[predicted_template_string]
+            # return the most predicted output
+            predicted_template_string = max(prediction_counter, key=prediction_counter.get)
 
-                    # progress indication
-                    sys.stdout.write("\r%d%%" % (float(i) / len(test_lemmas) * 100))
-                    sys.stdout.flush()
-                    ##
+            # hack: if chosen without majority, pick shortest prediction
+            if prediction_counter[predicted_template_string] == 1:
+                predicted_template_string = min(prediction_counter, key=len)
 
-            else:
-                # load best model - no ensemble
-                best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(alphabet,
-                                                                                      results_file_path, input_dim,
-                                                                                      hidden_dim, layers,
-                                                                                      feature_alphabet, feat_input_dim,
-                                                                                      feature_types)
-                try:
-                    predicted_templates = predict_templates(best_model,
-                                                            decoder_rnn,
-                                                            encoder_frnn,
-                                                            encoder_rrnn,
-                                                            alphabet_index,
-                                                            inverse_alphabet_index,
-                                                            test_lemmas,
-                                                            test_feat_dicts,
-                                                            feat_index,
-                                                            feature_types)
-                except Exception as e:
-                    print e
-                    traceback.print_exc()
-            try:
-                accuracy = evaluate_model(predicted_templates,
-                                          test_lemmas,
-                                          test_feat_dicts,
-                                          test_words,
-                                          feature_types,
-                                          print_results=True)
-                accuracies.append(accuracy)
-            except Exception as e:
-                print e
-                traceback.print_exc()
+            print u'chosen:{} with {} votes\n'.format(predicted_template_string,
+                                                      prediction_counter[predicted_template_string])
 
-            # get predicted_templates in the same order they appeared in the original file
-            # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
-            for i in test_lemmas:
-                joint_index = test_lemmas[i] + ':' + common.get_morph_string(test_feat_dicts[i], feature_types)
-                inflection = instantiate_template(predicted_templates[joint_index], test_lemmas[i])
-                final_results[i] = (test_lemmas[i], test_feat_dicts[i], inflection)
+            predicted_templates[joint_index] = string_to_template[predicted_template_string]
+
+            # progress indication
+            sys.stdout.write("\r%d%%" % (float(i) / len(test_lemmas) * 100))
+            sys.stdout.flush()
+    else:
+        # load best model - no ensemble
+        best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(alphabet,
+                                                                              results_file_path, input_dim,
+                                                                              hidden_dim, layers,
+                                                                              feature_alphabet, feat_input_dim,
+                                                                              feature_types)
+        try:
+            predicted_templates = predict_templates(best_model,
+                                                    decoder_rnn,
+                                                    encoder_frnn,
+                                                    encoder_rrnn,
+                                                    alphabet_index,
+                                                    inverse_alphabet_index,
+                                                    test_lemmas,
+                                                    test_feat_dicts,
+                                                    feat_index,
+                                                    feature_types)
+        except Exception as e:
+            print e
+            traceback.print_exc()
+        try:
+            accuracy = evaluate_model(predicted_templates,
+                                      test_lemmas,
+                                      test_feat_dicts,
+                                      test_words,
+                                      feature_types,
+                                      print_results=True)
+            accuracies.append(accuracy)
+        except Exception as e:
+            print e
+            traceback.print_exc()
+
+    # get predicted_templates in the same order they appeared in the original file
+    # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
+    for i in test_lemmas:
+        joint_index = test_lemmas[i] + ':' + common.get_morph_string(test_feat_dicts[i], feature_types)
+        inflection = instantiate_template(predicted_templates[joint_index], test_lemmas[i])
+        final_results[i] = (test_lemmas[i], test_feat_dicts[i], inflection)
 
     accuracy_vals = [accuracies[i][1] for i in xrange(len(accuracies))]
     macro_avg_accuracy = sum(accuracy_vals) / len(accuracies)
