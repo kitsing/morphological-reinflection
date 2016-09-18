@@ -800,8 +800,17 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
         else:
             if predicted_output.isdigit():
                 # handle copy
+                # try:
+                #     prev_char_vec = char_lookup[alphabet_index[padded_lemma[i]]]
+                # except KeyError:
+                #     prev_char_vec = char_lookup[alphabet_index[UNK]]
                 try:
-                    prev_char_vec = char_lookup[alphabet_index[padded_lemma[i]]]
+                    # this way END_WORD cannot be copied (as it is in the training stage)
+                    if i < len(lemma) + 1:
+                        prev_char_vec = char_lookup[alphabet_index[padded_lemma[i]]]
+                    else:
+                        # if trying to copy from a non-existent index, pad with last lemma character
+                        prev_char_vec = char_lookup[alphabet_index[lemma[-1]]]
                 except KeyError:
                     prev_char_vec = char_lookup[alphabet_index[UNK]]
             else:
