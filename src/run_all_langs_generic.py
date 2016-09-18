@@ -127,7 +127,11 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
     root_dir = src_dir.replace('/src/', '')
 
     if 'celex' in lang:
-        fold = lang[-1]
+        # backwards compatibillity
+        if lang == 'celex':
+            fold = '0'
+        else:
+            fold = lang[-1]
         train_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_{}.train.txt'.format(root_dir, fold)
         dev_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_{}.dev.txt'.format(root_dir, fold)
         test_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_{}.test.txt'.format(root_dir, fold)
