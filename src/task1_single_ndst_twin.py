@@ -927,17 +927,19 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
         except Exception as e:
             print e
             traceback.print_exc()
-        try:
-            accuracy = evaluate_model(predicted_templates,
+
+    # run internal evaluation
+    try:
+        accuracy = evaluate_model(predicted_templates,
                                       test_lemmas,
                                       test_feat_dicts,
                                       test_words,
                                       feature_types,
                                       print_results=True)
-            accuracies.append(accuracy)
-        except Exception as e:
-            print e
-            traceback.print_exc()
+        accuracies.append(accuracy)
+    except Exception as e:
+        print e
+        traceback.print_exc()
 
     # get predicted_templates in the same order they appeared in the original file
     # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
