@@ -201,12 +201,14 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
         print 'skipped training by request. evaluating best models:'
 
     # eval on dev
+    print '=========DEV EVALUATION:========='
     evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim, feature_alphabet, feature_types,
                   hidden_dim, hyper_params, input_dim, inverse_alphabet_index, layers, results_file_path,
                   sigmorphon_root_dir, dev_cluster_to_data_indices, dev_feat_dicts, dev_lemmas, dev_path,
                   dev_words, train_cluster_to_data_indices, train_path, train_words)
 
     # eval on test
+    print '=========TEST EVALUATION:========='
     test_cluster_to_data_indices = common.cluster_data_by_pos(dev_feat_dicts)
     evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim, feature_alphabet, feature_types,
                   hidden_dim, hyper_params, input_dim, inverse_alphabet_index, layers, results_file_path,
@@ -977,6 +979,11 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
 
                     # return the most predicted output
                     predicted_template_string = max(prediction_counter, key=prediction_counter.get)
+
+                    # hack: if chosen without majority, pick shortest prediction
+                    if prediction_counter[predicted_template_string] == 1:
+                        predicted_template_string = min(prediction_counter, key=len)
+
                     print u'chosen:{} with {} votes\n'.format(predicted_template_string,
                                                               prediction_counter[predicted_template_string])
                     predicted_templates[joint_index] = string_to_template[predicted_template_string]
