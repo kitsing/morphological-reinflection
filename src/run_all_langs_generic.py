@@ -47,7 +47,7 @@ LAYERS = 2
 OPTIMIZATION = 'ADAM'
 POOL = 4
 LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german', 'hungarian', 'maltese',
-         'celex']
+         'celex0', 'celex1', 'celex2' , 'celex3', 'celex4']
 CNN_MEM = 2000
 
 
@@ -126,10 +126,11 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
 
     root_dir = src_dir.replace('/src/', '')
 
-    if lang == 'celex':
-        train_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_0.train.txt'.format(root_dir)
-        dev_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_0.dev.txt'.format(root_dir)
-        test_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_0.test.txt'.format(root_dir)
+    if 'celex' in lang:
+        fold = lang[-1]
+        train_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_{}.train.txt'.format(root_dir, fold)
+        dev_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_{}.dev.txt'.format(root_dir, fold)
+        test_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_{}.test.txt'.format(root_dir, fold)
         results_path = '{}/{}_{}-results.txt'.format(results_dir, prefix, lang)
     else:
         train_path = '{}/data/{}-task{}-train'.format(sigmorphon_root_dir, lang, task)
