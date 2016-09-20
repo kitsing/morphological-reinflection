@@ -156,7 +156,7 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
                                                         plot)
 
         # print when did each model stop
-        print 'stopped on epoch {2}'.format(last_epoch)
+        print 'stopped on epoch {}'.format(last_epoch)
 
         with open(results_file_path + '.epochs', 'w') as f:
             f.writelines(last_epochs)
