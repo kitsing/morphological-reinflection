@@ -725,7 +725,7 @@ def evaluate_model(predicted_sequences, lemmas, feature_dicts, words, feature_ty
             plemma = lemma.encode('utf8')
             pword = words[i].encode('utf8')
             ptemplate = u''.join(predicted_sequences[joint_index])
-            pprediction = u''.join(predicted_word.encode('utf8'))
+            pprediction = u''.join(predicted_word)
             print u'lemma: {} gold: {} template: {} prediction: {} {}'.format(
                 plemma,
                 pword,
