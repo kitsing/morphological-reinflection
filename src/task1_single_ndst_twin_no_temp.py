@@ -722,8 +722,8 @@ def evaluate_model(predicted_sequences, lemmas, feature_dicts, words, feature_ty
         else:
             sign = 'X'
         if print_results or sign == 'X':
-            print 'lemma: {} gold: {} template: {} prediction: {} {}'.format(
-                lemma, ''.join(words[i]), predicted_sequences[joint_index], u''.join(predicted_word), sign)
+            print u'lemma: {} gold: {} template: {} prediction: {} {}'.format(
+                lemma, u''.join(words[i]), predicted_sequences[joint_index], u''.join(predicted_word), sign)
 
     accuracy = float(c) / len(predicted_sequences)
     if print_results:
