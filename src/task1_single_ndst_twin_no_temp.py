@@ -718,14 +718,18 @@ def evaluate_model(predicted_sequences, lemmas, feature_dicts, words, feature_ty
         predicted_word = predicted_sequences[joint_index]
         if predicted_word == word:
             c += 1
-            sign = 'V'
+            sign = u'V'
         else:
-            sign = 'X'
+            sign = u'X'
         if print_results or sign == 'X':
-            plemma = lemma.encode('utf8')
+            plemma = lemma #.encode('utf8')
+            print u'{}'.format(plemma)
             pword = words[i].encode('utf8')
-            ptemplate = u''.join(predicted_sequences[joint_index])
-            pprediction = u''.join(predicted_word)
+            print u'{}'.format(pword)
+            ptemplate = u'{}'.join(predicted_sequences[joint_index])
+            print u''.format(ptemplate)
+            pprediction = u'{}'.join(predicted_word)
+            print u'{}'.format(pprediction)
             print u'lemma: {} gold: {} template: {} prediction: {} {}'.format(
                 plemma,
                 pword,
