@@ -722,11 +722,16 @@ def evaluate_model(predicted_sequences, lemmas, feature_dicts, words, feature_ty
         else:
             sign = 'X'
         if print_results or sign == 'X':
+            plemma = lemma.encode('utf8')
+            pword = words[i].encode('utf8')
+            ptemplate = u''.join(predicted_sequences[joint_index])
+            pprediction = u''.join(predicted_word.encode('utf8'))
             print u'lemma: {} gold: {} template: {} prediction: {} {}'.format(
-                u''.join(lemma.encode('utf8')),
-                u''.join(words[i].encode('utf8')),
-                u''.join(predicted_sequences[joint_index]),
-                u''.join(predicted_word.encode('utf8')), sign)
+                plemma,
+                pword,
+                ptemplate,
+                pprediction,
+                sign)
 
     accuracy = float(c) / len(predicted_sequences)
     if print_results:
