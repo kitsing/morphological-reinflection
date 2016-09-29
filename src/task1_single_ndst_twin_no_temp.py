@@ -798,7 +798,8 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
                 prediction_str = ''.join(en[joint_index])
                 prediction_counter[prediction_str] += 1
                 string_to_sequence[prediction_str] = en[joint_index]
-                print u'template: {} prediction: {}'.format(en[joint_index], prediction_str)
+                print 'template: {} prediction: {}'.format(en[joint_index].encode('utf8'),
+                                                           prediction_str.encode('utf8'))
 
             # return the most predicted output
             predicted_sequence_string = max(prediction_counter, key=prediction_counter.get)
