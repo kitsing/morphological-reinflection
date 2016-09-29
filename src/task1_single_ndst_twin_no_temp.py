@@ -808,7 +808,7 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
             if prediction_counter[predicted_sequence_string] == 1:
                 predicted_sequence_string = min(prediction_counter, key=len)
 
-            print u'chosen:{} with {} votes\n'.format(predicted_sequence_string,
+            print 'chosen:{} with {} votes\n'.format(predicted_sequence_string.encode('utf8'),
                                                       prediction_counter[predicted_sequence_string])
 
             predicted_sequences[joint_index] = string_to_sequence[predicted_sequence_string]
