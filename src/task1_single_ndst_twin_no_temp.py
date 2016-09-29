@@ -726,9 +726,11 @@ def evaluate_model(predicted_sequences, lemmas, feature_dicts, words, feature_ty
             sign = u'X'
         if print_results or sign == 'X':
 
-            print u'lemma: {} gold: {} template: {} prediction: {} {}'.format(
-                lemma,
-                word.encode('utf8'),
+            enc_l = lemma.encode('utf8')
+            enc_w = word.encode('utf8')
+            print 'lemma: {} gold: {} template: {} prediction: {} {}'.format(
+                enc_l,
+                enc_w,
                 predicted_sequences[joint_index],
                 predicted_word,
                 sign)
