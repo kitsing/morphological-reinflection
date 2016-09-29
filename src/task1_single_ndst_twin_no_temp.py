@@ -316,11 +316,14 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
         if EARLY_STOPPING:
 
             # get train accuracy
-            train_predictions = predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
-                                                  inverse_alphabet_index, train_lemmas, train_feat_dicts, feat_index,
-                                                  feature_types)
             print 'evaluating on train...'
-            train_accuracy = evaluate_model(train_predictions, train_lemmas, train_feat_dicts, train_words,
+            train_predictions = predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+                                                  inverse_alphabet_index, train_lemmas[:100], train_feat_dicts[:100],
+                                                  feat_index,
+                                                  feature_types)
+
+            train_accuracy = evaluate_model(train_predictions, train_lemmas[:100], train_feat_dicts[:100],
+                                            train_words[:100],
                                             feature_types, print_results=True)[1]
 
             if train_accuracy > best_train_accuracy:
@@ -722,19 +725,12 @@ def evaluate_model(predicted_sequences, lemmas, feature_dicts, words, feature_ty
         else:
             sign = u'X'
         if print_results or sign == 'X':
-            plemma = lemma #.encode('utf8')
-            print u'lemma: {}'.format(''.join(plemma).encode('utf8'))
-            pword = words[i].encode('utf8')
-            print u'word: {}'.format(pword)
-            ptemplate = u'temp: {}'.join(predicted_sequences[joint_index])
-            print u''.format(ptemplate)
-            pprediction = u'pred: {}'.join(predicted_word)
-            print u'{}'.format(pprediction)
+
             print u'lemma: {} gold: {} template: {} prediction: {} {}'.format(
-                plemma,
-                pword,
-                ptemplate,
-                pprediction,
+                lemma,
+                word,
+                predicted_sequences[joint_index],
+                predicted_word,
                 sign)
 
     accuracy = float(c) / len(predicted_sequences)
