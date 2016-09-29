@@ -728,9 +728,10 @@ def evaluate_model(predicted_sequences, lemmas, feature_dicts, words, feature_ty
 
             enc_l = lemma.encode('utf8')
             enc_w = word.encode('utf8')
+            enc_t = ''.join([c.encode('utf8') for c in predicted_sequences[joint_index]])
             print 'lemma: {}'.format(enc_l)
             print 'gold: {}'.format(enc_w)
-            print 'template: {}'.format(predicted_sequences[joint_index])
+            print 'template: {}'.format(enc_t)
             print 'prediction: {}'.format(predicted_word)
             print sign
 
