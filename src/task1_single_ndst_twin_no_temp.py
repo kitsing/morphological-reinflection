@@ -784,8 +784,11 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
             ensemble_models.append((model, encoder_frnn, encoder_rrnn, decoder_rnn))
 
         # predict the entire test set with each model in the ensemble
+        print 'predicting...'
         ensemble_predictions = []
+        count = 0
         for em in ensemble_models:
+            count += 1
             model, encoder_frnn, encoder_rrnn, decoder_rnn = em
             predicted_sequences = predict_sequences(model, decoder_rnn,
                                                     encoder_frnn,
@@ -797,6 +800,7 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
                                                     feat_index,
                                                     feature_types)
             ensemble_predictions.append(predicted_sequences)
+            print 'finished to predict with ensemble: {}/{}'.format(count, len(ensemble_model_names))
 
         predicted_sequences = {}
         string_to_sequence = {}
