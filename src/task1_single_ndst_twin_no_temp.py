@@ -251,6 +251,15 @@ def load_best_model(alphabet, results_file_path, input_dim, hidden_dim, layers, 
     return model, encoder_frnn, encoder_rrnn, decoder_rnn
 
 
+def log_to_file(file_name, e, avg_loss, train_accuracy, dev_accuracy):
+    # if first write, add headers
+    if e == 0:
+        log_to_file(file_name, 'epoch', 'avg_loss', 'train_accuracy', 'dev_accuracy')
+
+    with open(file_name, "a") as logfile:
+        logfile.write("{}\t{}\t{}\t{}\n".format(e, avg_loss, train_accuracy, dev_accuracy))
+
+
 def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, train_feat_dicts, train_words, dev_lemmas,
                 dev_feat_dicts, dev_words, alphabet_index, inverse_alphabet_index, epochs, optimization,
                 results_file_path, train_aligned_pairs, dev_aligned_pairs, feat_index, feature_types,
@@ -279,6 +288,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
     best_train_accuracy = -1
     patience = 0
     train_len = len(train_words)
+    sanity_set_size = 100
     epochs_x = []
     train_loss_y = []
     dev_loss_y = []
@@ -318,12 +328,14 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
             # get train accuracy
             print 'evaluating on train...'
             train_predictions = predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
-                                                  inverse_alphabet_index, train_lemmas[:100], train_feat_dicts[:100],
+                                                  inverse_alphabet_index, train_lemmas[:sanity_set_size],
+                                                  train_feat_dicts[:sanity_set_size],
                                                   feat_index,
                                                   feature_types)
 
-            train_accuracy = evaluate_model(train_predictions, train_lemmas[:100], train_feat_dicts[:100],
-                                            train_words[:100],
+            train_accuracy = evaluate_model(train_predictions, train_lemmas[:sanity_set_size],
+                                            train_feat_dicts[:sanity_set_size],
+                                            train_words[:sanity_set_size],
                                             feature_types, print_results=True)[1]
 
             if train_accuracy > best_train_accuracy:
@@ -375,6 +387,8 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
  best dev accuracy {5:.4f} best train accuracy: {6:.4f} patience = {7}'.format(e, avg_loss, avg_dev_loss, dev_accuracy,
                                                                                train_accuracy, best_dev_accuracy,
                                                                                best_train_accuracy, patience)
+
+                log_to_file(results_file_path + '_log.txt', e, avg_loss, train_accuracy, dev_accuracy)
 
                 if patience == MAX_PATIENCE:
                     print 'out of patience after {0} epochs'.format(str(e))

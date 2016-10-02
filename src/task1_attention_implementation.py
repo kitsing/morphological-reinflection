@@ -294,7 +294,6 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
     else:
         trainer = pc.SimpleSGDTrainer(model)
 
-    train_sanity_set_size = 100
     total_loss = 0
     best_avg_dev_loss = 999
     best_dev_accuracy = -1
@@ -303,6 +302,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
     best_train_epoch = 0
     patience = 0
     train_len = len(train_words)
+    train_sanity_set_size = 100
     epochs_x = []
     train_loss_y = []
     dev_loss_y = []
@@ -416,6 +416,9 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                                                                                                 best_dev_epoch,
                                                                                                 best_train_epoch)
 
+                log_to_file(results_file_path + '_log.txt', e, avg_loss, train_accuracy, dev_accuracy)
+
+
                 if patience == MAX_PATIENCE:
                     print 'out of patience after {0} epochs'.format(str(e))
                     # TODO: would like to return best model but pycnn has a bug with save and load. Maybe copy via code?
@@ -476,6 +479,16 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                                                                                                      best_dev_epoch,
                                                                                                      best_train_epoch)
     return model, e, best_train_epoch
+
+
+def log_to_file(file_name, e, avg_loss, train_accuracy, dev_accuracy):
+
+    # if first write, add headers
+    if e == 0:
+        log_to_file(file_name, 'epoch', 'avg_loss', 'train_accuracy', 'dev_accuracy')
+
+    with open(file_name, "a") as logfile:
+        logfile.write("{}\t{}\t{}\t{}\n".format(e, avg_loss, train_accuracy, dev_accuracy))
 
 
 # noinspection PyPep8Naming
