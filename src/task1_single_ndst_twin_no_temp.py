@@ -230,8 +230,8 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
     encoder_frnn = pc.LSTMBuilder(layers, input_dim, hidden_dim, model)
     encoder_rrnn = pc.LSTMBuilder(layers, input_dim, hidden_dim, model)
 
-    # 3 * HIDDEN_DIM, as it gets previous output, BLSTM[i]
-    concatenated_input_dim = 3 * hidden_dim + len(feature_types) * feat_input_dim
+    # 2 * HIDDEN_DIM + input_dim, as it gets BLSTM[i], previous output
+    concatenated_input_dim = 2 * hidden_dim + input_dim + len(feature_types) * feat_input_dim
     decoder_rnn = pc.LSTMBuilder(layers, concatenated_input_dim, hidden_dim, model)
     print 'decoder lstm dimensions are {} x {}'.format(concatenated_input_dim, hidden_dim)
     print 'finished creating model'
