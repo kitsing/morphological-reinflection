@@ -354,7 +354,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
             train_accuracy = evaluate_model(train_predictions, train_lemmas[:train_sanity_set_size],
                                             train_feat_dicts[:train_sanity_set_size],
                                             train_words[:train_sanity_set_size],
-                                            feature_types, True)[1]
+                                            feature_types, False)[1]
 
             if train_accuracy > best_train_accuracy:
                 best_train_accuracy = train_accuracy
@@ -372,7 +372,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 print 'dev evaluation:'
                 # get dev accuracy
                 dev_accuracy = evaluate_model(dev_predictions, dev_lemmas, dev_feat_dicts, dev_words, feature_types,
-                                              print_results=True)[1]
+                                              print_results=False)[1]
 
                 if dev_accuracy >= best_dev_accuracy:
                     best_dev_accuracy = dev_accuracy
@@ -741,7 +741,7 @@ def predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_i
     return predictions
 
 
-def evaluate_model(predicted_templates, lemmas, feature_dicts, words, feature_types, print_results=True):
+def evaluate_model(predicted_templates, lemmas, feature_dicts, words, feature_types, print_results=False):
     if print_results:
         print 'evaluating model...'
 
