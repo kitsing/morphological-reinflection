@@ -336,7 +336,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
             train_accuracy = evaluate_model(train_predictions, train_lemmas[:sanity_set_size],
                                             train_feat_dicts[:sanity_set_size],
                                             train_words[:sanity_set_size],
-                                            feature_types, print_results=True)[1]
+                                            feature_types, print_results=False)[1]
 
             if train_accuracy > best_train_accuracy:
                 best_train_accuracy = train_accuracy
@@ -724,7 +724,7 @@ def represents_int(s):
         return False
 
 
-def evaluate_model(predicted_sequences, lemmas, feature_dicts, words, feature_types, print_results=True):
+def evaluate_model(predicted_sequences, lemmas, feature_dicts, words, feature_types, print_results=False):
     if print_results:
         print 'evaluating model...'
 
@@ -739,7 +739,6 @@ def evaluate_model(predicted_sequences, lemmas, feature_dicts, words, feature_ty
         else:
             sign = u'X'
         if print_results or sign == 'X':
-
             enc_l = lemma.encode('utf8')
             enc_w = word.encode('utf8')
             enc_t = ''.join([t.encode('utf8') for t in predicted_sequences[joint_index]])
@@ -761,7 +760,7 @@ def evaluate_model(predicted_sequences, lemmas, feature_dicts, words, feature_ty
 def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim, feature_alphabet, feature_types,
                   hidden_dim, hyper_params, input_dim, inverse_alphabet_index, layers, results_file_path,
                   sigmorphon_root_dir, test_feat_dicts, test_lemmas, test_path,
-                  test_words, train_path):
+                  test_words, train_path, print_results=False):
     accuracies = []
     final_results = {}
     if ensemble:
@@ -816,8 +815,9 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
                 prediction_str = ''.join(en[joint_index])
                 prediction_counter[prediction_str] += 1
                 string_to_sequence[prediction_str] = en[joint_index]
-                print 'template: {} prediction: {}'.format(en[joint_index].encode('utf8'),
-                                                           prediction_str.encode('utf8'))
+                if print_results:
+                    print 'template: {} prediction: {}'.format(en[joint_index].encode('utf8'),
+                                                               prediction_str.encode('utf8'))
 
             # return the most predicted output
             predicted_sequence_string = max(prediction_counter, key=prediction_counter.get)
@@ -826,8 +826,9 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
             if prediction_counter[predicted_sequence_string] == 1:
                 predicted_sequence_string = min(prediction_counter, key=len)
 
-            print 'chosen:{} with {} votes\n'.format(predicted_sequence_string.encode('utf8'),
-                                                      prediction_counter[predicted_sequence_string])
+            if print_results:
+                print 'chosen:{} with {} votes\n'.format(predicted_sequence_string.encode('utf8'),
+                                                         prediction_counter[predicted_sequence_string])
 
             predicted_sequences[joint_index] = string_to_sequence[predicted_sequence_string]
 
@@ -863,7 +864,7 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
                                   test_feat_dicts,
                                   test_words,
                                   feature_types,
-                                  print_results=True)
+                                  print_results=False)
         accuracies.append(accuracy)
     except Exception as e:
         print e
