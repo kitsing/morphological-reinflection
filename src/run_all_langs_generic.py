@@ -47,7 +47,8 @@ LAYERS = 2
 OPTIMIZATION = 'ADAM'
 POOL = 4
 LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german', 'hungarian', 'maltese',
-         'celex0', 'celex1', 'celex2' , 'celex3', 'celex4']
+         'celex0', 'celex1', 'celex2' , 'celex3', 'celex4',
+         'german500','german1000','german3000','german5000','german7000','german9000','german12000']
 CNN_MEM = 2000
 
 
@@ -126,21 +127,30 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
 
     root_dir = src_dir.replace('/src/', '')
 
-    if 'celex' in lang:
-        # backwards compatibillity
-        if lang == 'celex':
-            fold = '0'
-        else:
-            fold = lang[-1]
-        train_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_{}.train.txt'.format(root_dir, fold)
-        dev_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_{}.dev.txt'.format(root_dir, fold)
-        test_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_{}.test.txt'.format(root_dir, fold)
-        results_path = '{}/{}_{}-results.txt'.format(results_dir, prefix, lang)
+
+    # german sampling
+    if 'german' in lang and len(lang) > len('german'):
+        train_path = '{}/data/sigmorphon_sampled/{}'.format(root_dir, lang)
+        dev_path = '{}/data/{}-task{}-dev'.format(sigmorphon_root_dir, 'german', task)
+        test_path = '{}/biu/gold/{}-task{}-test'.format(root_dir, 'german', task)
     else:
-        train_path = '{}/data/{}-task{}-train'.format(sigmorphon_root_dir, lang, task)
-        dev_path = '{}/data/{}-task{}-dev'.format(sigmorphon_root_dir, lang, task)
-        test_path = '{}/biu/gold/{}-task{}-test'.format(root_dir, lang, task)
-        results_path = '{}/{}_{}-results.txt'.format(results_dir, prefix, lang)
+        # celex support
+        if 'celex' in lang:
+            if lang == 'celex':
+                # backwards compatibillity
+                fold = '0'
+            else:
+                fold = lang[-1]
+            train_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_{}.train.txt'.format(root_dir, fold)
+            dev_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_{}.dev.txt'.format(root_dir, fold)
+            test_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_{}.test.txt'.format(root_dir, fold)
+        else:
+            train_path = '{}/data/{}-task{}-train'.format(sigmorphon_root_dir, lang, task)
+            dev_path = '{}/data/{}-task{}-dev'.format(sigmorphon_root_dir, lang, task)
+            test_path = '{}/biu/gold/{}-task{}-test'.format(root_dir, lang, task)
+
+    # same for all
+    results_path = '{}/{}_{}-results.txt'.format(results_dir, prefix, lang)
 
     if merged:
         train_path = '../data/sigmorphon_train_dev_merged/{}-task{}-merged'.format(lang, task)
