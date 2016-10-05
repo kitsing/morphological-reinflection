@@ -738,7 +738,7 @@ def evaluate_model(predicted_sequences, lemmas, feature_dicts, words, feature_ty
             sign = u'V'
         else:
             sign = u'X'
-        if print_results or sign == 'X':
+        if print_results and sign == 'X':
             enc_l = lemma.encode('utf8')
             enc_w = word.encode('utf8')
             enc_t = ''.join([t.encode('utf8') for t in predicted_sequences[joint_index]])
