@@ -539,7 +539,10 @@ def compute_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, w
         loss.append(current_loss)
 
         # prepare for the next iteration - "feedback"
-        prev_output_vec = char_lookup[alphabet_index[output_char]]
+        if output_char in alphabet_index:
+            prev_output_vec = char_lookup[alphabet_index[output_char]]
+        else:
+            prev_output_vec = char_lookup[alphabet_index[UNK]]
 
     total_sequence_loss = pc.esum(loss)
     # loss = average(loss)
