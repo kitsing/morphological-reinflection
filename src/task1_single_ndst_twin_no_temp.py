@@ -543,11 +543,18 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
             decoder_rnn_output = s.output()
             probs = pc.softmax(R * decoder_rnn_output + bias)
 
-            current_loss = -pc.log(pc.pick(probs, alphabet_index[aligned_word[index]]))
+            if aligned_word[index] in alphabet_index:
+                current_loss = -pc.log(pc.pick(probs, alphabet_index[aligned_word[index]]))
+
+                # prepare for the next iteration - "feedback"
+                prev_output_vec = char_lookup[alphabet_index[aligned_word[index]]]
+            else:
+                current_loss = -pc.log(pc.pick(probs, alphabet_index[UNK]))
+
+                # prepare for the next iteration - "feedback"
+                prev_output_vec = char_lookup[alphabet_index[UNK]]
             loss.append(current_loss)
 
-            # prepare for the next iteration - "feedback"
-            prev_output_vec = char_lookup[alphabet_index[aligned_word[index]]]
             j += 1
 
         # now check if it's time to progress on input - input's not done, should not delay on the character
