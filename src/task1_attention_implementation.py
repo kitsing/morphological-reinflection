@@ -418,8 +418,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
 
                 log_to_file(results_file_path + '_log.txt', e, avg_loss, train_accuracy, dev_accuracy)
 
-
-                if patience == MAX_PATIENCE:
+            if patience == MAX_PATIENCE:
                     print 'out of patience after {0} epochs'.format(str(e))
                     # TODO: would like to return best model but pycnn has a bug with save and load. Maybe copy via code?
                     # return best_model[0]
@@ -531,7 +530,11 @@ def compute_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, w
         # print 'computing readout layer...'
         readout = R * attention_output_vector + bias
 
-        current_loss = pc.pickneglogsoftmax(readout, alphabet_index[output_char])
+        if output_char in alphabet_index:
+            current_loss = pc.pickneglogsoftmax(readout, alphabet_index[output_char])
+        else:
+            current_loss = pc.pickneglogsoftmax(readout, alphabet_index[UNK])
+
         # print 'computed readout layer'
         loss.append(current_loss)
 
