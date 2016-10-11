@@ -233,8 +233,8 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
 
     plot_svd_reduction(Y, feat_index, title = 'SVD for feature embeddings')
 
-    start = 0
-    end = 600
+    start = 1000
+    end = 1400
     for lemma, feats in zip(dev_lemmas[start:end], dev_feat_dicts[start:end]):
         if len(lemma) < 6:
             plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,

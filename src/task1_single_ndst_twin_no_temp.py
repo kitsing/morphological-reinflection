@@ -353,7 +353,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 print 'evaluating on dev...'
                 # get dev accuracy
                 dev_accuracy = evaluate_model(dev_predictions, dev_lemmas, dev_feat_dicts, dev_words, feature_types,
-                                              print_results=False)[1]
+                                              print_results=True)[1]
 
                 if dev_accuracy > best_dev_accuracy:
                     best_dev_accuracy = dev_accuracy
@@ -667,7 +667,8 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
         prev_output_vec = char_lookup[predicted_output_index]
 
     # remove the end word symbol
-    return u''.join(predicted_output_sequence[0:-1]).replace(STEP, '')
+
+    return u''.join(predicted_output_sequence[0:-1])
 
 
 def bilstm_transduce(encoder_frnn, encoder_rrnn, lemma_char_vecs):
@@ -739,16 +740,17 @@ def evaluate_model(predicted_sequences, lemmas, feature_dicts, words, feature_ty
     c = 0
     for i, (lemma, feat_dict, word) in enumerate(test_data):
         joint_index = lemma + ':' + common.get_morph_string(feat_dict, feature_types)
-        predicted_word = predicted_sequences[joint_index]
+        predicted_template = predicted_sequences[joint_index]
+        predicted_word = predicted_sequences[joint_index].replace(STEP, '')
         if predicted_word == word:
             c += 1
             sign = u'V'
         else:
             sign = u'X'
-        if print_results and sign == 'X':
+        if print_results:# and sign == 'X':
             enc_l = lemma.encode('utf8')
             enc_w = word.encode('utf8')
-            enc_t = ''.join([t.encode('utf8') for t in predicted_sequences[joint_index]])
+            enc_t = ''.join([t.encode('utf8') for t in predicted_template])
             enc_p = predicted_word.encode('utf8')
             print 'lemma: {}'.format(enc_l)
             print 'gold: {}'.format(enc_w)
@@ -819,7 +821,7 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
 
             # count votes
             for en in ensemble_predictions:
-                prediction_str = ''.join(en[joint_index])
+                prediction_str = ''.join(en[joint_index]).replace(STEP, '')
                 prediction_counter[prediction_str] += 1
                 string_to_sequence[prediction_str] = en[joint_index]
                 if print_results:
@@ -881,7 +883,7 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
     # iterate through them and foreach concat morph, lemma, features in order to print later in the task format
     for i, lemma in enumerate(test_lemmas):
         joint_index = test_lemmas[i] + ':' + common.get_morph_string(test_feat_dicts[i], feature_types)
-        inflection = ''.join(predicted_sequences[joint_index])
+        inflection = ''.join(predicted_sequences[joint_index]).replace(STEP, '')
         final_results[i] = (test_lemmas[i], test_feat_dicts[i], inflection)
 
     accuracy_vals = [accuracies[i][1] for i in xrange(len(accuracies))]
