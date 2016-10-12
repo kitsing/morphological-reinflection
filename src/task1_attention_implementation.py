@@ -204,7 +204,7 @@ def predict_with_ensemble_majority(alphabet, alphabet_index, ensemble, feat_inde
         # return the most predicted output
         majority_prediction_string = max(prediction_counter, key=prediction_counter.get)
         print 'chosen:{} with {} votes\n'.format(majority_prediction_string.encode('utf-8'),
-                                                  prediction_counter[majority_prediction_string].encode('utf-8'))
+                                                  prediction_counter[majority_prediction_string])
         majority_predicted_sequences[joint_index] = string_to_template[majority_prediction_string]
 
     return majority_predicted_sequences
