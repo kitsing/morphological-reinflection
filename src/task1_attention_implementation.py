@@ -198,7 +198,8 @@ def predict_with_ensemble_majority(alphabet, alphabet_index, ensemble, feat_inde
             prediction_str = ''.join(ens[joint_index])
             prediction_counter[prediction_str] += 1
             string_to_template[prediction_str] = ens[joint_index]
-            print 'template: {} prediction: {}'.format(ens[joint_index].encode('utf-8'), prediction_str.encode('utf-8'))
+            print 'template: {} prediction: {}'.format(''.join([e.encode('utf-8') for e in ens[joint_index]]),
+                                                       prediction_str.encode('utf-8'))
 
         # return the most predicted output
         majority_prediction_string = max(prediction_counter, key=prediction_counter.get)
