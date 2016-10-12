@@ -198,12 +198,12 @@ def predict_with_ensemble_majority(alphabet, alphabet_index, ensemble, feat_inde
             prediction_str = ''.join(ens[joint_index])
             prediction_counter[prediction_str] += 1
             string_to_template[prediction_str] = ens[joint_index]
-            print u'template: {} prediction: {}'.format(ens[joint_index], prediction_str)
+            print 'template: {} prediction: {}'.format(ens[joint_index].encode('utf-8'), prediction_str.encode('utf-8'))
 
         # return the most predicted output
         majority_prediction_string = max(prediction_counter, key=prediction_counter.get)
-        print u'chosen:{} with {} votes\n'.format(majority_prediction_string,
-                                                  prediction_counter[majority_prediction_string])
+        print 'chosen:{} with {} votes\n'.format(majority_prediction_string.encode('utf-8'),
+                                                  prediction_counter[majority_prediction_string].encode('utf-8'))
         majority_predicted_sequences[joint_index] = string_to_template[majority_prediction_string]
 
     return majority_predicted_sequences
