@@ -49,7 +49,7 @@ POOL = 4
 LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german', 'hungarian', 'maltese',
          'celex0', 'celex1', 'celex2' , 'celex3', 'celex4',
          'german500','german1000','german3000','german5000','german7000','german9000','german12000',
-         'de_noun']
+         'de_noun', 'de_verb', 'es_verb', 'fi_verb', 'fi_nounadj']
 CNN_MEM = 2000
 
 
@@ -146,10 +146,10 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
             dev_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_{}.dev.txt'.format(root_dir, fold)
             test_path = '{}/data/celex/13SIA-13SKE_2PIE-13PKE_2PKE-z_rP-pA_{}.test.txt'.format(root_dir, fold)
         else:
-            if 'de_noun' in lang:
-                train_path = '{}/data/ddn13/base_forms_de_noun_train.txt.sigmorphon_format'.format(root_dir)
-                dev_path = '{}/data/ddn13/base_forms_de_noun_dev.txt.sigmorphon_format'.format(root_dir)
-                test_path = '{}/data/ddn13/base_forms_de_noun_test.txt.sigmorphon_format'.format(root_dir)
+            if lang in ['de_noun', 'de_verb', 'es_verb', 'fi_verb', 'fi_nounadj']:
+                train_path = '{}/data/ddn13/base_forms_{}_train.txt.sigmorphon_format.txt'.format(root_dir, lang)
+                dev_path = '{}/data/ddn13/base_forms_{}_dev.txt.sigmorphon_format.txt'.format(root_dir, lang)
+                test_path = '{}/data/ddn13/base_forms_{}_test.txt.sigmorphon_format.txt'.format(root_dir, lang)
             else:
                 train_path = '{}/data/{}-task{}-train'.format(sigmorphon_root_dir, lang, task)
                 dev_path = '{}/data/{}-task{}-dev'.format(sigmorphon_root_dir, lang, task)
