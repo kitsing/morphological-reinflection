@@ -41,8 +41,8 @@ def load_data(filename, task=1):
             if task in [1,3]:
                 if 'test-covered' not in filename:
                     if len(splt) != 3:
-                        print line
-                    assert len(splt) == 3, 'bad line: ' + line + '\n'
+                        print line.encode('utf8')
+                    assert len(splt) == 3, 'bad line: ' + line.encode('utf8') + '\n'
                     source, feats, target = splt
                 else:
                     assert len(splt) == 2, 'bad line: ' + line + '\n'
