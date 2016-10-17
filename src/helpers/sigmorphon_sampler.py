@@ -5,7 +5,7 @@ import random
 
 def main():
 
-    input_file = '../../biu/gold/german-task1-train'
+    input_file = '../../biu/gold/finnish-task1-train'
     output_root_path = '../../data/sigmorphon_sampled'
 
     # open sigmorphon file
