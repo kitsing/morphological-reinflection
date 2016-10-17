@@ -40,10 +40,16 @@ def load_data(filename, task=1):
             splt = line.strip().split()
             if task in [1,3]:
                 if 'test-covered' not in filename:
-                    if len(splt) != 3:
+                    if len(splt) > 3:
+                        # fix finnish ddn13 bad examples
                         print line.encode('utf8')
-                    assert len(splt) == 3, 'bad line: ' + line.encode('utf8') + '\n'
-                    source, feats, target = splt
+                        source = splt[0]
+                        feats = [s for s in splt if '=' in s][0]
+                        target = splt[-1]
+                        print 'fixed: source: {} feats: {} target: {}'
+                    else:
+                        assert len(splt) == 3, 'bad line: ' + line.encode('utf8') + '\n'
+                        source, feats, target = splt
                 else:
                     assert len(splt) == 2, 'bad line: ' + line + '\n'
                     source, feats = splt
