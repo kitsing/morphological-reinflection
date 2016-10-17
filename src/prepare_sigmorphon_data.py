@@ -46,7 +46,9 @@ def load_data(filename, task=1):
                         source = splt[0]
                         feats = [s for s in splt if '=' in s][0]
                         target = splt[-1]
-                        print 'fixed: source: {} feats: {} target: {}'.format(source, feats, target)
+                        print 'fixed: source: {} feats: {} target: {}'.format(source.encode('utf8'),
+                                                                              feats.encode('utf8'),
+                                                                              target.encode('utf8'))
                     else:
                         assert len(splt) == 3, 'bad line: ' + line.encode('utf8') + '\n'
                         source, feats, target = splt
