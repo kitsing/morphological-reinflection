@@ -48,7 +48,10 @@ OPTIMIZATION = 'ADAM'
 POOL = 4
 LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turkish', 'german', 'hungarian', 'maltese',
          'celex0', 'celex1', 'celex2' , 'celex3', 'celex4',
-         'german500','german1000','german3000','german5000','german7000','german9000','german12000',
+         'german500', 'german1000', 'german3000', 'german5000', 'german7000', 'german9000', 'german12000',
+         'arabic500', 'arabic1000', 'arabic3000', 'arabic5000', 'arabic7000', 'arabic9000', 'arabic12000',
+         'finnish500', 'finnish1000', 'finnish3000', 'finnish5000', 'finnish7000', 'finnish9000', 'finnish12000',
+         'turkish500', 'turkish1000', 'turkish3000', 'turkish5000', 'turkish7000', 'turkish9000', 'turkish12000',
          'de_noun', 'de_verb', 'es_verb', 'fi_verb', 'fi_nounadj']
 CNN_MEM = 2000
 
@@ -129,11 +132,14 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
     root_dir = src_dir.replace('/src/', '')
 
 
-    # german sampling
-    if 'german' in lang and len(lang) > len('german'):
+    # sampled train sets support (arabic500 etc.)
+    sampled = ['german', 'arabic', 'turkish', 'finnish']
+    found = [s for s in sampled if s in lang and len(lang) > len(s)]
+    if len(found) > 0:
+        l = found[0]
         train_path = '{}/data/sigmorphon_sampled/{}'.format(root_dir, lang)
-        dev_path = '{}/data/{}-task{}-dev'.format(sigmorphon_root_dir, 'german', task)
-        test_path = '{}/biu/gold/{}-task{}-test'.format(root_dir, 'german', task)
+        dev_path = '{}/data/{}-task{}-dev'.format(sigmorphon_root_dir, l, task)
+        test_path = '{}/biu/gold/{}-task{}-test'.format(root_dir, l, task)
     else:
         # celex support
         if 'celex' in lang:
