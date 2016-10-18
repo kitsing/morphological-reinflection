@@ -129,19 +129,20 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
     feature_alphabet.append(UNK_FEAT)
     feat_index = dict(zip(feature_alphabet, range(0, len(feature_alphabet))))
 
-    # align the words to the inflections, the alignment will later be used by the model
-    print 'started aligning'
-    train_word_pairs = zip(train_lemmas, train_words)
-    dev_word_pairs = zip(dev_lemmas, dev_words)
-
-    # train_aligned_pairs = dumb_align(train_word_pairs, ALIGN_SYMBOL)
-    train_aligned_pairs = common.mcmc_align(train_word_pairs, ALIGN_SYMBOL)
-
-    # TODO: align together?
-    dev_aligned_pairs = common.mcmc_align(dev_word_pairs, ALIGN_SYMBOL)
-    print 'finished aligning'
-
     if not eval_only:
+
+        # align the words to the inflections, the alignment will later be used by the model
+        print 'started aligning'
+        train_word_pairs = zip(train_lemmas, train_words)
+        dev_word_pairs = zip(dev_lemmas, dev_words)
+
+        # train_aligned_pairs = dumb_align(train_word_pairs, ALIGN_SYMBOL)
+        train_aligned_pairs = common.mcmc_align(train_word_pairs, ALIGN_SYMBOL)
+
+        # TODO: align together?
+        dev_aligned_pairs = common.mcmc_align(dev_word_pairs, ALIGN_SYMBOL)
+        print 'finished aligning'
+
         last_epochs = []
         trained_model, last_epoch = train_model_wrapper(input_dim, hidden_dim, layers, train_lemmas, train_feat_dicts,
                                                         train_words, dev_lemmas, dev_feat_dicts, dev_words,
