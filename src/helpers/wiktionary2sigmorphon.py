@@ -67,7 +67,7 @@ def csv2sigmorphon(inflections_path):
             # uitscheren    type=participle,tense=past  uitgeschoren
 
             output_file.write(u'{}\t{}\t{}\n'.format(inflection_line[1],
-                                                     inflection_line[2].replace(' = ', ','),
+                                                     inflection_line[2].replace(' = ', '=').replace(':',','),
                                                      inflection_line[0]))
             inflection_count += 1
 
