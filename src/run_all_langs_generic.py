@@ -52,7 +52,8 @@ LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turki
          'arabic500', 'arabic1000', 'arabic3000', 'arabic5000', 'arabic7000', 'arabic9000', 'arabic12000',
          'finnish500', 'finnish1000', 'finnish3000', 'finnish5000', 'finnish7000', 'finnish9000', 'finnish12000',
          'turkish500', 'turkish1000', 'turkish3000', 'turkish5000', 'turkish7000', 'turkish9000', 'turkish12000',
-         'de_noun', 'de_verb', 'es_verb', 'fi_verb', 'fi_nounadj']
+         'de_noun', 'de_verb', 'es_verb', 'fi_verb', 'fi_nounadj',
+         'french', 'dutch']
 CNN_MEM = 2000
 
 
@@ -157,9 +158,15 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
                 dev_path = '{}/data/ddn13/base_forms_{}_dev.txt.sigmorphon_format.txt'.format(root_dir, lang)
                 test_path = '{}/data/ddn13/base_forms_{}_test.txt.sigmorphon_format.txt'.format(root_dir, lang)
             else:
-                train_path = '{}/data/{}-task{}-train'.format(sigmorphon_root_dir, lang, task)
-                dev_path = '{}/data/{}-task{}-dev'.format(sigmorphon_root_dir, lang, task)
-                test_path = '{}/biu/gold/{}-task{}-test'.format(root_dir, lang, task)
+                if lang in['dutch', 'french']:
+                    train_path = '{}/data/nck15/{}_train.txt.sigmorphon_format.txt'.format(root_dir, lang)
+                    dev_path = '{}/data/nck15/{}_dev.txt.sigmorphon_format.txt'.format(root_dir, lang)
+                    test_path = '{}/data/nck15/{}_test.txt.sigmorphon_format.txt'.format(root_dir, lang)
+                else:
+                    # default sigmorphon format
+                    train_path = '{}/data/{}-task{}-train'.format(sigmorphon_root_dir, lang, task)
+                    dev_path = '{}/data/{}-task{}-dev'.format(sigmorphon_root_dir, lang, task)
+                    test_path = '{}/biu/gold/{}-task{}-test'.format(root_dir, lang, task)
 
     # same for all
     results_path = '{}/{}_{}-results.txt'.format(results_dir, prefix, lang)

@@ -17,10 +17,22 @@ def utf_8_encoder(unicode_csv_data):
 
 
 def main():
+    csv2sigmorphon('/Users/roeeaharoni/research_data/morphology/MorphoCorpora/Dutch/DutchDev.txt')
+    csv2sigmorphon('/Users/roeeaharoni/research_data/morphology/MorphoCorpora/Dutch/DutchTest.txt')
+    csv2sigmorphon('/Users/roeeaharoni/research_data/morphology/MorphoCorpora/Dutch/DutchTrain.txt')
+
+    csv2sigmorphon('/Users/roeeaharoni/research_data/morphology/MorphoCorpora/French/FrenchDev.txt')
+    csv2sigmorphon('/Users/roeeaharoni/research_data/morphology/MorphoCorpora/French/FrenchTest.txt')
+    csv2sigmorphon('/Users/roeeaharoni/research_data/morphology/MorphoCorpora/French/FrenchTrain.txt')
+
+    return
+
     inflections_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/inflections_{}.csv'
     train_lemma_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_{}_train.txt'
     dev_lemma_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_{}_dev.txt'
     test_lemma_path = '/Users/roeeaharoni/research_data/morphology/wiktionary-morphology-1.1/base_forms_{}_test.txt'
+
+
 
     prefixes = ['de_noun', 'de_verb', 'es_verb', 'fi_nounadj', 'fi_verb']
     for p in prefixes:
@@ -34,6 +46,32 @@ def main():
                              train_lemma_path.format(p),
                              base_amount)
 
+
+def csv2sigmorphon(inflections_path):
+    suffix = '.sigmorphon_format.txt'
+    output_path = inflections_path + suffix
+
+    # open inflections file
+    with codecs.open(inflections_path, encoding='utf8') as f:
+        reader = unicode_csv_reader(f)
+        inflections = list(reader)
+
+    inflection_count = 0
+    with codecs.open(output_path, "w", encoding='utf8') as output_file:
+        for inflection_line in inflections:
+
+            # print their inflections to file
+            # from:
+            # uitgeschoren, uitscheren, type = participle:tense = past
+            # to:
+            # uitscheren    type=participle,tense=past  uitgeschoren
+
+            output_file.write(u'{}\t{}\t{}\n'.format(inflection_line[1],
+                                                     inflection_line[2].replace(' = ', ','),
+                                                     inflection_line[0]))
+            inflection_count += 1
+
+    print '{} len: {}'.format(output_path, inflection_count)
 
 def wiktionay2sigmorphon(dev_lemma_path, inflections_path, test_lemma_path, train_lemma_path, base_amount=-1):
     suffix = '.sigmorphon_format.txt'
