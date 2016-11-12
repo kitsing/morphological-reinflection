@@ -984,3 +984,37 @@ if __name__ == '__main__':
          input_dim_param,
          hidden_dim_param, feat_input_dim_param, epochs_param, layers_param, optimization_param, regularization_param,
          learning_rate_param, plot_param, eval_param, ensemble_param)
+
+
+def encode_feats_and_chars(alphabet_index, char_lookup, encoder_frnn, encoder_rrnn, feat_index, feat_lookup, feats,
+                           feature_types, lemma):
+    feat_vecs = []
+
+    # convert features to matching embeddings, if UNK handle properly
+    for feat in sorted(feature_types):
+        # TODO: is it OK to use same UNK for all feature types? and for unseen feats as well?
+        # if this feature has a value, take it from the lookup. otherwise use UNK
+        if feat in feats:
+            feat_str = feat + ':' + feats[feat]
+            try:
+                feat_vecs.append(feat_lookup[feat_index[feat_str]])
+            except KeyError:
+                print 'Bad feat: {}'.format(feat_str)
+                # handle UNK or dropout
+                feat_vecs.append(feat_lookup[feat_index[UNK_FEAT]])
+
+    # convert characters to matching embeddings, if UNK handle properly
+    lemma_char_vecs = [char_lookup[alphabet_index[BEGIN_WORD]]]
+    for char in lemma:
+        try:
+            lemma_char_vecs.append(char_lookup[alphabet_index[char]])
+        except KeyError:
+            # handle UNK character
+            lemma_char_vecs.append(char_lookup[alphabet_index[UNK]])
+
+    # add terminator symbol
+    lemma_char_vecs.append(char_lookup[alphabet_index[END_WORD]])
+
+    # create bidirectional representation
+    blstm_outputs = bilstm_transduce(encoder_frnn, encoder_rrnn, lemma_char_vecs)
+    return blstm_outputs, feat_vecs
