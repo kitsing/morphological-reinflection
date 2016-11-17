@@ -1,4 +1,4 @@
-"""Runs the script on all langs in parallel
+"""Runs a script on selected languages in parallel, supports ensemble training
 
 Usage:
   run_all_langs_generic.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN] [--epochs=EPOCHS]

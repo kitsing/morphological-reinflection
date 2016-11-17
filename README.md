@@ -1,29 +1,31 @@
 # morphological-reinflection
 
+Source code for the paper [Sequence to Sequence Transduction with Hard Monotonic Attention](https://arxiv.org/abs/1611.01487)
+
 Usage:
 
     hard_attention.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION][--learning=LEARNING] [--plot] [--eval] [--ensemble=ENSEMBLE] TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
-* TRAIN_PATH    destination path
+* TRAIN_PATH    train set path
 * DEV_PATH      development set path
-* TEST_PATH     test path
-* RESULTS_PATH  results file to be written
+* TEST_PATH     test set path
+* RESULTS_PATH  results file (to be written)
 * SIGMORPHON_PATH   sigmorphon root containing data, src dirs
 
 Options:
 * -h --help                     show this help message and exit
 * --cnn-mem MEM                 allocates MEM bytes for (py)cnn
-* --input=INPUT                 input vector dimensions
-* --hidden=HIDDEN               hidden layer dimensions
-* --feat-input=FEAT             feature input vector dimension
+* --input=INPUT                 input embeddings dimension
+* --hidden=HIDDEN               lstm hidden layer dimension
+* --feat-input=FEAT             feature embeddings dimension
 * --epochs=EPOCHS               amount of training epochs
-* --layers=LAYERS               amount of layers in lstm network
+* --layers=LAYERS               amount of layers in lstm
 * --optimization=OPTIMIZATION   chosen optimization method ADAM/SGD/ADAGRAD/MOMENTUM/ADADELTA
 * --reg=REGULARIZATION          regularization parameter for optimization
 * --learning=LEARNING           learning rate parameter for optimization
 * --plot                        draw a learning curve plot while training each model
-* --eval                        run evaluation without training
+* --eval                        run evaluation on existing model (without training)
 * --ensemble=ENSEMBLE           ensemble model paths, separated by comma
 
 For example:
