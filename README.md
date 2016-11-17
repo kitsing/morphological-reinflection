@@ -1,6 +1,7 @@
 # morphological-reinflection
 
-Source code for the paper: [Sequence to Sequence Transduction with Hard Monotonic Attention](https://arxiv.org/abs/1611.01487)
+Source code for the paper: [Sequence to Sequence Transduction with Hard Monotonic Attention](https://arxiv.org/abs/1611.01487).
+
 Requires (py)cnn, an older version of [dynet](https://github.com/clab/dynet).  
 
 Usage:
