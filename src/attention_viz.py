@@ -38,7 +38,7 @@ import time
 import os
 import common
 import pycnn as pc
-import task1_attention_implementation
+import soft_attention
 from sklearn.decomposition import TruncatedSVD
 
 from collections import defaultdict
@@ -112,10 +112,10 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
     for lemma, feats in zip(dev_lemmas[start:end], dev_feat_dicts[start:end]):
         index = common.get_morph_string(feats, feature_types) + lemma
         index_to_feats_and_lemma[index] = (feats, lemma)
-        encoded_vecs[index] = task1_attention_implementation.encode_feats_and_chars(alphabet_index, char_lookup,
-                                                                                    encoder_frnn, encoder_rrnn,
-                                                                                    feat_index, feat_lookup, feats,
-                                                                                    feature_types, lemma)
+        encoded_vecs[index] = soft_attention.encode_feats_and_chars(alphabet_index, char_lookup,
+                                                                    encoder_frnn, encoder_rrnn,
+                                                                    feat_index, feat_lookup, feats,
+                                                                    feature_types, lemma)
     # get examples (encoder hidden states) by location: 1, 2, 3, 4, 5...
     location_to_vec = {}
     for encoded_rep_index in encoded_vecs:
@@ -419,7 +419,7 @@ def init_model(dev_path, feat_input_dim, hidden_dim, input_dim, layers, results_
     feat_index = dict(zip(feature_alphabet, range(0, len(feature_alphabet))))
     model_file_name = results_file_path + '_bestmodel.txt'
     # load model and everything else needed for prediction
-    initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = task1_attention_implementation.load_best_model(
+    initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = soft_attention.load_best_model(
         alphabet,
         results_file_path,
         input_dim,
@@ -448,9 +448,9 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
     v__a = pc.parameter(model["v__a"])
     W_c = pc.parameter(model["W_c"])
 
-    blstm_outputs = task1_attention_implementation.encode_feats_and_chars(alphabet_index, char_lookup, encoder_frnn,
-                                                                          encoder_rrnn, feat_index, feat_lookup,
-                                                                          feats, feature_types, lemma)
+    blstm_outputs = soft_attention.encode_feats_and_chars(alphabet_index, char_lookup, encoder_frnn,
+                                                          encoder_rrnn, feat_index, feat_lookup,
+                                                          feats, feature_types, lemma)
     feat_list = []
     for feat in sorted(feature_types):
         if feat in feats:
@@ -474,8 +474,8 @@ def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemm
         decoder_rnn_output = s.output()
 
         # perform attention step
-        attention_output_vector, alphas, W = task1_attention_implementation.attend(blstm_outputs, decoder_rnn_output,
-                                                                                   W_c, v__a, W__a, U__a)
+        attention_output_vector, alphas, W = soft_attention.attend(blstm_outputs, decoder_rnn_output,
+                                                                   W_c, v__a, W__a, U__a)
         val = alphas.vec_value()
         print 'alphas:'
         print val

@@ -1,8 +1,8 @@
-"""Trains and evaluates a joint-structured model for inflection generation, using the sigmorphon 2016 shared task data
+"""Trains and evaluates a hard attention model for inflection generation, using the sigmorphon 2016 shared task data
 files and evaluation script.
 
 Usage:
-  task1_joint_structured_inflection_neural_fst.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
+  hard_attention.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
   [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION]
   [--learning=LEARNING] [--plot] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 

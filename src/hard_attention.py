@@ -2,7 +2,7 @@
 files and evaluation script.
 
 Usage:
-  task1_single_ndst_twin.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
+  hard_attention.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
   [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION]
   [--learning=LEARNING] [--plot] [--eval] [--ensemble=ENSEMBLE] TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH
   SIGMORPHON_PATH...
@@ -68,23 +68,6 @@ STEP = '^'
 ALIGN_SYMBOL = '~'
 
 
-########################################################################################################################
-# neural fst todo:
-# change network - inputs are now: i, j, blstm[i], feedback - one word loss, predict template - done
-# change vocabulary - add "step" output - one word loss, predict template - done
-# change training: go through alignment to know when to output step - done
-# one word loss - done
-# predict template - done
-
-# other independent improvements:
-
-# change training: "soft templates" - loss function - sum on possible states (chars or templates) - but which feedback?
-# change training: don't use alignment for template (optional)
-# TODO: remove templates
-########################################################################################################################
-
-
-# TODO: different vocabulary for input and output chars?
 def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir, input_dim, hidden_dim, feat_input_dim,
          epochs, layers, optimization, regularization, learning_rate, plot, eval_only, ensemble):
     hyper_params = {'INPUT_DIM': input_dim, 'HIDDEN_DIM': hidden_dim, 'FEAT_INPUT_DIM': feat_input_dim,
@@ -577,7 +560,6 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, 
             prev_output_vec = char_lookup[alphabet_index[STEP]]
             i += 1
 
-    # TODO: maybe here a "special" loss function is appropriate?
     # loss = esum(loss)
     loss = pc.average(loss)
 
@@ -992,7 +974,7 @@ def encode_feats_and_chars(alphabet_index, char_lookup, encoder_frnn, encoder_rr
 
     # convert features to matching embeddings, if UNK handle properly
     for feat in sorted(feature_types):
-        # TODO: is it OK to use same UNK for all feature types? and for unseen feats as well?
+
         # if this feature has a value, take it from the lookup. otherwise use UNK
         if feat in feats:
             feat_str = feat + ':' + feats[feat]

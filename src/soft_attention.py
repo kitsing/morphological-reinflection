@@ -1,8 +1,8 @@
-"""Trains and evaluates a joint-structured model for inflection generation, using the sigmorphon 2016 shared task data
+"""Trains and evaluates a soft attention model for inflection generation, using the sigmorphon 2016 shared task data
 files and evaluation script.
 
 Usage:
-  task1_attention_implementation.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
+  soft_attention.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
   [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION]
   [--learning=LEARNING] [--plot] [--override] [--eval] [--ensemble=ENSEMBLE] TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH
   SIGMORPHON_PATH...
@@ -28,6 +28,7 @@ Options:
   --plot                        draw a learning curve plot while training each model
   --override                    override the existing model with the same name, if exists
   --ensemble=ENSEMBLE           ensemble model paths separated by a comma
+  --eval                        run evaluation without training
 """
 
 import numpy as np

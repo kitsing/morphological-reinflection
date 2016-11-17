@@ -34,7 +34,7 @@ import datetime
 import time
 import common
 import pycnn as pc
-import task1_single_ndst_no_temp
+import hard_attention
 from sklearn.decomposition import TruncatedSVD
 
 from collections import defaultdict
@@ -111,10 +111,10 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
     for lemma, feats in zip(dev_lemmas[start:end], dev_feat_dicts[start:end]):
         index = common.get_morph_string(feats, feature_types) + lemma
         index_to_feats_and_lemma[index] = (feats, lemma)
-        blstm_outputs, feat_vecs = task1_single_ndst_no_temp.encode_feats_and_chars(alphabet_index, char_lookup,
-                                                                                    encoder_frnn, encoder_rrnn,
-                                                                                    feat_index, feat_lookup, feats,
-                                                                                    feature_types, lemma)
+        blstm_outputs, feat_vecs = hard_attention.encode_feats_and_chars(alphabet_index, char_lookup,
+                                                                         encoder_frnn, encoder_rrnn,
+                                                                         feat_index, feat_lookup, feats,
+                                                                         feature_types, lemma)
         encoded_vecs[index] = blstm_outputs
         encoded_feat_vecs[index] = feat_vecs
 
@@ -338,7 +338,7 @@ def init_model(dev_path, feat_input_dim, hidden_dim, input_dim, layers, results_
     model_file_name = results_file_path + '_bestmodel.txt'
 
     # load model and everything else needed for prediction
-    initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = task1_single_ndst_no_temp.load_best_model(
+    initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = hard_attention.load_best_model(
         alphabet,
         results_file_path,
         input_dim,
