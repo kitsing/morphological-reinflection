@@ -2,7 +2,7 @@
 """visualization of the attention weights for inflection generation.
 
 Usage:
-  attention_viz.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--feat-input=FEAT] [--epochs=EPOCHS]
+  attention_viz.py [--dynet-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--feat-input=FEAT] [--epochs=EPOCHS]
   [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION] [--learning=LEARNING] [--plot] [--override]
   TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
@@ -15,7 +15,7 @@ Arguments:
 
 Options:
   -h --help                     show this help message and exit
-  --cnn-mem MEM                 allocates MEM bytes for (py)cnn
+  --dynet-mem MEM                 allocates MEM bytes for (py)cnn
   --input=INPUT                 input vector dimensions
   --hidden=HIDDEN               hidden layer dimensions
   --feat-input=FEAT             feature input vector dimension
@@ -33,7 +33,7 @@ import prepare_sigmorphon_data
 import datetime
 import time
 import common
-import pycnn as pc
+import dynet as pc
 import hard_attention
 from sklearn.decomposition import TruncatedSVD
 
@@ -74,13 +74,13 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
                     'OPTIMIZATION': optimization, 'PATIENCE': MAX_PATIENCE, 'REGULARIZATION': regularization,
                     'LEARNING_RATE': learning_rate}
 
-    (alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types, initial_model,
-     inverse_alphabet_index, dev_words, dev_lemmas, dev_feat_dicts) = init_model(dev_path, feat_input_dim, hidden_dim,
+    (initial_model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, alphabet_index,
+     feat_index, feature_types, inverse_alphabet_index, dev_words, dev_lemmas, dev_feat_dicts) = init_model(dev_path, feat_input_dim, hidden_dim,
                                                                                  input_dim, layers, results_file_path,
                                                                                  test_path, train_path)
 
-    char_lookup = initial_model["char_lookup"]
-    feat_lookup = initial_model["feat_lookup"]
+    # char_lookup = initial_model["char_lookup"]
+    # feat_lookup = initial_model["feat_lookup"]
 
     # "what is learned by the encoder" experiment:
     # get lots of input words (dev set)
@@ -242,10 +242,9 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
     Y = np.array(feat_embeddings_matrix)
 
     plot_svd_reduction(Y, feat_index, color_labels=feat_color_labels, title='SVD for feature embeddings')
+    raw_input("Press Enter to continue...")
 
     return
-
-    print 'Bye!'
 
 
 def is_number(s):
@@ -304,6 +303,7 @@ def plot_svd_reduction(X, labels, color_labels=[], title=''):
 
 
 def init_model(dev_path, feat_input_dim, hidden_dim, input_dim, layers, results_file_path, test_path, train_path):
+
     # load train and test data
     (train_words, train_lemmas, train_feat_dicts) = prepare_sigmorphon_data.load_data(train_path)
     (dev_words, dev_lemmas, dev_feat_dicts) = prepare_sigmorphon_data.load_data(dev_path)
@@ -338,7 +338,7 @@ def init_model(dev_path, feat_input_dim, hidden_dim, input_dim, layers, results_
     model_file_name = results_file_path + '_bestmodel.txt'
 
     # load model and everything else needed for prediction
-    initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = hard_attention.load_best_model(
+    initial_model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn = hard_attention.load_best_model(
         alphabet,
         results_file_path,
         input_dim,
@@ -349,8 +349,8 @@ def init_model(dev_path, feat_input_dim, hidden_dim, input_dim, layers, results_
         feature_types)
 
     print 'loaded existing model successfully'
-    return (alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types, initial_model,
-            inverse_alphabet_index, dev_words, dev_lemmas, dev_feat_dicts)
+    return (initial_model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, alphabet_index,
+            feat_index, feature_types, inverse_alphabet_index, dev_words, dev_lemmas, dev_feat_dicts)
 
 
 if __name__ == '__main__':

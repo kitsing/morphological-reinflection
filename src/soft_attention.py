@@ -2,7 +2,7 @@
 files and evaluation script.
 
 Usage:
-  soft_attention.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
+  soft_attention.py [--dynet-mem MEM][--input=INPUT] [--hidden=HIDDEN]
   [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION]
   [--learning=LEARNING] [--plot] [--override] [--eval] [--ensemble=ENSEMBLE] TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH
   SIGMORPHON_PATH...
@@ -16,7 +16,7 @@ Arguments:
 
 Options:
   -h --help                     show this help message and exit
-  --cnn-mem MEM                 allocates MEM bytes for (py)cnn
+  --dynet-mem MEM                 allocates MEM bytes for (py)cnn
   --input=INPUT                 input vector dimensions
   --hidden=HIDDEN               hidden layer dimensions
   --feat-input=FEAT             feature input vector dimension
@@ -39,7 +39,7 @@ import datetime
 import time
 import os
 import common
-import pycnn as pc
+import dynet as pc
 
 from matplotlib import pyplot as plt
 from docopt import docopt
@@ -111,17 +111,18 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
     model_file_name = results_file_path + '_bestmodel.txt'
     if os.path.isfile(model_file_name) and not override:
         print 'loading existing model from {}'.format(model_file_name)
-        model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(alphabet, results_file_path, input_dim,
+        model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a = load_best_model(alphabet, results_file_path, input_dim,
                                                                          hidden_dim, layers, feature_alphabet,
                                                                          feat_input_dim, feature_types)
         print 'loaded existing model successfully'
     else:
         print 'could not find existing model or explicit override was requested. starting training from scratch...'
-        model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers,
+        model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a = build_model(alphabet, input_dim, hidden_dim, layers,
                                                                      feature_types, feat_input_dim, feature_alphabet)
     if not eval_only:
         # start training
-        trained_model, last_epoch, best_epoch = train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn,
+        trained_model, last_epoch, best_epoch = train_model(model, char_lookup, feat_lookup,  R, bias, encoder_frnn,
+                                                            encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a,
                                                             train_lemmas, train_feat_dicts, train_words, dev_lemmas,
                                                             dev_feat_dicts, dev_words, alphabet_index,
                                                             inverse_alphabet_index, epochs, optimization,
@@ -139,7 +140,7 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
                                                              hidden_dim, input_dim, inverse_alphabet_index, layers,
                                                              test_feat_dicts, test_lemmas, test_words)
     else:
-        predicted_sequences = predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+        predicted_sequences = predict_sequences(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a, alphabet_index,
                                                 inverse_alphabet_index, test_lemmas, test_feat_dicts, feat_index,
                                                 feature_types)
     if len(predicted_sequences) > 0:
@@ -172,17 +173,17 @@ def predict_with_ensemble_majority(alphabet, alphabet_index, ensemble, feat_inde
 
     # load ensemble models
     for ens in ensemble_model_names:
-        model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(alphabet, ens, input_dim, hidden_dim, layers,
+        model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a = load_best_model(alphabet, ens, input_dim, hidden_dim, layers,
                                                                          feature_alphabet, feat_input_dim,
                                                                          feature_types)
 
-        ensemble_models.append((model, encoder_frnn, encoder_rrnn, decoder_rnn))
+        ensemble_models.append((model, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a))
 
     # predict the entire test set with each model in the ensemble
     ensemble_predictions = []
     for em in ensemble_models:
-        model, encoder_frnn, encoder_rrnn, decoder_rnn = em
-        predicted_sequences = predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+        model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a = em
+        predicted_sequences = predict_sequences(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a, alphabet_index,
                                                 inverse_alphabet_index, test_lemmas, test_feat_dicts, feat_index,
                                                 feature_types)
 
@@ -222,11 +223,11 @@ def load_best_model(alphabet, results_file_path, input_dim, hidden_dim, layers, 
                     feat_input_dim, feature_types):
 
     tmp_model_path = results_file_path + '_bestmodel.txt'
-    model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers,
+    model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a = build_model(alphabet, input_dim, hidden_dim, layers,
                                                                  feature_types, feat_input_dim, feature_alphabet)
     print 'trying to load model from: {}'.format(tmp_model_path)
     model.load(tmp_model_path)
-    return model, encoder_frnn, encoder_rrnn, decoder_rnn
+    return model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a
 
 
 # noinspection PyUnusedLocal
@@ -236,14 +237,14 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
     model = pc.Model()
 
     # character embeddings
-    model.add_lookup_parameters("char_lookup", (len(alphabet), input_dim))
+    char_lookup = model.add_lookup_parameters((len(alphabet), input_dim))
 
     # feature embeddings
-    model.add_lookup_parameters("feat_lookup", (len(feature_alphabet), feat_input_dim))
+    feat_lookup = model.add_lookup_parameters((len(feature_alphabet), feat_input_dim))
 
     # used in softmax output
-    model.add_parameters("R", (len(alphabet), 3 * hidden_dim))
-    model.add_parameters("bias", len(alphabet))
+    R = model.add_parameters((len(alphabet), 3 * hidden_dim))
+    bias = model.add_parameters(len(alphabet))
 
     # rnn's
     encoder_frnn = pc.LSTMBuilder(layers, input_dim, hidden_dim, model)
@@ -251,31 +252,29 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
 
     # attention MLPs - Loung-style with extra v_a from Bahdanau
 
-    # concatenation layer for h_input (2*hidden_dim), h_output (hidden_dim)
-    model.add_parameters("W_a", (1, 3 * hidden_dim))
-
     # concatenation layer for h (hidden dim), c (2 * hidden_dim)
-    model.add_parameters("W_c", (3 * hidden_dim, 3 * hidden_dim))
+    W_c = model.add_parameters((3 * hidden_dim, 3 * hidden_dim))
 
     # attention MLP's - Bahdanau-style
     # concatenation layer for h_input (2*hidden_dim), h_output (hidden_dim)
-    model.add_parameters("W__a", (hidden_dim, hidden_dim))
+    W__a = model.add_parameters((hidden_dim, hidden_dim))
 
     # concatenation layer for h (hidden dim), c (2 * hidden_dim)
-    model.add_parameters("U__a", (hidden_dim, 2 * hidden_dim))
+    U__a = model.add_parameters((hidden_dim, 2 * hidden_dim))
 
     # concatenation layer for h_input (2*hidden_dim), h_output (hidden_dim)
-    model.add_parameters("v__a", (1, hidden_dim))
+    v__a = model.add_parameters((1, hidden_dim))
 
     # 1 * HIDDEN_DIM - gets only the feedback input
     decoder_rnn = pc.LSTMBuilder(layers, input_dim, hidden_dim, model)
 
     print 'finished creating model'
 
-    return model, encoder_frnn, encoder_rrnn, decoder_rnn
+    return model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a
 
 
-def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, train_feat_dicts, train_words, dev_lemmas,
+def train_model(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a,
+                v__a, train_lemmas, train_feat_dicts, train_words, dev_lemmas,
                 dev_feat_dicts, dev_words, alphabet_index, inverse_alphabet_index, epochs, optimization,
                 results_file_path, feat_index, feature_types, plot):
     print 'training...'
@@ -328,8 +327,9 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
         # compute loss for each example and update
         for i, example in enumerate(train_set):
             lemma, feats, word = example
-            loss = compute_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, word,
-                                alphabet_index, feat_index, feature_types)
+            loss = compute_loss(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c,
+                                W__a, U__a, v__a, lemma, feats, word, alphabet_index, feat_index,
+                                feature_types)
             loss_value = loss.value()
             total_loss += loss_value
             loss.backward()
@@ -347,7 +347,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
 
             # get train accuracy
             print 'train sanity prediction:'
-            train_predictions = predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+            train_predictions = predict_sequences(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a, alphabet_index,
                                                   inverse_alphabet_index, train_lemmas[:train_sanity_set_size],
                                                   train_feat_dicts[:train_sanity_set_size],
                                                   feat_index,
@@ -368,9 +368,10 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
             if len(dev_lemmas) > 0:
                 print 'dev prediction:'
                 # get dev accuracy
-                dev_predictions = predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
-                                                    inverse_alphabet_index, dev_lemmas, dev_feat_dicts, feat_index,
-                                                    feature_types)
+                dev_predictions = predict_sequences(model, char_lookup, feat_lookup, R, bias, encoder_frnn,
+                                                    encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a, alphabet_index,
+                                                    inverse_alphabet_index, dev_lemmas,
+                                                    dev_feat_dicts, feat_index, feature_types)
                 print 'dev evaluation:'
                 # get dev accuracy
                 dev_accuracy = evaluate_model(dev_predictions, dev_lemmas, dev_feat_dicts, dev_words, feature_types,
@@ -397,7 +398,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 # get dev loss
                 total_dev_loss = 0
                 for i in xrange(len(dev_lemmas)):
-                    total_dev_loss += compute_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, dev_lemmas[i],
+                    total_dev_loss += compute_loss(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a, dev_lemmas[i],
                                                    dev_feat_dicts[i], dev_words[i], alphabet_index, feat_index,
                                                    feature_types).value()
 
@@ -493,19 +494,26 @@ def log_to_file(file_name, e, avg_loss, train_accuracy, dev_accuracy):
 
 
 # noinspection PyPep8Naming
-def compute_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, word, alphabet_index, feat_index,
+def compute_loss(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a, lemma, feats, word, alphabet_index, feat_index,
                  feature_types):
     pc.renew_cg()
 
     # read the parameters
-    char_lookup = model["char_lookup"]
-    feat_lookup = model["feat_lookup"]
-    R = pc.parameter(model["R"])
-    bias = pc.parameter(model["bias"])
-    W_c = pc.parameter(model["W_c"])
-    W__a = pc.parameter(model["W__a"])
-    U__a = pc.parameter(model["U__a"])
-    v__a = pc.parameter(model["v__a"])
+    # char_lookup = model["char_lookup"]
+    # feat_lookup = model["feat_lookup"]
+    # R = pc.parameter(model["R"])
+    # bias = pc.parameter(model["bias"])
+    # W_c = pc.parameter(model["W_c"])
+    # W__a = pc.parameter(model["W__a"])
+    # U__a = pc.parameter(model["U__a"])
+    # v__a = pc.parameter(model["v__a"])
+
+    R = pc.parameter(R)
+    bias = pc.parameter(bias)
+    W_c = pc.parameter(W_c)
+    W__a = pc.parameter(W__a)
+    U__a = pc.parameter(U__a)
+    v__a = pc.parameter(v__a)
 
     blstm_outputs = encode_feats_and_chars(alphabet_index, char_lookup, encoder_frnn, encoder_rrnn, feat_index,
                                            feat_lookup, feats, feature_types, lemma)
@@ -579,19 +587,26 @@ def bilstm_transduce(encoder_frnn, encoder_rrnn, lemma_char_vecs):
 
 
 # noinspection PyPep8Naming
-def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, alphabet_index,
+def predict_output_sequence(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a, lemma, feats, alphabet_index,
                             inverse_alphabet_index, feat_index, feature_types):
     pc.renew_cg()
 
     # read the parameters
-    char_lookup = model["char_lookup"]
-    feat_lookup = model["feat_lookup"]
-    R = pc.parameter(model["R"])
-    bias = pc.parameter(model["bias"])
-    W_c = pc.parameter(model["W_c"])
-    W__a = pc.parameter(model["W__a"])
-    U__a = pc.parameter(model["U__a"])
-    v__a = pc.parameter(model["v__a"])
+    # char_lookup = model["char_lookup"]
+    # feat_lookup = model["feat_lookup"]
+    # R = pc.parameter(model["R"])
+    # bias = pc.parameter(model["bias"])
+    # W_c = pc.parameter(model["W_c"])
+    # W__a = pc.parameter(model["W__a"])
+    # U__a = pc.parameter(model["U__a"])
+    # v__a = pc.parameter(model["v__a"])
+
+    R = pc.parameter(R)
+    bias = pc.parameter(bias)
+    W_c = pc.parameter(W_c)
+    W__a = pc.parameter(W__a)
+    U__a = pc.parameter(U__a)
+    v__a = pc.parameter(v__a)
 
     blstm_outputs = encode_feats_and_chars(alphabet_index, char_lookup, encoder_frnn, encoder_rrnn, feat_index,
                                            feat_lookup, feats, feature_types, lemma)
@@ -728,13 +743,13 @@ def attend2(blstm_outputs, s_prev, y_feedback, v_a, W_a, U_a, U_o, V_o, C_o):
     return attention_output_vector, alphas
 
 
-def predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index, inverse_alphabet_index, lemmas,
+def predict_sequences(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a, alphabet_index, inverse_alphabet_index, lemmas,
                       feats, feat_index, feature_types):
     print 'predicting...'
     predictions = {}
     data_len = len(lemmas)
     for i, (lemma, feat_dict) in enumerate(zip(lemmas, feats)):
-        predicted_template = predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma,
+        predicted_template = predict_output_sequence(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a, lemma,
                                                      feat_dict, alphabet_index, inverse_alphabet_index, feat_index,
                                                      feature_types)
         if i % 1000 == 0 and i > 0:

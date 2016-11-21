@@ -3,11 +3,11 @@
 Source code for the paper: [Sequence to Sequence Transduction with Hard Monotonic Attention](https://arxiv.org/abs/1611.01487).
 
 
-Requires (py)cnn, an older version of [dynet](https://github.com/clab/dynet).  
+Requires [dynet](https://github.com/clab/dynet).
 
 Usage:
 
-    hard_attention.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION][--learning=LEARNING] [--plot] [--eval] [--ensemble=ENSEMBLE] TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
+    hard_attention.py [--dynet-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION][--learning=LEARNING] [--plot] [--eval] [--ensemble=ENSEMBLE] TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
 * TRAIN_PATH    train set path
@@ -18,7 +18,7 @@ Arguments:
 
 Options:
 * -h --help                     show this help message and exit
-* --cnn-mem MEM                 allocates MEM bytes for (py)cnn
+* --dynet-mem MEM               allocates MEM bytes for (py)cnn
 * --input=INPUT                 input embeddings dimension
 * --hidden=HIDDEN               lstm hidden layer dimension
 * --feat-input=FEAT             feature embeddings dimension

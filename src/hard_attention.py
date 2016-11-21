@@ -2,7 +2,7 @@
 files and evaluation script.
 
 Usage:
-  hard_attention.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
+  hard_attention.py [--dynet-mem MEM][--input=INPUT] [--hidden=HIDDEN]
   [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION]
   [--learning=LEARNING] [--plot] [--eval] [--ensemble=ENSEMBLE] TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH
   SIGMORPHON_PATH...
@@ -16,7 +16,7 @@ Arguments:
 
 Options:
   -h --help                     show this help message and exit
-  --cnn-mem MEM                 allocates MEM bytes for (py)cnn
+  --dynet-mem MEM                 allocates MEM bytes for (py)cnn
   --input=INPUT                 input vector dimensions
   --hidden=HIDDEN               hidden layer dimensions
   --feat-input=FEAT             feature input vector dimension
@@ -40,7 +40,7 @@ import time
 import common
 from matplotlib import pyplot as plt
 from docopt import docopt
-import pycnn as pc
+import dynet as pc
 from collections import defaultdict
 import sys
 
@@ -168,12 +168,12 @@ def train_model_wrapper(input_dim, hidden_dim, layers, train_lemmas, train_feat_
                         optimization, results_file_path, train_aligned_pairs, dev_aligned_pairs, feat_index,
                         feature_types, feat_input_dim, feature_alphabet, plot):
     # build model
-    initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers,
+    initial_model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers,
                                                                          feature_types, feat_input_dim,
                                                                          feature_alphabet)
 
     # train model
-    trained_model, last_epoch = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn,
+    trained_model, last_epoch = train_model(initial_model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn,
                                             train_lemmas,
                                             train_feat_dicts, train_words, dev_lemmas,
                                             dev_feat_dicts, dev_words, alphabet_index,
@@ -183,7 +183,7 @@ def train_model_wrapper(input_dim, hidden_dim, layers, train_lemmas, train_feat_
                                             plot)
 
     # evaluate last model on dev
-    predicted_sequences = predict_sequences(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+    predicted_sequences = predict_sequences(trained_model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, alphabet_index,
                                             inverse_alphabet_index, dev_lemmas, dev_feat_dicts,
                                             feat_index,
                                             feature_types)
@@ -201,14 +201,14 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
     model = pc.Model()
 
     # character embeddings
-    model.add_lookup_parameters("char_lookup", (len(alphabet), input_dim))
+    char_lookup = model.add_lookup_parameters((len(alphabet), input_dim))
 
     # feature embeddings
-    model.add_lookup_parameters("feat_lookup", (len(feature_alphabet), feat_input_dim))
+    feat_lookup = model.add_lookup_parameters((len(feature_alphabet), feat_input_dim))
 
     # used in softmax output
-    model.add_parameters("R", (len(alphabet), hidden_dim))
-    model.add_parameters("bias", len(alphabet))
+    R = model.add_parameters((len(alphabet), hidden_dim))
+    bias = model.add_parameters(len(alphabet))
 
     # rnn's
     encoder_frnn = pc.LSTMBuilder(layers, input_dim, hidden_dim, model)
@@ -220,19 +220,19 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
     print 'decoder lstm dimensions are {} x {}'.format(concatenated_input_dim, hidden_dim)
     print 'finished creating model'
 
-    return model, encoder_frnn, encoder_rrnn, decoder_rnn
+    return model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn
 
 
 def load_best_model(alphabet, results_file_path, input_dim, hidden_dim, layers, feature_alphabet,
                     feat_input_dim, feature_types):
     tmp_model_path = results_file_path + '_bestmodel.txt'
-    model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim,
+    model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim,
                                                                  layers, feature_types,
                                                                  feat_input_dim,
                                                                  feature_alphabet)
     print 'trying to load model from: {}'.format(tmp_model_path)
     model.load(tmp_model_path)
-    return model, encoder_frnn, encoder_rrnn, decoder_rnn
+    return model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn
 
 
 def log_to_file(file_name, e, avg_loss, train_accuracy, dev_accuracy):
@@ -244,7 +244,7 @@ def log_to_file(file_name, e, avg_loss, train_accuracy, dev_accuracy):
         logfile.write("{}\t{}\t{}\t{}\n".format(e, avg_loss, train_accuracy, dev_accuracy))
 
 
-def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, train_feat_dicts, train_words, dev_lemmas,
+def train_model(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, train_feat_dicts, train_words, dev_lemmas,
                 dev_feat_dicts, dev_words, alphabet_index, inverse_alphabet_index, epochs, optimization,
                 results_file_path, train_aligned_pairs, dev_aligned_pairs, feat_index, feature_types,
                 plot):
@@ -296,7 +296,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
         # compute loss for each example and update
         for i, example in enumerate(train_set):
             lemma, feats, word, alignment = example
-            loss = one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, word,
+            loss = one_word_loss(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, word,
                                  alphabet_index, alignment, feat_index, feature_types)
             loss_value = loss.value()
             total_loss += loss_value
@@ -311,7 +311,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
 
             # get train accuracy
             print 'evaluating on train...'
-            train_predictions = predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+            train_predictions = predict_sequences(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, alphabet_index,
                                                   inverse_alphabet_index, train_lemmas[:sanity_set_size],
                                                   train_feat_dicts[:sanity_set_size],
                                                   feat_index,
@@ -331,7 +331,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
             if len(dev_lemmas) > 0:
 
                 # get dev accuracy
-                dev_predictions = predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+                dev_predictions = predict_sequences(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, alphabet_index,
                                                     inverse_alphabet_index, dev_lemmas, dev_feat_dicts, feat_index,
                                                     feature_types)
                 print 'evaluating on dev...'
@@ -359,7 +359,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_lemmas, tr
                 # get dev loss
                 total_dev_loss = 0
                 for i in xrange(len(dev_lemmas)):
-                    total_dev_loss += one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, dev_lemmas[i],
+                    total_dev_loss += one_word_loss(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, dev_lemmas[i],
                                                     dev_feat_dicts[i], dev_words[i], alphabet_index,
                                                     dev_aligned_pairs[i], feat_index, feature_types).value()
 
@@ -440,15 +440,17 @@ def save_pycnn_model(model, results_file_path):
 
 
 # noinspection PyPep8Naming,PyUnusedLocal,PyUnusedLocal,PyUnusedLocal,PyUnusedLocal,PyUnusedLocal,PyUnusedLocal
-def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, word, alphabet_index, aligned_pair,
+def one_word_loss(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, word, alphabet_index, aligned_pair,
                   feat_index, feature_types):
     pc.renew_cg()
 
     # read the parameters
-    char_lookup = model["char_lookup"]
-    feat_lookup = model["feat_lookup"]
-    R = pc.parameter(model["R"])
-    bias = pc.parameter(model["bias"])
+    # char_lookup = model["char_lookup"]
+    # feat_lookup = model["feat_lookup"]
+    # R = pc.parameter(model["R"])
+    # bias = pc.parameter(model["bias"])
+    R = pc.parameter(R)
+    bias = pc.parameter(bias)
 
     padded_lemma = BEGIN_WORD + lemma + END_WORD
 
@@ -584,15 +586,17 @@ def encode_feats(feat_index, feat_lookup, feats, feature_types):
 
 
 # noinspection PyPep8Naming
-def predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, alphabet_index,
+def predict_output_sequence(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, lemma, feats, alphabet_index,
                             inverse_alphabet_index, feat_index, feature_types):
     pc.renew_cg()
 
     # read the parameters
-    char_lookup = model["char_lookup"]
-    feat_lookup = model["feat_lookup"]
-    R = pc.parameter(model["R"])
-    bias = pc.parameter(model["bias"])
+    # char_lookup = model["char_lookup"]
+    # feat_lookup = model["feat_lookup"]
+    # R = pc.parameter(model["R"])
+    # bias = pc.parameter(model["bias"])
+    R = pc.parameter(R)
+    bias = pc.parameter(bias)
 
     # convert characters to matching embeddings, if UNK handle properly
     padded_lemma = BEGIN_WORD + lemma + END_WORD
@@ -692,11 +696,11 @@ def encode_lemma(alphabet_index, char_lookup, padded_lemma):
     return lemma_char_vecs
 
 
-def predict_sequences(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index, inverse_alphabet_index, lemmas,
+def predict_sequences(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, alphabet_index, inverse_alphabet_index, lemmas,
                       feats, feat_index, feature_types):
     predictions = {}
     for i, (lemma, feat_dict) in enumerate(zip(lemmas, feats)):
-        predicted_sequence = predict_output_sequence(model, encoder_frnn, encoder_rrnn, decoder_rnn, lemma,
+        predicted_sequence = predict_output_sequence(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, lemma,
                                                      feat_dict, alphabet_index, inverse_alphabet_index, feat_index,
                                                      feature_types)
 
@@ -762,7 +766,7 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
         print '\n'.join(ensemble_model_names)
         ensemble_models = []
         for ens in ensemble_model_names:
-            model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(
+            model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(
                 alphabet,
                 ens,
                 input_dim,
@@ -780,10 +784,8 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
         count = 0
         for em in ensemble_models:
             count += 1
-            model, encoder_frnn, encoder_rrnn, decoder_rnn = em
-            predicted_sequences = predict_sequences(model, decoder_rnn,
-                                                    encoder_frnn,
-                                                    encoder_rrnn,
+            model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn = em
+            predicted_sequences = predict_sequences(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn,
                                                     alphabet_index,
                                                     inverse_alphabet_index,
                                                     test_lemmas,
@@ -829,16 +831,15 @@ def evaluate_ndst(alphabet, alphabet_index, ensemble, feat_index, feat_input_dim
             sys.stdout.flush()
     else:
         # load best model - no ensemble
-        best_model, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(alphabet,
+        best_model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn = load_best_model(alphabet,
                                                                               results_file_path, input_dim,
                                                                               hidden_dim, layers,
                                                                               feature_alphabet, feat_input_dim,
                                                                               feature_types)
         try:
             predicted_sequences = predict_sequences(best_model,
-                                                    decoder_rnn,
-                                                    encoder_frnn,
-                                                    encoder_rrnn,
+                                                    char_lookup, feat_lookup, R, bias, encoder_frnn,
+                                                    encoder_rrnn, decoder_rnn,
                                                     alphabet_index,
                                                     inverse_alphabet_index,
                                                     test_lemmas,
