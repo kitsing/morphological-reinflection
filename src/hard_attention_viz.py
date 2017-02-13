@@ -2,7 +2,7 @@
 """visualization of the attention weights for inflection generation.
 
 Usage:
-  attention_viz.py [--dynet-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--feat-input=FEAT] [--epochs=EPOCHS]
+  soft_attention_viz.py [--dynet-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--feat-input=FEAT] [--epochs=EPOCHS]
   [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION] [--learning=LEARNING] [--plot] [--override]
   TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
@@ -203,8 +203,8 @@ def main(train_path, dev_path, test_path, results_file_path, sigmorphon_root_dir
     # plot_svd_reduction(char_hidden_states[0:100], char_labels[0:100], title='SVD for encoder hidden states by symbol
     # (characters only)')
 
-    plot_svd_reduction(char_hidden_states[0:200], char_labels[0:200], color_labels=char_location_labels[0:200],
-                       title='Hard Attention - Encoded Inputs by Location')
+    # plot_svd_reduction(char_hidden_states[0:200], char_labels[0:200], color_labels=char_location_labels[0:200],
+    #                    title='Hard Attention - Encoded Inputs by Location')
 
     plot_svd_reduction(char_hidden_states[0:500], current_char_lables[0:500], color_labels=char_location_labels[0:500],
                        title='Hard Attention - Encoded Inputs by Location')
@@ -274,7 +274,17 @@ def plot_svd_reduction(X, labels, color_labels=[], title=''):
     fig, ax = plt.subplots()
     ax.scatter(x, y, s=[0 for i in x])
 
-    colors = ['blue', 'green', 'red', 'cyan', 'magenta', 'yellow', 'black', '#FFA500']
+    # X, silver, teal, purple
+    #  '#808080', '#008080', '#800080'
+    # colors = ['blue', 'green', 'red', 'cyan', 'magenta', 'black', '#FFA500', '#00FF00', '#8B4513', '#000080', '#FFD700',
+    #           '#1E90FF']
+    #         light blue, b. green, hot pink, ornage, fuchsia
+    colors = ['#00C3F0', '#00FF00', '#D6184E', '#FF6800', '#FF14AB',
+    #         light blue, l. green, gold,     b. red,      purple
+              '#45CCFF', '#49E83E', '#FFD432', '#E84B30', '#B243FF',
+              '#8D00F2', '#2900F2', '#0084F2', '#00F2F2', '#00F29B',
+              '#6FCCFF', '#42D138', '#FFD432', '#E84B30', '#B243FF',
+              '#6EB28C', '#ADFFD1', '#46FF97', '#B24238', '#FF968D']
     label_to_color = {}
     color_index = 0
     color = 'black'
@@ -300,6 +310,7 @@ def plot_svd_reduction(X, labels, color_labels=[], title=''):
             ax.annotate(label, (x[i], y[i]), (x[i], y[i]), color=color)
     if title != '':
         ax.set_title(title)
+        plt.savefig(title+'.png')
 
 
 def init_model(dev_path, feat_input_dim, hidden_dim, input_dim, layers, results_file_path, test_path, train_path):

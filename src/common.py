@@ -89,8 +89,7 @@ def med_align(wordpairs, align_symbol):
     return a.alignedpairs
 
 def write_results_file_and_evaluate_externally(hyper_params, accuracy, train_path, test_path, output_file_path,
-                                               sigmorphon_root_dir,
-                                               final_results, nbest=False):
+                                               sigmorphon_root_dir, final_results, nbest=False):
     if 'test' in test_path:
         output_file_path += '.test'
 

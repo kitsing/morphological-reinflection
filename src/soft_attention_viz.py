@@ -2,7 +2,7 @@
 """visualization of the attention weights for inflection generation.
 
 Usage:
-  attention_viz.py [--dynet-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--feat-input=FEAT] [--epochs=EPOCHS]
+  soft_attention_viz.py [--dynet-mem MEM][--input=INPUT] [--hidden=HIDDEN] [--feat-input=FEAT] [--epochs=EPOCHS]
   [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION] [--learning=LEARNING] [--plot] [--override]
   TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
@@ -327,7 +327,18 @@ def plot_svd_reduction(X, labels, color_labels = [], title=''):
     fig, ax = plt.subplots()
     ax.scatter(x, y, s=[0 for i in x])
 
-    colors = ['blue', 'green', 'red', 'cyan', 'magenta', 'yellow', 'black', '#FFA500']
+    # colors = ['blue', 'green', 'red', 'cyan', 'magenta', 'black', '#FFA500', '#00FF00', '#8B4513', '#000080', '#FFD700',
+    #           '#1E90FF']
+    #         light blue, b. green, hot pink, ornage, fuchsia
+    colors = ['#00C3F0', '#00FF00', '#D6184E', '#FF6800', '#FF14AB',
+    #         light blue, l. green, gold,     b. red,      purple
+              '#45CCFF', '#49E83E', '#FFD432', '#E84B30', '#B243FF',
+    #         purple2,    blue,      blue2,    neon blue, seafoam green
+              '#8D00F2', '#2900F2', '#0084F2', '#00F2F2', '#00F29B',
+    #          light blue,green,    gold,      d. red,   purple
+              '#6FCCFF', '#42D138', '#FFD432', '#E84B30', '#B243FF',
+    #         hos green, seafoam2,  neon green, d. red, light pink
+              '#6EB28C', '#ADFFD1', '#46FF97', '#B24238', '#FF968D']
     label_to_color = {}
     color_index = 0
     color = 'black'
@@ -353,6 +364,7 @@ def plot_svd_reduction(X, labels, color_labels = [], title=''):
             ax.annotate(label, (x[i], y[i]), (x[i], y[i]), color = color)
     if title != '':
         ax.set_title(title)
+        plt.savefig(title +'.png')
 
 
 def plot_attn_for_inflection(alphabet_index, decoder_rnn, encoder_frnn, encoder_rrnn, feat_index, feature_types,
