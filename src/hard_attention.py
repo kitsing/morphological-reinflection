@@ -484,13 +484,11 @@ def one_word_loss(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encode
     aligned_word += END_WORD
 
     # run through the alignments
-    for index, (input_char, output_char) in enumerate(zip(aligned_lemma, aligned_word)):
+    for align_index, (input_char, output_char) in enumerate(zip(aligned_lemma, aligned_word)):
         possible_outputs = []
 
-        # feedback, feedback char, blstm[i], feats
-        decoder_input = pc.concatenate([prev_output_vec,
-                                        blstm_outputs[i],
-                                        feats_input])
+        # feedback, blstm[i], feats
+        decoder_input = pc.concatenate([prev_output_vec, blstm_outputs[i], feats_input])
 
         # if reached the end word symbol
         if output_char == END_WORD:
@@ -502,10 +500,11 @@ def one_word_loss(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encode
             loss.append(-pc.log(pc.pick(probs, alphabet_index[END_WORD])))
             continue
 
-        # first step: if there is no prefix in the output (shouldn't delay on current input), step forward
-        if padded_lemma[i] == BEGIN_WORD and aligned_lemma[index] != ALIGN_SYMBOL:
+        # initially, if there is no prefix in the output (shouldn't delay on current input), step forward
+        # TODO: check if can remove this condition entirely by adding '<' to both the aligned lemma/word
+        if padded_lemma[i] == BEGIN_WORD and aligned_lemma[align_index] != ALIGN_SYMBOL:
+
             # perform rnn step
-            # feedback, i, j, blstm[i], feats
             s = s.add_input(decoder_input)
             decoder_rnn_output = s.output()
             probs = pc.softmax(R * decoder_rnn_output + bias)
@@ -518,22 +517,20 @@ def one_word_loss(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encode
             prev_char_vec = char_lookup[alphabet_index[EPSILON]]
             i += 1
 
-        # if there is new output
-        if aligned_word[index] != ALIGN_SYMBOL:
-            decoder_input = pc.concatenate([prev_output_vec,
-                                            blstm_outputs[i],
-                                            feats_input])
+        # if a new output character is introduced in the alignment, compute loss for predicting it
+        if aligned_word[align_index] != ALIGN_SYMBOL:
+            decoder_input = pc.concatenate([prev_output_vec, blstm_outputs[i], feats_input])
 
             # perform rnn step
             s = s.add_input(decoder_input)
             decoder_rnn_output = s.output()
             probs = pc.softmax(R * decoder_rnn_output + bias)
 
-            if aligned_word[index] in alphabet_index:
-                current_loss = -pc.log(pc.pick(probs, alphabet_index[aligned_word[index]]))
+            if aligned_word[align_index] in alphabet_index:
+                current_loss = -pc.log(pc.pick(probs, alphabet_index[aligned_word[align_index]]))
 
                 # prepare for the next iteration - "feedback"
-                prev_output_vec = char_lookup[alphabet_index[aligned_word[index]]]
+                prev_output_vec = char_lookup[alphabet_index[aligned_word[align_index]]]
             else:
                 current_loss = -pc.log(pc.pick(probs, alphabet_index[UNK]))
 
@@ -543,19 +540,17 @@ def one_word_loss(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encode
 
             j += 1
 
-        # now check if it's time to progress on input - input's not done, should not delay on the character
-        if i < len(padded_lemma) - 1 and aligned_lemma[index + 1] != ALIGN_SYMBOL:
+        # if the input's not done and we shouldn't delay on the character (many-to-one alignment), perform step
+        if i < len(padded_lemma) - 1 and aligned_lemma[align_index + 1] != ALIGN_SYMBOL:
             # perform rnn step
-            # feedback, i, j, blstm[i], feats
-            decoder_input = pc.concatenate([prev_output_vec,
-                                            blstm_outputs[i],
-                                            feats_input])
+            # feedback, blstm[i], feats
+            decoder_input = pc.concatenate([prev_output_vec, blstm_outputs[i], feats_input])
 
             s = s.add_input(decoder_input)
             decoder_rnn_output = s.output()
             probs = pc.softmax(R * decoder_rnn_output + bias)
 
-            # compute local loss
+            # compute local loss for the step action
             loss.append(-pc.log(pc.pick(probs, alphabet_index[STEP])))
 
             # prepare for the next iteration - "feedback"
