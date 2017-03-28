@@ -38,8 +38,8 @@ For example:
 If you use this code for research purposes, please use the following citation:
 
     @article{aharoni2016sequence,
-    title={Sequence to Sequence Transduction with Hard Monotonic Attention},
-    author={Aharoni, Roee and Goldberg, Yoav},
-    journal={arXiv preprint arXiv:1611.01487},
-    year={2016}
+        title={Sequence to Sequence Transduction with Hard Monotonic Attention},
+        author={Aharoni, Roee and Goldberg, Yoav},
+        journal={arXiv preprint arXiv:1611.01487},
+        year={2016}
     }
