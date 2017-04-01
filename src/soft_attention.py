@@ -177,7 +177,7 @@ def predict_with_ensemble_majority(alphabet, alphabet_index, ensemble, feat_inde
                                                                          feature_alphabet, feat_input_dim,
                                                                          feature_types)
 
-        ensemble_models.append((model, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a))
+        ensemble_models.append((model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder_rrnn, decoder_rnn, W_c, W__a, U__a, v__a))
 
     # predict the entire test set with each model in the ensemble
     ensemble_predictions = []
