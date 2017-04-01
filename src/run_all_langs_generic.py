@@ -1,7 +1,7 @@
 """Runs a script on selected languages in parallel, supports ensemble training
 
 Usage:
-  run_all_langs_generic.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN] [--epochs=EPOCHS]
+  run_all_langs_generic.py [--dynet-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN] [--epochs=EPOCHS]
   [--layers=LAYERS] [--optimization=OPTIMIZATION] [--pool=POOL] [--langs=LANGS] [--script=SCRIPT] [--prefix=PREFIX]
   [--augment] [--merged] [--task=TASK] [--ensemble=ENSEMBLE] [--eval]
   SRC_PATH RESULTS_PATH SIGMORPHON_PATH...
@@ -13,7 +13,7 @@ Arguments:
 
 Options:
   -h --help                     show this help message and exit
-  --cnn-mem MEM                 allocates MEM bytes for (py)cnn
+  --dynet-mem MEM               allocates MEM bytes for dynet
   --input=INPUT                 input vector dimensions
   --feat-input=FEAT             feature input vector dimension
   --hidden=HIDDEN               hidden layer dimensions
