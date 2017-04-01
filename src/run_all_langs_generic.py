@@ -176,7 +176,7 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
 
     if 'attention' or 'ndst_twin_2' in script:
         # train on train, evaluate on dev for early stopping, finally eval on train
-        command = 'python {0} --cnn-mem {1} --input={2} --hidden={3} --feat-input={4} --epochs={5} --layers={6} \
+        command = 'python {0} --dynet-mem {1} --input={2} --hidden={3} --feat-input={4} --epochs={5} --layers={6} \
         --optimization={7} {8} {9} {10}\
         {11} \
         {12} \
@@ -189,7 +189,7 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
         os.system(command)
     else:
         # train on train+dev, evaluate on dev for early stopping
-        os.system('python {0} --cnn-mem {1} --input={2} --hidden={3} --feat-input={4} --epochs={5} --layers={6} \
+        os.system('python {0} --dynet-mem {1} --input={2} --hidden={3} --feat-input={4} --epochs={5} --layers={6} \
         --optimization={7} {8}\
         {9} \
         {10} \
