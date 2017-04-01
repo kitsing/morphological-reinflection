@@ -34,3 +34,12 @@ Options:
 For example:
 
     python hard_attention.py --cnn-mem 4096 --input=100 --hidden=100 --feat-input=20 --epochs=100 --layers=2 --optimization=ADADELTA  /Users/roeeaharoni/research_data/sigmorphon2016-master/data/navajo-task1-train /Users/roeeaharoni/research_data/sigmorphon2016-master/data/navajo-task1-dev /Users/roeeaharoni/research_data/sigmorphon2016-master/data/navajo-task1-test /Users/roeeaharoni/Dropbox/phd/research/morphology/inflection_generation/results/navajo_results.txt /Users/roeeaharoni/research_data/sigmorphon2016-master/
+    
+If you use this code for research purposes, please use the following citation:
+
+    @article{aharoni2016sequence,
+        title={Sequence to Sequence Transduction with Hard Monotonic Attention},
+        author={Aharoni, Roee and Goldberg, Yoav},
+        journal={arXiv preprint arXiv:1611.01487},
+        year={2016}
+    }
