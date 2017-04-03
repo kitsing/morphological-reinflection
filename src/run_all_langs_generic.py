@@ -52,8 +52,7 @@ LANGS = ['russian', 'georgian', 'finnish', 'arabic', 'navajo', 'spanish', 'turki
          'arabic500', 'arabic1000', 'arabic3000', 'arabic5000', 'arabic7000', 'arabic9000', 'arabic12000',
          'finnish500', 'finnish1000', 'finnish3000', 'finnish5000', 'finnish7000', 'finnish9000', 'finnish12000',
          'turkish500', 'turkish1000', 'turkish3000', 'turkish5000', 'turkish7000', 'turkish9000', 'turkish12000',
-         'de_noun', 'de_verb', 'es_verb', 'fi_verb', 'fi_nounadj',
-         'french', 'dutch']
+         'de_noun', 'de_verb', 'es_verb', 'fi_verb', 'fi_nounadj', 'french', 'dutch']
 CNN_MEM = 2000
 
 
