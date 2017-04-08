@@ -477,8 +477,6 @@ def one_word_loss(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encode
     j = 0
 
     # go through alignments, progress j when new output is introduced, progress i when new char is seen on lemma (no ~)
-    # TODO: try sutskever flip trick?
-    # TODO: attention on the lemma chars/feats could help here?
     aligned_lemma, aligned_word = aligned_pair
     aligned_lemma += END_WORD
     aligned_word += END_WORD
@@ -517,11 +515,11 @@ def one_word_loss(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encode
             prev_char_vec = char_lookup[alphabet_index[EPSILON]]
             i += 1
 
-        # if a new output character is introduced in the alignment, compute loss for predicting it
+        # if 0-to-1 or 1-to-1 alignment, compute loss for predicting the output symbol
         if aligned_word[align_index] != ALIGN_SYMBOL:
             decoder_input = pc.concatenate([prev_output_vec, blstm_outputs[i], feats_input])
 
-            # perform rnn step
+            # feed new input to decoder
             s = s.add_input(decoder_input)
             decoder_rnn_output = s.output()
             probs = pc.softmax(R * decoder_rnn_output + bias)
@@ -540,7 +538,7 @@ def one_word_loss(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encode
 
             j += 1
 
-        # if the input's not done and we shouldn't delay on the character (many-to-one alignment), perform step
+        # if the input's not done and the next is not a 0-to-1 alignment, perform step
         if i < len(padded_lemma) - 1 and aligned_lemma[align_index + 1] != ALIGN_SYMBOL:
             # perform rnn step
             # feedback, blstm[i], feats
