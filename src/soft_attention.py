@@ -592,16 +592,6 @@ def predict_output_sequence(model, char_lookup, feat_lookup, R, bias, encoder_fr
                             inverse_alphabet_index, feat_index, feature_types):
     pc.renew_cg()
 
-    # read the parameters
-    # char_lookup = model["char_lookup"]
-    # feat_lookup = model["feat_lookup"]
-    # R = pc.parameter(model["R"])
-    # bias = pc.parameter(model["bias"])
-    # W_c = pc.parameter(model["W_c"])
-    # W__a = pc.parameter(model["W__a"])
-    # U__a = pc.parameter(model["U__a"])
-    # v__a = pc.parameter(model["v__a"])
-
     R = pc.parameter(R)
     bias = pc.parameter(bias)
     W_c = pc.parameter(W_c)
