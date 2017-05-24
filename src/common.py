@@ -1,7 +1,7 @@
 import align
 import codecs
 import os
-import heapq
+import numpy as np
 
 NULL = '%'
 
@@ -54,7 +54,14 @@ def argmax(iterable, n=1):
     if n==1:
         return max(enumerate(iterable), key=lambda x: x[1])[0]
     else:
-        return heapq.nlargest(n, xrange(len(iterable)), iterable.__getitem__)
+        # get k best indices
+        indices = np.argpartition(iterable, -n)[-n:]
+
+        # sorted
+        indices = indices[np.argsort(iterable[indices])]
+
+        # first is largest
+        return np.flip(indices, 0)
 
 
 def get_feature_alphabet(feat_dicts):

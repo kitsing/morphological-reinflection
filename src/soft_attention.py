@@ -549,6 +549,7 @@ def compute_loss(model, char_lookup, feat_lookup, R, bias, encoder_frnn, encoder
         loss.append(current_loss)
 
         # prepare for the next iteration - "feedback"
+        # TODO: add "input feeding" - the attention_output_vector is also concatenated to the next decoder input
         if output_char in alphabet_index:
             prev_output_vec = char_lookup[alphabet_index[output_char]]
         else:
