@@ -1,6 +1,6 @@
 # morphological-reinflection
 
-Source code for the paper: [Sequence to Sequence Transduction with Hard Monotonic Attention](https://arxiv.org/abs/1611.01487).
+Source code for the paper: [Sequence to Sequence Transduction with Hard Monotonic Attention](http://www.aclweb.org/anthology/P17-1183).
 
 
 Requires [dynet](https://github.com/clab/dynet).
