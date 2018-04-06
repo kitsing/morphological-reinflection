@@ -2,10 +2,10 @@
 files and evaluation script.
 
 Usage:
-  hard_attention.py [--dynet-mem MEM][--input=INPUT] [--hidden=HIDDEN]
-  [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION]
-  [--learning=LEARNING] [--plot] [--eval] [--ensemble=ENSEMBLE] TRAIN_PATH DEV_PATH TEST_PATH RESULTS_PATH
-  SIGMORPHON_PATH...
+  hard_attention.py [--dynet-mem MEM] [--dynet-devices DEVICES] [--dynet-gpus GPUS] [--dynet-gpu GPU] [--input=INPUT]
+  [--hidden=HIDDEN] [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION]
+  [--reg=REGULARIZATION] [--learning=LEARNING] [--plot] [--eval] [--ensemble=ENSEMBLE] TRAIN_PATH DEV_PATH TEST_PATH
+  RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:
   TRAIN_PATH    destination path
@@ -16,7 +16,10 @@ Arguments:
 
 Options:
   -h --help                     show this help message and exit
-  --dynet-mem MEM                 allocates MEM bytes for (py)cnn
+  --dynet-mem MEM               allocates MEM bytes for dynet
+  --dynet-devices DEVICES       choose devices for dynet
+  --dynet-gpus GPUS             how many GPUs for dynet
+  --dynet-gpu GPU               whether to use GPU in dynet
   --input=INPUT                 input vector dimensions
   --hidden=HIDDEN               hidden layer dimensions
   --feat-input=FEAT             feature input vector dimension
