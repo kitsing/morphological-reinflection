@@ -3,7 +3,8 @@
 Source code for the paper: [Sequence to Sequence Transduction with Hard Monotonic Attention](http://www.aclweb.org/anthology/P17-1183).
 
 
-Requires [dynet](https://github.com/clab/dynet).
+Requires [dynet](https://github.com/clab/dynet). You should compile the aligner before running `hard_attention.py` by 
+running `make` while in the `src` directory.
 
 Usage:
 
