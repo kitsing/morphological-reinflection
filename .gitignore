@@ -4,8 +4,6 @@
 
 *.png
 
-*.pyc
-
 *.txt.evaluation
 
 *.txt.predictions
@@ -21,5 +19,3 @@
 src/prepare_sigmorphon_data.pyc
 
 *.*~
-
-*.pyc
