@@ -2,7 +2,7 @@
 files and evaluation script.
 
 Usage:
-  task2_evaluate_best_joint_structured_models_nfst.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN]
+  task2_evaluate_ndst.py [--dynet-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN]
   [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
 Arguments:

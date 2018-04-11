@@ -2,7 +2,7 @@
 files and evaluation script.
 
 Usage:
-  task2_evaluate_best_joint_structured_models_blstm_feed_fix.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN]
+  task2_evaluate_ms2s.py [--cnn-mem MEM][--input=INPUT] [--feat-input=FEAT][--hidden=HIDDEN]
   [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--nbest=NBEST]
   TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
@@ -29,10 +29,10 @@ import time
 import docopt
 import task2_ms2s
 import task2_joint_structured_inflection
-import prepare_sigmorphon_data
+import src.prepare_sigmorphon_data as prepare_sigmorphon_data
 import datetime
-import common
-from pycnn import *
+import src.common as common
+from dynet import *
 
 # default values
 INPUT_DIM = 150

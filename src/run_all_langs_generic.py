@@ -60,7 +60,7 @@ def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epoch
          optimization, feat_input_dim, pool_size, langs, script, prefix, task, augment, merged, ensemble, eval_only):
     parallelize_training = True
     params = []
-    print 'now training langs: ' + str(langs)
+    print ('now training langs: ' + str(langs))
     for lang in langs:
 
         # check if an ensemble was requested
@@ -94,14 +94,14 @@ def main(src_dir, results_dir, sigmorphon_root_dir, input_dim, hidden_dim, epoch
     # train models for each lang/ensemble in parallel or in loop
     if parallelize_training:
         pool = Pool(int(pool_size) * ensemble, maxtasksperchild=1)
-        print 'now training {} langs in parallel, {} ensemble models per lang'.format(len(langs), ensemble)
+        print ('now training {} langs in parallel, {} ensemble models per lang'.format(len(langs), ensemble))
         pool.map(train_language_wrapper, params)
     else:
-        print 'now training {0} langs in loop, {} ensemble models per lang'.format(len(langs), ensemble)
+        print ('now training {0} langs in loop, {} ensemble models per lang'.format(len(langs), ensemble))
         for p in params:
             train_language(*p)
 
-    print 'finished training all models'
+    print ('finished training all models')
 
 
 def train_language_wrapper(params):
@@ -184,7 +184,7 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
         {15}'.format(script, cnn_mem, input_dim, hidden_dim, feat_input_dim, epochs, layers, optimization,
                      eval_str, augment_str, ensemble_str, train_path, dev_path, test_path, results_path,
                      sigmorphon_root_dir)
-        print '\n' + command +'\n'
+        print('\n' + command +'\n')
         os.system(command)
     else:
         # train on train+dev, evaluate on dev for early stopping
@@ -197,7 +197,7 @@ def train_language(cnn_mem, epochs, feat_input_dim, hidden_dim, input_dim, lang,
                      augment_str, train_path, dev_path, results_path, sigmorphon_root_dir))
 
     end = time.time()
-    print 'finished {} in {}'.format(lang, str(end - start))
+    print('finished {} in {}'.format(lang, str(end - start)))
 
 
 def evaluate_baseline(lang, results_dir, sig_root):
@@ -267,12 +267,12 @@ if __name__ == '__main__':
     if arguments['--script']:
         script_param = arguments['--script']
     else:
-        print 'script is mandatory'
+        print ('script is mandatory')
         raise ValueError
     if arguments['--prefix']:
         prefix_param = arguments['--prefix']
     else:
-        print 'prefix is mandatory'
+        print ('prefix is mandatory')
         raise ValueError
     if arguments['--task']:
         task_param = arguments['--task']
@@ -295,7 +295,7 @@ if __name__ == '__main__':
     else:
         eval_param = False
 
-    print arguments
+    print(arguments)
 
     main(src_dir_param, results_dir_param, sigmorphon_root_dir_param, input_dim_param, hidden_dim_param, epochs_param,
          layers_param, optimization_param, feat_input_dim_param, pool_size_param, langs_param, script_param,

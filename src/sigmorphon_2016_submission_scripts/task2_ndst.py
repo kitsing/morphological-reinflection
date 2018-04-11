@@ -2,7 +2,7 @@
 files and evaluation script.
 
 Usage:
-  task2_joint_structured_inflection_blstm_feedback_fix.py [--cnn-mem MEM][--input=INPUT] [--hidden=HIDDEN]
+  task2_ndst.py [--dynet-mem MEM][--input=INPUT] [--hidden=HIDDEN]
   [--feat-input=FEAT] [--epochs=EPOCHS] [--layers=LAYERS] [--optimization=OPTIMIZATION] [--reg=REGULARIZATION]
   [--learning=LEARNING] [--plot] [--augment] TRAIN_PATH TEST_PATH RESULTS_PATH SIGMORPHON_PATH...
 
@@ -29,16 +29,16 @@ Options:
 
 import numpy as np
 import random
-import prepare_sigmorphon_data
+import src.prepare_sigmorphon_data as prepare_sigmorphon_data
 import progressbar
 import datetime
 import time
 import os
-import common
+import src.common as common
 from multiprocessing import Pool
 from matplotlib import pyplot as plt
 from docopt import docopt
-from pycnn import *
+from dynet import *
 
 # default values
 INPUT_DIM = 100
@@ -213,7 +213,7 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
               str(len(train_cluster_target_words)) + ' examples'
 
     # build model
-    initial_model, encoder_frnn, encoder_rrnn, decoder_rnn = build_model(alphabet, input_dim, hidden_dim, layers,
+    initial_model, params = build_model(alphabet, input_dim, hidden_dim, layers,
                                                                          feature_types, feat_input_dim,
                                                                          feature_alphabet)
 
@@ -235,7 +235,7 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
         print 'could not find relevant examples in dev data for cluster: ' + cluster_type
 
     # train model
-    trained_model, last_epoch = train_model(initial_model, encoder_frnn, encoder_rrnn, decoder_rnn, train_cluster_source_words,
+    trained_model, last_epoch = train_model(initial_model, params, train_cluster_source_words,
                                 train_cluster_source_feat_dicts, train_cluster_target_words, train_cluster_target_feat_dicts, 
                                 dev_cluster_source_words, dev_cluster_source_feat_dicts, dev_cluster_target_words, 
                                 dev_cluster_target_feat_dicts, alphabet_index, inverse_alphabet_index,
@@ -243,7 +243,7 @@ def train_cluster_model(input_dim, hidden_dim, layers, cluster_index, cluster_ty
                                 train_cluster_alignments, dev_cluster_alignments, feat_index, feature_types, plot)
 
     # evaluate last model on dev
-    predicted_templates = predict_templates(trained_model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+    predicted_templates = predict_templates(trained_model, params, alphabet_index,
                                             inverse_alphabet_index, dev_cluster_source_words, dev_cluster_source_feat_dicts, 
                                             dev_cluster_target_feat_dicts,
                                             feat_index,
@@ -263,31 +263,33 @@ def build_model(alphabet, input_dim, hidden_dim, layers, feature_types, feat_inp
 
     model = Model()
 
+    params = {}
+
     # character embeddings
-    model.add_lookup_parameters("char_lookup", (len(alphabet), input_dim))
+    params["char_lookup"] = model.add_lookup_parameters((len(alphabet), input_dim))
 
     # feature embeddings
-    model.add_lookup_parameters("feat_lookup", (len(feature_alphabet), feat_input_dim))
+    params["feat_lookup"] = model.add_lookup_parameters((len(feature_alphabet), feat_input_dim))
 
     # used in softmax output
-    model.add_parameters("R", (len(alphabet), hidden_dim))
-    model.add_parameters("bias", len(alphabet))
+    params["R"] = model.add_parameters((len(alphabet), hidden_dim))
+    params["bias"] = model.add_parameters(len(alphabet))
 
     # rnn's
-    encoder_frnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
-    encoder_rrnn = LSTMBuilder(layers, input_dim, hidden_dim, model)
+    params["encoder_frnn"] = LSTMBuilder(layers, input_dim, hidden_dim, model)
+    params["encoder_rrnn"] = LSTMBuilder(layers, input_dim, hidden_dim, model)
 
     # 2 * HIDDEN_DIM + 3 * INPUT_DIM, as it gets a concatenation of frnn, rrnn, previous output char,
     # current lemma char, current index marker
     # 2 * len(feature_types) * feat_input_dim, as it gets both source and target feature embeddings
-    decoder_rnn = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + 2 * len(feature_types) * feat_input_dim, hidden_dim,
+    params["decoder_rnn"] = LSTMBuilder(layers, 2 * hidden_dim + 3 * input_dim + 2 * len(feature_types) * feat_input_dim, hidden_dim,
                               model)
     print 'finished creating model'
 
-    return model, encoder_frnn, encoder_rrnn, decoder_rnn
+    return model, params
 
 
-def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_source_words, train_source_feat_dicts, train_target_words, 
+def train_model(model, params, train_source_words, train_source_feat_dicts, train_target_words,
                 train_target_feat_dicts, dev_source_words,
                 dev_source_feat_dicts, dev_target_words, dev_target_feat_dicts, 
                 alphabet_index, inverse_alphabet_index, epochs, optimization,
@@ -298,7 +300,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_source_wor
     random.seed(17)
 
     if optimization == 'ADAM':
-        trainer = AdamTrainer(model, lam=REGULARIZATION, alpha=LEARNING_RATE, beta_1=0.9, beta_2=0.999, eps=1e-8)
+        trainer = AdamTrainer(model, alpha=LEARNING_RATE, beta_1=0.9, beta_2=0.999, eps=1e-8)
     elif optimization == 'MOMENTUM':
         trainer = MomentumSGDTrainer(model)
     elif optimization == 'SGD':
@@ -338,7 +340,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_source_wor
         # compute loss for each example and update
         for i, example in enumerate(train_set):
             source_word, source_feats, target_word, target_feats, alignment = example
-            loss = one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, source_word, source_feats, target_word, target_feats,
+            loss = one_word_loss(model, params, source_word, source_feats, target_word, target_feats,
                                  alphabet_index, alignment, feat_index, feature_types)
             loss_value = loss.value()
             total_loss += loss_value
@@ -352,7 +354,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_source_wor
         if EARLY_STOPPING:
 
             # get train accuracy
-            train_predictions = predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+            train_predictions = predict_templates(model, params, alphabet_index,
                                                   inverse_alphabet_index, train_source_words, train_source_feat_dicts, 
                                                   train_target_feat_dicts, feat_index,
                                                   feature_types)
@@ -370,7 +372,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_source_wor
             if len(dev_source_words) > 0:
 
                 # get dev accuracy
-                dev_predictions = predict_templates(model, decoder_rnn, encoder_frnn, encoder_rrnn, alphabet_index,
+                dev_predictions = predict_templates(model, params, alphabet_index,
                                                     inverse_alphabet_index, dev_source_words, dev_source_feat_dicts, 
                                                     dev_target_feat_dicts, feat_index,
                                                     feature_types)
@@ -400,7 +402,7 @@ def train_model(model, encoder_frnn, encoder_rrnn, decoder_rnn, train_source_wor
                 # get dev loss
                 total_dev_loss = 0
                 for i in xrange(len(dev_source_words)):
-                    total_dev_loss += one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, dev_source_words[i],
+                    total_dev_loss += one_word_loss(model, params, dev_source_words[i],
                                                     dev_source_feat_dicts[i], dev_target_words[i], dev_target_feat_dicts[i], alphabet_index,
                                                     dev_aligned_pairs[i], feat_index, feature_types).value()
 
@@ -479,16 +481,19 @@ def save_pycnn_model(model, results_file_path, model_index):
 
 
 # noinspection PyPep8Naming
-def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, source_word, source_feats, target_word,
+def one_word_loss(model, params, source_word, source_feats, target_word,
                   target_feats, alphabet_index, aligned_pair,
                   feat_index, feature_types):
     renew_cg()
 
     # read the parameters
-    char_lookup = model["char_lookup"]
-    feat_lookup = model["feat_lookup"]
-    R = parameter(model["R"])
-    bias = parameter(model["bias"])
+    char_lookup = params["char_lookup"]
+    feat_lookup = params["feat_lookup"]
+    R = params["R"]
+    bias = params["bias"]
+    encoder_frnn = params["encoder_frnn"]
+    encoder_rrnn = params["encoder_rrnn"]
+    decoder_rnn = params["decoder_rnn"]
 
     source_word = BEGIN_WORD + source_word + END_WORD
 
@@ -663,16 +668,19 @@ def one_word_loss(model, encoder_frnn, encoder_rrnn, decoder_rnn, source_word, s
 
 
 # noinspection PyPep8Naming
-def predict_inflection_template(model, encoder_frnn, encoder_rrnn, decoder_rnn, source_word, source_feats, 
+def predict_inflection_template(model, params, source_word, source_feats,
                                 target_feats, alphabet_index,
                                 inverse_alphabet_index, feat_index, feature_types):
     renew_cg()
 
     # read the parameters
-    char_lookup = model["char_lookup"]
-    feat_lookup = model["feat_lookup"]
-    R = parameter(model["R"])
-    bias = parameter(model["bias"])
+    char_lookup = params["char_lookup"]
+    feat_lookup = params["feat_lookup"]
+    R = params["R"]
+    bias = params["bias"]
+    encoder_frnn = params["encoder_frnn"]
+    encoder_rrnn = params["encoder_rrnn"]
+    decoder_rnn = params["decoder_rnn"]
 
     # convert characters to matching embeddings, if UNK handle properly
     source_word = BEGIN_WORD + source_word + END_WORD
