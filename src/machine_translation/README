@@ -1,7 +1,0 @@
-First prepare the data:
-
-python prepare_data.py
-
-Then run training:
-
-python -m machine_translation
