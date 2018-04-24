@@ -1,6 +1,6 @@
 # morphological-reinflection
 
-Source code for the paper: [Sequence to Sequence Transduction with Hard Monotonic Attention](http://www.aclweb.org/anthology/P17-1183).
+Source code for the paper: [Morphological Inflection Generation with Hard Monotonic Attention](http://www.aclweb.org/anthology/P17-1183).
 
 
 Requires [dynet](https://github.com/clab/dynet). You should compile the aligner before running `hard_attention.py` by 
