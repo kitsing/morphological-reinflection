@@ -42,15 +42,19 @@ libalign_align_init.restype = None
 class Aligner:
 
     def __init__(self, wordpairs, align_symbol = u' ', iterations = 10, burnin = 5, lag = 1, mode = 'crp'):
-        s = set(u''.join((x[0] + x[1] for x in wordpairs)))
-        self.symboltoint = dict(zip(s, xrange(1,len(s)+1)))
+        s = set()
+        for x in wordpairs:
+            s.update(x[0])
+            s.update(x[1])
+        # s = set(u''.join((x[0] + x[1] for x in wordpairs)))
+        self.symboltoint = dict(zip(s, range(1,len(s)+1)))
         self.inttosymbol = {v:k for k, v in self.symboltoint.items()}
         self.inttosymbol[0] = align_symbol
         ## Map stringpairs to -1 terminated integer sequences ##
         intpairs = []
         for i, o in wordpairs:
-            intin = map(lambda x: self.symboltoint[x], i) + [-1]
-            intout = map(lambda x: self.symboltoint[x], o) + [-1]
+            intin = [self.symboltoint[x] for x in i] + [-1]
+            intout = [self.symboltoint[x] for x in o] + [-1]
             intpairs.append((intin, intout))
 
         libalign_align_init()
@@ -86,5 +90,5 @@ class Aligner:
                 if outints[j] == -1:
                     break
                 outstr.append(self.inttosymbol[outints[j]])
-            self.alignedpairs.append((''.join(instr), ''.join(outstr)))
+            self.alignedpairs.append(('_'.join(instr), '_'.join(outstr)))
             stringpairptr = libalign_getpairs_advance(c_void_p(stringpairptr))
